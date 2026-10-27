@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1033"/>
+      <stop offset=".45" stop-color="#6a2a5e"/>
+      <stop offset=".75" stop-color="#ff6a3d"/>
+      <stop offset="1" stop-color="#ffc27a"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff4d6"/>
+      <stop offset=".6" stop-color="#ffd38a"/>
+      <stop offset="1" stop-color="#ff8a4c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="d1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c2410c"/>
+      <stop offset="1" stop-color="#5b1a2a"/>
+    </linearGradient>
+    <linearGradient id="d2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c1d3a"/>
+      <stop offset="1" stop-color="#2a0f2b"/>
+    </linearGradient>
+    <linearGradient id="d3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b1238"/>
+      <stop offset="1" stop-color="#0c0c0e"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .09 0"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <circle cx="1040" cy="560" r="300" fill="url(#sun)"/>
+  <circle cx="1040" cy="560" r="150" fill="#fff1cf"/>
+  <g fill="#1b1033" opacity=".25">
+    <rect x="0" y="470" width="1600" height="6"/>
+    <rect x="0" y="500" width="1600" height="9"/>
+    <rect x="0" y="534" width="1600" height="12"/>
+  </g>
+  <path d="M0 640 C 220 560 420 600 620 650 S 1020 720 1260 640 S 1520 560 1600 600 V1000 H0Z" fill="url(#d1)"/>
+  <path d="M0 760 C 260 680 520 700 760 770 S 1180 860 1400 780 S 1560 730 1600 750 V1000 H0Z" fill="url(#d2)"/>
+  <path d="M0 880 C 300 820 620 840 900 900 S 1380 960 1600 880 V1000 H0Z" fill="url(#d3)"/>
+  <rect width="1600" height="1000" filter="url(#grain)"/>
+</svg>

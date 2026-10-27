@@ -1,0 +1,472 @@
+/*!
+ * Idéothèque — fx.css — bibliothèque d'idées visuelles
+ * Usage : <element data-fx="nom-de-l-effet">
+ * Réglages par élément via variables CSS : --fx-duration, --fx-delay, --fx-ease, --fx-stagger
+ * Licence MIT
+ */
+
+:root {
+  --fx-duration: 700ms;
+  --fx-delay: 0ms;
+  --fx-ease: cubic-bezier(.2, .8, .2, 1);
+  --fx-ease-out: cubic-bezier(.16, 1, .3, 1);
+  --fx-stagger: 70ms;
+  --fx-distance: 24px;
+}
+
+/* ------------------------------------------------------------------ */
+/* ENTRÉES — déclenchées quand l'élément entre à l'écran (classe .fx-in) */
+/* ------------------------------------------------------------------ */
+
+/* curtain-soft : un rideau qui se lève doucement sur le contenu */
+[data-fx="curtain-soft"] {
+  /* 99 % et non 100 % : une surface nulle empêcherait la détection du défilement */
+  clip-path: inset(99% 0 0 0);
+  transform: translateY(calc(var(--fx-distance) / 2));
+  transition:
+    clip-path var(--fx-duration) var(--fx-ease-out) var(--fx-delay),
+    transform var(--fx-duration) var(--fx-ease-out) var(--fx-delay);
+}
+[data-fx="curtain-soft"].fx-in {
+  clip-path: inset(0 0 0 0);
+  transform: none;
+}
+
+/* rise-stagger : les enfants montent l'un après l'autre */
+[data-fx="rise-stagger"] > * {
+  opacity: 0;
+  transform: translateY(var(--fx-distance));
+  transition:
+    opacity var(--fx-duration) var(--fx-ease),
+    transform var(--fx-duration) var(--fx-ease);
+  transition-delay: calc(var(--fx-delay) + var(--fx-i, 0) * var(--fx-stagger));
+}
+[data-fx="rise-stagger"].fx-in > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* blur-in : le contenu passe du flou au net, comme une mise au point */
+[data-fx="blur-in"] {
+  opacity: 0;
+  filter: blur(14px);
+  transform: scale(1.04);
+  transition:
+    opacity var(--fx-duration) var(--fx-ease) var(--fx-delay),
+    filter var(--fx-duration) var(--fx-ease) var(--fx-delay),
+    transform var(--fx-duration) var(--fx-ease) var(--fx-delay);
+}
+[data-fx="blur-in"].fx-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+/* text-split : les lettres apparaissent une à une (découpage fait par fx.js) */
+[data-fx="text-split"] .fx-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.5em) rotate(4deg);
+  transition:
+    opacity calc(var(--fx-duration) * .7) var(--fx-ease),
+    transform calc(var(--fx-duration) * .7) var(--fx-ease);
+  transition-delay: calc(var(--fx-delay) + var(--fx-i, 0) * (var(--fx-stagger) / 3));
+}
+[data-fx="text-split"].fx-in .fx-char {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* MICRO-INTERACTIONS                                                  */
+/* ------------------------------------------------------------------ */
+
+/* underline-draw : soulignement qui se dessine depuis la gauche et repart par la droite */
+[data-fx="underline-draw"] {
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 100% 100% / 0 2px no-repeat;
+  transition: background-size calc(var(--fx-duration) * .55) var(--fx-ease);
+  padding-bottom: 2px;
+}
+[data-fx="underline-draw"]:hover,
+[data-fx="underline-draw"]:focus-visible {
+  background-position: 0 100%;
+  background-size: 100% 2px;
+}
+
+/* magnetic : l'élément est attiré par le curseur (position gérée par fx.js) */
+[data-fx="magnetic"] {
+  transition: transform 450ms var(--fx-ease-out);
+  will-change: transform;
+}
+[data-fx="magnetic"].fx-active {
+  transition: transform 120ms linear;
+}
+
+/* tilt-card : la carte s'incline en 3D selon le curseur (angles gérés par fx.js) */
+[data-fx="tilt-card"] {
+  transform: perspective(900px) rotateX(var(--fx-rx, 0deg)) rotateY(var(--fx-ry, 0deg));
+  transition: transform 500ms var(--fx-ease-out);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+[data-fx="tilt-card"].fx-active {
+  transition: transform 100ms linear;
+}
+
+/* ------------------------------------------------------------------ */
+/* ÉTATS                                                               */
+/* ------------------------------------------------------------------ */
+
+/* shimmer : reflet qui balaie un bloc en cours de chargement */
+[data-fx="shimmer"] {
+  background:
+    linear-gradient(100deg, transparent 30%, var(--fx-shimmer-glint, rgba(255, 255, 255, .55)) 50%, transparent 70%) 0 0 / 250% 100%,
+    var(--fx-shimmer-base, #e6e8ee);
+  animation: fx-shimmer 1.6s linear infinite;
+  border-radius: 8px;
+}
+@keyframes fx-shimmer {
+  from { background-position: 150% 0, 0 0; }
+  to   { background-position: -100% 0, 0 0; }
+}
+
+/* ------------------------------------------------------------------ */
+/* ENTRÉES (suite)                                                     */
+/* ------------------------------------------------------------------ */
+
+/* line-mask : chaque ligne glisse depuis derrière un cache invisible */
+[data-fx="line-mask"] .fx-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: .1em;
+  margin-bottom: -.1em;
+}
+[data-fx="line-mask"] .fx-line > span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform var(--fx-duration) var(--fx-ease-out);
+  transition-delay: calc(var(--fx-delay) + var(--fx-i, 0) * var(--fx-stagger));
+}
+[data-fx="line-mask"].fx-in .fx-line > span {
+  transform: none;
+}
+
+/* pill-grow : une gélule qui s'ouvre au milieu d'un titre */
+[data-fx="pill-grow"] {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: .74em;
+  margin: 0 .12em;
+  border-radius: 999px;
+  border: max(2px, .06em) solid currentColor;
+  background: var(--fx-pill-fill, transparent);
+  position: relative;
+  overflow: hidden;
+  transition: width var(--fx-duration) var(--fx-ease-out) calc(var(--fx-delay) + 200ms);
+}
+[data-fx="pill-grow"]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: .14em;
+  width: .36em;
+  height: .36em;
+  margin-top: -.18em;
+  border-radius: 50%;
+  background: currentColor;
+  transition: left 1.2s var(--fx-ease-out) calc(var(--fx-delay) + 500ms);
+}
+[data-fx="pill-grow"].fx-in {
+  width: var(--fx-w, 1.9em);
+}
+[data-fx="pill-grow"].fx-in::after {
+  left: calc(100% - .5em);
+}
+
+/* pixel-dissolve : une mosaïque de cases qui s'efface au hasard (canvas posé par fx.js) */
+[data-fx="pixel-dissolve"] .fx-pixels {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* text-scramble : prévoir une police à chasse fixe pour éviter que le texte tremble */
+[data-fx="text-scramble"] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------ */
+/* PRÉSENTATION                                                        */
+/* ------------------------------------------------------------------ */
+
+/* preloader : écran de chargement chiffré qui se lève vers le haut */
+[data-fx="preloader"] {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(16px, 4vw, 48px);
+  background: var(--fx-preloader-bg, #0c0c0e);
+  color: var(--fx-preloader-ink, #f4f1ea);
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1s cubic-bezier(.76, 0, .24, 1);
+}
+[data-fx="preloader"][data-fx-local] { position: absolute; }
+[data-fx="preloader"].fx-done {
+  clip-path: inset(0 0 100% 0);
+  pointer-events: none;
+}
+[data-fx="preloader"] .fx-pre-label {
+  font: 500 12px/1 ui-monospace, "JetBrains Mono", Consolas, monospace;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  opacity: .6;
+}
+[data-fx="preloader"] .fx-pre-num {
+  font-size: clamp(72px, 18vw, 220px);
+  font-weight: 700;
+  line-height: .85;
+  letter-spacing: -.05em;
+  font-variant-numeric: tabular-nums;
+  margin-top: .1em;
+}
+[data-fx="preloader"] .fx-pre-num::after {
+  content: "%";
+  font-size: .28em;
+  vertical-align: top;
+  margin-left: .08em;
+}
+[data-fx="preloader"] .fx-pre-bar {
+  height: 2px;
+  margin-top: 18px;
+  background: color-mix(in srgb, currentColor 15%, transparent);
+}
+[data-fx="preloader"] .fx-pre-bar i {
+  display: block;
+  height: 100%;
+  width: calc(var(--fx-p, 0) * 100%);
+  background: var(--fx-preloader-accent, #ff5b2e);
+}
+
+/* marquee : bandeau infini qui accélère et change de sens avec le défilement */
+[data-fx="marquee"] {
+  overflow: hidden;
+  white-space: nowrap;
+}
+[data-fx="marquee"] .fx-marquee-track {
+  display: inline-flex;
+  will-change: transform;
+}
+[data-fx="marquee"] .fx-marquee-unit {
+  display: inline-flex;
+  flex: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* MICRO-INTERACTIONS (suite)                                          */
+/* ------------------------------------------------------------------ */
+
+/* roll-text : au survol, chaque lettre roule vers le haut et laisse place à son double */
+[data-fx="roll-text"] {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.2;
+  vertical-align: bottom;
+}
+[data-fx="roll-text"] .fx-char {
+  display: inline-block;
+  text-shadow: 0 1.2em currentColor;
+  transition: transform calc(var(--fx-duration) * .7) var(--fx-ease-out);
+  transition-delay: calc(var(--fx-i, 0) * 18ms);
+}
+[data-fx="roll-text"]:hover .fx-char,
+[data-fx="roll-text"]:focus-visible .fx-char {
+  transform: translateY(-1.2em);
+}
+
+/* corner-marks : des repères d'angle qui viennent cadrer l'élément au survol */
+[data-fx="corner-marks"] {
+  position: relative;
+  --fx-mark: 14px;
+  --fx-mark-w: 1.5px;
+}
+[data-fx="corner-marks"]::before {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  pointer-events: none;
+  color: var(--fx-mark-color, currentColor);
+  background:
+    linear-gradient(currentColor, currentColor) top left / var(--fx-mark) var(--fx-mark-w),
+    linear-gradient(currentColor, currentColor) top left / var(--fx-mark-w) var(--fx-mark),
+    linear-gradient(currentColor, currentColor) top right / var(--fx-mark) var(--fx-mark-w),
+    linear-gradient(currentColor, currentColor) top right / var(--fx-mark-w) var(--fx-mark),
+    linear-gradient(currentColor, currentColor) bottom left / var(--fx-mark) var(--fx-mark-w),
+    linear-gradient(currentColor, currentColor) bottom left / var(--fx-mark-w) var(--fx-mark),
+    linear-gradient(currentColor, currentColor) bottom right / var(--fx-mark) var(--fx-mark-w),
+    linear-gradient(currentColor, currentColor) bottom right / var(--fx-mark-w) var(--fx-mark);
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: inset 500ms var(--fx-ease-out), opacity 300ms ease;
+}
+[data-fx="corner-marks"]:hover::before,
+[data-fx="corner-marks"]:focus-within::before {
+  inset: -7px;
+  opacity: 1;
+}
+
+/* cursor : un point qui suit la souris en inversant les couleurs (posé par fx.js) */
+.fx-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.fx-cursor::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: #fff;
+  mix-blend-mode: difference;
+  transition: width 400ms var(--fx-ease-out), height 400ms var(--fx-ease-out), margin 400ms var(--fx-ease-out);
+}
+.fx-cursor span {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font: 600 11px/1 ui-monospace, "JetBrains Mono", Consolas, monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #0c0c0e;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.fx-cursor.fx-on { opacity: 1; }
+.fx-cursor.fx-grow::before { width: 56px; height: 56px; margin: -28px 0 0 -28px; }
+.fx-cursor.fx-label::before { width: 84px; height: 84px; margin: -42px 0 0 -42px; mix-blend-mode: normal; background: var(--fx-cursor-color, #f4f1ea); }
+.fx-cursor.fx-label span { opacity: 1; }
+
+/* ------------------------------------------------------------------ */
+/* DÉFILEMENT                                                          */
+/* ------------------------------------------------------------------ */
+
+/* scroll-expand : un visuel encadré qui s'agrandit jusqu'au plein cadre en défilant */
+[data-fx="scroll-expand"] {
+  overflow: hidden;
+  clip-path: inset(
+    calc((1 - var(--fx-p, 0)) * var(--fx-inset, 12%))
+    round calc((1 - var(--fx-p, 0)) * var(--fx-radius, 28px))
+  );
+}
+[data-fx="scroll-expand"] > :first-child {
+  transform: scale(calc(1.18 - var(--fx-p, 0) * .18));
+}
+
+/* ------------------------------------------------------------------ */
+/* TRANSITIONS                                                         */
+/* ------------------------------------------------------------------ */
+
+/* page-wipe : deux panneaux montent, recouvrent l'écran, puis repartent par le haut */
+.fx-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+}
+.fx-wipe.fx-cover { pointer-events: auto; }
+.fx-wipe i {
+  position: absolute;
+  inset: 0;
+  transform: translateY(100%);
+  transition: transform 800ms cubic-bezier(.76, 0, .24, 1);
+}
+.fx-wipe i:first-child { background: var(--fx-wipe-accent, #ff5b2e); }
+.fx-wipe i:last-child { background: var(--fx-wipe-bg, #0c0c0e); transition-delay: 90ms; }
+.fx-wipe.fx-cover i { transform: none; }
+.fx-wipe.fx-uncover i { transform: translateY(-100%); }
+.fx-wipe.fx-uncover i:first-child { transition-delay: 90ms; }
+.fx-wipe.fx-uncover i:last-child { transition-delay: 0ms; }
+.fx-wipe.fx-instant i { transition: none; }
+
+/* ------------------------------------------------------------------ */
+/* AMBIANCES                                                           */
+/* ------------------------------------------------------------------ */
+
+/* scanlines : lignes d'écran cathodique et balayage lumineux */
+[data-fx="scanlines"] {
+  position: relative;
+  isolation: isolate;
+}
+[data-fx="scanlines"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, .32) 0 1px, transparent 1px 3px);
+  animation: fx-flicker 5s steps(1) infinite;
+}
+[data-fx="scanlines"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, .1) 50%, transparent) 0 0 / 100% 35% no-repeat;
+  animation: fx-sweep 6s linear infinite;
+}
+@keyframes fx-flicker {
+  0%, 100% { opacity: 1; }
+  41% { opacity: .82; }
+  42% { opacity: 1; }
+  77% { opacity: .9; }
+}
+@keyframes fx-sweep {
+  from { background-position: 0 -60%; }
+  to   { background-position: 0 160%; }
+}
+
+/* dot-grid : une trame de points qui s'anime autour du curseur (canvas posé par fx.js) */
+[data-fx="dot-grid"] {
+  isolation: isolate;
+}
+[data-fx="dot-grid"] .fx-dot-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* ACCESSIBILITÉ — mouvement réduit : tout s'affiche directement       */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  [data-fx],
+  [data-fx] > *,
+  [data-fx] .fx-char,
+  [data-fx] .fx-line > span {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    clip-path: none !important;
+    transform: none !important;
+  }
+  [data-fx="preloader"].fx-done { display: none !important; }
+  [data-fx="scanlines"]::before { display: none; }
+}

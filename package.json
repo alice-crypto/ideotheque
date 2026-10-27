@@ -1,0 +1,13 @@
+{
+  "name": "ideotheque",
+  "version": "0.2.0",
+  "description": "Une bibliothèque d'idées visuelles : des animations et transitions nommées, utilisables à la main ou par une IA.",
+  "keywords": ["animation", "transition", "css", "motion", "ai", "design", "scroll", "effects"],
+  "license": "MIT",
+  "main": "dist/fx.js",
+  "style": "dist/fx.css",
+  "files": ["dist", "effects", "AI.md"],
+  "scripts": {
+    "start": "npx --yes http-server@14.1.1 -p 5180 -c-1"
+  }
+}
