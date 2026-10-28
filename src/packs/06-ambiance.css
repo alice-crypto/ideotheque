@@ -1,0 +1,275 @@
+/* Pack 06 — Ambiances (fonds, textures, atmosphères)
+ * Les calques décoratifs se placent derrière le contenu de l'élément (z-index: -1 et isolation).
+ */
+
+[data-fx="grain"], [data-fx="aurora"], [data-fx="gradient-drift"], [data-fx="grid-floor"], [data-fx="starfield"],
+[data-fx="constellation"], [data-fx="wave-lines"], [data-fx="vhs"], [data-fx="crt"], [data-fx="flashlight"],
+[data-fx="bokeh"], [data-fx="code-rain"], [data-fx="blob-bg"], [data-fx="halftone"], [data-fx="orbit-rings"],
+[data-fx="light-beams"], [data-fx="water-ripple"] {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Calque canvas commun (posé par fx.js) */
+.fx-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* grain : un grain de pellicule animé par-dessus le contenu */
+[data-fx="grain"]::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: 3;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: var(--fx-grain, .14);
+  animation: fx-grain .9s steps(6) infinite;
+}
+@keyframes fx-grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-6%, 4%); }
+  40% { transform: translate(5%, -7%); }
+  60% { transform: translate(-3%, 8%); }
+  80% { transform: translate(7%, 2%); }
+  100% { transform: translate(-4%, -5%); }
+}
+
+/* aurora : des voiles de couleur ondulent lentement comme une aurore boréale */
+[data-fx="aurora"]::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: -1;
+  background:
+    radial-gradient(40% 50% at 30% 40%, var(--fx-a1, #7b5cff), transparent 70%),
+    radial-gradient(35% 45% at 70% 60%, var(--fx-a2, #20c7a5), transparent 70%),
+    radial-gradient(30% 40% at 50% 25%, var(--fx-a3, #ff5b2e), transparent 70%);
+  filter: blur(40px);
+  opacity: .8;
+  animation: fx-aurora 14s ease-in-out infinite alternate;
+}
+@keyframes fx-aurora {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(25deg) scale(1.15) translate(4%, -3%); }
+  100% { transform: rotate(-15deg) scale(1.05) translate(-5%, 4%); }
+}
+
+/* gradient-drift : un dégradé maillé qui dérive lentement */
+[data-fx="gradient-drift"] {
+  background:
+    radial-gradient(at 20% 30%, var(--fx-d1, #ff5b2e) 0, transparent 45%),
+    radial-gradient(at 80% 20%, var(--fx-d2, #b9a7ff) 0, transparent 45%),
+    radial-gradient(at 60% 85%, var(--fx-d3, #20c7a5) 0, transparent 45%),
+    radial-gradient(at 15% 90%, var(--fx-d4, #ffcf4d) 0, transparent 40%),
+    var(--fx-base, #14141a);
+  background-size: 200% 200%;
+  animation: fx-drift 16s ease-in-out infinite alternate;
+}
+@keyframes fx-drift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 30%; }
+  100% { background-position: 40% 100%; }
+}
+
+/* grid-floor : un sol quadrillé en perspective qui défile vers l'horizon */
+[data-fx="grid-floor"]::before {
+  content: "";
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 65%;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--fx-grid, rgba(185, 167, 255, .6)) 1px, transparent 1px),
+    linear-gradient(90deg, var(--fx-grid, rgba(185, 167, 255, .6)) 1px, transparent 1px);
+  background-size: 44px 44px;
+  transform: perspective(320px) rotateX(68deg);
+  transform-origin: 50% 100%;
+  -webkit-mask-image: linear-gradient(to top, #000 25%, transparent 95%);
+  mask-image: linear-gradient(to top, #000 25%, transparent 95%);
+  animation: fx-floor 1.4s linear infinite;
+}
+[data-fx="grid-floor"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 35%;
+  height: 40%;
+  z-index: -1;
+  background: radial-gradient(50% 40% at 50% 0, var(--fx-glow, rgba(123, 92, 255, .55)), transparent 70%);
+}
+@keyframes fx-floor { to { background-position: 0 44px, 0 0; } }
+
+/* vhs : l'image d'une cassette vidéo, avec REC, compteur et bande de distorsion */
+[data-fx="vhs"] { filter: saturate(1.25) contrast(1.05); }
+[data-fx="vhs"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14%;
+  top: -14%;
+  z-index: 3;
+  pointer-events: none;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .08) 0 2px, transparent 2px 5px), linear-gradient(transparent, rgba(255, 255, 255, .12), transparent);
+  animation: fx-tracking 5s linear infinite;
+}
+@keyframes fx-tracking { to { top: 114%; } }
+[data-fx="vhs"] .fx-vhs-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font: 600 12px/1 ui-monospace, "JetBrains Mono", Consolas, monospace;
+  letter-spacing: .1em;
+  color: #fff;
+  text-shadow: 1px 0 rgba(255, 0, 60, .7), -1px 0 rgba(0, 220, 255, .7);
+}
+[data-fx="vhs"] .fx-vhs-ui span:first-child::first-letter { color: #ff2e2e; }
+[data-fx="vhs"] .fx-vhs-ui span:last-child { align-self: flex-end; }
+
+/* crt : un vieil écran cathodique (vignette, lignes, allumage à l'entrée) */
+[data-fx="crt"] {
+  border-radius: 6% / 9%;
+  filter: contrast(1.1) brightness(1.05) saturate(1.1);
+}
+[data-fx="crt"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, .18) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .75) 100%);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, .8);
+  animation: fx-crt-flicker 3s steps(1) infinite;
+}
+[data-fx="crt"].fx-in { animation: fx-power .7s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes fx-power {
+  0% { transform: scale(1, .006); filter: brightness(4); }
+  45% { transform: scale(1, .006); filter: brightness(4); }
+  70% { transform: scale(1, 1.05); filter: brightness(1.6); }
+  100% { transform: none; filter: contrast(1.1) brightness(1.05) saturate(1.1); }
+}
+@keyframes fx-crt-flicker { 0%, 100% { opacity: 1; } 50% { opacity: .9; } }
+
+/* flashlight : l'obscurité ne laisse voir que ce qu'éclaire la lampe (le curseur) */
+[data-fx="flashlight"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(circle var(--fx-size, 120px) at var(--fx-mx, 50%) var(--fx-my, 50%), transparent 0 55%, var(--fx-dark-veil, rgba(5, 5, 8, .94)) 100%);
+}
+
+/* bokeh : des taches de lumière floues flottent doucement (posées par fx.js) */
+[data-fx="bokeh"] .fx-bokeh {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--c) 0, transparent 70%);
+  filter: blur(var(--b, 3px));
+  opacity: .55;
+  animation: fx-float var(--t, 9s) ease-in-out var(--d, 0s) infinite alternate;
+}
+@keyframes fx-float { to { transform: translate(var(--x, 20px), var(--y, -30px)) scale(1.15); } }
+
+/* blob-bg : une grande forme molle qui se déforme et tourne lentement */
+[data-fx="blob-bg"]::before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  aspect-ratio: 1;
+  left: 15%;
+  top: 50%;
+  z-index: -1;
+  translate: 0 -50%;
+  background: linear-gradient(135deg, var(--fx-b1, #ff5b2e), var(--fx-b2, #7b5cff));
+  filter: blur(28px);
+  opacity: .75;
+  animation: fx-blob 9s ease-in-out infinite, fx-turn 24s linear infinite;
+}
+@keyframes fx-turn { to { rotate: 360deg; } }
+
+/* halftone : une trame de points d'imprimerie qui respire */
+[data-fx="halftone"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(circle, var(--fx-dot, var(--fx-accent)) 32%, transparent 34%);
+  background-size: 12px 12px;
+  -webkit-mask-image: radial-gradient(circle, #000 0, transparent 60%);
+  mask-image: radial-gradient(circle, #000 0, transparent 60%);
+  -webkit-mask-size: 160% 160%;
+  mask-size: 160% 160%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: fx-halftone 8s ease-in-out infinite alternate;
+}
+@keyframes fx-halftone {
+  0% { -webkit-mask-position: 0% 0%; mask-position: 0% 0%; }
+  50% { -webkit-mask-position: 100% 30%; mask-position: 100% 30%; }
+  100% { -webkit-mask-position: 30% 100%; mask-position: 30% 100%; }
+}
+
+/* orbit-rings : des anneaux pointillés tournent autour du centre (posés par fx.js) */
+[data-fx="orbit-rings"] .fx-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  width: calc(var(--k) * 100%);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border: 1px dashed var(--fx-ring, rgba(244, 241, 234, .3));
+  border-radius: 50%;
+  animation: fx-turn var(--t, 20s) linear infinite;
+}
+[data-fx="orbit-rings"] .fx-orbit::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background: var(--fx-planet, var(--fx-accent));
+  box-shadow: 0 0 12px var(--fx-planet, var(--fx-accent));
+}
+[data-fx="orbit-rings"] .fx-orbit:nth-child(2)::after { background: var(--fx-accent-2); box-shadow: 0 0 12px var(--fx-accent-2); }
+
+/* light-beams : des faisceaux de lumière balaient la scène depuis le haut */
+[data-fx="light-beams"]::before {
+  content: "";
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  top: -10%;
+  height: 160%;
+  z-index: -1;
+  background: repeating-conic-gradient(from 160deg at 50% 0, var(--fx-beam, rgba(255, 236, 200, .16)) 0deg 5deg, transparent 5deg 22deg);
+  -webkit-mask-image: radial-gradient(70% 80% at 50% 0, #000, transparent 75%);
+  mask-image: radial-gradient(70% 80% at 50% 0, #000, transparent 75%);
+  transform-origin: 50% 0;
+  animation: fx-beams 7s ease-in-out infinite alternate;
+}
+@keyframes fx-beams { from { transform: rotate(-8deg); } to { transform: rotate(8deg); } }

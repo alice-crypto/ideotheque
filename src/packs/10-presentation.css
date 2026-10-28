@@ -1,0 +1,264 @@
+/* Pack 10 — Présentation (données, mises en scène, éléments de vitrine) */
+
+/* band-loader : écran de chargement en bandes de couleur qui s'envolent une à une */
+[data-fx="band-loader"] {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  color: var(--fx-ink);
+  pointer-events: auto;
+}
+[data-fx="band-loader"][data-fx-local] { position: absolute; }
+[data-fx="band-loader"] .fx-bands { position: absolute; inset: 0; display: flex; }
+[data-fx="band-loader"] .fx-bands i {
+  flex: 1;
+  margin-right: -1px;
+  transition: transform .7s var(--fx-ease-io) calc(var(--fx-i) * 80ms);
+}
+[data-fx="band-loader"] .fx-bands i:nth-child(1) { background: var(--fx-c1, #b0153f); }
+[data-fx="band-loader"] .fx-bands i:nth-child(2) { background: var(--fx-c2, #ef3e23); }
+[data-fx="band-loader"] .fx-bands i:nth-child(3) { background: var(--fx-c3, #ff8a2b); }
+[data-fx="band-loader"] .fx-bands i:nth-child(4) { background: var(--fx-c4, #ffbb1c); }
+[data-fx="band-loader"] .fx-bands i:nth-child(5) { background: var(--fx-c5, #23a7a4); }
+[data-fx="band-loader"] .fx-band-ui { position: relative; display: grid; justify-items: center; gap: 12px; transition: opacity .3s ease; }
+[data-fx="band-loader"] .fx-band-msg { padding: 8px 16px; border-radius: 999px; background: rgba(0, 0, 0, .25); font-size: 14px; }
+[data-fx="band-loader"] .fx-band-bar { width: min(240px, 60vw); height: 2px; background: rgba(255, 255, 255, .3); }
+[data-fx="band-loader"] .fx-band-bar::before { content: ""; display: block; height: 100%; width: calc(var(--fx-p, 0) * 100%); background: #fff; }
+[data-fx="band-loader"].fx-done { pointer-events: none; }
+[data-fx="band-loader"].fx-done .fx-band-ui { opacity: 0; }
+[data-fx="band-loader"].fx-done .fx-bands i { transform: translateY(-101%); }
+
+/* bars-grow : les barres d'un graphique poussent l'une après l'autre */
+[data-fx="bars-grow"] { display: flex; align-items: flex-end; gap: var(--fx-gap, 10px); height: var(--fx-height, 140px); }
+[data-fx="bars-grow"] > * {
+  position: relative;
+  flex: 1;
+  height: calc(var(--fx-v, 0) * 1%);
+  border-radius: 6px 6px 2px 2px;
+  background: var(--fx-bar, var(--fx-accent));
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform calc(var(--fx-duration) * 1.4) var(--fx-ease-out) calc(var(--fx-delay) + var(--fx-i, 0) * 90ms);
+}
+[data-fx="bars-grow"] > :nth-child(even) { background: var(--fx-bar-2, var(--fx-accent-2)); }
+[data-fx="bars-grow"] > *::after {
+  content: attr(data-fx-value);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  translate: -50% 0;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity .3s ease calc(var(--fx-delay) + var(--fx-duration) + var(--fx-i, 0) * 90ms);
+}
+[data-fx="bars-grow"].fx-in > * { transform: none; }
+[data-fx="bars-grow"].fx-in > *::after { opacity: 1; }
+
+/* marquee-vertical : une colonne d'éléments qui défile à l'infini vers le haut */
+[data-fx="marquee-vertical"] { overflow: hidden; -webkit-mask-image: linear-gradient(transparent, #000 15%, #000 85%, transparent); mask-image: linear-gradient(transparent, #000 15%, #000 85%, transparent); }
+[data-fx="marquee-vertical"] .fx-vtrack { display: flex; flex-direction: column; gap: var(--fx-gap, 12px); animation: fx-vmarquee var(--fx-speed, 14s) linear infinite; }
+[data-fx="marquee-vertical"]:hover .fx-vtrack { animation-play-state: paused; }
+[data-fx="marquee-vertical"][data-fx-direction="down"] .fx-vtrack { animation-direction: reverse; }
+@keyframes fx-vmarquee { to { transform: translateY(calc(-50% - var(--fx-gap, 12px) / 2)); } }
+
+/* timeline : la ligne de temps se trace au défilement et allume les étapes atteintes */
+[data-fx="timeline"] { position: relative; padding-left: 28px; }
+[data-fx="timeline"]::before,
+[data-fx="timeline"]::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--fx-track, rgba(244, 241, 234, .15));
+}
+[data-fx="timeline"]::after { background: var(--fx-line, var(--fx-accent)); transform: scaleY(var(--fx-tl, 0)); transform-origin: 50% 0; }
+[data-fx="timeline"] > * { position: relative; opacity: .35; transform: translateX(10px); transition: opacity .4s ease, transform .5s var(--fx-ease-out); }
+[data-fx="timeline"] > *::before {
+  content: "";
+  position: absolute;
+  left: -27px;
+  top: .35em;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--fx-dark);
+  border: 2px solid var(--fx-track, rgba(244, 241, 234, .3));
+  transition: background .3s ease, border-color .3s ease, transform .4s var(--fx-ease-spring);
+}
+[data-fx="timeline"] > .fx-on { opacity: 1; transform: none; }
+[data-fx="timeline"] > .fx-on::before { background: var(--fx-line, var(--fx-accent)); border-color: var(--fx-line, var(--fx-accent)); transform: scale(1.15); }
+
+/* spotlight-focus : un projecteur assombrit tout sauf l'élément mis en avant, étape par étape */
+[data-fx="spotlight-focus"] { position: relative; }
+[data-fx="spotlight-focus"] .fx-spot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  border-radius: 12px;
+  pointer-events: none;
+  box-shadow: 0 0 0 9999px var(--fx-veil, rgba(5, 5, 8, .72));
+  transition: transform .6s var(--fx-ease-io), width .6s var(--fx-ease-io), height .6s var(--fx-ease-io);
+}
+[data-fx="spotlight-focus"] .fx-spot-tip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--fx-ink);
+  color: var(--fx-dark);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* logo-cycle : des emplacements qui font tourner une collection de logos, à tour de rôle */
+[data-fx="logo-cycle"] { display: grid; grid-template-columns: repeat(var(--fx-slots, 3), 1fr); gap: var(--fx-gap, 16px); }
+[data-fx="logo-cycle"] .fx-slot { display: grid; place-items: center; overflow: hidden; min-height: var(--fx-slot-h, 56px); }
+[data-fx="logo-cycle"] .fx-slot > * { grid-area: 1 / 1; transition: transform .6s var(--fx-ease-io), opacity .6s ease, filter .6s ease; }
+[data-fx="logo-cycle"] .fx-slot > .fx-leave { transform: translateY(-110%); opacity: 0; filter: blur(4px); }
+[data-fx="logo-cycle"] .fx-slot > .fx-enter { transform: translateY(110%); opacity: 0; filter: blur(4px); }
+
+/* quote-rotator : les témoignages se succèdent dans un fondu flou */
+[data-fx="quote-rotator"] { display: grid; }
+[data-fx="quote-rotator"] > * {
+  grid-area: 1 / 1;
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(10px);
+  transition: opacity .8s ease, filter .8s ease, transform .8s var(--fx-ease-out);
+  visibility: hidden;
+}
+[data-fx="quote-rotator"] > .fx-cur { opacity: 1; filter: none; transform: none; visibility: visible; }
+
+/* circle-text : un texte écrit en cercle qui tourne lentement, comme un tampon */
+[data-fx="circle-text"] {
+  position: relative;
+  display: inline-block;
+  width: var(--fx-size, 140px);
+  aspect-ratio: 1;
+  animation: fx-turn var(--fx-spin, 14s) linear infinite;
+}
+[data-fx="circle-text"]:hover { animation-play-state: paused; }
+[data-fx="circle-text"] .fx-char {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 50%;
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(calc(var(--fx-i) * 360deg / var(--fx-n)));
+  font: 600 calc(var(--fx-size, 140px) * .1)/1 ui-monospace, "JetBrains Mono", Consolas, monospace;
+  text-transform: uppercase;
+}
+
+/* split-flap : un tableau d'affichage dont les lettres tournent jusqu'au mot suivant */
+[data-fx="split-flap"] { display: inline-flex; gap: 3px; font: 700 1em/1 ui-monospace, "JetBrains Mono", Consolas, monospace; }
+[data-fx="split-flap"] .fx-flap {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 1.05em;
+  height: 1.4em;
+  border-radius: .12em;
+  background: var(--fx-card, #1f1f26);
+  color: var(--fx-flap-ink, #ffcf4d);
+  text-transform: uppercase;
+}
+[data-fx="split-flap"] .fx-flap::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(0, 0, 0, .6); }
+
+/* line-chart : la courbe d'un graphique se trace, puis ses points apparaissent */
+[data-fx="line-chart"] { display: block; width: 100%; color: var(--fx-accent); overflow: visible; }
+[data-fx="line-chart"] .fx-area { fill: currentColor; opacity: 0; transition: opacity .8s ease .9s; }
+[data-fx="line-chart"] .fx-line { fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke-dashoffset 1.4s var(--fx-ease-io); }
+[data-fx="line-chart"] .fx-point { fill: var(--fx-dark); stroke: currentColor; stroke-width: 2.5; transform: scale(0); transform-box: fill-box; transform-origin: center; transition: transform .4s var(--fx-ease-spring); transition-delay: calc(.4s + var(--fx-i, 0) * 120ms); }
+[data-fx="line-chart"].fx-in .fx-area { opacity: .12; }
+[data-fx="line-chart"].fx-in .fx-point { transform: none; }
+
+/* scroll-cue : une souris dont la molette descend, pour inviter à défiler */
+[data-fx="scroll-cue"] {
+  position: relative;
+  display: inline-block;
+  width: 26px;
+  height: 42px;
+  border: 2px solid currentColor;
+  border-radius: 14px;
+  opacity: .8;
+}
+[data-fx="scroll-cue"]::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: currentColor;
+  animation: fx-wheel 1.6s ease-in-out infinite;
+}
+@keyframes fx-wheel { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(12px); opacity: 0; } 100% { opacity: 0; } }
+
+/* peel : le coin de l'autocollant se décolle au survol */
+[data-fx="peel"] { position: relative; overflow: hidden; }
+[data-fx="peel"]::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--fx-peel, 0px);
+  aspect-ratio: 1;
+  background: linear-gradient(315deg, var(--fx-under, var(--fx-dark)) 50%, #e8e3d8 50%, #fff 62%, #b9b3a8 100%);
+  box-shadow: -6px -6px 12px -4px rgba(0, 0, 0, .35);
+  border-top-left-radius: 6px;
+  transition: width .45s var(--fx-ease-out);
+}
+[data-fx="peel"]:hover::after,
+[data-fx="peel"]:focus-visible::after { width: var(--fx-peel-max, 34%); }
+
+/* holo-card : une carte holographique dont les reflets irisés suivent le curseur */
+[data-fx="holo-card"] {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: perspective(800px) rotateX(var(--fx-rx, 0deg)) rotateY(var(--fx-ry, 0deg));
+  transition: transform .5s var(--fx-ease-out);
+}
+[data-fx="holo-card"]::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 20%, rgba(255, 0, 132, .35) 30%, rgba(0, 207, 255, .35) 40%, rgba(255, 230, 0, .35) 50%, rgba(0, 255, 140, .35) 60%, transparent 70%);
+  background-size: 200% 200%;
+  background-position: var(--fx-hx, 50%) var(--fx-hy, 50%);
+  mix-blend-mode: color-dodge;
+  opacity: .7;
+}
+[data-fx="holo-card"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--fx-mx, 50%) var(--fx-my, 50%), rgba(255, 255, 255, .45), transparent 40%);
+  mix-blend-mode: overlay;
+}
+
+/* donut : un graphique en anneau dont les parts se tracent l'une après l'autre */
+[data-fx="donut"] { position: relative; display: inline-grid; place-items: center; width: var(--fx-size, 140px); aspect-ratio: 1; }
+[data-fx="donut"] svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+[data-fx="donut"] circle { fill: none; stroke-width: 14; transition: stroke-dasharray 1s var(--fx-ease-out); transition-delay: calc(var(--fx-i, 0) * 250ms); }
+[data-fx="donut"] .fx-donut-label { font-weight: 700; font-size: calc(var(--fx-size, 140px) * .16); text-align: center; line-height: 1.1; }
+
+/* expand-panels : des panneaux côte à côte ; celui qu'on survole s'élargit */
+[data-fx="expand-panels"] { display: flex; gap: var(--fx-gap, 8px); }
+[data-fx="expand-panels"] > * { flex: 1; min-width: 0; overflow: hidden; transition: flex .6s var(--fx-ease-out); }
+[data-fx="expand-panels"] > :hover,
+[data-fx="expand-panels"] > :focus-within { flex: var(--fx-grow, 4); }

@@ -1,0 +1,206 @@
+/* Pack 01 — Entrées */
+
+@property --fx-blinds {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+/* fade-up : apparition classique, opacité et légère montée */
+[data-fx="fade-up"] {
+  opacity: 0;
+  transform: translateY(var(--fx-distance));
+  transition: opacity var(--fx-duration) var(--fx-ease) var(--fx-delay), transform var(--fx-duration) var(--fx-ease) var(--fx-delay);
+}
+[data-fx="fade-up"].fx-in { opacity: 1; transform: none; }
+
+/* slide-in : glisse depuis un côté (data-fx-from = left | right | up | down) */
+[data-fx="slide-in"] {
+  opacity: 0;
+  transform: translateX(calc(var(--fx-distance) * -2.5));
+  transition: opacity var(--fx-duration) var(--fx-ease-out) var(--fx-delay), transform var(--fx-duration) var(--fx-ease-out) var(--fx-delay);
+}
+[data-fx="slide-in"][data-fx-from="right"] { transform: translateX(calc(var(--fx-distance) * 2.5)); }
+[data-fx="slide-in"][data-fx-from="up"] { transform: translateY(calc(var(--fx-distance) * -2.5)); }
+[data-fx="slide-in"][data-fx-from="down"] { transform: translateY(calc(var(--fx-distance) * 2.5)); }
+[data-fx="slide-in"].fx-in { opacity: 1; transform: none; }
+
+/* zoom-in-soft : l'élément grandit légèrement en apparaissant */
+[data-fx="zoom-in-soft"] {
+  opacity: 0;
+  transform: scale(.9);
+  transition: opacity var(--fx-duration) var(--fx-ease) var(--fx-delay), transform var(--fx-duration) var(--fx-ease-out) var(--fx-delay);
+}
+[data-fx="zoom-in-soft"].fx-in { opacity: 1; transform: none; }
+
+/* flip-up : bascule vers l'avant depuis sa base, comme une carte qu'on relève */
+[data-fx="flip-up"] {
+  opacity: 0;
+  transform: perspective(800px) rotateX(75deg);
+  transform-origin: 50% 100%;
+  transition: opacity calc(var(--fx-duration) * .6) ease var(--fx-delay), transform var(--fx-duration) var(--fx-ease-out) var(--fx-delay);
+}
+[data-fx="flip-up"].fx-in { opacity: 1; transform: perspective(800px) rotateX(0); }
+
+/* swing-in : pivote depuis son coin haut gauche, comme une enseigne */
+[data-fx="swing-in"] {
+  opacity: 0;
+  transform: rotate(-14deg) translateY(12px);
+  transform-origin: 0 0;
+  transition: opacity calc(var(--fx-duration) * .5) ease var(--fx-delay), transform calc(var(--fx-duration) * 1.3) var(--fx-ease-spring) var(--fx-delay);
+}
+[data-fx="swing-in"].fx-in { opacity: 1; transform: none; }
+
+/* iris-open : un cercle s'ouvre depuis le centre */
+[data-fx="iris-open"] {
+  clip-path: circle(1% at 50% 50%);
+  transition: clip-path calc(var(--fx-duration) * 1.4) var(--fx-ease-io) var(--fx-delay);
+}
+[data-fx="iris-open"].fx-in { clip-path: circle(75% at 50% 50%); }
+
+/* diagonal-wipe : un bord en biais balaie l'élément de gauche à droite */
+[data-fx="diagonal-wipe"] {
+  clip-path: polygon(0 0, 1% 0, -49% 100%, -50% 100%);
+  transition: clip-path calc(var(--fx-duration) * 1.4) var(--fx-ease-io) var(--fx-delay);
+}
+[data-fx="diagonal-wipe"].fx-in { clip-path: polygon(0 0, 150% 0, 100% 100%, -50% 100%); }
+
+/* split-reveal : deux volets s'écartent vers la gauche et la droite */
+[data-fx="split-reveal"] { position: relative; overflow: hidden; }
+[data-fx="split-reveal"]::before,
+[data-fx="split-reveal"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  z-index: 2;
+  background: var(--fx-cover, var(--fx-dark));
+  transition: transform calc(var(--fx-duration) * 1.3) var(--fx-ease-io) var(--fx-delay);
+}
+[data-fx="split-reveal"]::before { left: 0; }
+[data-fx="split-reveal"]::after { right: 0; }
+[data-fx="split-reveal"].fx-in::before { transform: translateX(-101%); }
+[data-fx="split-reveal"].fx-in::after { transform: translateX(101%); }
+
+/* block-reveal : un bloc de couleur traverse l'élément et le laisse apparaître derrière lui */
+[data-fx="block-reveal"] { position: relative; }
+[data-fx="block-reveal"] > * { opacity: 0; }
+[data-fx="block-reveal"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--fx-block, var(--fx-accent));
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+[data-fx="block-reveal"].fx-in::after { animation: fx-block calc(var(--fx-duration) * 1.6) var(--fx-ease-io) var(--fx-delay) both; }
+[data-fx="block-reveal"].fx-in > * { opacity: 1; transition: opacity 0s calc(var(--fx-delay) + var(--fx-duration) * .8); }
+@keyframes fx-block {
+  0% { transform: scaleX(0); transform-origin: 0 50%; }
+  50% { transform: scaleX(1); transform-origin: 0 50%; }
+  50.1% { transform: scaleX(1); transform-origin: 100% 50%; }
+  100% { transform: scaleX(0); transform-origin: 100% 50%; }
+}
+
+/* stretch-in : l'élément jaillit de sa base en s'étirant */
+[data-fx="stretch-in"] {
+  opacity: 0;
+  transform: scaleY(0) scaleX(.9);
+  transform-origin: 50% 100%;
+  transition: opacity calc(var(--fx-duration) * .4) ease var(--fx-delay), transform var(--fx-duration) var(--fx-ease-spring) var(--fx-delay);
+}
+[data-fx="stretch-in"].fx-in { opacity: 1; transform: none; }
+
+/* skew-up : monte en se redressant d'une inclinaison */
+[data-fx="skew-up"] {
+  opacity: 0;
+  transform: translateY(calc(var(--fx-distance) * 1.6)) skewY(7deg);
+  transform-origin: 0 100%;
+  transition: opacity var(--fx-duration) var(--fx-ease) var(--fx-delay), transform var(--fx-duration) var(--fx-ease-out) var(--fx-delay);
+}
+[data-fx="skew-up"].fx-in { opacity: 1; transform: none; }
+
+/* drop-bounce : tombe d'en haut et rebondit légèrement */
+[data-fx="drop-bounce"] { opacity: 0; }
+[data-fx="drop-bounce"].fx-in { animation: fx-drop calc(var(--fx-duration) * 1.3) var(--fx-ease) var(--fx-delay) both; }
+@keyframes fx-drop {
+  0% { opacity: 0; transform: translateY(-70px); }
+  45% { opacity: 1; transform: translateY(0); }
+  62% { transform: translateY(-16px); }
+  78% { transform: translateY(0); }
+  88% { transform: translateY(-5px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* pop-in : surgit avec un petit dépassement élastique */
+[data-fx="pop-in"] {
+  opacity: 0;
+  transform: scale(.55);
+  transition: opacity calc(var(--fx-duration) * .4) ease var(--fx-delay), transform var(--fx-duration) var(--fx-ease-spring) var(--fx-delay);
+}
+[data-fx="pop-in"].fx-in { opacity: 1; transform: none; }
+
+/* blinds-open : des lames de store s'ouvrent pour laisser voir le contenu */
+[data-fx="blinds-open"] {
+  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 var(--fx-blinds), transparent var(--fx-blinds) 12.5%);
+  mask-image: repeating-linear-gradient(to bottom, #000 0 var(--fx-blinds), transparent var(--fx-blinds) 12.5%);
+  transition: --fx-blinds calc(var(--fx-duration) * 1.3) var(--fx-ease-io) var(--fx-delay);
+}
+[data-fx="blinds-open"].fx-in { --fx-blinds: 12.6%; }
+
+/* ink-spread : la couleur s'étend depuis un coin, comme une goutte d'encre */
+[data-fx="ink-spread"] {
+  clip-path: circle(1% at 0 100%);
+  transition: clip-path calc(var(--fx-duration) * 1.6) var(--fx-ease-out) var(--fx-delay);
+}
+[data-fx="ink-spread"].fx-in { clip-path: circle(150% at 0 100%); }
+
+/* tile-cascade : les tuiles d'une grille arrivent en diagonale (ordre calculé par fx.js) */
+[data-fx="tile-cascade"] > * {
+  opacity: 0;
+  transform: scale(.5);
+  transition: opacity calc(var(--fx-duration) * .6) ease, transform var(--fx-duration) var(--fx-ease-spring);
+  transition-delay: calc(var(--fx-delay) + var(--fx-i, 0) * var(--fx-stagger));
+}
+[data-fx="tile-cascade"].fx-in > * { opacity: 1; transform: none; }
+
+/* scatter-gather : les enfants partent de positions éparpillées et se rassemblent */
+[data-fx="scatter-gather"] > * {
+  opacity: 0;
+  transform: translate(var(--fx-x, 0), var(--fx-y, 0)) rotate(var(--fx-r, 0deg));
+  transition: opacity var(--fx-duration) ease, transform calc(var(--fx-duration) * 1.4) var(--fx-ease-out);
+  transition-delay: calc(var(--fx-delay) + var(--fx-i, 0) * 30ms);
+}
+[data-fx="scatter-gather"].fx-in > * { opacity: 1; transform: none; }
+
+/* fold-down : se déplie depuis le haut, comme une feuille pliée */
+[data-fx="fold-down"] {
+  opacity: 0;
+  transform: perspective(900px) rotateX(-85deg);
+  transform-origin: 50% 0;
+  transition: opacity calc(var(--fx-duration) * .5) ease var(--fx-delay), transform calc(var(--fx-duration) * 1.2) var(--fx-ease-out) var(--fx-delay);
+}
+[data-fx="fold-down"].fx-in { opacity: 1; transform: perspective(900px) rotateX(0); }
+
+/* lift-shadow : l'élément s'élève du fond, son ombre se forme sous lui */
+[data-fx="lift-shadow"] {
+  opacity: 0;
+  transform: translateY(30px) scale(.97);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: opacity var(--fx-duration) ease var(--fx-delay), transform var(--fx-duration) var(--fx-ease-out) var(--fx-delay), box-shadow calc(var(--fx-duration) * 1.6) var(--fx-ease-out) var(--fx-delay);
+}
+[data-fx="lift-shadow"].fx-in {
+  opacity: 1;
+  transform: none;
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .55);
+}
+
+/* rule-draw : un filet horizontal se trace depuis le centre */
+[data-fx="rule-draw"] {
+  transform: scaleX(0);
+  transform-origin: var(--fx-origin, 50%) 50%;
+  transition: transform calc(var(--fx-duration) * 1.4) var(--fx-ease-io) var(--fx-delay);
+}
+[data-fx="rule-draw"].fx-in { transform: none; }

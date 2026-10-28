@@ -1,0 +1,268 @@
+/* Pack 02 — Texte */
+
+/* typewriter : le texte s'écrit lettre par lettre avec un curseur clignotant */
+[data-fx="typewriter"]::after {
+  content: "";
+  display: inline-block;
+  width: .08em;
+  height: 1em;
+  margin-left: .08em;
+  vertical-align: -.12em;
+  background: currentColor;
+  animation: fx-caret 1s steps(1) infinite;
+}
+@keyframes fx-caret { 50% { opacity: 0; } }
+
+/* word-rise : les mots montent un par un */
+[data-fx="word-rise"] .fx-word {
+  opacity: 0;
+  transform: translateY(.7em);
+  transition: opacity var(--fx-duration) var(--fx-ease), transform var(--fx-duration) var(--fx-ease-out);
+  transition-delay: calc(var(--fx-delay) + var(--fx-i, 0) * var(--fx-stagger));
+}
+[data-fx="word-rise"].fx-in .fx-word { opacity: 1; transform: none; }
+
+/* wave-text : une vague parcourt les lettres en boucle */
+[data-fx="wave-text"] .fx-char {
+  display: inline-block;
+  animation: fx-wave 1.8s ease-in-out infinite;
+  animation-delay: calc(var(--fx-i, 0) * -90ms);
+}
+@keyframes fx-wave {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-.28em); }
+}
+
+/* glitch-text : le texte se dédouble en rouge et cyan par à-coups */
+[data-fx="glitch-text"] { position: relative; display: inline-block; }
+[data-fx="glitch-text"]::before,
+[data-fx="glitch-text"]::after {
+  content: attr(data-fx-copy);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .85;
+}
+[data-fx="glitch-text"]::before { color: #ff2e63; animation: fx-glitch-a 2.8s steps(1) infinite; }
+[data-fx="glitch-text"]::after { color: #08d9d6; animation: fx-glitch-b 2.8s steps(1) infinite; }
+[data-fx="glitch-text"]:hover::before,
+[data-fx="glitch-text"]:hover::after { animation-duration: .5s; }
+@keyframes fx-glitch-a {
+  0%, 8%, 100% { clip-path: inset(0 0 100% 0); transform: none; }
+  2% { clip-path: inset(10% 0 60% 0); transform: translate(-4px, -1px); }
+  4% { clip-path: inset(55% 0 20% 0); transform: translate(4px, 1px); }
+  6% { clip-path: inset(30% 0 45% 0); transform: translate(-2px, 0); }
+}
+@keyframes fx-glitch-b {
+  0%, 9%, 100% { clip-path: inset(0 0 100% 0); transform: none; }
+  3% { clip-path: inset(65% 0 5% 0); transform: translate(4px, 1px); }
+  5% { clip-path: inset(15% 0 70% 0); transform: translate(-4px, -1px); }
+  7% { clip-path: inset(40% 0 35% 0); transform: translate(2px, 0); }
+}
+
+/* gradient-flow : un dégradé coule en continu à l'intérieur des lettres */
+[data-fx="gradient-flow"] {
+  background: linear-gradient(90deg, var(--fx-accent), var(--fx-accent-2), #ffd166, var(--fx-accent)) 0 0 / 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fx-flow 6s linear infinite;
+}
+@keyframes fx-flow { to { background-position: 300% 0; } }
+
+/* highlight-sweep : un trait de surligneur passe derrière le texte */
+[data-fx="highlight-sweep"] {
+  background: linear-gradient(var(--fx-mark, rgba(255, 91, 46, .4)), var(--fx-mark, rgba(255, 91, 46, .4))) 0 88% / 0% 42% no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size calc(var(--fx-duration) * 1.4) var(--fx-ease-io) var(--fx-delay);
+}
+[data-fx="highlight-sweep"].fx-in { background-size: 100% 42%; }
+
+/* strike-draw : un trait barre le texte de gauche à droite */
+[data-fx="strike-draw"] {
+  background: linear-gradient(currentColor, currentColor) 0 56% / 0% max(2px, .07em) no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size var(--fx-duration) var(--fx-ease-io) var(--fx-delay);
+}
+[data-fx="strike-draw"].fx-in { background-size: 100% max(2px, .07em); }
+
+/* track-in : les lettres se resserrent depuis un interlettrage très large */
+[data-fx="track-in"] {
+  opacity: 0;
+  letter-spacing: .5em;
+  filter: blur(4px);
+  transition: opacity var(--fx-duration) ease var(--fx-delay), letter-spacing calc(var(--fx-duration) * 1.6) var(--fx-ease-out) var(--fx-delay), filter var(--fx-duration) ease var(--fx-delay);
+}
+[data-fx="track-in"].fx-in { opacity: 1; letter-spacing: var(--fx-tracking, normal); filter: none; }
+
+/* proximity-weight : les lettres proches du curseur s'épaississent (calcul par fx.js) */
+[data-fx="proximity-weight"] .fx-char {
+  display: inline-block;
+  font-weight: calc(400 + var(--fx-k, 0) * 300);
+  color: color-mix(in srgb, var(--fx-accent) calc(var(--fx-k, 0) * 100%), currentColor);
+  transform: translateY(calc(var(--fx-k, 0) * -.06em));
+  transition: transform .2s ease;
+}
+
+/* word-rotator : un mot change régulièrement en glissant vers le haut */
+[data-fx="word-rotator"] {
+  display: inline-grid;
+  vertical-align: bottom;
+  overflow: hidden;
+  transition: width .5s var(--fx-ease-out);
+  color: var(--fx-rotator-color, var(--fx-accent));
+}
+[data-fx="word-rotator"] > span {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  transform: translateY(105%);
+  opacity: 0;
+  transition: transform .6s var(--fx-ease-out), opacity .6s ease;
+}
+[data-fx="word-rotator"] > span.fx-cur { transform: none; opacity: 1; }
+[data-fx="word-rotator"] > span.fx-prev { transform: translateY(-105%); opacity: 0; }
+
+/* odometer : chaque chiffre défile comme un compteur mécanique */
+[data-fx="odometer"] { font-variant-numeric: tabular-nums; }
+[data-fx="odometer"] .fx-odo-col {
+  display: inline-block;
+  height: 1em;
+  line-height: 1;
+  overflow: hidden;
+  vertical-align: top;
+}
+[data-fx="odometer"] .fx-odo-col > span {
+  display: block;
+  white-space: pre;
+  transition: transform calc(var(--fx-duration) * 2.2) var(--fx-ease-out);
+  transition-delay: calc(var(--fx-delay) + var(--fx-i, 0) * 90ms);
+}
+[data-fx="odometer"].fx-in .fx-odo-col > span { transform: translateY(calc(var(--fx-d, 0) * -1em)); }
+
+/* stroke-fill : un texte en contour se remplit au survol, de gauche à droite */
+[data-fx="stroke-fill"] {
+  -webkit-text-stroke: max(1px, .02em) currentColor;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(currentColor, currentColor) 0 0 / 0% 100% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-size calc(var(--fx-duration) * .9) var(--fx-ease-io);
+}
+[data-fx="stroke-fill"]:hover,
+[data-fx="stroke-fill"]:focus-visible,
+[data-fx="stroke-fill"].fx-active { background-size: 100% 100%; }
+
+/* long-shadow : une ombre portée en escalier se déploie sous le texte */
+[data-fx="long-shadow"] {
+  --c: var(--fx-shadow, var(--fx-accent));
+  text-shadow: 0 0 var(--c), 0 0 var(--c), 0 0 var(--c), 0 0 var(--c), 0 0 var(--c), 0 0 var(--c), 0 0 var(--c), 0 0 var(--c);
+  transition: text-shadow calc(var(--fx-duration) * 1.4) var(--fx-ease-out) var(--fx-delay);
+}
+[data-fx="long-shadow"].fx-in {
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c), 4px 4px var(--c), 5px 5px var(--c), 6px 6px var(--c), 7px 7px var(--c), 8px 8px var(--c);
+}
+
+/* letter-focus : chaque lettre sort du flou à un instant différent */
+[data-fx="letter-focus"] .fx-char {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity var(--fx-duration) ease, filter var(--fx-duration) ease;
+  transition-delay: calc(var(--fx-delay) + var(--fx-r, 0) * 700ms);
+}
+[data-fx="letter-focus"].fx-in .fx-char { opacity: 1; filter: none; }
+
+/* slice-hover : au survol, le texte se coupe en deux moitiés qui glissent en sens opposés */
+[data-fx="slice-hover"] {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+}
+[data-fx="slice-hover"]::before,
+[data-fx="slice-hover"]::after {
+  content: attr(data-fx-copy);
+  position: absolute;
+  inset: 0;
+  color: var(--fx-slice-color, var(--fx-ink));
+  transition: transform .5s var(--fx-ease-out), color .3s ease;
+}
+[data-fx="slice-hover"]::before { clip-path: inset(0 0 50% 0); }
+[data-fx="slice-hover"]::after { clip-path: inset(50% 0 0 0); }
+[data-fx="slice-hover"]:hover::before { transform: translateX(-.08em); color: var(--fx-accent); }
+[data-fx="slice-hover"]:hover::after { transform: translateX(.08em); }
+
+/* scroll-ink : les mots se colorent un à un au fil du défilement */
+[data-fx="scroll-ink"] .fx-word {
+  color: var(--fx-ink-off, color-mix(in srgb, currentColor 22%, transparent));
+  transition: color .3s ease;
+}
+[data-fx="scroll-ink"] .fx-word.fx-on { color: inherit; }
+
+/* char-flip : chaque lettre bascule en 3D pour se mettre en place */
+[data-fx="char-flip"] { perspective: 600px; }
+[data-fx="char-flip"] .fx-char {
+  display: inline-block;
+  opacity: 0;
+  transform: rotateX(-95deg);
+  transform-origin: 50% 0;
+  transition: opacity calc(var(--fx-duration) * .5) ease, transform var(--fx-duration) var(--fx-ease-out);
+  transition-delay: calc(var(--fx-delay) + var(--fx-i, 0) * 40ms);
+}
+[data-fx="char-flip"].fx-in .fx-char { opacity: 1; transform: none; }
+
+/* neon-flicker : une enseigne néon qui grésille de temps en temps */
+[data-fx="neon-flicker"] {
+  --c: var(--fx-neon, #ff4fd8);
+  color: #fff5fd;
+  text-shadow: 0 0 .05em #fff, 0 0 .2em var(--c), 0 0 .5em var(--c), 0 0 1em var(--c);
+  animation: fx-neon 4s linear infinite;
+}
+@keyframes fx-neon {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: .35; text-shadow: none; }
+}
+
+/* wavy-underline : un soulignement ondulé qui file au survol */
+[data-fx="wavy-underline"] { position: relative; text-decoration: none; }
+[data-fx="wavy-underline"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -.32em;
+  height: .3em;
+  background: var(--fx-wave-color, var(--fx-accent));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='6' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E") 0 50% / .9em 100% repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='6' viewBox='0 0 20 6'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E") 0 50% / .9em 100% repeat-x;
+}
+[data-fx="wavy-underline"]:hover::after,
+[data-fx="wavy-underline"]:focus-visible::after { animation: fx-wavy .6s linear infinite; }
+@keyframes fx-wavy { to { -webkit-mask-position: .9em 50%; mask-position: .9em 50%; } }
+
+/* image-text : une image (ou un dégradé) se promène à l'intérieur des lettres */
+[data-fx="image-text"] {
+  background-image: linear-gradient(120deg, #ff5b2e, #7b5cff 40%, #20c7a5 70%, #ffcf4d);
+  background-position: 0 50%;
+  background-size: 180% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fx-pan 9s ease-in-out infinite alternate;
+}
+@keyframes fx-pan { to { background-position: 100% 50%; } }
+
+/* velocity-stretch : le texte s'étire verticalement avec la vitesse du défilement */
+[data-fx="velocity-stretch"] {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+/* edge-label : un texte vertical sur le bord qui glisse avec le défilement */
+[data-fx="edge-label"] {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg) translateY(calc((var(--fx-pass, .5) - .5) * var(--fx-travel, 60%)));
+  white-space: nowrap;
+}

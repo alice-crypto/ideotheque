@@ -1,0 +1,34 @@
+
+/* ------------------------------------------------------------------ */
+/* ACCESSIBILITÉ — mouvement réduit                                    */
+/* Placé en fin de fichier pour s'appliquer à tous les packs           */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  /* Les entrées s'affichent directement dans leur état final */
+  .fx-entrance,
+  .fx-entrance > *,
+  .fx-entrance .fx-char,
+  .fx-entrance .fx-word,
+  .fx-entrance .fx-line > span {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    clip-path: none !important;
+    transform: none !important;
+  }
+  /* Tout le reste garde ses états, mais sans mouvement */
+  [data-fx],
+  [data-fx] *,
+  [data-fx]::before,
+  [data-fx]::after,
+  [data-fx] *::before,
+  [data-fx] *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    transition-delay: 0s !important;
+  }
+  [data-fx="preloader"].fx-done { display: none !important; }
+  [data-fx="scanlines"]::before { display: none; }
+}

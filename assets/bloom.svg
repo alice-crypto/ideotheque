@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="bg" cx=".5" cy=".5" r=".75">
+      <stop offset="0" stop-color="#ffe3ec"/>
+      <stop offset="1" stop-color="#f7b7c9"/>
+    </radialGradient>
+    <radialGradient id="core" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#ffcf4d"/>
+      <stop offset="1" stop-color="#ff8a2b"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <g transform="translate(600 400)">
+    <g fill="#ff5b7a" opacity=".85">
+      <ellipse rx="70" ry="190" transform="rotate(0)  translate(0 -150)"/>
+      <ellipse rx="70" ry="190" transform="rotate(45) translate(0 -150)"/>
+      <ellipse rx="70" ry="190" transform="rotate(90) translate(0 -150)"/>
+      <ellipse rx="70" ry="190" transform="rotate(135) translate(0 -150)"/>
+      <ellipse rx="70" ry="190" transform="rotate(180) translate(0 -150)"/>
+      <ellipse rx="70" ry="190" transform="rotate(225) translate(0 -150)"/>
+      <ellipse rx="70" ry="190" transform="rotate(270) translate(0 -150)"/>
+      <ellipse rx="70" ry="190" transform="rotate(315) translate(0 -150)"/>
+    </g>
+    <g fill="#c2185b" opacity=".55">
+      <ellipse rx="40" ry="110" transform="rotate(22) translate(0 -90)"/>
+      <ellipse rx="40" ry="110" transform="rotate(112) translate(0 -90)"/>
+      <ellipse rx="40" ry="110" transform="rotate(202) translate(0 -90)"/>
+      <ellipse rx="40" ry="110" transform="rotate(292) translate(0 -90)"/>
+    </g>
+    <circle r="70" fill="url(#core)"/>
+  </g>
+  <g fill="#20c7a5" opacity=".7">
+    <circle cx="140" cy="140" r="40"/><circle cx="1080" cy="660" r="60"/><circle cx="1050" cy="120" r="24"/>
+  </g>
+</svg>

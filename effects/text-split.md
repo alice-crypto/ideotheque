@@ -1,6 +1,6 @@
 # `text-split`
 
-**Catégorie :** Présentation
+**Catégorie :** Texte
 
 ## Intention
 Donner du poids à un titre en le faisant apparaître lettre par lettre.

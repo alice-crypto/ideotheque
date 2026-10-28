@@ -163,6 +163,35 @@
     .snippet { display: none; margin: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; font: 12px/1.6 var(--mono); overflow-x: auto; white-space: pre; color: #d9d5cc; }
     .card.show-code .snippet { display: block; }
 
+    /* Recherche */
+    .toolbar { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+    #search {
+      flex: 1 1 320px; max-width: 560px; background: var(--surface); color: var(--ink);
+      border: 1px solid var(--line); border-radius: 999px; padding: 14px 20px; font: 16px var(--sans);
+      outline: none; transition: border-color .3s;
+    }
+    #search:focus { border-color: var(--accent); }
+    #search::placeholder { color: var(--muted); }
+    .filters { margin-top: 16px; }
+
+    /* Démos génériques réutilisées par les packs */
+    .demo-box { width: 150px; height: 104px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), #ffb347); }
+    .demo-box.alt { background: linear-gradient(135deg, #7b5cff, var(--accent-2)); }
+    .demo-box.ink { background: var(--ink); }
+    .demo-card { width: 220px; padding: 18px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+    .demo-card b { display: block; color: var(--ink); font-size: 18px; margin-bottom: 4px; letter-spacing: -.02em; }
+    .demo-row { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; padding: 0 16px; }
+    .demo-grid { display: grid; grid-template-columns: repeat(4, 34px); gap: 8px; }
+    .demo-grid > div { height: 34px; border-radius: 8px; background: var(--accent); }
+    .demo-grid > div:nth-child(3n) { background: var(--accent-2); }
+    .demo-grid > div:nth-child(4n) { background: var(--ink); }
+    .demo-fill { position: absolute; inset: 18px; border-radius: 12px; overflow: hidden; }
+    .demo-big { font-size: 52px; font-weight: 700; letter-spacing: -.05em; line-height: 1; margin: 0; text-align: center; }
+    .demo-small { font-size: 13px; color: var(--muted); }
+    .demo-svg { width: 140px; height: 140px; color: var(--accent); }
+    .demo-scroll { position: absolute; inset: 18px; overflow-y: auto; border-radius: 12px; background: var(--bg); scrollbar-width: thin; }
+    .demo-chip { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface-2); font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+
     /* Éléments de démonstration */
     .demo-media { position: absolute; inset: 18px; border-radius: 12px; overflow: hidden; }
     .demo-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -235,7 +264,7 @@
       <li class="optional"><a href="#comment" data-fx="roll-text">Comment</a></li>
       <li><a href="AI.md" data-fx="roll-text">Pour les IA</a></li>
     </ul>
-    <span class="count mono muted"><span id="nav-count">22</span> effets — v0.2</span>
+    <span class="count mono muted"><span id="nav-count">200</span> effets — v0.3</span>
   </nav>
 
   <header class="hero" id="top" data-fx="dot-grid">
@@ -251,7 +280,7 @@
         <a href="#comment" data-fx="underline-draw">Comment ça marche</a>
       </div>
       <div class="stats">
-        <div><b data-fx="count-up" data-fx-to="22" id="stat-count">22</b><span class="mono">effets</span></div>
+        <div><b data-fx="count-up" data-fx-to="200" id="stat-count">200</b><span class="mono">effets</span></div>
         <div><b data-fx="count-up" data-fx-to="0">0</b><span class="mono">dépendance</span></div>
         <div><b>MIT</b><span class="mono">licence</span></div>
       </div>
@@ -282,6 +311,10 @@
     <div class="catalog-head">
       <h2 data-fx="line-mask">Le catalogue</h2>
       <p class="mono muted">Cliquez, survolez, rejouez.</p>
+    </div>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Rechercher un effet : texte, survol, image…" aria-label="Rechercher un effet">
+      <span id="result-count" class="mono muted"></span>
     </div>
     <div class="filters" role="group" aria-label="Filtrer par catégorie"></div>
     <div class="grid" id="grid"></div>
@@ -325,146 +358,118 @@
     </div>
   </footer>
 
-  <script>
-    // Catalogue : une entrée par effet. La fiche complète est dans effects/<id>.md
-    var EFFECTS = [
-      { id: 'curtain-soft', cat: 'Entrée', intent: 'Révéler un contenu important avec calme, comme un rideau qui se lève.',
-        demo: '<div class="demo-media" data-fx="curtain-soft"><img src="assets/prism.svg" alt=""></div>',
-        code: '<section data-fx="curtain-soft">…</section>' },
-      { id: 'rise-stagger', cat: 'Entrée', intent: 'Faire arriver une liste élément par élément pour guider la lecture.',
-        demo: '<div class="demo-list" data-fx="rise-stagger"><div></div><div></div><div></div><div></div></div>',
-        code: '<ul data-fx="rise-stagger">\n  <li>…</li>\n  <li>…</li>\n</ul>' },
-      { id: 'blur-in', cat: 'Entrée', intent: 'Une mise au point : le contenu sort du flou pour attirer l\'attention en douceur.',
-        demo: '<p class="demo-title" data-fx="blur-in">Mise au point</p>',
-        code: '<h2 data-fx="blur-in">…</h2>' },
-      { id: 'line-mask', cat: 'Entrée', intent: 'Chaque ligne glisse depuis un cache invisible, comme un générique de film.',
-        demo: '<p class="demo-para" data-fx="line-mask">Chaque ligne glisse depuis un cache invisible, comme un générique.</p>',
-        code: '<p data-fx="line-mask">Un texte de plusieurs lignes…</p>' },
-      { id: 'pixel-dissolve', cat: 'Entrée', intent: 'Une mosaïque de cases qui s\'efface au hasard pour dévoiler une image.',
-        demo: '<div class="demo-media" data-fx="pixel-dissolve" data-fx-cols="16"><img src="assets/orbit.svg" alt=""></div>',
-        code: '<figure data-fx="pixel-dissolve" data-fx-cols="16">\n  <img src="…" alt="…">\n</figure>' },
-      { id: 'text-split', cat: 'Présentation', intent: 'Donner du poids à un titre en le faisant apparaître lettre par lettre.',
-        demo: '<p class="demo-title" data-fx="text-split">Bonjour le monde</p>',
-        code: '<h1 data-fx="text-split">Bonjour le monde</h1>' },
-      { id: 'text-scramble', cat: 'Présentation', intent: 'Un texte brouillé qui se décode, comme un signal capté. Rejoue au survol.',
-        demo: '<p class="demo-mono" data-fx="text-scramble" data-fx-hover="true">SIGNAL REÇU</p>',
-        code: '<p data-fx="text-scramble" data-fx-hover="true">SIGNAL REÇU</p>' },
-      { id: 'count-up', cat: 'Présentation', intent: 'Mettre en scène un chiffre clé en le faisant défiler jusqu\'à sa valeur.',
-        demo: '<span class="demo-number" data-fx="count-up" data-fx-to="12480">12480</span>',
-        code: '<span data-fx="count-up" data-fx-to="12480">12480</span>' },
-      { id: 'pill-grow', cat: 'Présentation', intent: 'Une gélule qui s\'ouvre au milieu d\'un titre et ponctue la phrase.',
-        demo: '<p class="demo-title demo-pill">Design <span data-fx="pill-grow"></span> vivant</p>',
-        code: '<h1>Design <span data-fx="pill-grow"></span> vivant</h1>' },
-      { id: 'preloader', cat: 'Présentation', intent: 'Un écran de chargement chiffré qui se lève pour révéler la page.',
-        demo: '<div class="demo-pre"><div data-fx="preloader" data-fx-local data-fx-label="Chargement" data-fx-duration="1800"></div></div>',
-        code: '<div data-fx="preloader" data-fx-label="Chargement"></div>' },
-      { id: 'marquee', cat: 'Présentation', intent: 'Un bandeau infini qui accélère et change de sens avec le défilement.',
-        demo: '<div class="demo-marquee" data-fx="marquee" data-fx-speed="50"><span>Bandeau infini</span><i>✳</i><span>Défilez la page</span><i>✳</i></div>',
-        code: '<div data-fx="marquee" data-fx-speed="60">\n  <span>Texte</span> ✳\n</div>' },
-      { id: 'underline-draw', cat: 'Micro-interaction', intent: 'Un lien qui se souligne au survol, puis repart vers la droite.',
-        demo: '<a href="#" class="demo-link" data-fx="underline-draw" onclick="return false">Survolez-moi</a>',
-        code: '<a href="…" data-fx="underline-draw">Lien</a>' },
-      { id: 'roll-text', cat: 'Micro-interaction', intent: 'Au survol, chaque lettre roule vers le haut et laisse place à son double.',
-        demo: '<a href="#" class="demo-roll" data-fx="roll-text" onclick="return false">Survolez-moi</a>',
-        code: '<a href="…" data-fx="roll-text">Menu</a>' },
-      { id: 'magnetic', cat: 'Micro-interaction', intent: 'Un bouton attiré par le curseur, qui invite au clic.',
-        demo: '<button class="demo-btn" data-fx="magnetic">Approchez</button>',
-        code: '<button data-fx="magnetic" data-fx-strength="0.35">…</button>' },
-      { id: 'tilt-card', cat: 'Micro-interaction', intent: 'Une carte qui s\'incline en 3D et donne une sensation de matière.',
-        demo: '<div class="demo-tilt" data-fx="tilt-card"><span>Idéothèque ✳ Carte</span><b>Bougez ici</b></div>',
-        code: '<div data-fx="tilt-card" data-fx-max="10">…</div>' },
-      { id: 'corner-marks', cat: 'Micro-interaction', intent: 'Des repères d\'angle viennent cadrer l\'élément, comme un viseur.',
-        demo: '<div class="demo-frame" data-fx="corner-marks">Survolez le cadre</div>',
-        code: '<article data-fx="corner-marks">…</article>' },
-      { id: 'cursor', cat: 'Micro-interaction', intent: 'Un point qui suit la souris, grossit sur les liens et peut afficher un mot.',
-        demo: '<div class="demo-cursor" data-fx-cursor-label="Ouvrir">Survolez cette zone</div>',
-        code: '<body data-fx="cursor">\n  <a data-fx-cursor-label="Voir">…</a>\n</body>' },
-      { id: 'scroll-expand', cat: 'Défilement', intent: 'Un visuel encadré qui s\'agrandit jusqu\'au plein cadre pendant le défilement.',
-        demo: '<div class="demo-media"><img src="assets/dune.svg" alt=""></div>', jump: '#showcase',
-        code: '<figure data-fx="scroll-expand">\n  <img src="…" alt="…">\n</figure>' },
-      { id: 'page-wipe', cat: 'Transition', intent: 'Deux panneaux montent, recouvrent l\'écran, puis repartent vers le haut.',
-        demo: '<button class="demo-ghost" onclick="FX.wipe()">Lancer la transition</button>',
-        code: '<a href="/page" data-fx="page-wipe">Page suivante</a>\n<!-- ou en JS : FX.wipe(callback) -->' },
-      { id: 'scanlines', cat: 'Ambiance', intent: 'Des lignes d\'écran cathodique et un balayage lumineux, pour une ambiance rétro-futuriste.',
-        demo: '<div class="demo-media" data-fx="scanlines"><img src="assets/dune.svg" alt=""></div>',
-        code: '<div data-fx="scanlines">\n  <img src="…" alt="…">\n</div>' },
-      { id: 'dot-grid', cat: 'Ambiance', intent: 'Une trame de points qui s\'illumine autour du curseur.',
-        demo: '<div class="demo-dots" data-fx="dot-grid" data-fx-gap="18"><span class="mono muted">Bougez ici</span></div>',
-        code: '<section data-fx="dot-grid" data-fx-gap="24">…</section>' },
-      { id: 'shimmer', cat: 'État', intent: 'Indiquer un chargement par un reflet, sans spinner.',
-        demo: '<div class="demo-skel"><div class="avatar" data-fx="shimmer"></div><div class="lines"><div class="line" data-fx="shimmer"></div><div class="line" data-fx="shimmer" style="width:65%"></div></div><div class="block" data-fx="shimmer"></div></div>',
-        code: '<div data-fx="shimmer" style="height:12px"></div>' }
-    ];
-
-    var REPLAYABLE = ['curtain-soft', 'rise-stagger', 'blur-in', 'line-mask', 'pixel-dissolve', 'text-split',
-      'text-scramble', 'count-up', 'pill-grow', 'preloader'];
-
-    var grid = document.getElementById('grid');
-    function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-
-    EFFECTS.forEach(function (fx, i) {
-      var card = document.createElement('article');
-      card.className = 'card';
-      card.dataset.cat = fx.cat;
-      var main = REPLAYABLE.indexOf(fx.id) !== -1
-        ? '<button data-act="replay">↻ Rejouer</button>'
-        : fx.jump ? '<button data-act="jump" data-to="' + fx.jump + '">↑ Voir en grand</button>' : '';
-      card.innerHTML =
-        '<div class="stage"><span class="idx mono">' + String(i + 1).padStart(2, '0') + '</span>' + fx.demo + '</div>' +
-        '<div class="meta">' +
-          '<div class="row-meta"><span class="name">' + fx.id + '</span><span class="tag">' + fx.cat + '</span></div>' +
-          '<p class="intent">' + fx.intent + '</p>' +
-          '<pre class="snippet">' + esc(fx.code) + '</pre>' +
-          '<div class="actions">' + main +
-            '<button data-act="code">&lt;/&gt; Code</button>' +
-            '<button data-act="copy">Copier</button>' +
-          '</div>' +
-        '</div>';
-      grid.appendChild(card);
-    });
-
-    document.getElementById('nav-count').textContent = EFFECTS.length;
-    var stat = document.getElementById('stat-count');
-    stat.dataset.fxTo = EFFECTS.length;
-
-    grid.addEventListener('click', function (e) {
-      var btn = e.target.closest('button[data-act]');
-      if (!btn) return;
-      var card = btn.closest('.card');
-      var act = btn.dataset.act;
-      if (act === 'replay') {
-        var target = card.querySelector('.stage [data-fx="' + card.querySelector('.name').textContent + '"]');
-        if (target) FX.replay(target);
-      }
-      if (act === 'jump') document.querySelector(btn.dataset.to).scrollIntoView({ behavior: 'smooth' });
-      if (act === 'code') card.classList.toggle('show-code');
-      if (act === 'copy') {
-        var name = card.querySelector('.name').textContent;
-        try { navigator.clipboard.writeText(name); } catch (err) {}
-        btn.textContent = 'Copié ✓';
-        setTimeout(function () { btn.textContent = 'Copier'; }, 1200);
-      }
-    });
-
-    // Filtres par catégorie, avec le nombre d'effets dans chacune
-    var counts = {};
-    EFFECTS.forEach(function (f) { counts[f.cat] = (counts[f.cat] || 0) + 1; });
-    var cats = ['Tout'].concat(Object.keys(counts));
-    var bar = document.querySelector('.filters');
-    cats.forEach(function (c, i) {
-      var b = document.createElement('button');
-      b.innerHTML = c + '<sup>' + (c === 'Tout' ? EFFECTS.length : counts[c]) + '</sup>';
-      b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
-      b.onclick = function () {
-        bar.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
-        b.setAttribute('aria-pressed', 'true');
-        grid.querySelectorAll('.card').forEach(function (card) {
-          card.style.display = (c === 'Tout' || card.dataset.cat === c) ? '' : 'none';
-        });
-      };
-      bar.appendChild(b);
-    });
-  </script>
+  <script src="dist/catalog.js"></script>
   <script src="dist/fx.js"></script>
+  <script>
+    // Le catalogue est généré par scripts/build.js (dist/catalog.js) ; les démos sont
+    // insérées seulement quand la carte approche de l'écran.
+    (function () {
+      var EFFECTS = window.FX_CATALOG || [];
+      var grid = document.getElementById('grid');
+      var bar = document.querySelector('.filters');
+      var search = document.getElementById('search');
+      var countEl = document.getElementById('result-count');
+      var state = { cat: 'Tout', q: '' };
+
+      function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+      function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+
+      document.getElementById('nav-count').textContent = EFFECTS.length;
+      document.getElementById('stat-count').dataset.fxTo = EFFECTS.length;
+
+      // ?all charge toutes les démos d'un coup (vérifications automatiques)
+      var eager = /[?&]all\b/.test(location.search);
+      var lazy = !eager && 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          lazy.unobserve(e.target);
+          mount(e.target);
+        });
+      }, { rootMargin: '400px 0px' }) : null;
+
+      function mount(card) {
+        var fx = EFFECTS[card.dataset.index];
+        var stage = card.querySelector('.stage');
+        stage.insertAdjacentHTML('beforeend', fx.demo);
+        FX.init(stage);
+        var actions = card.querySelector('.actions');
+        if (FX.isEntrance(fx.id)) {
+          actions.insertAdjacentHTML('afterbegin', '<button data-act="replay">↻ Rejouer</button>');
+        } else if (fx.trigger) {
+          actions.insertAdjacentHTML('afterbegin', '<button data-act="trigger">▶ ' + esc(fx.trigger) + '</button>');
+        } else if (fx.jump) {
+          actions.insertAdjacentHTML('afterbegin', '<button data-act="jump" data-to="' + fx.jump + '">↑ Voir en grand</button>');
+        }
+      }
+
+      EFFECTS.forEach(function (fx, i) {
+        var card = document.createElement('article');
+        card.className = 'card';
+        card.dataset.cat = fx.cat;
+        card.dataset.index = i;
+        card.dataset.search = norm(fx.id + ' ' + fx.cat + ' ' + fx.intent);
+        card.innerHTML =
+          '<div class="stage"><span class="idx mono">' + String(i + 1).padStart(3, '0') + '</span></div>' +
+          '<div class="meta">' +
+            '<div class="row-meta"><span class="name">' + fx.id + '</span><span class="tag">' + fx.cat + '</span></div>' +
+            '<p class="intent">' + esc(fx.intent) + '</p>' +
+            '<pre class="snippet">' + esc(fx.code) + '</pre>' +
+            '<div class="actions">' +
+              '<button data-act="code">&lt;/&gt; Code</button>' +
+              '<button data-act="copy">Copier</button>' +
+            '</div>' +
+          '</div>';
+        grid.appendChild(card);
+        if (lazy) lazy.observe(card); else mount(card);
+      });
+
+      grid.addEventListener('click', function (e) {
+        var btn = e.target.closest('button[data-act]');
+        if (!btn) return;
+        var card = btn.closest('.card');
+        var name = card.querySelector('.name').textContent;
+        var target = card.querySelector('.stage [data-fx="' + name + '"]');
+        var act = btn.dataset.act;
+        if (act === 'replay' && target) FX.replay(target);
+        if (act === 'trigger' && target) FX.trigger(target, e);
+        if (act === 'jump') document.querySelector(btn.dataset.to).scrollIntoView({ behavior: 'smooth' });
+        if (act === 'code') card.classList.toggle('show-code');
+        if (act === 'copy') {
+          try { navigator.clipboard.writeText(name); } catch (err) {}
+          btn.textContent = 'Copié ✓';
+          setTimeout(function () { btn.textContent = 'Copier'; }, 1200);
+        }
+      });
+
+      function apply() {
+        var q = norm(state.q.trim());
+        var shown = 0;
+        grid.querySelectorAll('.card').forEach(function (card) {
+          var ok = (state.cat === 'Tout' || card.dataset.cat === state.cat) && (!q || card.dataset.search.indexOf(q) !== -1);
+          card.style.display = ok ? '' : 'none';
+          if (ok) shown++;
+        });
+        countEl.textContent = shown + (shown > 1 ? ' effets' : ' effet');
+      }
+
+      // Filtres par catégorie, avec le nombre d'effets dans chacune
+      var counts = {};
+      EFFECTS.forEach(function (f) { counts[f.cat] = (counts[f.cat] || 0) + 1; });
+      ['Tout'].concat(Object.keys(counts)).forEach(function (c, i) {
+        var b = document.createElement('button');
+        b.innerHTML = c + '<sup>' + (c === 'Tout' ? EFFECTS.length : counts[c]) + '</sup>';
+        b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+        b.onclick = function () {
+          bar.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          b.setAttribute('aria-pressed', 'true');
+          state.cat = c;
+          apply();
+        };
+        bar.appendChild(b);
+      });
+      search.addEventListener('input', function () { state.q = search.value; apply(); });
+      apply();
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,266 @@
+/* Pack 09 — États et retours (chargement, succès, erreur, notifications) */
+
+/* orbit-loader : deux points tournent autour d'un cœur qui respire */
+[data-fx="orbit-loader"] {
+  position: relative;
+  display: inline-block;
+  width: var(--fx-size, 48px);
+  height: var(--fx-size, 48px);
+}
+[data-fx="orbit-loader"]::before,
+[data-fx="orbit-loader"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 8%, var(--fx-accent) 0 8%, transparent 9%);
+  animation: fx-turn 1.1s cubic-bezier(.5, .1, .5, .9) infinite;
+}
+[data-fx="orbit-loader"]::after {
+  background: radial-gradient(circle at 50% 8%, var(--fx-accent-2) 0 8%, transparent 9%);
+  animation-duration: 1.6s;
+  animation-direction: reverse;
+}
+[data-fx="orbit-loader"] > i,
+[data-fx="orbit-loader"]:empty {
+  background: radial-gradient(circle, var(--fx-ink) 0 14%, transparent 15%);
+  animation: fx-breathe 1.4s ease-in-out infinite;
+}
+@keyframes fx-breathe { 50% { transform: scale(.7); opacity: .6; } }
+
+/* loading-bar : barre de chargement indéterminée, un segment qui accélère */
+[data-fx="loading-bar"] {
+  position: relative;
+  overflow: hidden;
+  height: var(--fx-height, 4px);
+  border-radius: 999px;
+  background: var(--fx-track, rgba(244, 241, 234, .12));
+}
+[data-fx="loading-bar"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  border-radius: inherit;
+  background: var(--fx-bar, var(--fx-accent));
+  animation: fx-indeterminate 1.4s cubic-bezier(.65, .05, .36, 1) infinite;
+}
+@keyframes fx-indeterminate {
+  0% { transform: translateX(-100%) scaleX(.4); }
+  50% { transform: translateX(80%) scaleX(1); }
+  100% { transform: translateX(260%) scaleX(.4); }
+}
+
+/* typing-dots : trois points qui sautillent, quelqu'un écrit */
+[data-fx="typing-dots"] { display: inline-flex; gap: 5px; align-items: center; padding: 12px 16px; border-radius: 18px; background: var(--fx-bubble, rgba(244, 241, 234, .1)); }
+[data-fx="typing-dots"] > i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: fx-typing 1.2s ease-in-out infinite;
+}
+[data-fx="typing-dots"] > i:nth-child(2) { animation-delay: .15s; }
+[data-fx="typing-dots"] > i:nth-child(3) { animation-delay: .3s; }
+@keyframes fx-typing { 0%, 60%, 100% { transform: none; opacity: .4; } 30% { transform: translateY(-6px); opacity: 1; } }
+
+/* check-draw / cross-draw : une coche (ou une croix) se dessine dans un cercle */
+[data-fx="check-draw"], [data-fx="cross-draw"] { display: inline-block; width: var(--fx-size, 72px); height: var(--fx-size, 72px); }
+[data-fx="check-draw"] svg, [data-fx="cross-draw"] svg { width: 100%; height: 100%; overflow: visible; }
+[data-fx="check-draw"] { color: var(--fx-ok, #22c55e); }
+[data-fx="cross-draw"] { color: var(--fx-ko, #ef4444); }
+[data-fx="check-draw"] circle, [data-fx="cross-draw"] circle,
+[data-fx="check-draw"] path, [data-fx="cross-draw"] path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+[data-fx="check-draw"].fx-in circle, [data-fx="cross-draw"].fx-in circle { transition: stroke-dashoffset .5s var(--fx-ease-out); stroke-dashoffset: 0; }
+[data-fx="check-draw"].fx-in path, [data-fx="cross-draw"].fx-in path { transition: stroke-dashoffset .35s var(--fx-ease-out) .45s; stroke-dashoffset: 0; }
+[data-fx="cross-draw"].fx-in path + path { transition-delay: .65s; }
+[data-fx="check-draw"].fx-in svg { animation: fx-pop .4s var(--fx-ease-spring) .75s; }
+[data-fx="cross-draw"].fx-in svg { animation: fx-shake .5s 1s; }
+@keyframes fx-pop { 50% { transform: scale(1.15); } }
+
+/* toast : une notification glisse depuis le bas puis disparaît d'elle-même */
+[data-fx="toast"] {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  pointer-events: none;
+}
+[data-fx="toast"][data-fx-local] { position: absolute; right: 12px; bottom: 12px; }
+[data-fx="toast"] .fx-toast {
+  pointer-events: auto;
+  max-width: 320px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--fx-toast-bg, var(--fx-ink));
+  color: var(--fx-toast-ink, var(--fx-dark));
+  font-size: 14px;
+  box-shadow: 0 16px 30px -16px rgba(0, 0, 0, .6);
+  animation: fx-toast-in .5s var(--fx-ease-spring) both;
+}
+[data-fx="toast"] .fx-toast.fx-leaving { animation: fx-toast-out .35s ease forwards; }
+@keyframes fx-toast-in { from { opacity: 0; transform: translateY(24px) scale(.9); } }
+@keyframes fx-toast-out { to { opacity: 0; transform: translateX(40px); } }
+
+/* progress-ring : un anneau se remplit jusqu'à une valeur, avec le pourcentage au centre */
+[data-fx="progress-ring"] { position: relative; display: inline-grid; place-items: center; width: var(--fx-size, 110px); aspect-ratio: 1; }
+[data-fx="progress-ring"] svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+[data-fx="progress-ring"] circle { fill: none; stroke-width: 8; }
+[data-fx="progress-ring"] circle:first-child { stroke: var(--fx-track, rgba(244, 241, 234, .12)); }
+[data-fx="progress-ring"] circle + circle { stroke: var(--fx-ring-color, var(--fx-accent)); stroke-linecap: round; }
+[data-fx="progress-ring"] .fx-value { font-weight: 700; font-size: calc(var(--fx-size, 110px) * .24); font-variant-numeric: tabular-nums; }
+
+/* badge-bump : la pastille de compteur rebondit à chaque nouvelle valeur */
+[data-fx="badge-bump"] {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.6em;
+  height: 1.6em;
+  padding: 0 .4em;
+  border-radius: 999px;
+  background: var(--fx-badge, #ef4444);
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--fx-badge-size, 14px);
+  font-variant-numeric: tabular-nums;
+}
+[data-fx="badge-bump"].fx-bump { animation: fx-bump .45s var(--fx-ease-spring); }
+@keyframes fx-bump { 30% { transform: scale(1.45) translateY(-3px); } }
+
+/* heart-like : le cœur se remplit avec un rebond et un anneau qui éclate */
+[data-fx="heart-like"] {
+  position: relative;
+  border: 0;
+  background: none;
+  padding: 6px;
+  cursor: pointer;
+  color: var(--fx-heart-off, rgba(244, 241, 234, .6));
+  font-size: var(--fx-heart, 36px);
+  line-height: 1;
+}
+[data-fx="heart-like"]::before { content: "♡"; display: inline-block; }
+[data-fx="heart-like"][aria-pressed="true"] { color: var(--fx-heart-on, #ff3b6b); }
+[data-fx="heart-like"][aria-pressed="true"]::before { content: "♥"; animation: fx-heart .5s var(--fx-ease-spring); }
+[data-fx="heart-like"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--fx-heart-on, #ff3b6b);
+  opacity: 0;
+  transform: scale(.4);
+  pointer-events: none;
+}
+[data-fx="heart-like"][aria-pressed="true"]::after { animation: fx-heart-ring .5s ease-out; }
+@keyframes fx-heart { 0% { transform: scale(.3); } 60% { transform: scale(1.25); } 100% { transform: scale(1); } }
+@keyframes fx-heart-ring { 0% { opacity: 1; transform: scale(.4); } 100% { opacity: 0; transform: scale(1.6); border-width: 0; } }
+
+/* copy-morph : le bouton devient « Copié ✓ » en changeant de couleur et de largeur */
+[data-fx="copy-morph"] { transition: background-color .3s ease, color .3s ease, width .35s var(--fx-ease-out); overflow: hidden; white-space: nowrap; }
+[data-fx="copy-morph"].fx-done { background: var(--fx-ok, #22c55e) !important; color: #06210f !important; }
+[data-fx="copy-morph"] > span { display: inline-block; animation: fx-swap-in .35s var(--fx-ease-out); }
+@keyframes fx-swap-in { from { transform: translateY(100%); opacity: 0; } }
+
+/* liquid-fill : un liquide ondulant remplit le récipient jusqu'au niveau voulu */
+[data-fx="liquid-fill"] {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  --fx-level: 0;
+}
+[data-fx="liquid-fill"]::before,
+[data-fx="liquid-fill"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  z-index: -1;
+  width: 260%;
+  aspect-ratio: 1;
+  top: calc((1 - var(--fx-level)) * 100% - 4%);
+  translate: -50% 0;
+  border-radius: 42%;
+  background: var(--fx-liquid, var(--fx-accent));
+  transition: top 1.6s var(--fx-ease-out);
+  animation: fx-turn 7s linear infinite;
+}
+[data-fx="liquid-fill"]::after { border-radius: 38%; opacity: .45; animation-duration: 11s; top: calc((1 - var(--fx-level)) * 100% - 7%); }
+[data-fx="liquid-fill"].fx-in { --fx-level: var(--fx-target, .65); }
+
+/* float : l'élément flotte doucement, son ombre suit */
+[data-fx="float"] { animation: fx-bob var(--fx-float, 4s) ease-in-out infinite; filter: drop-shadow(0 18px 14px rgba(0, 0, 0, .35)); }
+@keyframes fx-bob {
+  0%, 100% { transform: translateY(0); filter: drop-shadow(0 18px 14px rgba(0, 0, 0, .35)); }
+  50% { transform: translateY(-12px); filter: drop-shadow(0 30px 18px rgba(0, 0, 0, .2)); }
+}
+
+/* live-dot : un point rouge qui pulse, « en direct » */
+[data-fx="live-dot"] { display: inline-flex; align-items: center; gap: .55em; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+[data-fx="live-dot"]::before {
+  content: "";
+  width: .6em;
+  height: .6em;
+  border-radius: 50%;
+  background: var(--fx-live, #ff2e2e);
+  box-shadow: 0 0 0 0 var(--fx-live, #ff2e2e);
+  animation: fx-live 1.6s ease-out infinite;
+}
+@keyframes fx-live {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--fx-live, #ff2e2e) 70%, transparent); }
+  100% { box-shadow: 0 0 0 .7em transparent; }
+}
+
+/* flip-clock : des chiffres qui basculent comme une horloge à palettes */
+[data-fx="flip-clock"] { display: inline-flex; gap: 4px; align-items: center; font-variant-numeric: tabular-nums; }
+[data-fx="flip-clock"] .fx-digit {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 1.1em;
+  height: 1.5em;
+  border-radius: .14em;
+  background: var(--fx-card, #1f1f26);
+  color: var(--fx-ink);
+  font-weight: 700;
+  perspective: 300px;
+}
+[data-fx="flip-clock"] .fx-digit::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(0, 0, 0, .55);
+}
+[data-fx="flip-clock"] .fx-digit.fx-flip { animation: fx-flipdigit .5s var(--fx-ease-out); }
+[data-fx="flip-clock"] .fx-sep { opacity: .6; font-weight: 700; }
+@keyframes fx-flipdigit { 0% { transform: rotateX(0); } 45% { transform: rotateX(-90deg); } 55% { transform: rotateX(90deg); } 100% { transform: rotateX(0); } }
+
+/* loading-quips : un chargement qui fait patienter avec des phrases qui défilent */
+[data-fx="loading-quips"] { display: grid; justify-items: center; gap: 14px; }
+[data-fx="loading-quips"] .fx-quip {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--fx-quip-bg, rgba(244, 241, 234, .1));
+  font-size: 14px;
+  animation: fx-quip .45s var(--fx-ease-spring);
+}
+[data-fx="loading-quips"] .fx-quip-bar { width: min(260px, 80%); height: 2px; background: rgba(244, 241, 234, .15); overflow: hidden; }
+[data-fx="loading-quips"] .fx-quip-bar::before { content: ""; display: block; height: 100%; width: calc(var(--fx-p, 0) * 100%); background: var(--fx-accent); transition: width .4s ease; }
+@keyframes fx-quip { from { opacity: 0; transform: translateY(10px) scale(.95); } }

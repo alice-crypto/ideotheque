@@ -1,6 +1,6 @@
 # `text-scramble`
 
-**Catégorie :** Présentation
+**Catégorie :** Texte
 
 ## Intention
 Un texte brouillé en signes aléatoires qui se décode lettre par lettre, de gauche à droite.

@@ -1,0 +1,212 @@
+/* Pack 05 — Transitions plein écran
+ * Chaque transition est un calque .fx-tr-<nom> posé par fx.js, avec des pièces <i>
+ * (variables --fx-i et --fx-n). États : (départ) → .fx-cover (écran couvert) → .fx-uncover (sortie).
+ */
+
+@property --fx-iris {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+/* bands : cinq bandes de couleur tombent l'une après l'autre */
+.fx-tr-bands i {
+  top: 0;
+  bottom: 0;
+  left: calc(var(--fx-i) * 100% / var(--fx-n));
+  width: calc(100% / var(--fx-n) + 1px);
+  transform: translateY(-100%);
+  transition: transform .6s var(--fx-ease-io) calc(var(--fx-i) * 70ms);
+}
+.fx-tr-bands i:nth-child(1) { background: #b0153f; }
+.fx-tr-bands i:nth-child(2) { background: #ef3e23; }
+.fx-tr-bands i:nth-child(3) { background: #ff8a2b; }
+.fx-tr-bands i:nth-child(4) { background: #ffbb1c; }
+.fx-tr-bands i:nth-child(5) { background: #23a7a4; }
+.fx-tr-bands.fx-cover i { transform: none; }
+.fx-tr-bands.fx-uncover i { transform: translateY(100%); }
+
+/* circle-expand : un cercle grandit depuis le point de clic */
+.fx-tr-circle-expand i {
+  inset: 0;
+  background: var(--fx-tr-color, var(--fx-accent));
+  clip-path: circle(0 at var(--fx-x) var(--fx-y));
+  transition: clip-path .85s var(--fx-ease-io);
+}
+.fx-tr-circle-expand.fx-cover i { clip-path: circle(150vmax at var(--fx-x) var(--fx-y)); }
+.fx-tr-circle-expand.fx-uncover i { clip-path: circle(0 at 50% 50%); }
+
+/* slash : un pan incliné traverse l'écran de gauche à droite */
+.fx-tr-slash i {
+  top: 0;
+  bottom: 0;
+  left: -30%;
+  right: -30%;
+  background: var(--fx-tr-color, var(--fx-dark));
+  transform: translateX(-130%) skewX(-18deg);
+  transition: transform .8s var(--fx-ease-io);
+}
+.fx-tr-slash.fx-cover i { transform: translateX(0) skewX(-18deg); }
+.fx-tr-slash.fx-uncover i { transform: translateX(130%) skewX(-18deg); }
+
+/* pixel-wipe : l'écran se remplit de cases au hasard, puis elles disparaissent */
+.fx-tr-pixel-wipe i {
+  left: calc(var(--c) * 100% / 12);
+  top: calc(var(--r) * 100% / 8);
+  width: calc(100% / 12 + 1px);
+  height: calc(100% / 8 + 1px);
+  background: var(--fx-tr-color, var(--fx-accent));
+  opacity: 0;
+  transition: opacity .05s linear calc(var(--fx-r) * 650ms);
+}
+.fx-tr-pixel-wipe i:nth-child(5n) { background: var(--fx-dark); }
+.fx-tr-pixel-wipe.fx-cover i { opacity: 1; }
+.fx-tr-pixel-wipe.fx-uncover i { opacity: 0; }
+
+/* shutter : des lames horizontales se ferment comme un rideau métallique */
+.fx-tr-shutter i {
+  left: 0;
+  right: 0;
+  top: calc(var(--fx-i) * 100% / var(--fx-n));
+  height: calc(100% / var(--fx-n) + 1px);
+  background: var(--fx-tr-color, var(--fx-dark));
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  transition: transform .45s var(--fx-ease-io) calc(var(--fx-i) * 45ms);
+}
+.fx-tr-shutter i:nth-child(odd) { background: color-mix(in srgb, var(--fx-tr-color, var(--fx-dark)) 85%, #fff); }
+.fx-tr-shutter.fx-cover i { transform: none; }
+.fx-tr-shutter.fx-uncover i { transform: scaleY(0); transform-origin: 50% 100%; }
+
+/* curtain-close : deux rideaux se rejoignent au centre puis se rouvrent */
+.fx-tr-curtain-close i {
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  background: var(--fx-tr-color, #8c1c2b);
+  transition: transform .75s var(--fx-ease-io);
+}
+.fx-tr-curtain-close i:first-child { left: 0; transform: translateX(-100%); box-shadow: inset -30px 0 40px -20px rgba(0, 0, 0, .5); }
+.fx-tr-curtain-close i:last-child { right: 0; transform: translateX(100%); box-shadow: inset 30px 0 40px -20px rgba(0, 0, 0, .5); }
+.fx-tr-curtain-close.fx-cover i { transform: none; }
+
+/* fade-through : fondu au noir (ou à la couleur choisie) */
+.fx-tr-fade-through i {
+  inset: 0;
+  background: var(--fx-tr-color, var(--fx-dark));
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+.fx-tr-fade-through.fx-cover i { opacity: 1; }
+.fx-tr-fade-through.fx-uncover i { opacity: 0; }
+
+/* zoom-through : la page se floute pendant qu'un voile surgit du centre */
+.fx-tr-zoom-through {
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+  transition: backdrop-filter .7s ease, -webkit-backdrop-filter .7s ease;
+}
+.fx-tr-zoom-through i {
+  inset: 0;
+  background: var(--fx-tr-color, var(--fx-dark));
+  opacity: 0;
+  transform: scale(1.6);
+  transition: opacity .7s ease .1s, transform .8s var(--fx-ease-out) .1s;
+}
+.fx-tr-zoom-through.fx-cover { -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+.fx-tr-zoom-through.fx-cover i { opacity: 1; transform: none; }
+.fx-tr-zoom-through.fx-uncover i { opacity: 0; transform: scale(.8); transition-delay: 0s; }
+
+/* push-slide : un panneau arrive par la droite et repart par la gauche */
+.fx-tr-push-slide i {
+  inset: 0;
+  background: var(--fx-tr-color, var(--fx-dark));
+  transform: translateX(100%);
+  transition: transform .75s var(--fx-ease-io);
+}
+.fx-tr-push-slide.fx-cover i { transform: none; }
+.fx-tr-push-slide.fx-uncover i { transform: translateX(-100%); }
+
+/* arc-rise : un panneau au bord arrondi monte du bas de l'écran */
+.fx-tr-arc-rise i {
+  top: 0;
+  bottom: -25%;
+  left: -15%;
+  right: -15%;
+  background: var(--fx-tr-color, var(--fx-accent));
+  border-radius: 50% 50% 0 0 / 22% 22% 0 0;
+  transform: translateY(100%);
+  transition: transform .9s var(--fx-ease-io), border-radius .9s var(--fx-ease-io);
+}
+.fx-tr-arc-rise.fx-cover i { transform: none; border-radius: 0; }
+.fx-tr-arc-rise.fx-uncover i { transform: translateY(-110%); border-radius: 0 0 50% 50% / 0 0 22% 22%; }
+
+/* glitch-cut : des bandes arrivent en saccades de chaque côté */
+.fx-tr-glitch-cut i {
+  left: 0;
+  right: 0;
+  top: calc(var(--fx-i) * 100% / var(--fx-n));
+  height: calc(100% / var(--fx-n) + 1px);
+  background: var(--fx-dark);
+  transform: translateX(calc(var(--fx-dir, 1) * 105%));
+  transition: transform .3s steps(4) calc(var(--fx-r, 0) * 300ms);
+}
+.fx-tr-glitch-cut i:nth-child(3n) { background: #ff2e63; }
+.fx-tr-glitch-cut i:nth-child(4n) { background: #08d9d6; }
+.fx-tr-glitch-cut.fx-cover i { transform: none; }
+.fx-tr-glitch-cut.fx-uncover i { transform: translateX(calc(var(--fx-dir, 1) * -105%)); }
+
+/* tile-flip : une mosaïque de tuiles se retourne en vague diagonale */
+.fx-tr-tile-flip { perspective: 1200px; }
+.fx-tr-tile-flip i {
+  left: calc(var(--c) * 100% / 8);
+  top: calc(var(--r) * 100% / 5);
+  width: calc(100% / 8 + 1px);
+  height: calc(100% / 5 + 1px);
+  background: var(--fx-tr-color, var(--fx-accent-2));
+  transform: rotateY(90deg);
+  transition: transform .45s var(--fx-ease-out) calc((var(--c) + var(--r)) * 45ms);
+}
+.fx-tr-tile-flip i.fx-alt { background: color-mix(in srgb, var(--fx-tr-color, var(--fx-accent-2)) 80%, #000); }
+.fx-tr-tile-flip.fx-cover i { transform: none; }
+.fx-tr-tile-flip.fx-uncover i { transform: rotateY(-90deg); }
+
+/* iris : un diaphragme se referme sur le centre, puis se rouvre */
+.fx-tr-iris i {
+  inset: 0;
+  background: var(--fx-tr-color, var(--fx-dark));
+  --fx-iris: 150vmax;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent var(--fx-iris), #000 calc(var(--fx-iris) + 1px));
+  mask-image: radial-gradient(circle at 50% 50%, transparent var(--fx-iris), #000 calc(var(--fx-iris) + 1px));
+  transition: --fx-iris .8s var(--fx-ease-io);
+}
+.fx-tr-iris.fx-cover i { --fx-iris: 0px; }
+.fx-tr-iris.fx-uncover i { --fx-iris: 150vmax; }
+
+/* title-card : un carton titre plein écran, comme au cinéma */
+.fx-tr-title-card i {
+  inset: 0;
+  background: var(--fx-tr-color, var(--fx-dark));
+  transform: translateY(100%);
+  transition: transform .7s var(--fx-ease-io);
+}
+.fx-tr-title-card .fx-tr-title {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--fx-ink);
+  font-size: clamp(32px, 7vw, 96px);
+  font-weight: 700;
+  letter-spacing: -.04em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .4s ease, transform .6s var(--fx-ease-out);
+}
+.fx-tr-title-card.fx-cover i { transform: none; }
+.fx-tr-title-card.fx-cover .fx-tr-title { opacity: 1; transform: none; transition-delay: .45s; }
+.fx-tr-title-card.fx-uncover i { transform: translateY(-100%); transition-delay: .15s; }
+.fx-tr-title-card.fx-uncover .fx-tr-title { opacity: 0; transform: translateY(-20px); }
+
+/* view-morph : morphing entre deux états (View Transitions API) */
+::view-transition-group(*) { animation-duration: .55s; animation-timing-function: cubic-bezier(.76, 0, .24, 1); }

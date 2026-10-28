@@ -1,0 +1,300 @@
+/* Pack 08 — Navigation et composants d'interface
+ * Les composants qui s'ouvrent (menu, tiroir, fenêtre, liste déroulante) prennent la classe .fx-open.
+ * data-fx-local : le composant reste dans son conteneur au lieu de couvrir l'écran.
+ */
+
+/* burger-morph : les trois barres du menu se transforment en croix */
+[data-fx="burger-morph"] {
+  position: relative;
+  width: var(--fx-burger, 44px);
+  height: var(--fx-burger, 44px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+[data-fx="burger-morph"] > span {
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform .45s var(--fx-ease-out), opacity .25s ease, top .3s var(--fx-ease-out) .15s;
+}
+[data-fx="burger-morph"] > span:nth-child(1) { top: 32%; }
+[data-fx="burger-morph"] > span:nth-child(2) { top: calc(50% - 1px); }
+[data-fx="burger-morph"] > span:nth-child(3) { top: calc(68% - 2px); }
+[data-fx="burger-morph"][aria-expanded="true"] > span { transition: top .3s var(--fx-ease-out), transform .45s var(--fx-ease-out) .2s, opacity .2s ease; }
+[data-fx="burger-morph"][aria-expanded="true"] > span:nth-child(1) { top: calc(50% - 1px); transform: rotate(45deg); }
+[data-fx="burger-morph"][aria-expanded="true"] > span:nth-child(2) { opacity: 0; transform: scaleX(.2); }
+[data-fx="burger-morph"][aria-expanded="true"] > span:nth-child(3) { top: calc(50% - 1px); transform: rotate(-45deg); }
+
+/* menu-reveal : un menu plein écran s'ouvre en cercle depuis le coin, liens en cascade */
+[data-fx="menu-reveal"] {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .2em;
+  padding: 8vw;
+  background: var(--fx-menu-bg, var(--fx-accent));
+  color: var(--fx-menu-ink, var(--fx-dark));
+  clip-path: circle(0 at var(--fx-origin, calc(100% - 40px) 40px));
+  visibility: hidden;
+  transition: clip-path .7s var(--fx-ease-io), visibility 0s .7s;
+}
+[data-fx="menu-reveal"][data-fx-local] { position: absolute; padding: 24px; }
+[data-fx="menu-reveal"].fx-open {
+  clip-path: circle(150% at var(--fx-origin, calc(100% - 40px) 40px));
+  visibility: visible;
+  transition: clip-path .8s var(--fx-ease-io), visibility 0s;
+}
+[data-fx="menu-reveal"] > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+[data-fx="menu-reveal"].fx-open > * {
+  opacity: 1;
+  transform: none;
+  transition: opacity .5s ease, transform .6s var(--fx-ease-out);
+  transition-delay: calc(.3s + var(--fx-i, 0) * 70ms);
+}
+
+/* smart-header : l'en-tête se cache quand on descend et réapparaît quand on remonte */
+[data-fx="smart-header"] {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: transform .4s var(--fx-ease-out), box-shadow .3s ease;
+}
+[data-fx="smart-header"].fx-hidden { transform: translateY(-105%); }
+[data-fx="smart-header"].fx-scrolled { box-shadow: 0 8px 24px -16px rgba(0, 0, 0, .6); }
+
+/* tab-slider : un indicateur glisse sous l'onglet actif */
+[data-fx="tab-slider"] { position: relative; display: inline-flex; }
+[data-fx="tab-slider"] .fx-indicator {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  border-radius: var(--fx-indicator-radius, 999px);
+  background: var(--fx-indicator, var(--fx-accent));
+  transition: transform .45s var(--fx-ease-out), width .45s var(--fx-ease-out), height .45s var(--fx-ease-out);
+  pointer-events: none;
+}
+[data-fx="tab-slider"] > :not(.fx-indicator) { position: relative; z-index: 1; transition: color .3s ease; }
+[data-fx="tab-slider"] > [aria-selected="true"] { color: var(--fx-indicator-ink, var(--fx-dark)); }
+
+/* dot-nav : des points de navigation ; celui de la section visible s'étire */
+[data-fx="dot-nav"] { display: flex; flex-direction: column; gap: 10px; }
+[data-fx="dot-nav"] a {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--fx-dot, rgba(244, 241, 234, .35));
+  transition: height .4s var(--fx-ease-spring), background .3s ease;
+  font-size: 0;
+}
+[data-fx="dot-nav"] a.fx-active { height: 28px; background: var(--fx-dot-active, var(--fx-accent)); }
+
+/* top-ring : bouton « haut de page » entouré d'un anneau de progression */
+[data-fx="top-ring"] {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 60;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--fx-ring-bg, #1a1a20);
+  color: var(--fx-ink);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(16px) scale(.9);
+  transition: opacity .3s ease, transform .4s var(--fx-ease-spring);
+}
+[data-fx="top-ring"][data-fx-local] { position: absolute; }
+[data-fx="top-ring"].fx-visible { opacity: 1; transform: none; }
+[data-fx="top-ring"] svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+[data-fx="top-ring"] circle { fill: none; stroke: var(--fx-ring-color, var(--fx-accent)); stroke-width: 3; stroke-linecap: round; }
+
+/* hover-pill : une pastille de fond suit le lien survolé dans la navigation */
+[data-fx="hover-pill"] { position: relative; display: inline-flex; }
+[data-fx="hover-pill"] .fx-pill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  border-radius: 999px;
+  background: var(--fx-pill, rgba(244, 241, 234, .12));
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .35s var(--fx-ease-out), width .35s var(--fx-ease-out), height .35s var(--fx-ease-out), opacity .25s ease;
+}
+[data-fx="hover-pill"] .fx-pill.fx-on { opacity: 1; }
+[data-fx="hover-pill"] > :not(.fx-pill) { position: relative; z-index: 1; }
+
+/* accordion : un <details> qui s'ouvre et se ferme en douceur */
+details[data-fx="accordion"] { overflow: hidden; }
+details[data-fx="accordion"] > summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+details[data-fx="accordion"] > summary::-webkit-details-marker { display: none; }
+details[data-fx="accordion"] > summary::after {
+  content: "+";
+  font-size: 1.3em;
+  line-height: 1;
+  transition: transform .4s var(--fx-ease-out);
+}
+details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg); }
+
+/* dropdown : un menu déroulant qui jaillit avec un rebond, éléments en cascade */
+[data-fx="dropdown"] { position: relative; display: inline-block; }
+[data-fx="dropdown"] > :last-child {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 20;
+  min-width: 100%;
+  transform-origin: 20% 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px) scale(.94);
+  transition: opacity .2s ease, transform .2s ease, visibility 0s .2s;
+}
+[data-fx="dropdown"].fx-open > :last-child {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity .2s ease, transform .4s var(--fx-ease-spring), visibility 0s;
+}
+[data-fx="dropdown"] > :last-child > * { opacity: 0; transform: translateY(-4px); transition: opacity .2s ease, transform .3s ease; }
+[data-fx="dropdown"].fx-open > :last-child > * { opacity: 1; transform: none; transition-delay: calc(.05s + var(--fx-i, 0) * 40ms); }
+
+/* scroll-spy : le lien de la section en cours est mis en avant, une barre le suit */
+[data-fx="scroll-spy"] { position: relative; display: flex; flex-direction: column; padding-left: 12px; }
+[data-fx="scroll-spy"] .fx-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  background: var(--fx-spy, var(--fx-accent));
+  transition: transform .4s var(--fx-ease-out), height .4s var(--fx-ease-out);
+}
+[data-fx="scroll-spy"] a { color: var(--fx-spy-off, rgba(244, 241, 234, .45)); text-decoration: none; transition: color .3s ease; }
+[data-fx="scroll-spy"] a.fx-active { color: inherit; }
+
+/* dots-morph : indicateur de diaporama ; le point actif s'étire et se remplit avec le temps */
+[data-fx="dots-morph"] { display: inline-flex; gap: 8px; align-items: center; }
+[data-fx="dots-morph"] button {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--fx-dot, rgba(244, 241, 234, .3));
+  cursor: pointer;
+  transition: width .45s var(--fx-ease-out);
+}
+[data-fx="dots-morph"] button[aria-current="true"] { width: 36px; }
+[data-fx="dots-morph"] button[aria-current="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--fx-dot-active, var(--fx-accent));
+  transform-origin: 0 50%;
+  animation: fx-dot-fill var(--fx-interval, 3s) linear forwards;
+}
+@keyframes fx-dot-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* drawer : un panneau latéral glisse depuis la droite, au-dessus d'un voile */
+[data-fx="drawer"] {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  visibility: hidden;
+  transition: visibility 0s .5s;
+}
+[data-fx="drawer"][data-fx-local] { position: absolute; }
+[data-fx="drawer"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+[data-fx="drawer"] > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(var(--fx-drawer-w, 360px), 88%);
+  transform: translateX(100%);
+  transition: transform .5s var(--fx-ease-io);
+}
+[data-fx="drawer"].fx-open { visibility: visible; transition: visibility 0s; }
+[data-fx="drawer"].fx-open::before { opacity: 1; }
+[data-fx="drawer"].fx-open > * { transform: none; }
+
+/* modal-zoom : une fenêtre s'ouvre en grandissant depuis le bouton qui l'a appelée */
+[data-fx="modal-zoom"] {
+  position: fixed;
+  inset: 0;
+  z-index: 9100;
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+  transition: visibility 0s .45s;
+}
+[data-fx="modal-zoom"][data-fx-local] { position: absolute; }
+[data-fx="modal-zoom"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .6);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+[data-fx="modal-zoom"] > * {
+  position: relative;
+  transform: translate(var(--fx-dx, 0), var(--fx-dy, 0)) scale(.1);
+  opacity: 0;
+  transition: transform .45s var(--fx-ease-io), opacity .3s ease;
+}
+[data-fx="modal-zoom"].fx-open { visibility: visible; transition: visibility 0s; }
+[data-fx="modal-zoom"].fx-open::before { opacity: 1; }
+[data-fx="modal-zoom"].fx-open > * { transform: none; opacity: 1; }
+
+/* header-shrink : l'en-tête s'affine dès qu'on commence à défiler */
+[data-fx="header-shrink"] {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-block: var(--fx-header-pad, 28px);
+  transition: padding .4s var(--fx-ease-out), background-color .4s ease, box-shadow .4s ease;
+}
+[data-fx="header-shrink"] > * { transition: transform .4s var(--fx-ease-out); transform-origin: 0 50%; }
+[data-fx="header-shrink"].fx-small {
+  padding-block: var(--fx-header-pad-small, 10px);
+  background-color: var(--fx-header-bg, rgba(12, 12, 14, .85));
+  box-shadow: 0 10px 30px -20px rgba(0, 0, 0, .8);
+}
+[data-fx="header-shrink"].fx-small > :first-child { transform: scale(.8); }
+
+/* focus-list : survoler un élément de liste estompe les autres et le décale */
+[data-fx="focus-list"] > * { transition: opacity .35s ease, transform .35s var(--fx-ease-out); }
+[data-fx="focus-list"]:hover > *:not(:hover),
+[data-fx="focus-list"]:focus-within > *:not(:focus-within) { opacity: var(--fx-dim, .3); }
+[data-fx="focus-list"] > *:hover,
+[data-fx="focus-list"] > *:focus-within { transform: translateX(var(--fx-shift, 10px)); }

@@ -1,0 +1,223 @@
+/* Pack 07 — Images et médias */
+
+/* svg-draw : les tracés d'un SVG se dessinent à l'entrée (longueurs calculées par fx.js) */
+[data-fx="svg-draw"] path,
+[data-fx="svg-draw"] circle,
+[data-fx="svg-draw"] line,
+[data-fx="svg-draw"] polyline,
+[data-fx="svg-draw"] rect {
+  transition: stroke-dashoffset calc(var(--fx-duration) * 2.2) var(--fx-ease-io);
+}
+
+/* ken-burns : l'image avance et glisse très lentement, comme dans un documentaire */
+[data-fx="ken-burns"] { overflow: hidden; }
+[data-fx="ken-burns"] > * { animation: fx-kenburns var(--fx-kb, 18s) ease-in-out infinite alternate; transform-origin: var(--fx-kb-origin, 30% 40%); }
+@keyframes fx-kenburns {
+  from { transform: scale(1) translate(0, 0); }
+  to { transform: scale(1.22) translate(-3%, 2%); }
+}
+
+/* color-reveal : l'image en noir et blanc retrouve ses couleurs au survol */
+[data-fx="color-reveal"] { filter: grayscale(1) contrast(1.05); transition: filter .7s ease, transform .7s var(--fx-ease-out); }
+[data-fx="color-reveal"]:hover,
+[data-fx="color-reveal"]:focus-within { filter: none; transform: scale(1.02); }
+
+/* image-trail : des images apparaissent dans le sillage du curseur (posées par fx.js) */
+[data-fx="image-trail"] { position: relative; overflow: hidden; }
+[data-fx="image-trail"] .fx-trail {
+  position: absolute;
+  width: var(--fx-trail-w, 110px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 6px;
+  pointer-events: none;
+  translate: -50% -50%;
+  animation: fx-trail 1.1s var(--fx-ease-out) forwards;
+}
+@keyframes fx-trail {
+  0% { transform: scale(.4) rotate(var(--r, 0deg)); opacity: 0; }
+  15% { transform: scale(1) rotate(var(--r, 0deg)); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: scale(.85) translateY(30px) rotate(var(--r, 0deg)); opacity: 0; }
+}
+
+/* hover-preview : survoler un élément de liste fait flotter son image près du curseur */
+[data-fx="hover-preview"] { position: relative; }
+[data-fx="hover-preview"] .fx-preview {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: var(--fx-preview-w, 180px);
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  background: center / cover no-repeat;
+  pointer-events: none;
+  opacity: 0;
+  scale: .7;
+  rotate: -6deg;
+  transition: opacity .3s ease, scale .4s var(--fx-ease-spring), rotate .4s var(--fx-ease-out);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .6);
+}
+[data-fx="hover-preview"] .fx-preview.fx-on { opacity: 1; scale: 1; rotate: 0deg; }
+[data-fx="hover-preview"] [data-fx-image] { transition: opacity .3s ease, padding-left .3s ease; }
+[data-fx="hover-preview"]:hover [data-fx-image]:not(:hover) { opacity: .35; }
+
+/* slice-in : l'image arrive en tranches verticales qui glissent en alternance */
+[data-fx="slice-in"] { position: relative; overflow: hidden; }
+[data-fx="slice-in"] > img { visibility: hidden; }
+[data-fx="slice-in"] .fx-slice {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  transform: translateY(calc(var(--fx-dir, 1) * 102%));
+  transition: transform calc(var(--fx-duration) * 1.3) var(--fx-ease-io) calc(var(--fx-delay) + var(--fx-i, 0) * 70ms);
+}
+[data-fx="slice-in"] .fx-slice > i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: center / cover no-repeat;
+}
+[data-fx="slice-in"].fx-in .fx-slice { transform: none; }
+
+/* rgb-split : au survol, les couches rouge et bleue de l'image se décalent */
+[data-fx="rgb-split"] { transition: transform .2s ease; }
+[data-fx="rgb-split"]:hover,
+[data-fx="rgb-split"]:focus-within { filter: url(#fx-rgb-split); animation: fx-jitter .35s steps(2) infinite; }
+@keyframes fx-jitter { 50% { transform: translate(1px, -1px); } }
+
+/* blob-mask : l'image est découpée dans une forme molle qui ondule en continu */
+[data-fx="blob-mask"] { overflow: hidden; animation: fx-blob 9s ease-in-out infinite; }
+
+/* compare : un curseur avant / après qu'on fait glisser (structure posée par fx.js) */
+[data-fx="compare"] { position: relative; overflow: hidden; --fx-pos: 50%; }
+[data-fx="compare"] > :nth-child(2) { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--fx-pos)); }
+[data-fx="compare"] > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+[data-fx="compare"] .fx-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--fx-pos);
+  width: 2px;
+  margin-left: -1px;
+  background: #fff;
+  pointer-events: none;
+}
+[data-fx="compare"] .fx-handle::after {
+  content: "↔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-size: 16px;
+}
+[data-fx="compare"] input[type="range"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+/* glare : un reflet de lumière suit le curseur sur l'image */
+[data-fx="glare"] { position: relative; overflow: hidden; isolation: isolate; transition: transform .4s var(--fx-ease-out); }
+[data-fx="glare"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--fx-mx, 50%) var(--fx-my, 0%), rgba(255, 255, 255, .55), transparent 45%);
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+[data-fx="glare"]:hover { transform: scale(1.02); }
+[data-fx="glare"]:hover::after { opacity: 1; }
+
+/* lens : une loupe circulaire agrandit l'image sous le curseur (posée par fx.js) */
+[data-fx="lens"] { position: relative; cursor: none; }
+[data-fx="lens"] .fx-lens {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--fx-lens, 120px);
+  height: var(--fx-lens, 120px);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0;
+  scale: .6;
+  transition: opacity .2s ease, scale .3s var(--fx-ease-spring);
+}
+[data-fx="lens"]:hover .fx-lens { opacity: 1; scale: 1; }
+
+/* photo-stack : une pile de photos ; un clic envoie celle du dessus sous la pile */
+[data-fx="photo-stack"] { position: relative; display: grid; cursor: pointer; }
+[data-fx="photo-stack"] > * {
+  grid-area: 1 / 1;
+  transform: rotate(var(--r, 0deg));
+  transition: transform .5s var(--fx-ease-out), opacity .3s ease;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, .6);
+}
+[data-fx="photo-stack"] > .fx-out { transform: translate(130%, -10%) rotate(25deg); opacity: 0; }
+
+/* liquid-hover : l'image ondule comme un reflet dans l'eau au survol (filtre SVG piloté par fx.js) */
+[data-fx="liquid-hover"] { overflow: hidden; }
+
+/* pixelate : l'image pixelisée devient nette au survol (canvas posé par fx.js) */
+[data-fx="pixelate"] { position: relative; overflow: hidden; }
+[data-fx="pixelate"] canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+
+/* flip-card : la carte se retourne et montre son verso */
+[data-fx="flip-card"] { display: grid; perspective: 1000px; cursor: pointer; }
+[data-fx="flip-card"] > * {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform .7s var(--fx-ease-io);
+}
+[data-fx="flip-card"] > :nth-child(2) { transform: rotateY(180deg); }
+[data-fx="flip-card"]:hover > :first-child,
+[data-fx="flip-card"].fx-flipped > :first-child { transform: rotateY(-180deg); }
+[data-fx="flip-card"]:hover > :nth-child(2),
+[data-fx="flip-card"].fx-flipped > :nth-child(2) { transform: none; }
+
+/* carousel-ring : les éléments tournent sur un anneau en 3D (anneau posé par fx.js) */
+[data-fx="carousel-ring"] { perspective: 900px; display: grid; place-items: center; }
+[data-fx="carousel-ring"] .fx-ring {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: fx-ring-spin var(--fx-spin, 24s) linear infinite;
+}
+[data-fx="carousel-ring"]:hover .fx-ring { animation-play-state: paused; }
+[data-fx="carousel-ring"] .fx-ring > * {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  transform: rotateY(calc(var(--fx-i) * 360deg / var(--fx-n))) translateZ(var(--fx-radius, 200px));
+}
+@keyframes fx-ring-spin { to { transform: rotateY(-360deg); } }
+
+/* drag-gallery : une galerie horizontale qu'on fait glisser avec inertie */
+[data-fx="drag-gallery"] { overflow: hidden; cursor: grab; touch-action: pan-y; user-select: none; }
+[data-fx="drag-gallery"].fx-dragging { cursor: grabbing; }
+[data-fx="drag-gallery"] .fx-track { display: flex; gap: var(--fx-gap, 16px); width: max-content; will-change: transform; }
+[data-fx="drag-gallery"] img { pointer-events: none; -webkit-user-drag: none; }
+
+/* noise-reveal : l'image se reconstitue à partir d'un bruit déformé (filtre SVG piloté par fx.js) */
+[data-fx="noise-reveal"] { opacity: 0; transition: opacity .6s ease; }
+[data-fx="noise-reveal"].fx-in { opacity: 1; }
