@@ -133,7 +133,7 @@ module.exports = [
   E('flip-clock',
     'Des chiffres qui basculent comme une horloge à palettes : l\'heure actuelle, ou un compte à rebours.',
     'Mécanique, rétro, attente d\'un événement.',
-    '- `data-fx-to` : date cible (format ISO) pour un compte à rebours ; sinon l\'heure actuelle\n- `--fx-card` : couleur des palettes',
+    '- `data-fx-to` : date cible (format ISO) pour un compte à rebours ; sinon l\'heure actuelle. Au-delà de 99 heures, l\'affichage passe en jours : heures : minutes (classe `.fx-days`)\n- `--fx-card` : couleur des palettes',
     'Lancements de produit, soldes, événements à venir.',
     'Les comptes à rebours artificiels destinés à presser l\'utilisateur.',
     '<div data-fx="flip-clock" data-fx-to="2026-12-31T23:59:59"></div>',

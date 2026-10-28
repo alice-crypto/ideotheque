@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halo — ma concentration</title>
+  <meta name="description" content="Exemple Idéothèque : tableau de bord d'une application de musique de concentration fictive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/fx.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="exemples.css">
+  <style>
+    :root {
+      --bg: #fff5f0; --panel: #fffbf8; --ink: #33201f; --soft: #957973; --line: #f5e1d8; --accent: #ff8f73; --hover: #ff8f7314;
+      --seg: #ffe8df; --avatar: linear-gradient(135deg, #ffb39f, #ffc9dd); --radius: 26px;
+      --fx-accent: #ff8f73; --fx-accent-2: #ffb5c8; --fx-ink: var(--ink); --fx-dark: var(--panel);
+      --fx-b1: #ffb39f; --fx-b2: #ffd0e0;
+    }
+    body { font-family: Sora, system-ui, sans-serif; font-weight: 300; }
+    .it { font-family: Newsreader, Georgia, serif; font-style: italic; }
+    .side .brand i { width: 26px; height: 26px; border-radius: 50%; border: 6px solid var(--accent); }
+    .side nav a { font-size: 18px; }
+    .topbar h1 { font-weight: 300; letter-spacing: -.04em; }
+    .player { --span: 7; position: relative; overflow: hidden; min-height: 300px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; color: var(--ink); }
+    .player h2 { font-size: clamp(30px, 3.4vw, 46px); font-weight: 300; letter-spacing: -.04em; line-height: 1.05; }
+    .player .ctrl { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .play { width: 58px; height: 58px; border-radius: 50%; border: 0; background: var(--ink); color: var(--panel); font-size: 20px; cursor: pointer; }
+    .bar { height: 5px; border-radius: 3px; background: #ffffff99; overflow: hidden; flex: 1; min-width: 120px; }
+    .bar i { display: block; height: 100%; width: 38%; background: var(--ink); border-radius: 3px; }
+    .timer { --span: 5; display: grid; place-items: center; text-align: center; gap: 10px; }
+    .timer [data-fx="progress-ring"] { --fx-size: 170px; }
+    .k { --span: 3; --span-md: 6; }
+    .k .val { font-weight: 300; }
+    .week { --span: 7; }
+    .week [data-fx="bars-grow"] { --fx-height: 190px; --fx-bar: #ffc4b3; --fx-bar-2: #ff8f73; margin-top: 24px; }
+    .moods { --span: 5; }
+    .moods [data-fx="donut"] { --fx-size: 150px; display: grid; margin: 0 auto 16px; }
+    .feed { --span: 4; }
+    .feed [data-fx="marquee-vertical"] { height: 290px; }
+    .feed .msg { padding: 12px 14px; border-radius: 16px; background: #fff0ea; font-size: 14px; }
+    .feed .msg b { font-weight: 600; }
+    .tracks { --span: 5; }
+    .tracks .cover { width: 44px; height: 44px; border-radius: 14px; flex: none; }
+    .share { --span: 3; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; background: #ffe8df; }
+    .share code { display: block; padding: 10px 12px; border-radius: 12px; background: var(--panel); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .compose { display: inline-flex; align-items: center; gap: 10px; color: var(--soft); font-size: 13px; }
+    .compose [data-fx="typing-dots"] { --fx-bubble: #ffffffaa; padding: 8px 12px; }
+  </style>
+</head>
+<body>
+  <div class="app slim">
+    <aside class="side">
+      <a class="brand" href="halo.html" data-fx="arc-rise" aria-label="Halo, accueil"><i></i></a>
+      <nav data-fx="hover-pill">
+        <a class="on" href="#" data-fx="tooltip-pop" data-fx-tip="Accueil"><span class="ic">◎</span><span class="tx">Accueil</span></a>
+        <a href="#" data-fx="tooltip-pop" data-fx-tip="Ambiances"><span class="ic">♫</span><span class="tx">Ambiances</span></a>
+        <a href="#" data-fx="tooltip-pop" data-fx-tip="Statistiques"><span class="ic">▤</span><span class="tx">Statistiques</span></a>
+        <a href="#" data-fx="tooltip-pop" data-fx-tip="Réglages"><span class="ic">⚙</span><span class="tx">Réglages</span></a>
+      </nav>
+      <div class="foot"><button class="avatar" aria-label="Compte">C</button></div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1>Belle journée, <span class="it">Camille</span>.</h1>
+          <div class="sub">Votre meilleure heure aujourd'hui : 10 h – 11 h 30</div>
+        </div>
+        <div class="tools">
+          <span data-fx="live-dot" style="color:var(--accent);font-size:11px">12 408 en séance</span>
+          <div class="seg" data-fx="tab-slider" role="tablist"><button role="tab" aria-selected="true">Semaine</button><button role="tab">Mois</button></div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <section class="card player" data-fx="blob-bg" style="background:#ffeae2">
+          <div class="compose"><span data-fx="typing-dots"><i></i><i></i><i></i></span>Halo compose la suite…</div>
+          <div>
+            <span class="muted">En cours · ambiance Braise</span>
+            <h2>Mémoire de fin d'études, <span class="it">chapitre 3</span></h2>
+          </div>
+          <div class="ctrl">
+            <button class="play" data-fx="press-squash" aria-label="Pause">❚❚</button>
+            <div class="bar"><i></i></div>
+            <span class="muted">18:12 / 50:00</span>
+          </div>
+        </section>
+
+        <section class="card timer" data-fx="fade-up">
+          <span class="muted">Objectif du jour</span>
+          <div data-fx="progress-ring" data-fx-value="64"></div>
+          <span>2 h 34 sur 4 h</span>
+        </section>
+
+        <section class="card kpi k" data-fx="fade-up"><span class="muted">Cette semaine</span><div class="val"><span data-fx="count-up" data-fx-to="17">17</span> h</div><span class="delta">+3 h</span></section>
+        <section class="card kpi k" data-fx="fade-up" style="--fx-delay:60ms"><span class="muted">Séances</span><div class="val"><span data-fx="count-up" data-fx-to="23">23</span></div><span class="delta">+5</span></section>
+        <section class="card kpi k" data-fx="fade-up" style="--fx-delay:120ms"><span class="muted">Plus longue</span><div class="val"><span data-fx="count-up" data-fx-to="94">94</span> min</div><span class="delta">record</span></section>
+        <section class="card kpi k" data-fx="fade-up" style="--fx-delay:180ms"><span class="muted">Série</span><div class="val"><span data-fx="count-up" data-fx-to="12">12</span> jours</div><span class="delta">🔥</span></section>
+
+        <section class="card week" data-fx="fade-up">
+          <div class="head"><h2>Heures de concentration</h2><span class="muted">en minutes</span></div>
+          <div data-fx="bars-grow"><div data-fx-value="45"></div><div data-fx-value="80"></div><div data-fx-value="62"></div><div data-fx-value="95"></div><div data-fx-value="70"></div><div data-fx-value="30"></div><div data-fx-value="20"></div></div>
+          <div class="axis"><span>lun.</span><span>mar.</span><span>mer.</span><span>jeu.</span><span>ven.</span><span>sam.</span><span>dim.</span></div>
+        </section>
+
+        <section class="card moods" data-fx="fade-up">
+          <div class="head"><h2>Vos ambiances</h2></div>
+          <div data-fx="donut" data-fx-values="41,24,18,17" data-fx-colors="#ff8f73,#ffc56e,#f6a5c0,#bba8f5">17 h</div>
+          <div class="legend"><span><i style="background:#ff8f73"></i>Braise</span><span><i style="background:#ffc56e"></i>Midi</span><span><i style="background:#f6a5c0"></i>Pétale</span><span><i style="background:#bba8f5"></i>Lilas</span></div>
+        </section>
+
+        <section class="card feed" data-fx="fade-up">
+          <div class="head"><h2>La salle d'étude</h2><span class="muted">en direct</span></div>
+          <div data-fx="marquee-vertical" data-fx-speed="22s">
+            <div class="msg"><b>Noé</b> a fini 2 h de code 🎉</div>
+            <div class="msg"><b>Lina</b> révise son partiel de droit</div>
+            <div class="msg"><b>Hugo</b> a lancé l'ambiance Lilas</div>
+            <div class="msg"><b>Sarah</b> a écrit 1 200 mots</div>
+            <div class="msg"><b>Yanis</b> tient une série de 30 jours</div>
+          </div>
+        </section>
+
+        <section class="card tracks" data-fx="fade-up">
+          <div class="head"><h2>Vos morceaux favoris</h2></div>
+          <ul class="list">
+            <li><span class="cover" style="background:linear-gradient(135deg,#ffd4c4,#ff9f86)"></span><span class="grow"><b>Braise n° 7</b><small>lo-fi chaud · 72 bpm</small></span><button data-fx="heart-like" aria-label="Favori"></button></li>
+            <li><span class="cover" style="background:linear-gradient(135deg,#ffe7b8,#ffc56e)"></span><span class="grow"><b>Midi, fenêtre ouverte</b><small>piano · 84 bpm</small></span><button data-fx="heart-like" aria-label="Favori"></button></li>
+            <li><span class="cover" style="background:linear-gradient(135deg,#e7defd,#bba8f5)"></span><span class="grow"><b>Lilas profond</b><small>nappes · 54 bpm</small></span><button data-fx="heart-like" aria-label="Favori"></button></li>
+          </ul>
+        </section>
+
+        <section class="card share" data-fx="fade-up">
+          <div><h2>Inviter un ami</h2><p class="muted" style="margin:6px 0 0">Un mois offert pour chacun.</p></div>
+          <code>halo.fm/i/camille-r</code>
+          <button class="btn" data-fx="copy-morph" data-fx-copy="halo.fm/i/camille-r" style="justify-content:center">Copier le lien</button>
+        </section>
+      </div>
+    </main>
+  </div>
+  <a class="ex-back" href="index.html" data-fx="arc-rise">← Exemples</a>
+
+  <script src="../dist/fx.js"></script>
+</body>
+</html>

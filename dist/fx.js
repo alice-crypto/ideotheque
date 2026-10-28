@@ -2591,11 +2591,16 @@
       else { var d = new Date(); secs = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds(); }
       if (secs === el._fxLast) return;
       el._fxLast = secs;
-      var h = Math.floor(secs / 3600) % 100;
-      var m = Math.floor(secs / 60) % 60;
-      var s = secs % 60;
-      var str = String(h).padStart(2, '0') + String(m).padStart(2, '0') + String(s).padStart(2, '0');
-      el.setAttribute('aria-label', str.slice(0, 2) + ':' + str.slice(2, 4) + ':' + str.slice(4));
+      // Au-delà de 99 heures, l'affichage passe en jours : heures : minutes
+      var long = secs >= 360000;
+      var a = long ? Math.min(99, Math.floor(secs / 86400)) : Math.floor(secs / 3600);
+      var b = long ? Math.floor(secs / 3600) % 24 : Math.floor(secs / 60) % 60;
+      var c = long ? Math.floor(secs / 60) % 60 : secs % 60;
+      var str = String(a).padStart(2, '0') + String(b).padStart(2, '0') + String(c).padStart(2, '0');
+      el.classList.toggle('fx-days', long);
+      el.setAttribute('aria-label', long
+        ? a + ' jours ' + b + ' heures ' + c + ' minutes'
+        : str.slice(0, 2) + ':' + str.slice(2, 4) + ':' + str.slice(4));
       el._fxDigits.forEach(function (dg, i) {
         if (dg.textContent === str[i]) return;
         dg.textContent = str[i];

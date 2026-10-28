@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maison Ocre — l'atelier</title>
+  <meta name="description" content="Exemple Idéothèque : tableau de bord d'un atelier de céramique fictif.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/fx.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="exemples.css">
+  <style>
+    :root {
+      --bg: #f6eee4; --panel: #fdf9f4; --ink: #3b2a20; --soft: #8f786a; --line: #eadccd; --accent: #c8693f; --hover: #c8693f12;
+      --side: #3b2a20; --seg: #efe2d4; --avatar: #8aa38f;
+      --fx-accent: #c8693f; --fx-accent-2: #8aa38f; --fx-ink: var(--ink); --fx-dark: var(--panel);
+    }
+    body { font-family: Manrope, system-ui, sans-serif; }
+    .serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }
+    .side { color: #f6eee4; border-right: 0; --fx-pill: #ffffff14; }
+    .side .brand { font: 400 26px "Instrument Serif", serif; }
+    .side .brand em { color: #e8a87c; }
+    .side nav a { color: #cdb9a8; }
+    .side nav a.on { background: #ffffff14; color: #fff; box-shadow: none; }
+    .side .foot { background: #4a372c; border-color: #5a4537; color: #f6eee4; }
+    .topbar h1 { font: 400 clamp(32px, 3.6vw, 48px)/1 "Instrument Serif", serif; }
+    .k { --span: 3; --span-md: 6; }
+    .k .val { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 42px; }
+    .sales { --span: 8; }
+    .split { --span: 4; display: flex; flex-direction: column; }
+    .split [data-fx="donut"] { --fx-size: 160px; margin: 4px auto 18px; display: grid; }
+    .orders { --span: 8; }
+    .kiln { --span: 4; position: relative; overflow: hidden; background: #fbe9dc; }
+    .kiln [data-fx="progress-ring"] { --fx-size: 140px; --fx-ring-color: #c8693f; --fx-track: #f1d2bd; }
+    .kiln .center { display: grid; place-items: center; gap: 10px; text-align: center; margin: 10px 0; }
+    .stock { --span: 6; }
+    .bars { --span: 6; }
+    .bars [data-fx="bars-grow"] { --fx-height: 170px; --fx-bar: #e8a87c; --fx-bar-2: #c8693f; margin-top: 26px; }
+    .thumb { width: 44px; height: 44px; border-radius: 12px; object-fit: cover; flex: none; }
+    .st-ok { background: #e6efe7; color: #4c6e55; }
+    .st-wait { background: #fbeedd; color: #9a6a2b; }
+    .st-ship { background: #ece6f6; color: #6a5797; }
+    .meter { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; width: 110px; }
+    .meter i { display: block; height: 100%; border-radius: 3px; background: var(--accent); }
+    #commande .panneau { background: var(--panel); padding: 28px; display: flex; flex-direction: column; gap: 16px; overflow: auto; }
+    #commande h3 { font: 400 34px "Instrument Serif", serif; margin: 0; }
+    .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .steps li { display: flex; align-items: center; gap: 12px; }
+    .steps [data-fx="check-draw"] { --fx-size: 26px; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <a class="brand" href="ocre.html" data-fx="curtain-close">Maison <em>Ocre</em></a>
+      <nav data-fx="hover-pill">
+        <a class="on" href="#"><span class="ic">◧</span><span class="tx">Vue d'ensemble</span></a>
+        <a href="#"><span class="ic">⌁</span><span class="tx">Commandes</span></a>
+        <a href="#"><span class="ic">◍</span><span class="tx">Pièces</span></a>
+        <a href="#"><span class="ic">♨</span><span class="tx">Fours</span></a>
+        <a href="#"><span class="ic">✉</span><span class="tx">Clients</span></a>
+      </nav>
+      <div class="foot card" style="padding:16px">
+        <span style="font-size:13px;opacity:.7">Prochaine fournée</span>
+        <div class="serif" style="font-size:26px;margin:4px 0">Samedi, 6 h</div>
+        <span style="font-size:13px;opacity:.7">38 pièces au séchage</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1 data-fx="block-reveal"><span>Bonjour, Agathe</span></h1>
+          <div class="sub">Voici l'atelier ce mois-ci · octobre 2026</div>
+        </div>
+        <div class="tools">
+          <div class="seg" data-fx="tab-slider" role="tablist"><button role="tab">7 j</button><button role="tab" aria-selected="true">30 j</button><button role="tab">12 mois</button></div>
+          <button class="icon-btn" aria-label="Notifications" onclick="FX.trigger(document.getElementById('bell'))">🔔<span class="dot" id="bell" data-fx="badge-bump">4</span></button>
+          <div data-fx="dropdown">
+            <button class="avatar" aria-label="Compte">A</button>
+            <div class="menu-card"><a href="#">Profil de l'atelier</a><a href="#">Paiements</a><a href="ocre.html">Voir la boutique</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <section class="card kpi k" data-fx="fade-up"><span class="muted">Chiffre d'affaires</span><div class="val"><span data-fx="count-up" data-fx-to="18640">18640</span> €</div><span class="delta">+12 %</span></section>
+        <section class="card kpi k"><span class="muted">Commandes</span><div class="val"><span data-fx="count-up" data-fx-to="214">214</span></div><span class="delta">+31</span></section>
+        <section class="card kpi k"><span class="muted">Panier moyen</span><div class="val"><span data-fx="count-up" data-fx-to="87">87</span> €</div><span class="delta down">−3 €</span></section>
+        <section class="card kpi k"><span class="muted">Pièces en stock</span><div class="val"><span data-fx="odometer">1 096</span></div><span class="delta">sur 1 280</span></section>
+
+        <section class="card sales" data-fx="fade-up">
+          <div class="head"><h2>Ventes, en euros par semaine</h2><span class="legend"><span><i style="background:var(--accent)"></i>2026</span></span></div>
+          <svg data-fx="line-chart" data-fx-values="2900,3400,3100,4200,3900,4700,4400,5200,6100" aria-label="Ventes hebdomadaires"></svg>
+          <div class="axis"><span>S35</span><span>S36</span><span>S37</span><span>S38</span><span>S39</span><span>S40</span><span>S41</span><span>S42</span><span>S43</span></div>
+        </section>
+
+        <section class="card split" data-fx="fade-up">
+          <div class="head"><h2>Par collection</h2></div>
+          <div data-fx="donut" data-fx-values="38,27,21,14" data-fx-colors="#c8693f,#e8a87c,#8aa38f,#c9a3c4">Ventes</div>
+          <div class="legend"><span><i style="background:#c8693f"></i>Table d'été</span><span><i style="background:#e8a87c"></i>Sable</span><span><i style="background:#8aa38f"></i>Sauge</span><span><i style="background:#c9a3c4"></i>Galets</span></div>
+        </section>
+
+        <section class="card orders" data-fx="fade-up">
+          <div class="head"><h2>Dernières commandes</h2><span class="muted">Cliquez une ligne pour l'ouvrir</span></div>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr><th>Pièce</th><th>Client</th><th>Montant</th><th>État</th></tr></thead>
+              <tbody data-fx="rise-stagger">
+                <tr data-fx-toggle="#commande"><td><div style="display:flex;gap:12px;align-items:center"><img class="thumb" src="img/vase-col.svg" alt=""><span>Col sauge</span></div></td><td>Jeanne M.</td><td>89 €</td><td><span class="status st-wait">À emballer</span></td></tr>
+                <tr data-fx-toggle="#commande"><td><div style="display:flex;gap:12px;align-items:center"><img class="thumb" src="img/assiettes.svg" alt=""><span>Assiettes ×4</span></div></td><td>Studio Lin</td><td>240 €</td><td><span class="status st-ship">Expédiée</span></td></tr>
+                <tr data-fx-toggle="#commande"><td><div style="display:flex;gap:12px;align-items:center"><img class="thumb" src="img/bol-sable.svg" alt=""><span>Bol sable ×2</span></div></td><td>Karim B.</td><td>68 €</td><td><span class="status st-ok">Livrée</span></td></tr>
+                <tr data-fx-toggle="#commande"><td><div style="display:flex;gap:12px;align-items:center"><img class="thumb" src="img/vase-galet.svg" alt=""><span>Galet mauve</span></div></td><td>Ophélie T.</td><td>68 €</td><td><span class="status st-wait">À emballer</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card kiln" data-fx="fade-up">
+          <div class="head"><h2>Four n° 2</h2><span data-fx="live-dot" style="color:var(--accent);font-size:11px">En cuisson</span></div>
+          <div class="center">
+            <div data-fx="progress-ring" data-fx-value="74"></div>
+            <div><b class="serif" style="font-size:30px">1 128 °C</b><br><span class="muted">objectif 1 250 °C · fin vers 17 h 40</span></div>
+          </div>
+          <button class="btn soft" style="width:100%;justify-content:center" data-fx-toggle="#notifs" data-fx-message="Vous serez prévenue à la fin de la cuisson.">Me prévenir à la fin</button>
+        </section>
+
+        <section class="card stock" data-fx="fade-up">
+          <div class="head"><h2>Stock à surveiller</h2></div>
+          <ul class="list">
+            <li><img class="thumb" src="img/vase-amphore.svg" alt=""><span class="grow"><b>Amphore</b><small>3 pièces restantes</small></span><span class="meter"><i style="width:12%"></i></span></li>
+            <li><img class="thumb" src="img/vase-galet.svg" alt=""><span class="grow"><b>Galet mauve</b><small>7 pièces restantes</small></span><span class="meter"><i style="width:28%"></i></span></li>
+            <li><img class="thumb" src="img/bol-sable.svg" alt=""><span class="grow"><b>Bol sable</b><small>24 pièces restantes</small></span><span class="meter"><i style="width:70%;background:#8aa38f"></i></span></li>
+          </ul>
+        </section>
+
+        <section class="card bars" data-fx="fade-up">
+          <div class="head"><h2>Remplissage des fournées</h2><span class="muted">en %, par mois</span></div>
+          <div data-fx="bars-grow"><div data-fx-value="62"></div><div data-fx-value="70"></div><div data-fx-value="78"></div><div data-fx-value="74"></div><div data-fx-value="88"></div><div data-fx-value="96"></div></div>
+          <div class="axis"><span>mai</span><span>juin</span><span>juil.</span><span>août</span><span>sept.</span><span>oct.</span></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <aside id="commande" data-fx="drawer" aria-label="Détail de la commande">
+    <div class="panneau">
+      <div style="display:flex;justify-content:space-between;align-items:center"><h3>Commande n° 2041</h3><button class="btn soft" data-fx-close>Fermer</button></div>
+      <img src="img/vase-col.svg" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px">
+      <div><b>Col sauge</b> · 89 €<br><span class="muted">Jeanne M. · Valence · payée le 27 octobre</span></div>
+      <ul class="steps">
+        <li><span data-fx="check-draw"></span>Paiement reçu</li>
+        <li><span data-fx="check-draw" style="--fx-delay:300ms"></span>Pièce choisie sur l'étagère</li>
+        <li><span style="width:26px;height:26px;border-radius:50%;border:2px dashed var(--line)"></span>Emballage</li>
+        <li><span style="width:26px;height:26px;border-radius:50%;border:2px dashed var(--line)"></span>Expédition</li>
+      </ul>
+      <button class="btn" data-fx="confetti" style="justify-content:center;margin-top:auto">Marquer comme emballée</button>
+    </div>
+  </aside>
+  <div id="notifs" data-fx="toast"></div>
+  <a class="ex-back" href="index.html" data-fx="curtain-close">← Exemples</a>
+
+  <script src="../dist/fx.js"></script>
+</body>
+</html>

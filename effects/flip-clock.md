@@ -14,7 +14,7 @@ Mécanique, rétro, attente d'un événement.
 ```
 
 ## Paramètres
-- `data-fx-to` : date cible (format ISO) pour un compte à rebours ; sinon l'heure actuelle
+- `data-fx-to` : date cible (format ISO) pour un compte à rebours ; sinon l'heure actuelle. Au-delà de 99 heures, l'affichage passe en jours : heures : minutes (classe `.fx-days`)
 - `--fx-card` : couleur des palettes
 
 ## Quand l'utiliser

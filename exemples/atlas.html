@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atlas — voyages lents en train</title>
+  <meta name="description" content="Exemple Idéothèque : landing page d'une agence de voyages lents fictive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/fx.css">
+  <link rel="stylesheet" href="exemples.css">
+  <style>
+    :root {
+      --bg: #f5f2ec; --paper: #fbf9f5; --ink: #1d2a3a; --soft: #6c7684; --line: #e4ded3;
+      --sky: #7fa6d1; --sand: #e9c9a1;
+      --fx-accent: var(--sky); --fx-accent-2: var(--sand); --fx-ink: var(--ink); --fx-dark: var(--paper);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 300 17px/1.65 "Inter Tight", system-ui, sans-serif; }
+    h1, h2, h3 { font-family: Cormorant, Georgia, serif; font-weight: 400; line-height: .95; margin: 0; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1220px, 100% - 32px); margin-inline: auto; }
+    .label { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); font-weight: 500; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 400 15px "Inter Tight"; border: 0; cursor: pointer; }
+    .btn.light { background: var(--paper); color: var(--ink); }
+
+    header[data-fx] { position: fixed; inset: 0 0 auto; z-index: 40; color: var(--paper); --fx-header-pad: 6px; --fx-header-pad-small: 0px; --fx-header-bg: #f5f2ece8; transition: padding .4s, background-color .4s, color .3s; }
+    header .wrap { display: flex; justify-content: space-between; align-items: center; height: 74px; }
+    header .logo { font: 500 26px Cormorant, serif; letter-spacing: .08em; }
+    header nav { display: flex; gap: 26px; font-size: 14px; }
+    header.fx-small { backdrop-filter: blur(10px); color: var(--ink); box-shadow: 0 10px 30px -24px #1d2a3a80 !important; }
+    header.fx-small .btn.light { background: var(--ink); color: var(--paper); }
+    header.fx-small > .wrap { transform: none; height: 60px; }
+    header .wrap { transition: height .4s; }
+
+    .hero { position: relative; height: 100vh; color: var(--paper); display: grid; align-items: end; }
+    .hero figure { position: absolute; inset: 0; margin: 0; z-index: -1; }
+    .hero figure img { width: 100%; height: 100%; object-fit: cover; }
+    .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(transparent 40%, #1d2a3a99); }
+    .hero .wrap { padding-bottom: 70px; display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; }
+    .hero h1 { font-size: clamp(60px, 11vw, 168px); }
+    .hero h1 em { font-style: italic; }
+    .hero p { max-width: 340px; margin: 0 0 16px; }
+
+    .dots { position: fixed; right: 18px; top: 50%; translate: 0 -50%; z-index: 30; }
+
+    section { padding: 130px 0; }
+    h2 { font-size: clamp(46px, 6.5vw, 96px); }
+    h2 em { font-style: italic; color: var(--sky); }
+    .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .intro p { font-size: 20px; color: var(--soft); }
+
+    .expand { height: 120vh; margin: 0; }
+    .expand img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .routes .head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+    .routes [data-fx="drag-gallery"] { gap: 20px; }
+    .route { width: min(420px, 80vw); flex: none; }
+    .route figure { margin: 0; border-radius: 18px; overflow: hidden; aspect-ratio: 4/5; }
+    .route img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+    .route h3 { font-size: 38px; margin-top: 16px; }
+    .route p { margin: 4px 0 0; color: var(--soft); font-size: 15px; }
+
+    .journal { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+    .journal figure { margin: 0; border-radius: 200px 200px 18px 18px; overflow: hidden; aspect-ratio: 3/4; }
+    .journal img { width: 100%; height: 100%; object-fit: cover; }
+    .journal ol { list-style: none; padding: 0; margin: 40px 0 0; }
+    .journal li { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .journal li b { font: 400 30px Cormorant, serif; }
+
+    .voices { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .voices [data-fx="marquee-vertical"] { height: 480px; }
+    .voices blockquote { margin: 0; padding: 24px; border-radius: 18px; background: var(--paper); border: 1px solid var(--line); font: 400 23px/1.3 Cormorant, serif; }
+    .voices cite { display: block; margin-top: 10px; font: 400 13px "Inter Tight"; color: var(--soft); font-style: normal; }
+
+    .cta-final { position: relative; margin: 0 16px 16px; border-radius: 30px; overflow: hidden; color: var(--paper); text-align: center; padding: 170px 20px; }
+    .cta-final img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(.75); }
+    .cta-final h2 { font-size: clamp(54px, 9vw, 140px); }
+
+    #reserver .fenetre { background: var(--paper); border-radius: 22px; padding: 34px; width: min(460px, 92vw); display: grid; gap: 14px; }
+    #reserver h3 { font-size: 40px; }
+    #reserver label { display: grid; gap: 6px; font-size: 13px; color: var(--soft); }
+    #reserver input, #reserver select { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: #fff; font: inherit; color: var(--ink); }
+    footer { padding: 30px 0 70px; color: var(--soft); font-size: 13px; }
+
+    @media (max-width: 860px) {
+      header nav { display: none; }
+      .intro, .journal, .voices { grid-template-columns: 1fr; }
+      .dots { display: none; }
+      .expand { height: 70vh; }
+    }
+  </style>
+</head>
+<body>
+  <header data-fx="header-shrink">
+    <div class="wrap">
+      <a class="logo" href="#">ATLAS</a>
+      <nav><a href="#routes" data-fx="slice-hover">Itinéraires</a><a href="#carnet" data-fx="slice-hover">Carnet</a><a href="#voix" data-fx="slice-hover">Voyageurs</a></nav>
+      <a class="btn light" href="dashboard-atlas.html" data-fx="title-card" data-fx-title="Mon voyage" style="padding:10px 20px">Mon voyage</a>
+    </div>
+  </header>
+
+  <nav class="dots" data-fx="dot-nav" aria-label="Sections">
+    <a href="#haut">Départ</a><a href="#lenteur">Lenteur</a><a href="#routes">Itinéraires</a><a href="#carnet">Carnet</a><a href="#voix">Voyageurs</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="haut" data-fx="hero-shrink" style="padding:0">
+      <figure data-fx="ken-burns"><img src="img/lac.svg" alt="Lac au lever du soleil"></figure>
+      <div class="wrap">
+        <h1><span data-fx="line-mask" style="display:block">Partir</span><em data-fx="line-mask" style="display:block;--fx-delay:140ms">lentement.</em></h1>
+        <div>
+          <p data-fx="fade-up" style="--fx-delay:600ms">Des voyages en train de nuit, des haltes de trois jours, des carnets écrits à la main. L'Europe, à la vitesse d'une conversation.</p>
+          <button class="btn light" data-fx-toggle="#reserver" data-fx="magnetic">Réserver un départ</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="lenteur">
+      <div class="wrap intro">
+        <h2 data-fx="fade-up">Le trajet est <em>la destination</em>.</h2>
+        <div>
+          <span class="label" data-fx="edge-label">Manifeste</span>
+          <p data-fx="scroll-ink" style="margin-top:20px">Nous croyons qu'un voyage commence au moment où l'on regarde par la fenêtre. Pas d'avion, pas de course : des wagons-lits, des petits hôtels, et le temps de se perdre dans une ville avant d'en voir une autre.</p>
+        </div>
+      </div>
+    </section>
+
+    <figure class="expand" data-fx="scroll-expand"><img src="img/collines.svg" alt="Collines au coucher du soleil"></figure>
+
+    <section class="routes" id="routes">
+      <div class="wrap head">
+        <div><span class="label">Itinéraires 2027</span><h2 data-fx="fade-up" style="margin-top:14px">Glissez pour <em>choisir</em>.</h2></div>
+        <p style="max-width:320px;color:var(--soft)">Chaque itinéraire est accompagné par un guide qui connaît les couchettes par leur prénom.</p>
+      </div>
+      <div class="wrap" style="width:auto;margin-left:max(16px, (100% - 1220px) / 2)">
+        <div data-fx="drag-gallery">
+          <article class="route"><figure><img src="img/lac.svg" alt=""></figure><h3>Les lacs alpins</h3><p>Paris → Annecy → Lucerne · 9 jours</p></article>
+          <article class="route"><figure><img src="img/cote.svg" alt=""></figure><h3>La côte ligure</h3><p>Nice → Gênes → Cinque Terre · 8 jours</p></article>
+          <article class="route"><figure><img src="img/foret.svg" alt=""></figure><h3>Forêts de Bohême</h3><p>Munich → Prague · 10 jours</p></article>
+          <article class="route"><figure><img src="img/collines.svg" alt=""></figure><h3>Toscane douce</h3><p>Turin → Sienne → Florence · 11 jours</p></article>
+          <article class="route"><figure><img src="../assets/dune.svg" alt=""></figure><h3>Andalousie</h3><p>Barcelone → Séville · 12 jours</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="carnet" style="background:var(--paper)">
+      <div class="wrap journal">
+        <figure data-fx="iris-open"><img src="img/cote.svg" alt="Côte méditerranéenne"></figure>
+        <div>
+          <span class="label">Un carnet de voyage</span>
+          <h2 data-fx="fade-up" style="margin-top:14px">La côte ligure, <em>jour par jour</em>.</h2>
+          <ol data-fx="rise-stagger">
+            <li><b>J1</b><span>Train de nuit depuis Paris. Dîner au wagon-restaurant, réveil face à la mer.</span></li>
+            <li><b>J3</b><span>Gênes, ses ruelles et une leçon de focaccia chez Lucia.</span></li>
+            <li><b>J5</b><span>Sentier côtier entre deux villages, baignade de fin d'après-midi.</span></li>
+            <li><b>J8</b><span>Retour par la vallée du Rhône, carnets échangés entre voyageurs.</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="voix">
+      <div class="wrap voices">
+        <div>
+          <span class="label">Voyageurs</span>
+          <h2 data-fx="fade-up" style="margin-top:14px">Ils sont <em>revenus</em> changés.</h2>
+          <p style="color:var(--soft);max-width:420px">4,9 sur 5 sur 2 300 voyages. Survolez la colonne pour la mettre en pause.</p>
+        </div>
+        <div data-fx="marquee-vertical" data-fx-speed="26s">
+          <blockquote>« J'ai lu trois livres et parlé à plus d'inconnus qu'en dix ans. »<cite>Margaux, Toscane douce</cite></blockquote>
+          <blockquote>« Le guide connaissait un café ouvert à 6 h à Lucerne. Inoubliable. »<cite>Pierre, Lacs alpins</cite></blockquote>
+          <blockquote>« Les enfants n'ont pas demandé d'écran une seule fois. »<cite>Famille Nguyen, Bohême</cite></blockquote>
+          <blockquote>« On a raté une correspondance. C'était le meilleur jour du voyage. »<cite>Aïcha, Andalousie</cite></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-final">
+      <img data-fx="parallax" style="--fx-speed:-100px" src="img/foret.svg" alt="">
+      <span class="label" style="color:var(--paper)">Départs de mars à octobre</span>
+      <h2 data-fx="track-in" style="margin:18px 0 34px">Bon voyage.</h2>
+      <button class="btn light" data-fx-toggle="#reserver">Réserver un départ</button>
+    </section>
+  </main>
+
+  <div id="reserver" data-fx="modal-zoom" role="dialog" aria-modal="true" aria-label="Réserver un départ">
+    <form class="fenetre" onsubmit="event.preventDefault()">
+      <h3>Réserver</h3>
+      <label>Itinéraire<select><option>Les lacs alpins</option><option>La côte ligure</option><option>Forêts de Bohême</option><option>Toscane douce</option><option>Andalousie</option></select></label>
+      <label>Voyageurs<input type="number" min="1" value="2"></label>
+      <label>Mois de départ<input type="month" value="2027-05"></label>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px">
+        <button type="button" class="btn light" style="box-shadow:inset 0 0 0 1px var(--line)" data-fx-close>Annuler</button>
+        <button type="button" class="btn" data-fx="confetti">Demander un devis</button>
+      </div>
+    </form>
+  </div>
+
+  <footer class="wrap">Atlas — agence fictive, créée pour Idéothèque. Effets : hero-shrink, ken-burns, dot-nav, scroll-expand, drag-gallery, iris-open, marquee-vertical, modal-zoom, title-card…</footer>
+  <a class="ex-back" href="index.html" data-fx="iris">← Exemples</a>
+
+  <script src="../dist/fx.js"></script>
+</body>
+</html>

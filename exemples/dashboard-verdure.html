@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verdure — ma serre</title>
+  <meta name="description" content="Exemple Idéothèque : tableau de bord de capteurs de plantes fictif.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/fx.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="exemples.css">
+  <style>
+    :root {
+      --bg: #eef3ea; --panel: #f9fbf7; --ink: #1f3326; --soft: #637a69; --line: #dbe6d6; --accent: #5d8c6c; --hover: #5d8c6c14;
+      --seg: #dfeada; --avatar: #f4b998;
+      --fx-accent: #5d8c6c; --fx-accent-2: #f4b998; --fx-ink: var(--ink); --fx-dark: var(--panel);
+    }
+    body { font-family: Outfit, system-ui, sans-serif; }
+    .serif { font-family: "Young Serif", Georgia, serif; font-weight: 400; }
+    .nav-top { position: sticky; top: 0; z-index: 30; background: #eef3eae6; backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .nav-top .in { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 66px; padding: 0 clamp(16px, 3vw, 40px); }
+    .nav-top nav { display: flex; gap: 4px; --fx-pill: #5d8c6c1c; }
+    .nav-top nav a { padding: 8px 14px; color: var(--soft); font-size: 14px; }
+    .nav-top nav a.on { color: var(--ink); font-weight: 500; }
+    .topbar h1 { font: 400 clamp(30px, 3.4vw, 44px)/1.05 "Young Serif", serif; }
+    .weather { --span: 5; background: linear-gradient(160deg, #dcefe0, #f9fbf7 70%); position: relative; overflow: hidden; }
+    .weather .temp { font: 400 72px/1 "Young Serif", serif; margin: 10px 0; }
+    .tanks { --span: 7; }
+    .tank-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .tank { text-align: center; }
+    .tank [data-fx="liquid-fill"] { height: 150px; border-radius: 22px 22px 30px 30px; background: #e7efe3; border: 1px solid var(--line); font-weight: 600; color: var(--ink); --fx-liquid: #9fcfb0; }
+    .tank small { color: var(--soft); display: block; margin-top: 8px; }
+    .zone { --span: 3; --span-md: 6; text-align: center; }
+    .zone [data-fx="progress-ring"] { --fx-size: 104px; margin: 6px auto 10px; display: grid; }
+    .temp-chart { --span: 8; }
+    .temp-chart [data-fx="line-chart"] { color: #e9946b; }
+    .water { --span: 4; }
+    .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+    .toggle-row:first-of-type { border-top: 0; }
+    .events { --span: 6; }
+    .tasks { --span: 6; }
+    .tasks li { cursor: pointer; }
+    .tasks .box { width: 26px; height: 26px; border-radius: 8px; border: 2px solid var(--line); flex: none; display: grid; place-items: center; }
+    .tasks .done .grow { text-decoration: line-through; color: var(--soft); }
+    .sync { display: inline-flex; align-items: center; gap: 10px; color: var(--soft); font-size: 13px; }
+    .sync [data-fx="orbit-loader"] { --fx-size: 18px; }
+    @media (max-width: 760px) { .nav-top nav[data-fx] { display: none; } }
+    ol[data-fx="timeline"] small { display: block; color: var(--soft); }
+  </style>
+</head>
+<body>
+  <div class="app top">
+    <header class="nav-top">
+      <div class="in">
+        <a class="serif" href="verdure.html" data-fx="tile-flip" style="font-size:22px">🌿 Verdure</a>
+        <nav data-fx="hover-pill"><a class="on" href="#">Ma serre</a><a href="#">Plantes</a><a href="#">Saisons</a><a href="#">Aide</a></nav>
+        <div class="tools">
+          <span class="sync" id="sync"><span data-fx="orbit-loader" role="status" aria-label="Synchronisation"></span>Synchronisation…</span>
+          <button class="avatar" aria-label="Compte">C</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1 data-fx="word-rise">Le balcon de Camille</h1>
+          <div class="sub">Lille · exposition sud-ouest · 14 plantes, 3 capteurs</div>
+        </div>
+        <div class="seg" data-fx="tab-slider" role="tablist"><button role="tab" aria-selected="true">Aujourd'hui</button><button role="tab">Semaine</button><button role="tab">Saison</button></div>
+      </div>
+
+      <div class="grid">
+        <section class="card weather" data-fx="fade-up">
+          <div class="head"><h2>Météo du balcon</h2><span data-fx="live-dot" style="color:var(--accent);font-size:11px">Capteur</span></div>
+          <div class="temp"><span data-fx="count-up" data-fx-to="17">17</span>°</div>
+          <div class="muted">Ensoleillé · 6 h de soleil prévues · pas de gel cette semaine</div>
+          <div class="legend" style="margin-top:18px"><span>💧 Humidité de l'air 64 %</span><span>🌬 Vent 12 km/h</span><span>☀️ UV 3</span></div>
+        </section>
+
+        <section class="card tanks" data-fx="fade-up">
+          <div class="head"><h2>Réservoirs d'arrosage</h2><span class="muted">remplis le 21 octobre</span></div>
+          <div class="tank-row">
+            <div class="tank"><div data-fx="liquid-fill" data-fx-value="78">78 %</div><small>Bac des aromatiques</small></div>
+            <div class="tank"><div data-fx="liquid-fill" data-fx-value="42" style="--fx-liquid:#f6cdb4">42 %</div><small>Jardinière fleurie</small></div>
+            <div class="tank"><div data-fx="liquid-fill" data-fx-value="18" style="--fx-liquid:#f2b0b0">18 %</div><small>Grand pot · à remplir</small></div>
+          </div>
+        </section>
+
+        <section class="card zone" data-fx="fade-up"><h2>Humidité du sol</h2><div data-fx="progress-ring" data-fx-value="68"></div><span class="muted">Aromatiques · idéal</span></section>
+        <section class="card zone" data-fx="fade-up" style="--fx-delay:80ms"><h2>Humidité du sol</h2><div data-fx="progress-ring" data-fx-value="47" style="--fx-ring-color:#e9b07c"></div><span class="muted">Jardinière · correct</span></section>
+        <section class="card zone" data-fx="fade-up" style="--fx-delay:160ms"><h2>Humidité du sol</h2><div data-fx="progress-ring" data-fx-value="22" style="--fx-ring-color:#e58f8f"></div><span class="muted">Grand pot · à arroser</span></section>
+        <section class="card zone" data-fx="fade-up" style="--fx-delay:240ms"><h2>Lumière reçue</h2><div data-fx="progress-ring" data-fx-value="83" style="--fx-ring-color:#d8b85a"></div><span class="muted">de l'objectif journalier</span></section>
+
+        <section class="card temp-chart" data-fx="fade-up">
+          <div class="head"><h2>Température aujourd'hui, en °C</h2><span class="muted">toutes les 3 heures</span></div>
+          <svg data-fx="line-chart" data-fx-values="9,8,11,15,18,17,13,11" aria-label="Température sur la journée"></svg>
+          <div class="axis"><span>0 h</span><span>3 h</span><span>6 h</span><span>9 h</span><span>12 h</span><span>15 h</span><span>18 h</span><span>21 h</span></div>
+        </section>
+
+        <section class="card water" data-fx="fade-up">
+          <div class="head"><h2>Arrosage automatique</h2></div>
+          <div class="toggle-row"><span>Bac des aromatiques</span><input type="checkbox" data-fx="switch-morph" checked aria-label="Arrosage des aromatiques"></div>
+          <div class="toggle-row"><span>Jardinière fleurie</span><input type="checkbox" data-fx="switch-morph" checked aria-label="Arrosage de la jardinière"></div>
+          <div class="toggle-row"><span>Grand pot</span><input type="checkbox" data-fx="switch-morph" aria-label="Arrosage du grand pot"></div>
+          <button class="btn" style="width:100%;justify-content:center;margin-top:12px" data-fx="ripple-click" data-fx-toggle="#notifs" data-fx-message="Arrosage lancé : 2 minutes, grand pot.">Arroser maintenant</button>
+        </section>
+
+        <section class="card events" data-fx="fade-up">
+          <div class="head"><h2>Journal du balcon</h2></div>
+          <ol class="feed-list" data-fx="rise-stagger">
+            <li><b>Le basilic a fleuri</b><small>Aujourd'hui, 9 h 12 · pincez les fleurs pour garder les feuilles</small></li>
+            <li><b>Arrosage automatique</b><small>Hier, 19 h · 1,2 L répartis sur 2 bacs</small></li>
+            <li><b>Coup de vent</b><small>Lundi · le capteur 2 a été déplacé de 4 cm</small></li>
+            <li><b>Visite de saison</b><small>12 octobre · 3 plantes remplacées par Léa</small></li>
+          </ol>
+        </section>
+
+        <section class="card tasks" data-fx="fade-up">
+          <div class="head"><h2>À faire cette semaine</h2><span class="muted" id="left">3 tâches</span></div>
+          <ul class="list" id="todo">
+            <li><span class="box"></span><span class="grow">Remplir le réservoir du grand pot</span><span class="status">Urgent</span></li>
+            <li><span class="box"></span><span class="grow">Tailler la lavande d'un tiers</span><span class="status">Mercredi</span></li>
+            <li><span class="box"></span><span class="grow">Rentrer le citronnier avant le 15 novembre</span><span class="status">Bientôt</span></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="notifs" data-fx="toast"></div>
+  <a class="ex-back" href="index.html" data-fx="pixel-wipe">← Exemples</a>
+
+  <script src="../dist/fx.js"></script>
+  <script>
+    // Fin de la synchronisation simulée
+    setTimeout(function () { document.getElementById('sync').innerHTML = '<span data-fx="check-draw" style="--fx-size:18px"></span>À jour'; FX.init(document.getElementById('sync')); }, 2200);
+    // Cocher une tâche : la coche se dessine
+    document.getElementById('todo').addEventListener('click', function (e) {
+      var li = e.target.closest('li');
+      if (!li || li.classList.contains('done')) return;
+      li.classList.add('done');
+      li.querySelector('.box').innerHTML = '<span data-fx="check-draw" style="--fx-size:20px"></span>';
+      FX.init(li);
+      var left = document.querySelectorAll('#todo li:not(.done)').length;
+      document.getElementById('left').textContent = left ? left + (left > 1 ? ' tâches' : ' tâche') : 'Tout est fait 🌱';
+    });
+  </script>
+</body>
+</html>

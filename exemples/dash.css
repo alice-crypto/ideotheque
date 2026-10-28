@@ -1,0 +1,95 @@
+/* Base commune des dashboards d'exemple.
+ * Chaque page définit ses couleurs (--bg, --panel, --ink, --soft, --line, --accent) et sa police.
+ */
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.5; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+
+.app { display: grid; grid-template-columns: 248px 1fr; min-height: 100vh; }
+.app.top { grid-template-columns: 1fr; }
+.app.slim { grid-template-columns: 84px 1fr; }
+
+/* Barre latérale */
+.side { position: sticky; top: 0; height: 100vh; padding: 24px 16px; display: flex; flex-direction: column; gap: 26px; border-right: 1px solid var(--line); background: var(--side, transparent); }
+.side .brand { display: flex; align-items: center; gap: 10px; padding: 0 10px; font-weight: 600; font-size: 18px; }
+.side nav { display: flex; flex-direction: column; gap: 2px; --fx-pill: var(--hover, rgba(0, 0, 0, .05)); }
+.side nav a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; color: var(--soft); }
+.side nav a.on { color: var(--ink); background: var(--panel); box-shadow: 0 1px 0 var(--line), 0 8px 20px -14px rgba(0, 0, 0, .25); }
+.side nav a .ic { width: 20px; text-align: center; }
+.side .foot { margin-top: auto; }
+.slim .side { align-items: center; padding-inline: 12px; }
+.slim .side nav a { justify-content: center; padding: 12px; }
+.slim .side nav a .tx { display: none; }
+
+/* Zone principale */
+.main { padding: 26px clamp(16px, 3vw, 40px) 60px; min-width: 0; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
+.topbar h1 { margin: 0; font-size: clamp(26px, 3vw, 36px); font-weight: 500; letter-spacing: -.02em; line-height: 1.1; }
+.topbar .sub { color: var(--soft); margin-top: 4px; }
+.tools { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.seg { padding: 4px; border-radius: 12px; background: var(--seg, rgba(0, 0, 0, .05)); --fx-indicator: var(--panel); --fx-indicator-ink: var(--ink); --fx-indicator-radius: 9px; }
+.seg button { border: 0; background: none; padding: 7px 14px; cursor: pointer; color: var(--soft); font-size: 14px; }
+
+.icon-btn { position: relative; width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel); display: grid; place-items: center; cursor: pointer; }
+.icon-btn .dot { position: absolute; top: -5px; right: -5px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--accent); color: #fff; font-size: 11px; display: grid; place-items: center; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--avatar, var(--accent)); color: #fff; display: grid; place-items: center; font-weight: 600; border: 0; cursor: pointer; }
+.menu-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 6px; min-width: 180px; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .3); right: 0; left: auto !important; }
+.menu-card a { display: block; padding: 9px 12px; border-radius: 9px; }
+.menu-card a:hover { background: var(--hover, rgba(0, 0, 0, .05)); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 12px; border: 0; background: var(--ink); color: var(--bg); cursor: pointer; font-weight: 500; }
+.btn.soft { background: var(--panel); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+
+/* Grille de cartes */
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.card { grid-column: span var(--span, 4); background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius, 20px); padding: 20px; min-width: 0; }
+.card h2 { margin: 0; font-size: 15px; font-weight: 500; }
+.card .head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; }
+.card .muted { color: var(--soft); font-size: 13px; }
+.kpi .val { font-size: 34px; font-weight: 500; letter-spacing: -.03em; line-height: 1.1; margin: 6px 0 4px; }
+.delta { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 500; background: var(--up-bg, #e3f4e8); color: var(--up, #2f7a4b); }
+.delta.down { background: var(--down-bg, #fbe6e3); color: var(--down, #b2483a); }
+
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); }
+.list li:first-child { border-top: 0; }
+.list .grow { flex: 1; min-width: 0; }
+.list small { color: var(--soft); display: block; }
+.status { padding: 3px 10px; border-radius: 999px; font-size: 12px; background: var(--hover, rgba(0, 0, 0, .05)); white-space: nowrap; }
+
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; font-weight: 500; color: var(--soft); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; padding: 0 10px 10px; }
+td { padding: 12px 10px; border-top: 1px solid var(--line); }
+tbody tr { cursor: pointer; transition: background .2s; }
+tbody tr:hover { background: var(--hover, rgba(0, 0, 0, .03)); }
+
+.axis { display: flex; justify-content: space-between; color: var(--soft); font-size: 12px; margin-top: 8px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--soft); }
+.legend i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 6px; }
+
+[data-fx="progress-ring"] { --fx-track: var(--line); }
+[data-fx="toast"] { --fx-toast-bg: var(--ink); --fx-toast-ink: var(--bg); }
+
+@media (max-width: 1100px) {
+  .card { grid-column: span var(--span-md, 6); }
+}
+@media (max-width: 760px) {
+  .app, .app.slim { grid-template-columns: 1fr; }
+  .side { position: static; height: auto; flex-direction: row; align-items: center; justify-content: space-between; padding: 14px 16px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .side nav, .side .foot { display: none; }
+  .card { grid-column: 1 / -1; }
+}
+
+/* Le bouton « Exemples » se centre pour ne pas masquer la barre latérale */
+body > .ex-back { left: 50%; translate: -50% 0; }
+
+/* Fil d'événements : une ligne verticale et une pastille par étape */
+.feed-list { list-style: none; margin: 0; padding: 0 0 0 22px; position: relative; }
+.feed-list::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; border-radius: 1px; background: var(--line); }
+.feed-list li { position: relative; padding-bottom: 16px; }
+.feed-list li:last-child { padding-bottom: 0; }
+.feed-list li::before { content: ""; position: absolute; left: -22px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--panel); box-shadow: inset 0 0 0 3px var(--accent); }
+.feed-list li:first-child::before { background: var(--accent); }
+.feed-list small { display: block; color: var(--soft); }

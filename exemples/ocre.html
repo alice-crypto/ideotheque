@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maison Ocre — céramiques tournées à la main</title>
+  <meta name="description" content="Exemple Idéothèque : landing page d'un atelier de céramique fictif.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/fx.css">
+  <link rel="stylesheet" href="exemples.css">
+  <style>
+    :root {
+      --bg: #f6eee4; --paper: #fbf6f0; --ink: #3b2a20; --soft: #8a7262; --line: #e6d8c8;
+      --ocre: #c8693f; --sage: #8aa38f;
+      --fx-accent: var(--ocre); --fx-accent-2: var(--sage); --fx-ink: var(--ink); --fx-dark: var(--paper);
+      --fx-grain: .06;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.6 Manrope, system-ui, sans-serif; }
+    h1, h2, h3 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; line-height: .98; margin: 0; letter-spacing: -.01em; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1240px, 100% - 32px); margin-inline: auto; }
+    .eyebrow { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--soft); font-weight: 700; }
+
+    header .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 76px; }
+    header nav { display: flex; gap: 26px; font-weight: 500; font-size: 14px; }
+    .brand { font: 400 30px "Instrument Serif", serif; }
+    .brand em { color: var(--ocre); }
+    .tools { display: flex; justify-content: flex-end; align-items: center; gap: 14px; }
+    .cart-btn { position: relative; border: 0; background: var(--ink); color: var(--paper); border-radius: 999px; padding: 10px 18px; font: 500 14px Manrope; cursor: pointer; }
+    .cart-btn [data-fx="badge-bump"] { position: absolute; top: -6px; right: -6px; min-width: 20px; height: 20px; border-radius: 10px; background: var(--ocre); color: #fff; font-size: 11px; display: grid; place-items: center; }
+
+    .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: end; padding: 30px 0 80px; }
+    .hero h1 { font-size: clamp(64px, 10vw, 156px); }
+    .hero h1 em { color: var(--ocre); }
+    .hero p { max-width: 420px; color: var(--soft); font-size: 18px; margin: 28px 0; }
+    .hero figure { margin: 0; border-radius: 220px 220px 24px 24px; overflow: hidden; aspect-ratio: 4/5; }
+    .hero figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 999px; background: var(--ocre); color: #fff; font-weight: 500; border: 0; cursor: pointer; font-family: inherit; font-size: 15px; }
+    .btn.line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+
+    hr[data-fx="rule-draw"] { border: 0; height: 1px; background: var(--ink); opacity: .25; margin: 0; }
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 34px 0; }
+    .facts b { display: block; font: 400 40px "Instrument Serif", serif; }
+    .facts span { color: var(--soft); font-size: 14px; }
+
+    .collections { padding: 120px 0; display: grid; grid-template-columns: 1fr 1.4fr; gap: 50px; }
+    .collections h2 { font-size: clamp(44px, 6vw, 84px); }
+    .collections ul { list-style: none; margin: 0; padding: 0; --fx-preview-w: 260px; }
+    .collections li { display: flex; justify-content: space-between; align-items: baseline; padding: 24px 0; border-top: 1px solid var(--line); font: 400 clamp(32px, 4vw, 52px) "Instrument Serif", serif; cursor: default; }
+    .collections li small { font: 500 13px Manrope; color: var(--soft); }
+
+    .gallery { background: var(--ink); color: var(--paper); --fx-gap: 28px; }
+    .gallery .fx-pin { height: 100vh; }
+    .g-intro { width: min(420px, 80vw); display: grid; align-content: center; gap: 18px; }
+    .g-intro h2 { font-size: clamp(48px, 6vw, 80px); }
+    .g-intro p { color: #d8c6b5; }
+    .piece { width: min(380px, 78vw); }
+    .piece figure { margin: 0; aspect-ratio: 3/4; border-radius: 22px; overflow: hidden; background: var(--paper); }
+    .piece img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .piece .row { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+    .piece h3 { font-size: 30px; }
+    .price { color: #e8b495; font-size: 15px; }
+    .price s { color: #9d8877; margin-right: 8px; }
+    .piece [data-fx="heart-like"] { color: #f2c9b4; }
+
+    .process { padding: 140px 0; }
+    .process h2 { font-size: clamp(44px, 6.5vw, 96px); max-width: 980px; }
+    .process h2 mark { background: none; color: inherit; --fx-accent: #f0c3a8; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 70px; }
+    .step { background: var(--paper); border-radius: 26px; padding: 18px; border: 1px solid var(--line); }
+    .step figure { margin: 0 0 18px; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; }
+    .step img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .step h3 { font-size: 30px; }
+    .step p { color: var(--soft); margin: 8px 0 4px; }
+
+    .atelier { position: relative; margin: 0 16px; border-radius: 32px; overflow: hidden; min-height: 80vh; display: grid; place-items: center; text-align: center; color: #fff; }
+    .atelier img { position: absolute; inset: -12% 0; width: 100%; height: 124%; object-fit: cover; z-index: -1; filter: saturate(.9) brightness(.82); }
+    .atelier h2 { font-size: clamp(54px, 9vw, 140px); }
+    .atelier p { max-width: 460px; margin: 20px auto 30px; }
+
+    .letter { padding: 130px 0; text-align: center; }
+    .letter h2 { font-size: clamp(40px, 5vw, 70px); }
+    .letter form { display: flex; gap: 10px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+    .letter input { padding: 15px 22px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper); font: inherit; min-width: 280px; }
+    footer { border-top: 1px solid var(--line); padding: 30px 0 70px; font-size: 13px; color: var(--soft); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    /* Panier */
+    #panier .panneau { background: var(--paper); padding: 30px; display: flex; flex-direction: column; gap: 18px; }
+    #panier h3 { font-size: 40px; }
+    .line-item { display: grid; grid-template-columns: 70px 1fr auto; gap: 14px; align-items: center; }
+    .line-item img { width: 70px; height: 70px; border-radius: 12px; object-fit: cover; }
+    #panier .total { margin-top: auto; display: flex; justify-content: space-between; font-weight: 700; border-top: 1px solid var(--line); padding-top: 18px; }
+    #notifs { --fx-toast-bg: var(--ink); --fx-toast-ink: var(--paper); }
+
+    @media (max-width: 860px) {
+      header .wrap { grid-template-columns: 1fr auto; }
+      header nav { display: none; }
+      .hero, .collections { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div data-fx="grain" aria-hidden="true" style="position:fixed;inset:0;z-index:80;pointer-events:none"></div>
+  <header>
+    <div class="wrap">
+      <nav><a href="#collections" data-fx="roll-text">Collections</a><a href="#atelier" data-fx="roll-text">L'atelier</a><a href="#journal" data-fx="roll-text">Journal</a></nav>
+      <a class="brand" href="#" style="text-align:center">Maison <em>Ocre</em></a>
+      <div class="tools">
+        <a href="dashboard-ocre.html" data-fx="underline-draw" style="font-size:14px">Espace atelier</a>
+        <button class="cart-btn" data-fx-toggle="#panier">Panier <span id="count" data-fx="badge-bump">2</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <span class="eyebrow" data-fx="fade-up">Grès &amp; faïence · Drôme</span>
+        <h1 data-fx="skew-up" style="margin-top:16px">Des objets<br>qui ont <em>pris</em><br>le temps.</h1>
+        <p data-fx="blur-in" style="--fx-delay:400ms">Chaque pièce est tournée, émaillée et cuite à la main dans notre atelier de Dieulefit. Aucune n'est tout à fait pareille à sa voisine.</p>
+        <div data-fx="rise-stagger" style="--fx-delay:600ms;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn" href="#collections" data-fx="fill-up">Voir la collection</a>
+          <a class="btn line" href="#atelier" data-fx="icon-nudge">Visiter l'atelier</a>
+        </div>
+      </div>
+      <figure data-fx="curtain-soft" style="--fx-delay:200ms"><img src="img/vase-amphore.svg" alt="Amphore en terre cuite"></figure>
+    </section>
+
+    <div class="wrap">
+      <hr data-fx="rule-draw">
+      <div class="facts" data-fx="rise-stagger">
+        <div><b data-fx="count-up" data-fx-to="1280">1280</b><span>pièces sorties du four cette année</span></div>
+        <div><b>4</b><span>céramistes à l'atelier</span></div>
+        <div><b data-fx="count-up" data-fx-to="1250">1250</b><span>degrés pour la cuisson du grès</span></div>
+        <div><b>0</b><span>moule, tout est tourné</span></div>
+      </div>
+      <hr data-fx="rule-draw">
+    </div>
+
+    <section class="wrap collections" id="collections">
+      <div>
+        <span class="eyebrow">Collections</span>
+        <h2 data-fx="word-rise" style="margin-top:14px">Quatre familles de terre</h2>
+        <p style="color:var(--soft);max-width:340px">Survolez une collection pour l'apercevoir.</p>
+      </div>
+      <ul data-fx="hover-preview">
+        <li data-fx-image="img/vase-galet.svg">Galets <small>12 pièces</small></li>
+        <li data-fx-image="img/bol-sable.svg">Sable <small>18 pièces</small></li>
+        <li data-fx-image="img/vase-col.svg">Sauge <small>9 pièces</small></li>
+        <li data-fx-image="img/assiettes.svg">Table d'été <small>24 pièces</small></li>
+      </ul>
+    </section>
+
+    <section class="gallery" data-fx="pin-horizontal">
+      <div class="g-intro">
+        <span class="eyebrow" style="color:#d8c6b5">Nouveautés</span>
+        <h2>La fournée d'automne</h2>
+        <p>Faites défiler : les pièces passent devant vous, comme sur l'étagère de l'atelier.</p>
+      </div>
+      <article class="piece"><figure data-fx="zoom-frame"><img src="img/vase-galet.svg" alt="Vase galet mauve"></figure><div class="row"><h3>Galet mauve</h3><button data-fx="heart-like" aria-label="Ajouter aux favoris"></button></div><span class="price">68 €</span></article>
+      <article class="piece"><figure data-fx="zoom-frame"><img src="img/bol-sable.svg" alt="Bol couleur sable"></figure><div class="row"><h3>Bol sable</h3><button data-fx="heart-like" aria-label="Ajouter aux favoris"></button></div><span class="price"><s data-fx="strike-draw">42 €</s>34 €</span></article>
+      <article class="piece"><figure data-fx="zoom-frame"><img src="img/vase-col.svg" alt="Vase à col vert sauge"></figure><div class="row"><h3>Col sauge</h3><button data-fx="heart-like" aria-label="Ajouter aux favoris"></button></div><span class="price">89 €</span></article>
+      <article class="piece"><figure data-fx="zoom-frame"><img src="img/assiettes.svg" alt="Assiettes terre cuite"></figure><div class="row"><h3>Assiettes x4</h3><button data-fx="heart-like" aria-label="Ajouter aux favoris"></button></div><span class="price">120 €</span></article>
+      <article class="piece"><figure data-fx="zoom-frame"><img src="img/vase-amphore.svg" alt="Amphore"></figure><div class="row"><h3>Amphore</h3><button data-fx="heart-like" aria-label="Ajouter aux favoris"></button></div><span class="price">145 €</span></article>
+    </section>
+
+    <section class="wrap process" id="journal">
+      <span class="eyebrow">Le geste</span>
+      <h2 data-fx="fade-up" style="margin-top:16px">Trois semaines entre la motte de terre et <mark data-fx="highlight-sweep">votre table</mark>.</h2>
+      <div class="steps" data-fx="tile-cascade">
+        <div class="step" data-fx="lift-hover"><figure data-fx="blinds-open"><img src="img/bol-sable.svg" alt=""></figure><span class="eyebrow">Semaine 1</span><h3>Tourner</h3><p>La terre est centrée, ouverte, montée en une seule fois.</p></div>
+        <div class="step" data-fx="lift-hover"><figure data-fx="blinds-open" style="--fx-delay:150ms"><img src="img/vase-col.svg" alt=""></figure><span class="eyebrow">Semaine 2</span><h3>Sécher</h3><p>Dix jours à l'ombre, retournée chaque matin pour ne pas fendre.</p></div>
+        <div class="step" data-fx="lift-hover"><figure data-fx="blinds-open" style="--fx-delay:300ms"><img src="img/assiettes.svg" alt=""></figure><span class="eyebrow">Semaine 3</span><h3>Cuire</h3><p>Deux cuissons, dont une à 1 250 °C qui rend le grès étanche.</p></div>
+      </div>
+    </section>
+
+    <section class="atelier" id="atelier">
+      <img data-fx="parallax" style="--fx-speed:-120px" src="img/collines.svg" alt="">
+      <div>
+        <span class="eyebrow" style="color:#fff">Portes ouvertes</span>
+        <h2 data-fx="line-mask">Venez tourner<br>avec nous.</h2>
+        <p>Chaque premier samedi du mois, l'atelier ouvre ses portes. Café, terre et tablier fournis.</p>
+        <a class="btn" href="#" data-fx="magnetic">Réserver un samedi</a>
+      </div>
+    </section>
+
+    <section class="wrap letter">
+      <span class="eyebrow">La lettre de l'atelier</span>
+      <h2 data-fx="letter-focus" style="margin-top:14px">Une fournée, une lettre.</h2>
+      <form onsubmit="event.preventDefault()">
+        <input type="email" placeholder="votre@adresse.fr" aria-label="Adresse e-mail">
+        <button class="btn" type="button" data-fx-toggle="#notifs" data-fx-message="Merci ! Prochaine lettre à la sortie du four.">S'inscrire</button>
+      </form>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><span>Maison Ocre — atelier fictif, créé pour Idéothèque.</span><span>Effets : grain, skew-up, curtain-soft, hover-preview, pin-horizontal, blinds-open, drawer, toast…</span></div></footer>
+
+  <aside id="panier" data-fx="drawer" aria-label="Panier">
+    <div class="panneau">
+      <div style="display:flex;justify-content:space-between;align-items:center"><h3>Panier</h3><button data-fx-close class="btn line" style="padding:8px 14px">Fermer</button></div>
+      <div class="line-item"><img src="img/bol-sable.svg" alt=""><span>Bol sable<br><small style="color:var(--soft)">Quantité 1</small></span><b>34 €</b></div>
+      <div class="line-item"><img src="img/vase-col.svg" alt=""><span>Col sauge<br><small style="color:var(--soft)">Quantité 1</small></span><b>89 €</b></div>
+      <div class="total"><span>Total</span><span>123 €</span></div>
+      <button class="btn" data-fx="shine-sweep">Passer commande</button>
+    </div>
+  </aside>
+  <div id="notifs" data-fx="toast"></div>
+  <a class="ex-back" href="index.html" data-fx="curtain-close">← Exemples</a>
+
+  <script src="../dist/fx.js"></script>
+</body>
+</html>

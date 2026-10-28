@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brume — mes nuits</title>
+  <meta name="description" content="Exemple Idéothèque : tableau de bord d'une application de sommeil fictive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/fx.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="exemples.css">
+  <style>
+    :root {
+      --bg: #f4f1fb; --panel: #fdfcff; --ink: #2e2a45; --soft: #7a7594; --line: #e7e2f5; --accent: #8f7cf0; --hover: #8f7cf014;
+      --seg: #ebe6f8; --avatar: linear-gradient(135deg, #b6a8ff, #f2b8c6);
+      --fx-accent: #8f7cf0; --fx-accent-2: #f2b8c6; --fx-ink: var(--ink); --fx-dark: var(--panel);
+      --fx-a1: #d4c9ff; --fx-a2: #cfe5fb; --fx-a3: #ffdbe4;
+    }
+    body { font-family: "DM Sans", system-ui, sans-serif; }
+    .serif { font-family: Fraunces, Georgia, serif; font-weight: 300; }
+    .side .brand i { width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff, var(--accent)); }
+    .tonight { --span: 8; position: relative; overflow: hidden; padding: 30px; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; background: #efeafc; }
+    .tonight h2 { font: 300 clamp(30px, 3.4vw, 46px)/1.05 Fraunces, serif; max-width: 520px; }
+    .tonight .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .score { --span: 4; display: grid; place-items: center; text-align: center; gap: 6px; }
+    .score [data-fx="progress-ring"] { --fx-size: 150px; }
+    .k { --span: 3; --span-md: 6; }
+    .chart { --span: 8; }
+    .phases { --span: 4; }
+    .phases [data-fx="donut"] { --fx-size: 150px; margin: 6px auto 16px; display: grid; }
+    .routine { --span: 5; }
+    .sessions { --span: 7; }
+    .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+    .toggle-row:first-of-type { border-top: 0; }
+    .story { display: flex; gap: 14px; align-items: center; }
+    .story .cover { width: 48px; height: 48px; border-radius: 14px; flex: none; }
+    .live-chip { color: var(--accent); font-size: 12px; }
+    .tip { padding: 14px; border-radius: 14px; background: #f6f3fe; margin-top: 12px; }
+    .shim { display: grid; gap: 8px; }
+    .shim [data-fx="shimmer"] { height: 12px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <a class="brand serif" href="brume.html" data-fx="fade-through"><i></i>Brume</a>
+      <nav data-fx="hover-pill">
+        <a class="on" href="#"><span class="ic">◐</span><span class="tx">Mes nuits</span></a>
+        <a href="#"><span class="ic">♪</span><span class="tx">Histoires</span></a>
+        <a href="#"><span class="ic">≈</span><span class="tx">Respiration</span></a>
+        <a href="#"><span class="ic">☾</span><span class="tx">Réveil doux</span></a>
+        <a href="#"><span class="ic">⚙</span><span class="tx">Réglages</span></a>
+      </nav>
+      <div class="foot card" style="padding:16px">
+        <span class="muted">Abonnement</span>
+        <div style="font-weight:500;margin:4px 0 10px">Brume+ · 9 nuits restantes</div>
+        <div style="height:6px;border-radius:3px;background:var(--line);overflow:hidden"><div data-fx="stretch-in" style="width:36%;height:100%;background:var(--accent);border-radius:3px"></div></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1 class="serif"><span data-fx="typewriter">Bonsoir Inès.</span></h1>
+          <div class="sub">Mercredi 28 octobre · coucher conseillé à 22 h 40</div>
+        </div>
+        <div class="tools">
+          <div class="seg" data-fx="tab-slider" role="tablist"><button role="tab" aria-selected="true">Semaine</button><button role="tab">Mois</button><button role="tab">Année</button></div>
+          <button class="icon-btn" aria-label="Notifications" onclick="FX.trigger(document.getElementById('bell'))">🔔<span class="dot" id="bell" data-fx="badge-bump">2</span></button>
+          <div data-fx="dropdown">
+            <button class="avatar" aria-label="Compte">I</button>
+            <div class="menu-card"><a href="#">Mon profil</a><a href="#">Mes appareils</a><a href="brume.html">Se déconnecter</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <section class="card tonight" data-fx="aurora" style="--radius:26px">
+          <span class="live-chip"><span data-fx="live-dot">Ce soir</span></span>
+          <h2>« Le phare de l'île Grise », chapitre 4, puis pluie légère.</h2>
+          <div class="row">
+            <button class="btn" data-fx="pulse-ring">▶ Lancer la séance</button>
+            <button class="btn soft" data-fx-toggle="#notifs" data-fx-message="Rappel programmé à 22 h 20">Me le rappeler</button>
+          </div>
+        </section>
+
+        <section class="card score" data-fx="fade-up">
+          <span class="muted">Score de la nuit dernière</span>
+          <div data-fx="progress-ring" data-fx-value="86"></div>
+          <span class="delta">+6 vs moyenne</span>
+        </section>
+
+        <section class="card kpi k" data-fx="fade-up" style="--fx-delay:60ms"><span class="muted">Temps de sommeil</span><div class="val">7 h <span data-fx="count-up" data-fx-to="42">42</span></div><span class="delta">+18 min</span></section>
+        <section class="card kpi k" data-fx="fade-up" style="--fx-delay:120ms"><span class="muted">Endormissement</span><div class="val"><span data-fx="count-up" data-fx-to="11">11</span> min</div><span class="delta">−9 min</span></section>
+        <section class="card kpi k" data-fx="fade-up" style="--fx-delay:180ms"><span class="muted">Réveils</span><div class="val"><span data-fx="count-up" data-fx-to="2">2</span></div><span class="delta down">+1</span></section>
+        <section class="card kpi k" data-fx="fade-up" style="--fx-delay:240ms"><span class="muted">Régularité</span><div class="val"><span data-fx="count-up" data-fx-to="91">91</span> %</div><span class="delta">+4 pts</span></section>
+
+        <section class="card chart" data-fx="fade-up">
+          <div class="head"><h2>Durée de sommeil, en heures</h2><span class="muted">7 dernières nuits</span></div>
+          <svg data-fx="line-chart" data-fx-values="6.1,6.8,6.4,7.2,7.0,7.9,7.7" aria-label="Durée de sommeil sur 7 nuits"></svg>
+          <div class="axis"><span>jeu.</span><span>ven.</span><span>sam.</span><span>dim.</span><span>lun.</span><span>mar.</span><span>mer.</span></div>
+        </section>
+
+        <section class="card phases" data-fx="fade-up">
+          <div class="head"><h2>Phases</h2><span class="muted">nuit dernière</span></div>
+          <div data-fx="donut" data-fx-values="52,23,21,4" data-fx-colors="#c9bdf7,#8f7cf0,#f2b8c6,#e7e2f5">7 h 42</div>
+          <div class="legend"><span><i style="background:#c9bdf7"></i>Léger 52 %</span><span><i style="background:#8f7cf0"></i>Profond 23 %</span><span><i style="background:#f2b8c6"></i>Paradoxal 21 %</span><span><i style="background:#e7e2f5"></i>Éveil 4 %</span></div>
+        </section>
+
+        <section class="card routine" data-fx="fade-up">
+          <div class="head"><h2>Rituel du soir</h2></div>
+          <div class="toggle-row"><span>Lumière ambrée à 21 h</span><input type="checkbox" data-fx="switch-morph" checked aria-label="Lumière ambrée"></div>
+          <div class="toggle-row"><span>Mode avion automatique</span><input type="checkbox" data-fx="switch-morph" checked aria-label="Mode avion automatique"></div>
+          <div class="toggle-row"><span>Réveil dans la bonne phase</span><input type="checkbox" data-fx="switch-morph" aria-label="Réveil intelligent"></div>
+          <div class="tip"><b>Conseil.</b> <span class="muted">Vos meilleures nuits commencent avant 23 h. Essayez d'avancer le coucher de 15 minutes.</span></div>
+        </section>
+
+        <section class="card sessions" data-fx="fade-up">
+          <div class="head"><h2>Histoires recommandées</h2><span class="muted" id="reco-state"><span data-fx="typing-dots" style="--fx-bubble:#f1edfc"><i></i><i></i><i></i></span></span></div>
+          <div id="reco" class="shim"><div data-fx="shimmer"></div><div data-fx="shimmer" style="width:80%"></div><div data-fx="shimmer" style="width:60%"></div></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="notifs" data-fx="toast"></div>
+  <a class="ex-back" href="index.html" data-fx="fade-through">← Exemples</a>
+
+  <script src="../dist/fx.js"></script>
+  <script>
+    // Simule le chargement des recommandations (shimmer puis liste)
+    setTimeout(function () {
+      document.getElementById('reco-state').textContent = '3 nouvelles';
+      var reco = document.getElementById('reco');
+      reco.className = '';
+      reco.innerHTML =
+        '<ul class="list" data-fx="rise-stagger">' +
+          '<li class="story"><span class="cover" style="background:linear-gradient(135deg,#d4c9ff,#8f7cf0)"></span><span class="grow"><b>Le train de nuit pour Trieste</b><small>22 min · voix de Sacha</small></span><button data-fx="heart-like" aria-label="Favori"></button></li>' +
+          '<li class="story"><span class="cover" style="background:linear-gradient(135deg,#ffdbe4,#f2b8c6)"></span><span class="grow"><b>Jardin sous la neige</b><small>18 min · voix de Lou</small></span><button data-fx="heart-like" aria-label="Favori"></button></li>' +
+          '<li class="story"><span class="cover" style="background:linear-gradient(135deg,#cfe5fb,#9cc3ee)"></span><span class="grow"><b>La bibliothèque du phare</b><small>25 min · voix de Malo</small></span><button data-fx="heart-like" aria-label="Favori"></button></li>' +
+        '</ul>';
+      FX.init(reco);
+    }, 1800);
+  </script>
+</body>
+</html>

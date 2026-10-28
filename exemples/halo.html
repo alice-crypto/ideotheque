@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halo — de la musique pour se concentrer</title>
+  <meta name="description" content="Exemple Idéothèque : landing page d'une application de musique de concentration fictive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/fx.css">
+  <link rel="stylesheet" href="exemples.css">
+  <style>
+    :root {
+      --bg: #fff5f0; --paper: #fffaf7; --ink: #33201f; --soft: #8c6f6a; --line: #f3dcd3;
+      --coral: #ff8f73; --pink: #ffb5c8; --butter: #ffe0a3;
+      --fx-accent: var(--coral); --fx-accent-2: var(--pink); --fx-ink: var(--ink); --fx-dark: var(--paper);
+      --fx-b1: #ffb39f; --fx-b2: #ffc9dd;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 300 16px/1.65 Sora, system-ui, sans-serif; }
+    h1, h2, h3 { font-weight: 400; letter-spacing: -.04em; line-height: 1; margin: 0; }
+    .it { font-family: Newsreader, Georgia, serif; font-style: italic; font-weight: 300; letter-spacing: -.01em; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1200px, 100% - 32px); margin-inline: auto; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #ffe8df; font-size: 13px; font-weight: 400; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 400 15px Sora; border: 0; cursor: pointer; }
+
+    header .wrap { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 20px; }
+    .logo i { width: 22px; height: 22px; border-radius: 50%; border: 5px solid var(--coral); }
+    header nav { display: flex; gap: 6px; padding: 5px; border-radius: 999px; background: #ffe8df; --fx-pill: var(--paper); }
+    header nav a { padding: 8px 16px; font-size: 14px; }
+
+    .hero { min-height: 88vh; display: grid; place-items: center; text-align: center; border-radius: 40px; margin: 0 16px; }
+    .hero h1 { font-size: clamp(54px, 10vw, 150px); }
+    .hero .flap { display: inline-block; font-size: .5em; vertical-align: .05em; --fx-card: var(--paper); --fx-flap-ink: var(--coral); }
+    .hero p { max-width: 520px; margin: 26px auto 34px; color: var(--soft); font-size: 18px; }
+    .live { margin-top: 26px; color: var(--soft); font-size: 14px; }
+    .live [data-fx="live-dot"] { color: var(--coral); font-size: 12px; }
+
+    section { padding: 120px 0; }
+    h2 { font-size: clamp(40px, 6vw, 84px); }
+    .lead { color: var(--soft); max-width: 520px; font-size: 18px; }
+
+    .moods { display: flex; height: 440px; margin-top: 50px; --fx-gap: 12px; }
+    .moods a { border-radius: 28px; padding: 26px; display: flex; flex-direction: column; justify-content: flex-end; color: var(--ink); overflow: hidden; }
+    .moods a b { font-weight: 400; font-size: 28px; letter-spacing: -.03em; white-space: nowrap; }
+    .moods a span { font-size: 14px; color: #6f5450; white-space: nowrap; }
+    .m1 { background: linear-gradient(160deg, #ffd4c4, #ff9f86); }
+    .m2 { background: linear-gradient(160deg, #ffe7b8, #ffc56e); }
+    .m3 { background: linear-gradient(160deg, #ffd9e6, #f6a5c0); }
+    .m4 { background: linear-gradient(160deg, #e7defd, #bba8f5); }
+    .m5 { background: linear-gradient(160deg, #d9efe6, #9fd3bd); }
+
+    .science { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .waves { border-radius: 32px; min-height: 420px; padding: 36px; display: flex; flex-direction: column; justify-content: space-between; background: #ffe8df; color: var(--coral); }
+    .waves .tw { font-size: 22px; color: var(--ink); min-height: 2.6em; }
+    .waves .bpm { font-size: 80px; color: var(--ink); letter-spacing: -.05em; }
+
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 50px; }
+    .feature { padding: 30px; border-radius: 28px; background: var(--paper); border: 1px solid var(--line); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; }
+    .feature .ico { width: 54px; height: 54px; border-radius: 18px; display: grid; place-items: center; font-size: 24px; background: #ffe8df; }
+    .feature h3 { font-size: 26px; margin-bottom: 8px; }
+    .feature p { color: var(--soft); margin: 0; }
+
+    .member { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .card { aspect-ratio: 1.6; border-radius: 26px; padding: 28px; color: var(--ink); display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(135deg, #fff2ea, #ffd8cc 50%, #ffe7f0); box-shadow: 0 40px 70px -40px #ff8f7399; }
+    .card .num { font-size: 20px; letter-spacing: .14em; }
+    .card .top { display: flex; justify-content: space-between; }
+
+    .launch { text-align: center; }
+    .launch [data-fx="flip-clock"] { margin: 40px auto; display: inline-flex; --fx-card: var(--paper); font-size: clamp(34px, 6vw, 64px); }
+    .app-icon { width: 80px; height: 80px; border-radius: 24px; background: radial-gradient(circle at 35% 30%, #fff, var(--coral)); }
+
+    footer { padding: 40px 0 70px; color: var(--soft); font-size: 13px; }
+
+    @media (max-width: 860px) {
+      header nav, header nav[data-fx] { display: none; }
+      .science, .member { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+      .moods { flex-direction: column; height: 620px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="logo" href="#"><i></i>Halo</a>
+      <nav data-fx="hover-pill"><a href="#ambiances">Ambiances</a><a href="#science">La méthode</a><a href="#membre">Membre</a><a href="#v2">Halo 2</a></nav>
+      <a class="btn" href="dashboard-halo.html" data-fx="swap-text" data-fx-alt="On y va →" style="padding:11px 20px">Écouter</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" data-fx="blob-bg">
+      <div class="wrap">
+        <span class="pill" data-fx="fade-up">Nouveau · le mode Écriture</span>
+        <h1 style="margin-top:22px"><span data-fx="track-in">Le bon son</span><br><span class="it" data-fx="blur-in" style="--fx-delay:300ms">pour</span> <span class="flap" data-fx="split-flap" data-fx-words="coder|lire|écrire|peindre|réviser"></span></h1>
+        <p data-fx="fade-up" style="--fx-delay:500ms">Halo compose en direct une musique sans paroles qui suit votre rythme. Le monde se tait, la tâche avance.</p>
+        <a class="btn" href="#ambiances" data-fx="magnetic">Écouter gratuitement</a>
+        <div class="live"><span data-fx="live-dot">En direct</span> &nbsp;<span data-fx="odometer">12 408</span> personnes se concentrent en ce moment</div>
+      </div>
+    </section>
+
+    <section id="ambiances">
+      <div class="wrap">
+        <h2 data-fx="fade-up">Cinq ambiances, <span class="it">une seule</span> envie : finir.</h2>
+        <div class="moods" data-fx="expand-panels">
+          <a class="m1" href="#"><b>Braise</b><span>lo-fi chaud · 72 bpm</span></a>
+          <a class="m2" href="#"><b>Midi</b><span>piano lumineux · 84 bpm</span></a>
+          <a class="m3" href="#"><b>Pétale</b><span>harpe et pluie · 60 bpm</span></a>
+          <a class="m4" href="#"><b>Lilas</b><span>nappes lentes · 54 bpm</span></a>
+          <a class="m5" href="#"><b>Menthe</b><span>bruits de forêt · libre</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="science" style="padding-top:0">
+      <div class="wrap science">
+        <div>
+          <span class="pill">La méthode</span>
+          <h2 data-fx="fade-up" style="margin:18px 0">La musique <span class="it">ralentit</span> avec vous.</h2>
+          <p class="lead" data-fx="fade-up">Le tempo démarre au rythme d'une marche, puis descend doucement. Au bout de dix minutes, vous ne l'entendez plus : c'est le signe que ça marche.</p>
+        </div>
+        <div class="waves" data-fx="wave-lines">
+          <div class="tw"><span data-fx="typewriter">Session « Mémoire de fin d'études » — 47 minutes sans interruption.</span></div>
+          <div><div class="bpm"><span data-fx="count-up" data-fx-to="58">58</span> bpm</div><span style="color:var(--soft)">tempo actuel, en baisse</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--paper)">
+      <div class="wrap">
+        <h2 data-fx="proximity-weight">Tout ce qu'il faut. Rien de plus.</h2>
+        <div class="features" data-fx="tile-cascade">
+          <article class="feature" data-fx="tilt-card" data-fx-max="6"><span class="ico">⏳</span><div><h3>Minuteur doux</h3><p>Pas de sonnerie : la musique s'éteint en fondu à la fin de la séance.</p></div></article>
+          <article class="feature" data-fx="tilt-card" data-fx-max="6"><span class="ico">🔕</span><div><h3>Mode silence</h3><p>Les notifications du téléphone attendent la fin de la séance.</p></div></article>
+          <article class="feature" data-fx="tilt-card" data-fx-max="6"><span class="ico">📈</span><div><h3>Votre rythme</h3><p>Halo repère vos meilleures heures et vous les propose.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="membre">
+      <div class="wrap member">
+        <div class="card" data-fx="holo-card">
+          <div class="top"><b style="font-weight:600">Halo</b><span>Membre fondateur</span></div>
+          <div class="num">0427 · 2026 · ∞</div>
+          <div class="top"><span>Camille R.</span><span class="it" style="font-size:20px">depuis le premier jour</span></div>
+        </div>
+        <div>
+          <span class="pill">Membre</span>
+          <h2 data-fx="fade-up" style="margin:18px 0">4 € par mois. <span class="it">Pour toujours.</span></h2>
+          <p class="lead">Les membres fondateurs gardent leur prix à vie et reçoivent une carte holographique. Inclinez-la avec la souris.</p>
+          <p style="margin-top:28px"><button class="btn" data-fx="shine-sweep">Devenir membre</button></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="v2" class="launch" style="background:#ffe8df;border-radius:40px;margin:0 16px 16px">
+      <div class="wrap">
+        <div data-fx="orbit-rings" style="display:inline-grid;padding:30px"><div class="app-icon" role="img" aria-label="Icône Halo"></div></div>
+        <h2 data-fx="letter-focus" style="margin-top:10px">Halo 2 arrive.</h2>
+        <div data-fx="flip-clock" data-fx-to="2027-03-21T09:00:00"></div>
+        <p style="margin:-26px 0 30px;color:var(--soft);font-size:13px;letter-spacing:.14em;text-transform:uppercase">jours · heures · minutes</p>
+        <p><button class="btn" data-fx="ripple-click">Me prévenir le jour J</button></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">Halo — application fictive, créée pour Idéothèque. Effets : blob-bg, split-flap, live-dot, expand-panels, wave-lines, holo-card, flip-clock, orbit-rings…</footer>
+  <a class="ex-back" href="index.html" data-fx="arc-rise">← Exemples</a>
+
+  <script src="../dist/fx.js"></script>
+</body>
+</html>

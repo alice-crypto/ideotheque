@@ -55,6 +55,20 @@ npm start
 
 Puis ouvrez http://localhost:5180. Pour contribuer, voir [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Exemples
+
+Cinq marques fictives, chacune avec une landing page et un dashboard, construites uniquement avec les effets de la bibliothèque : **https://alice-crypto.github.io/ideotheque/exemples/**
+
+| Marque | Landing page | Dashboard |
+| --- | --- | --- |
+| Brume, application de sommeil | [brume.html](exemples/brume.html) | [dashboard-brume.html](exemples/dashboard-brume.html) |
+| Maison Ocre, atelier de céramique | [ocre.html](exemples/ocre.html) | [dashboard-ocre.html](exemples/dashboard-ocre.html) |
+| Verdure, balcons végétalisés | [verdure.html](exemples/verdure.html) | [dashboard-verdure.html](exemples/dashboard-verdure.html) |
+| Halo, musique de concentration | [halo.html](exemples/halo.html) | [dashboard-halo.html](exemples/dashboard-halo.html) |
+| Atlas, voyages lents en train | [atlas.html](exemples/atlas.html) | [dashboard-atlas.html](exemples/dashboard-atlas.html) |
+
+Les illustrations sont des SVG originaux (`exemples/img/`).
+
 ## Les <!-- total -->200<!-- /total --> effets
 
 <!-- effets:start -->

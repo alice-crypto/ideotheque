@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atlas — mon voyage</title>
+  <meta name="description" content="Exemple Idéothèque : tableau de bord de préparation de voyage fictif.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/fx.css">
+  <link rel="stylesheet" href="dash.css">
+  <link rel="stylesheet" href="exemples.css">
+  <style>
+    :root {
+      --bg: #f5f2ec; --panel: #fcfaf6; --ink: #1d2a3a; --soft: #6f7987; --line: #e6e0d5; --accent: #7fa6d1; --hover: #7fa6d114;
+      --seg: #ebe6dc; --avatar: #e9c9a1; --radius: 18px;
+      --fx-accent: #7fa6d1; --fx-accent-2: #e9c9a1; --fx-ink: var(--ink); --fx-dark: var(--panel);
+    }
+    body { font-family: "Inter Tight", system-ui, sans-serif; font-weight: 300; }
+    .serif { font-family: Cormorant, Georgia, serif; font-weight: 400; }
+    .side .brand { font: 500 24px Cormorant, serif; letter-spacing: .1em; }
+    .topbar h1 { font: 400 clamp(34px, 4vw, 54px)/1 Cormorant, serif; }
+    .trip { --span: 8; position: relative; overflow: hidden; min-height: 320px; padding: 0; color: #fff; border: 0; }
+    .trip figure { position: absolute; inset: 0; margin: 0; }
+    .trip figure img { width: 100%; height: 100%; object-fit: cover; }
+    .trip::after { content: ""; position: absolute; inset: 0; background: linear-gradient(#1d2a3a66, transparent 38%, transparent 45%, #1d2a3ab0); }
+    .trip .in { position: relative; z-index: 1; height: 100%; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
+    .trip h2 { font: 400 clamp(36px, 4.4vw, 60px)/.95 Cormorant, serif; }
+    .trip [data-fx="flip-clock"] { --fx-card: #fcfaf6; font-size: 34px; }
+    .weather { --span: 4; }
+    .day { display: grid; grid-template-columns: 70px 30px 1fr auto; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+    .day:first-of-type { border-top: 0; }
+    .route { --span: 7; }
+    .route svg.map { width: 100%; height: auto; display: block; color: var(--accent); }
+    .budget { --span: 5; }
+    .budget [data-fx="donut"] { --fx-size: 150px; display: grid; margin: 0 auto 16px; }
+    .packing { --span: 4; }
+    .packing .ring { display: grid; place-items: center; margin-bottom: 12px; }
+    .packing [data-fx="progress-ring"] { --fx-size: 110px; }
+    .packing li { cursor: pointer; }
+    .packing .box { width: 24px; height: 24px; border-radius: 7px; border: 2px solid var(--line); flex: none; display: grid; place-items: center; }
+    .packing .done .grow { text-decoration: line-through; color: var(--soft); }
+    .itinerary { --span: 4; }
+    ol[data-fx="timeline"] li { padding-bottom: 16px; }
+    ol[data-fx="timeline"] small { display: block; color: var(--soft); }
+    .docs { --span: 4; }
+    .docs details { border-top: 1px solid var(--line); padding: 12px 0; }
+    .docs details:first-of-type { border-top: 0; }
+    .docs summary { font-weight: 400; }
+    .docs p { color: var(--soft); margin: 8px 0 0; font-size: 14px; }
+    #billet .fenetre { background: var(--panel); border-radius: 22px; width: min(440px, 92vw); overflow: hidden; }
+    #billet .top { padding: 24px; background: var(--ink); color: var(--panel); }
+    #billet .top h3 { font: 400 38px/1 Cormorant, serif; margin: 8px 0 0; }
+    #billet .body { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    #billet .body span { display: block; color: var(--soft); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
+    #billet .stub { border-top: 2px dashed var(--line); padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .barcode { height: 36px; width: 150px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px); }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <a class="brand" href="atlas.html" data-fx="iris">ATLAS</a>
+      <nav data-fx="hover-pill">
+        <a class="on" href="#"><span class="ic">◇</span><span class="tx">Mon voyage</span></a>
+        <a href="#"><span class="ic">≡</span><span class="tx">Carnet</span></a>
+        <a href="#"><span class="ic">✉</span><span class="tx">Mon guide</span></a>
+        <a href="#"><span class="ic">◌</span><span class="tx">Voyageurs</span></a>
+      </nav>
+      <div class="foot card" style="padding:16px">
+        <span class="muted">Votre guide</span>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:8px"><span class="avatar" style="width:34px;height:34px;font-size:13px;background:#7fa6d1">L</span><span>Lucia<br><small class="muted">répond en 1 h</small></span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1 data-fx="line-mask">La côte ligure</h1>
+          <div class="sub">Pour 2 voyageurs · 8 jours · départ de Paris-Bercy</div>
+        </div>
+        <div class="tools">
+          <button class="btn soft" data-fx-toggle="#billet">🎫 Mon billet</button>
+          <div data-fx="dropdown">
+            <button class="avatar" aria-label="Compte">M</button>
+            <div class="menu-card"><a href="#">Mes voyages</a><a href="#">Préférences</a><a href="atlas.html">Se déconnecter</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <section class="card trip" data-fx="fade-up">
+          <figure data-fx="ken-burns"><img src="img/cote.svg" alt="La côte ligure"></figure>
+          <div class="in">
+            <span style="opacity:.85">Départ dans</span>
+            <div><div data-fx="flip-clock" data-fx-to="2027-05-14T21:42:00"></div><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin-top:6px">jours · heures · minutes</div></div>
+            <h2>Train de nuit · voiture 12,<br>couchettes 41 et 42</h2>
+          </div>
+        </section>
+
+        <section class="card weather" data-fx="fade-up">
+          <div class="head"><h2>Météo à l'arrivée</h2><span class="muted">moyennes de mai</span></div>
+          <div class="day"><b>Nice</b><span>☀️</span><span class="muted">sec et doux</span><span>22°</span></div>
+          <div class="day"><b>Gênes</b><span>⛅</span><span class="muted">brise de mer</span><span>21°</span></div>
+          <div class="day"><b>Vernazza</b><span>☀️</span><span class="muted">eau à 18°</span><span>23°</span></div>
+          <div class="day"><b>Levanto</b><span>🌦</span><span class="muted">averse possible</span><span>20°</span></div>
+        </section>
+
+        <section class="card route" data-fx="fade-up">
+          <div class="head"><h2>Le parcours</h2><span class="muted">1 140 km en train</span></div>
+          <svg class="map" data-fx="svg-draw" viewBox="0 0 600 260" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-label="Carte du parcours Paris, Nice, Gênes, Cinque Terre">
+            <path d="M60 40C140 70 160 140 230 190s150 30 210 10 90-60 120-50" stroke-dasharray="1 0"/>
+            <circle cx="60" cy="40" r="7" fill="#fcfaf6"/><circle cx="230" cy="190" r="7" fill="#fcfaf6"/><circle cx="440" cy="200" r="7" fill="#fcfaf6"/><circle cx="560" cy="150" r="7" fill="#fcfaf6"/>
+            <g fill="#1d2a3a" stroke="none" font-size="15" font-family="Inter Tight, sans-serif"><text x="76" y="36">Paris</text><text x="200" y="222">Nice</text><text x="420" y="232">Gênes</text><text x="500" y="128">Cinque Terre</text></g>
+          </svg>
+        </section>
+
+        <section class="card budget" data-fx="fade-up">
+          <div class="head"><h2>Budget du voyage</h2><span class="muted">2 840 € tout compris</span></div>
+          <div data-fx="donut" data-fx-values="34,38,18,10" data-fx-colors="#7fa6d1,#e9c9a1,#a9d5d3,#d9b8c4">2 840 €</div>
+          <div class="legend"><span><i style="background:#7fa6d1"></i>Trains</span><span><i style="background:#e9c9a1"></i>Hébergements</span><span><i style="background:#a9d5d3"></i>Repas</span><span><i style="background:#d9b8c4"></i>Activités</span></div>
+        </section>
+
+        <section class="card packing" data-fx="fade-up">
+          <div class="head"><h2>Valise</h2><span class="muted" id="pack-left">4 sur 7</span></div>
+          <div class="ring"><div data-fx="progress-ring" data-fx-value="57" id="pack-ring"></div></div>
+          <ul class="list" id="pack">
+            <li class="done"><span class="box"><span data-fx="check-draw" style="--fx-size:18px"></span></span><span class="grow">Passeports</span></li>
+            <li class="done"><span class="box"><span data-fx="check-draw" style="--fx-size:18px"></span></span><span class="grow">Maillots de bain</span></li>
+            <li><span class="box"></span><span class="grow">Chaussures de marche</span></li>
+            <li><span class="box"></span><span class="grow">Adaptateur… inutile en Italie !</span></li>
+            <li><span class="box"></span><span class="grow">Carnet et stylo</span></li>
+          </ul>
+        </section>
+
+        <section class="card itinerary" data-fx="fade-up">
+          <div class="head"><h2>Programme</h2></div>
+          <ol class="feed-list" data-fx="rise-stagger">
+            <li><b>J1 · Train de nuit</b><small>Paris-Bercy 21 h 42 → Nice 8 h 55</small></li>
+            <li><b>J3 · Gênes</b><small>Leçon de focaccia chez Lucia</small></li>
+            <li><b>J5 · Sentier côtier</b><small>Monterosso → Vernazza, 2 h de marche</small></li>
+            <li><b>J8 · Retour</b><small>Échange des carnets entre voyageurs</small></li>
+          </ol>
+        </section>
+
+        <section class="card docs" data-fx="fade-up">
+          <div class="head"><h2>Bon à savoir</h2></div>
+          <details data-fx="accordion" open><summary>Bagages dans le train de nuit</summary><p>Une valise et un sac par personne. Les valises se rangent sous la couchette du bas.</p></details>
+          <details data-fx="accordion"><summary>Repas compris</summary><p>Les petits-déjeuners et trois dîners. Les autres repas sont libres, Lucia a une liste d'adresses.</p></details>
+          <details data-fx="accordion"><summary>En cas de retard</summary><p>Votre guide est prévenue en temps réel et adapte le programme du jour.</p></details>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="billet" data-fx="modal-zoom" role="dialog" aria-modal="true" aria-label="Mon billet">
+    <div class="fenetre">
+      <div class="top"><span style="opacity:.7;font-size:13px">Train de nuit · aller</span><h3>Paris → Nice</h3></div>
+      <div class="body">
+        <div><span>Départ</span>14 mai · 21 h 42</div><div><span>Arrivée</span>15 mai · 8 h 55</div>
+        <div><span>Voiture</span>12</div><div><span>Couchettes</span>41 · 42</div>
+      </div>
+      <div class="stub"><div class="barcode" aria-hidden="true"></div><button class="btn" data-fx-close>Fermer</button></div>
+    </div>
+  </div>
+  <div id="notifs" data-fx="toast"></div>
+  <a class="ex-back" href="index.html" data-fx="iris">← Exemples</a>
+
+  <script src="../dist/fx.js"></script>
+  <script>
+    // Cocher la valise : la coche se dessine et l'anneau avance
+    var total = 7;
+    document.getElementById('pack').addEventListener('click', function (e) {
+      var li = e.target.closest('li');
+      if (!li || li.classList.contains('done')) return;
+      li.classList.add('done');
+      li.querySelector('.box').innerHTML = '<span data-fx="check-draw" style="--fx-size:18px"></span>';
+      FX.init(li);
+      var done = document.querySelectorAll('#pack li.done').length + 2;
+      document.getElementById('pack-left').textContent = done + ' sur ' + total;
+      var ring = document.getElementById('pack-ring');
+      ring._fxRing.value = Math.round(done / total * 100);
+      FX.replay(ring);
+    });
+  </script>
+</body>
+</html>

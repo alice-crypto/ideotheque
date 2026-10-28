@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verdure — le balcon qui pousse tout seul</title>
+  <meta name="description" content="Exemple Idéothèque : landing page d'un abonnement de plantes fictif.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/fx.css">
+  <link rel="stylesheet" href="exemples.css">
+  <style>
+    :root {
+      --bg: #eef3ea; --paper: #f8fbf5; --ink: #1f3326; --soft: #5f7565; --line: #d6e2d1;
+      --green: #5d8c6c; --mint: #b8dcc0; --peach: #f4b998;
+      --fx-accent: var(--green); --fx-accent-2: var(--peach); --fx-ink: var(--ink); --fx-dark: var(--paper);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.6 Outfit, system-ui, sans-serif; }
+    h1, h2, h3 { font-family: "Young Serif", Georgia, serif; font-weight: 400; line-height: 1.02; margin: 0; letter-spacing: -.015em; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
+    .tag { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #dcebd6; color: var(--green); font-weight: 500; font-size: 13px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; border-radius: 16px; background: var(--ink); color: var(--paper); font: 500 15px Outfit; border: 0; cursor: pointer; }
+    .btn.soft { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+
+    header { position: sticky; top: 12px; z-index: 40; }
+    header .bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 10px 10px 22px; border-radius: 20px; background: #f8fbf5d9; backdrop-filter: blur(12px); box-shadow: 0 10px 30px -20px #1f332640; }
+    header .logo { font: 400 22px "Young Serif", serif; display: flex; gap: 8px; align-items: center; }
+    header nav { display: flex; gap: 22px; font-size: 15px; color: var(--soft); }
+
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding: 70px 0 110px; }
+    .hero h1 { font-size: clamp(50px, 7.6vw, 108px); margin: 18px 0 24px; }
+    .hero p { color: var(--soft); max-width: 470px; font-size: 19px; }
+    .hero .cta { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+    .hero-art { position: relative; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #f8fbf5, #d4e8cc); display: grid; place-items: center; }
+    .hero-art svg { width: 78%; color: var(--green); }
+    .hero-art .chip { position: absolute; padding: 10px 14px; border-radius: 14px; background: var(--paper); box-shadow: 0 16px 30px -18px #1f332655; font-size: 14px; display: flex; gap: 8px; align-items: center; }
+
+    section { padding: 110px 0; }
+    .center { text-align: center; }
+    h2 { font-size: clamp(38px, 5vw, 68px); margin: 16px 0 18px; }
+    .sub { color: var(--soft); max-width: 560px; margin-inline: auto; }
+
+    .compare-wrap { max-width: 980px; margin: 50px auto 0; border-radius: 28px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 40px 80px -50px #1f332670; }
+    .compare-wrap [data-fx="compare"], .compare-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+    .plants { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 50px; }
+    .plants [data-fx="flip-card"] { aspect-ratio: 3/4; }
+    .plants [data-fx="flip-card"] > div { border-radius: 24px; overflow: hidden; background: var(--paper); border: 1px solid var(--line); }
+    .plants .front img { width: 100%; height: 78%; object-fit: cover; display: block; }
+    .plants .front h3 { padding: 12px 18px 0; font-size: 24px; }
+    .plants .back { padding: 26px; display: grid; align-content: center; gap: 12px; background: var(--ink) !important; color: var(--paper); }
+    .plants .back li { margin: 4px 0; }
+
+    .how { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
+    .how ol { margin: 0; }
+    .how ol li { padding-bottom: 34px; }
+    .how ol b { display: block; font: 400 24px "Young Serif", serif; }
+    .how ol span { color: var(--soft); }
+    .impact { background: var(--paper); border-radius: 28px; padding: 34px; border: 1px solid var(--line); }
+    .impact .big { font: 400 74px/1 "Young Serif", serif; color: var(--green); }
+    .impact [data-fx="bars-grow"] { --fx-height: 180px; margin-top: 30px; }
+    .months { display: flex; justify-content: space-between; color: var(--soft); font-size: 12px; margin-top: 8px; }
+
+    .pricing-switch { margin: 30px auto 50px; padding: 5px; border-radius: 14px; background: #dcebd6; --fx-indicator: var(--paper); --fx-indicator-ink: var(--ink); --fx-indicator-radius: 10px; }
+    .pricing-switch button { border: 0; background: none; padding: 10px 20px; font: 500 15px Outfit; color: var(--soft); cursor: pointer; }
+    .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; text-align: left; }
+    .plan { padding: 30px; border-radius: 26px; background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; }
+    .plan .price { font: 400 56px/1 "Young Serif", serif; }
+    .plan .price small { font: 400 16px Outfit; color: var(--soft); }
+    .plan .btn { justify-content: center; }
+    .plan ul { padding-left: 18px; color: var(--soft); margin: 0 0 10px; flex: 1; }
+    .plan.best { --fx-accent: var(--green); --fx-accent-2: var(--peach); --fx-surface: var(--ink); padding: 0; border: 2px solid transparent; }
+    .plan.best > div { background: var(--ink); color: var(--paper); border-radius: 24px; padding: 28px; height: 100%; display: flex; flex-direction: column; gap: 14px; }
+    .plan.best ul { color: #b9cdbd; }
+    .plan.best .btn { background: var(--mint); color: var(--ink); }
+
+    .closing { margin: 0 16px 16px; border-radius: 36px; padding: 120px 20px; text-align: center; }
+    .closing h2 { font-size: clamp(46px, 7vw, 100px); }
+    .vine { width: min(560px, 90%); margin: 0 auto 10px; display: block; color: var(--green); }
+    footer { padding: 30px 0 70px; color: var(--soft); font-size: 14px; }
+
+    @media (max-width: 860px) {
+      header nav { display: none; }
+      .hero, .how { grid-template-columns: 1fr; }
+      .plants, .plans { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="bar">
+      <a class="logo" href="#">🌿 Verdure</a>
+      <nav><a href="#avant-apres" data-fx="underline-fill">Avant / après</a><a href="#plantes" data-fx="underline-fill">Plantes</a><a href="#tarifs" data-fx="underline-fill">Tarifs</a></nav>
+      <a class="btn" href="dashboard-verdure.html" data-fx="tile-flip">Ma serre</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <span class="tag" data-fx="pop-in">Livraison en vélo-cargo à Paris, Lyon, Lille</span>
+        <h1><span data-fx="text-split">Le balcon qui</span> <span data-fx="blur-in" style="display:inline-block;--fx-delay:450ms"><span data-fx="gradient-flow" style="--fx-accent:#5d8c6c;--fx-accent-2:#e9946b">pousse</span></span> <span data-fx="text-split" style="--fx-delay:600ms">tout seul.</span></h1>
+        <p data-fx="fade-up" style="--fx-delay:500ms">Chaque saison, nous composons, livrons et installons des plantes adaptées à votre exposition. Des capteurs vous disent quand arroser, et seulement quand.</p>
+        <div class="cta" data-fx="rise-stagger" style="--fx-delay:650ms">
+          <a class="btn" href="#tarifs" data-fx="press-squash">Composer mon balcon</a>
+          <a class="btn soft" href="#avant-apres" data-fx="icon-nudge">Voir des balcons</a>
+        </div>
+      </div>
+      <div class="hero-art" data-fx="zoom-in-soft">
+        <svg data-fx="svg-draw" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+          <path d="M100 185V70"/>
+          <path d="M100 120C70 115 52 95 50 66c30 2 48 22 50 54z"/>
+          <path d="M100 100c26-4 42-22 44-48-26 2-42 20-44 48z"/>
+          <path d="M100 70c-12-14-12-34 0-50 12 16 12 36 0 50z"/>
+          <path d="M60 185h80"/>
+        </svg>
+        <span class="chip" data-fx="float" style="left:-4%;top:20%">💧 Humidité 64 %</span>
+        <span class="chip" data-fx="float" style="right:-2%;bottom:18%;--fx-delay:1s">☀️ 6 h de soleil</span>
+      </div>
+    </section>
+
+    <section id="avant-apres" class="center" style="padding-top:0">
+      <div class="wrap">
+        <span class="tag">Avant / après</span>
+        <h2 data-fx="word-rise">Six mètres carrés, une saison.</h2>
+        <p class="sub">Faites glisser la poignée : le balcon de Camille, à Lille, avant et après l'installation de printemps.</p>
+        <div class="compare-wrap" data-fx="scale-on-scroll">
+          <div data-fx="compare"><img src="img/balcon-avant.svg" alt="Balcon vide avec un pot sec"><img src="img/balcon-apres.svg" alt="Balcon couvert de plantes en fleurs"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plantes" class="center" style="background:var(--paper)">
+      <div class="wrap">
+        <span class="tag">La sélection d'automne</span>
+        <h2 data-fx="word-rise">Retournez une plante.</h2>
+        <p class="sub">Au dos de chaque carte, ses besoins. Survolez ou touchez pour la retourner.</p>
+        <div class="plants" data-fx="tile-cascade">
+          <div data-fx="flip-card"><div class="front"><img src="img/plante-monstera.svg" alt="Monstera"><h3>Monstera</h3></div><div class="back"><h3>Monstera</h3><ul><li>Lumière douce</li><li>Arrosage tous les 8 jours</li><li>Aime la brume</li></ul></div></div>
+          <div data-fx="flip-card"><div class="front"><img src="img/plante-cactus.svg" alt="Cactus en fleur"><h3>Cactus fleuri</h3></div><div class="back"><h3>Cactus fleuri</h3><ul><li>Plein soleil</li><li>Arrosage tous les 20 jours</li><li>Fleurit en mai</li></ul></div></div>
+          <div data-fx="flip-card"><div class="front"><img src="img/plante-fougere.svg" alt="Fougère"><h3>Fougère</h3></div><div class="back"><h3>Fougère</h3><ul><li>Mi-ombre</li><li>Terre toujours fraîche</li><li>Parfaite au nord</li></ul></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap how">
+      <div>
+        <span class="tag">Comment ça marche</span>
+        <h2 data-fx="word-rise">Quatre étapes, zéro plante perdue.</h2>
+        <ol data-fx="timeline" style="margin-top:40px">
+          <li><b>Le diagnostic</b><span>Une photo du balcon et sa boussole suffisent.</span></li>
+          <li><b>La composition</b><span>Notre paysagiste choisit plantes, pots et terreau.</span></li>
+          <li><b>L'installation</b><span>Livraison en vélo-cargo, installation en une heure.</span></li>
+          <li><b>Le suivi</b><span>Les capteurs préviennent avant que la plante ne souffre.</span></li>
+        </ol>
+      </div>
+      <div class="impact" data-fx="lift-shadow" style="align-self:center">
+        <span class="tag">Impact de nos balcons</span>
+        <div class="big" style="margin-top:18px"><span data-fx="scroll-count" data-fx-to="18400">18400</span> m²</div>
+        <p style="color:var(--soft);margin:6px 0 0">végétalisés depuis 2023 · évolution par mois</p>
+        <div data-fx="bars-grow"><div data-fx-value="22"></div><div data-fx-value="35"></div><div data-fx-value="41"></div><div data-fx-value="58"></div><div data-fx-value="64"></div><div data-fx-value="80"></div><div data-fx-value="92"></div></div>
+        <div class="months"><span>avr.</span><span>mai</span><span>juin</span><span>juil.</span><span>août</span><span>sept.</span><span>oct.</span></div>
+      </div>
+    </section>
+
+    <section id="tarifs" class="center" style="background:var(--paper)">
+      <div class="wrap">
+        <span class="tag">Tarifs</span>
+        <h2 data-fx="word-rise">Un abonnement qui suit les saisons.</h2>
+        <div class="pricing-switch" data-fx="tab-slider" role="tablist">
+          <button role="tab" aria-selected="true" data-period="mois">Mensuel</button>
+          <button role="tab" data-period="an">Annuel −20 %</button>
+        </div>
+        <div class="plans" data-fx="rise-stagger">
+          <div class="plan"><h3>Rebord</h3><div class="price"><span data-m="19" data-a="15">19</span> € <small>/ mois</small></div><ul><li>Jusqu'à 1 m²</li><li>4 plantes par saison</li><li>1 capteur</li></ul><a class="btn soft" href="#">Choisir</a></div>
+          <div class="plan best" data-fx="conic-border"><div><h3>Balcon</h3><div class="price"><span data-m="39" data-a="31">39</span> € <small style="color:#b9cdbd">/ mois</small></div><ul><li>Jusqu'à 6 m²</li><li>10 plantes par saison</li><li>3 capteurs et arrosage automatique</li></ul><button class="btn" data-fx="confetti">Choisir — le plus aimé</button></div></div>
+          <div class="plan"><h3>Terrasse</h3><div class="price"><span data-m="79" data-a="63">79</span> € <small>/ mois</small></div><ul><li>Jusqu'à 25 m²</li><li>Plantes et petits arbres</li><li>Visite d'un paysagiste</li></ul><a class="btn soft" href="#">Choisir</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" data-fx="gradient-drift" style="--fx-base:#e3efdc;--fx-d1:#c8e3cd;--fx-d2:#fde0cf;--fx-d3:#d5ecd9;--fx-d4:#fff3d6">
+      <svg class="vine" data-fx="path-scroll" viewBox="0 0 600 80" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M10 60C80 10 130 70 200 40s110-40 170 0 130 30 220-20"/></svg>
+      <h2 data-fx="line-mask">Rendez votre<br>balcon jaloux.</h2>
+      <p style="margin-top:30px"><a class="btn" href="#tarifs" data-fx="magnetic">Commencer au printemps</a></p>
+    </section>
+  </main>
+
+  <footer class="wrap">Verdure — service fictif, créé pour Idéothèque. Effets : text-split, svg-draw, compare, flip-card, timeline, tab-slider, conic-border, path-scroll…</footer>
+  <a class="ex-back" href="index.html" data-fx="pixel-wipe">← Exemples</a>
+
+  <script src="../dist/fx.js"></script>
+  <script>
+    // Bascule mensuel / annuel : l'effet tab-slider déplace l'indicateur, on met à jour les prix
+    document.querySelector('.pricing-switch').addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var key = b.dataset.period === 'an' ? 'a' : 'm';
+      document.querySelectorAll('.plan .price span[data-m]').forEach(function (s) { s.textContent = s.dataset[key]; });
+    });
+  </script>
+</body>
+</html>
