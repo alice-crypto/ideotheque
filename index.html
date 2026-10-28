@@ -172,7 +172,41 @@
     }
     #search:focus { border-color: var(--accent); }
     #search::placeholder { color: var(--muted); }
-    .filters { margin-top: 16px; }
+    /* Barre de catégories : une seule ligne qui défile, collée sous la navigation */
+    .filters {
+      position: sticky; top: 62px; z-index: 40;
+      flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+      margin: 16px calc(var(--gutter) * -1) 0; padding: 12px var(--gutter);
+      background: linear-gradient(var(--bg) 75%, transparent);
+    }
+    .filters::-webkit-scrollbar { display: none; }
+    .filters button { flex: none; }
+    .back-all {
+      margin: 8px 0 0; border: 0; background: none; color: var(--muted); cursor: pointer;
+      font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 0;
+    }
+    .back-all:hover { color: var(--ink); }
+
+    /* Sections par catégorie */
+    .cat-section { margin-top: 56px; scroll-margin-top: 130px; }
+    .cat-section:first-child { margin-top: 24px; }
+    .cat-head {
+      display: flex; align-items: end; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap;
+      padding-bottom: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--line);
+    }
+    .cat-head .num { color: var(--accent); display: block; margin-bottom: 8px; }
+    .cat-head h3 { margin: 0; font-size: clamp(30px, 4vw, 52px); line-height: 1; letter-spacing: -.045em; font-weight: 600; }
+    .cat-head h3 sup { font: 500 13px var(--mono); color: var(--muted); letter-spacing: 0; margin-left: 8px; vertical-align: top; }
+    .cat-head p { margin: 10px 0 0; color: var(--muted); max-width: 560px; }
+    .see-all {
+      flex: none; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer;
+      border-radius: 999px; padding: 12px 20px; font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase;
+      transition: background .3s, color .3s, border-color .3s;
+    }
+    .see-all:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .cat-foot { display: flex; justify-content: center; margin-top: 20px; }
+    .empty { padding: 64px 0; text-align: center; color: var(--muted); }
+    .empty p { font-size: 20px; margin: 0 0 20px; }
 
     /* Démos génériques réutilisées par les packs */
     .demo-box { width: 150px; height: 104px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), #ffb347); }
@@ -316,8 +350,13 @@
       <input id="search" type="search" placeholder="Rechercher un effet : texte, survol, image…" aria-label="Rechercher un effet">
       <span id="result-count" class="mono muted"></span>
     </div>
-    <div class="filters" role="group" aria-label="Filtrer par catégorie"></div>
-    <div class="grid" id="grid"></div>
+    <nav class="filters" aria-label="Catégories"></nav>
+    <button class="back-all" id="back-all" hidden>← Toutes les catégories</button>
+    <div id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      <p>Aucun effet ne correspond<span id="empty-where"></span>.</p>
+      <button class="see-all" id="empty-all" hidden>Chercher dans toutes les catégories</button>
+    </div>
   </section>
 
   <section class="how" id="comment">
@@ -361,18 +400,35 @@
   <script src="dist/catalog.js"></script>
   <script src="dist/fx.js"></script>
   <script>
-    // Le catalogue est généré par scripts/build.js (dist/catalog.js) ; les démos sont
-    // insérées seulement quand la carte approche de l'écran.
+    // Le catalogue est généré par scripts/build.js (dist/catalog.js). Il est rangé par
+    // catégorie : chaque section montre une rangée d'aperçu, ou tous ses effets quand on
+    // l'ouvre. Les démos sont insérées seulement quand la carte approche de l'écran.
     (function () {
       var EFFECTS = window.FX_CATALOG || [];
-      var grid = document.getElementById('grid');
+      var body = document.getElementById('grid');
       var bar = document.querySelector('.filters');
+      var back = document.getElementById('back-all');
       var search = document.getElementById('search');
       var countEl = document.getElementById('result-count');
-      var state = { cat: 'Tout', q: '' };
+      var catalog = document.getElementById('catalogue');
+      var state = { cat: null, q: '' };
+
+      var ABOUT = {
+        'Entrée': 'Faire apparaître un contenu quand il arrive à l\'écran.',
+        'Texte': 'Mettre en scène les mots, les lettres et les chiffres.',
+        'Présentation': 'Chargements, graphiques, témoignages : la vitrine.',
+        'Micro-interaction': 'Répondre au survol, au clic, au toucher.',
+        'Défilement': 'Lier le mouvement au défilement de la page.',
+        'Transition': 'Passer d\'une page ou d\'un état à l\'autre, en plein écran.',
+        'Image': 'Révéler, déformer, comparer, faire défiler les visuels.',
+        'Navigation': 'Menus, onglets, tiroirs, fenêtres : les composants d\'interface.',
+        'Ambiance': 'Fonds, textures et atmosphères qui habillent une section.',
+        'État': 'Chargement, succès, erreur, notifications : les retours.'
+      };
 
       function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
       function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+      function slug(c) { return 'categorie-' + norm(c).replace(/[^a-z]+/g, '-').replace(/-$/, ''); }
 
       document.getElementById('nav-count').textContent = EFFECTS.length;
       document.getElementById('stat-count').dataset.fxTo = EFFECTS.length;
@@ -402,6 +458,30 @@
         }
       }
 
+      // --- Sections ----------------------------------------------------------
+
+      var cats = [];
+      var sections = {};
+      EFFECTS.forEach(function (f) { if (cats.indexOf(f.cat) === -1) cats.push(f.cat); });
+
+      cats.forEach(function (c, n) {
+        var count = EFFECTS.filter(function (f) { return f.cat === c; }).length;
+        var sec = document.createElement('section');
+        sec.className = 'cat-section';
+        sec.id = slug(c);
+        sec.dataset.cat = c;
+        sec.innerHTML =
+          '<header class="cat-head"><div>' +
+            '<span class="num mono">' + String(n + 1).padStart(2, '0') + ' / ' + String(cats.length).padStart(2, '0') + '</span>' +
+            '<h3>' + c + '<sup>' + count + '</sup></h3>' +
+            '<p>' + (ABOUT[c] || '') + '</p>' +
+          '</div><button class="see-all" data-open="' + c + '">Voir les ' + count + ' effets →</button></header>' +
+          '<div class="grid"></div>' +
+          '<div class="cat-foot"><button class="see-all" data-open="' + c + '">Voir les ' + count + ' effets →</button></div>';
+        body.appendChild(sec);
+        sections[c] = { el: sec, grid: sec.querySelector('.grid'), count: count };
+      });
+
       EFFECTS.forEach(function (fx, i) {
         var card = document.createElement('article');
         card.className = 'card';
@@ -419,11 +499,13 @@
               '<button data-act="copy">Copier</button>' +
             '</div>' +
           '</div>';
-        grid.appendChild(card);
+        sections[fx.cat].grid.appendChild(card);
         if (lazy) lazy.observe(card); else mount(card);
       });
 
-      grid.addEventListener('click', function (e) {
+      body.addEventListener('click', function (e) {
+        var open = e.target.closest('[data-open]');
+        if (open) { show(open.dataset.open, true); return; }
         var btn = e.target.closest('button[data-act]');
         if (!btn) return;
         var card = btn.closest('.card');
@@ -441,34 +523,73 @@
         }
       });
 
-      function apply() {
-        var q = norm(state.q.trim());
-        var shown = 0;
-        grid.querySelectorAll('.card').forEach(function (card) {
-          var ok = (state.cat === 'Tout' || card.dataset.cat === state.cat) && (!q || card.dataset.search.indexOf(q) !== -1);
-          card.style.display = ok ? '' : 'none';
-          if (ok) shown++;
-        });
-        countEl.textContent = shown + (shown > 1 ? ' effets' : ' effet');
+      // --- Affichage : vue d'ensemble, une catégorie, ou recherche -------------
+
+      // Une rangée d'aperçu : autant de cartes que de colonnes (au moins deux)
+      function previewSize() {
+        var g = sections[cats[0]].grid;
+        var cols = getComputedStyle(g).gridTemplateColumns.split(' ').filter(Boolean).length;
+        return Math.max(2, cols || 1);
       }
 
-      // Filtres par catégorie, avec le nombre d'effets dans chacune
-      var counts = {};
-      EFFECTS.forEach(function (f) { counts[f.cat] = (counts[f.cat] || 0) + 1; });
-      ['Tout'].concat(Object.keys(counts)).forEach(function (c, i) {
+      function apply() {
+        var q = norm(state.q.trim());
+        var limit = (!q && !state.cat) ? previewSize() : Infinity;
+        var total = 0;
+        cats.forEach(function (c) {
+          var s = sections[c];
+          var inCat = !state.cat || state.cat === c;
+          var shown = 0;
+          var matches = 0;
+          s.grid.querySelectorAll('.card').forEach(function (card) {
+            var ok = inCat && (!q || card.dataset.search.indexOf(q) !== -1);
+            if (ok) matches++;
+            var visible = ok && shown < limit;
+            card.style.display = visible ? '' : 'none';
+            if (visible) shown++;
+          });
+          total += matches;
+          s.el.hidden = !inCat || matches === 0;
+          // Les boutons « Voir tout » n'ont de sens qu'en vue d'ensemble
+          s.el.querySelectorAll('[data-open]').forEach(function (b) { b.hidden = limit === Infinity || s.count <= limit; });
+        });
+        back.hidden = !state.cat;
+        document.getElementById('empty').hidden = total > 0;
+        document.getElementById('empty-where').textContent = state.cat ? ' dans « ' + state.cat + ' »' : '';
+        document.getElementById('empty-all').hidden = !state.cat;
+        bar.querySelectorAll('button').forEach(function (b) {
+          b.setAttribute('aria-pressed', (b.dataset.cat || null) === state.cat ? 'true' : 'false');
+        });
+        countEl.textContent = q || state.cat ? total + (total > 1 ? ' effets' : ' effet') : EFFECTS.length + ' effets · ' + cats.length + ' catégories';
+      }
+
+      function show(cat, scroll) {
+        state.cat = cat;
+        apply();
+        var hash = cat ? '#' + slug(cat) : '#catalogue';
+        if (history.replaceState) history.replaceState(null, '', hash);
+        if (scroll) catalog.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // Barre de catégories (collante), avec le nombre d'effets dans chacune
+      [null].concat(cats).forEach(function (c) {
         var b = document.createElement('button');
-        b.innerHTML = c + '<sup>' + (c === 'Tout' ? EFFECTS.length : counts[c]) + '</sup>';
-        b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
-        b.onclick = function () {
-          bar.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
-          b.setAttribute('aria-pressed', 'true');
-          state.cat = c;
-          apply();
-        };
+        if (c) b.dataset.cat = c;
+        b.innerHTML = (c || 'Tout') + '<sup>' + (c ? sections[c].count : EFFECTS.length) + '</sup>';
+        b.onclick = function () { show(c, true); };
         bar.appendChild(b);
       });
+      back.onclick = function () { show(null, true); };
+      document.getElementById('empty-all').onclick = function () { show(null, false); };
       search.addEventListener('input', function () { state.q = search.value; apply(); });
+      var resizeT;
+      window.addEventListener('resize', function () { clearTimeout(resizeT); resizeT = setTimeout(apply, 150); });
+
+      // Un lien #categorie-xxx ouvre directement la catégorie
+      var fromHash = cats.filter(function (c) { return '#' + slug(c) === location.hash; })[0];
+      state.cat = fromHash || null;
       apply();
+      if (fromHash) setTimeout(function () { catalog.scrollIntoView(); }, 0);
     })();
   </script>
 </body>
