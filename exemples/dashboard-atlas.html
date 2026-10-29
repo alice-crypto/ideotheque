@@ -87,7 +87,7 @@
           <button class="btn soft" data-fx-toggle="#billet">🎫 Mon billet</button>
           <div data-fx="dropdown">
             <button class="avatar" aria-label="Compte">M</button>
-            <div class="menu-card"><a href="#">Mes voyages</a><a href="#">Préférences</a><a href="atlas.html">Se déconnecter</a></div>
+            <div class="menu-card"><a href="#">Mes voyages</a><a href="#">Préférences</a><a href="atlas.html" data-fx="iris">Se déconnecter</a></div>
           </div>
         </div>
       </div>
@@ -187,7 +187,7 @@
       fallback: 'Je transmets à Lucia, qui vous répond dans l’heure.'
     };
     window.CMDK = [
-      { group: 'Aller à', items: [{ icon: '◇', label: 'Mon voyage', hint: 'Page', href: '#' }, { icon: '≡', label: 'Carnet', hint: 'Page', href: '#' }, { icon: '✉', label: 'Mon guide', hint: 'Page', href: '#' }, { icon: '◌', label: 'Voyageurs', hint: 'Page', href: '#' }] },
+      { group: 'Aller à', items: [{ icon: '↗', label: 'Site de Atlas', hint: 'Page', href: 'atlas.html' }, { icon: '▦', label: 'Tous les exemples', hint: 'Page', href: 'index.html' }, { icon: '◇', label: 'Mon voyage', hint: 'Page', href: '#' }, { icon: '≡', label: 'Carnet', hint: 'Page', href: '#' }, { icon: '✉', label: 'Mon guide', hint: 'Page', href: '#' }, { icon: '◌', label: 'Voyageurs', hint: 'Page', href: '#' }] },
       { group: 'Actions', items: [{ icon: '🎫', label: 'Télécharger mes billets', hint: 'Action', toast: 'Billets ajoutés au téléphone' }, { icon: '✉', label: 'Écrire à Lucia', hint: 'Action', toast: 'Message envoyé à Lucia' }] },
       { group: 'Demander à l’IA', items: [{ icon: '✦', label: 'Que se passe-t-il le 14 mai ?', hint: 'IA', ask: 'Que se passe-t-il le 14 mai ?' }, { icon: '✦', label: 'Que mettre dans la valise pour Vernazza ?', hint: 'IA', ask: 'Que mettre dans la valise pour Vernazza ?' }, { icon: '✦', label: 'Où dîner à Gênes le jour 3 ?', hint: 'IA', ask: 'Où dîner à Gênes le jour 3 ?' }] }
     ];

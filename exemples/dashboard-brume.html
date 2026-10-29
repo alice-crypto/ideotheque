@@ -74,7 +74,7 @@
           <button class="icon-btn" aria-label="Notifications" onclick="FX.trigger(document.getElementById('bell'))">🔔<span class="dot" id="bell" data-fx="badge-bump">2</span></button>
           <div data-fx="dropdown">
             <button class="avatar" aria-label="Compte">I</button>
-            <div class="menu-card"><a href="#">Mon profil</a><a href="#">Mes appareils</a><a href="brume.html">Se déconnecter</a></div>
+            <div class="menu-card"><a href="#">Mon profil</a><a href="#">Mes appareils</a><a href="brume.html" data-fx="fade-through">Se déconnecter</a></div>
           </div>
         </div>
       </div>
@@ -148,7 +148,7 @@
       fallback: "Je n'ai pas assez de nuits pour répondre précisément. Encore une semaine et je saurai !"
     };
     window.CMDK = [
-      { group: 'Aller à', items: [{ icon: '◐', label: 'Mes nuits', hint: 'Page', href: '#' }, { icon: '♪', label: 'Histoires', hint: 'Page', href: '#' }, { icon: '≈', label: 'Respiration', hint: 'Page', href: '#' }, { icon: '☾', label: 'Réveil doux', hint: 'Page', href: '#' }] },
+      { group: 'Aller à', items: [{ icon: '↗', label: 'Site de Brume', hint: 'Page', href: 'brume.html' }, { icon: '▦', label: 'Tous les exemples', hint: 'Page', href: 'index.html' }, { icon: '◐', label: 'Mes nuits', hint: 'Page', href: '#' }, { icon: '♪', label: 'Histoires', hint: 'Page', href: '#' }, { icon: '≈', label: 'Respiration', hint: 'Page', href: '#' }, { icon: '☾', label: 'Réveil doux', hint: 'Page', href: '#' }] },
       { group: 'Actions', items: [{ icon: '☼', label: 'Activer la lumière ambrée', hint: 'Action', toast: 'Lumière ambrée activée' }, { icon: '⏰', label: 'Régler le réveil à 6 h 50', hint: 'Action', toast: 'Réveil réglé à 6 h 50' }] },
       { group: 'Demander à l’IA', items: [{ icon: '✦', label: 'Pourquoi je dors moins bien le mardi ?', hint: 'IA', ask: 'Pourquoi je dors moins bien le mardi ?' }, { icon: '✦', label: 'Quelle est ma meilleure heure de coucher ?', hint: 'IA', ask: 'Quelle est ma meilleure heure de coucher ?' }, { icon: '✦', label: 'Compose ma séance de ce soir', hint: 'IA', ask: 'Compose ma séance de ce soir' }] }
     ];

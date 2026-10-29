@@ -83,7 +83,7 @@
           <button class="icon-btn" aria-label="Notifications" onclick="FX.trigger(document.getElementById('bell'))">🔔<span class="dot" id="bell" data-fx="badge-bump">4</span></button>
           <div data-fx="dropdown">
             <button class="avatar" aria-label="Compte">A</button>
-            <div class="menu-card"><a href="#">Profil de l'atelier</a><a href="#">Paiements</a><a href="ocre.html">Voir la boutique</a></div>
+            <div class="menu-card"><a href="#">Profil de l'atelier</a><a href="#">Paiements</a><a href="ocre.html" data-fx="curtain-close">Voir la boutique</a></div>
           </div>
         </div>
       </div>
@@ -182,7 +182,7 @@
       fallback: 'Je n’ai pas encore cette information. Je la note pour la prochaine mise à jour.'
     };
     window.CMDK = [
-      { group: 'Aller à', items: [{ icon: '◧', label: 'Vue d’ensemble', hint: 'Page', href: '#' }, { icon: '⌁', label: 'Commandes', hint: 'Page', href: '#' }, { icon: '◍', label: 'Pièces', hint: 'Page', href: '#' }, { icon: '♨', label: 'Fours', hint: 'Page', href: '#' }] },
+      { group: 'Aller à', items: [{ icon: '↗', label: 'Site de Maison Ocre', hint: 'Page', href: 'ocre.html' }, { icon: '▦', label: 'Tous les exemples', hint: 'Page', href: 'index.html' }, { icon: '◧', label: 'Vue d’ensemble', hint: 'Page', href: '#' }, { icon: '⌁', label: 'Commandes', hint: 'Page', href: '#' }, { icon: '◍', label: 'Pièces', hint: 'Page', href: '#' }, { icon: '♨', label: 'Fours', hint: 'Page', href: '#' }] },
       { group: 'Actions', items: [{ icon: '＋', label: 'Ajouter une pièce', hint: 'Action', toast: 'Nouvelle pièce créée' }, { icon: '♨', label: 'Lancer la cuisson du four n° 1', hint: 'Action', toast: 'Four n° 1 en chauffe' }] },
       { group: 'Demander à l’IA', items: [{ icon: '✦', label: 'Que mettre dans la fournée de samedi ?', hint: 'IA', ask: 'Que mettre dans la fournée de samedi ?' }, { icon: '✦', label: 'Rédige la lettre de la prochaine fournée', hint: 'IA', ask: 'Rédige la lettre de la prochaine fournée' }, { icon: '✦', label: 'Quels clients relancer ?', hint: 'IA', ask: 'Quels clients relancer ?' }] }
     ];

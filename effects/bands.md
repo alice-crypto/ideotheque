@@ -15,6 +15,8 @@ Festif, coloré, très « marque ».
 
 ## Paramètres
 - Sur un lien : `<a href="…" data-fx="bands">` joue la transition puis change de page (et la termine sur la page suivante)
+- Sur un lien qui porte déjà un autre effet : `<a href="…" data-fx="lift-hover" data-fx-tr="bands">`
+- Vers une autre page en JavaScript : `FX.go('bands', '/projets', event)`
 - En JavaScript : `FX.play('bands', callback, event)` recouvre l'écran, appelle `callback`, puis découvre
 - Couleurs des bandes : dans le CSS du pack (`.fx-tr-bands i:nth-child(n)`)
 

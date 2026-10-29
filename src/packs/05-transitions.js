@@ -50,7 +50,13 @@
       build: function (o) {
         var src = o._fxEvent && o._fxEvent.target && o._fxEvent.target.closest && o._fxEvent.target.closest('[data-fx-title]');
         var t = U.make('span', 'fx-tr-title', o);
-        t.textContent = (src && src.dataset.fxTitle) || document.title;
+        var text = (src && src.dataset.fxTitle) || document.title;
+        // À l'arrivée sur la page suivante, le carton garde le titre de départ
+        try {
+          if (o._fxArrive) text = sessionStorage.getItem('fx-title') || text;
+          else sessionStorage.setItem('fx-title', text);
+        } catch (err) {}
+        t.textContent = text;
       }
     }
   });

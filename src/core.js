@@ -2,6 +2,7 @@
  * Idéothèque — fx.js — bibliothèque d'idées visuelles
  * Active automatiquement tous les éléments [data-fx] de la page.
  * API : FX.init(racine), FX.replay(element), FX.trigger(element), FX.play(transition, callback, event),
+ *       FX.go(transition, adresse, event),
  *       FX.register(nom, définition), FX.isEntrance(nom)
  * Licence MIT
  */
@@ -295,9 +296,20 @@
     var d = name && defs[name];
     if (!d || !d.transition || d.transition.custom || reduced) return;
     var o = overlay(name, d.transition.pieces || 1);
+    o._fxArrive = true;
     if (d.transition.build) d.transition.build(o);
     o.classList.add('fx-cover', 'fx-instant');
     raf(function () { raf(function () { o.classList.remove('fx-instant'); uncover(o, d.transition); }); });
+  }
+
+  // Joue une transition puis change de page ; la page suivante la termine
+  function go(name, href, event) {
+    var d = defs[name];
+    if (!d || !d.transition || d.transition.custom || reduced) { window.location.href = href; return; }
+    play(name, function () {
+      try { sessionStorage.setItem('fx-arrive', name); } catch (err) {}
+      window.location.href = href;
+    }, event, true);
   }
 
   // Un lien portant une transition la joue avant de changer de page
@@ -306,10 +318,7 @@
       var href = el.getAttribute('href');
       if (!href || href.charAt(0) === '#' || e.metaKey || e.ctrlKey || e.shiftKey || el.target === '_blank') return;
       e.preventDefault();
-      play(name, function () {
-        try { sessionStorage.setItem('fx-arrive', name); } catch (err) {}
-        window.location.href = href;
-      }, e, true);
+      go(name, href, e);
     });
   }
 
@@ -322,6 +331,13 @@
   }
 
   function init(root) {
+    // data-fx-tr : une transition sur un lien qui porte déjà un autre effet
+    (root || document).querySelectorAll('a[data-fx-tr]').forEach(function (el) {
+      if (el.dataset.fxTrReady) return;
+      el.dataset.fxTrReady = '1';
+      var d = defs[el.dataset.fxTr];
+      if (d && d.transition) bindLink(el, el.dataset.fxTr);
+    });
     (root || document).querySelectorAll('[data-fx]').forEach(function (el) {
       if (el.dataset.fxReady) return;
       el.dataset.fxReady = '1';
@@ -368,6 +384,7 @@
     replay: replay,
     trigger: trigger,
     play: play,
+    go: go,
     register: register,
     isEntrance: function (name) { return !!(defs[name] && defs[name].entrance); },
     has: function (name) { return !!defs[name]; },

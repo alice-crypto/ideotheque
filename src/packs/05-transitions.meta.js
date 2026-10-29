@@ -1,5 +1,5 @@
 /* Métadonnées du pack 05 — Transitions plein écran */
-const USAGE = (id) => '- Sur un lien : `<a href="…" data-fx="' + id + '">` joue la transition puis change de page (et la termine sur la page suivante)\n- En JavaScript : `FX.play(\'' + id + '\', callback, event)` recouvre l\'écran, appelle `callback`, puis découvre';
+const USAGE = (id) => '- Sur un lien : `<a href="…" data-fx="' + id + '">` joue la transition puis change de page (et la termine sur la page suivante)\n- Sur un lien qui porte déjà un autre effet : `<a href="…" data-fx="lift-hover" data-fx-tr="' + id + '">`\n- Vers une autre page en JavaScript : `FX.go(\'' + id + '\', \'/projets\', event)`\n- En JavaScript : `FX.play(\'' + id + '\', callback, event)` recouvre l\'écran, appelle `callback`, puis découvre';
 const COLOR = '\n- `--fx-tr-color` : couleur principale (à définir sur `:root`)';
 const A11Y = 'Avec `prefers-reduced-motion: reduce`, la transition est sautée : l\'action a lieu immédiatement. Les clics avec Ctrl, Cmd ou Maj ne sont pas interceptés.';
 const BTN = (id, label) => '<button class="demo-ghost" onclick="FX.play(\'' + id + '\', null, event)">' + (label || 'Lancer la transition') + '</button>';

@@ -15,6 +15,8 @@ Mécanique, élégant, comme un tableau d'affichage.
 
 ## Paramètres
 - Sur un lien : `<a href="…" data-fx="tile-flip">` joue la transition puis change de page (et la termine sur la page suivante)
+- Sur un lien qui porte déjà un autre effet : `<a href="…" data-fx="lift-hover" data-fx-tr="tile-flip">`
+- Vers une autre page en JavaScript : `FX.go('tile-flip', '/projets', event)`
 - En JavaScript : `FX.play('tile-flip', callback, event)` recouvre l'écran, appelle `callback`, puis découvre
 - `--fx-tr-color` : couleur principale (à définir sur `:root`)
 

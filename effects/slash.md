@@ -15,6 +15,8 @@ Rapide, sportif, tranchant.
 
 ## Paramètres
 - Sur un lien : `<a href="…" data-fx="slash">` joue la transition puis change de page (et la termine sur la page suivante)
+- Sur un lien qui porte déjà un autre effet : `<a href="…" data-fx="lift-hover" data-fx-tr="slash">`
+- Vers une autre page en JavaScript : `FX.go('slash', '/projets', event)`
 - En JavaScript : `FX.play('slash', callback, event)` recouvre l'écran, appelle `callback`, puis découvre
 - `--fx-tr-color` : couleur principale (à définir sur `:root`)
 

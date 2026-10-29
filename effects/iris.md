@@ -15,6 +15,8 @@ Cinéma muet, dessin animé, fin de scène.
 
 ## Paramètres
 - Sur un lien : `<a href="…" data-fx="iris">` joue la transition puis change de page (et la termine sur la page suivante)
+- Sur un lien qui porte déjà un autre effet : `<a href="…" data-fx="lift-hover" data-fx-tr="iris">`
+- Vers une autre page en JavaScript : `FX.go('iris', '/projets', event)`
 - En JavaScript : `FX.play('iris', callback, event)` recouvre l'écran, appelle `callback`, puis découvre
 - `--fx-tr-color` : couleur principale (à définir sur `:root`)
 - Utilise `@property` (sans animation sur les navigateurs anciens)

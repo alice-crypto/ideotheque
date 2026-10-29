@@ -238,6 +238,8 @@ La bibliothèque contient <!-- total -->206<!-- /total --> effets.
 - `FX.replay(element)` : rejoue une entrée
 - `FX.trigger(element)` : déclenche un effet ponctuel (secousse, confettis, notification…)
 - `FX.play(nom, callback, event)` : joue une transition plein écran autour d'une action
+- `FX.go(nom, adresse, event)` : joue une transition puis change de page (la page suivante la termine)
+- `data-fx-tr="nom"` sur un lien qui porte déjà un autre effet : il joue cette transition avant de changer de page
 - `FX.register(nom, définition)` : ajoute un effet (voir `CONTRIBUTING.md`)
 
 ## Combinaisons qui marchent bien

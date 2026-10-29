@@ -15,6 +15,8 @@ Numérique, nerveux, interférence.
 
 ## Paramètres
 - Sur un lien : `<a href="…" data-fx="glitch-cut">` joue la transition puis change de page (et la termine sur la page suivante)
+- Sur un lien qui porte déjà un autre effet : `<a href="…" data-fx="lift-hover" data-fx-tr="glitch-cut">`
+- Vers une autre page en JavaScript : `FX.go('glitch-cut', '/projets', event)`
 - En JavaScript : `FX.play('glitch-cut', callback, event)` recouvre l'écran, appelle `callback`, puis découvre
 
 ## Quand l'utiliser

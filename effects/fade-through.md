@@ -15,6 +15,8 @@ Sobre, cinématographique, universel.
 
 ## Paramètres
 - Sur un lien : `<a href="…" data-fx="fade-through">` joue la transition puis change de page (et la termine sur la page suivante)
+- Sur un lien qui porte déjà un autre effet : `<a href="…" data-fx="lift-hover" data-fx-tr="fade-through">`
+- Vers une autre page en JavaScript : `FX.go('fade-through', '/projets', event)`
 - En JavaScript : `FX.play('fade-through', callback, event)` recouvre l'écran, appelle `callback`, puis découvre
 - `--fx-tr-color` : couleur principale (à définir sur `:root`)
 

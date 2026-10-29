@@ -8,7 +8,8 @@
  *   fallback: 'Réponse par défaut'
  * };
  * window.CMDK = [{ group: 'Pages', items: [{ icon: '◐', label: 'Mes nuits', hint: 'Aller', href: '#' }] }];
- *   un élément peut aussi avoir ask: 'question' (ouvre l'assistant) ou toast: 'message'.
+ *   un élément peut aussi avoir ask: 'question' (ouvre l'assistant) ou toast: 'message' ;
+ *   un href joue la transition du bouton « ← Exemples » de la page (FX.go).
  */
 (function () {
   'use strict';
@@ -167,7 +168,11 @@
       cmdk.querySelector('[data-fx-close]').click();
       if (i.ask) setTimeout(function () { ask(i.ask); }, 250);
       else if (i.toast) { var t = document.querySelector('[data-fx="toast"]'); var b = document.createElement('button'); b.hidden = true; b.setAttribute('data-fx-toggle', '#' + t.id); b.setAttribute('data-fx-message', i.toast); document.body.appendChild(b); b.click(); b.remove(); }
-      else if (i.href) location.href = i.href;
+      // Les pages s'ouvrent avec la transition du bouton « ← Exemples » de la page
+      else if (i.href && i.href !== '#') {
+        var back = document.querySelector('.ex-back');
+        setTimeout(function () { FX.go((back && (back.dataset.fxTr || back.dataset.fx)) || 'fade-through', i.href); }, 200);
+      }
     }
     input.addEventListener('input', function () { render(input.value); });
     input.addEventListener('keydown', function (e) {
@@ -186,6 +191,15 @@
     document.addEventListener('click', function (e) { if (e.target.closest('[data-cmdk]')) openCmdk(); });
     document.querySelectorAll('[data-cmdk] .kbd').forEach(function (k) { k.textContent = mod + ' K'; });
   }
+
+  // Changer de période transforme les graphiques en douceur (view-morph) et les rejoue
+  var CHARTS = '[data-fx="bars-grow"], [data-fx="line-chart"], [data-fx="count-up"], [data-fx="donut"], [data-fx="progress-ring"], [data-fx="liquid-fill"]';
+  document.addEventListener('click', function (e) {
+    var tab = e.target.closest('.seg[data-fx="tab-slider"] [role="tab"]');
+    if (!tab || tab.getAttribute('aria-selected') === 'true') return;
+    var charts = document.querySelectorAll(CHARTS);
+    FX.play('view-morph', function () { charts.forEach(function (c) { FX.replay(c); }); });
+  }, true); // en capture : avant que tab-slider ne change l'onglet actif
 
   document.addEventListener('keydown', function (e) {
     if (!(e.metaKey || e.ctrlKey)) return;
