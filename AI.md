@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->200<!-- /total --> effets.
+La bibliothèque contient <!-- total -->206<!-- /total --> effets.
 
 ## Règles
 
@@ -69,6 +69,8 @@ La bibliothèque contient <!-- total -->200<!-- /total --> effets.
 | `image-text` | Texte | Une image ou un dégradé se promène lentement à l'intérieur des lettres |
 | `velocity-stretch` | Texte | Le texte s'étire verticalement et penche selon la vitesse du défilement, puis revient au repos |
 | `edge-label` | Texte | Un texte vertical posé sur le bord, qui glisse doucement au fil du défilement |
+| `stream-text` | Texte | La réponse arrive par petits groupes de mots, à un rythme irrégulier, derrière un curseur plein : comme un modèle qui génère |
+| `text-shimmer` | Texte | Un reflet traverse le texte en boucle, pour dire « en train de réfléchir » |
 | `count-up` | Présentation | Mettre en scène un chiffre clé en le faisant défiler de 0 jusqu'à sa valeur |
 | `pill-grow` | Présentation | Une gélule s'ouvre au milieu d'un titre, puis une pastille glisse à l'intérieur, comme un interrupteur qu'on active |
 | `preloader` | Présentation | Un écran de chargement chiffré de 0 à 100 %, avec une barre de progression, qui se lève vers le haut pour révéler la page |
@@ -88,6 +90,7 @@ La bibliothèque contient <!-- total -->200<!-- /total --> effets.
 | `holo-card` | Présentation | Une carte holographique : des reflets irisés et une lueur suivent le curseur pendant qu'elle s'incline |
 | `donut` | Présentation | Un graphique en anneau dont les parts se tracent l'une après l'autre, avec un libellé au centre |
 | `expand-panels` | Présentation | Des panneaux côte à côte ; celui qu'on survole s'élargit pendant que les autres se resserrent |
+| `prompt-box` | Présentation | Un champ de saisie qui écrit tout seul des exemples de demandes, les garde un instant, puis les efface |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |
@@ -203,6 +206,7 @@ La bibliothèque contient <!-- total -->200<!-- /total --> effets.
 | `orbit-rings` | Ambiance | Trois anneaux pointillés tournent autour du centre, chacun portant une petite planète |
 | `light-beams` | Ambiance | Des faisceaux de lumière tombent du haut et balancent doucement, comme des projecteurs de scène |
 | `water-ripple` | Ambiance | Des ondes se forment à la surface quand on bouge ou clique, et des gouttes tombent d'elles-mêmes de temps en temps |
+| `glow-grid` | Ambiance | Une grille fine, estompée sur les bords, dont les lignes s'allument autour du curseur |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |
@@ -220,6 +224,8 @@ La bibliothèque contient <!-- total -->200<!-- /total --> effets.
 | `live-dot` | État | Un point rouge qui pulse à côté d'un libellé, pour signaler un direct |
 | `flip-clock` | État | Des chiffres qui basculent comme une horloge à palettes : l'heure actuelle, ou un compte à rebours |
 | `loading-quips` | État | Pendant un chargement, des phrases sympathiques se succèdent au-dessus d'une barre qui avance |
+| `ai-orb` | État | Un orbe de couleur qui respire doucement, puis tourbillonne quand l'assistant réfléchit |
+| `thinking-steps` | État | Les étapes d'un agent s'enchaînent : chacune tourne le temps du travail, puis se coche |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)

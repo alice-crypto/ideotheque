@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../dist/fx.css">
   <link rel="stylesheet" href="dash.css">
   <link rel="stylesheet" href="exemples.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech.css">
   <style>
     :root {
       --bg: #fff5f0; --panel: #fffbf8; --ink: #33201f; --soft: #957973; --line: #f5e1d8; --accent: #ff8f73; --hover: #ff8f7314;
@@ -69,12 +71,18 @@
           <div class="sub">Votre meilleure heure aujourd'hui : 10 h – 11 h 30</div>
         </div>
         <div class="tools">
+          <button class="cmdk-btn glass" data-cmdk type="button"><span>Rechercher ou demander…</span><span class="kbd">⌘ K</span></button>
           <span data-fx="live-dot" style="color:var(--accent);font-size:11px">12 408 en séance</span>
           <div class="seg" data-fx="tab-slider" role="tablist"><button role="tab" aria-selected="true">Semaine</button><button role="tab">Mois</button></div>
         </div>
       </div>
 
       <div class="grid">
+        <section class="card insight" data-fx="fade-up">
+          <span data-fx="ai-orb" aria-hidden="true"></span>
+          <div class="grow"><span class="mono" style="color:var(--soft)">Halo IA · votre semaine</span><p data-fx="stream-text">Vous êtes 40 % plus concentrée le jeudi matin, et vos séances en ambiance Braise durent en moyenne 22 minutes de plus. Je réserve jeudi, de 9 h à 11 h 30, pour votre chapitre 4 ?</p></div>
+          <div class="acts"><button class="btn" data-ask="Quand suis-je le plus concentrée ?">Expliquer</button><button class="btn soft" data-fx-toggle="#notifs" data-fx-message="Jeudi de 9 h à 11 h 30 réservé pour le chapitre 4">Appliquer</button></div>
+        </section>
         <section class="card player" data-fx="blob-bg" style="background:#ffeae2">
           <div class="compose"><span data-fx="typing-dots"><i></i><i></i><i></i></span>Halo compose la suite…</div>
           <div>
@@ -139,8 +147,27 @@
       </div>
     </main>
   </div>
+  <div id="notifs" data-fx="toast"></div>
   <a class="ex-back" href="index.html" data-fx="arc-rise">← Exemples</a>
 
+  <script>
+    window.AI = {
+      name: 'Halo IA', status: 'Compose en direct', fab: 'Composer ma séance',
+      intro: 'Bonjour Camille ! Je connais vos 23 séances de la semaine. Que voulez-vous faire ?',
+      suggestions: [
+        { q: 'Quand suis-je le plus concentrée ?', steps: ['Analyse de 23 séances', 'Comparaison par jour et par heure'], a: "Le jeudi entre 9 h et 11 h 30 : vos séances y durent 94 minutes en moyenne, contre 52 le reste de la semaine. Le vendredi après-midi est votre moment le plus fragile." },
+        { q: 'Compose une séance de 2 h pour écrire', steps: ['Choix du tempo de départ', 'Génération de 2 blocs de 55 min'], a: "Deux blocs de 55 minutes en Braise, de 80 à 58 bpm, avec 10 minutes de pluie au milieu. Je lance dès que vous appuyez sur lecture." },
+        { q: 'Résume ma semaine pour mon carnet', steps: ['Lecture de vos statistiques'], a: "17 heures de concentration, 23 séances, une série de 12 jours. Votre record : 94 minutes jeudi sur le mémoire. Meilleure ambiance : Braise." }
+      ],
+      fallback: 'Bonne idée ! Je la garde pour votre prochaine séance.'
+    };
+    window.CMDK = [
+      { group: 'Aller à', items: [{ icon: '◎', label: 'Accueil', hint: 'Page', href: '#' }, { icon: '♫', label: 'Ambiances', hint: 'Page', href: '#' }, { icon: '▤', label: 'Statistiques', hint: 'Page', href: '#' }, { icon: '⚙', label: 'Réglages', hint: 'Page', href: '#' }] },
+      { group: 'Actions', items: [{ icon: '▶', label: 'Reprendre la séance', hint: 'Action', toast: 'Séance reprise' }, { icon: '🔕', label: 'Activer le mode silence', hint: 'Action', toast: 'Mode silence activé' }] },
+      { group: 'Demander à l’IA', items: [{ icon: '✦', label: 'Quand suis-je le plus concentrée ?', hint: 'IA', ask: 'Quand suis-je le plus concentrée ?' }, { icon: '✦', label: 'Compose une séance de 2 h pour écrire', hint: 'IA', ask: 'Compose une séance de 2 h pour écrire' }, { icon: '✦', label: 'Résume ma semaine pour mon carnet', hint: 'IA', ask: 'Résume ma semaine pour mon carnet' }] }
+    ];
+  </script>
+  <script src="tech.js"></script>
   <script src="../dist/fx.js"></script>
 </body>
 </html>

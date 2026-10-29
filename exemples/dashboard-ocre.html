@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../dist/fx.css">
   <link rel="stylesheet" href="dash.css">
   <link rel="stylesheet" href="exemples.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech.css">
   <style>
     :root {
       --bg: #f6eee4; --panel: #fdf9f4; --ink: #3b2a20; --soft: #8f786a; --line: #eadccd; --accent: #c8693f; --hover: #c8693f12;
@@ -76,6 +78,7 @@
           <div class="sub">Voici l'atelier ce mois-ci · octobre 2026</div>
         </div>
         <div class="tools">
+          <button class="cmdk-btn glass" data-cmdk type="button"><span>Rechercher ou demander…</span><span class="kbd">⌘ K</span></button>
           <div class="seg" data-fx="tab-slider" role="tablist"><button role="tab">7 j</button><button role="tab" aria-selected="true">30 j</button><button role="tab">12 mois</button></div>
           <button class="icon-btn" aria-label="Notifications" onclick="FX.trigger(document.getElementById('bell'))">🔔<span class="dot" id="bell" data-fx="badge-bump">4</span></button>
           <div data-fx="dropdown">
@@ -86,6 +89,11 @@
       </div>
 
       <div class="grid">
+        <section class="card insight" data-fx="fade-up">
+          <span data-fx="ai-orb" aria-hidden="true"></span>
+          <div class="grow"><span class="mono" style="color:var(--soft)">Ocre IA · analyse des ventes</span><p data-fx="stream-text">Les ventes de la collection Table d'été ont doublé en trois semaines, surtout le week-end. Au rythme actuel, l'Amphore sera épuisée dans 9 jours : prévoyez-la dans la fournée de samedi.</p></div>
+          <div class="acts"><button class="btn" data-ask="Que mettre dans la fournée de samedi ?">Expliquer</button><button class="btn soft" data-fx-toggle="#notifs" data-fx-message="Amphore ×12 ajoutée à la fournée de samedi">Appliquer</button></div>
+        </section>
         <section class="card kpi k" data-fx="fade-up"><span class="muted">Chiffre d'affaires</span><div class="val"><span data-fx="count-up" data-fx-to="18640">18640</span> €</div><span class="delta">+12 %</span></section>
         <section class="card kpi k"><span class="muted">Commandes</span><div class="val"><span data-fx="count-up" data-fx-to="214">214</span></div><span class="delta">+31</span></section>
         <section class="card kpi k"><span class="muted">Panier moyen</span><div class="val"><span data-fx="count-up" data-fx-to="87">87</span> €</div><span class="delta down">−3 €</span></section>
@@ -162,6 +170,24 @@
   <div id="notifs" data-fx="toast"></div>
   <a class="ex-back" href="index.html" data-fx="curtain-close">← Exemples</a>
 
+  <script>
+    window.AI = {
+      name: 'Ocre IA', status: 'Connectée aux ventes et aux fours', fab: 'Demander à l’atelier',
+      intro: 'Bonjour Agathe ! Je suis vos ventes, votre stock et vos fours. Que voulez-vous savoir ?',
+      suggestions: [
+        { q: 'Que mettre dans la fournée de samedi ?', steps: ['Lecture du stock', 'Prévision des ventes sur 30 jours', 'Calcul de la place dans le four n° 2'], a: "Douze Amphores, vingt bols Sable et six Galets mauves : le four n° 2 sera rempli à 94 %. Ça couvre la demande prévue jusqu'à mi-décembre." },
+        { q: 'Rédige la lettre de la prochaine fournée', steps: ['Lecture des nouveautés', 'Choix du ton de l’atelier'], a: "« Samedi, le four s'est ouvert sur douze Amphores encore tièdes. Cette fois, l'émail a pris des reflets de miel… » Je la prépare en entier dans l'onglet Clients ?" },
+        { q: 'Quels clients relancer ?', steps: ['Recherche des paniers abandonnés'], a: "Quatre paniers ont été abandonnés cette semaine, pour 410 € au total. Le plus gros : Studio Lin, 180 € d'assiettes. Je leur prépare un message ?" }
+      ],
+      fallback: 'Je n’ai pas encore cette information. Je la note pour la prochaine mise à jour.'
+    };
+    window.CMDK = [
+      { group: 'Aller à', items: [{ icon: '◧', label: 'Vue d’ensemble', hint: 'Page', href: '#' }, { icon: '⌁', label: 'Commandes', hint: 'Page', href: '#' }, { icon: '◍', label: 'Pièces', hint: 'Page', href: '#' }, { icon: '♨', label: 'Fours', hint: 'Page', href: '#' }] },
+      { group: 'Actions', items: [{ icon: '＋', label: 'Ajouter une pièce', hint: 'Action', toast: 'Nouvelle pièce créée' }, { icon: '♨', label: 'Lancer la cuisson du four n° 1', hint: 'Action', toast: 'Four n° 1 en chauffe' }] },
+      { group: 'Demander à l’IA', items: [{ icon: '✦', label: 'Que mettre dans la fournée de samedi ?', hint: 'IA', ask: 'Que mettre dans la fournée de samedi ?' }, { icon: '✦', label: 'Rédige la lettre de la prochaine fournée', hint: 'IA', ask: 'Rédige la lettre de la prochaine fournée' }, { icon: '✦', label: 'Quels clients relancer ?', hint: 'IA', ask: 'Quels clients relancer ?' }] }
+    ];
+  </script>
+  <script src="tech.js"></script>
   <script src="../dist/fx.js"></script>
 </body>
 </html>

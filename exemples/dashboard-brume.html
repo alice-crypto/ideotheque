@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../dist/fx.css">
   <link rel="stylesheet" href="dash.css">
   <link rel="stylesheet" href="exemples.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech.css">
   <style>
     :root {
       --bg: #f4f1fb; --panel: #fdfcff; --ink: #2e2a45; --soft: #7a7594; --line: #e7e2f5; --accent: #8f7cf0; --hover: #8f7cf014;
@@ -67,6 +69,7 @@
           <div class="sub">Mercredi 28 octobre · coucher conseillé à 22 h 40</div>
         </div>
         <div class="tools">
+          <button class="cmdk-btn glass" data-cmdk type="button"><span>Rechercher ou demander…</span><span class="kbd">⌘ K</span></button>
           <div class="seg" data-fx="tab-slider" role="tablist"><button role="tab" aria-selected="true">Semaine</button><button role="tab">Mois</button><button role="tab">Année</button></div>
           <button class="icon-btn" aria-label="Notifications" onclick="FX.trigger(document.getElementById('bell'))">🔔<span class="dot" id="bell" data-fx="badge-bump">2</span></button>
           <div data-fx="dropdown">
@@ -77,6 +80,11 @@
       </div>
 
       <div class="grid">
+        <section class="card insight" data-fx="fade-up">
+          <span data-fx="ai-orb" aria-hidden="true"></span>
+          <div class="grow"><span class="mono" style="color:var(--soft)">Brume IA · analyse de la semaine</span><p data-fx="stream-text">Vos nuits s'allongent depuis lundi (+18 min), mais vous vous endormez plus tard le mardi et le samedi. Avancer le coucher de 15 minutes ces soirs-là gagnerait un cycle complet.</p></div>
+          <div class="acts"><button class="btn" data-ask="Pourquoi je dors moins bien le mardi ?">Expliquer</button><button class="btn soft" data-fx-toggle="#notifs" data-fx-message="Coucher avancé à 22 h 25 le mardi et le samedi">Appliquer</button></div>
+        </section>
         <section class="card tonight" data-fx="aurora" style="--radius:26px">
           <span class="live-chip"><span data-fx="live-dot">Ce soir</span></span>
           <h2>« Le phare de l'île Grise », chapitre 4, puis pluie légère.</h2>
@@ -128,6 +136,24 @@
   <div id="notifs" data-fx="toast"></div>
   <a class="ex-back" href="index.html" data-fx="fade-through">← Exemples</a>
 
+  <script>
+    window.AI = {
+      name: 'Brume IA', status: 'Analyse vos 30 dernières nuits', fab: 'Demander à Brume',
+      intro: 'Bonsoir Inès ! Je connais vos 30 dernières nuits. Posez-moi une question sur votre sommeil.',
+      suggestions: [
+        { q: 'Pourquoi je dors moins bien le mardi ?', steps: ['Comparaison des 4 derniers mardis', 'Croisement avec votre agenda', 'Recherche d’un motif'], a: "Le mardi, vous avez sport à 20 h : votre rythme cardiaque reste haut jusqu'à 23 h. Je vous propose 10 minutes de respiration lente avant l'histoire, ces soirs-là." },
+        { q: 'Quelle est ma meilleure heure de coucher ?', steps: ['Calcul de vos cycles', 'Recherche de vos nuits les plus réparatrices'], a: "Vos meilleures nuits commencent entre 22 h 20 et 22 h 45, avec un réveil à 6 h 50 en phase légère : c'est votre fenêtre idéale." },
+        { q: 'Compose ma séance de ce soir', steps: ['Lecture de votre journée', 'Choix de l’histoire', 'Mixage des sons'], a: "Ce soir : 6 minutes de respiration, puis « Le phare de l'île Grise », chapitre 4, avec une pluie légère qui s'arrête à 23 h 15." }
+      ],
+      fallback: "Je n'ai pas assez de nuits pour répondre précisément. Encore une semaine et je saurai !"
+    };
+    window.CMDK = [
+      { group: 'Aller à', items: [{ icon: '◐', label: 'Mes nuits', hint: 'Page', href: '#' }, { icon: '♪', label: 'Histoires', hint: 'Page', href: '#' }, { icon: '≈', label: 'Respiration', hint: 'Page', href: '#' }, { icon: '☾', label: 'Réveil doux', hint: 'Page', href: '#' }] },
+      { group: 'Actions', items: [{ icon: '☼', label: 'Activer la lumière ambrée', hint: 'Action', toast: 'Lumière ambrée activée' }, { icon: '⏰', label: 'Régler le réveil à 6 h 50', hint: 'Action', toast: 'Réveil réglé à 6 h 50' }] },
+      { group: 'Demander à l’IA', items: [{ icon: '✦', label: 'Pourquoi je dors moins bien le mardi ?', hint: 'IA', ask: 'Pourquoi je dors moins bien le mardi ?' }, { icon: '✦', label: 'Quelle est ma meilleure heure de coucher ?', hint: 'IA', ask: 'Quelle est ma meilleure heure de coucher ?' }, { icon: '✦', label: 'Compose ma séance de ce soir', hint: 'IA', ask: 'Compose ma séance de ce soir' }] }
+    ];
+  </script>
+  <script src="tech.js"></script>
   <script src="../dist/fx.js"></script>
   <script>
     // Simule le chargement des recommandations (shimmer puis liste)

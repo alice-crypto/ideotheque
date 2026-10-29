@@ -2926,6 +2926,162 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="expand-panels"] > :hover,
 [data-fx="expand-panels"] > :focus-within { flex: var(--fx-grow, 4); }
 
+/* Pack 11 — Idées de l'ère de l'IA : réponses qui s'écrivent, assistant, agents */
+
+/* stream-text : la réponse arrive par petits groupes de mots, comme un modèle qui génère */
+[data-fx="stream-text"] .fx-tok { animation: fx-tok .45s ease both; }
+@keyframes fx-tok { from { opacity: 0; filter: blur(4px); } }
+[data-fx="stream-text"] .fx-caret {
+  display: inline-block;
+  width: .5em;
+  height: 1em;
+  margin-left: .15em;
+  vertical-align: -.14em;
+  border-radius: .12em;
+  background: var(--fx-caret, currentColor);
+  opacity: .7;
+  animation: fx-caret 1s steps(1) infinite;
+}
+[data-fx="stream-text"].fx-done .fx-caret { animation: fx-caret-out .4s ease 1s forwards; }
+@keyframes fx-caret-out { to { opacity: 0; width: 0; margin: 0; } }
+
+/* text-shimmer : un reflet traverse le texte en boucle, « en train de réfléchir… » */
+[data-fx="text-shimmer"] {
+  background: linear-gradient(100deg, currentColor 0 40%, var(--fx-shine, rgba(255, 255, 255, .95)) 50%, currentColor 60% 100%) 0 0 / 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fx-shimmer-text var(--fx-speed, 2.2s) linear infinite;
+}
+@keyframes fx-shimmer-text { from { background-position: 100% 0; } to { background-position: -150% 0; } }
+
+/* ai-orb : un orbe de couleur qui respire ; il tourbillonne quand l'assistant réfléchit */
+[data-fx="ai-orb"] {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: var(--fx-size, 64px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  isolation: isolate;
+}
+[data-fx="ai-orb"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(var(--fx-o1, var(--fx-accent)), var(--fx-o2, var(--fx-accent-2)), var(--fx-o3, #8fd3ff), var(--fx-o1, var(--fx-accent)));
+  filter: blur(calc(var(--fx-size, 64px) * .1));
+  animation: fx-orb-spin 9s linear infinite, fx-orb-breathe 4s ease-in-out infinite;
+}
+[data-fx="ai-orb"]::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .95), rgba(255, 255, 255, .35) 40%, transparent 70%);
+}
+[data-fx="ai-orb"][data-fx-state="thinking"]::before { animation-duration: 1.4s, 1s; }
+@keyframes fx-orb-spin { to { rotate: 360deg; } }
+@keyframes fx-orb-breathe { 50% { scale: 1.08; } }
+
+/* prompt-box : un champ de saisie qui écrit tout seul des exemples de demandes */
+[data-fx="prompt-box"] {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 58px;
+  padding: 10px 10px 10px 20px;
+  border-radius: var(--fx-radius, 18px);
+  background: var(--fx-prompt-bg, rgba(255, 255, 255, .72));
+  box-shadow: 0 0 0 1px var(--fx-prompt-line, rgba(0, 0, 0, .08)), 0 24px 50px -30px rgba(0, 0, 0, .35);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  text-align: left;
+}
+[data-fx="prompt-box"] .fx-prompt-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+[data-fx="prompt-box"] .fx-prompt-caret { flex: none; width: 2px; height: 1.2em; margin-right: auto; background: var(--fx-accent); animation: fx-caret 1s steps(1) infinite; }
+[data-fx="prompt-box"] .fx-prompt-send {
+  position: relative;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--fx-ink);
+  opacity: .3;
+  transition: opacity .3s ease, transform .4s var(--fx-ease-spring);
+}
+[data-fx="prompt-box"] .fx-prompt-send::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid var(--fx-dark);
+  border-top: 2px solid var(--fx-dark);
+  translate: -50% -20%;
+  rotate: 45deg;
+}
+[data-fx="prompt-box"].fx-ready .fx-prompt-send { opacity: 1; transform: scale(1.08); }
+
+/* glow-grid : une grille fine dont les lignes s'allument autour du curseur */
+[data-fx="glow-grid"] { position: relative; isolation: isolate; }
+[data-fx="glow-grid"]::before,
+[data-fx="glow-grid"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(var(--fx-c) 1px, transparent 1px), linear-gradient(90deg, var(--fx-c) 1px, transparent 1px);
+  background-size: var(--fx-cell, 56px) var(--fx-cell, 56px);
+  background-position: center;
+}
+[data-fx="glow-grid"]::before {
+  --fx-c: var(--fx-grid-line, rgba(0, 0, 0, .06));
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 25%, transparent 75%);
+}
+[data-fx="glow-grid"]::after {
+  --fx-c: var(--fx-accent);
+  opacity: .6;
+  -webkit-mask-image: radial-gradient(circle var(--fx-glow, 220px) at var(--fx-mx, 50%) var(--fx-my, 35%), #000, transparent);
+  mask-image: radial-gradient(circle var(--fx-glow, 220px) at var(--fx-mx, 50%) var(--fx-my, 35%), #000, transparent);
+}
+
+/* thinking-steps : les étapes d'un agent s'enchaînent, chacune tourne puis se coche */
+[data-fx="thinking-steps"] { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+[data-fx="thinking-steps"] > li { position: relative; padding-left: 28px; opacity: .45; transition: opacity .3s ease; }
+[data-fx="thinking-steps"] > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .25em;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: .35;
+}
+[data-fx="thinking-steps"] > li.fx-active,
+[data-fx="thinking-steps"] > li.fx-done { opacity: 1; }
+[data-fx="thinking-steps"] > li.fx-active::before { border-color: var(--fx-accent); border-top-color: transparent; opacity: 1; animation: fx-step-spin .7s linear infinite; }
+[data-fx="thinking-steps"] > li.fx-done::before { background: var(--fx-accent); border-color: var(--fx-accent); opacity: 1; }
+[data-fx="thinking-steps"] > li.fx-done::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: calc(.25em + 3px);
+  width: 4px;
+  height: 8px;
+  border: solid var(--fx-dark);
+  border-width: 0 2px 2px 0;
+  rotate: 45deg;
+}
+@keyframes fx-step-spin { to { rotate: 360deg; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

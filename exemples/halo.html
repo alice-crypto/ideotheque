@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../dist/fx.css">
   <link rel="stylesheet" href="exemples.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech.css">
   <style>
     :root {
       --bg: #fff5f0; --paper: #fffaf7; --ink: #33201f; --soft: #8c6f6a; --line: #f3dcd3;
@@ -23,7 +25,11 @@
     .it { font-family: Newsreader, Georgia, serif; font-style: italic; font-weight: 300; letter-spacing: -.01em; }
     a { color: inherit; text-decoration: none; }
     .wrap { width: min(1200px, 100% - 32px); margin-inline: auto; }
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #ffe8df; font-size: 13px; font-weight: 400; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: #ffe8df; font: 400 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .hero { position: relative; }
+    .hero .over { width: min(1200px, 100% - 32px); }
+    .hero-prompt { margin: 30px auto 0; --fx-prompt-bg: #fffaf7c4; }
+    .bento .big { font-weight: 300; font-size: 72px; }
     .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 400 15px Sora; border: 0; cursor: pointer; }
 
     header .wrap { display: flex; justify-content: space-between; align-items: center; height: 80px; }
@@ -94,11 +100,13 @@
 
   <main>
     <section class="hero" data-fx="blob-bg">
-      <div class="wrap">
-        <span class="pill" data-fx="fade-up">Nouveau · le mode Écriture</span>
+      <div class="grid-layer" data-fx="glow-grid" style="--fx-cell:64px;--fx-grid-line:#33201f10"></div>
+      <div class="over">
+        <span class="chip" data-fx="fade-up"><b>Halo IA</b> · musique générée en direct</span>
         <h1 style="margin-top:22px"><span data-fx="track-in">Le bon son</span><br><span class="it" data-fx="blur-in" style="--fx-delay:300ms">pour</span> <span class="flap" data-fx="split-flap" data-fx-words="coder|lire|écrire|peindre|réviser"></span></h1>
         <p data-fx="fade-up" style="--fx-delay:500ms">Halo compose en direct une musique sans paroles qui suit votre rythme. Le monde se tait, la tâche avance.</p>
         <a class="btn" href="#ambiances" data-fx="magnetic">Écouter gratuitement</a>
+        <div class="hero-prompt" data-fx="prompt-box" data-ask="Je dois écrire 2 000 mots avant 18 h" data-fx-prompts="Je dois écrire 2 000 mots avant 18 h|Réviser le partiel de droit, 3 h|Coder sans voir passer l'après-midi|Lire 80 pages en anglais"></div>
         <div class="live"><span data-fx="live-dot">En direct</span> &nbsp;<span data-fx="odometer">12 408</span> personnes se concentrent en ce moment</div>
       </div>
     </section>
@@ -112,6 +120,30 @@
           <a class="m3" href="#"><b>Pétale</b><span>harpe et pluie · 60 bpm</span></a>
           <a class="m4" href="#"><b>Lilas</b><span>nappes lentes · 54 bpm</span></a>
           <a class="m5" href="#"><b>Menthe</b><span>bruits de forêt · libre</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="ia" class="ai-sec">
+      <div class="grid-layer" data-fx="glow-grid" style="--fx-cell:48px"></div>
+      <div class="wrap over">
+        <span class="pill">Halo IA</span>
+        <h2 data-fx="fade-up" style="margin-top:14px">Dites ce que vous devez finir. <span class="it">Halo compose.</span></h2>
+        <div class="bento" data-fx="tile-cascade" style="margin-top:40px">
+          <div class="w3 h2 glass chat" data-fx="spotlight-card">
+            <span class="chip" style="align-self:flex-start;margin-bottom:auto">Démo en direct</span>
+            <div class="msg me">Je dois écrire 2 000 mots avant 18 h.</div>
+            <div class="msg ai"><div class="who"><span data-fx="ai-orb" aria-hidden="true"></span>Halo IA</div><p data-fx="stream-text" style="margin:0">Trois blocs de 50 minutes, ambiance Braise qui descend de 84 à 58 bpm. Huit minutes de pluie entre chaque bloc. J'ai coupé vos notifications jusqu'à 17 h 45.</p></div>
+            <button class="btn" data-ask="Je dois écrire 2 000 mots avant 18 h">Essayer avec ma demande</button>
+          </div>
+          <div class="w3 glass" data-fx="spotlight-card">
+            <h3>Une séance générée pour la tâche</h3>
+            <ol data-fx="thinking-steps" data-fx-step="1100" id="steps"><li>Lecture de votre agenda</li><li>Choix du tempo de départ</li><li>Génération des trois blocs</li><li>Mode silence activé</li></ol>
+            <button class="btn ghost line soft" style="margin-top:auto" onclick="FX.replay(document.getElementById('steps'))">↻ Relancer</button>
+          </div>
+          <div class="w3 glass orb-cell"><span data-fx="ai-orb" aria-hidden="true" style="--fx-o1:#ff8f73;--fx-o2:#ffb5c8;--fx-o3:#ffe0a3"></span><div><h3>Elle écoute votre rythme</h3><p>Vous tapez plus vite ? Le tempo suit. Vous ralentissez ? La musique s'efface.</p></div></div>
+          <div class="w3 dark"><span class="chip">Génératif</span><div class="big">∞</div><p>morceaux. Aucun n'a jamais été joué deux fois.</p></div>
+          <div class="w3 glass"><span class="mono" style="color:var(--soft)">Signal · Braise n° 7 · 72 bpm</span><div class="wave" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i><i style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i><i style="--i:18"></i><i style="--i:19"></i><i style="--i:20"></i><i style="--i:21"></i></div><h3>Composé maintenant, pour vous</h3></div>
         </div>
       </div>
     </section>
@@ -171,6 +203,19 @@
   <footer class="wrap">Halo — application fictive, créée pour Idéothèque. Effets : blob-bg, split-flap, live-dot, expand-panels, wave-lines, holo-card, flip-clock, orbit-rings…</footer>
   <a class="ex-back" href="index.html" data-fx="arc-rise">← Exemples</a>
 
+  <script>
+    window.AI = {
+      name: 'Halo IA', status: 'Compose en direct', fab: 'Composer ma séance',
+      intro: "Bonjour ! Dites-moi ce que vous devez finir et pour quand : je compose la séance et la musique qui vont avec.",
+      suggestions: [
+        { q: 'Je dois écrire 2 000 mots avant 18 h', steps: ['Lecture de votre agenda', 'Choix du tempo', 'Génération des blocs'], a: "Trois blocs de 50 minutes en ambiance Braise, de 84 à 58 bpm, avec huit minutes de pluie entre chaque bloc. Notifications coupées jusqu'à 17 h 45. Je lance le premier bloc ?" },
+        { q: 'Réviser le partiel de droit, 3 h', steps: ['Découpage en séances', 'Choix d’une ambiance sans mélodie'], a: "Pour mémoriser, pas de mélodie : ambiance Lilas, nappes lentes à 54 bpm. Quatre séances de 40 minutes, avec un rappel de relecture à la fin de chacune." },
+        { q: "Coder sans voir passer l’après-midi", steps: ['Analyse de vos meilleures heures'], a: "Vos sessions de code les plus longues sont entre 14 h et 17 h. Je vous propose Midi au piano, 84 bpm, sans pause imposée : je baisse le volume quand vous arrêtez de taper." }
+      ],
+      fallback: "Bonne idée de séance ! Dans l’application, je la compose en direct. Ici, essayez une des suggestions."
+    };
+  </script>
+  <script src="tech.js"></script>
   <script src="../dist/fx.js"></script>
 </body>
 </html>

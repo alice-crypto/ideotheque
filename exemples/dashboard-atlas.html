@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../dist/fx.css">
   <link rel="stylesheet" href="dash.css">
   <link rel="stylesheet" href="exemples.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech.css">
   <style>
     :root {
       --bg: #f5f2ec; --panel: #fcfaf6; --ink: #1d2a3a; --soft: #6f7987; --line: #e6e0d5; --accent: #7fa6d1; --hover: #7fa6d114;
@@ -81,6 +83,7 @@
           <div class="sub">Pour 2 voyageurs · 8 jours · départ de Paris-Bercy</div>
         </div>
         <div class="tools">
+          <button class="cmdk-btn glass" data-cmdk type="button"><span>Rechercher ou demander…</span><span class="kbd">⌘ K</span></button>
           <button class="btn soft" data-fx-toggle="#billet">🎫 Mon billet</button>
           <div data-fx="dropdown">
             <button class="avatar" aria-label="Compte">M</button>
@@ -90,6 +93,11 @@
       </div>
 
       <div class="grid">
+        <section class="card insight" data-fx="fade-up">
+          <span data-fx="ai-orb" aria-hidden="true"></span>
+          <div class="grow"><span class="mono" style="color:var(--soft)">Atlas IA · préparation du voyage</span><p data-fx="stream-text">Une grève est annoncée le 14 mai sur la ligne Nice – Gênes. J'ai trouvé un car direct à 10 h 05 qui garde votre programme intact ; Lucia l'a déjà validé.</p></div>
+          <div class="acts"><button class="btn" data-ask="Que se passe-t-il le 14 mai ?">Expliquer</button><button class="btn soft" data-fx-toggle="#notifs" data-fx-message="Car de 10 h 05 réservé pour Nice → Gênes">Appliquer</button></div>
+        </section>
         <section class="card trip" data-fx="fade-up">
           <figure data-fx="ken-burns"><img src="img/cote.svg" alt="La côte ligure"></figure>
           <div class="in">
@@ -167,6 +175,24 @@
   <div id="notifs" data-fx="toast"></div>
   <a class="ex-back" href="index.html" data-fx="iris">← Exemples</a>
 
+  <script>
+    window.AI = {
+      name: 'Atlas IA', status: 'Relue par Lucia, votre guide', fab: 'Demander à Atlas',
+      intro: 'Bonjour Malik ! Je suis votre voyage en temps réel. Une question sur la côte ligure ?',
+      suggestions: [
+        { q: 'Que se passe-t-il le 14 mai ?', steps: ['Lecture des alertes ferroviaires', 'Recherche d’alternatives', 'Validation par Lucia'], a: "Une grève est annoncée sur Nice – Gênes. Je vous propose le car direct de 10 h 05 : vous arrivez à 13 h 40, à temps pour la leçon de focaccia. Lucia a validé." },
+        { q: 'Que mettre dans la valise pour Vernazza ?', steps: ['Lecture de la météo prévue', 'Lecture du programme'], a: "Des chaussures de marche pour le sentier côtier, un maillot, une petite laine pour le soir (16 °C) et un sac léger : les ruelles sont en escaliers." },
+        { q: 'Où dîner à Gênes le jour 3 ?', steps: ['Recherche dans le carnet de Lucia'], a: "Lucia recommande la Trattoria da Maria, près de la via XX Settembre : trofie au pesto, environ 22 € par personne. Réservation conseillée avant 19 h 30." }
+      ],
+      fallback: 'Je transmets à Lucia, qui vous répond dans l’heure.'
+    };
+    window.CMDK = [
+      { group: 'Aller à', items: [{ icon: '◇', label: 'Mon voyage', hint: 'Page', href: '#' }, { icon: '≡', label: 'Carnet', hint: 'Page', href: '#' }, { icon: '✉', label: 'Mon guide', hint: 'Page', href: '#' }, { icon: '◌', label: 'Voyageurs', hint: 'Page', href: '#' }] },
+      { group: 'Actions', items: [{ icon: '🎫', label: 'Télécharger mes billets', hint: 'Action', toast: 'Billets ajoutés au téléphone' }, { icon: '✉', label: 'Écrire à Lucia', hint: 'Action', toast: 'Message envoyé à Lucia' }] },
+      { group: 'Demander à l’IA', items: [{ icon: '✦', label: 'Que se passe-t-il le 14 mai ?', hint: 'IA', ask: 'Que se passe-t-il le 14 mai ?' }, { icon: '✦', label: 'Que mettre dans la valise pour Vernazza ?', hint: 'IA', ask: 'Que mettre dans la valise pour Vernazza ?' }, { icon: '✦', label: 'Où dîner à Gênes le jour 3 ?', hint: 'IA', ask: 'Où dîner à Gênes le jour 3 ?' }] }
+    ];
+  </script>
+  <script src="tech.js"></script>
   <script src="../dist/fx.js"></script>
   <script>
     // Cocher la valise : la coche se dessine et l'anneau avance

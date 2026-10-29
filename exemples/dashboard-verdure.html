@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../dist/fx.css">
   <link rel="stylesheet" href="dash.css">
   <link rel="stylesheet" href="exemples.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech.css">
   <style>
     :root {
       --bg: #eef3ea; --panel: #f9fbf7; --ink: #1f3326; --soft: #637a69; --line: #dbe6d6; --accent: #5d8c6c; --hover: #5d8c6c14;
@@ -57,6 +59,7 @@
         <a class="serif" href="verdure.html" data-fx="tile-flip" style="font-size:22px">🌿 Verdure</a>
         <nav data-fx="hover-pill"><a class="on" href="#">Ma serre</a><a href="#">Plantes</a><a href="#">Saisons</a><a href="#">Aide</a></nav>
         <div class="tools">
+          <button class="cmdk-btn glass" data-cmdk type="button"><span>Rechercher ou demander…</span><span class="kbd">⌘ K</span></button>
           <span class="sync" id="sync"><span data-fx="orbit-loader" role="status" aria-label="Synchronisation"></span>Synchronisation…</span>
           <button class="avatar" aria-label="Compte">C</button>
         </div>
@@ -73,6 +76,11 @@
       </div>
 
       <div class="grid">
+        <section class="card insight" data-fx="fade-up">
+          <span data-fx="ai-orb" aria-hidden="true"></span>
+          <div class="grow"><span class="mono" style="color:var(--soft)">Verdure IA · lecture des capteurs</span><p data-fx="stream-text">Le grand pot sèche deux fois plus vite depuis que le vent a tourné à l'ouest. J'ai avancé son arrosage à 19 h et je vous conseille de remplir son réservoir avant jeudi.</p></div>
+          <div class="acts"><button class="btn" data-ask="Pourquoi le grand pot sèche si vite ?">Expliquer</button><button class="btn soft" data-fx-toggle="#notifs" data-fx-message="Arrosage du grand pot avancé à 19 h">Appliquer</button></div>
+        </section>
         <section class="card weather" data-fx="fade-up">
           <div class="head"><h2>Météo du balcon</h2><span data-fx="live-dot" style="color:var(--accent);font-size:11px">Capteur</span></div>
           <div class="temp"><span data-fx="count-up" data-fx-to="17">17</span>°</div>
@@ -133,6 +141,24 @@
   <div id="notifs" data-fx="toast"></div>
   <a class="ex-back" href="index.html" data-fx="pixel-wipe">← Exemples</a>
 
+  <script>
+    window.AI = {
+      name: 'Verdure IA', status: '3 capteurs · mis à jour il y a 2 min', fab: 'Demander à Verdure',
+      intro: 'Bonjour Camille ! Je lis vos 3 capteurs et la météo. Une question sur vos plantes ?',
+      suggestions: [
+        { q: 'Pourquoi le grand pot sèche si vite ?', steps: ['Lecture du capteur 3', 'Croisement avec le vent et le soleil'], a: "Depuis lundi, le vent d'ouest frappe directement le grand pot et il reçoit 6 h de soleil. Il perd 8 % d'humidité par jour, contre 4 % pour les autres. Un paillage en écorce réduirait cette perte de moitié." },
+        { q: 'Faut-il rentrer le citronnier ?', steps: ['Prévision des températures sur 15 jours'], a: "Pas encore : il ne descendra pas sous 7 °C avant le 12 novembre. Je vous préviens 3 jours avant." },
+        { q: 'Quelle plante ajouter cet hiver ?', steps: ['Lecture de l’exposition', 'Choix parmi les plantes d’hiver'], a: "Un hellébore blanc : il fleurit de décembre à mars, supporte le vent, et le bac des aromatiques a la place idéale." }
+      ],
+      fallback: 'Léa, votre paysagiste, regarde ça et vous répond demain.'
+    };
+    window.CMDK = [
+      { group: 'Aller à', items: [{ icon: '◧', label: 'Ma serre', hint: 'Page', href: '#' }, { icon: '❀', label: 'Plantes', hint: 'Page', href: '#' }, { icon: '☼', label: 'Saisons', hint: 'Page', href: '#' }, { icon: '?', label: 'Aide', hint: 'Page', href: '#' }] },
+      { group: 'Actions', items: [{ icon: '💧', label: 'Arroser le grand pot', hint: 'Action', toast: 'Arrosage lancé : 2 minutes, grand pot' }, { icon: '⟳', label: 'Synchroniser les capteurs', hint: 'Action', toast: 'Capteurs synchronisés' }] },
+      { group: 'Demander à l’IA', items: [{ icon: '✦', label: 'Pourquoi le grand pot sèche si vite ?', hint: 'IA', ask: 'Pourquoi le grand pot sèche si vite ?' }, { icon: '✦', label: 'Faut-il rentrer le citronnier ?', hint: 'IA', ask: 'Faut-il rentrer le citronnier ?' }, { icon: '✦', label: 'Quelle plante ajouter cet hiver ?', hint: 'IA', ask: 'Quelle plante ajouter cet hiver ?' }] }
+    ];
+  </script>
+  <script src="tech.js"></script>
   <script src="../dist/fx.js"></script>
   <script>
     // Fin de la synchronisation simulée

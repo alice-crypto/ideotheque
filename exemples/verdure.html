@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../dist/fx.css">
   <link rel="stylesheet" href="exemples.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech.css">
   <style>
     :root {
       --bg: #eef3ea; --paper: #f8fbf5; --ink: #1f3326; --soft: #5f7565; --line: #d6e2d1;
@@ -21,7 +23,12 @@
     h1, h2, h3 { font-family: "Young Serif", Georgia, serif; font-weight: 400; line-height: 1.02; margin: 0; letter-spacing: -.015em; }
     a { color: inherit; text-decoration: none; }
     .wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
-    .tag { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #dcebd6; color: var(--green); font-weight: 500; font-size: 13px; }
+    .tag { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #dcebd6; color: var(--green); font: 500 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .hero { position: relative; }
+    .hero > :not(.grid-layer) { position: relative; z-index: 1; }
+    .hero-prompt { margin-top: 28px; --fx-prompt-bg: #f8fbf5cc; --fx-prompt-line: var(--line); }
+    .meta-row { margin-top: 14px; }
+    .ai-sec .bento { text-align: left; }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; border-radius: 16px; background: var(--ink); color: var(--paper); font: 500 15px Outfit; border: 0; cursor: pointer; }
     .btn.soft { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
 
@@ -100,14 +107,17 @@
 
   <main>
     <section class="wrap hero">
+      <div class="grid-layer" data-fx="glow-grid" style="--fx-cell:56px;--fx-grid-line:#1f332612"></div>
       <div>
-        <span class="tag" data-fx="pop-in">Livraison en vélo-cargo à Paris, Lyon, Lille</span>
+        <span class="chip" data-fx="pop-in"><b>Verdure IA</b> diagnostic par photo</span>
         <h1><span data-fx="text-split">Le balcon qui</span> <span data-fx="blur-in" style="display:inline-block;--fx-delay:450ms"><span data-fx="gradient-flow" style="--fx-accent:#5d8c6c;--fx-accent-2:#e9946b">pousse</span></span> <span data-fx="text-split" style="--fx-delay:600ms">tout seul.</span></h1>
         <p data-fx="fade-up" style="--fx-delay:500ms">Chaque saison, nous composons, livrons et installons des plantes adaptées à votre exposition. Des capteurs vous disent quand arroser, et seulement quand.</p>
         <div class="cta" data-fx="rise-stagger" style="--fx-delay:650ms">
           <a class="btn" href="#tarifs" data-fx="press-squash">Composer mon balcon</a>
-          <a class="btn soft" href="#avant-apres" data-fx="icon-nudge">Voir des balcons</a>
+          <a class="btn soft" href="#ia" data-fx="icon-nudge">Diagnostic gratuit</a>
         </div>
+        <div class="hero-prompt" data-fx="prompt-box" data-ask="Mon balcon est plein nord, 4 m²" data-fx-prompts="Mon balcon est plein nord, 4 m²|Des plantes sans danger pour mon chat|Un coin d'ombre pour lire l'été|J'oublie toujours d'arroser"></div>
+        <div class="meta-row mono"><span>✦ 340 plantes</span><span>◍ 3 capteurs inclus</span><span>🚲 livraison en vélo-cargo</span></div>
       </div>
       <div class="hero-art" data-fx="zoom-in-soft">
         <svg data-fx="svg-draw" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
@@ -119,6 +129,30 @@
         </svg>
         <span class="chip" data-fx="float" style="left:-4%;top:20%">💧 Humidité 64 %</span>
         <span class="chip" data-fx="float" style="right:-2%;bottom:18%;--fx-delay:1s">☀️ 6 h de soleil</span>
+      </div>
+    </section>
+
+    <section id="ia" class="ai-sec">
+      <div class="grid-layer" data-fx="glow-grid" style="--fx-cell:48px"></div>
+      <div class="wrap over">
+        <span class="tag">Verdure IA</span>
+        <h2 data-fx="fade-up" style="margin-top:14px">Une photo du balcon. <em>Un plan</em> en 30 secondes.</h2>
+        <div class="bento" data-fx="tile-cascade" style="margin-top:40px">
+          <div class="w3 h2 glass chat" data-fx="spotlight-card">
+            <span class="chip" style="align-self:flex-start;margin-bottom:auto">Démo en direct</span>
+            <div class="msg me">Voici mon balcon : plein nord, 4 m², pas mal de vent.</div>
+            <div class="msg ai"><div class="who"><span data-fx="ai-orb" aria-hidden="true"></span>Verdure IA</div><p data-fx="stream-text" style="margin:0">Plein nord et venté : fougères, heuchères et lierre panaché, dans des pots lourds. Je prévois 9 plantes, un arrosage tous les 6 jours. Formule Balcon, 39 € par mois.</p></div>
+            <button class="btn" data-ask="Mon balcon est plein nord, 4 m²">Essayer avec ma demande</button>
+          </div>
+          <div class="w3 glass" data-fx="spotlight-card">
+            <h3>Le diagnostic, étape par étape</h3>
+            <ol data-fx="thinking-steps" data-fx-step="1100" id="steps"><li>Détection de l'orientation sur la photo</li><li>Prévision de lumière sur 24 h</li><li>Choix parmi 340 plantes</li><li>Plan d'implantation</li></ol>
+            <button class="btn ghost line soft" style="margin-top:auto" onclick="FX.replay(document.getElementById('steps'))">↻ Relancer</button>
+          </div>
+          <div class="w3 glass orb-cell"><span data-fx="ai-orb" aria-hidden="true" style="--fx-o1:#8fc29c;--fx-o2:#f4b998;--fx-o3:#bfe0f7"></span><div><h3>Vos plantes vous écrivent</h3><p>« Le basilic a soif, j'arrose ce soir. » Une phrase, pas un graphique.</p></div></div>
+          <div class="w3 dark"><span class="chip">Après un an</span><div class="big">97 %</div><p>des plantes installées sont encore en vie. La moyenne nationale est de 60 %.</p></div>
+          <div class="w3 glass"><span class="mono" style="color:var(--soft)">Capteur 2 · humidité du sol</span><svg data-fx="line-chart" data-fx-values="62,58,51,47,44,71,68,63" aria-label="Humidité du sol sur 8 jours"></svg><h3>Arrosé juste avant la soif</h3></div>
+        </div>
       </div>
     </section>
 
@@ -192,6 +226,19 @@
   <footer class="wrap">Verdure — service fictif, créé pour Idéothèque. Effets : text-split, svg-draw, compare, flip-card, timeline, tab-slider, conic-border, path-scroll…</footer>
   <a class="ex-back" href="index.html" data-fx="pixel-wipe">← Exemples</a>
 
+  <script>
+    window.AI = {
+      name: 'Verdure IA', status: 'Avec Léa, paysagiste', fab: 'Diagnostiquer mon balcon',
+      intro: "Bonjour ! Décrivez votre balcon (orientation, surface, contraintes) : je propose les plantes qui y seront heureuses.",
+      suggestions: [
+        { q: 'Mon balcon est plein nord, 4 m²', steps: ["Lecture de l’orientation", 'Prévision de lumière', 'Choix parmi 340 plantes'], a: "Plein nord : fougères, heuchères pourpres et lierre panaché, plus un hortensia en grand pot. 9 plantes, arrosage tous les 6 jours. Formule Balcon, 39 € par mois." },
+        { q: 'Des plantes sans danger pour mon chat', steps: ['Filtre des plantes toxiques'], a: "Je retire monstera, lys et lierre. Je garde calathea, fougère de Boston, herbe à chat et romarin : tous sans danger, et votre chat aura son coin à lui." },
+        { q: "J’oublie toujours d’arroser", steps: ['Vérification des capteurs', 'Activation de l’arrosage auto'], a: "Avec l'arrosage automatique, vous n'avez plus rien à faire : les capteurs déclenchent l'eau au bon moment. Vous recevez juste une phrase quand il faut remplir le réservoir, environ une fois par mois." }
+      ],
+      fallback: "Léa, notre paysagiste, vous répond d’ici demain. Vous pouvez aussi essayer une suggestion."
+    };
+  </script>
+  <script src="tech.js"></script>
   <script src="../dist/fx.js"></script>
   <script>
     // Bascule mensuel / annuel : l'effet tab-slider déplace l'indicateur, on met à jour les prix

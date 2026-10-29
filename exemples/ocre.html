@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../dist/fx.css">
   <link rel="stylesheet" href="exemples.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech.css">
   <style>
     :root {
       --bg: #f6eee4; --paper: #fbf6f0; --ink: #3b2a20; --soft: #8a7262; --line: #e6d8c8;
@@ -22,7 +24,12 @@
     h1, h2, h3 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; line-height: .98; margin: 0; letter-spacing: -.01em; }
     a { color: inherit; text-decoration: none; }
     .wrap { width: min(1240px, 100% - 32px); margin-inline: auto; }
-    .eyebrow { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--soft); font-weight: 700; }
+    .eyebrow { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--soft); }
+    .hero { position: relative; }
+    .hero > :not(.grid-layer) { position: relative; z-index: 1; }
+    .ai-sec h2 { font-size: clamp(44px, 6vw, 84px); max-width: 900px; }
+    .hero-prompt { margin-top: 30px; --fx-prompt-bg: #fdf9f4cc; --fx-prompt-line: var(--line); }
+    .meta-row { margin-top: 14px; }
 
     header .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 76px; }
     header nav { display: flex; gap: 26px; font-weight: 500; font-size: 14px; }
@@ -120,14 +127,17 @@
 
   <main>
     <section class="wrap hero">
+      <div class="grid-layer" data-fx="glow-grid" style="--fx-cell:60px;--fx-grid-line:#3b2a2012"></div>
       <div>
-        <span class="eyebrow" data-fx="fade-up">Grès &amp; faïence · Drôme</span>
+        <span class="chip" data-fx="fade-up"><b>Ocre IA</b> compose votre table</span>
         <h1 data-fx="skew-up" style="margin-top:16px">Des objets<br>qui ont <em>pris</em><br>le temps.</h1>
         <p data-fx="blur-in" style="--fx-delay:400ms">Chaque pièce est tournée, émaillée et cuite à la main dans notre atelier de Dieulefit. Aucune n'est tout à fait pareille à sa voisine.</p>
         <div data-fx="rise-stagger" style="--fx-delay:600ms;display:flex;gap:12px;flex-wrap:wrap">
           <a class="btn" href="#collections" data-fx="fill-up">Voir la collection</a>
-          <a class="btn line" href="#atelier" data-fx="icon-nudge">Visiter l'atelier</a>
+          <a class="btn line" href="#ia" data-fx="icon-nudge">Composer ma table</a>
         </div>
+        <div class="hero-prompt" data-fx="prompt-box" data-ask="Table de 6, nappe en lin vert, dîner d'été" data-fx-prompts="Table de 6, nappe en lin vert, dîner d'été|Un cadeau de mariage autour de 150 €|Des bols qui résistent au lave-vaisselle|Un vase pour des branches d'olivier"></div>
+        <div class="meta-row mono"><span>✦ 1 280 pièces uniques</span><span>◍ réponse en 2 s</span></div>
       </div>
       <figure data-fx="curtain-soft" style="--fx-delay:200ms"><img src="img/vase-amphore.svg" alt="Amphore en terre cuite"></figure>
     </section>
@@ -142,6 +152,30 @@
       </div>
       <hr data-fx="rule-draw">
     </div>
+
+    <section id="ia" class="ai-sec">
+      <div class="grid-layer" data-fx="glow-grid" style="--fx-cell:48px"></div>
+      <div class="wrap over">
+        <span class="eyebrow">Ocre IA</span>
+        <h2 data-fx="fade-up" style="margin-top:14px">Décrivez votre table, <em>on compose</em> le service.</h2>
+        <div class="bento" data-fx="tile-cascade" style="margin-top:40px">
+          <div class="w3 h2 glass chat" data-fx="spotlight-card">
+            <span class="chip" style="align-self:flex-start;margin-bottom:auto">Démo en direct</span>
+            <div class="msg me">Table de 6, nappe en lin vert, dîner d'été en terrasse.</div>
+            <div class="msg ai"><div class="who"><span data-fx="ai-orb" aria-hidden="true"></span>Ocre IA</div><p data-fx="stream-text" style="margin:0">Je propose 6 assiettes Table d'été, 6 bols Sable et deux Cols sauge en carafes. Les tons chauds répondent au vert du lin. Total 512 €, livré en 5 jours.</p></div>
+            <button class="btn" data-ask="Table de 6, nappe en lin vert, dîner d'été">Essayer avec ma demande</button>
+          </div>
+          <div class="w3 glass" data-fx="spotlight-card">
+            <h3>De la photo à la table</h3>
+            <ol data-fx="thinking-steps" data-fx-step="1100" id="steps"><li>Lecture de la photo de votre table</li><li>Repérage des couleurs et des matières</li><li>Sélection parmi 1 280 pièces</li><li>Vérification de l'harmonie</li></ol>
+            <button class="btn ghost line soft" style="margin-top:auto" onclick="FX.replay(document.getElementById('steps'))">↻ Relancer</button>
+          </div>
+          <div class="w3 glass orb-cell"><span data-fx="ai-orb" aria-hidden="true" style="--fx-o1:#e8a87c;--fx-o2:#c9a3c4;--fx-o3:#8aa38f"></span><div><h3>Une céramiste prend le relais</h3><p>L'IA propose, Agathe valide. Un clic pour lui parler.</p></div></div>
+          <div class="w3 dark"><span class="chip">Traçabilité</span><div class="big">1 280</div><p>pièces suivies une à une, du tour au four, avec leur fiche d'émaillage.</p></div>
+          <div class="w3 glass"><span class="mono" style="color:var(--soft)">Gabarit · Col sauge</span><svg data-fx="svg-draw" viewBox="0 0 200 120" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--ocre);height:110px" aria-hidden="true"><path d="M85 10h30v20c0 10 18 15 18 40v30c0 10-14 15-33 15s-33-5-33-15V70c0-25 18-30 18-40z"/><path d="M60 70h80M60 90h80" stroke-dasharray="3 4"/><path d="M150 10v105M146 10h8M146 115h8"/><text x="158" y="66" fill="currentColor" stroke="none" font-size="10" font-family="monospace">24 cm</text></svg><h3>Chaque forme a son plan</h3></div>
+        </div>
+      </div>
+    </section>
 
     <section class="wrap collections" id="collections">
       <div>
@@ -214,6 +248,19 @@
   <div id="notifs" data-fx="toast"></div>
   <a class="ex-back" href="index.html" data-fx="curtain-close">← Exemples</a>
 
+  <script>
+    window.AI = {
+      name: 'Ocre IA', status: 'Relue par Agathe, céramiste', fab: "Demander à l’atelier",
+      intro: "Bonjour ! Décrivez votre table, une occasion ou un budget : je compose une sélection parmi nos pièces.",
+      suggestions: [
+        { q: "Table de 6, nappe en lin vert, dîner d'été", steps: ['Analyse de votre description', 'Sélection parmi 1 280 pièces', "Vérification de l’harmonie"], a: "Six assiettes Table d'été, six bols Sable et deux Cols sauge en carafes. Les tons terre cuite réchauffent le vert du lin. Total : 512 €, livraison en 5 jours." },
+        { q: 'Un cadeau de mariage autour de 150 €', steps: ['Recherche des pièces à offrir', 'Ajustement au budget'], a: "L'Amphore à 145 €, emballée dans du papier de soie, avec une carte écrite à la main par l'atelier. Livraison offerte à partir de 120 €." },
+        { q: 'Des bols qui résistent au lave-vaisselle', steps: ['Lecture des fiches d’émaillage'], a: "Tous nos grès cuits à 1 250 °C passent au lave-vaisselle. Les bols Sable sont les plus solides : 34 € pièce, 24 en stock." }
+      ],
+      fallback: "Je transmets votre question à Agathe, qui vous répond d’ici ce soir. En attendant, essayez une suggestion."
+    };
+  </script>
+  <script src="tech.js"></script>
   <script src="../dist/fx.js"></script>
 </body>
 </html>

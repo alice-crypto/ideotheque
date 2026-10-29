@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../dist/fx.css">
   <link rel="stylesheet" href="exemples.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech.css">
   <style>
     :root {
       --bg: #f5f2ec; --paper: #fbf9f5; --ink: #1d2a3a; --soft: #6c7684; --line: #e4ded3;
@@ -22,7 +24,10 @@
     h1, h2, h3 { font-family: Cormorant, Georgia, serif; font-weight: 400; line-height: .95; margin: 0; }
     a { color: inherit; text-decoration: none; }
     .wrap { width: min(1220px, 100% - 32px); margin-inline: auto; }
-    .label { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); font-weight: 500; }
+    .label { font: 500 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--soft); }
+    .hero .chip { color: var(--ink); margin-bottom: 18px; }
+    .hero-prompt { margin-top: 18px; color: var(--ink); width: min(420px, 100%); --fx-prompt-bg: #fbf9f5d9; }
+    .bento .big { font-family: Cormorant, serif; font-size: 80px; }
     .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 400 15px "Inter Tight"; border: 0; cursor: pointer; }
     .btn.light { background: var(--paper); color: var(--ink); }
 
@@ -97,23 +102,25 @@
   <header data-fx="header-shrink">
     <div class="wrap">
       <a class="logo" href="#">ATLAS</a>
-      <nav><a href="#routes" data-fx="slice-hover">Itinéraires</a><a href="#carnet" data-fx="slice-hover">Carnet</a><a href="#voix" data-fx="slice-hover">Voyageurs</a></nav>
+      <nav><a href="#ia" data-fx="slice-hover">IA</a><a href="#routes" data-fx="slice-hover">Itinéraires</a><a href="#carnet" data-fx="slice-hover">Carnet</a><a href="#voix" data-fx="slice-hover">Voyageurs</a></nav>
       <a class="btn light" href="dashboard-atlas.html" data-fx="title-card" data-fx-title="Mon voyage" style="padding:10px 20px">Mon voyage</a>
     </div>
   </header>
 
   <nav class="dots" data-fx="dot-nav" aria-label="Sections">
-    <a href="#haut">Départ</a><a href="#lenteur">Lenteur</a><a href="#routes">Itinéraires</a><a href="#carnet">Carnet</a><a href="#voix">Voyageurs</a>
+    <a href="#haut">Départ</a><a href="#lenteur">Lenteur</a><a href="#ia">IA</a><a href="#routes">Itinéraires</a><a href="#carnet">Carnet</a><a href="#voix">Voyageurs</a>
   </nav>
 
   <main>
     <section class="hero" id="haut" data-fx="hero-shrink" style="padding:0">
       <figure data-fx="ken-burns"><img src="img/lac.svg" alt="Lac au lever du soleil"></figure>
       <div class="wrap">
-        <h1><span data-fx="line-mask" style="display:block">Partir</span><em data-fx="line-mask" style="display:block;--fx-delay:140ms">lentement.</em></h1>
+        <div><span class="chip" data-fx="fade-up"><b>Atlas IA</b> itinéraires sans avion</span>
+        <h1><span data-fx="line-mask" style="display:block">Partir</span><em data-fx="line-mask" style="display:block;--fx-delay:140ms">lentement.</em></h1></div>
         <div>
           <p data-fx="fade-up" style="--fx-delay:600ms">Des voyages en train de nuit, des haltes de trois jours, des carnets écrits à la main. L'Europe, à la vitesse d'une conversation.</p>
           <button class="btn light" data-fx-toggle="#reserver" data-fx="magnetic">Réserver un départ</button>
+          <div class="hero-prompt" data-fx="prompt-box" data-ask="Dix jours en mai, sans avion, mer et marchés" data-fx-prompts="Dix jours en mai, sans avion, mer et marchés|Un week-end à la montagne depuis Lyon|Voyager avec deux enfants de 6 et 9 ans|Le plus beau train de nuit d'Europe"></div>
         </div>
       </div>
     </section>
@@ -124,6 +131,30 @@
         <div>
           <span class="label" data-fx="edge-label">Manifeste</span>
           <p data-fx="scroll-ink" style="margin-top:20px">Nous croyons qu'un voyage commence au moment où l'on regarde par la fenêtre. Pas d'avion, pas de course : des wagons-lits, des petits hôtels, et le temps de se perdre dans une ville avant d'en voir une autre.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ia" class="ai-sec">
+      <div class="grid-layer" data-fx="glow-grid" style="--fx-cell:48px"></div>
+      <div class="wrap over">
+        <span class="label">Atlas IA</span>
+        <h2 data-fx="fade-up" style="margin-top:14px">Vos envies en une phrase, <em>l'itinéraire</em> en une minute.</h2>
+        <div class="bento" data-fx="tile-cascade" style="margin-top:40px">
+          <div class="w3 h2 glass chat" data-fx="spotlight-card">
+            <span class="chip" style="align-self:flex-start;margin-bottom:auto">Démo en direct</span>
+            <div class="msg me">Dix jours en mai, sans avion. On aime la mer et les marchés.</div>
+            <div class="msg ai"><div class="who"><span data-fx="ai-orb" aria-hidden="true"></span>Atlas IA</div><p data-fx="stream-text" style="margin:0">Je vous propose la côte ligure : train de nuit Paris → Nice, trois nuits à Gênes, quatre aux Cinque Terre. 1 140 km en train, 82 kg de CO₂ au lieu de 410 en avion. Lucia, votre guide, valide d'ici ce soir.</p></div>
+            <button class="btn" data-ask="Dix jours en mai, sans avion, mer et marchés">Essayer avec ma demande</button>
+          </div>
+          <div class="w3 glass" data-fx="spotlight-card">
+            <h3>L'itinéraire se construit</h3>
+            <ol data-fx="thinking-steps" data-fx-step="1100" id="steps"><li>Lecture de vos envies</li><li>Recherche parmi 46 trains de nuit</li><li>Calcul des correspondances</li><li>Envoi à votre guide</li></ol>
+            <button class="btn ghost line soft" style="margin-top:auto" onclick="FX.replay(document.getElementById('steps'))">↻ Relancer</button>
+          </div>
+          <div class="w3 glass orb-cell"><span data-fx="ai-orb" aria-hidden="true" style="--fx-o1:#7fa6d1;--fx-o2:#e9c9a1;--fx-o3:#a9d5d3"></span><div><h3>Un guide humain relit tout</h3><p>L'IA propose, Lucia ajuste : les adresses, les horaires, la couchette du bon côté.</p></div></div>
+          <div class="w3 dark"><span class="chip">Empreinte</span><div class="big">−80 %</div><p>de CO₂ en moyenne par rapport au même voyage en avion.</p></div>
+          <div class="w3 glass"><span class="mono" style="color:var(--soft)">Trajet · Paris → Nice · 21 h 42</span><svg data-fx="svg-draw" viewBox="0 0 300 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="color:var(--sky);height:90px" aria-hidden="true"><path d="M10 20C70 30 90 70 150 70s100-40 140-30"/><circle cx="10" cy="20" r="5"/><circle cx="150" cy="70" r="5"/><circle cx="290" cy="40" r="5"/></svg><h3>11 h de sommeil, 1 140 km</h3></div>
         </div>
       </div>
     </section>
@@ -202,6 +233,19 @@
   <footer class="wrap">Atlas — agence fictive, créée pour Idéothèque. Effets : hero-shrink, ken-burns, dot-nav, scroll-expand, drag-gallery, iris-open, marquee-vertical, modal-zoom, title-card…</footer>
   <a class="ex-back" href="index.html" data-fx="iris">← Exemples</a>
 
+  <script>
+    window.AI = {
+      name: 'Atlas IA', status: 'Relue par Lucia, guide', fab: 'Imaginer mon voyage',
+      intro: "Bonjour ! Dites-moi quand, avec qui et ce que vous aimez : je dessine un voyage en train, qu’un guide relit ensuite.",
+      suggestions: [
+        { q: 'Dix jours en mai, sans avion, mer et marchés', steps: ['Lecture de vos envies', 'Recherche parmi 46 trains de nuit', 'Calcul des correspondances'], a: "La côte ligure : train de nuit Paris → Nice, trois nuits à Gênes, quatre aux Cinque Terre, retour par la vallée du Rhône. 82 kg de CO₂ au lieu de 410 en avion. Environ 1 420 € par personne." },
+        { q: 'Un week-end à la montagne depuis Lyon', steps: ['Recherche des trains directs'], a: "Lyon → Annecy en 1 h 50, puis le bateau jusqu'à Talloires. Deux nuits dans une auberge au bord du lac, randonnée du Roc de Chère le samedi." },
+        { q: 'Voyager avec deux enfants de 6 et 9 ans', steps: ['Filtre des trajets de moins de 5 h', 'Choix des activités'], a: "Je vous conseille la Bohême : trajets courts, châteaux, forêts et un train à vapeur le dimanche. Compartiment famille de 4 couchettes pour le trajet de nuit." }
+      ],
+      fallback: "Lucia, votre future guide, vous répond d’ici ce soir. Essayez une suggestion en attendant."
+    };
+  </script>
+  <script src="tech.js"></script>
   <script src="../dist/fx.js"></script>
 </body>
 </html>

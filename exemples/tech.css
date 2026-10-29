@@ -1,0 +1,163 @@
+/* Couche « soft tech » commune aux exemples : verre dépoli, libellés monospace,
+ * grilles lumineuses, assistant IA et palette de commandes.
+ * Chaque page fournit --bg, --ink, --soft, --line et --fx-accent.
+ */
+:root {
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --glass: color-mix(in srgb, var(--paper, #fff) 62%, transparent);
+  --glass-line: color-mix(in srgb, #fff 70%, transparent);
+  --glow: color-mix(in srgb, var(--fx-accent) 35%, transparent);
+}
+
+.mono { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+
+/* Pastille d'état : point lumineux + texte monospace */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 10px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  background: var(--glass);
+  box-shadow: inset 0 0 0 1px var(--glass-line), 0 8px 24px -16px rgba(0, 0, 0, .3);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--fx-accent); box-shadow: 0 0 0 4px var(--glow); }
+.chip b { font-weight: 600; }
+
+/* Verre dépoli */
+.glass {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  backdrop-filter: blur(18px) saturate(1.3);
+  box-shadow: inset 0 0 0 1px var(--glass-line), inset 0 1px 0 rgba(255, 255, 255, .8), 0 30px 60px -40px rgba(0, 0, 0, .35);
+}
+
+/* Calque de grille placé sous le contenu d'une section */
+.grid-layer { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.over { position: relative; z-index: 1; }
+
+/* Bento : grille de cases de tailles différentes */
+.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.bento > * { position: relative; overflow: hidden; border-radius: 26px; padding: 26px; min-height: 230px; display: flex; flex-direction: column; gap: 14px; }
+.bento .w2 { grid-column: span 2; }
+.bento .w3 { grid-column: span 3; }
+.bento .w4 { grid-column: span 4; }
+.bento .h2 { grid-row: span 2; }
+.bento h3 { margin: 0; font-size: 22px; line-height: 1.15; }
+.bento p { margin: 0; color: var(--soft); font-size: 15px; }
+.bento .big { font: 300 64px/1 var(--display, inherit); letter-spacing: -.04em; }
+@media (max-width: 900px) {
+  .bento { grid-template-columns: 1fr 1fr; }
+  .bento .w2, .bento .w3, .bento .w4 { grid-column: 1 / -1; }
+}
+
+/* Bulles de conversation */
+.msg { max-width: 88%; padding: 12px 15px; border-radius: 18px; font-size: 14.5px; line-height: 1.5; }
+.msg.me { align-self: flex-end; background: var(--ink); color: var(--bg); border-bottom-right-radius: 6px; }
+.msg.ai { align-self: flex-start; background: color-mix(in srgb, var(--paper, #fff) 85%, transparent); box-shadow: inset 0 0 0 1px var(--line); border-bottom-left-radius: 6px; }
+.msg.ai .who { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+.msg.ai .who [data-fx="ai-orb"] { --fx-size: 16px; }
+.msg [data-fx="thinking-steps"] { font-size: 13.5px; margin: 4px 0 8px; }
+
+.kbd { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 6px; font: 500 11px var(--mono); background: color-mix(in srgb, var(--ink) 7%, transparent); box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--ink) 15%, transparent); }
+
+/* --- Assistant flottant ------------------------------------------------- */
+.ai-fab {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 16px 7px 7px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--ink);
+  font: 500 14px/1 inherit;
+  font-family: inherit;
+  transition: transform .4s var(--fx-ease-spring);
+}
+.ai-fab:hover { transform: translateY(-2px); }
+.ai-fab [data-fx="ai-orb"] { --fx-size: 34px; }
+.ai-fab .kbd { margin-left: 4px; }
+[data-fx="toast"] { bottom: 76px; }
+
+.ai-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 76px;
+  z-index: 75;
+  width: min(400px, calc(100vw - 32px));
+  padding: 0;
+  margin: 0;
+  height: min(560px, calc(100vh - 110px));
+  border-radius: 26px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--ink);
+  transform-origin: 100% 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(.94);
+  transition: opacity .25s ease, transform .45s var(--fx-ease-spring), visibility 0s .45s;
+}
+.ai-panel.open { opacity: 1; visibility: visible; transform: none; transition: opacity .25s ease, transform .45s var(--fx-ease-spring), visibility 0s; }
+.ai-panel .ai-head { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+.ai-panel .ai-head [data-fx="ai-orb"] { --fx-size: 30px; }
+.ai-panel .ai-head b { display: block; font-size: 15px; }
+.ai-panel .ai-head small { font-family: var(--mono); font-size: 11px; color: var(--soft); letter-spacing: .04em; }
+.ai-panel .ai-head button { margin-left: auto; border: 0; background: none; font-size: 20px; color: var(--soft); cursor: pointer; }
+.ai-thread { flex: 1; min-height: 0; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.ai-sugg { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 18px 12px; }
+.ai-sugg button { border: 0; cursor: pointer; padding: 8px 12px; border-radius: 12px; font: 13px inherit; font-family: inherit; color: var(--ink); background: color-mix(in srgb, var(--fx-accent) 12%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--fx-accent) 25%, transparent); text-align: left; }
+.ai-sugg button:hover { background: color-mix(in srgb, var(--fx-accent) 20%, transparent); }
+.ai-input { margin: 0 14px 14px; display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 16px; border-radius: 16px; background: color-mix(in srgb, var(--paper, #fff) 80%, transparent); box-shadow: inset 0 0 0 1px var(--line); }
+.ai-input input { flex: 1; min-width: 0; border: 0; background: none; font: 14px inherit; font-family: inherit; color: var(--ink); outline: none; padding: 8px 0; }
+.ai-input button { width: 36px; height: 36px; border: 0; border-radius: 11px; background: var(--ink); color: var(--bg); cursor: pointer; font-size: 16px; }
+
+/* --- Palette de commandes (⌘K) ------------------------------------------ */
+.cmdk-btn { display: inline-flex; align-items: center; gap: 10px; min-width: 260px; padding: 9px 10px 9px 14px; border: 0; border-radius: 12px; cursor: pointer; color: var(--soft); font: 14px inherit; font-family: inherit; text-align: left; }
+.cmdk-btn span:first-of-type { flex: 1; }
+#cmdk .fenetre { width: min(580px, 92vw); border-radius: 22px; overflow: hidden; color: var(--ink); }
+#cmdk .search { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+#cmdk .search [data-fx="ai-orb"] { --fx-size: 22px; }
+#cmdk input { flex: 1; border: 0; background: none; font: 16px inherit; font-family: inherit; color: var(--ink); outline: none; }
+#cmdk ul { list-style: none; margin: 0; padding: 8px; max-height: 340px; overflow: auto; }
+#cmdk li { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 12px; cursor: pointer; font-size: 14.5px; }
+#cmdk li .ic { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; background: color-mix(in srgb, var(--ink) 6%, transparent); flex: none; }
+#cmdk li small { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--soft); text-transform: uppercase; letter-spacing: .06em; }
+#cmdk li.sel { background: color-mix(in srgb, var(--fx-accent) 14%, transparent); }
+#cmdk .group { padding: 10px 12px 4px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+
+@media (max-width: 760px) {
+  .ai-fab .ai-fab-label, .ai-fab .kbd, .cmdk-btn .kbd { display: none; }
+  .ai-fab { padding: 7px; }
+  .cmdk-btn { min-width: 0; }
+}
+.ai-panel.glass { background: color-mix(in srgb, var(--paper, #fff) 88%, transparent); }
+
+/* Cases du bento réutilisables */
+.bento .chat { justify-content: flex-end; }
+.bento .orb-cell { justify-content: space-between; align-items: flex-start; }
+.bento .orb-cell [data-fx="ai-orb"] { --fx-size: 92px; }
+.bento .dark { background: var(--ink); color: var(--bg); }
+.bento .dark p { color: inherit; opacity: .7; }
+.bento .dark .chip { background: color-mix(in srgb, var(--bg) 10%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--bg) 20%, transparent); color: inherit; }
+.bento .btn { align-self: flex-start; }
+.ai-sec { position: relative; padding: 120px 0; }
+.ai-sec h2 em { font-style: italic; color: var(--fx-accent); }
+.wave { display: flex; align-items: center; gap: 4px; height: 46px; }
+.wave i { flex: 1; border-radius: 3px; background: linear-gradient(var(--fx-accent), var(--fx-accent-2)); animation: tech-eq 1.2s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -.13s); }
+@keyframes tech-eq { from { height: 18%; } to { height: 100%; } }
+.hero-prompt { width: min(560px, 100%); cursor: pointer; font-size: 15px; --fx-prompt-bg: color-mix(in srgb, #fff 65%, transparent); --fx-prompt-line: #fff; }
+.meta-row { display: flex; gap: 18px; flex-wrap: wrap; color: var(--soft); }
+@media (prefers-reduced-motion: reduce) { .wave i { animation: none; height: 60%; } }

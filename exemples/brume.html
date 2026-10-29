@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../dist/fx.css">
   <link rel="stylesheet" href="exemples.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech.css">
   <style>
     :root {
       --bg: #f4f1fb; --paper: #fbfaff; --ink: #2e2a45; --soft: #6d6886; --line: #e3ddf3;
@@ -47,7 +49,24 @@
     .band span { padding: 0 26px; }
 
     section { padding: 120px 0; }
-    .kicker { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--lav); font-weight: 700; }
+    .kicker { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--lav); }
+    header { background: color-mix(in srgb, var(--bg) 60%, transparent); border-bottom: 1px solid #ffffff80; }
+    .hero .over { width: min(1160px, 100% - 32px); }
+    .hero-prompt { width: min(560px, 100%); margin: 34px auto 0; cursor: pointer; font-size: 15px; --fx-prompt-bg: #ffffffa6; --fx-prompt-line: #ffffff; }
+    .hero .meta { margin-top: 16px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; color: var(--soft); }
+    .ai-sec { position: relative; }
+    .ai-sec h2 em { font-style: italic; color: var(--lav); }
+    .bento > * { background: #ffffffa6; }
+    .bento .chat { justify-content: flex-end; }
+    .bento .orb-cell { align-items: flex-start; justify-content: space-between; background: radial-gradient(circle at 80% 10%, #e6defd, #ffffffa6 60%); }
+    .bento .orb-cell [data-fx="ai-orb"] { --fx-size: 92px; --fx-o1: #b6a8ff; --fx-o2: #ffc4d3; --fx-o3: #a9d3ff; }
+    .bento .dark { background: var(--ink); color: #f4f1fb; }
+    .bento .dark p { color: #b9b4d2; }
+    .bento .dark .chip { background: #ffffff14; box-shadow: inset 0 0 0 1px #ffffff26; color: #f4f1fb; }
+    .wave { display: flex; align-items: center; gap: 4px; height: 46px; }
+    .wave i { flex: 1; border-radius: 3px; background: linear-gradient(var(--lav), var(--rose)); animation: eq 1.2s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -.13s); }
+    @keyframes eq { from { height: 18%; } to { height: 100%; } }
+    @media (prefers-reduced-motion: reduce) { .wave i { animation: none; height: 60%; } }
     h2 { font-size: clamp(38px, 5.4vw, 72px); margin: 14px 0 22px; }
     .ink-p { font: 300 clamp(26px, 3.2vw, 42px)/1.3 Fraunces, serif; max-width: 980px; }
 
@@ -100,7 +119,7 @@
     <div class="wrap">
       <a class="logo" href="#"><i></i>Brume</a>
       <nav class="main" data-fx="hover-pill">
-        <a href="#rituels">Rituels</a><a href="#chiffres">Résultats</a><a href="#avis">Avis</a><a href="#faq">Questions</a>
+        <a href="#ia">IA</a><a href="#rituels">Rituels</a><a href="#chiffres">Résultats</a><a href="#avis">Avis</a><a href="#faq">Questions</a>
       </nav>
       <a class="btn" href="dashboard-brume.html" data-fx="fade-through">Ouvrir l'app</a>
     </div>
@@ -110,14 +129,17 @@
     <section class="hero" data-fx="aurora">
       <svg class="moon" data-fx="float" viewBox="0 0 100 100" aria-hidden="true"><defs><radialGradient id="m" cx=".35" cy=".35"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#d9d0ff"/></radialGradient></defs><circle cx="50" cy="50" r="40" fill="url(#m)"/><circle cx="38" cy="42" r="6" fill="#c9bdf7" opacity=".6"/><circle cx="60" cy="62" r="4" fill="#c9bdf7" opacity=".6"/></svg>
       <svg class="cloud" data-fx="float" style="--fx-delay:1.2s" viewBox="0 0 200 100" aria-hidden="true"><path d="M40 80a30 30 0 0 1 4-59 40 40 0 0 1 76-4 28 28 0 0 1 44 34 22 22 0 0 1-6 29z" fill="#fff" opacity=".85"/></svg>
-      <div class="wrap">
-        <span class="kicker" data-fx="fade-up">Application de sommeil · iOS &amp; Android</span>
+      <div class="grid-layer" data-fx="glow-grid" style="--fx-cell:64px;--fx-grid-line:#8f7cf01a"></div>
+      <div class="over">
+        <span class="chip" data-fx="fade-up"><b>Brume IA</b> compose votre nuit en direct</span>
         <h1 style="margin-top:18px"><span data-fx="line-mask" style="display:block">Dormez comme</span><em data-fx="line-mask" style="display:block;--fx-delay:140ms">un nuage.</em></h1>
         <p class="lead" data-fx="blur-in" style="--fx-delay:500ms">Des histoires lentes, des sons de pluie et une respiration guidée pour vous endormir en <span class="rot" data-fx="word-rotator" data-fx-words="douceur|silence|confiance">douceur</span>.</p>
         <div class="cta" data-fx="rise-stagger" style="--fx-delay:700ms">
           <a class="btn" href="#rituels" data-fx="magnetic">Essayer 14 nuits offertes</a>
-          <a class="btn ghost" href="#avis" data-fx="icon-nudge">Écouter un extrait</a>
+          <a class="btn ghost" href="#ia" data-fx="icon-nudge">Voir l'IA en action</a>
         </div>
+        <div class="hero-prompt" data-fx="prompt-box" data-ask="J'ai une grosse réunion demain à 8 h" data-fx-prompts="J'ai une grosse réunion demain à 8 h|Mon bébé se réveille vers 3 h|Une histoire de train, 15 minutes max|Je n'arrive pas à couper mon cerveau"></div>
+        <div class="meta mono" data-fx="fade-up" style="--fx-delay:900ms"><span>✦ 412 000 nuits / mois</span><span>◐ fonctionne hors ligne</span><span>🔒 vos données restent sur le téléphone</span></div>
       </div>
       <span class="cue" data-fx="scroll-cue" aria-hidden="true"></span>
     </section>
@@ -130,6 +152,35 @@
       <div class="wrap">
         <span class="kicker">Pourquoi Brume</span>
         <p class="ink-p" data-fx="scroll-ink" style="margin-top:20px">Le soir, la tête continue de tourner. Brume ralentit tout : la voix, la lumière, la respiration. En quelques minutes, le corps suit et la nuit redevient un endroit doux.</p>
+      </div>
+    </section>
+
+    <section id="ia" class="ai-sec">
+      <div class="grid-layer" data-fx="glow-grid" style="--fx-cell:48px;--fx-grid-line:#8f7cf014"></div>
+      <div class="wrap over">
+        <span class="kicker">Brume IA</span>
+        <h2 data-fx="fade-up">Une nuit écrite <em>pour vous</em>, chaque soir.</h2>
+        <div class="bento" data-fx="tile-cascade" style="margin-top:40px">
+          <div class="w3 h2 glass chat" data-fx="spotlight-card">
+            <span class="chip" style="align-self:flex-start;margin-bottom:auto">Conversation du soir</span>
+            <div class="msg me">Grosse journée, réunion à 8 h demain. Je stresse un peu.</div>
+            <div class="msg ai"><div class="who"><span data-fx="ai-orb" aria-hidden="true"></span>Brume IA</div><p data-fx="stream-text" style="margin:0">Je vous propose 18 minutes : respiration 4-7-8, puis la version courte du phare de l'île Grise. Pluie légère jusqu'à 23 h 30. Réveil doux à 6 h 50, pendant une phase de sommeil léger.</p></div>
+            <button class="btn" style="align-self:flex-start" data-ask="J'ai une grosse réunion demain à 8 h">Essayer avec ma soirée</button>
+          </div>
+          <div class="w3 glass" data-fx="spotlight-card">
+            <h3>La séance se compose sous vos yeux</h3>
+            <ol data-fx="thinking-steps" data-fx-step="1100" id="steps">
+              <li>Lecture de votre rythme de la semaine</li>
+              <li>Choix de l'histoire et de la voix</li>
+              <li>Mixage pluie, voix et silence</li>
+              <li>Réglage du réveil en phase légère</li>
+            </ol>
+            <button class="btn ghost" style="align-self:flex-start;margin-top:auto" onclick="FX.replay(document.getElementById('steps'))">↻ Recomposer</button>
+          </div>
+          <div class="w3 glass orb-cell"><span data-fx="ai-orb" aria-hidden="true"></span><div><h3>Une voix qui ralentit avec vous</h3><p>Le débit baisse quand votre respiration s'apaise.</p></div></div>
+          <div class="w3 dark"><span class="chip">Sur l'appareil</span><div class="big">0 octet</div><p>envoyé sur nos serveurs. Le modèle tourne sur votre téléphone.</p></div>
+          <div class="w3 glass"><span class="mono" style="color:var(--soft)">Signal audio · direct</span><div class="wave" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i><i style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i><i style="--i:18"></i><i style="--i:19"></i><i style="--i:20"></i><i style="--i:21"></i></div><h3>Des sons générés, jamais deux fois les mêmes</h3></div>
+        </div>
       </div>
     </section>
 
@@ -195,6 +246,19 @@
   <footer><div class="wrap"><span>Brume — marque fictive, créée pour Idéothèque.</span><span>Effets : aurora, line-mask, word-rotator, stack-cards, scroll-ink, quote-rotator…</span></div></footer>
   <a class="ex-back" href="index.html" data-fx="circle-expand">← Exemples</a>
 
+  <script>
+    window.AI = {
+      name: 'Brume IA', status: 'Sur l’appareil · répond en 1 s', fab: 'Demander à Brume',
+      intro: 'Bonsoir ! Racontez-moi votre journée en une phrase, je compose la nuit qui va avec.',
+      suggestions: [
+        { q: "J'ai une grosse réunion demain à 8 h", steps: ['Lecture de vos 7 dernières nuits', 'Calcul de l’heure de coucher idéale', 'Choix de la séance'], a: "Couchez-vous vers 22 h 45 : vous aurez 5 cycles complets. Ce soir, 18 minutes de respiration 4-7-8 puis le phare de l'île Grise, version courte. Réveil doux à 6 h 50, en phase légère." },
+        { q: 'Mon bébé se réveille vers 3 h', steps: ['Repérage de vos réveils nocturnes', 'Préparation d’une séance express'], a: "Je prépare une séance « retour au lit » de 6 minutes, sans musique, voix chuchotée. Touchez deux fois l'écran en vous recouchant : elle démarre seule." },
+        { q: 'Une histoire de train, 15 minutes max', steps: ['Recherche dans 240 histoires', 'Ajustement de la durée'], a: "Le train de nuit pour Trieste, raconté par Sacha : 14 minutes, avec le roulement du train qui s'éloigne à la fin." }
+      ],
+      fallback: "Bonne question ! Dans l'application, je croise vos nuits et vos habitudes pour y répondre. Ici, essayez une des suggestions."
+    };
+  </script>
+  <script src="tech.js"></script>
   <script src="../dist/fx.js"></script>
 </body>
 </html>
