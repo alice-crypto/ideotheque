@@ -146,7 +146,7 @@ const pkg = JSON.parse(read(path.join(ROOT, 'package.json')));
 write(path.join(ROOT, 'plugin', '.claude-plugin', 'plugin.json'), JSON.stringify({
   name: 'ideotheque',
   version: pkg.version,
-  description: 'Les ' + effects.length + ' effets visuels nommés d’Idéothèque, que Claude applique par leur nom.',
+  description: effects.length + ' named visual effects (animations, page transitions, text, scroll and AI-state effects) that Claude applies by name. Free and MIT.',
   author: { name: 'alice-crypto', url: 'https://github.com/alice-crypto' },
   homepage: 'https://alice-crypto.github.io/ideotheque/',
   repository: 'https://github.com/alice-crypto/ideotheque',

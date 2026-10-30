@@ -1,7 +1,7 @@
 {
   "name": "ideotheque",
   "version": "0.3.0",
-  "description": "Les 206 effets visuels nommés d’Idéothèque, que Claude applique par leur nom.",
+  "description": "206 named visual effects (animations, page transitions, text, scroll and AI-state effects) that Claude applies by name. Free and MIT.",
   "author": {
     "name": "alice-crypto",
     "url": "https://github.com/alice-crypto"

@@ -1,6 +1,6 @@
 ---
 name: ideotheque
-description: Applique les effets visuels nommés de la bibliothèque Idéothèque (206 animations, transitions plein écran, effets de texte, de défilement, micro-interactions, ambiances, états d'IA) sur une page web ou une interface. À utiliser quand l'utilisateur cite un effet par son nom (curtain-soft, line-mask, magnetic, count-up, aurora, ai-orb…), parle d'Idéothèque ou de data-fx, ou demande d'animer, de rendre plus vivante, plus « Awwwards » ou plus soft une landing page, un dashboard ou un site. Use it for named web animations and page transitions too.
+description: Applique les effets visuels nommés de la bibliothèque Idéothèque (206 animations, transitions plein écran, effets de texte, de défilement, micro-interactions, ambiances, états d'IA) sur une page web ou une interface. À utiliser quand l'utilisateur cite un effet par son nom (curtain-soft, line-mask, magnetic, count-up, aurora, ai-orb…), parle d'Idéothèque ou de data-fx, ou demande d'animer, de rendre plus vivante, plus « Awwwards » ou plus soft une landing page, un dashboard ou un site. In English: applies the named visual effects of the Idéothèque library (206 animations, page transitions, text, scroll, micro-interaction, ambient and AI-state effects); use it when the user names an effect, mentions Idéothèque or data-fx, or asks to animate a landing page, dashboard or website, or make it feel softer or more polished. The effect sheets are in French; answer in the user's language.
 ---
 
 # Idéothèque

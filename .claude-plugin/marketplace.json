@@ -5,13 +5,13 @@
     "url": "https://github.com/alice-crypto"
   },
   "metadata": {
-    "description": "Idéothèque : 206 effets visuels nommés (animations, transitions, micro-interactions) que Claude sait appliquer par leur nom."
+    "description": "Idéothèque: 206 named visual effects (animations, transitions, micro-interactions) that Claude applies by name."
   },
   "plugins": [
     {
       "name": "ideotheque",
       "source": "./plugin",
-      "description": "Apprend à Claude les 206 effets d'Idéothèque : demandez « curtain-soft sur les sections, magnetic sur le bouton » et il applique exactement le bon rendu.",
+      "description": "Teaches Claude the 206 effects of Idéothèque: ask for “curtain-soft on the sections, magnetic on the button” and it applies exactly the right effect.",
       "category": "design",
       "homepage": "https://alice-crypto.github.io/ideotheque/",
       "repository": "https://github.com/alice-crypto/ideotheque",
