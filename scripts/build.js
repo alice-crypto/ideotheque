@@ -5,6 +5,7 @@
  *   dist/catalog.js           — les données du catalogue (index.html)
  *   effects/<nom>.md          — une fiche par effet
  *   AI.md, README.md          — tableaux régénérés entre leurs balises <!-- … -->
+ *   plugin/                   — le plugin Claude : manifeste, catalogue et fiches du skill
  * Usage : node scripts/build.js
  */
 'use strict';
@@ -137,6 +138,28 @@ replaceBetween('README.md', 'effets',
   const p = path.join(ROOT, f);
   write(p, read(p).replace(/<!-- total -->\d+<!-- \/total -->/g, '<!-- total -->' + effects.length + '<!-- /total -->'));
 });
+
+// --- Plugin Claude (plugin/) ------------------------------------------------------
+// Le skill embarque une copie du catalogue et des fiches : il marche sans accès au dépôt
+
+const pkg = JSON.parse(read(path.join(ROOT, 'package.json')));
+write(path.join(ROOT, 'plugin', '.claude-plugin', 'plugin.json'), JSON.stringify({
+  name: 'ideotheque',
+  version: pkg.version,
+  description: 'Les ' + effects.length + ' effets visuels nommés d’Idéothèque, que Claude applique par leur nom.',
+  author: { name: 'alice-crypto', url: 'https://github.com/alice-crypto' },
+  homepage: 'https://alice-crypto.github.io/ideotheque/',
+  repository: 'https://github.com/alice-crypto/ideotheque',
+  license: pkg.license,
+  keywords: pkg.keywords
+}, null, 2) + '\n');
+
+const SKILL = path.join(ROOT, 'plugin', 'skills', 'ideotheque');
+write(path.join(SKILL, 'catalogue.md'), read(path.join(ROOT, 'AI.md')));
+const skillFx = path.join(SKILL, 'effects');
+fs.mkdirSync(skillFx, { recursive: true });
+fs.readdirSync(skillFx).forEach((f) => { if (!fs.existsSync(path.join(docDir, f))) fs.unlinkSync(path.join(skillFx, f)); });
+fs.readdirSync(docDir).forEach((f) => write(path.join(skillFx, f), read(path.join(docDir, f))));
 
 // --- Rapport ---------------------------------------------------------------------
 

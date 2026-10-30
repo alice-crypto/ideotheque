@@ -32,6 +32,25 @@ L'IA lit [`AI.md`](AI.md) et la fiche de l'effet, puis reproduit exactement le m
 
 **En local :** téléchargez `dist/fx.css` et `dist/fx.js`, puis incluez-les dans votre page.
 
+## Avec Claude
+
+Idéothèque existe en plugin pour Claude Code. Une fois installé, Claude connaît les <!-- total -->206<!-- /total --> effets : il lit leur fiche et les applique par leur nom, sans que vous ayez à lui donner `AI.md`.
+
+```
+/plugin install ideotheque --marketplace alice-crypto/ideotheque
+```
+
+Sur une version plus ancienne de Claude Code, en deux commandes :
+
+```
+/plugin marketplace add alice-crypto/ideotheque
+/plugin install ideotheque@ideotheque
+```
+
+**Sur claude.ai :** compressez le dossier [`plugin/skills/ideotheque`](plugin/skills/ideotheque) en `.zip`, puis importez-le dans les réglages, rubrique des skills.
+
+Le plugin se met à jour avec la bibliothèque : `npm run build` y recopie le catalogue et les fiches.
+
 ## Contenu
 
 | Dossier | Rôle |
@@ -42,6 +61,7 @@ L'IA lit [`AI.md`](AI.md) et la fiche de l'effet, puis reproduit exactement le m
 | `assets/` | Les visuels de démonstration, dessinés en SVG pour la bibliothèque |
 | `index.html` | Le catalogue vivant, avec une démo de chaque effet |
 | `AI.md` | Le mode d'emploi pour les assistants IA |
+| `plugin/` | Le plugin Claude Code et son skill (catalogue et fiches recopiés par le build) |
 
 ## Voir le catalogue
 
