@@ -1,6 +1,6 @@
 {
   "name": "ideotheque",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Une bibliothèque d'idées visuelles : des animations et transitions nommées, utilisables à la main ou par une IA.",
   "keywords": ["animation", "transition", "css", "motion", "ai", "design", "scroll", "effects"],
   "license": "MIT",
