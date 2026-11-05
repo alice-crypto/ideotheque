@@ -1,1 +1,5 @@
 /* Pack 20 — Nouvelles entrées */
+
+/* cascade-rows : rangée après rangée */
+[data-fx="cascade-rows"] > * { opacity: 0; transform: translateY(var(--fx-distance)); transition: opacity .5s calc(var(--fx-rw, 0) * 110ms), transform .7s var(--fx-ease-out) calc(var(--fx-rw, 0) * 110ms); }
+.fx-in[data-fx="cascade-rows"] > * { opacity: 1; transform: none; }
