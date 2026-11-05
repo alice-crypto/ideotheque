@@ -140,3 +140,12 @@
 }
 .fx-tr-dots-cover.fx-cover i { transform: scale(1); }
 .fx-tr-dots-cover.fx-uncover i { transform: scale(0); }
+
+/* scan-cover : un scanner */
+.fx-tr-scan-cover i { left: 0; right: 0; transition: top .64s var(--fx-ease-io), bottom .64s var(--fx-ease-io); }
+.fx-tr-scan-cover .fx-sc-fill { top: 0; bottom: 100%; background: var(--fx-tr-color, var(--fx-dark)); }
+.fx-tr-scan-cover .fx-sc-beam { top: 0; height: 3px; background: var(--fx-accent); box-shadow: 0 0 34px 8px var(--fx-accent); }
+.fx-tr-scan-cover.fx-cover .fx-sc-fill { bottom: 0; }
+.fx-tr-scan-cover.fx-cover .fx-sc-beam { top: 100%; }
+.fx-tr-scan-cover.fx-uncover .fx-sc-fill { top: 100%; }
+.fx-tr-scan-cover.fx-uncover .fx-sc-beam { top: 100%; opacity: 0; }
