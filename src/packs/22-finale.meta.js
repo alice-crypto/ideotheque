@@ -198,4 +198,13 @@ module.exports = [
     '<section data-fx="sea-layers">…</section>',
     '<div data-fx="sea-layers" style="width:230px;height:170px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
+  E('dust-motes', 'Ambiance',
+    'Des poussières flottent lentement dans un rayon de lumière, légèrement attirées par le curseur.',
+    'Grenier au soleil, silence, nostalgie.',
+    '- `data-fx-count` (60), `--fx-dust`, `--fx-beam`',
+    'Récits, musées, marques patrimoniales.',
+    'Une petite surface.',
+    '<section data-fx="dust-motes">…</section>',
+    '<div data-fx="dust-motes" style="width:230px;height:170px;color:var(--ink)"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
 ];
