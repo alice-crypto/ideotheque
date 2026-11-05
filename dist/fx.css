@@ -3569,6 +3569,20 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   text-shadow: var(--fx-sx, 0) var(--fx-sy, 0) 0 var(--fx-tilt-shadow, rgba(0, 0, 0, .35));
 }
 
+/* press-ripple-text : le clic inverse le bouton */
+[data-fx="press-ripple-text"] { position: relative; overflow: hidden; }
+[data-fx="press-ripple-text"] .fx-prt-b {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--fx-prt-bg, var(--fx-ink));
+  color: var(--fx-prt-fg, var(--fx-dark));
+  clip-path: circle(0 at var(--fx-x, 50%) var(--fx-y, 50%));
+}
+.fx-go[data-fx="press-ripple-text"] .fx-prt-b { animation: fx-prt .8s var(--fx-ease-io); }
+@keyframes fx-prt { 50%, 65% { clip-path: circle(150% at var(--fx-x, 50%) var(--fx-y, 50%)); opacity: 1; } 100% { clip-path: circle(150% at var(--fx-x, 50%) var(--fx-y, 50%)); opacity: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

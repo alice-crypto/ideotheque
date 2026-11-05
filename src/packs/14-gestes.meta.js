@@ -36,4 +36,13 @@ module.exports = [
     'Les paragraphes.',
     '<h2 data-fx="hover-tilt-text">Relief</h2>',
     '<p class="demo-title" data-fx="hover-tilt-text" style="--fx-tilt-shadow:rgba(255,91,46,.7)">Relief</p>'),
+  E('press-ripple-text', 'Micro-interaction',
+    'Au clic, un cercle part du doigt et inverse les couleurs du bouton, y compris celles du texte.',
+    'Une encre qui se répand, une confirmation franche.',
+    '- `--fx-prt-bg`, `--fx-prt-fg` : couleurs inversées',
+    'Boutons d\'action principaux.',
+    'Les boutons très fréquents, comme un pavé de chiffres.',
+    '<button data-fx="press-ripple-text">Envoyer</button>',
+    '<button class="demo-btn" data-fx="press-ripple-text">Envoyer</button>',
+    { trigger: 'Cliquer' }),
 ];
