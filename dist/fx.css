@@ -3236,6 +3236,9 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   opacity: calc(.72 + var(--fx-b, 0) * .28);
 }
 
+/* ink-bleed : l'encre se stabilise */
+[data-fx="ink-bleed"] { filter: url(#fx-ink); opacity: 0; display: inline-block; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

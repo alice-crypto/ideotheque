@@ -3467,6 +3467,31 @@
       el.style.setProperty('--fx-b', v.toFixed(3));
     }
   });
+
+  // L'encre se répand depuis un trait fin jusqu'à la lettre nette
+  FX.register('ink-bleed', {
+    entrance: true,
+    setup: function (el) {
+      var root = document.getElementById('fx-ink-svg');
+      if (!root) {
+        root = document.createElement('div');
+        root.id = 'fx-ink-svg';
+        root.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+        root.innerHTML = '<svg aria-hidden="true"><filter id="fx-ink"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="3"/><feDisplacementMap in="SourceGraphic" scale="0"/></filter></svg>';
+        document.body.appendChild(root);
+      }
+      el._fxMap = root.querySelector('feDisplacementMap');
+    },
+    enter: function (el) {
+      var m = el._fxMap;
+      U.tween(el, U.num(el, 'fxDuration', 1600), function (p) {
+        m.setAttribute('scale', (U.num(el, 'fxScale', 40) * (1 - U.easeOut(p))).toFixed(1));
+        el.style.opacity = Math.min(1, p * 3);
+        if (p === 1) el.style.filter = 'none';
+      });
+    },
+    reset: function (el) { el.style.filter = ''; el.style.opacity = 0; }
+  });
 })(window.FX);
 
 window.FX._boot();

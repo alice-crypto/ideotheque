@@ -168,4 +168,13 @@ module.exports = [
     'Les pages denses : le mot change de largeur et déplace ses voisins.',
     '<p data-fx="breathe-track">Inspirez</p>',
     '<p class="demo-title" data-fx="breathe-track" style="font-size:30px">Inspirez</p>'),
+  E('ink-bleed', 'Texte',
+    'Les lettres apparaissent déformées comme de l\'encre humide, puis se fixent et deviennent nettes.',
+    'Papier, encre, matière vivante.',
+    '- `data-fx-scale` (40) : déformation de départ\n- `data-fx-duration` (1600) : durée en millisecondes',
+    'Titres éditoriaux, maisons d\'édition, marques artisanales.',
+    'Plusieurs titres en même temps : ils partagent le même filtre.',
+    '<h2 data-fx="ink-bleed">Manuscrit</h2>',
+    '<p class="demo-title" data-fx="ink-bleed">Manuscrit</p>',
+    { trigger: 'Rejouer', a11y: 'Avec `prefers-reduced-motion: reduce`, le texte s\'affiche net.' }),
 ];
