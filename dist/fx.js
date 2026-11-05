@@ -3737,6 +3737,12 @@
       el.style.setProperty('--fx-x', (info.pass * dir * U.num(el, 'fxTravel', 40)).toFixed(2) + '%');
     }
   });
+
+  // Les lignes glissent en sens opposé
+  FX.register('cross-rows', {
+    setup: function (el) { Array.prototype.forEach.call(el.children, function (r, i) { r.style.setProperty('--fx-dir', i % 2 ? 1 : -1); }); },
+    scroll: function (el, info) { el.style.setProperty('--fx-t', ((info.pass - .5) * U.num(el, 'fxTravel', 160)).toFixed(1) + 'px'); }
+  });
 })(window.FX);
 
 window.FX._boot();

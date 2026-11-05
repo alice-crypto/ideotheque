@@ -38,4 +38,12 @@ module.exports = [
     '<div data-fx="band-slide">Idéothèque</div>',
     '<div class="demo-title" data-fx="band-slide" style="width:100%;padding:0">Idéothèque</div>',
     { a11y: 'Le texte est dans `aria-label`, les répétitions sont masquées aux lecteurs d\'écran.' }),
+  E('cross-rows', 'Défilement',
+    'Plusieurs lignes d\'images ou de logos glissent en sens opposé au défilement.',
+    'Un tissage, une foule en mouvement.',
+    '- `data-fx-travel` (160) : déplacement en pixels\n- `--fx-gap` (10px) : écart',
+    'Murs de logos, galeries d\'images, références clients.',
+    'Les contenus qu\'il faut comparer ligne à ligne.',
+    '<div data-fx="cross-rows"><div>…</div><div>…</div></div>',
+    '<div data-fx="cross-rows" style="width:100%"><div><span class="demo-chip">Atlas</span><span class="demo-chip">Halo</span><span class="demo-chip">Ocre</span><span class="demo-chip">Brume</span></div><div><span class="demo-chip">Verdure</span><span class="demo-chip">Atlas</span><span class="demo-chip">Halo</span><span class="demo-chip">Ocre</span></div></div>'),
 ];
