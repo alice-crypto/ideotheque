@@ -6891,6 +6891,28 @@
     triggerOn: 'fx:ok',
     trigger: function (el) { el._fxS.classList.remove('fx-on'); void el._fxS.offsetWidth; el._fxS.classList.add('fx-on'); el.classList.add('fx-stamped'); setTimeout(function () { el.classList.remove('fx-stamped'); }, 260); }
   });
+
+  // Faire glisser pour confirmer une action
+  FX.register('unlock-slide', {
+    setup: function (el) {
+      var label = el.dataset.fxLabel || 'Glisser pour confirmer';
+      el.innerHTML = '<span class="fx-us-t"></span><button type="button" aria-label="' + label + '">→</button>';
+      el.firstChild.textContent = label;
+      var b = el.lastChild, sx = 0, x = 0, drag = false;
+      var max = function () { return el.clientWidth - b.offsetWidth - 8; };
+      var pos = function (v) { x = v; el.style.setProperty('--fx-x', v + 'px'); el.style.setProperty('--fx-p', max() ? (v / max()).toFixed(3) : 0); };
+      var done = function () {
+        el.classList.add('fx-done');
+        el.firstChild.textContent = el.dataset.fxDone || 'Confirmé';
+        pos(max());
+        el.dispatchEvent(new CustomEvent('fx:unlock', { bubbles: true }));
+      };
+      b.addEventListener('pointerdown', function (e) { if (el.classList.contains('fx-done')) return; drag = true; sx = e.clientX - x; el.classList.add('fx-drag'); if (e.isTrusted) b.setPointerCapture(e.pointerId); });
+      b.addEventListener('pointermove', function (e) { if (drag) pos(U.clamp(e.clientX - sx, 0, max())); });
+      b.addEventListener('pointerup', function () { if (!drag) return; drag = false; el.classList.remove('fx-drag'); if (x > max() * .86) done(); else pos(0); });
+      b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); done(); } });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="success-stamp">…</div>',
     '<div class="demo-card" data-fx="success-stamp" data-fx-stamp="Payé" data-fx-auto="true" style="height:110px"><b>Facture 042</b>320 €</div>',
     { trigger: 'Tamponner', a11y: 'Le texte du tampon a le rôle `status`.' }),
+  E('unlock-slide', 'État',
+    'Pour confirmer, on fait glisser le pouce jusqu\'au bout du rail ; en lâchant avant, il revient.',
+    'Geste volontaire, impossible à faire par erreur.',
+    '- `data-fx-label`, `data-fx-done` : textes\n- L\'élément émet `fx:unlock`.',
+    'Paiements, envois, actions difficiles à annuler sur mobile.',
+    'Les actions courantes.',
+    '<div data-fx="unlock-slide" data-fx-label="Glisser pour payer"></div>',
+    '<div data-fx="unlock-slide" style="width:220px;color:var(--ink)"></div>',
+    { a11y: 'Le pouce est un bouton : Entrée ou Espace confirment sans glisser.' }),
 ];

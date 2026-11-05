@@ -4806,6 +4806,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="success-stamp"].fx-stamped { animation: fx-stamped .26s .28s; }
 @keyframes fx-stamped { 30% { transform: scale(.985) translateY(2px); } }
 
+/* unlock-slide : glisser pour confirmer */
+[data-fx="unlock-slide"] { position: relative; display: block; height: 48px; border-radius: 99px; background: var(--fx-rail, rgba(128, 128, 128, .25)); overflow: hidden; user-select: none; }
+[data-fx="unlock-slide"]::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--fx-x, 0px) + 44px); border-radius: 99px; background: var(--fx-accent); }
+[data-fx="unlock-slide"] .fx-us-t { position: absolute; inset: 0; display: grid; place-items: center; font-size: 13px; opacity: calc(1 - var(--fx-p, 0) * 1.2); }
+[data-fx="unlock-slide"].fx-done .fx-us-t { opacity: 1; color: #111; font-weight: 600; }
+[data-fx="unlock-slide"] button { position: absolute; left: 4px; top: 4px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #fff; color: #111; cursor: grab; touch-action: none; transform: translateX(var(--fx-x, 0)); transition: transform .35s var(--fx-ease-spring); }
+[data-fx="unlock-slide"].fx-drag button { transition: none; cursor: grabbing; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
