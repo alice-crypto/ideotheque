@@ -29,3 +29,13 @@
 
 /* kerning-focus : une lecture sous la lampe */
 [data-fx="kerning-focus"] .fx-word { opacity: var(--fx-k, 1); filter: blur(calc((1 - var(--fx-k, 1)) * 1.6px)); transition: opacity .25s, filter .25s; }
+
+/* news-ticker-pause : un bandeau d'infos */
+[data-fx="news-ticker-pause"] { position: relative; overflow: hidden; display: block; padding-right: 2.4em; }
+[data-fx="news-ticker-pause"] .fx-nt { display: flex; gap: 2em; width: max-content; animation: fx-nt var(--fx-t, 20s) linear infinite; }
+[data-fx="news-ticker-pause"] .fx-nt > * { white-space: nowrap; margin: 0; }
+[data-fx="news-ticker-pause"]:hover .fx-nt,
+[data-fx="news-ticker-pause"]:focus-within .fx-nt,
+[data-fx="news-ticker-pause"].fx-paused .fx-nt { animation-play-state: paused; }
+[data-fx="news-ticker-pause"] .fx-nt-b { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 2em; height: 2em; border: 0; border-radius: 50%; background: var(--fx-accent); color: #111; cursor: pointer; font-size: 11px; }
+@keyframes fx-nt { to { transform: translateX(-50%); } }
