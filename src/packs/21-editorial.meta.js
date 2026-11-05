@@ -110,4 +110,12 @@ module.exports = [
     '<article data-fx="footnote-spring"><a href="#n1">1</a> … <p id="n1">Note.</p></article>',
     '<div data-fx="footnote-spring" style="width:215px;color:var(--ink);font-size:13px"><p style="margin:0 0 10px">Voir la note <a href="#fx-n-demo" style="color:var(--fx-accent)">1</a>.</p><p id="fx-n-demo" style="margin:0;padding:4px">1. Vérifiée en 2026.</p></div>',
     { a11y: 'Le focus passe sur la note.' }),
+  E('sticker-peel-hover', 'Micro-interaction',
+    'Un autocollant de travers se soulève et s\'oriente vers le curseur au survol.',
+    'Vinyle, petit trésor collé sur un ordinateur.',
+    'L\'angle de repos est aléatoire.',
+    'Badges, mentions « nouveau », décorations.',
+    'Du texte long.',
+    '<span data-fx="sticker-peel-hover">Nouveau !</span>',
+    '<span data-fx="sticker-peel-hover" style="font-size:22px">Nouveau !</span>'),
 ];
