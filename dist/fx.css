@@ -3114,6 +3114,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transform: scaleX(calc(.96 + var(--fx-peak, 0) * .06));
 }
 
+/* letter-accordion : l'étirement se propage aux voisines */
+[data-fx="letter-accordion"] { white-space: nowrap; }
+[data-fx="letter-accordion"] .fx-char {
+  display: inline-block;
+  margin-inline: calc(var(--fx-a, 0) * .18em);
+  transform: scaleX(calc(1 + var(--fx-a, 0) * .55));
+  transition: transform .45s var(--fx-ease-spring), margin .45s var(--fx-ease-spring), color .3s;
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -47,4 +47,12 @@ module.exports = [
     '<h2 data-fx="scroll-weight">Attention</h2>',
     '<p class="demo-title" data-fx="scroll-weight">Attention</p>',
     { a11y: 'Le texte reste lisible à toute position du défilement, l\'effet ne masque rien.' }),
+  E('letter-accordion', 'Texte',
+    'La lettre survolée s\'étire et pousse ses voisines, comme un accordéon qu\'on ouvre.',
+    'Élastique et précis, le mot répond à la main.',
+    '- `--fx-ease-spring` : courbe de l\'étirement',
+    'Liens de menu plein écran, grands noms de projets.',
+    'Les mots très longs, qui déborderaient en s\'étirant.',
+    '<a href="#" data-fx="letter-accordion">Projets</a>',
+    '<a class="demo-roll" href="#" data-fx="letter-accordion" style="color:var(--ink)">Projets</a>'),
 ];
