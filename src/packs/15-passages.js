@@ -27,4 +27,17 @@
       if (l <= r) { for (y = b; y >= t; y--) place(l, y); l++; }
     }
   } } });
+
+  // Une aiguille balaye l'écran comme un cadran
+  FX.register('clock-wipe', { transition: { pieces: 1, cover: 800, uncover: 850, build: function (o) {
+    var p = o.firstChild, start = null, outStart = null;
+    (function run(t) {
+      if (!o.isConnected) return;
+      if (start === null) start = t;
+      if (o.classList.contains('fx-uncover') && outStart === null) outStart = t;
+      p.style.setProperty('--fx-ang', (o._fxArrive ? 360 : U.easeInOut(Math.min(1, (t - start) / 760)) * 360).toFixed(1) + 'deg');
+      p.style.setProperty('--fx-from', (outStart === null ? 0 : U.easeInOut(Math.min(1, (t - outStart) / 800)) * 360).toFixed(1) + 'deg');
+      U.raf(run);
+    })(0);
+  } } });
 })(window.FX);
