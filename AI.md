@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->308<!-- /total --> effets.
+La bibliothèque contient <!-- total -->309<!-- /total --> effets.
 
 ## Règles
 
@@ -256,6 +256,7 @@ La bibliothèque contient <!-- total -->308<!-- /total --> effets.
 | `text-cover` | Transition | Des rangées de texte géant glissent en sens alternés pour couvrir l'écran |
 | `dots-cover` | Transition | Une trame de points grossit depuis le point de clic jusqu'à former un aplat |
 | `scan-cover` | Transition | Un rayon lumineux traverse l'écran de haut en bas et laisse un aplat derrière lui |
+| `color-stack` | Transition | Plusieurs aplats de couleur montent à la suite et laissent voir chacun leur bande |
 | `svg-draw` | Image | Les tracés d'une illustration SVG se dessinent l'un après l'autre, comme à la main |
 | `ken-burns` | Image | L'image avance et glisse très lentement en boucle, comme dans un documentaire |
 | `color-reveal` | Image | L'image en noir et blanc retrouve ses couleurs (et grossit à peine) au survol |

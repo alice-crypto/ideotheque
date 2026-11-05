@@ -120,4 +120,13 @@ module.exports = [
     '<a href="/analyse" data-fx="scan-cover">Analyse</a>',
     '<button class="demo-ghost" onclick="FX.play(\'scan-cover\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('color-stack', 'Transition',
+    'Plusieurs aplats de couleur montent à la suite et laissent voir chacun leur bande.',
+    'Un drapeau, la palette de la marque en un geste.',
+    '- `--fx-tr-colors` sur `:root` : couleurs séparées par des virgules',
+    'Identités aux couleurs franches.',
+    'Les palettes très sobres : l\'effet ne se remarque plus.',
+    '<a href="/equipe" data-fx="color-stack">Équipe</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'color-stack\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];
