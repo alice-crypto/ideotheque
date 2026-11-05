@@ -343,4 +343,21 @@
     tick: function (el, dt) { if (el._fxTick && !U.reduced) el._fxTick(dt); },
     trigger: function (el) { if (el._fxNext) el._fxNext(); }
   });
+
+  // Une bande reste nette et suit le curseur, le reste est flou
+  FX.register('tilt-focus', {
+    setup: function (el) {
+      var img = el.querySelector('img');
+      if (!img) return;
+      var c = img.cloneNode();
+      c.alt = '';
+      c.setAttribute('aria-hidden', 'true');
+      c.className = 'fx-tf-blur';
+      el.appendChild(c);
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--fx-fy', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      });
+    }
+  });
 })(window.FX);
