@@ -197,4 +197,45 @@
       });
     }
   });
+
+  // On gratte une surface pour découvrir ce qu'il y a dessous
+  FX.register('scratch-reveal', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var cv = U.make('canvas', 'fx-scr', el), c = cv.getContext('2d'), down = false, count = 0;
+      cv.setAttribute('aria-hidden', 'true');
+      var init = function () {
+        cv.width = el.offsetWidth; cv.height = el.offsetHeight;
+        c.globalCompositeOperation = 'source-over';
+        c.fillStyle = U.cssVar(el, '--fx-foil', '#888');
+        c.fillRect(0, 0, cv.width, cv.height);
+        c.fillStyle = 'rgba(255,255,255,.75)';
+        c.font = '600 14px system-ui, sans-serif';
+        c.textAlign = 'center';
+        c.fillText(el.dataset.fxHint || 'Grattez ici', cv.width / 2, cv.height / 2);
+        c.globalCompositeOperation = 'destination-out';
+        c.lineWidth = U.num(el, 'fxBrush', 34);
+        c.lineCap = 'round';
+      };
+      init();
+      var at = function (e) { var r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+      var last;
+      cv.style.touchAction = 'none';
+      cv.addEventListener('pointerdown', function (e) { down = true; last = at(e); });
+      window.addEventListener('pointerup', function () { down = false; });
+      cv.addEventListener('pointermove', function (e) {
+        if (!down) return;
+        var p = at(e);
+        c.beginPath(); c.moveTo(last[0], last[1]); c.lineTo(p[0], p[1]); c.stroke();
+        last = p;
+        if (++count % 12) return;
+        var d = c.getImageData(0, 0, cv.width, cv.height).data, clear = 0;
+        for (var i = 3; i < d.length; i += 64) if (!d[i]) clear++;
+        if (clear / (d.length / 64) > U.num(el, 'fxDone', .5)) { el.classList.add('fx-done'); el.dispatchEvent(new CustomEvent('fx:done', { bubbles: true })); }
+      });
+      el.addEventListener('keydown', function (e) { if (e.key === 'Enter') el.classList.add('fx-done'); });
+      if (U.reduced) el.classList.add('fx-done');
+    },
+    trigger: function (el) { el.classList.add('fx-done'); }
+  });
 })(window.FX);
