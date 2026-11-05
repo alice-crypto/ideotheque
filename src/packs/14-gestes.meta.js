@@ -175,4 +175,13 @@ module.exports = [
     '<ul data-fx="drag-reorder"><li>…</li><li>…</li></ul>',
     '<div data-fx="drag-reorder" style="display:grid;gap:6px;width:200px"><div class="demo-chip">Idée</div><div class="demo-chip">Maquette</div><div class="demo-chip">Prototype</div></div>',
     { a11y: 'Au clavier : focus sur une ligne, puis Alt + flèche haut ou bas.' }),
+  E('swipe-card', 'Micro-interaction',
+    'Une pile de cartes : on balaye la première vers la gauche ou la droite, et la suivante avance.',
+    'Choix rapides, familiers, on tourne les cartes du pouce.',
+    '- `data-fx-distance` (80) : distance de décision en pixels\n- L\'élément émet `fx:swipe` avec le sens.',
+    'Sélection de produits, questions rapides, démonstrations mobiles.',
+    'Une comparaison précise : le geste pousse à aller vite.',
+    '<div data-fx="swipe-card" style="height:300px"><article>…</article><article>…</article></div>',
+    '<div data-fx="swipe-card" style="width:170px;height:120px"><div class="demo-box" style="width:100%;height:100%"></div><div class="demo-box alt" style="width:100%;height:100%"></div><div class="demo-box ink" style="width:100%;height:100%"></div></div>',
+    { a11y: 'Flèches gauche et droite au clavier. Offrez aussi des boutons visibles.' }),
 ];

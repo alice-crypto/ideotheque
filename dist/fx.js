@@ -4441,6 +4441,42 @@
       function flash() { el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true })); }
     }
   });
+
+  // Une pile de cartes qu'on balaye vers la gauche ou la droite
+  FX.register('swipe-card', {
+    setup: function (el) {
+      var layout = function () { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-pos', i); c.style.zIndex = 20 - i; }); };
+      layout();
+      var top = function () { return el.firstElementChild; }, sx = 0, dx = 0, drag = false;
+      var send = function (dir) {
+        var c = top();
+        el.classList.add('fx-fly');
+        c.style.transform = 'translateX(' + (dir * 340) + 'px) rotate(' + (dir * 24) + 'deg)';
+        c.style.opacity = 0;
+        el.dispatchEvent(new CustomEvent('fx:swipe', { bubbles: true, detail: { dir: dir > 0 ? 'right' : 'left' } }));
+        setTimeout(function () { el.classList.remove('fx-fly'); c.style.transform = ''; c.style.opacity = ''; el.appendChild(c); layout(); }, 300);
+      };
+      el.tabIndex = 0;
+      el.addEventListener('pointerdown', function (e) { drag = true; sx = e.clientX; dx = 0; if (e.isTrusted) el.setPointerCapture(e.pointerId); });
+      el.addEventListener('pointermove', function (e) {
+        if (!drag) return;
+        dx = e.clientX - sx;
+        top().style.transform = 'translateX(' + dx + 'px) rotate(' + dx * .08 + 'deg)';
+      });
+      var up = function () {
+        if (!drag) return;
+        drag = false;
+        if (Math.abs(dx) > U.num(el, 'fxDistance', 80)) send(dx > 0 ? 1 : -1);
+        else top().style.transform = '';
+      };
+      el.addEventListener('pointerup', up);
+      el.addEventListener('pointercancel', up);
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') send(-1);
+        if (e.key === 'ArrowRight') send(1);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
