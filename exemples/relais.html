@@ -83,6 +83,15 @@
     <section class="psec" id="suivi">
       <div class="wrap">
         <div class="phd"><span class="tag">01 — Suivi</span><h2 data-fx="curtain-words">Vous savez toujours où il est.</h2></div>
+        <div class="rtrack">
+          <div>
+            <ol id="track" data-fx="progress-steps-rail">
+              <li>Préparé</li><li>Récupéré</li><li>En route</li><li>Livré</li>
+            </ol>
+            <p class="rmsg" id="track-msg" aria-live="polite"></p>
+          </div>
+          <button class="pbtn" id="track-go" type="button">Étape suivante</button>
+        </div>
         <!--@suivi-->
       </div>
     </section>
