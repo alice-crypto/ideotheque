@@ -99,3 +99,19 @@
 /* masonry-flow : un mur qui s'ajuste */
 [data-fx="masonry-flow"] { position: relative; }
 [data-fx="masonry-flow"] > * { position: absolute; left: 0; top: 0; transition: transform .55s var(--fx-ease-out), width .55s var(--fx-ease-out); }
+
+/* tab-underline-ink : un trait élastique */
+[data-fx="tab-underline-ink"] { position: relative; display: inline-flex; gap: 1em; padding-bottom: 6px; }
+[data-fx="tab-underline-ink"] button,
+[data-fx="tab-underline-ink"] a { background: none; border: 0; padding: .3em 0; color: inherit; font: inherit; cursor: pointer; text-decoration: none; opacity: .55; transition: opacity .25s; }
+[data-fx="tab-underline-ink"] [aria-selected="true"] { opacity: 1; }
+[data-fx="tab-underline-ink"] .fx-ink {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  left: var(--fx-l, 0);
+  right: var(--fx-r, 100%);
+  border-radius: 2px;
+  background: var(--fx-accent);
+  transition: left .28s var(--fx-ease-out), right .28s var(--fx-ease-out);
+}
