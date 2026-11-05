@@ -7583,6 +7583,21 @@
       upd();
     }
   });
+
+  // Un spécimen de police qu'on règle en direct
+  FX.register('typo-specimen', {
+    setup: function (el) {
+      var txt = el.textContent.trim() || 'Aa';
+      el.innerHTML = '<div class="fx-ts-v" contenteditable="true" spellcheck="false" aria-label="Texte du spécimen"></div><label>Taille <input type="range" min="16" max="120" value="48"></label><label>Graisse <input type="range" min="100" max="900" step="100" value="500"></label>';
+      var v = el.firstChild;
+      v.textContent = txt;
+      el.querySelectorAll('input').forEach(function (r, i) {
+        var set = function () { v.style.setProperty(i ? '--fx-w' : '--fx-s', r.value + (i ? '' : 'px')); };
+        r.addEventListener('input', set);
+        set();
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

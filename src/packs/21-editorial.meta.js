@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="word-counter-goal"><textarea></textarea></div>',
     '<div data-fx="word-counter-goal" data-fx-goal="8" style="width:215px;color:var(--ink);font-size:13px"><textarea rows="3" aria-label="Votre texte" style="background:transparent;border:1px solid #555;border-radius:6px;color:inherit;padding:6px;font:inherit;width:100%;box-sizing:border-box">Écrivez ici quelques mots pour voir</textarea></div>',
     { a11y: 'Le décompte est annoncé par `aria-live`.' }),
+  E('typo-specimen', 'Texte',
+    'Un spécimen de police à régler en direct : on change la taille, la graisse et le texte.',
+    'Fonderie typographique, curiosité.',
+    'Le texte d\'origine de l\'élément devient le texte de départ.',
+    'Présentation d\'une police, d\'une charte graphique.',
+    'Un site qui n\'a pas de raison de montrer sa police.',
+    '<div data-fx="typo-specimen">Bonjour</div>',
+    '<div data-fx="typo-specimen" style="width:220px;color:var(--ink)">Bonjour</div>',
+    { a11y: 'Curseurs natifs, utilisables au clavier ; le texte est modifiable avec un nom accessible.' }),
 ];

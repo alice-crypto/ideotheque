@@ -5122,6 +5122,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="word-counter-goal"].fx-goal .fx-wc { color: var(--fx-accent); animation: fx-wc .5s var(--fx-ease-spring); }
 @keyframes fx-wc { 40% { transform: scale(1.06); } }
 
+/* typo-specimen : un spécimen de police */
+[data-fx="typo-specimen"] { display: grid; gap: 6px; font-size: 12px; }
+[data-fx="typo-specimen"] .fx-ts-v { font-size: var(--fx-s, 48px); font-weight: var(--fx-w, 500); line-height: 1; white-space: nowrap; overflow: hidden; outline: 0; transition: font-size .15s, font-weight .15s; }
+[data-fx="typo-specimen"] label { display: flex; align-items: center; justify-content: space-between; gap: .6em; }
+[data-fx="typo-specimen"] input { flex: 1; accent-color: var(--fx-accent); min-width: 0; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

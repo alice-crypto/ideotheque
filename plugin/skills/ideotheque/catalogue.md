@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->442<!-- /total --> effets.
+La bibliothèque contient <!-- total -->443<!-- /total --> effets.
 
 ## Règles
 
@@ -136,6 +136,7 @@ La bibliothèque contient <!-- total -->442<!-- /total --> effets.
 | `news-ticker-pause` | Texte | Un bandeau d'informations défile en continu, et un bouton permet de l'arrêter |
 | `bilingual-toggle` | Texte | Une phrase bascule entre deux langues, en passant par quelques signes aléatoires |
 | `word-counter-goal` | Texte | Un compteur de mots avance vers un objectif, et salue d'une pulsation quand il est atteint |
+| `typo-specimen` | Texte | Un spécimen de police à régler en direct : on change la taille, la graisse et le texte |
 | `count-up` | Présentation | Mettre en scène un chiffre clé en le faisant défiler de 0 jusqu'à sa valeur |
 | `pill-grow` | Présentation | Une gélule s'ouvre au milieu d'un titre, puis une pastille glisse à l'intérieur, comme un interrupteur qu'on active |
 | `preloader` | Présentation | Un écran de chargement chiffré de 0 à 100 %, avec une barre de progression, qui se lève vers le haut pour révéler la page |
