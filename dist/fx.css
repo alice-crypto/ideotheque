@@ -3944,6 +3944,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-spiral-tiles.fx-cover i { opacity: 1; transform: none; }
 .fx-tr-spiral-tiles.fx-uncover i { opacity: 0; transform: scale(.6); }
 
+/* clock-wipe : un cadran balaye l'écran */
+.fx-tr-clock-wipe i {
+  inset: 0;
+  background: conic-gradient(transparent var(--fx-from, 0deg), var(--fx-tr-color, var(--fx-accent)) var(--fx-from, 0deg) var(--fx-ang, 0deg), transparent var(--fx-ang, 0deg));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

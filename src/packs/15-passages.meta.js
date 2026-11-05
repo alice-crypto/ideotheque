@@ -21,4 +21,13 @@ module.exports = [
     '<a href="/projets" data-fx="spiral-tiles">Projets</a>',
     '<button class="demo-ghost" onclick="FX.play(\'spiral-tiles\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('clock-wipe', 'Transition',
+    'L\'écran est balayé par un secteur qui tourne, comme l\'aiguille d\'une horloge.',
+    'Générique de film, le temps passe.',
+    '- `--fx-tr-color` : couleur',
+    'Récits, histoires de marque, passage à une autre époque.',
+    'Les sites sobres : l\'effet est très marqué.',
+    '<a href="/histoire" data-fx="clock-wipe">Histoire</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'clock-wipe\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];
