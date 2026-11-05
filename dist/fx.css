@@ -5273,6 +5273,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="film-scrub"] img.fx-cur { visibility: visible; }
 [data-fx="film-scrub"]::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: calc(var(--fx-p, 0) * 100%); background: var(--fx-accent); }
 
+/* vignette-focus : une vignette qui suit le regard */
+[data-fx="vignette-focus"] { position: relative; overflow: hidden; }
+[data-fx="vignette-focus"]::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at var(--fx-vx, 50%) var(--fx-vy, 50%), transparent 22%, var(--fx-dark-a, rgba(0, 0, 0, .75)) 80%); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

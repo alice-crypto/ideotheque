@@ -102,4 +102,12 @@ module.exports = [
     '<figure data-fx="film-scrub"><img…><img…><img…></figure>',
     '<div class="demo-media" data-fx="film-scrub"><img src="assets/dune.svg" alt=""><img src="assets/city.svg" alt=""><img src="assets/bloom.svg" alt=""><img src="assets/prism.svg" alt=""></div>',
     { a11y: 'Donnez un texte alternatif à la première image et laissez les autres vides.' }),
+  E('vignette-focus', 'Image',
+    'Les bords de l\'image s\'assombrissent et le centre clair suit le curseur.',
+    'Cinéma, regard guidé, ambiance feutrée.',
+    '- `--fx-dark-a` : couleur du voile',
+    'Photos sombres, musées, nuit.',
+    'Du texte dans les coins de l\'image.',
+    '<figure data-fx="vignette-focus"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="vignette-focus"><img src="assets/city.svg" alt=""></div>'),
 ];
