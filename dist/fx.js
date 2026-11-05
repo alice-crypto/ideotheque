@@ -3548,6 +3548,24 @@
       el._fxTp.setAttribute('startOffset', (-el._fxO) + '%');
     }
   });
+
+  // Une couleur vive passe de mot en mot dans la phrase
+  FX.register('color-cycle-words', {
+    setup: function (el) {
+      U.splitWords(el);
+      el._fxW = el.querySelectorAll('.fx-word');
+      el._fxT = 0; el._fxI = -1;
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxT += dt * 1000;
+      if (el._fxT < U.num(el, 'fxStep', 500) && el._fxI >= 0) return;
+      el._fxT = 0;
+      if (el._fxI >= 0) el._fxW[el._fxI].classList.remove('fx-on');
+      el._fxI = (el._fxI + 1) % el._fxW.length;
+      el._fxW[el._fxI].classList.add('fx-on');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

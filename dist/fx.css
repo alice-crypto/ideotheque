@@ -3277,6 +3277,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="path-type"] svg { display: block; width: 100%; overflow: visible; }
 [data-fx="path-type"] text { fill: currentColor; font-size: var(--fx-size, 34px); font-weight: 600; }
 
+/* color-cycle-words : la couleur circule */
+[data-fx="color-cycle-words"] .fx-word { transition: color .7s; }
+[data-fx="color-cycle-words"] .fx-word.fx-on { color: var(--fx-accent); transition-duration: .12s; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

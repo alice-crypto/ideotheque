@@ -213,4 +213,12 @@ module.exports = [
     '<div data-fx="path-type">Livraison offerte</div>',
     '<div data-fx="path-type" style="color:var(--ink);width:230px">Livraison offerte</div>',
     { a11y: 'Le texte est dans `aria-label`, le dessin est masqué aux lecteurs d\'écran.' }),
+  E('color-cycle-words', 'Texte',
+    'Une couleur vive passe de mot en mot dans la phrase, comme une lecture guidée.',
+    'Rythmé, karaoké, l\'œil est tenu en mouvement.',
+    '- `data-fx-step` (500) : millisecondes par mot',
+    'Slogans courts, phrases d\'accroche.',
+    'Les textes longs : la couleur finit par distraire.',
+    '<p data-fx="color-cycle-words">Lire, créer, partager, recommencer.</p>',
+    '<p class="demo-para" data-fx="color-cycle-words" style="color:var(--ink)">Lire, créer, partager, recommencer.</p>'),
 ];
