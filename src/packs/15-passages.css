@@ -28,3 +28,16 @@
   inset: 0;
   background: conic-gradient(transparent var(--fx-from, 0deg), var(--fx-tr-color, var(--fx-accent)) var(--fx-from, 0deg) var(--fx-ang, 0deg), transparent var(--fx-ang, 0deg));
 }
+
+/* ink-drops : l'encre envahit la page */
+.fx-tr-ink-drops i {
+  width: 90vmax;
+  height: 90vmax;
+  margin: -45vmax;
+  border-radius: 47% 53% 44% 56% / 52% 45% 55% 48%;
+  background: var(--fx-tr-color, var(--fx-dark));
+  transform: scale(0);
+  transition: transform .62s var(--fx-ease-io) var(--fx-d);
+}
+.fx-tr-ink-drops.fx-cover i { transform: scale(1); }
+.fx-tr-ink-drops.fx-uncover i { transform: scale(0); }
