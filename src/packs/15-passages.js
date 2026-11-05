@@ -253,4 +253,26 @@
       el.style.setProperty('--fx-duo', 'url(#' + id + ')');
     }
   });
+
+  // L'image se recompose à partir de cellules éparses
+  FX.register('mosaic-hover', {
+    setup: function (el) {
+      var img = el.querySelector('img');
+      if (!img) return;
+      var C = U.num(el, 'fxCols', 6), R = U.num(el, 'fxRows', 4);
+      el.style.setProperty('--fx-c', C);
+      el.style.setProperty('--fx-rw', R);
+      var src = img.getAttribute('src');
+      img.classList.add('fx-sr-img');
+      for (var j = 0; j < R; j++) for (var i = 0; i < C; i++) {
+        var s = U.make('i', '', el);
+        s.setAttribute('aria-hidden', 'true');
+        s.style.backgroundImage = 'url("' + src + '")';
+        s.style.backgroundPosition = (C > 1 ? i * 100 / (C - 1) : 0) + '% ' + (R > 1 ? j * 100 / (R - 1) : 0) + '%';
+        s.style.setProperty('--fx-dx', U.rand(-22, 22).toFixed(0) + 'px');
+        s.style.setProperty('--fx-dy', U.rand(-22, 22).toFixed(0) + 'px');
+        s.style.setProperty('--fx-dr', U.rand(-16, 16).toFixed(0) + 'deg');
+      }
+    }
+  });
 })(window.FX);
