@@ -8306,6 +8306,20 @@
       });
     }
   });
+
+  // Une grille d'hexagones s'éclaire autour du curseur
+  FX.register('hex-glow', {
+    setup: function (el) {
+      el._fxH = false;
+      el.addEventListener('pointermove', function (e) { var r = el.getBoundingClientRect(); el._fxH = true; el.style.setProperty('--fx-mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--fx-my', (e.clientY - r.top) + 'px'); });
+      el.addEventListener('pointerleave', function () { el._fxH = false; });
+    },
+    tick: function (el, dt, t) {
+      if (el._fxH || U.reduced) return;
+      el.style.setProperty('--fx-mx', (el.offsetWidth * (.5 + Math.cos(t * .0008) * .4)).toFixed(0) + 'px');
+      el.style.setProperty('--fx-my', (el.offsetHeight * (.5 + Math.sin(t * .0011) * .4)).toFixed(0) + 'px');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

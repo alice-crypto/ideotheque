@@ -207,4 +207,12 @@ module.exports = [
     '<section data-fx="dust-motes">…</section>',
     '<div data-fx="dust-motes" style="width:230px;height:170px;color:var(--ink)"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
+  E('hex-glow', 'Ambiance',
+    'Une grille d\'alvéoles reste invisible, sauf autour du curseur où elle s\'éclaire.',
+    'Bouclier d\'énergie, ruche futuriste.',
+    '- `--fx-size` (120px)',
+    'Fonds sombres, sécurité, jeux.',
+    'Les fonds clairs.',
+    '<section data-fx="hex-glow">…</section>',
+    '<div data-fx="hex-glow" style="width:230px;height:170px"></div>'),
 ];
