@@ -56,6 +56,10 @@
     .cprix ul li::before { content: "●"; color: var(--b); margin-right: .5em; font-size: .7em; vertical-align: 2px; }
     .cend { padding-block: clamp(50px, 8vw, 110px); text-align: center; overflow: hidden; border-bottom: var(--rule); }
     .cend h2 { font-size: clamp(90px, 26vw, 420px); line-height: .85; letter-spacing: -.06em; }
+    @media (max-width: 900px) {
+      .crow, .cmetro, .cstreak, .cvoix, .cprix { grid-template-columns: 1fr; }
+      .cwave { justify-content: flex-start; }
+    }
     /*@css*/
   </style>
 </head>
