@@ -401,4 +401,17 @@
         .forEach(function (o, i) { o.w.style.setProperty('--fx-o', i); });
     }
   });
+
+  // Chaque lettre est une étiquette collée de travers
+  FX.register('sticker-letters', {
+    entrance: true,
+    setup: function (el) {
+      U.splitChars(el);
+      var pal = (el.dataset.fxColors || '').split(',').filter(Boolean);
+      el.querySelectorAll('.fx-char').forEach(function (c, i) {
+        c.style.setProperty('--fx-r', U.rand(-9, 9).toFixed(1) + 'deg');
+        if (pal.length) c.style.background = pal[i % pal.length];
+      });
+    }
+  });
 })(window.FX);
