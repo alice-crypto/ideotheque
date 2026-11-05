@@ -20,3 +20,12 @@
 [data-fx="citation-pop"] .fx-cite-tip { position: absolute; bottom: calc(100% + 6px); left: 50%; width: max-content; max-width: 200px; padding: .4em .7em; border-radius: 6px; background: #111; color: #fff; font-size: 12px; opacity: 0; pointer-events: none; transform: translate(-50%, 4px); transition: opacity .15s, transform .2s var(--fx-ease-out); z-index: 5; }
 [data-fx="citation-pop"] .fx-cite:hover .fx-cite-tip,
 [data-fx="citation-pop"] .fx-cite:focus-visible .fx-cite-tip { opacity: 1; transform: translate(-50%, 0); }
+
+/* confidence-meter : le degré de certitude */
+[data-fx="confidence-meter"] { display: grid; gap: 4px; font-size: 12px; }
+[data-fx="confidence-meter"] i { display: block; height: 5px; border-radius: 3px; background: rgba(128, 128, 128, .28); overflow: hidden; }
+[data-fx="confidence-meter"] b { display: block; height: 100%; border-radius: 3px; background: var(--fx-c); transform-origin: left; transform: scaleX(0); transition: transform .8s var(--fx-ease-out); }
+.fx-in[data-fx="confidence-meter"] b { transform: scaleX(var(--fx-v)); }
+[data-fx="confidence-meter"].fx-lvl-h { --fx-c: var(--fx-high, #2eaf63); }
+[data-fx="confidence-meter"].fx-lvl-m { --fx-c: var(--fx-mid, #ffd400); }
+[data-fx="confidence-meter"].fx-lvl-l { --fx-c: var(--fx-low, #e10600); }
