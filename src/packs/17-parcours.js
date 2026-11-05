@@ -61,4 +61,21 @@
       el.addEventListener('pointerleave', hide);
     }
   });
+
+  // Une barre en pilule qui se réduit quand on descend
+  FX.register('pill-nav-morph', {
+    setup: function (el) {
+      var lastY = window.scrollY;
+      var upd = function () {
+        var y = window.scrollY;
+        if (Math.abs(y - lastY) < 6) return;
+        el.classList.toggle('fx-small', y > lastY && y > U.num(el, 'fxAfter', 120));
+        lastY = y;
+      };
+      window.addEventListener('scroll', upd, { passive: true });
+      el.addEventListener('pointerenter', function () { el.classList.remove('fx-small'); });
+      el.addEventListener('focusin', function () { el.classList.remove('fx-small'); });
+      if (el.dataset.fxDemo) setInterval(function () { el.classList.toggle('fx-small'); }, 1800);
+    }
+  });
 })(window.FX);
