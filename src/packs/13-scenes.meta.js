@@ -29,4 +29,13 @@ module.exports = [
     '<p data-fx="scroll-typing">Chaque mot arrive quand vous êtes prêt.</p>',
     '<p class="demo-para" data-fx="scroll-typing" style="color:var(--ink)">Chaque mot arrive quand vous êtes prêt.</p>',
     { a11y: 'Le texte complet est dans `aria-label` dès le départ.' }),
+  E('band-slide', 'Défilement',
+    'Une bande de texte géant traverse l\'écran à l\'horizontale, au rythme du défilement.',
+    'Ampleur d\'affiche, le mot dépasse du cadre.',
+    '- `data-fx-dir` (left) : `left` ou `right`\n- `data-fx-travel` (40) : déplacement en pourcentage',
+    'Séparations de sections, noms de marque en grand.',
+    'Les phrases qu\'il faut lire entièrement.',
+    '<div data-fx="band-slide">Idéothèque</div>',
+    '<div class="demo-title" data-fx="band-slide" style="width:100%;padding:0">Idéothèque</div>',
+    { a11y: 'Le texte est dans `aria-label`, les répétitions sont masquées aux lecteurs d\'écran.' }),
 ];
