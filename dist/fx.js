@@ -7380,6 +7380,12 @@
       k.forEach(function (c, i) { c.style.setProperty('--fx-o', o[i]); });
     }
   });
+
+  // L'élément arrive étiré, s'écrase et rebondit
+  FX.register('rubber-in', {
+    entrance: true,
+    setup: function (el) { el.style.setProperty('--fx-delay', U.num(el, 'fxDelay', 0) + 'ms'); }
+  });
 })(window.FX);
 
 window.FX._boot();

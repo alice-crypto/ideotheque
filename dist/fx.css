@@ -5040,6 +5040,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="flip-board-in"] > * { transform: rotateY(90deg); opacity: 0; transition: transform .55s var(--fx-ease-out) calc(var(--fx-o) * 55ms), opacity .1s calc(var(--fx-o) * 55ms); }
 .fx-in[data-fx="flip-board-in"] > * { transform: none; opacity: 1; }
 
+/* rubber-in : un personnage de dessin animé */
+[data-fx="rubber-in"] { opacity: 0; }
+.fx-in[data-fx="rubber-in"] { opacity: 1; animation: fx-rub .9s var(--fx-delay, 0ms) both; }
+@keyframes fx-rub {
+  0% { transform: translateY(-50px) scale(.8, 1.4); }
+  40% { transform: translateY(0) scale(1.3, .7); }
+  60% { transform: translateY(-14px) scale(.9, 1.15); }
+  80% { transform: translateY(0) scale(1.08, .92); }
+  100% { transform: none; }
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

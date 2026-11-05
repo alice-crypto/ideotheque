@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="flip-board-in">…</div>',
     '<div class="demo-grid" data-fx="flip-board-in"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
     { trigger: 'Rejouer' }),
+  E('rubber-in', 'Entrée',
+    'L\'élément tombe étiré, s\'écrase au sol et rebondit, comme dans un dessin animé.',
+    'Joyeux, exagéré, sans se prendre au sérieux.',
+    '- `data-fx-delay` (0) : retard en millisecondes',
+    'Boutons principaux, autocollants, logos ludiques.',
+    'Les marques sobres.',
+    '<button data-fx="rubber-in">Commencer</button>',
+    '<button class="demo-btn" data-fx="rubber-in">Commencer</button>',
+    { trigger: 'Rejouer' }),
 ];
