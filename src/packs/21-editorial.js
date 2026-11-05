@@ -293,4 +293,26 @@
       el._fxLook(b.left + b.width / 2 + Math.cos(el._fxA) * 100, b.top + b.height / 2 + Math.sin(el._fxA) * 100);
     }
   });
+
+  // Un double appui sur l'image fait apparaître un cœur
+  FX.register('double-click-like', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxBurst = function (x, y) {
+        var h = U.make('span', 'fx-dcl', el);
+        h.textContent = '♥';
+        h.setAttribute('aria-hidden', 'true');
+        h.style.left = x + 'px';
+        h.style.top = y + 'px';
+        h.style.setProperty('--fx-r', U.rand(-16, 16).toFixed(0) + 'deg');
+        setTimeout(function () { h.remove(); }, 900);
+        el.dispatchEvent(new CustomEvent('fx:like', { bubbles: true }));
+      };
+      el.addEventListener('dblclick', function (e) {
+        var r = el.getBoundingClientRect();
+        el._fxBurst(e.clientX - r.left, e.clientY - r.top);
+      });
+    },
+    trigger: function (el) { el._fxBurst(el.offsetWidth / 2, el.offsetHeight / 2); }
+  });
 })(window.FX);
