@@ -626,4 +626,30 @@
       });
     }
   });
+
+  // Une carte de rectangles proportionnels s'assemble
+  FX.register('treemap-grow', {
+    entrance: true,
+    setup: function (el) {
+      var it = (el.dataset.fxItems || 'Vidéo:42,Son:24,Image:18,Texte:10,Autre:6').split(',').map(function (s) { var p = s.split(':'); return { n: p[0], v: +p[1] }; }).sort(function (a, b) { return b.v - a.v; });
+      var i = 0;
+      var cut = function (list, x, y, w, h, hz) {
+        if (list.length === 1) {
+          var d = U.make('div', '', el);
+          d.textContent = list[0].n;
+          d.style.left = x + '%'; d.style.top = y + '%'; d.style.width = w + '%'; d.style.height = h + '%';
+          d.style.setProperty('--fx-i', i++);
+          d.title = list[0].n + ' : ' + list[0].v;
+          return;
+        }
+        var tot = list.reduce(function (a, c) { return a + c.v; }, 0), acc = 0, k = 0;
+        while (k < list.length - 1 && acc + list[k].v <= tot / 2) acc += list[k++].v;
+        if (!k) { acc = list[0].v; k = 1; }
+        var r = acc / tot;
+        if (hz) { cut(list.slice(0, k), x, y, w * r, h, !hz); cut(list.slice(k), x + w * r, y, w * (1 - r), h, !hz); }
+        else { cut(list.slice(0, k), x, y, w, h * r, !hz); cut(list.slice(k), x, y + h * r, w, h * (1 - r), !hz); }
+      };
+      cut(it, 0, 0, 100, 100, true);
+    }
+  });
 })(window.FX);
