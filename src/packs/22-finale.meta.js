@@ -110,4 +110,13 @@ module.exports = [
     'Du texte dans les coins de l\'image.',
     '<figure data-fx="vignette-focus"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="vignette-focus"><img src="assets/city.svg" alt=""></div>'),
+  E('lightbox-flip', 'Image',
+    'Une miniature grandit sans coupure jusqu\'au plein écran, et revient à sa place à la fermeture.',
+    'Continuité, on garde le fil du regard.',
+    'Aucun réglage. Fermeture au clic ou avec Échap.',
+    'Galeries, portfolios, fiches produit.',
+    'Des images trop petites pour le plein écran.',
+    '<div data-fx="lightbox-flip"><img src="a.jpg" alt="…"></div>',
+    '<div class="demo-media" data-fx="lightbox-flip"><img src="assets/bloom.svg" alt="Fleur"></div>',
+    { a11y: 'Dialogue avec `aria-modal`, fermeture avec Échap et retour du focus.' }),
 ];

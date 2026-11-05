@@ -8050,6 +8050,35 @@
       el.style.setProperty('--fx-vy', s.y.toFixed(1) + '%');
     }
   });
+
+  // La miniature grandit jusqu'au plein écran, sans coupure
+  FX.register('lightbox-flip', {
+    setup: function (el) {
+      el.addEventListener('click', function (e) {
+        var img = e.target.closest('img');
+        if (!img) return;
+        var r = img.getBoundingClientRect(), bg = U.make('div', 'fx-lb', document.body), c = img.cloneNode();
+        bg.setAttribute('role', 'dialog');
+        bg.setAttribute('aria-modal', 'true');
+        bg.setAttribute('aria-label', img.alt || 'Image agrandie');
+        bg.tabIndex = -1;
+        bg.appendChild(c);
+        c.style.cssText = 'position:absolute;left:' + r.left + 'px;top:' + r.top + 'px;width:' + r.width + 'px;height:' + r.height + 'px';
+        var k = Math.min(innerWidth * .9 / r.width, innerHeight * .9 / r.height);
+        var tx = innerWidth / 2 - r.left - r.width / 2, ty = innerHeight / 2 - r.top - r.height / 2;
+        var close = function () {
+          bg.classList.remove('fx-on');
+          c.style.transform = '';
+          setTimeout(function () { bg.remove(); img.focus && img.focus({ preventScroll: true }); }, U.reduced ? 0 : 400);
+          document.removeEventListener('keydown', key);
+        };
+        var key = function (ev) { if (ev.key === 'Escape') close(); };
+        bg.addEventListener('click', close);
+        document.addEventListener('keydown', key);
+        U.raf(function () { U.raf(function () { bg.classList.add('fx-on'); c.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + k + ')'; bg.focus(); }); });
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
