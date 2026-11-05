@@ -5580,6 +5580,18 @@
       }
     }
   });
+
+  // Un dégradé maillé qui se déforme lentement
+  FX.register('mesh-gradient', {
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      var T = t * .00025 * U.num(el, 'fxSpeed', 1);
+      for (var i = 0; i < 4; i++) {
+        el.style.setProperty('--fx-x' + i, (50 + Math.sin(T * (1 + i * .3) + i * 2) * 42).toFixed(1) + '%');
+        el.style.setProperty('--fx-y' + i, (50 + Math.cos(T * (1.2 - i * .2) + i) * 42).toFixed(1) + '%');
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

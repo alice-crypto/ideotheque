@@ -4283,6 +4283,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="sand-grain"] { isolation: isolate; overflow: hidden; }
 [data-fx="sand-grain"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-sand, #ffd400); image-rendering: pixelated; }
 
+/* mesh-gradient : un dégradé maillé */
+[data-fx="mesh-gradient"] {
+  background:
+    radial-gradient(at var(--fx-x0, 20%) var(--fx-y0, 20%), var(--fx-a, #0047ff) 0, transparent 55%),
+    radial-gradient(at var(--fx-x1, 80%) var(--fx-y1, 20%), var(--fx-b, #e10600) 0, transparent 55%),
+    radial-gradient(at var(--fx-x2, 20%) var(--fx-y2, 80%), var(--fx-c, #ffd400) 0, transparent 55%),
+    radial-gradient(at var(--fx-x3, 80%) var(--fx-y3, 80%), var(--fx-d, #0047ff) 0, transparent 55%),
+    var(--fx-mesh-bg, #fff);
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

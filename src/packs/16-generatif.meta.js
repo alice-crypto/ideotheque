@@ -147,4 +147,13 @@ module.exports = [
     'Une petite surface : les dunes n\'ont pas le temps de se former.',
     '<div data-fx="sand-grain" style="height:300px"></div>',
     '<div data-fx="sand-grain" style="width:230px;height:170px"></div>'),
+  E('mesh-gradient', 'Ambiance',
+    'Un dégradé maillé à quatre couleurs se déforme lentement, sans jamais se répéter.',
+    'Lumière douce, produit soigné, aurore tranquille.',
+    '- `--fx-a`, `--fx-b`, `--fx-c`, `--fx-d`, `--fx-mesh-bg` : couleurs\n- `data-fx-speed` (1) : vitesse',
+    'En-têtes de produit, cartes mises en avant.',
+    'Sous un texte sans vérifier le contraste à toutes les positions.',
+    '<section data-fx="mesh-gradient">…</section>',
+    '<div data-fx="mesh-gradient" style="width:230px;height:170px;border-radius:12px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le dégradé reste immobile.' }),
 ];
