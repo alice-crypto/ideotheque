@@ -111,3 +111,8 @@
 [data-fx="upload-drop"] .fx-ud-list { list-style: none; padding: 0; margin: 0; font-size: 12px; }
 [data-fx="upload-drop"] .fx-ud-list li { animation: fx-ud-l .3s var(--fx-ease-out); }
 @keyframes fx-ud-l { from { opacity: 0; transform: translateY(5px); } }
+
+/* offline-banner : la connexion perdue */
+[data-fx="offline-banner"] { padding: .55em 1em; border-radius: 8px; background: var(--fx-off, #222); color: #fff; font-size: 13px; text-align: center; opacity: 0; transform: translateY(-120%); transition: transform .45s var(--fx-ease-out), opacity .3s, background .3s; }
+[data-fx="offline-banner"].fx-show { opacity: 1; transform: none; }
+[data-fx="offline-banner"].fx-ok { background: var(--fx-on, #2eaf63); }
