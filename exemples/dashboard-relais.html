@@ -53,6 +53,12 @@
   <a class="ex-back" href="relais.html" data-fx-tr="corner-sweep">← Site de Relais</a>
   <script src="../dist/fx.js" defer></script>
   <script>
+    (function () {
+      var c = document.getElementById('clock');
+      function tick() { c.textContent = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }); }
+      tick();
+      setInterval(tick, 10000);
+    })();
     /*@js*/
   </script>
 </body>
