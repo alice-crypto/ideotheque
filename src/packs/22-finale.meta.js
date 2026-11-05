@@ -303,4 +303,13 @@ module.exports = [
     '<div data-fx="treemap-grow" data-fx-items="A:60,B:30,C:10"></div>',
     '<div data-fx="treemap-grow" style="width:225px"></div>',
     { trigger: 'Rejouer', a11y: 'Chaque rectangle porte son nom en texte et sa valeur dans `title`.' }),
+  E('bubble-pack', 'Présentation',
+    'Des bulles proportionnelles gonflent et se serrent les unes contre les autres.',
+    'Organique, on compare d\'instinct.',
+    '- `data-fx-items` : « nom:valeur »\n- `--fx-h` (160px)',
+    'Villes, catégories, thèmes.',
+    'Les comparaisons précises : la surface se lit mal.',
+    '<div data-fx="bubble-pack" data-fx-items="A:50,B:30"></div>',
+    '<div data-fx="bubble-pack" style="width:225px"></div>',
+    { trigger: 'Rejouer', a11y: 'Les valeurs sont résumées dans `aria-label`.' }),
 ];

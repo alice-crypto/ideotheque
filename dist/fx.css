@@ -5408,6 +5408,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="treemap-grow"] > div { position: absolute; box-sizing: border-box; padding: .4em; overflow: hidden; border: 1px solid var(--fx-gap, #111); color: #fff; background: color-mix(in srgb, var(--fx-accent) calc(100% - var(--fx-i) * 18%), #222); transform: scale(.85); opacity: 0; transition: transform .6s var(--fx-ease-out) calc(var(--fx-i) * 70ms), opacity .3s calc(var(--fx-i) * 70ms); }
 .fx-in[data-fx="treemap-grow"] > div { transform: none; opacity: 1; }
 
+/* bubble-pack : des bulles serrées */
+[data-fx="bubble-pack"] { position: relative; height: var(--fx-h, 160px); font-size: 11px; }
+[data-fx="bubble-pack"] span { position: absolute; display: grid; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--fx-accent) calc(100% - var(--fx-i) * 13%), var(--fx-accent-2)); color: #111; transform: scale(0); transition: transform .6s var(--fx-ease-spring) calc(var(--fx-i) * 70ms); }
+.fx-in[data-fx="bubble-pack"] span { transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

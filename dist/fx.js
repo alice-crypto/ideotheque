@@ -8534,6 +8534,28 @@
       cut(it, 0, 0, 100, 100, true);
     }
   });
+
+  // Des bulles proportionnelles se serrent les unes contre les autres
+  FX.register('bubble-pack', {
+    entrance: true,
+    setup: function (el) {
+      var it = (el.dataset.fxItems || 'Paris:50,Lyon:30,Nantes:22,Lille:18,Rennes:14,Metz:9').split(',').map(function (s) { var p = s.split(':'); return { n: p[0], v: +p[1] }; }).sort(function (a, b) { return b.v - a.v; });
+      var W = el.clientWidth || 220, H = el.clientHeight || 160, placed = [], mx = it[0].v;
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', it.map(function (i) { return i.n + ' ' + i.v; }).join(', '));
+      it.forEach(function (o, k) {
+        var r = Math.sqrt(o.v / mx) * Math.min(W, H) * .26, a = 0, d = 0, x, y;
+        do { x = Math.cos(a) * d; y = Math.sin(a) * d * .75; a += .5; d += .7; }
+        while (placed.some(function (p) { return Math.hypot(p.x - x, p.y - y) < p.r + r + 2; }) && d < 400);
+        placed.push({ x: x, y: y, r: r });
+        var b = U.make('span', '', el);
+        b.setAttribute('aria-hidden', 'true');
+        b.textContent = r > 18 ? o.n : '';
+        b.style.cssText = 'width:' + r * 2 + 'px;height:' + r * 2 + 'px;left:' + (W / 2 + x - r) + 'px;top:' + (H / 2 + y - r) + 'px';
+        b.style.setProperty('--fx-i', k);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
