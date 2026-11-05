@@ -3953,6 +3953,14 @@
   FX.register('wipe-scrub', {
     scroll: function (el, info) { el.style.setProperty('--fx-at', (info.enter * 160 - 30).toFixed(1) + '%'); }
   });
+
+  // La section recule et s'arrondit en sortant
+  FX.register('card-recede', {
+    scroll: function (el, info) {
+      var out = U.clamp(-info.rect.top / Math.max(1, Math.min(info.rect.height, info.vh)), 0, 1);
+      el.style.setProperty('--fx-out', (el.dataset.fxDemo ? info.pass : out).toFixed(3));
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

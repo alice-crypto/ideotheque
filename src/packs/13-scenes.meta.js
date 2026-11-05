@@ -225,4 +225,12 @@ module.exports = [
     'Les contenus qu\'il faut lire à l\'arrivée.',
     '<img data-fx="wipe-scrub" src="photo.jpg" alt="">',
     '<div class="demo-box" data-fx="wipe-scrub" style="width:210px;height:140px"></div>'),
+  E('card-recede', 'Défilement',
+    'En sortant par le haut, une section recule, s\'arrondit et s\'assombrit, comme une carte glissée sous la suivante.',
+    'Pile de feuilles, chaque section passe au second plan.',
+    '- `--fx-depth` (.1) : recul\n- `--fx-round` (28px) : arrondi final',
+    'Grandes sections plein écran qui s\'enchaînent.',
+    'Les sections sans fond : on ne voit plus la carte.',
+    '<section data-fx="card-recede">…</section>',
+    '<div class="demo-box alt" data-fx="card-recede" data-fx-demo="1" style="width:210px;height:150px"></div>'),
 ];
