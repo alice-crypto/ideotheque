@@ -5086,6 +5086,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="margin-note"] .fx-mn-ref:focus .fx-mn,
 [data-fx="margin-note"] [data-fx-show] .fx-mn { max-height: 6em; opacity: 1; }
 
+/* pull-quote-rise : une grande citation */
+[data-fx="pull-quote-rise"] { position: relative; padding-left: 1.3em; }
+[data-fx="pull-quote-rise"]::before { content: "«"; position: absolute; left: -.05em; top: -.25em; font-size: 2.2em; line-height: 1; color: var(--fx-accent); transform: scale(0); transition: transform .6s var(--fx-ease-spring); }
+.fx-in[data-fx="pull-quote-rise"]::before { transform: none; }
+[data-fx="pull-quote-rise"] .fx-line { display: block; overflow: hidden; }
+[data-fx="pull-quote-rise"] .fx-line > span { display: block; transform: translateY(105%); transition: transform .8s var(--fx-ease-out) calc(var(--fx-i) * 90ms + .25s); }
+.fx-in[data-fx="pull-quote-rise"] .fx-line > span { transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

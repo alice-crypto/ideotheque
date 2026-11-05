@@ -21,4 +21,13 @@ module.exports = [
     '<p data-fx="margin-note">Un <span data-note="Inventé en 1450.">procédé</span> ancien.</p>',
     '<p data-fx="margin-note" style="width:210px;margin:0;color:var(--ink);font-size:16px">Un <span data-note="Inventé vers 1450." data-fx-show>procédé</span> très ancien.</p>',
     { a11y: 'Les notes s\'ouvrent aussi au clavier, le mot annoté pouvant recevoir le focus.' }),
+  E('pull-quote-rise', 'Texte',
+    'Un grand guillemet surgit, puis les lignes d\'une citation montent une à une.',
+    'Une parole importante, qu\'on prend le temps d\'écouter.',
+    'Aucun réglage.',
+    'Témoignages, phrases fortes d\'un article.',
+    'Une citation de plus de 4 lignes.',
+    '<blockquote data-fx="pull-quote-rise">Faire simple prend du temps.</blockquote>',
+    '<p class="demo-para" data-fx="pull-quote-rise" style="color:var(--ink)">Faire simple prend beaucoup de temps.</p>',
+    { trigger: 'Rejouer' }),
 ];
