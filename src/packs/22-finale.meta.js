@@ -267,4 +267,13 @@ module.exports = [
     '<div data-fx="tag-filter-flip"><div data-tags></div><div data-grid><a data-tag="web">…</a></div></div>',
     '<div data-fx="tag-filter-flip" style="width:220px;color:var(--ink)"><div data-tags></div><div data-grid class="demo-row" style="justify-content:flex-start;padding:0"><div class="demo-box" data-tag="Web" style="width:46px;height:46px"></div><div class="demo-box alt" data-tag="Print" style="width:46px;height:46px"></div><div class="demo-box ink" data-tag="Web" style="width:46px;height:46px"></div><div class="demo-box alt" data-tag="Son" style="width:46px;height:46px"></div></div></div>',
     { a11y: 'Les filtres sont des boutons avec `aria-pressed`.' }),
+  E('sidebar-collapse', 'Navigation',
+    'Une barre latérale se replie sur ses icônes, et retient ce choix.',
+    'Application professionnelle, on garde la main.',
+    '- `data-fx-key` : clé d\'enregistrement du choix\n- `--fx-w` (180px), `--fx-mini` (52px)',
+    'Tableaux de bord, applications.',
+    'Des icônes peu claires sans leur libellé.',
+    '<nav data-fx="sidebar-collapse"><button data-toggle>‹</button><a href="#">⌂ <span>Accueil</span></a></nav>',
+    '<nav data-fx="sidebar-collapse" style="color:var(--ink);font-size:13px;border:1px solid #333;border-radius:8px"><button data-toggle>‹</button><a href="#">⌂ <span>Accueil</span></a><a href="#">⌕ <span>Recherche</span></a><a href="#">♡ <span>Favoris</span></a></nav>',
+    { trigger: 'Replier', a11y: 'Bouton nommé avec `aria-expanded`. Le libellé reste dans le lien pour les lecteurs d\'écran.' }),
 ];
