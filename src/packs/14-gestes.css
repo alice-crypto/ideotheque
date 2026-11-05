@@ -19,3 +19,23 @@
 /* squish-drag : un objet élastique */
 [data-fx="squish-drag"] { cursor: grab; user-select: none; will-change: transform; }
 [data-fx="squish-drag"].fx-grab { cursor: grabbing; }
+
+/* cursor-label : le curseur parle */
+[data-fx="cursor-label"] { overflow: hidden; }
+[data-fx="cursor-label"] .fx-cl {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: .5em .9em;
+  border-radius: 999px;
+  background: var(--fx-accent);
+  color: var(--fx-cl-ink, #111);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translate(var(--fx-x, 0), var(--fx-y, 0)) translate(-50%, -50%) scale(0);
+  transition: scale .3s var(--fx-ease-spring);
+  scale: 0;
+}
+[data-fx="cursor-label"].fx-on .fx-cl { scale: 1; transform: translate(var(--fx-x, 0), var(--fx-y, 0)) translate(-50%, -50%); }
