@@ -5378,6 +5378,29 @@
       });
     }
   });
+
+  // Un terrain de points ondule en perspective
+  FX.register('matrix-dots-wave', {
+    setup: function (el) { U.ensurePositioned(el); el._fxCv = U.make('canvas', 'fx-gen', el); el._fxCv.setAttribute('aria-hidden', 'true'); },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d'), N = U.num(el, 'fxRows', 22), T = t * .0012;
+      c.clearRect(0, 0, w, h);
+      c.fillStyle = getComputedStyle(cv).color;
+      for (var z = N; z > 0; z--) for (var x = -N; x <= N; x++) {
+        var y = Math.sin(x * .45 + T) * Math.cos(z * .4 + T * .7) * 26;
+        var k = 240 / (z * 16 + 70);
+        var px = w / 2 + x * 24 * k, py = h * .35 + (y + 90) * k;
+        if (px < 0 || px > w || py > h) continue;
+        c.globalAlpha = 1 - z / N * .85;
+        c.fillRect(px, py, Math.max(1, k * 2.4), Math.max(1, k * 2.4));
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

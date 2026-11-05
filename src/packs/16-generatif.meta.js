@@ -87,4 +87,12 @@ module.exports = [
     'Un fond clair : l\'effet disparaît.',
     '<section data-fx="fireflies">…</section>',
     '<div data-fx="fireflies" style="width:230px;height:170px"></div>'),
+  E('matrix-dots-wave', 'Ambiance',
+    'Une grille de points forme un terrain qui ondule en perspective.',
+    'Données en mouvement, paysage numérique.',
+    '- `data-fx-rows` (22) : profondeur de la grille\n- `--fx-dot` : couleur',
+    'En-têtes de produits techniques, IA, données.',
+    'Les pages longues où plusieurs canvas tourneraient en même temps.',
+    '<section data-fx="matrix-dots-wave">…</section>',
+    '<div data-fx="matrix-dots-wave" style="width:230px;height:170px"></div>'),
 ];
