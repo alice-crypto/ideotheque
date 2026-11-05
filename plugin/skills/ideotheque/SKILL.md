@@ -1,17 +1,17 @@
 ---
 name: ideotheque
-description: "Applique les effets visuels nommés de la bibliothèque Idéothèque (206 animations, transitions plein écran, effets de texte, de défilement, micro-interactions, ambiances, états d'IA) sur une page web ou une interface. À utiliser quand l'utilisateur cite un effet par son nom (curtain-soft, line-mask, magnetic, count-up, aurora, ai-orb…), parle d'Idéothèque ou de data-fx, ou demande d'animer, de rendre plus vivante, plus « Awwwards » ou plus soft une landing page, un dashboard ou un site. In English: applies the named visual effects of the Idéothèque library (206 animations, page transitions, text, scroll, micro-interaction, ambient and AI-state effects); use it when the user names an effect, mentions Idéothèque or data-fx, or asks to animate a landing page, dashboard or website, or make it feel softer or more polished. The effect sheets are in French; answer in the user's language."
+description: "Applique les effets visuels nommés de la bibliothèque Idéothèque (500 animations, transitions plein écran, effets de texte, de défilement, micro-interactions, ambiances, états d'IA) sur une page web ou une interface. À utiliser quand l'utilisateur cite un effet par son nom (curtain-soft, line-mask, magnetic, count-up, aurora, ai-orb…), parle d'Idéothèque ou de data-fx, ou demande d'animer, de rendre plus vivante, plus « Awwwards » ou plus soft une landing page, un dashboard ou un site. In English: applies the named visual effects of the Idéothèque library (500 animations, page transitions, text, scroll, micro-interaction, ambient and AI-state effects); use it when the user names an effect, mentions Idéothèque or data-fx, or asks to animate a landing page, dashboard or website, or make it feel softer or more polished. The effect sheets are in French; answer in the user's language."
 ---
 
 # Idéothèque
 
-Idéothèque est une bibliothèque libre (MIT) de 206 effets visuels. Chaque effet a **un nom**, **une intention** et une fiche qui fixe son rendu. Quand l'utilisateur cite un nom, il attend exactement cet effet, pas une variante.
+Idéothèque est une bibliothèque libre (MIT) de 500 effets visuels. Chaque effet a **un nom**, **une intention** et une fiche qui fixe son rendu. Quand l'utilisateur cite un nom, il attend exactement cet effet, pas une variante.
 
 Catalogue en ligne, avec une démo de chaque effet : https://alice-crypto.github.io/ideotheque/
 
 ## Fichiers de ce skill
 
-- [catalogue.md](catalogue.md) : les règles, la liste des 206 effets avec leur catégorie et leur intention, l'API JavaScript et des combinaisons qui marchent bien. **Lis-le en premier.**
+- [catalogue.md](catalogue.md) : les règles, la liste des 500 effets avec leur catégorie et leur intention, l'API JavaScript et des combinaisons qui marchent bien. **Lis-le en premier.**
 - `effects/<nom>.md` : la fiche complète d'un effet (utilisation, paramètres, quand l'utiliser ou l'éviter, accessibilité). **Lis la fiche de chaque effet avant de l'appliquer.** Pour trouver un effet par son intention, cherche un mot-clé dans `catalogue.md` ou dans `effects/`.
 
 ## Mise en place
