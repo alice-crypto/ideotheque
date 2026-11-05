@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="battery-level" data-fx-value="68"></div>',
     '<div data-fx="battery-level" data-fx-value="68" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Rôle `meter`, et le pourcentage est écrit.' }),
+  E('typing-indicator-name', 'État',
+    'Une phrase « Noa est en train d\'écrire… » s\'accorde selon le nombre de personnes, avec trois points qui dansent.',
+    'Présence, on se sent en conversation.',
+    '- `data-fx-names` : noms séparés par `|`\n- Par code : `el._fxSet([\'Noa\', \'Sam\'])`',
+    'Messageries, documents partagés, assistants.',
+    'Un long texte de groupe : au-delà de deux noms, l\'effet affiche un nombre.',
+    '<div data-fx="typing-indicator-name" data-fx-names="Noa|Sam"></div>',
+    '<div data-fx="typing-indicator-name" data-fx-names="Noa|Sam" style="color:var(--ink)"></div>',
+    { trigger: 'Changer', a11y: 'Rôle `status`. Les points sont décoratifs.' }),
 ];

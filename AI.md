@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->400<!-- /total --> effets.
+La bibliothèque contient <!-- total -->401<!-- /total --> effets.
 
 ## Règles
 
@@ -420,6 +420,7 @@ La bibliothèque contient <!-- total -->400<!-- /total --> effets.
 | `upload-drop` | État | Une zone de dépôt dont la bordure se met à tourner quand un fichier arrive au-dessus |
 | `offline-banner` | État | Un bandeau descend quand la connexion se perd, puis passe au vert au retour et s'efface |
 | `battery-level` | État | Une petite pile se remplit jusqu'à son niveau, et clignote doucement si elle est faible ou en charge |
+| `typing-indicator-name` | État | Une phrase « Noa est en train d'écrire… » s'accorde selon le nombre de personnes, avec trois points qui dansent |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)

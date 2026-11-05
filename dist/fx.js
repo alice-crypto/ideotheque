@@ -6964,6 +6964,24 @@
       el.classList.toggle('fx-charge', el.dataset.fxCharging === 'true');
     }
   });
+
+  // « Noa est en train d'écrire… », avec l'accord selon le nombre
+  FX.register('typing-indicator-name', {
+    setup: function (el) {
+      el.setAttribute('role', 'status');
+      el._fxSet = function (names) {
+        var t = !names.length ? '' : names.length === 1 ? names[0] + " est en train d'écrire" : names.length === 2 ? names[0] + ' et ' + names[1] + " sont en train d'écrire" : names.length + " personnes sont en train d'écrire";
+        el.innerHTML = t ? '<span></span><i></i><i></i><i></i>' : '';
+        if (t) el.firstChild.textContent = t;
+      };
+      el._fxSet((el.dataset.fxNames || 'Noa').split('|').filter(Boolean));
+      el._fxI = 0;
+    },
+    trigger: function (el) {
+      var seq = [['Noa'], ['Noa', 'Sam'], ['Noa', 'Sam', 'Lou'], []];
+      el._fxSet(seq[el._fxI++ % seq.length]);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
