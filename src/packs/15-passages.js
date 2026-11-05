@@ -88,4 +88,11 @@
       p.style.setProperty('--fx-d', k * 28 + 'ms');
     });
   } } });
+
+  // Deux panneaux se referment en 3D comme des portes
+  FX.register('fold-doors', { transition: { pieces: 2, cover: 820, uncover: 860, build: function (o) {
+    o.style.perspective = '1400px';
+    o.children[0].className = 'fx-l';
+    o.children[1].className = 'fx-r';
+  } } });
 })(window.FX);
