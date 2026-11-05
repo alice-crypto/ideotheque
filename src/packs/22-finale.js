@@ -500,4 +500,19 @@
       });
     }
   });
+
+  // Des pendules se désynchronisent et dessinent des vagues
+  FX.register('pendulum-wave', {
+    setup: function (el) {
+      el.setAttribute('aria-hidden', 'true');
+      var n = U.num(el, 'fxCount', 14);
+      el._fxP = [];
+      for (var i = 0; i < n; i++) { var d = U.make('i', '', el); el._fxP.push({ d: d, f: 18 + i }); }
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      var T = t / U.num(el, 'fxCycle', 42000) * 6.283;
+      el._fxP.forEach(function (p) { p.d.style.setProperty('--fx-a', (Math.sin(T * p.f) * 38).toFixed(2) + 'deg'); });
+    }
+  });
 })(window.FX);
