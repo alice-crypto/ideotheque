@@ -76,4 +76,13 @@ module.exports = [
     'Une image de faible résolution.',
     '<figure data-fx="hover-zoom-pan"><img src="produit.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="hover-zoom-pan"><img src="assets/bloom.svg" alt=""></div>'),
+  E('hotspot-image', 'Image',
+    'Des points pulsent sur une image, et chacun ouvre une courte explication.',
+    'Visite guidée, on explore à son rythme.',
+    '- Boutons avec `data-x`, `data-y` (en %) et `data-text`',
+    'Produit en coupe, plan, œuvre commentée.',
+    'Plus de 6 points sur une image.',
+    '<figure data-fx="hotspot-image"><img…><button data-x="30" data-y="60" data-text="Semelle"></button></figure>',
+    '<div class="demo-media" data-fx="hotspot-image"><img src="assets/city.svg" alt=""><button data-x="30" data-y="60" data-text="Le vieux quartier"></button><button data-x="72" data-y="35" data-text="La tour"></button></div>',
+    { a11y: 'Les points sont de vrais boutons, avec `aria-expanded` et un nom.' }),
 ];

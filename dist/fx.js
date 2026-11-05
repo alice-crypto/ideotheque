@@ -7985,6 +7985,26 @@
       });
     }
   });
+
+  // Des points sur une image ouvrent des explications
+  FX.register('hotspot-image', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el.querySelectorAll('[data-x]').forEach(function (b) {
+        b.style.left = b.dataset.x + '%';
+        b.style.top = b.dataset.y + '%';
+        var tip = U.make('span', 'fx-hs-t', b);
+        tip.textContent = b.dataset.text || '';
+        b.setAttribute('aria-expanded', 'false');
+        b.setAttribute('aria-label', b.dataset.text || 'Détail');
+        b.addEventListener('click', function () {
+          var on = b.getAttribute('aria-expanded') !== 'true';
+          el.querySelectorAll('[data-x]').forEach(function (o) { o.setAttribute('aria-expanded', 'false'); });
+          b.setAttribute('aria-expanded', on);
+        });
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
