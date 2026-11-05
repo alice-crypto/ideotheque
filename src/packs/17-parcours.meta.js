@@ -164,4 +164,13 @@ module.exports = [
     '<a href="#contenu" data-fx="skip-link-reveal">Aller au contenu</a>',
     '<a href="#" data-fx="skip-link-reveal" data-fx-show="1" style="--fx-pos:relative;left:0;top:0">Aller au contenu</a>',
     { a11y: 'Conçu pour le clavier : le focus passe réellement sur la cible après le saut.' }),
+  E('language-switch-flip', 'Navigation',
+    'Un petit bouton rond affiche la langue en cours, et son sigle bascule en 3D quand on change.',
+    'Compact et précis, un petit panneau de gare.',
+    '- `data-fx-langs` (FR|EN|ES) : langues séparées par `|`\n- L\'élément émet `fx:change`, et met à jour `lang` sur `<html>`.',
+    'Sites en quelques langues.',
+    'Une trentaine de langues : préférez une liste.',
+    '<button data-fx="language-switch-flip" data-fx-langs="FR|EN"></button>',
+    '<button data-fx="language-switch-flip" data-fx-langs="FR|EN|ES" style="color:var(--ink);font-size:16px"></button>',
+    { a11y: 'Bouton nommé. Le code conserve la langue de `<html>` à jour pour les lecteurs d\'écran.' }),
 ];
