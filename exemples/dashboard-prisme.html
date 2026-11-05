@@ -204,6 +204,12 @@
       });
       /*@sortjs*/
     });
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.dmenu a[href^="#"]')).filter(function (a) { return a.getAttribute('href').length > 1; });
+      var first = document.querySelector('.dmenu a');
+      if (!('IntersectionObserver' in window)) return;
+      /*@spyjs*/
+    })();
     /*@js*/
   </script>
 </body>
