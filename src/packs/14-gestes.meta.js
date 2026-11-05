@@ -200,4 +200,13 @@ module.exports = [
     'Un bouton dont l\'action doit partir au premier clic.',
     '<span data-fx="pressure-word">Appuyez</span>',
     '<p class="demo-title" data-fx="pressure-word">Appuyez</p>'),
+  E('price-flip', 'Micro-interaction',
+    'Un prix passe d\'une valeur à l\'autre par un croisement vertical, sans saut de mise en page.',
+    'Net et rassurant, on voit ce qui a changé.',
+    '- `data-fx-values` : valeurs séparées par `|`\n- `data-fx-toggle` : sélecteur du bouton qui déclenche le changement\n- Par code : `FX.trigger(el)`',
+    'Bascule mensuel / annuel, devises.',
+    'Un prix qui change sans action de la personne.',
+    '<span data-fx="price-flip" data-fx-values="19 €|190 €" data-fx-toggle="#annuel"></span>',
+    '<span class="demo-number" data-fx="price-flip" data-fx-values="19 €|190 €" style="color:var(--ink)"></span>',
+    { trigger: 'Changer', a11y: 'Le changement est annoncé par `aria-live`.' }),
 ];

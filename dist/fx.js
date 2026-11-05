@@ -4511,6 +4511,27 @@
       el.style.setProperty('--fx-press', el._fxP.toFixed(3));
     }
   });
+
+  // Un prix qui change avec un défilement de chiffres
+  FX.register('price-flip', {
+    setup: function (el) {
+      var vals = (el.dataset.fxValues || '19|190').split('|'), i = 0;
+      el.setAttribute('aria-live', 'polite');
+      var show = function (txt, dir) {
+        var o = el.firstElementChild;
+        if (o) { o.className = 'fx-pf-out' + (dir > 0 ? ' up' : ''); setTimeout(function () { o.remove(); }, 300); }
+        var n = document.createElement('span');
+        n.className = 'fx-pf-in' + (dir > 0 ? ' up' : '');
+        n.textContent = txt;
+        el.appendChild(n);
+      };
+      show(vals[0], 1);
+      el._fxNext = function () { i = (i + 1) % vals.length; show(vals[i], i ? 1 : -1); el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true, detail: { value: vals[i] } })); };
+      var tog = el.dataset.fxToggle && document.querySelector(el.dataset.fxToggle);
+      if (tog) tog.addEventListener('click', el._fxNext);
+    },
+    trigger: function (el) { el._fxNext(); }
+  });
 })(window.FX);
 
 window.FX._boot();
