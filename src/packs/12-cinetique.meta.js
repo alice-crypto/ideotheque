@@ -118,4 +118,12 @@ module.exports = [
     '<h2 data-fx="ascii-decay">Signal reçu</h2>',
     '<p class="demo-mono" data-fx="ascii-decay">Signal reçu</p>',
     { trigger: 'Rejouer', a11y: 'Le texte final est dans `aria-label`.' }),
+  E('hop-row', 'Texte',
+    'Au survol, un petit saut se propage depuis la lettre touchée vers les deux bords.',
+    'Léger, enjoué, une ola dans le mot.',
+    '- `--fx-hop` (-.35em) : hauteur du saut',
+    'Liens, boutons, noms dans un menu.',
+    'Le texte courant : réservé aux mots isolés.',
+    '<a href="#" data-fx="hop-row">Découvrir</a>',
+    '<a class="demo-roll" href="#" data-fx="hop-row" style="color:var(--ink)">Découvrir</a>'),
 ];
