@@ -4257,6 +4257,20 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="plasma"] { isolation: isolate; overflow: hidden; }
 [data-fx="plasma"] .fx-plasma { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
+/* equalizer-bg : un grand égaliseur */
+[data-fx="equalizer-bg"] { isolation: isolate; overflow: hidden; }
+[data-fx="equalizer-bg"] .fx-gen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  color: var(--fx-bar, var(--fx-accent));
+  -webkit-mask: linear-gradient(0deg, #000 30%, transparent);
+  mask: linear-gradient(0deg, #000 30%, transparent);
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

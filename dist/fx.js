@@ -5436,6 +5436,33 @@
       c.putImageData(im, 0, 0);
     }
   });
+
+  // Un grand égaliseur rythme le bas de la section
+  FX.register('equalizer-bg', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxB = [];
+      for (var i = 0; i < U.num(el, 'fxBars', 28); i++) el._fxB.push({ v: 0, a: U.rand(1, 5), b: U.rand(0, 6) });
+    },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d'), bw = w / el._fxB.length;
+      c.clearRect(0, 0, w, h);
+      c.fillStyle = getComputedStyle(cv).color;
+      el._fxB.forEach(function (b, i) {
+        var tg = .15 + .85 * Math.abs(Math.sin(t * .001 * b.a + b.b) * Math.sin(t * .0023 + i * .4));
+        b.v = U.lerp(b.v, tg, .16);
+        var H = b.v * h * .8;
+        c.fillRect(i * bw + 1, h - H, bw - 2, H);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

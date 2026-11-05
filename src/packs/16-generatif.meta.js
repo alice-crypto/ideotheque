@@ -113,4 +113,12 @@ module.exports = [
     '<section data-fx="plasma">…</section>',
     '<div data-fx="plasma" style="width:230px;height:170px;border-radius:12px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
+  E('equalizer-bg', 'Ambiance',
+    'Un grand égaliseur rythme le bas de la section et s\'estompe vers le haut.',
+    'Salle de concert, basses qui font vibrer le sol.',
+    '- `data-fx-bars` (28) : nombre de barres\n- `--fx-bar` : couleur',
+    'Musique, festivals, podcasts.',
+    'Les pages qui n\'ont rien à voir avec le son.',
+    '<section data-fx="equalizer-bg">…</section>',
+    '<div data-fx="equalizer-bg" style="width:230px;height:170px"></div>'),
 ];
