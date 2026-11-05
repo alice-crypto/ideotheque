@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->394<!-- /total --> effets.
+La bibliothèque contient <!-- total -->395<!-- /total --> effets.
 
 ## Règles
 
@@ -414,6 +414,7 @@ La bibliothèque contient <!-- total -->394<!-- /total --> effets.
 | `skeleton-morph` | État | Des lignes grises de chargement se dissolvent en place pour laisser apparaître le vrai texte |
 | `streaming-code` | État | Du code s'écrit tout seul, par petits groupes de signes, avec une coloration simple |
 | `queue-position` | État | Une file d'attente qui avance : on voit sa place et le nombre de personnes restantes |
+| `error-glitch-shake` | État | Le champ refuse d'une petite secousse, se colore et explique en mots ce qui ne va pas |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)

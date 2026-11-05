@@ -6861,6 +6861,22 @@
       } else if (el.dataset.fxLoop === 'true') { q.n = q.row.children.length - 1; el._fxPaint(); }
     }
   });
+
+  // Un champ refuse avec une secousse et explique pourquoi
+  FX.register('error-glitch-shake', {
+    trigger: function (el, e) {
+      var msg = el.dataset.fxError || 'Cette valeur ne convient pas.', box = el.querySelector('.fx-eg-msg');
+      if (!box) { box = U.make('span', 'fx-eg-msg', el); box.setAttribute('role', 'alert'); }
+      box.textContent = msg;
+      var input = el.querySelector('input,textarea,select');
+      if (input) { input.setAttribute('aria-invalid', 'true'); input.focus({ preventScroll: true }); }
+      el.classList.remove('fx-err'); void el.offsetWidth; el.classList.add('fx-err');
+    },
+    setup: function (el) {
+      var input = el.querySelector('input,textarea,select');
+      if (input) input.addEventListener('input', function () { el.classList.remove('fx-err'); input.removeAttribute('aria-invalid'); var b = el.querySelector('.fx-eg-msg'); if (b) b.textContent = ''; });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

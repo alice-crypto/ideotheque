@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="queue-position" data-fx-start="4"></div>',
     '<div data-fx="queue-position" data-fx-loop="true" style="color:var(--ink)"></div>',
     { a11y: 'Rôle `status`, avec un message en toutes lettres.' }),
+  E('error-glitch-shake', 'État',
+    'Le champ refuse d\'une petite secousse, se colore et explique en mots ce qui ne va pas.',
+    'Un refus clair, sans gronder.',
+    '- `data-fx-error` : le message\n- Par code : `FX.trigger(el)` à la validation\n- `--fx-err` : couleur',
+    'Formulaires, connexion, paiement.',
+    'Une secousse sans message : l\'effet seul n\'explique rien.',
+    '<label data-fx="error-glitch-shake" data-fx-error="Adresse incomplète."><input></label>',
+    '<label data-fx="error-glitch-shake" data-fx-error="Adresse incomplète." style="width:200px;color:var(--ink);font-size:13px"><input value="ana@" style="padding:8px;background:transparent;border:1px solid #666;border-radius:6px;color:inherit"></label>',
+    { trigger: 'Montrer l\'erreur', a11y: 'Le message a le rôle `alert`, et le champ reçoit `aria-invalid`.' }),
 ];
