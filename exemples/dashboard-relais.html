@@ -81,6 +81,20 @@
             <!--@log-->
           </ul>
         </section>
+        <section class="dcard" id="courses" style="--w-col:8">
+          <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px"><h2 style="margin:0;font-size:15px;line-height:1.2;font-stretch:100%;letter-spacing:-.01em">Courses</h2>
+            <div class="seg2" id="etat" role="group" aria-label="Filtrer par état">
+              <!--@seg-->
+            </div>
+          </div>
+          <div style="overflow-x:auto"><table class="dtable" id="tc">
+            <thead><tr><th>N°</th><th>Client</th><th>Coursier</th><th>État</th><th style="text-align:right">Arrivée</th></tr></thead>
+            <tbody id="tb">
+              <!--@rows-->
+            </tbody>
+          </table></div>
+          <p id="vide" hidden style="padding-top:10px;font-weight:600">Aucune course ne correspond.</p>
+        </section>
         <!--@body-->
       </main>
     </div>
