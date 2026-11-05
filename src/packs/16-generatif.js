@@ -367,4 +367,29 @@
       el.style.setProperty('--fx-ray', el._fxA.toFixed(1) + 'deg');
     }
   });
+
+  // Un plasma coloré, calculé pixel par pixel
+  FX.register('plasma', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var cv = el._fxCv = U.make('canvas', 'fx-plasma', el);
+      cv.width = 80; cv.height = 60;
+      cv.setAttribute('aria-hidden', 'true');
+      var p = function (v, d) { var n = parseInt((U.cssVar(el, v, d)).replace('#', ''), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
+      el._fxA = p('--fx-a', '#0047ff'); el._fxB = p('--fx-b', '#e10600'); el._fxC = p('--fx-c', '#ffd400');
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      var c = el._fxCv.getContext('2d'), W = 80, H = 60, im = c.createImageData(W, H), d = im.data, T = t * .0008;
+      var A = el._fxA, B = el._fxB, C = el._fxC;
+      for (var y = 0; y < H; y++) for (var x = 0; x < W; x++) {
+        var v = (Math.sin(x * .13 + T) + Math.sin(y * .17 - T * .7) + Math.sin((x + y) * .09 + T * 1.3) + Math.sin(Math.sqrt(x * x + y * y) * .12)) / 4 * .5 + .5;
+        var i = (y * W + x) * 4, f, P, Q;
+        if (v < .5) { f = v * 2; P = A; Q = B; } else { f = (v - .5) * 2; P = B; Q = C; }
+        d[i] = P[0] + (Q[0] - P[0]) * f; d[i + 1] = P[1] + (Q[1] - P[1]) * f; d[i + 2] = P[2] + (Q[2] - P[2]) * f; d[i + 3] = 255;
+      }
+      c.putImageData(im, 0, 0);
+    }
+  });
 })(window.FX);
