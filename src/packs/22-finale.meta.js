@@ -119,4 +119,13 @@ module.exports = [
     '<div data-fx="lightbox-flip"><img src="a.jpg" alt="…"></div>',
     '<div class="demo-media" data-fx="lightbox-flip"><img src="assets/bloom.svg" alt="Fleur"></div>',
     { a11y: 'Dialogue avec `aria-modal`, fermeture avec Échap et retour du focus.' }),
+  E('scratch-reveal', 'Image',
+    'On gratte une surface avec le curseur ou le doigt pour découvrir ce qu\'il y a dessous.',
+    'Ticket à gratter, plaisir enfantin.',
+    '- `data-fx-brush` (34), `data-fx-done` (.5), `data-fx-hint`, `--fx-foil`\n- L\'élément émet `fx:done`.',
+    'Jeux, codes promo, surprises.',
+    'Une information indispensable sans autre accès.',
+    '<div data-fx="scratch-reveal"><p>−20 %</p></div>',
+    '<div data-fx="scratch-reveal" style="width:210px;height:120px;display:grid;place-items:center;color:var(--ink);font-size:34px;font-weight:700"><span>−20 %</span></div>',
+    { trigger: 'Tout révéler', a11y: 'Le contenu reste dans la page pour les lecteurs d\'écran. Entrée révèle tout au clavier si l\'élément a le focus.' }),
 ];
