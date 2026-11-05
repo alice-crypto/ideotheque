@@ -151,3 +151,6 @@
   letter-spacing: calc(.02em + var(--fx-b, 0) * var(--fx-air, .16em));
   opacity: calc(.72 + var(--fx-b, 0) * .28);
 }
+
+/* ink-bleed : l'encre se stabilise */
+[data-fx="ink-bleed"] { filter: url(#fx-ink); opacity: 0; display: inline-block; }
