@@ -21,4 +21,13 @@ module.exports = [
     '<h1 data-fx="spotlight-in">Ce soir</h1>',
     '<p class="demo-title" data-fx="spotlight-in">Ce soir</p>',
     { trigger: 'Rejouer' }),
+  E('typeset-lines', 'Entrée',
+    'Les lignes d\'un texte arrivent une à une depuis des côtés alternés, et se calent sur la marge.',
+    'Atelier de composition, précision typographique.',
+    'Aucun réglage : les lignes suivent la largeur disponible.',
+    'Titres de deux à quatre lignes.',
+    'Les textes justifiés.',
+    '<h2 data-fx="typeset-lines">Une page se compose ligne après ligne</h2>',
+    '<p class="demo-para" data-fx="typeset-lines" style="color:var(--ink)">Une page se compose ligne après ligne</p>',
+    { trigger: 'Rejouer' }),
 ];
