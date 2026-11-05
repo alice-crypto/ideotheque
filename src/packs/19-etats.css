@@ -44,3 +44,11 @@
 [data-fx="context-chips"] { display: flex; flex-wrap: wrap; gap: 5px; font-size: 12px; }
 [data-fx="context-chips"] .fx-cc { padding: .25em .7em; border-radius: 6px; background: var(--fx-chip, rgba(128, 128, 128, .2)); animation: fx-cc .9s var(--fx-ease-out) both; }
 @keyframes fx-cc { 0% { transform: translateY(6px) scale(.9); opacity: 0; } 35% { transform: none; opacity: 1; background: var(--fx-accent); color: #111; } }
+
+/* skeleton-morph : du gris au contenu */
+[data-fx="skeleton-morph"] { position: relative; }
+[data-fx="skeleton-morph"] > * { opacity: 0; transition: opacity .5s .15s; }
+[data-fx="skeleton-morph"].fx-ready > * { opacity: 1; }
+[data-fx="skeleton-morph"]::before { content: ""; position: absolute; inset: 0; border-radius: 6px; background: repeating-linear-gradient(var(--fx-bone, rgba(128, 128, 128, .22)) 0 .9em, transparent .9em 1.4em); background-size: 100% 1.4em; animation: fx-skm 1.2s ease-in-out infinite alternate; transition: opacity .35s; }
+[data-fx="skeleton-morph"].fx-ready::before { opacity: 0; animation: none; }
+@keyframes fx-skm { to { filter: brightness(1.7); } }
