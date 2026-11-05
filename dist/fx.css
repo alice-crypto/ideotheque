@@ -5396,6 +5396,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="pie-explode"] path { fill: color-mix(in srgb, var(--fx-accent) calc(100% - var(--fx-i) * 22%), var(--fx-accent-2)); stroke: var(--fx-gap, #111); stroke-width: 1; cursor: pointer; transition: transform .3s var(--fx-ease-spring); }
 [data-fx="pie-explode"] path:hover { transform: translate(var(--fx-x), var(--fx-y)); }
 
+/* funnel-steps : un entonnoir */
+[data-fx="funnel-steps"] { display: grid; gap: 5px; font-size: 12px; }
+[data-fx="funnel-steps"] .fx-fn-r { position: relative; display: grid; place-items: center; height: var(--fx-row, 28px); }
+[data-fx="funnel-steps"] i { position: absolute; left: 0; right: 0; height: 100%; margin: auto; width: calc(var(--fx-w) * 100%); border-radius: 4px; background: color-mix(in srgb, var(--fx-accent) calc(100% - var(--fx-i) * 20%), transparent); transform: scaleX(0); transition: transform .7s var(--fx-ease-out) calc(var(--fx-i) * 140ms); }
+.fx-in[data-fx="funnel-steps"] i { transform: none; }
+[data-fx="funnel-steps"] span { position: relative; white-space: nowrap; text-shadow: 0 0 4px rgba(0, 0, 0, .55); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

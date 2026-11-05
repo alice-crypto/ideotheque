@@ -8493,6 +8493,21 @@
       el.innerHTML = svg + '</svg>';
     }
   });
+
+  // Un entonnoir montre ce qui reste à chaque étape
+  FX.register('funnel-steps', {
+    entrance: true,
+    setup: function (el) {
+      var st = (el.dataset.fxSteps || 'Visites:1000,Essais:420,Clients:96').split(',').map(function (s) { var p = s.split(':'); return { n: p[0], v: +p[1] }; }), top = st[0].v;
+      st.forEach(function (s, i) {
+        var r = U.make('div', 'fx-fn-r', el);
+        r.style.setProperty('--fx-w', s.v / top);
+        r.style.setProperty('--fx-i', i);
+        r.innerHTML = '<i></i><span></span>';
+        r.lastChild.textContent = s.n + ' · ' + s.v + (i ? ' (' + Math.round(s.v / st[i - 1].v * 100) + ' %)' : '');
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -285,4 +285,13 @@ module.exports = [
     '<div data-fx="pie-explode" data-fx-parts="A:40,B:60"></div>',
     '<div data-fx="pie-explode"></div>',
     { trigger: 'Rejouer', a11y: 'Les valeurs sont résumées dans `aria-label`.' }),
+  E('funnel-steps', 'Présentation',
+    'Un entonnoir de barres centrées montre ce qui reste à chaque étape, avec le taux de passage.',
+    'Limpide, on voit où l\'on perd les gens.',
+    '- `data-fx-steps` : « nom:valeur »\n- `--fx-row` (28px)',
+    'Inscriptions, ventes, parcours.',
+    'Plus de 6 étapes.',
+    '<div data-fx="funnel-steps" data-fx-steps="Visites:1000,Clients:96"></div>',
+    '<div data-fx="funnel-steps" style="width:220px;color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Les valeurs sont écrites en texte.' }),
 ];
