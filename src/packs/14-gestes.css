@@ -332,7 +332,10 @@
 [data-fx="checkbox-scribble"] path { fill: none; stroke: var(--fx-pen, var(--fx-accent)); stroke-width: 3px; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .3s var(--fx-ease-out); }
 [data-fx="checkbox-scribble"] input:checked ~ * path { stroke-dashoffset: 0; }
 [data-fx="checkbox-scribble"] .fx-cs-line { position: absolute; left: -2px; right: -2px; top: 50%; height: .5em; margin-top: -.25em; }
-[data-fx="checkbox-scribble"] .fx-cs-line path { transition-delay: .18s; stroke-width: 2px; }
+/* Sur un trait étiré, les pointillés se décalent : la biffure est révélée par une découpe */
+[data-fx="checkbox-scribble"] .fx-cs-line svg { clip-path: inset(0 100% 0 0); transition: clip-path .4s var(--fx-ease-out) .18s; }
+[data-fx="checkbox-scribble"] input:checked ~ * .fx-cs-line svg { clip-path: inset(0 0 0 0); }
+[data-fx="checkbox-scribble"] .fx-cs-line path { stroke-width: 2px; stroke-dasharray: none; stroke-dashoffset: 0; }
 
 /* search-expand : une loupe qui s'ouvre */
 [data-fx="search-expand"] { display: inline-flex; align-items: center; border: 1px solid currentColor; border-radius: 99px; overflow: hidden; }
