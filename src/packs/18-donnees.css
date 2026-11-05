@@ -112,3 +112,10 @@
 [data-fx="pricing-toggle-cards"] .fx-save { opacity: 0; transform: scale(.7); transition: opacity .2s, transform .3s var(--fx-ease-spring); }
 [data-fx="pricing-toggle-cards"].fx-year .fx-save { opacity: 1; transform: none; }
 [data-fx="pricing-toggle-cards"] [data-month] { font-variant-numeric: tabular-nums; }
+
+/* feature-orbit-card : des fonctions qui se relaient */
+[data-fx="feature-orbit-card"] > * { position: relative; padding: .6em .8em; overflow: hidden; opacity: .5; cursor: pointer; transition: opacity .3s; }
+[data-fx="feature-orbit-card"] > * > p { display: grid; grid-template-rows: 0fr; margin: 0; }
+[data-fx="feature-orbit-card"] > .fx-cur { opacity: 1; }
+[data-fx="feature-orbit-card"] .fx-foc { position: absolute; left: 0; bottom: 0; right: 0; height: 2px; background: var(--fx-accent); transform-origin: left; transform: scaleX(0); }
+[data-fx="feature-orbit-card"] > .fx-cur .fx-foc { transform: scaleX(var(--fx-q, 0)); }
