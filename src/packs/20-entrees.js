@@ -197,4 +197,13 @@
     entrance: true,
     setup: function (el) { var r = function () { U.splitLines(el); }; r(); U.onResize(r); }
   });
+
+  // Des colonnes se déroulent de haut en bas l'une après l'autre
+  FX.register('wipe-columns-in', {
+    entrance: true,
+    setup: function (el) {
+      var k = el.children, step = Math.min(160, 700 / Math.max(1, k.length));
+      Array.prototype.forEach.call(k, function (c, i) { c.style.setProperty('--fx-d', (i * step).toFixed(0) + 'ms'); });
+    }
+  });
 })(window.FX);
