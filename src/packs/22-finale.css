@@ -40,3 +40,9 @@
 [data-fx="hover-zoom-pan"] { overflow: hidden; cursor: zoom-in; }
 [data-fx="hover-zoom-pan"] > * { display: block; width: 100%; height: 100%; object-fit: cover; transform-origin: var(--fx-ox, 50%) var(--fx-oy, 50%); transition: transform .35s var(--fx-ease-out); }
 [data-fx="hover-zoom-pan"]:hover > * { transform: scale(var(--fx-zoom, 2)); }
+
+/* hotspot-image : des points commentés */
+[data-fx="hotspot-image"] [data-x] { position: absolute; width: 22px; height: 22px; margin: -11px; padding: 0; border: 0; border-radius: 50%; background: var(--fx-accent); cursor: pointer; animation: fx-hs 2s infinite; }
+@keyframes fx-hs { 0% { box-shadow: 0 0 0 0 var(--fx-accent); } 70%, 100% { box-shadow: 0 0 0 12px transparent; } }
+[data-fx="hotspot-image"] .fx-hs-t { position: absolute; bottom: calc(100% + 8px); left: 50%; width: max-content; max-width: 150px; padding: .3em .6em; border-radius: 6px; background: #111; color: #fff; font-size: 12px; opacity: 0; pointer-events: none; transform: translate(-50%, 4px); transition: opacity .18s, transform .2s var(--fx-ease-out); }
+[data-fx="hotspot-image"] [aria-expanded="true"] .fx-hs-t { opacity: 1; transform: translate(-50%, 0); }
