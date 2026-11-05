@@ -335,4 +335,31 @@
       upd();
     }
   });
+
+  // Une info-bulle riche suit le curseur sans quitter l'écran
+  FX.register('rich-tooltip-follow', {
+    setup: function (el) {
+      var tip = U.make('div', 'fx-rt', document.body);
+      tip.setAttribute('role', 'tooltip');
+      tip.textContent = el.dataset.fxTip || '';
+      var id = 'fx-rt-' + Math.random().toString(36).slice(2, 7);
+      tip.id = id;
+      el.setAttribute('aria-describedby', id);
+      if (!el.hasAttribute('tabindex') && !el.matches('a,button,input')) el.tabIndex = 0;
+      var to;
+      var place = function (x, y) {
+        var w = tip.offsetWidth, h = tip.offsetHeight;
+        tip.style.left = U.clamp(x + 14, 8, innerWidth - w - 8) + 'px';
+        tip.style.top = U.clamp(y + 16, 8, innerHeight - h - 8) + 'px';
+      };
+      var show = function () { clearTimeout(to); to = setTimeout(function () { tip.classList.add('fx-on'); }, U.num(el, 'fxDelay', 120)); };
+      var hide = function () { clearTimeout(to); tip.classList.remove('fx-on'); };
+      el.addEventListener('pointermove', function (e) { place(e.clientX, e.clientY); });
+      el.addEventListener('pointerenter', show);
+      el.addEventListener('pointerleave', hide);
+      el.addEventListener('focus', function () { var r = el.getBoundingClientRect(); place(r.left, r.bottom); show(); });
+      el.addEventListener('blur', hide);
+      el.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+    }
+  });
 })(window.FX);
