@@ -5051,6 +5051,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   100% { transform: none; }
 }
 
+/* path-follow-in : une trajectoire en courbe */
+[data-fx="path-follow-in"] > * { offset-path: var(--fx-path, none); offset-rotate: 0deg; offset-distance: 0%; opacity: 0; transition: offset-distance .9s var(--fx-ease-out) calc(var(--fx-i) * 80ms), opacity .25s calc(var(--fx-i) * 80ms); }
+.fx-in[data-fx="path-follow-in"] > * { offset-distance: 100%; opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

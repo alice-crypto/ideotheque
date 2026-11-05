@@ -210,4 +210,13 @@ module.exports = [
     '<button data-fx="rubber-in">Commencer</button>',
     '<button class="demo-btn" data-fx="rubber-in">Commencer</button>',
     { trigger: 'Rejouer' }),
+  E('path-follow-in', 'Entrée',
+    'Les éléments rejoignent leur place en suivant une trajectoire courbe, chacun la sienne.',
+    'Vol d\'oiseaux qui se pose.',
+    'Aucun réglage : les trajectoires sont aléatoires.',
+    'Icônes, petites vignettes.',
+    'Beaucoup d\'éléments, ou un conteneur sans marge : les trajectoires sortent du cadre.',
+    '<div data-fx="path-follow-in">…</div>',
+    '<div class="demo-row" data-fx="path-follow-in"><div class="demo-box" style="width:44px;height:44px"></div><div class="demo-box alt" style="width:44px;height:44px"></div><div class="demo-box ink" style="width:44px;height:44px"></div><div class="demo-box alt" style="width:44px;height:44px"></div></div>',
+    { trigger: 'Rejouer' }),
 ];
