@@ -133,4 +133,15 @@
       p.style.setProperty('--fx-d', i * 40 + 'ms');
     });
   } } });
+
+  // Une trame de points grossit depuis le point de clic
+  FX.register('dots-cover', { transition: { pieces: 140, cover: 900, uncover: 900, build: function (o) {
+    var C = 14, R = 10, e = o._fxEvent;
+    var cx = e && e.clientX != null ? e.clientX / innerWidth : .5, cy = e && e.clientY != null ? e.clientY / innerHeight : .5;
+    Array.prototype.forEach.call(o.children, function (p, i) {
+      var c = i % C, r = Math.floor(i / C);
+      p.style.left = (c + .5) * 100 / C + '%'; p.style.top = (r + .5) * 100 / R + '%';
+      p.style.setProperty('--fx-d', (Math.hypot((c + .5) / C - cx, (r + .5) / R - cy) * 460).toFixed(0) + 'ms');
+    });
+  } } });
 })(window.FX);
