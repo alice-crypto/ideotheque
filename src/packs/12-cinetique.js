@@ -335,4 +335,23 @@
       s.cube.style.setProperty('--fx-turn', s.n);
     }
   });
+
+  // La casse des lettres hésite, puis se fixe au repos
+  FX.register('case-shuffle', {
+    setup: function (el) {
+      el._fxOrig = el.textContent.trim();
+      el._fxOn = true; el._fxT = 0;
+      el.setAttribute('aria-label', el._fxOrig);
+      el.addEventListener('pointerenter', function () { el._fxOn = true; });
+      el.addEventListener('pointerleave', function () { el._fxOn = false; el.textContent = el._fxOrig; });
+      setTimeout(function () { if (!el.matches(':hover')) { el._fxOn = false; el.textContent = el._fxOrig; } }, 1400);
+    },
+    tick: function (el, dt) {
+      if (!el._fxOn || U.reduced) return;
+      el._fxT += dt * 1000;
+      if (el._fxT < U.num(el, 'fxRate', 90)) return;
+      el._fxT = 0;
+      el.textContent = Array.from(el._fxOrig).map(function (c) { return Math.random() < .5 ? c.toUpperCase() : c.toLowerCase(); }).join('');
+    }
+  });
 })(window.FX);
