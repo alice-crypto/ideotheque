@@ -81,4 +81,6 @@ img, svg { display: block; max-width: 100%; }
 .psec { padding-block: clamp(64px, 9vw, 130px); border-bottom: var(--rule); }
 .phd { display: grid; grid-template-columns: 1fr 3fr; gap: 24px; margin-bottom: clamp(36px, 5vw, 70px); }
 .phd h2 { font-size: clamp(38px, 6.2vw, 92px); }
+.pgrid { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); border-top: var(--rule); border-left: var(--rule); }
+.pgrid > * { border-right: var(--rule); border-bottom: var(--rule); padding: 26px; min-width: 0; }
 /*@css*/
