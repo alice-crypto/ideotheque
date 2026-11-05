@@ -2,3 +2,13 @@
 
 /* circle-unveil : un œil qui s'ouvre au défilement */
 [data-fx="circle-unveil"] { clip-path: circle(max(var(--fx-r, 75%), var(--fx-min, 6%)) at var(--fx-at, 50% 50%)); }
+
+/* slat-scroll : un store qu'on remonte */
+[data-fx="slat-scroll"] { overflow: hidden; }
+[data-fx="slat-scroll"] .fx-slats { position: absolute; inset: 0; display: grid; grid-auto-rows: 1fr; pointer-events: none; }
+[data-fx="slat-scroll"] .fx-slats i {
+  display: block;
+  background: var(--fx-slat, var(--fx-dark));
+  transform-origin: top;
+  transform: scaleY(clamp(0, calc(1 - (var(--fx-open, 1) * 1.6 - var(--fx-q) * .6)), 1));
+}
