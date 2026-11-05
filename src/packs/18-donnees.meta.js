@@ -154,4 +154,13 @@ module.exports = [
     '<svg data-fx="map-route-draw" viewBox="0 0 300 150"><path d="M10 120 C80 20 200 140 290 30"/><circle cx="10" cy="120" r="5" data-at="0"/></svg>',
     '<svg data-fx="map-route-draw" data-fx-demo="1" viewBox="0 0 300 150" style="width:230px;color:var(--ink)"><path d="M10 120 C80 20 200 140 290 30"/><circle cx="10" cy="120" r="4" data-at="0"/><circle cx="110" cy="76" r="4" data-at=".35"/><circle cx="200" cy="90" r="4" data-at=".65"/><circle cx="290" cy="30" r="4" data-at=".98"/></svg>',
     { a11y: 'Ajoutez `role="img"` et `aria-label` au SVG pour décrire l\'itinéraire.' }),
+  E('team-card-spotlight', 'Présentation',
+    'Des visages se chevauchent : celui qu\'on survole passe devant, grandit, et son nom s\'affiche.',
+    'Une équipe proche, on rencontre chacun à son tour.',
+    '- `data-name`, `data-role` sur chaque visage\n- `--fx-size` (56px)',
+    'Pages « à propos », avis, signatures de lettres.',
+    'De très grandes équipes.',
+    '<div data-fx="team-card-spotlight"><img data-name="Noa" data-role="Design" alt="" src="noa.jpg"></div>',
+    '<div data-fx="team-card-spotlight" style="width:225px;color:var(--ink)"><div class="demo-box" data-name="Noa" data-role="Design"></div><div class="demo-box alt" data-name="Sam" data-role="Code"></div><div class="demo-box ink" data-name="Lou" data-role="Son"></div><div class="demo-box alt" data-name="Eli" data-role="Récit"></div></div>',
+    { a11y: 'Le nom change avec `aria-live`, et chaque visage peut recevoir le focus.' }),
 ];

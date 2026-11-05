@@ -6630,6 +6630,27 @@
       el._fxS.forEach(function (s) { s.d.classList.toggle('fx-on', q >= s.at); });
     }
   });
+
+  // Une rangée de visages, dont celui survolé s'agrandit et se présente
+  FX.register('team-card-spotlight', {
+    setup: function (el) {
+      var k = Array.prototype.slice.call(el.children);
+      var cap = document.createElement('div');
+      cap.className = 'fx-tc-cap';
+      cap.setAttribute('aria-live', 'polite');
+      el.appendChild(cap);
+      var set = function (c) {
+        k.forEach(function (o) { o.classList.toggle('fx-on', o === c); });
+        cap.textContent = (c.dataset.name || '') + (c.dataset.role ? ' — ' + c.dataset.role : '');
+      };
+      k.forEach(function (c) {
+        c.tabIndex = 0;
+        c.addEventListener('pointerenter', function () { set(c); });
+        c.addEventListener('focus', function () { set(c); });
+      });
+      set(k[0]);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
