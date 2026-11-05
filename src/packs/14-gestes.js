@@ -520,4 +520,26 @@
     },
     trigger: function (el) { el._fxNext(); }
   });
+
+  // Une case qui coche d'un trait de stylo et biffe le texte
+  FX.register('checkbox-scribble', {
+    setup: function (el) {
+      var input = el.querySelector('input');
+      if (!input) return;
+      var i = document.createElement('i');
+      i.className = 'fx-cs-box';
+      i.setAttribute('aria-hidden', 'true');
+      i.innerHTML = '<svg viewBox="0 0 24 24"><path pathLength="1" d="M4 13 C7 15, 9 18, 10 20 C13 13, 16 8, 21 4"/></svg>';
+      input.after(i);
+      var txt = el.querySelector('span');
+      if (txt) {
+        var w = document.createElement('span');
+        w.className = 'fx-cs-line';
+        w.setAttribute('aria-hidden', 'true');
+        w.innerHTML = '<svg viewBox="0 0 100 10" preserveAspectRatio="none"><path pathLength="1" d="M0 5 C20 2, 40 9, 60 5 S 90 2, 100 6"/></svg>';
+        txt.style.position = 'relative';
+        txt.appendChild(w);
+      }
+    }
+  });
 })(window.FX);
