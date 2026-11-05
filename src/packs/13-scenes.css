@@ -91,3 +91,6 @@
 /* aperture-text : on traverse le mot */
 [data-fx="aperture-text"] { display: grid; place-items: center; }
 [data-fx="aperture-text"] > * { transform: scale(var(--fx-zoom, 1)); transform-origin: var(--fx-origin, 50% 50%); white-space: nowrap; }
+
+/* hue-drift : la couleur change avec le récit */
+[data-fx="hue-drift"] { filter: hue-rotate(var(--fx-hue, 0deg)); }
