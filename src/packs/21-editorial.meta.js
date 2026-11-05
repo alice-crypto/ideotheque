@@ -48,4 +48,13 @@ module.exports = [
     '<p data-fx="kerning-focus">…</p>',
     '<p class="demo-para" data-fx="kerning-focus" style="color:var(--ink);font-size:18px">Autour du curseur, les mots sont nets et le reste s\'estompe doucement.</p>',
     { a11y: 'Au repos, tout le texte est net. L\'effet ne change rien pour les lecteurs d\'écran.' }),
+  E('news-ticker-pause', 'Texte',
+    'Un bandeau d\'informations défile en continu, et un bouton permet de l\'arrêter.',
+    'Dernières nouvelles, et on reste maître de la lecture.',
+    '- `data-fx-speed` (50) : pixels par seconde',
+    'Annonces, actualité, résultats en direct.',
+    'D\'y placer la seule copie d\'une information importante.',
+    '<div data-fx="news-ticker-pause"><p>Lancement jeudi</p><p>Nouvelle boutique</p></div>',
+    '<div data-fx="news-ticker-pause" style="width:230px;color:var(--ink);font-size:14px"><p>Lancement jeudi</p><p>Nouvelle boutique à Lyon</p><p>Horaires d\'été</p></div>',
+    { a11y: 'Bouton pause nommé, pause au focus. Les copies sont masquées aux lecteurs d\'écran.' }),
 ];

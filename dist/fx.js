@@ -7524,6 +7524,24 @@
       el.addEventListener('pointerleave', function () { ws.forEach(function (w) { w.style.removeProperty('--fx-k'); }); });
     }
   });
+
+  // Un bandeau d'informations qu'on peut mettre en pause
+  FX.register('news-ticker-pause', {
+    setup: function (el) {
+      var items = Array.prototype.slice.call(el.children);
+      var track = document.createElement('div');
+      track.className = 'fx-nt';
+      items.forEach(function (i) { track.appendChild(i); });
+      el.appendChild(track);
+      items.forEach(function (i) { var c = i.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.querySelectorAll('a').forEach(function (a) { a.tabIndex = -1; }); track.appendChild(c); });
+      var b = U.make('button', 'fx-nt-b', el);
+      b.type = 'button';
+      var set = function (p) { el.classList.toggle('fx-paused', p); b.textContent = p ? '▶' : '❚❚'; b.setAttribute('aria-label', p ? 'Reprendre' : 'Mettre en pause'); };
+      set(U.reduced);
+      b.addEventListener('click', function () { set(!el.classList.contains('fx-paused')); });
+      el.style.setProperty('--fx-t', (track.scrollWidth / 2 / U.num(el, 'fxSpeed', 50)).toFixed(1) + 's');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
