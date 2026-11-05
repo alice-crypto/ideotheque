@@ -41,3 +41,15 @@
 }
 .fx-tr-ink-drops.fx-cover i { transform: scale(1); }
 .fx-tr-ink-drops.fx-uncover i { transform: scale(0); }
+
+/* stair-bars : un escalier de colonnes */
+.fx-tr-stair-bars i {
+  top: 0;
+  bottom: 0;
+  width: calc(100% / 9 + 1px);
+  background: var(--fx-tr-color, var(--fx-accent));
+  transform: translateY(100%);
+  transition: transform .5s var(--fx-ease-io) var(--fx-d);
+}
+.fx-tr-stair-bars.fx-cover i { transform: none; }
+.fx-tr-stair-bars.fx-uncover i { transform: translateY(-100%); }
