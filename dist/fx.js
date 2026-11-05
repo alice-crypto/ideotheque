@@ -7897,6 +7897,19 @@
       el._fxK.forEach(function (s, i) { s.classList.toggle('fx-cur', i === c); });
     }
   });
+
+  // Une horloge dont les aiguilles tournent avec le défilement
+  FX.register('scroll-clock', {
+    setup: function (el) {
+      el.setAttribute('aria-hidden', 'true');
+      el.innerHTML = '<i class="h"></i><i class="m"></i>';
+    },
+    scroll: function (el, info) {
+      var total = info.pass * U.num(el, 'fxHours', 12) * 60;
+      el.style.setProperty('--fx-m', (total * 6) + 'deg');
+      el.style.setProperty('--fx-h', (total * .5) + 'deg');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

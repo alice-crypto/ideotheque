@@ -5222,6 +5222,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="sticky-slideshow"] .fx-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s; }
 [data-fx="sticky-slideshow"] .fx-cur { opacity: 1; }
 
+/* scroll-clock : le temps au bout du doigt */
+[data-fx="scroll-clock"] { position: relative; display: inline-block; width: var(--fx-size, 130px); aspect-ratio: 1; border: 2px solid currentColor; border-radius: 50%; }
+[data-fx="scroll-clock"] i { position: absolute; left: 50%; bottom: 50%; width: 3px; margin-left: -1.5px; border-radius: 2px; background: currentColor; transform-origin: bottom; }
+[data-fx="scroll-clock"] .h { height: 26%; transform: rotate(var(--fx-h, 0deg)); }
+[data-fx="scroll-clock"] .m { height: 38%; background: var(--fx-accent); transform: rotate(var(--fx-m, 0deg)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
