@@ -5009,6 +5009,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="depth-focus-in"] > * { transform: scale(.6) translateY(-20px); filter: blur(12px); opacity: 0; transition: transform .9s var(--fx-ease-out) calc(var(--fx-i) * 90ms), filter .9s calc(var(--fx-i) * 90ms), opacity .5s calc(var(--fx-i) * 90ms); }
 .fx-in[data-fx="depth-focus-in"] > * { transform: none; filter: none; opacity: 1; }
 
+/* marker-swipe-in : un surligneur */
+[data-fx="marker-swipe-in"] .fx-line { display: block; width: fit-content; position: relative; overflow: hidden; }
+[data-fx="marker-swipe-in"] .fx-line > span { display: block; opacity: 0; transition: opacity 0s calc(var(--fx-i) * 200ms + .32s); }
+[data-fx="marker-swipe-in"] .fx-line::after { content: ""; position: absolute; inset: 0; background: var(--fx-mark, var(--fx-accent)); transform: translateX(-101%); }
+.fx-in[data-fx="marker-swipe-in"] .fx-line > span { opacity: 1; }
+.fx-in[data-fx="marker-swipe-in"] .fx-line:nth-child(1)::after { animation: fx-msi .7s var(--fx-ease-io) both; }
+.fx-in[data-fx="marker-swipe-in"] .fx-line:nth-child(2)::after { animation: fx-msi .7s var(--fx-ease-io) .2s both; }
+.fx-in[data-fx="marker-swipe-in"] .fx-line:nth-child(3)::after { animation: fx-msi .7s var(--fx-ease-io) .4s both; }
+.fx-in[data-fx="marker-swipe-in"] .fx-line:nth-child(n+4)::after { animation: fx-msi .7s var(--fx-ease-io) .6s both; }
+@keyframes fx-msi { 0% { transform: translateX(-101%); } 45%, 55% { transform: none; } 100% { transform: translateX(101%); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

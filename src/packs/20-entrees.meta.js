@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="depth-focus-in">…</div>',
     '<div data-fx="depth-focus-in" style="display:flex;gap:6px"><div class="demo-box" style="width:60px;height:80px"></div><div class="demo-box alt" style="width:60px;height:80px"></div><div class="demo-box ink" style="width:60px;height:80px"></div></div>',
     { trigger: 'Rejouer' }),
+  E('marker-swipe-in', 'Entrée',
+    'Un bloc de couleur traverse chaque ligne et laisse le texte derrière lui.',
+    'Punchy, très éditorial, tape-à-l\'œil maîtrisé.',
+    '- `--fx-mark` : couleur du bloc',
+    'Grands titres, citations.',
+    'Plus de 4 lignes.',
+    '<h2 data-fx="marker-swipe-in">Du texte en lumière</h2>',
+    '<p class="demo-para" data-fx="marker-swipe-in" style="color:var(--ink)">Du texte en pleine lumière</p>',
+    { trigger: 'Rejouer' }),
 ];
