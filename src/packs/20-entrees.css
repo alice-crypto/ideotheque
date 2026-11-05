@@ -37,3 +37,9 @@
 /* card-deal : on distribue les cartes */
 [data-fx="card-deal"] > * { transform: translate(var(--fx-dx, 0), var(--fx-dy, 0)) rotate(var(--fx-r, 0deg)); opacity: 0; transition: transform .7s var(--fx-ease-out) calc(var(--fx-i) * 110ms), opacity .2s calc(var(--fx-i) * 110ms); }
 .fx-in[data-fx="card-deal"] > * { transform: none; opacity: 1; }
+
+/* shutter-text : un obturateur */
+[data-fx="shutter-text"] { overflow: hidden; display: inline-block; }
+[data-fx="shutter-text"] .fx-sht { position: absolute; inset: 0; display: flex; pointer-events: none; }
+[data-fx="shutter-text"] .fx-sht i { flex: 1; background: var(--fx-shutter, var(--fx-accent)); transform-origin: right; transition: transform .55s var(--fx-ease-io) calc(var(--fx-i) * 60ms); }
+.fx-in[data-fx="shutter-text"] .fx-sht i { transform: scaleX(0); }
