@@ -104,4 +104,34 @@
       c.putImageData(img, 0, 0);
     }
   });
+
+  // Des courbes de niveau glissent comme sur une carte
+  FX.register('contour-lines', {
+    setup: function (el) { U.ensurePositioned(el); el._fxCv = U.make('canvas', 'fx-gen', el); el._fxCv.setAttribute('aria-hidden', 'true'); el._fxT = 0; },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      el._fxT += dt;
+      if (el._fxT < .08 && cv.width === w) return;
+      if (U.reduced && cv.width === w) return;
+      el._fxT = 0;
+      cv.width = w; cv.height = h;
+      var c = cv.getContext('2d'), S = 14, ph = t * .00012;
+      var f = function (x, y) { return Math.sin(x * .011 + ph) + Math.cos(y * .014 - ph) + Math.sin((x + y) * .007 + ph * 2); };
+      c.strokeStyle = getComputedStyle(cv).color;
+      c.globalAlpha = .65;
+      c.beginPath();
+      for (var lv = -2.4; lv < 2.6; lv += .4) {
+        for (var y = 0; y < h; y += S) for (var x = 0; x < w; x += S) {
+          var a = f(x, y) - lv, b = f(x + S, y) - lv, d = f(x, y + S) - lv, e = f(x + S, y + S) - lv, P = [];
+          if (a * b < 0) P.push([x + S * a / (a - b), y]);
+          if (b * e < 0) P.push([x + S, y + S * b / (b - e)]);
+          if (d * e < 0) P.push([x + S * d / (d - e), y + S]);
+          if (a * d < 0) P.push([x, y + S * a / (a - d)]);
+          if (P.length >= 2) { c.moveTo(P[0][0], P[0][1]); c.lineTo(P[1][0], P[1][1]); }
+        }
+      }
+      c.stroke();
+    }
+  });
 })(window.FX);
