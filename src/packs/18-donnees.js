@@ -101,4 +101,35 @@
       });
     }
   });
+
+  // Un classement dont les lignes se dépassent
+  FX.register('rank-race', {
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Atlas:40,Brume:55,Halo:30,Ocre:65,Verdure:48').split(',').map(function (s) {
+        var p = s.split(':'), r = U.make('div', 'fx-rr', el);
+        r.innerHTML = '<span></span><i></i><b></b>';
+        r.firstChild.textContent = p[0];
+        return { el: r, v: parseFloat(p[1]) };
+      });
+      el.style.setProperty('--fx-count', rows.length);
+      var draw = function () {
+        var mx = Math.max.apply(null, rows.map(function (r) { return r.v; }));
+        rows.slice().sort(function (a, b) { return b.v - a.v; }).forEach(function (r, i) {
+          r.el.style.setProperty('--fx-rank', i);
+          r.el.style.setProperty('--fx-w', r.v / mx);
+          r.el.lastChild.textContent = Math.round(r.v);
+        });
+      };
+      draw();
+      el._fxRows = rows; el._fxDraw = draw; el._fxT = 0;
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxT += dt;
+      if (el._fxT < U.num(el, 'fxEvery', 1.1)) return;
+      el._fxT = 0;
+      el._fxRows.forEach(function (r) { r.v = Math.max(5, r.v + U.rand(-4, 12)); });
+      el._fxDraw();
+    }
+  });
 })(window.FX);
