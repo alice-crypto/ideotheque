@@ -340,4 +340,21 @@
       el.addEventListener('pointerleave', function () { items.forEach(function (it) { it.style.setProperty('--fx-k', 0); }); });
     }
   });
+
+  // Un cadre lumineux glisse d'un champ au suivant
+  FX.register('focus-beam', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var b = U.make('i', 'fx-beam', el);
+      b.setAttribute('aria-hidden', 'true');
+      el.addEventListener('focusin', function (e) {
+        var r = e.target.getBoundingClientRect(), o = el.getBoundingClientRect();
+        b.style.transform = 'translate(' + (r.left - o.left) + 'px,' + (r.top - o.top) + 'px)';
+        b.style.width = r.width + 'px';
+        b.style.height = r.height + 'px';
+        el.classList.add('fx-on');
+      });
+      el.addEventListener('focusout', function (e) { if (!el.contains(e.relatedTarget)) el.classList.remove('fx-on'); });
+    }
+  });
 })(window.FX);
