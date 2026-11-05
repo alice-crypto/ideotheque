@@ -208,6 +208,15 @@
       var links = Array.prototype.slice.call(document.querySelectorAll('.dmenu a[href^="#"]')).filter(function (a) { return a.getAttribute('href').length > 1; });
       var first = document.querySelector('.dmenu a');
       if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          document.querySelectorAll('.dmenu a').forEach(function (a) { a.removeAttribute('aria-current'); });
+          var l = links.filter(function (a) { return a.getAttribute('href') === '#' + e.target.id; })[0];
+          (l || first).setAttribute('aria-current', 'true');
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      links.forEach(function (a) { var t = document.querySelector(a.getAttribute('href')); if (t) io.observe(t); });
       /*@spyjs*/
     })();
     /*@js*/
