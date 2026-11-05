@@ -183,4 +183,10 @@
   FX.register('flip-scrub', {
     scroll: function (el, info) { el.style.setProperty('--fx-a', (U.clamp(info.pass * 2 - .5, 0, 1) * 180).toFixed(1) + 'deg'); }
   });
+
+  // Un rideau de couleur se lève au défilement
+  FX.register('curtain-scrub', {
+    setup: function (el) { U.ensurePositioned(el); U.make('i', 'fx-cs', el).setAttribute('aria-hidden', 'true'); },
+    scroll: function (el, info) { el.style.setProperty('--fx-lift', U.easeOut(info.enter).toFixed(3)); }
+  });
 })(window.FX);
