@@ -723,4 +723,29 @@
     },
     tick: function (el) { el._fxTick(); }
   });
+
+  // Le texte s'écrit, se trompe, corrige
+  FX.register('typing-correct', {
+    entrance: true,
+    setup: function (el) {
+      el._fxOk = el.textContent.trim();
+      el._fxBad = el.dataset.fxWrong || el._fxOk;
+      el.setAttribute('aria-label', el._fxOk);
+      if (!U.reduced) el.textContent = '';
+    },
+    reset: function (el) { el._fxK = (el._fxK || 0) + 1; el.textContent = ''; },
+    enter: function (el) {
+      var run = el._fxK = (el._fxK || 0) + 1, ok = el._fxOk, bad = el._fxBad, i = 0, phase = 0, common = 0;
+      if (U.reduced) { el.textContent = ok; return; }
+      while (common < ok.length && ok[common] === bad[common]) common++;
+      var sp = U.num(el, 'fxSpeed', 60);
+      (function step() {
+        if (run !== el._fxK) return;
+        if (phase === 0) { el.textContent = bad.slice(0, ++i); if (i >= bad.length) { phase = 1; return setTimeout(step, 550); } }
+        else if (phase === 1) { el.textContent = bad.slice(0, --i); if (i <= common) phase = 2; }
+        else { el.textContent = ok.slice(0, ++i); if (i >= ok.length) return; }
+        setTimeout(step, phase === 1 ? sp * .6 : sp * U.rand(.6, 1.5));
+      })();
+    }
+  });
 })(window.FX);
