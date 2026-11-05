@@ -357,4 +357,16 @@
       el.addEventListener('focusout', function (e) { if (!el.contains(e.relatedTarget)) el.classList.remove('fx-on'); });
     }
   });
+
+  // Une lumière fait le tour de la carte, plus vite au survol
+  FX.register('border-chase', {
+    setup: function (el) { el._fxA = 0; el._fxV = 40; },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      var target = el.matches(':hover') ? 240 : U.num(el, 'fxIdle', 50);
+      el._fxV = U.lerp(el._fxV, target, .05);
+      el._fxA = (el._fxA + el._fxV * dt) % 360;
+      el.style.setProperty('--fx-ang', el._fxA.toFixed(1) + 'deg');
+    }
+  });
 })(window.FX);
