@@ -32,6 +32,10 @@
     .rtrack [data-fx="progress-steps-rail"] > li::before { color: var(--w) !important; }
     .rtrack [data-fx="progress-steps-rail"]::before { background: var(--k); }
     .rmsg { margin-top: 22px; font-size: clamp(22px, 2.6vw, 34px); font-weight: 700; letter-spacing: -.02em; min-height: 1.2em; }
+    .rzones { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(24px, 5vw, 70px); align-items: center; }
+    .rzones h2 { font-size: clamp(38px, 5.6vw, 88px); }
+    .rcity { position: relative; aspect-ratio: 4 / 3; background: var(--y); border: var(--rule); overflow: visible; --fx-accent: var(--b); color: var(--k); }
+    .rcity::before { content: ""; position: absolute; inset: 0; background: linear-gradient(var(--k) 0 0) 0 33% / 100% 2px no-repeat, linear-gradient(var(--k) 0 0) 0 70% / 100% 2px no-repeat, linear-gradient(var(--k) 0 0) 30% 0 / 2px 100% no-repeat, linear-gradient(var(--k) 0 0) 68% 0 / 2px 100% no-repeat; }
     /*@css*/
   </style>
 </head>
