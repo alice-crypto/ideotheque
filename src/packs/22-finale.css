@@ -104,3 +104,10 @@
 .fx-tr-mirror-split.fx-uncover .fx-t { transform: translateY(-101%); }
 .fx-tr-mirror-split.fx-uncover .fx-b { transform: translateY(101%); }
 .fx-tr-mirror-split.fx-uncover .fx-line { opacity: 0; transition: opacity .2s; }
+
+/* radar-sweep : un écran de radar */
+[data-fx="radar-sweep"] { position: relative; display: inline-block; width: var(--fx-size, 170px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: repeating-radial-gradient(circle, transparent 0 19%, color-mix(in srgb, var(--fx-radar, var(--fx-accent)) 35%, transparent) 19% 20%), var(--fx-radar-bg, #0a0a0c); }
+[data-fx="radar-sweep"]::before { content: ""; position: absolute; inset: 0; background: conic-gradient(from var(--fx-a, 0deg), color-mix(in srgb, var(--fx-radar, var(--fx-accent)) 65%, transparent), transparent 22%); transform: scaleX(-1); }
+[data-fx="radar-sweep"] i { position: absolute; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: var(--fx-radar, var(--fx-accent)); opacity: 0; }
+[data-fx="radar-sweep"] i.fx-hit { animation: fx-rs 2.4s ease-out; }
+@keyframes fx-rs { 0% { opacity: 1; transform: scale(1.4); } 100% { opacity: 0; transform: scale(1); } }
