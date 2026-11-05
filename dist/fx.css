@@ -4111,6 +4111,25 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-page-turn.fx-cover .fx-fold { opacity: 1; }
 .fx-tr-page-turn.fx-uncover .fx-page { transform: rotateY(100deg); }
 
+/* ascii-image : l'image devient du texte */
+[data-fx="ascii-image"] { overflow: hidden; }
+[data-fx="ascii-image"] .fx-ascii {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  line-height: 1;
+  overflow: hidden;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--fx-ascii-bg, #0c0c0e);
+  color: var(--fx-ascii-ink, #f4f1ea);
+  opacity: 0;
+  transition: opacity .25s steps(4);
+  pointer-events: none;
+}
+[data-fx="ascii-image"]:hover .fx-ascii,
+[data-fx="ascii-image"]:focus-visible .fx-ascii,
+[data-fx="ascii-image"][data-fx-show] .fx-ascii { opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

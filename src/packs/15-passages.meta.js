@@ -147,4 +147,13 @@ module.exports = [
     '<a href="/chapitre-2" data-fx="page-turn">Chapitre 2</a>',
     '<button class="demo-ghost" onclick="FX.play(\'page-turn\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('ascii-image', 'Image',
+    'L\'image se change en texte ASCII au survol, chaque signe suivant sa luminosité.',
+    'Machine qui lit l\'image, terminal, culture hacker.',
+    '- `data-fx-cols` (46) : nombre de colonnes\n- `--fx-ascii-bg`, `--fx-ascii-ink` : couleurs\n- `data-fx-show` : affiche le texte en permanence',
+    'Portfolios techniques, IA, jeux.',
+    'Une image hébergée sur un autre domaine sans autorisation CORS : le navigateur en interdit la lecture, et l\'effet ne s\'affiche pas.',
+    '<figure data-fx="ascii-image"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="ascii-image" data-fx-show="1"><img src="assets/dune.svg" alt=""></div>',
+    { a11y: 'L\'image garde son texte alternatif, le texte ASCII est masqué aux lecteurs d\'écran.' }),
 ];
