@@ -420,4 +420,28 @@
       });
     }
   });
+
+  // Un sélecteur de langue dont les sigles se croisent
+  FX.register('language-switch-flip', {
+    setup: function (el) {
+      var langs = (el.dataset.fxLangs || 'FR|EN|ES').split('|'), cur = 0;
+      el.setAttribute('aria-label', 'Choisir la langue');
+      el.innerHTML = '<span class="fx-ls-now"></span>';
+      var now = el.firstChild;
+      var render = function (dir) {
+        var s = document.createElement('span');
+        s.className = 'fx-ls-in';
+        s.textContent = langs[cur];
+        now.innerHTML = '';
+        now.appendChild(s);
+      };
+      render();
+      el.addEventListener('click', function () {
+        cur = (cur + 1) % langs.length;
+        render();
+        document.documentElement.lang = langs[cur].toLowerCase();
+        el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true, detail: { lang: langs[cur] } }));
+      });
+    }
+  });
 })(window.FX);
