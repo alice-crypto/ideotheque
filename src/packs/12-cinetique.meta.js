@@ -55,4 +55,13 @@ module.exports = [
     'Les mots très longs, qui déborderaient en s\'étirant.',
     '<a href="#" data-fx="letter-accordion">Projets</a>',
     '<a class="demo-roll" href="#" data-fx="letter-accordion" style="color:var(--ink)">Projets</a>'),
+  E('spot-fill', 'Texte',
+    'Un titre en simple contour se remplit de couleur seulement autour du curseur.',
+    'Une lampe qu\'on promène sur une enseigne éteinte.',
+    '- `--fx-size` (90px) : rayon du halo\n- `--fx-fill` : couleur du remplissage\n- `--fx-stroke` : couleur du contour',
+    'Titres sur fond sombre, écrans d\'accueil.',
+    'Les petits textes, dont le contour devient illisible.',
+    '<h1 data-fx="spot-fill">Lumière</h1>',
+    '<p class="demo-title" data-fx="spot-fill" style="color:var(--ink);--fx-stroke:var(--ink);--fx-size:46px">Lumière</p>',
+    { a11y: 'Le texte reste lisible en contour. Avec `prefers-reduced-motion: reduce`, le halo ne se déplace plus tout seul.' }),
 ];

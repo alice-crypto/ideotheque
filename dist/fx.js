@@ -3204,6 +3204,31 @@
       el.addEventListener('focusout', function () { set(-1); });
     }
   });
+
+  // Texte en contour, rempli seulement autour du curseur
+  FX.register('spot-fill', {
+    setup: function (el) {
+      var txt = el.textContent.trim();
+      el.textContent = '';
+      var box = el._fxBox = U.make('span', 'fx-sf', el);
+      box.textContent = txt;
+      box.dataset.fxLabel = txt;
+      el._fxHover = false;
+      el.addEventListener('pointermove', function (e) {
+        var r = box.getBoundingClientRect();
+        el._fxHover = true;
+        el.style.setProperty('--fx-mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--fx-my', (e.clientY - r.top) + 'px');
+      });
+      el.addEventListener('pointerleave', function () { el._fxHover = false; });
+    },
+    tick: function (el, dt, t) {
+      if (el._fxHover || U.reduced) return;
+      var r = el._fxBox.getBoundingClientRect();
+      el.style.setProperty('--fx-mx', ((Math.sin(t * .001) + 1) / 2 * r.width).toFixed(0) + 'px');
+      el.style.setProperty('--fx-my', (r.height / 2).toFixed(0) + 'px');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
