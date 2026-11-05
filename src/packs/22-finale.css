@@ -111,3 +111,7 @@
 [data-fx="radar-sweep"] i { position: absolute; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: var(--fx-radar, var(--fx-accent)); opacity: 0; }
 [data-fx="radar-sweep"] i.fx-hit { animation: fx-rs 2.4s ease-out; }
 @keyframes fx-rs { 0% { opacity: 1; transform: scale(1.4); } 100% { opacity: 0; transform: scale(1); } }
+
+/* circuit-pulse : un circuit vivant */
+[data-fx="circuit-pulse"] { isolation: isolate; overflow: hidden; }
+[data-fx="circuit-pulse"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-line, var(--fx-accent)); }
