@@ -698,4 +698,29 @@
       if (el._fxT > U.num(el, 'fxEvery', 1.6)) { el._fxT = 0; el._fxStep(); }
     }
   });
+
+  // Un compte à rebours en anneaux vers une vraie date
+  FX.register('countdown-rings', {
+    setup: function (el) {
+      var end = new Date(el.dataset.fxTo || Date.now() + 3 * 864e5 + 5 * 36e5).getTime();
+      var units = [['jours', 864e5, 30], ['heures', 36e5, 24], ['min', 6e4, 60], ['s', 1e3, 60]];
+      el.setAttribute('role', 'timer');
+      el.innerHTML = units.map(function (u) { return '<div><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" class="b"/><circle cx="20" cy="20" r="17" pathLength="100" class="o"/></svg><b></b><small>' + u[0] + '</small></div>'; }).join('');
+      var box = el.children, last = -1;
+      el._fxTick = function () {
+        var rest = Math.max(0, end - Date.now()), s = Math.floor(rest / 1000);
+        if (s === last) return;
+        last = s;
+        units.forEach(function (u, i) {
+          var v = Math.floor(rest / u[1]);
+          if (i) v %= u[2];
+          box[i].querySelector('b').textContent = v;
+          box[i].style.setProperty('--fx-v', Math.min(100, v / u[2] * 100).toFixed(1));
+        });
+        if (!rest) el.dispatchEvent(new CustomEvent('fx:done', { bubbles: true }));
+      };
+      el._fxTick();
+    },
+    tick: function (el) { el._fxTick(); }
+  });
 })(window.FX);
