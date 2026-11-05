@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->386<!-- /total --> effets.
+La bibliothèque contient <!-- total -->387<!-- /total --> effets.
 
 ## Règles
 
@@ -406,6 +406,7 @@ La bibliothèque contient <!-- total -->386<!-- /total --> effets.
 | `ai-orb` | État | Un orbe de couleur qui respire doucement, puis tourbillonne quand l'assistant réfléchit |
 | `thinking-steps` | État | Les étapes d'un agent s'enchaînent : chacune tourne le temps du travail, puis se coche |
 | `agent-graph` | État | Un agent d'IA parcourt ses étapes : chaque nœud s'active, pulse, puis se valide |
+| `voice-wave` | État | Une onde de barres réagit à la voix, plus haute au centre, quand l'assistant écoute |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)

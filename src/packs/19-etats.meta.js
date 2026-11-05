@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="agent-graph" data-fx-steps="Lire|Résumer|Envoyer"></div>',
     '<div data-fx="agent-graph" style="width:230px;color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Liste sémantique. Avec `prefers-reduced-motion: reduce`, toutes les étapes s\'affichent validées.' }),
+  E('voice-wave', 'État',
+    'Une onde de barres réagit à la voix, plus haute au centre, quand l\'assistant écoute.',
+    'Présence attentive, conversation.',
+    '- `data-fx-bars` (13) : nombre de barres\n- `el.fxLevel` (0 à 1) : niveau réel du micro, sinon simulé\n- `--fx-bar`, `--fx-h`, `--fx-w`',
+    'Assistants vocaux, enregistrement, dictée.',
+    'Faire croire qu\'on enregistre quand ce n\'est pas le cas.',
+    '<div data-fx="voice-wave" aria-label="Écoute en cours"></div>',
+    '<div data-fx="voice-wave"></div>',
+    { a11y: 'Rôle `img` avec un libellé. Avec `prefers-reduced-motion: reduce`, l\'onde reste basse.' }),
 ];
