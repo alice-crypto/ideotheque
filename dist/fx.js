@@ -6329,7 +6329,10 @@
       el.setAttribute('role', 'img');
       el.setAttribute('aria-label', 'Tendance, de ' + v[0] + ' à ' + v[v.length - 1]);
       el.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" aria-hidden="true"><path class="fx-sl-area" d="' + line + ' L' + W + ' ' + H + ' L0 ' + H + ' Z"/><path class="fx-sl-line" pathLength="1" d="' + line + '"/></svg><i style="left:' + last[0] + '%;top:' + (last[1] / H * 100) + '%"></i>';
-    }
+    },
+    // Les pointillés du dessin se décalent quand le tracé est étiré : on les retire une fois la courbe dessinée
+    enter: function (el) { setTimeout(function () { el.classList.add('fx-drawn'); }, 1150); },
+    reset: function (el) { el.classList.remove('fx-drawn'); }
   });
 
   // Un calendrier d'activité qui s'allume en vague
