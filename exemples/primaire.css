@@ -89,4 +89,9 @@ img, svg { display: block; max-width: 100%; }
 .pfoot a { display: block; padding-block: 3px; text-decoration: none; }
 .pfoot a:hover { color: var(--y); }
 .pfoot small { display: block; margin-top: 18px; font-size: 13px; }
+.shape { display: block; }
+.shape.c { border-radius: 50%; }
+.shape.t { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.shape.q { clip-path: polygon(0 0, 100% 0, 100% 100%); }
+.shape.h { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); border-radius: 100% 0 0 0; }
 /*@css*/
