@@ -11,3 +11,12 @@
 /* voice-wave : une voix en barres */
 [data-fx="voice-wave"] { display: inline-flex; align-items: center; gap: var(--fx-gap, 4px); height: var(--fx-h, 56px); }
 [data-fx="voice-wave"] i { width: var(--fx-w, 5px); height: 100%; border-radius: 99px; background: var(--fx-bar, var(--fx-accent)); transform: scaleY(.12); }
+
+/* citation-pop : des sources dans le texte */
+[data-fx="citation-pop"] .fx-cite { position: relative; display: inline-grid; place-items: center; width: 1.35em; height: 1.35em; margin: 0 .12em; border-radius: 50%; background: var(--fx-cite-bg, rgba(128, 128, 128, .28)); color: inherit; font-size: .72em; text-decoration: none; vertical-align: .12em; animation: fx-cite .4s var(--fx-ease-spring) calc(var(--fx-i) * 120ms) both; transition: background .2s, color .2s; }
+[data-fx="citation-pop"] .fx-cite:hover,
+[data-fx="citation-pop"] .fx-cite:focus-visible { background: var(--fx-accent); color: #111; }
+@keyframes fx-cite { from { transform: scale(0); } }
+[data-fx="citation-pop"] .fx-cite-tip { position: absolute; bottom: calc(100% + 6px); left: 50%; width: max-content; max-width: 200px; padding: .4em .7em; border-radius: 6px; background: #111; color: #fff; font-size: 12px; opacity: 0; pointer-events: none; transform: translate(-50%, 4px); transition: opacity .15s, transform .2s var(--fx-ease-out); z-index: 5; }
+[data-fx="citation-pop"] .fx-cite:hover .fx-cite-tip,
+[data-fx="citation-pop"] .fx-cite:focus-visible .fx-cite-tip { opacity: 1; transform: translate(-50%, 0); }
