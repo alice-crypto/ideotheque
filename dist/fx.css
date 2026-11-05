@@ -3227,6 +3227,9 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transform: rotateX(calc(var(--fx-i) * -90deg)) translateZ(.55em);
 }
 
+/* case-shuffle : majuscules et minuscules se mélangent */
+[data-fx="case-shuffle"] { display: inline-block; white-space: nowrap; font-feature-settings: "tnum"; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

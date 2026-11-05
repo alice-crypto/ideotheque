@@ -152,4 +152,12 @@ module.exports = [
     '<span data-fx="cube-words" data-fx-words="Créer|Tester|Publier"></span>',
     '<p class="demo-title" data-fx="cube-words" data-fx-words="Créer|Tester|Publier" style="width:170px;font-size:36px;text-align:left"></p>',
     { a11y: 'Tous les mots sont dans `aria-label`. Avec `prefers-reduced-motion: reduce`, le premier mot reste affiché.' }),
+  E('case-shuffle', 'Texte',
+    'Majuscules et minuscules se mélangent à toute vitesse, puis le mot retrouve sa casse.',
+    'Nerveux, irrévérencieux, façon zine.',
+    '- `data-fx-rate` (90) : millisecondes entre deux mélanges',
+    'Marques jeunes, titres d\'affiche, liens de menu.',
+    'Les interfaces sobres et les noms où la casse compte.',
+    '<a href="#" data-fx="case-shuffle">Manifeste</a>',
+    '<a class="demo-roll" href="#" data-fx="case-shuffle" style="color:var(--ink)">Manifeste</a>'),
 ];

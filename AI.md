@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->223<!-- /total --> effets.
+La bibliothèque contient <!-- total -->224<!-- /total --> effets.
 
 ## Règles
 
@@ -88,6 +88,7 @@ La bibliothèque contient <!-- total -->223<!-- /total --> effets.
 | `half-shift` | Texte | Le mot est coupé à l'horizontale, et ses deux moitiés glissent en sens contraire au défilement |
 | `hover-marquee` | Texte | Au repos, une ligne de texte immobile ; au survol, elle défile en continu |
 | `cube-words` | Texte | Plusieurs mots sont posés sur les faces d'un cube, qui tourne d'un quart de tour pour passer au suivant |
+| `case-shuffle` | Texte | Majuscules et minuscules se mélangent à toute vitesse, puis le mot retrouve sa casse |
 | `count-up` | Présentation | Mettre en scène un chiffre clé en le faisant défiler de 0 jusqu'à sa valeur |
 | `pill-grow` | Présentation | Une gélule s'ouvre au milieu d'un titre, puis une pastille glisse à l'intérieur, comme un interrupteur qu'on active |
 | `preloader` | Présentation | Un écran de chargement chiffré de 0 à 100 %, avec une barre de progression, qui se lève vers le haut pour révéler la page |
