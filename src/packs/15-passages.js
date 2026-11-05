@@ -95,4 +95,18 @@
     o.children[0].className = 'fx-l';
     o.children[1].className = 'fx-r';
   } } });
+
+  // Des éclats triangulaires convergent depuis le point de clic
+  FX.register('shatter-tris', { transition: { pieces: 96, cover: 960, uncover: 900, build: function (o) {
+    var C = 8, R = 6, e = o._fxEvent;
+    var cx = e && e.clientX != null ? e.clientX / innerWidth : .5, cy = e && e.clientY != null ? e.clientY / innerHeight : .5;
+    Array.prototype.forEach.call(o.children, function (p, i) {
+      var q = i % 2, k = Math.floor(i / 2), c = k % C, r = Math.floor(k / C);
+      p.style.left = c * 100 / C + '%'; p.style.top = r * 100 / R + '%';
+      p.style.clipPath = q ? 'polygon(103% -3%,103% 103%,-3% 103%)' : 'polygon(-3% -3%,103% -3%,-3% 103%)';
+      var d = Math.hypot((c + .5) / C - cx, (r + .5) / R - cy);
+      p.style.setProperty('--fx-d', (d * 500).toFixed(0) + 'ms');
+      p.style.setProperty('--fx-rot', U.rand(-120, 120).toFixed(0) + 'deg');
+    });
+  } } });
 })(window.FX);
