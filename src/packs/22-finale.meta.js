@@ -249,4 +249,13 @@ module.exports = [
     '<div data-fx="drawer-push"><aside><a href="#">Lien</a></aside><main><button data-open>Menu</button></main></div>',
     '<div data-fx="drawer-push" style="width:230px;height:150px;color:var(--ink);border:1px solid #333;border-radius:8px;font-size:13px"><aside style="padding:12px"><a href="#" style="color:inherit">Accueil</a></aside><div style="padding:12px"><button class="demo-ghost" data-open style="padding:6px 12px">Menu</button></div></div>',
     { a11y: '`aria-expanded`, panneau `inert` tant qu\'il est fermé, focus géré et Échap.' }),
+  E('back-to-top-progress', 'Navigation',
+    'Un bouton de remontée apparaît au bout de quelques écrans, avec un anneau qui montre la part lue.',
+    'Rassurant, on retrouve la sortie.',
+    '- `data-fx-after` (400) : pixels avant d\'apparaître',
+    'Longs articles, documentation.',
+    'Une page courte.',
+    '<button data-fx="back-to-top-progress"></button>',
+    '<button data-fx="back-to-top-progress" data-fx-demo="1" style="--fx-v:60"></button>',
+    { a11y: 'Bouton nommé, et le bouton n\'est pas actif quand il est invisible.' }),
 ];

@@ -8415,6 +8415,21 @@
       el.addEventListener('keydown', function (e) { if (e.key === 'Escape' && el.classList.contains('fx-open')) set(false); });
     }
   });
+
+  // Un bouton de remontée qui montre la part lue
+  FX.register('back-to-top-progress', {
+    setup: function (el) {
+      el.setAttribute('aria-label', el.getAttribute('aria-label') || 'Revenir en haut');
+      el.innerHTML = '<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" class="b"/><circle cx="20" cy="20" r="18" pathLength="100" class="o"/></svg><span aria-hidden="true">↑</span>';
+      el.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: U.reduced ? 'auto' : 'smooth' }); });
+      if (el.dataset.fxDemo) el.classList.add('fx-show');
+    },
+    scroll: function (el) {
+      var max = document.documentElement.scrollHeight - innerHeight, p = max > 0 ? window.scrollY / max : 0;
+      el.style.setProperty('--fx-v', (p * 100).toFixed(1));
+      if (!el.dataset.fxDemo) el.classList.toggle('fx-show', window.scrollY > U.num(el, 'fxAfter', 400));
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

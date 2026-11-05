@@ -5365,6 +5365,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="drawer-push"].fx-open aside { transform: none; }
 [data-fx="drawer-push"].fx-open > :not(aside) { transform: translateX(var(--fx-w, 60%)); }
 
+/* back-to-top-progress : remonter */
+[data-fx="back-to-top-progress"] { position: relative; display: inline-grid; place-items: center; width: var(--fx-size, 48px); height: var(--fx-size, 48px); padding: 0; border: 0; border-radius: 50%; background: var(--fx-btn-bg, #222); color: #fff; cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .25s, transform .35s var(--fx-ease-out); }
+[data-fx="back-to-top-progress"].fx-show { opacity: 1; pointer-events: auto; transform: none; }
+[data-fx="back-to-top-progress"] svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+[data-fx="back-to-top-progress"] circle { fill: none; stroke-width: 2.5; }
+[data-fx="back-to-top-progress"] .b { stroke: rgba(255, 255, 255, .2); }
+[data-fx="back-to-top-progress"] .o { stroke: var(--fx-accent); stroke-dasharray: var(--fx-v, 0) 100; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
