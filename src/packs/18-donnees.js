@@ -81,4 +81,24 @@
       el.classList.add(a >= b ? 'fx-a-wins' : 'fx-b-wins');
     }
   });
+
+  // Un cadran dont l'aiguille monte et oscille un instant
+  FX.register('gauge-needle', {
+    entrance: true,
+    setup: function (el) {
+      el.setAttribute('role', 'meter');
+      var v = U.num(el, 'fxValue', 72), max = U.num(el, 'fxMax', 100);
+      el.setAttribute('aria-valuenow', v); el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', max);
+      el.innerHTML = '<svg viewBox="0 0 120 70" aria-hidden="true"><path class="bg" pathLength="1" d="M10 62 A50 50 0 0 1 110 62"/><path class="on" pathLength="1" d="M10 62 A50 50 0 0 1 110 62"/><g class="nd"><line x1="60" y1="62" x2="60" y2="20"/><circle cx="60" cy="62" r="4"/></g></svg><b>' + v + '</b>';
+      el._fxQ = v / max;
+    },
+    reset: function (el) { el.style.setProperty('--fx-q', 0); },
+    enter: function (el) {
+      var q = el._fxQ;
+      U.tween(el, 1100, function (p) {
+        var o = 1 - Math.pow(1 - p, 3), wob = Math.sin(p * 12) * (1 - p) * .05;
+        el.style.setProperty('--fx-q', (q * o + wob * q).toFixed(4));
+      });
+    }
+  });
 })(window.FX);
