@@ -180,4 +180,13 @@ module.exports = [
     'Des échos présentés comme de vraies données.',
     '<div data-fx="radar-sweep"></div>',
     '<div data-fx="radar-sweep"></div>'),
+  E('circuit-pulse', 'Ambiance',
+    'Des impulsions de lumière voyagent sur un réseau de pistes à angles droits.',
+    'Électronique, données en circulation.',
+    '- `data-fx-traces` (12), `--fx-line`',
+    'Produits techniques, API, infrastructure.',
+    'Les marques organiques.',
+    '<section data-fx="circuit-pulse">…</section>',
+    '<div data-fx="circuit-pulse" style="width:230px;height:170px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
 ];

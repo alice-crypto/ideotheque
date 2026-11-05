@@ -8201,6 +8201,53 @@
       });
     }
   });
+
+  // Des impulsions de lumière voyagent sur un circuit
+  FX.register('circuit-pulse', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxP = null;
+    },
+    tick: function (el, dt) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (!el._fxP || cv.width !== w) {
+        cv.width = w; cv.height = h;
+        el._fxP = [];
+        var G = 24;
+        for (var i = 0; i < U.num(el, 'fxTraces', 12); i++) {
+          var x = Math.floor(Math.random() * w / G) * G, y = Math.floor(Math.random() * h / G) * G, pts = [[x, y]];
+          for (var k = 0; k < 5; k++) {
+            if (k % 2) x += (Math.random() < .5 ? -1 : 1) * G * Math.ceil(Math.random() * 4);
+            else y += (Math.random() < .5 ? -1 : 1) * G * Math.ceil(Math.random() * 3);
+            pts.push([x, y]);
+          }
+          var L = 0; for (k = 1; k < pts.length; k++) L += Math.abs(pts[k][0] - pts[k - 1][0]) + Math.abs(pts[k][1] - pts[k - 1][1]);
+          el._fxP.push({ pts: pts, L: L, t: Math.random() * L, s: U.rand(60, 150) });
+        }
+      }
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      var c = cv.getContext('2d'), col = getComputedStyle(cv).color;
+      c.clearRect(0, 0, w, h);
+      c.strokeStyle = col; c.fillStyle = col;
+      el._fxP.forEach(function (p) {
+        c.globalAlpha = .22;
+        c.beginPath();
+        p.pts.forEach(function (q, i) { if (i) c.lineTo(q[0], q[1]); else c.moveTo(q[0], q[1]); });
+        c.stroke();
+        p.t = (p.t + p.s * dt) % p.L;
+        var d = p.t;
+        for (var i = 1; i < p.pts.length; i++) {
+          var a = p.pts[i - 1], b = p.pts[i], s = Math.abs(b[0] - a[0]) + Math.abs(b[1] - a[1]);
+          if (d <= s) { var k = d / (s || 1); c.globalAlpha = 1; c.beginPath(); c.arc(a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, 2.4, 0, 7); c.fill(); break; }
+          d -= s;
+        }
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
