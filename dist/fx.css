@@ -3082,6 +3082,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 }
 @keyframes fx-step-spin { to { rotate: 360deg; } }
 
+/* Pack 12 — Typographie cinétique */
+
+/* weight-wave : la graisse ondule le long du mot */
+[data-fx="weight-wave"] .fx-char {
+  display: inline-block;
+  font-weight: calc(300 + var(--fx-w, .5) * 600);
+  transform: scaleY(calc(1 + var(--fx-w, .5) * .08));
+  transform-origin: bottom;
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
