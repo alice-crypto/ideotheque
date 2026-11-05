@@ -4984,6 +4984,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="rotate-tile-in"] > * { transform: rotate(var(--fx-r, 90deg)) scale(.7); opacity: 0; transition: transform .6s var(--fx-ease-io) calc(var(--fx-i) * 40ms), opacity .25s calc(var(--fx-i) * 40ms); }
 .fx-in[data-fx="rotate-tile-in"] > * { transform: none; opacity: 1; }
 
+/* horizon-rise : se lever derrière une ligne */
+[data-fx="horizon-rise"] { display: inline-block; position: relative; overflow: hidden; padding-bottom: 3px; }
+[data-fx="horizon-rise"] .fx-hr-in { display: block; transform: translateY(105%); transition: transform .9s var(--fx-ease-out) .4s; }
+[data-fx="horizon-rise"] .fx-hr { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--fx-line, currentColor); transform: scaleX(0); transition: transform .6s var(--fx-ease-io); }
+.fx-in[data-fx="horizon-rise"] .fx-hr-in { transform: none; }
+.fx-in[data-fx="horizon-rise"] .fx-hr { transform: scaleX(1); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

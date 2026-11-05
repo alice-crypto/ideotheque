@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="rotate-tile-in">…</div>',
     '<div class="demo-grid" data-fx="rotate-tile-in"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
     { trigger: 'Rejouer' }),
+  E('horizon-rise', 'Entrée',
+    'Une ligne se dessine, puis le contenu se lève derrière elle comme un soleil.',
+    'Matin, début d\'une histoire.',
+    '- `--fx-line` : couleur de la ligne',
+    'Titres de section, sous-titres.',
+    'Les blocs très hauts.',
+    '<h2 data-fx="horizon-rise">Aurore</h2>',
+    '<p class="demo-title" data-fx="horizon-rise">Aurore</p>',
+    { trigger: 'Rejouer' }),
 ];
