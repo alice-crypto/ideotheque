@@ -39,6 +39,12 @@
     .plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 15px; flex: 1; }
     .plan li::before { content: "■"; margin-right: .5em; font-size: .7em; color: var(--r); vertical-align: 1px; }
     .on-r-list li::before { color: var(--y) !important; }
+    .qa { display: grid; grid-template-columns: 2fr 3fr; gap: 28px; }
+    .qalist > * { border-top: var(--rule) !important; }
+    .qalist > *:last-child { border-bottom: var(--rule); }
+    .qalist button { font-size: 20px; font-weight: 700; padding: .9em 0 !important; }
+    .qalist p { overflow: hidden; padding-bottom: 0 !important; }
+    .qalist .fx-open p { padding-bottom: 1em !important; }
     /*@css*/
   </style>
 </head>
