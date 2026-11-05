@@ -190,3 +190,6 @@
   filter: brightness(calc(1 - var(--fx-out, 0) * .45));
   transform-origin: 50% 0;
 }
+
+/* speed-lines : l'élan se voit */
+[data-fx="speed-lines"] .fx-speed { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--fx-line, currentColor); pointer-events: none; }
