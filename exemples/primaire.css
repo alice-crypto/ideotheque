@@ -163,3 +163,8 @@ img, svg { display: block; max-width: 100%; }
   .pbtn { transition: none; }
   html { scroll-behavior: auto; }
 }
+.dcard.on-r { background: var(--r); }
+.dcard.on-b { background: var(--b); }
+.dcard.on-y { background: var(--y); }
+.dcard.on-k { background: var(--k); }
+.dash ~ .ex-back { left: auto; right: 16px; }
