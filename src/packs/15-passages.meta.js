@@ -182,4 +182,12 @@ module.exports = [
     '<figure data-fx="mosaic-hover" style="aspect-ratio:3/2"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="mosaic-hover"><img src="assets/dune.svg" alt=""></div>',
     { a11y: 'L\'image d\'origine et son texte alternatif restent présents pour les lecteurs d\'écran.' }),
+  E('wave-image', 'Image',
+    'L\'image ondule comme une surface d\'eau au survol, puis retrouve son calme.',
+    'Liquide, reflet dans un lac.',
+    '- `data-fx-scale` (24) : force de la déformation\n- `data-fx-auto="true"` : ondule en permanence',
+    'Paysages, images de marques de bien-être, moments de pause.',
+    'Une grande page d\'images : le filtre coûte cher au processeur.',
+    '<figure data-fx="wave-image"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="wave-image" data-fx-auto="true"><img src="assets/dune.svg" alt=""></div>'),
 ];

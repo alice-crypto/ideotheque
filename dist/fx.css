@@ -4152,6 +4152,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="mosaic-hover"]:hover i,
 [data-fx="mosaic-hover"]:focus-visible i { transform: none; }
 
+/* wave-image : une image liquide */
+[data-fx="wave-image"] { overflow: hidden; }
+[data-fx="wave-image"] > img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
