@@ -208,4 +208,21 @@
       if (el._fxT > U.num(el, 'fxHold', 3.5)) { el._fxT = 0; el._fxNext(); }
     }
   });
+
+  // Des cartes de tarifs dont les prix suivent la bascule annuelle
+  FX.register('pricing-toggle-cards', {
+    setup: function (el) {
+      var tog = el.querySelector('input[type="checkbox"]'), prices = el.querySelectorAll('[data-month]');
+      if (!tog) return;
+      var render = function () {
+        prices.forEach(function (p) {
+          var to = parseFloat(tog.checked ? p.dataset.year : p.dataset.month), from = parseFloat(p.textContent) || to;
+          U.tween(p, 450, function (k) { p.textContent = Math.round(U.lerp(from, to, U.easeOut(k))); });
+        });
+        el.classList.toggle('fx-year', tog.checked);
+      };
+      prices.forEach(function (p) { p.textContent = p.dataset.month; });
+      tog.addEventListener('change', render);
+    }
+  });
 })(window.FX);
