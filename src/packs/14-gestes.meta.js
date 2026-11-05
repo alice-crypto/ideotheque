@@ -209,4 +209,13 @@ module.exports = [
     '<span data-fx="price-flip" data-fx-values="19 €|190 €" data-fx-toggle="#annuel"></span>',
     '<span class="demo-number" data-fx="price-flip" data-fx-values="19 €|190 €" style="color:var(--ink)"></span>',
     { trigger: 'Changer', a11y: 'Le changement est annoncé par `aria-live`.' }),
+  E('checkbox-scribble', 'Micro-interaction',
+    'Cocher dessine une coche au stylo, puis un trait vient biffer le libellé.',
+    'La satisfaction de rayer une ligne sur sa liste.',
+    '- `--fx-pen` : couleur du trait',
+    'Listes de tâches, étapes, courses.',
+    'Les cases d\'un formulaire où le texte doit rester lisible une fois coché.',
+    '<label data-fx="checkbox-scribble"><input type="checkbox"><span>Relire le texte</span></label>',
+    '<label data-fx="checkbox-scribble" style="color:var(--ink);font-size:18px"><input type="checkbox" checked><span>Relire le texte</span></label>',
+    { a11y: 'La vraie case à cocher reste utilisée, avec son focus clavier.' }),
 ];
