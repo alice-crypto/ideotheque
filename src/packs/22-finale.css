@@ -220,3 +220,9 @@
 
 /* letter-tilt-cursor : des lettres qui se penchent */
 [data-fx="letter-tilt-cursor"] .fx-char { display: inline-block; transform-origin: 50% 90%; transform: rotate(var(--fx-t, 0deg)); transition: transform .25s var(--fx-ease-spring); }
+
+/* vertical-type-flip : un mot qui se couche */
+[data-fx="vertical-type-flip"] { display: inline-flex; flex-direction: column; align-items: center; line-height: 1; cursor: default; }
+[data-fx="vertical-type-flip"] .fx-wordbox { display: flex; flex-direction: column; }
+[data-fx="vertical-type-flip"] .fx-char { display: block; text-align: center; transition: transform .5s var(--fx-ease-out) calc(var(--fx-i) * 25ms); }
+[data-fx="vertical-type-flip"]:hover .fx-char { transform: translate(calc((var(--fx-i) - var(--fx-n) / 2) * .9em), calc((var(--fx-n) / 2 - var(--fx-i)) * 1em)); }
