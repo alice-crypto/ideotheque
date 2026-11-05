@@ -216,4 +216,13 @@ module.exports = [
     'Les portraits ou les images déjà floues.',
     '<figure data-fx="tilt-focus"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="tilt-focus"><img src="assets/dune.svg" alt=""></div>'),
+  E('polaroid-drop', 'Image',
+    'Des photos à cadre blanc tombent sur la table et se posent en désordre ; un clic en ramène une au premier plan.',
+    'Album de vacances, souvenirs vrais.',
+    'Aucun réglage : les angles sont aléatoires.',
+    'Équipe, voyages, coulisses.',
+    'Les galeries où chaque image doit être bien visible.',
+    '<div data-fx="polaroid-drop"><figure><img src="a.jpg" alt="…"></figure><figure><img src="b.jpg" alt="…"></figure></div>',
+    '<div data-fx="polaroid-drop"><div><img src="assets/dune.svg" alt="" style="display:block;width:110px;height:90px;object-fit:cover"></div><div><img src="assets/city.svg" alt="" style="display:block;width:110px;height:90px;object-fit:cover"></div><div><img src="assets/dune.svg" alt="" style="display:block;width:110px;height:90px;object-fit:cover"></div></div>',
+    { trigger: 'Rejouer' }),
 ];

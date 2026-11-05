@@ -4182,6 +4182,20 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   mask: linear-gradient(#000 calc(var(--fx-fy, 50%) - 22%), transparent calc(var(--fx-fy, 50%) - 6%), transparent calc(var(--fx-fy, 50%) + 6%), #000 calc(var(--fx-fy, 50%) + 22%));
 }
 
+/* polaroid-drop : des photos sur la table */
+[data-fx="polaroid-drop"] { display: grid; place-items: center; }
+[data-fx="polaroid-drop"] > * {
+  grid-area: 1 / 1;
+  background: #fff;
+  padding: 7px 7px 22px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .35);
+  cursor: pointer;
+  opacity: 0;
+  transform: translate(var(--fx-dx), calc(var(--fx-dy) - 60px)) rotate(calc(var(--fx-rot) * 2)) scale(1.4);
+  transition: transform .55s var(--fx-ease-out) calc(var(--fx-i) * 120ms), opacity .2s calc(var(--fx-i) * 120ms);
+}
+.fx-in[data-fx="polaroid-drop"] > * { opacity: 1; transform: translate(var(--fx-dx), var(--fx-dy)) rotate(var(--fx-rot)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
