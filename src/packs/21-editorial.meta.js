@@ -135,4 +135,12 @@ module.exports = [
     '<button data-fx="emoji-burst">♥ J\'aime</button>',
     '<button class="demo-ghost" data-fx="emoji-burst" style="position:relative">♥ J\'aime</button>',
     { trigger: 'Réagir', a11y: 'Les symboles sont masqués aux lecteurs d\'écran. Avec `prefers-reduced-motion: reduce`, rien ne s\'envole.' }),
+  E('cursor-compass', 'Micro-interaction',
+    'Une grille d\'aiguilles s\'oriente toute entière vers le curseur, comme des boussoles.',
+    'La page entière vous regarde, champ magnétique.',
+    '- `data-fx-count` (42), `--fx-cols` (7), `--fx-gap` (10px)',
+    'Décors de section d\'accueil, écrans de jeu.',
+    'De grandes grilles : le calcul se fait à chaque mouvement.',
+    '<div data-fx="cursor-compass"></div>',
+    '<div data-fx="cursor-compass" style="width:215px;color:var(--ink)"></div>'),
 ];
