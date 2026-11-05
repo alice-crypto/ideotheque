@@ -4608,6 +4608,35 @@
       if (el.dataset.fxCopy && navigator.clipboard) navigator.clipboard.writeText(el.dataset.fxCopy).catch(function () {});
     }
   });
+
+  // Un bouton rotatif qu'on tourne à la souris ou au clavier
+  FX.register('knob-dial', {
+    setup: function (el) {
+      var min = U.num(el, 'fxMin', 0), max = U.num(el, 'fxMax', 100), v = U.num(el, 'fxValue', 40);
+      el.setAttribute('role', 'slider');
+      el.setAttribute('aria-valuemin', min); el.setAttribute('aria-valuemax', max);
+      el.tabIndex = 0;
+      el.innerHTML = '<i></i><b></b>';
+      var set = function (nv) {
+        v = U.clamp(nv, min, max);
+        var p = (v - min) / (max - min);
+        el.style.setProperty('--fx-ang', (-135 + p * 270) + 'deg');
+        el.style.setProperty('--fx-pct', p * 75);
+        el.lastChild.textContent = Math.round(v);
+        el.setAttribute('aria-valuenow', Math.round(v));
+        el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true, detail: { value: v } }));
+      };
+      set(v);
+      var y0 = 0, v0 = 0, drag = false;
+      el.addEventListener('pointerdown', function (e) { drag = true; y0 = e.clientY; v0 = v; if (e.isTrusted) el.setPointerCapture(e.pointerId); });
+      el.addEventListener('pointermove', function (e) { if (drag) set(v0 + (y0 - e.clientY) * (max - min) / 150); });
+      el.addEventListener('pointerup', function () { drag = false; });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp' || e.key === 'ArrowRight') { e.preventDefault(); set(v + 1); }
+        if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') { e.preventDefault(); set(v - 1); }
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

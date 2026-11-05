@@ -245,4 +245,13 @@ module.exports = [
     '<button data-fx="copy-pop-toast" data-fx-copy="npm i">Copier</button>',
     '<button class="demo-ghost" data-fx="copy-pop-toast" data-fx-message="Copié !">Copier</button>',
     { trigger: 'Cliquer', a11y: 'La bulle a le rôle `status`, annoncé par les lecteurs d\'écran.' }),
+  E('knob-dial', 'Micro-interaction',
+    'Un bouton rotatif qu\'on tourne en glissant vers le haut ou vers le bas, comme sur une console.',
+    'Matériel, précis, le plaisir d\'un vrai bouton.',
+    '- `data-fx-min` (0), `data-fx-max` (100), `data-fx-value` (40)\n- `--fx-size` (96px), `--fx-knob` : taille et couleur\n- L\'élément émet `fx:change`.',
+    'Outils de création, audio, simulateurs.',
+    'Une saisie précise dans un formulaire : préférez un champ.',
+    '<div data-fx="knob-dial" aria-label="Volume"></div>',
+    '<div data-fx="knob-dial" aria-label="Volume"></div>',
+    { a11y: 'Rôle `slider` réglable au clavier. Donnez-lui un `aria-label`.' }),
 ];
