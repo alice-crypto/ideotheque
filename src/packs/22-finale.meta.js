@@ -373,4 +373,13 @@ module.exports = [
     '<div data-fx="word-bubbles"><p>Bonjour</p><p>Que puis-je faire ?</p></div>',
     '<div data-fx="word-bubbles" style="width:215px;color:var(--ink)"><p>Résume ce texte</p><p>Voici trois points</p><p>Merci !</p></div>',
     { trigger: 'Rejouer' }),
+  E('line-clamp-expand', 'Texte',
+    'Un texte replié se déplie jusqu\'à sa vraie hauteur, sans saut.',
+    'On choisit de lire davantage.',
+    '- `data-fx-lines` (3), `data-fx-more`, `data-fx-less`',
+    'Avis, descriptions, biographies.',
+    'Un texte qui devrait être visible en entier.',
+    '<p data-fx="line-clamp-expand">Un long texte…</p>',
+    '<div data-fx="line-clamp-expand" style="width:215px;color:var(--ink);font-size:13px;line-height:1.45">Le voyage a commencé à l\'aube. Nous avions peu de bagages, mais beaucoup de questions. Au bout de trois jours, la route s\'est arrêtée au bord d\'un lac immense, et nous avons compris pourquoi nous étions venus.</div>',
+    { a11y: 'Bouton avec `aria-expanded`. Le texte entier reste dans la page.' }),
 ];

@@ -5452,6 +5452,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="word-bubbles"] > :nth-child(even) { align-self: flex-end; transform-origin: 100% 100%; background: var(--fx-bubble-b, var(--fx-accent)); color: #111; }
 .fx-in[data-fx="word-bubbles"] > * { transform: none; opacity: 1; }
 
+/* line-clamp-expand : un texte qui se déplie */
+[data-fx="line-clamp-expand"] .fx-lc { overflow: hidden; transition: max-height .5s var(--fx-ease-out); }
+[data-fx="line-clamp-expand"].fx-clamped:not(.fx-open) .fx-lc { -webkit-mask: linear-gradient(#000 45%, transparent); mask: linear-gradient(#000 45%, transparent); }
+[data-fx="line-clamp-expand"] button { margin-top: .3em; padding: 0; background: none; border: 0; color: var(--fx-accent); font: inherit; cursor: pointer; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
