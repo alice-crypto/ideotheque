@@ -31,6 +31,10 @@
     .flot { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 16px 12px; font-size: 13px; font-weight: 600; --fx-full: var(--y); --fx-empty: var(--r); }
     .flot > div { display: grid; gap: 5px; justify-items: start; }
     .flot [data-fx="battery-level"] { color: var(--w); }
+    @media (max-width: 980px) {
+      .dcard[style*="--w-col:8"], .dcard[style*="--w-col:7"] { --w-col: 12 !important; }
+      .dcard[style*="--w-col:5"], .dcard[style*="--w-col:4"] { --w-col: 6 !important; }
+    }
     /*@css*/
   </style>
 </head>
