@@ -5433,6 +5433,9 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="typing-correct"]::after { content: ""; display: inline-block; width: 2px; height: 1em; margin-left: 2px; vertical-align: -.12em; background: currentColor; animation: fx-tcc 1s steps(1) infinite; }
 @keyframes fx-tcc { 50% { opacity: 0; } }
 
+/* letter-tilt-cursor : des lettres qui se penchent */
+[data-fx="letter-tilt-cursor"] .fx-char { display: inline-block; transform-origin: 50% 90%; transform: rotate(var(--fx-t, 0deg)); transition: transform .25s var(--fx-ease-spring); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

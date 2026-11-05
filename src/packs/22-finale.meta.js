@@ -339,4 +339,12 @@ module.exports = [
     '<h1 data-fx="typing-correct" data-fx-wrong="Bonne année">Bon anniversaire</h1>',
     '<p class="demo-title" data-fx="typing-correct" data-fx-wrong="Simplement" style="font-size:30px">Simple</p>',
     { trigger: 'Rejouer', a11y: 'Le texte correct est dans `aria-label`. Avec `prefers-reduced-motion: reduce`, il s\'affiche directement.' }),
+  E('letter-tilt-cursor', 'Texte',
+    'Chaque lettre se penche vers le curseur, comme des herbes hautes.',
+    'Prairie sous le vent, mot qui vous regarde.',
+    '- `data-fx-radius` (180)',
+    'Titres de pages d\'accueil, logos.',
+    'Les textes longs.',
+    '<h1 data-fx="letter-tilt-cursor">Prairie</h1>',
+    '<p class="demo-title" data-fx="letter-tilt-cursor">Prairie</p>'),
 ];

@@ -8630,6 +8630,23 @@
       })();
     }
   });
+
+  // Chaque lettre se penche vers le curseur
+  FX.register('letter-tilt-cursor', {
+    setup: function (el) {
+      U.splitChars(el);
+      var cs = el.querySelectorAll('.fx-char');
+      if (U.reduced) return;
+      el.addEventListener('pointermove', function (e) {
+        cs.forEach(function (c) {
+          var r = c.getBoundingClientRect(), dx = e.clientX - r.left - r.width / 2, dy = e.clientY - r.top - r.height / 2, d = Math.hypot(dx, dy);
+          var k = Math.max(0, 1 - d / U.num(el, 'fxRadius', 180));
+          c.style.setProperty('--fx-t', (dx / (d || 1) * 22 * k).toFixed(1) + 'deg');
+        });
+      });
+      el.addEventListener('pointerleave', function () { cs.forEach(function (c) { c.style.setProperty('--fx-t', '0deg'); }); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
