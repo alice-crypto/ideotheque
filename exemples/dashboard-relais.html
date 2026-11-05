@@ -89,6 +89,16 @@
       { n: 'M', late: false, p: [[130, 110], [0, 200], [300, 200], [640, 340]] }
       /*@routesjs*/
     ];
+    function along(p, t) {
+      var L = 0, d = [], i;
+      for (i = 1; i < p.length; i++) { d[i] = Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]); L += d[i]; }
+      var r = t * L;
+      for (i = 1; i < p.length; i++) {
+        if (r <= d[i]) { var k = r / d[i]; return [p[i - 1][0] + (p[i][0] - p[i - 1][0]) * k, p[i - 1][1] + (p[i][1] - p[i - 1][1]) * k]; }
+        r -= d[i];
+      }
+      return p[p.length - 1];
+    }
     /*@js*/
   </script>
 </body>
