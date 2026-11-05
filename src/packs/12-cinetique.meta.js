@@ -160,4 +160,12 @@ module.exports = [
     'Les interfaces sobres et les noms où la casse compte.',
     '<a href="#" data-fx="case-shuffle">Manifeste</a>',
     '<a class="demo-roll" href="#" data-fx="case-shuffle" style="color:var(--ink)">Manifeste</a>'),
+  E('breathe-track', 'Texte',
+    'L\'espacement entre les lettres s\'ouvre et se referme au rythme d\'une respiration calme.',
+    'Apaisant, presque méditatif.',
+    '- `data-fx-cycle` (6000) : durée d\'un cycle en millisecondes\n- `--fx-air` (.16em) : ouverture maximale',
+    'Marques de bien-être, attente, écran de pause.',
+    'Les pages denses : le mot change de largeur et déplace ses voisins.',
+    '<p data-fx="breathe-track">Inspirez</p>',
+    '<p class="demo-title" data-fx="breathe-track" style="font-size:30px">Inspirez</p>'),
 ];
