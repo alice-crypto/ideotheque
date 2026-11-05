@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->484<!-- /total --> effets.
+La bibliothèque contient <!-- total -->485<!-- /total --> effets.
 
 ## Règles
 
@@ -410,6 +410,7 @@ La bibliothèque contient <!-- total -->484<!-- /total --> effets.
 | `skip-link-reveal` | Navigation | Un lien « Aller au contenu » reste caché et descend quand on arrive sur la page au clavier |
 | `language-switch-flip` | Navigation | Un petit bouton rond affiche la langue en cours, et son sigle bascule en 3D quand on change |
 | `progress-steps-rail` | Navigation | Une ligne court d'étape en étape, et chaque étape franchie change de couleur |
+| `drawer-push` | Navigation | Un panneau latéral s'ouvre et pousse tout le contenu, comme un seul objet |
 | `scanlines` | Ambiance | Des lignes d'écran cathodique et un balayage lumineux passent sur un visuel, avec un léger scintillement |
 | `dot-grid` | Ambiance | Une trame de points recouvre le fond ; autour du curseur, les points grossissent et prennent la couleur d'accent |
 | `grain` | Ambiance | Un grain de pellicule animé recouvre le contenu, comme un film argentique |

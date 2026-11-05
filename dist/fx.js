@@ -8397,6 +8397,24 @@
       el._fxP.forEach(function (p) { p.d.style.setProperty('--fx-a', (Math.sin(T * p.f) * 38).toFixed(2) + 'deg'); });
     }
   });
+
+  // Un panneau latéral qui pousse tout le contenu
+  FX.register('drawer-push', {
+    setup: function (el) {
+      var btn = el.querySelector('[data-open]'), pan = el.querySelector('aside');
+      if (!btn || !pan) return;
+      btn.setAttribute('aria-expanded', 'false');
+      pan.setAttribute('inert', '');
+      var set = function (on) {
+        el.classList.toggle('fx-open', on);
+        btn.setAttribute('aria-expanded', on);
+        if (on) { pan.removeAttribute('inert'); var f = pan.querySelector('a,button'); if (f) f.focus(); }
+        else { pan.setAttribute('inert', ''); btn.focus(); }
+      };
+      btn.addEventListener('click', function () { set(!el.classList.contains('fx-open')); });
+      el.addEventListener('keydown', function (e) { if (e.key === 'Escape' && el.classList.contains('fx-open')) set(false); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

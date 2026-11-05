@@ -240,4 +240,13 @@ module.exports = [
     'Plusieurs à la fois.',
     '<div data-fx="pendulum-wave"></div>',
     '<div data-fx="pendulum-wave" style="color:var(--ink);--fx-gap:9px"></div>'),
+  E('drawer-push', 'Navigation',
+    'Un panneau latéral s\'ouvre et pousse tout le contenu, comme un seul objet.',
+    'Physique et net, l\'espace se partage.',
+    '- `--fx-w` (60%), `--fx-drawer-bg`\n- Le bouton porte `data-open`.',
+    'Filtres, menus, panneaux de détail.',
+    'De longs panneaux sur mobile : préférez `drawer`.',
+    '<div data-fx="drawer-push"><aside><a href="#">Lien</a></aside><main><button data-open>Menu</button></main></div>',
+    '<div data-fx="drawer-push" style="width:230px;height:150px;color:var(--ink);border:1px solid #333;border-radius:8px;font-size:13px"><aside style="padding:12px"><a href="#" style="color:inherit">Accueil</a></aside><div style="padding:12px"><button class="demo-ghost" data-open style="padding:6px 12px">Menu</button></div></div>',
+    { a11y: '`aria-expanded`, panneau `inert` tant qu\'il est fermé, focus géré et Échap.' }),
 ];
