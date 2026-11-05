@@ -33,4 +33,22 @@
       el.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" aria-hidden="true"><path class="fx-sl-area" d="' + line + ' L' + W + ' ' + H + ' L0 ' + H + ' Z"/><path class="fx-sl-line" pathLength="1" d="' + line + '"/></svg><i style="left:' + last[0] + '%;top:' + (last[1] / H * 100) + '%"></i>';
     }
   });
+
+  // Un calendrier d'activité qui s'allume en vague
+  FX.register('heat-calendar', {
+    entrance: true,
+    setup: function (el) {
+      var w = U.num(el, 'fxWeeks', 16), vals = el.dataset.fxValues ? el.dataset.fxValues.split(',').map(Number) : null;
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', el.getAttribute('aria-label') || 'Activité sur ' + w + ' semaines');
+      el.style.setProperty('--fx-w', w);
+      for (var i = 0; i < w * 7; i++) {
+        var c = U.make('i', '', el);
+        var col = Math.floor(i / 7);
+        var v = vals ? (vals[i] || 0) : Math.pow(Math.random(), 2.2);
+        c.style.setProperty('--fx-v', v.toFixed(2));
+        c.style.setProperty('--fx-d', (col * 28 + (i % 7) * 12) + 'ms');
+      }
+    }
+  });
 })(window.FX);
