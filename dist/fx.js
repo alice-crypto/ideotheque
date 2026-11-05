@@ -6731,6 +6731,24 @@
       });
     }
   });
+
+  // Des sources numérotées s'ouvrent dans le texte d'une réponse
+  FX.register('citation-pop', {
+    setup: function (el) {
+      el.querySelectorAll('[data-source]').forEach(function (c, i) {
+        var n = i + 1, a = document.createElement('a');
+        a.className = 'fx-cite';
+        a.href = c.getAttribute('href') || '#';
+        a.textContent = n;
+        a.setAttribute('aria-label', 'Source ' + n + ' : ' + c.dataset.source);
+        var tip = U.make('span', 'fx-cite-tip', a);
+        tip.textContent = c.dataset.source;
+        tip.setAttribute('aria-hidden', 'true');
+        a.style.setProperty('--fx-i', i);
+        c.replaceWith(a);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
