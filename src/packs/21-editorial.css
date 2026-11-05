@@ -49,3 +49,9 @@
 [data-fx="word-counter-goal"] .fx-wc::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 0 / calc(var(--fx-q, 0) * 100%) 100%, rgba(128, 128, 128, .28); transition: background-size .3s var(--fx-ease-out); }
 [data-fx="word-counter-goal"].fx-goal .fx-wc { color: var(--fx-accent); animation: fx-wc .5s var(--fx-ease-spring); }
 @keyframes fx-wc { 40% { transform: scale(1.06); } }
+
+/* typo-specimen : un spécimen de police */
+[data-fx="typo-specimen"] { display: grid; gap: 6px; font-size: 12px; }
+[data-fx="typo-specimen"] .fx-ts-v { font-size: var(--fx-s, 48px); font-weight: var(--fx-w, 500); line-height: 1; white-space: nowrap; overflow: hidden; outline: 0; transition: font-size .15s, font-weight .15s; }
+[data-fx="typo-specimen"] label { display: flex; align-items: center; justify-content: space-between; gap: .6em; }
+[data-fx="typo-specimen"] input { flex: 1; accent-color: var(--fx-accent); min-width: 0; }
