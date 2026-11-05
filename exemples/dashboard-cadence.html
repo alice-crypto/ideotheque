@@ -235,6 +235,13 @@
       }).observe(el, { childList: true });
     });
     document.getElementById('br').addEventListener('input', function () { document.getElementById('b').textContent = this.value; });
+    document.getElementById('pre').addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var r = document.getElementById('br');
+      r.value = b.textContent;
+      r.dispatchEvent(new Event('input', { bubbles: true }));
+    });
     /*@js*/
   </script>
 </body>
