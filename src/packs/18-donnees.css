@@ -91,3 +91,14 @@
 [data-fx="number-ticker-reel"] .fx-ntr { display: inline-block; white-space: pre; height: 1.15em; line-height: 1.15; overflow: hidden; }
 [data-fx="number-ticker-reel"] .fx-ntr-col { display: block; white-space: pre; transition: transform calc(1.3s + var(--fx-i) * .14s) var(--fx-ease-out); }
 .fx-in[data-fx="number-ticker-reel"] .fx-ntr-col { transform: translateY(-23em); }
+
+/* quote-card-shuffle : une pile de témoignages */
+[data-fx="quote-card-shuffle"] { position: relative; min-height: var(--fx-h, 130px); cursor: pointer; }
+[data-fx="quote-card-shuffle"] > * {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  transform: translateY(calc(var(--fx-pos, 0) * 8px)) scale(calc(1 - var(--fx-pos, 0) * .045)) rotate(calc(var(--fx-pos, 0) * 1.5deg));
+  transition: transform .42s var(--fx-ease-out), opacity .3s;
+}
+[data-fx="quote-card-shuffle"] > .fx-out { transform: translateX(70%) rotate(14deg); opacity: 0; }
