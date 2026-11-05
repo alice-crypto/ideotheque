@@ -8647,6 +8647,11 @@
       el.addEventListener('pointerleave', function () { cs.forEach(function (c) { c.style.setProperty('--fx-t', '0deg'); }); });
     }
   });
+
+  // Un mot vertical qui bascule à l'horizontale au survol
+  FX.register('vertical-type-flip', {
+    setup: function (el) { U.splitChars(el); el.querySelectorAll('.fx-char').forEach(function (c, i) { c.style.setProperty('--fx-i', i); }); }
+  });
 })(window.FX);
 
 window.FX._boot();

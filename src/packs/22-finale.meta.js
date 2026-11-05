@@ -347,4 +347,12 @@ module.exports = [
     'Les textes longs.',
     '<h1 data-fx="letter-tilt-cursor">Prairie</h1>',
     '<p class="demo-title" data-fx="letter-tilt-cursor">Prairie</p>'),
+  E('vertical-type-flip', 'Texte',
+    'Un mot écrit verticalement se couche en ligne au survol.',
+    'Affiche, enseigne, surprise typographique.',
+    'Aucun réglage.',
+    'Mots courts en marge d\'une page.',
+    'Un seul mot long.',
+    '<span data-fx="vertical-type-flip">JOUR</span>',
+    '<span class="demo-title" data-fx="vertical-type-flip" style="font-size:26px">JOUR</span>'),
 ];
