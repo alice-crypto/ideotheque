@@ -4321,6 +4321,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="heat-haze"] { overflow: hidden; }
 [data-fx="heat-haze"] > * { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); }
 
+/* Pack 17 — Parcours et mises en page */
+
+/* bento-expand : une grille qui s'ouvre */
+[data-fx="bento-expand"] { display: grid; grid-template-columns: repeat(var(--fx-cols, 3), 1fr); grid-auto-flow: dense; gap: var(--fx-gap, 10px); }
+[data-fx="bento-expand"] > * { cursor: pointer; }
+[data-fx="bento-expand"] > .fx-big { grid-column: span 2; grid-row: span 2; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
