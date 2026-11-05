@@ -321,4 +321,13 @@ module.exports = [
     '<div data-fx="kanban-move"><div><p data-card>Écrire</p></div><div></div><div></div></div>',
     '<div data-fx="kanban-move" style="width:225px"><div><div data-card>Écrire</div><div data-card>Relire</div></div><div><div data-card>Tester</div></div><div></div></div>',
     { trigger: 'Déplacer', a11y: 'Avec `prefers-reduced-motion: reduce`, les cartes ne bougent que sur demande.' }),
+  E('countdown-rings', 'Présentation',
+    'Un compte à rebours vers une vraie date, où chaque unité a son anneau.',
+    'Attente qui monte, rendez-vous à ne pas manquer.',
+    '- `data-fx-to` : date cible, par exemple `2027-01-15T18:00`\n- L\'élément émet `fx:done`.',
+    'Lancements, événements.',
+    'Un faux compte à rebours qui recommence : c\'est trompeur.',
+    '<div data-fx="countdown-rings" data-fx-to="2027-01-15T18:00"></div>',
+    '<div data-fx="countdown-rings" style="color:var(--ink)"></div>',
+    { a11y: 'Rôle `timer`.' }),
 ];
