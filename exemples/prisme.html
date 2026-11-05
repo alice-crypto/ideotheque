@@ -26,6 +26,10 @@
     .bento > * { padding: 22px; border-right: var(--rule); border-bottom: var(--rule); display: flex; flex-direction: column; justify-content: space-between; gap: 12px; overflow: hidden; }
     .bento h3 { font-size: 24px; line-height: 1.02; }
     .bento p { font-size: 15px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; list-style: none; padding: 0; margin: 0; counter-reset: st; }
+    .steps li { border-top: 3px solid var(--w); padding-top: 14px; counter-increment: st; }
+    .steps li::before { content: counter(st); display: block; font-size: clamp(70px, 9vw, 130px); font-weight: 800; line-height: 1; letter-spacing: -.05em; color: var(--y); }
+    .steps h3 { font-size: 26px; margin: 10px 0 8px; }
     /*@css*/
   </style>
 </head>
