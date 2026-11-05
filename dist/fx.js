@@ -3397,6 +3397,24 @@
       ['fx-h-a', 'fx-h-b'].forEach(function (c) { var s = U.make('span', c, el); s.textContent = t; s.setAttribute('aria-hidden', 'true'); });
     }
   });
+
+  // Au survol, la ligne de texte défile en continu
+  FX.register('hover-marquee', {
+    setup: function (el) {
+      var txt = el.textContent.trim();
+      el.setAttribute('aria-label', txt);
+      el.textContent = '';
+      var track = U.make('span', 'fx-hm-track', el);
+      track.setAttribute('aria-hidden', 'true');
+      var one = U.make('span', '', track);
+      one.textContent = txt + ' — ';
+      var w = one.offsetWidth || 120;
+      var copies = Math.ceil((el.offsetWidth || 300) / w) + 1;
+      for (var i = 0; i < copies; i++) track.appendChild(one.cloneNode(true));
+      el.style.setProperty('--fx-w', w + 'px');
+      el.style.setProperty('--fx-t', (w / U.num(el, 'fxSpeed', 80)).toFixed(2) + 's');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

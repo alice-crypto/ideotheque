@@ -135,4 +135,12 @@ module.exports = [
     '<h2 data-fx="half-shift">Rupture</h2>',
     '<p class="demo-title" data-fx="half-shift">Rupture</p>',
     { a11y: 'Le texte est dans `aria-label`, les deux copies sont masquées aux lecteurs d\'écran.' }),
+  E('hover-marquee', 'Texte',
+    'Au repos, une ligne de texte immobile ; au survol, elle défile en continu.',
+    'Éditorial, une liste qui s\'anime sous la main.',
+    '- `data-fx-speed` (80) : vitesse en pixels par seconde',
+    'Listes de projets, sommaires, grands liens.',
+    'Les textes qu\'il faut lire entièrement sans survol s\'ils sont coupés.',
+    '<a href="#" data-fx="hover-marquee">Tous les projets</a>',
+    '<a class="demo-roll" href="#" data-fx="hover-marquee" style="color:var(--ink);width:220px">Tous les projets</a>'),
 ];

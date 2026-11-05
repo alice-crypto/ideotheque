@@ -3202,6 +3202,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="half-shift"] .fx-h-a { clip-path: inset(0 0 50% 0); transform: translateX(var(--fx-shift, 0)); }
 [data-fx="half-shift"] .fx-h-b { clip-path: inset(50% 0 0 0); transform: translateX(calc(var(--fx-shift, 0px) * -1)); }
 
+/* hover-marquee : le texte défile au survol */
+[data-fx="hover-marquee"] { display: block; overflow: hidden; white-space: nowrap; }
+[data-fx="hover-marquee"] .fx-hm-track { display: inline-block; animation: fx-hm var(--fx-t, 4s) linear infinite paused; }
+[data-fx="hover-marquee"]:hover .fx-hm-track,
+[data-fx="hover-marquee"]:focus-visible .fx-hm-track { animation-play-state: running; }
+@keyframes fx-hm { to { transform: translateX(calc(var(--fx-w) * -1)); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
