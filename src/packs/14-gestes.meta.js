@@ -11,4 +11,12 @@ module.exports = [
     'Les interfaces de travail où chaque clic doit être précis.',
     '<div data-fx="spring-follow">…</div>',
     '<div class="demo-card" data-fx="spring-follow" style="height:130px;overflow:hidden"><b>Survolez</b>Le point vous suit.</div>'),
+  E('squish-drag', 'Micro-interaction',
+    'On attrape l\'élément : il s\'étire selon la vitesse du geste, puis revient en rebondissant.',
+    'Pâte à modeler, un jouet qu\'on ne lâche plus.',
+    'Aucun réglage.',
+    'Éléments décoratifs, autocollants, petits secrets.',
+    'Un élément qui contient des liens ou du texte à sélectionner.',
+    '<div data-fx="squish-drag">…</div>',
+    '<div class="demo-box" data-fx="squish-drag" style="width:110px;height:110px;border-radius:50%"></div>'),
 ];

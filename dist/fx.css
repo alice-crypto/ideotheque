@@ -3538,6 +3538,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 }
 [data-fx="spring-follow"].fx-on .fx-spring-dot { opacity: 1; }
 
+/* squish-drag : un objet élastique */
+[data-fx="squish-drag"] { cursor: grab; user-select: none; will-change: transform; }
+[data-fx="squish-drag"].fx-grab { cursor: grabbing; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
