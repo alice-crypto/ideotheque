@@ -3520,6 +3520,24 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="scroll-gauge"] .fx-g-on { stroke: var(--fx-accent); stroke-dasharray: var(--fx-v, 0) 100; stroke-linecap: round; }
 [data-fx="scroll-gauge"] b { font-variant-numeric: tabular-nums; }
 
+/* Pack 14 — Gestes et curseur */
+
+/* spring-follow : un point retenu par un ressort */
+[data-fx="spring-follow"] .fx-spring-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--fx-size, 28px);
+  height: var(--fx-size, 28px);
+  margin: calc(var(--fx-size, 28px) / -2);
+  border-radius: 50%;
+  background: var(--fx-accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s;
+}
+[data-fx="spring-follow"].fx-on .fx-spring-dot { opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
