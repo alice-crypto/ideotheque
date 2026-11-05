@@ -57,3 +57,12 @@
 /* wave-cover : une marée sur l'écran */
 .fx-tr-wave-cover i { inset: 0; }
 .fx-tr-wave-cover path { fill: var(--fx-tr-color, var(--fx-accent)); }
+
+/* cross-blinds : une trame qui se ferme */
+.fx-tr-cross-blinds i { background: var(--fx-tr-color, var(--fx-dark)); transition: transform .5s var(--fx-ease-io) var(--fx-d); }
+.fx-tr-cross-blinds .fx-v { top: 0; bottom: 0; width: 12.6%; transform: scaleX(0); }
+.fx-tr-cross-blinds .fx-h { left: 0; right: 0; height: 12.6%; transform: scaleY(0); }
+.fx-tr-cross-blinds.fx-cover i { transform: none; }
+.fx-tr-cross-blinds.fx-uncover i { transition-duration: .4s; }
+.fx-tr-cross-blinds.fx-uncover .fx-v { transform: scaleX(0); }
+.fx-tr-cross-blinds.fx-uncover .fx-h { transform: scaleY(0); }
