@@ -119,4 +119,13 @@ module.exports = [
     '<nav data-fx="mobile-tabbar-bump"><a href="#" aria-label="Accueil">⌂</a><a href="#" aria-label="Recherche">⌕</a></nav>',
     '<nav data-fx="mobile-tabbar-bump" style="width:210px"><a href="#" aria-label="Accueil">⌂</a><a href="#" aria-label="Recherche">⌕</a><a href="#" aria-label="Favoris">♡</a><a href="#" aria-label="Profil">☺</a></nav>',
     { a11y: 'Le lien actif porte `aria-current`. Nommez chaque icône avec `aria-label`.' }),
+  E('toc-minimap', 'Navigation',
+    'Une miniature de la page montre la longueur de chaque section et où se trouve l\'écran.',
+    'Éditeur de code, plan de métro, repère immédiat.',
+    '- `data-fx-target` (main > section) : sélecteur des sections\n- `--fx-w` (34px), `--fx-h` (150px) : dimensions',
+    'Longues pages, documentation, rapports.',
+    'Les pages courtes.',
+    '<aside data-fx="toc-minimap" data-fx-target="article > section"></aside>',
+    '<aside data-fx="toc-minimap" data-fx-target=".aucune-section"></aside>',
+    { a11y: 'Rôle de navigation, et un lien nommé pour chaque section.' }),
 ];

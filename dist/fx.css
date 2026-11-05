@@ -4457,6 +4457,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transition: transform .45s var(--fx-ease-out);
 }
 
+/* toc-minimap : la page en miniature */
+[data-fx="toc-minimap"] { position: relative; display: flex; flex-direction: column; gap: 2px; width: var(--fx-w, 34px); height: var(--fx-h, 150px); }
+[data-fx="toc-minimap"] a,
+[data-fx="toc-minimap"] b { display: block; background: rgba(128, 128, 128, .35); border-radius: 2px; }
+[data-fx="toc-minimap"] a:hover { background: var(--fx-accent); }
+[data-fx="toc-minimap"] .fx-mm-view { position: absolute; left: -3px; right: -3px; top: var(--fx-t, 0); height: var(--fx-h, 20%); border: 1.5px solid var(--fx-accent); border-radius: 4px; pointer-events: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

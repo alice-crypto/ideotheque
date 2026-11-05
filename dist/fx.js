@@ -6132,6 +6132,31 @@
       U.onResize(function () { var c = el.querySelector('.fx-cur'); if (c) set(c); });
     }
   });
+
+  // Une miniature de la page montre où se trouve l'écran
+  FX.register('toc-minimap', {
+    setup: function (el) {
+      var secs = Array.prototype.slice.call(document.querySelectorAll(el.dataset.fxTarget || 'main > section'));
+      el._fxV = U.make('i', 'fx-mm-view', el);
+      el._fxSecs = secs;
+      el.setAttribute('role', 'navigation');
+      el.setAttribute('aria-label', 'Plan de la page');
+      if (!secs.length) { for (var i = 0; i < 6; i++) U.make('b', '', el).style.flex = 1 + i % 3; return; }
+      var tot = document.documentElement.scrollHeight;
+      secs.forEach(function (s, i) {
+        var b = document.createElement('a');
+        b.href = s.id ? '#' + s.id : '#';
+        b.style.flex = s.offsetHeight / tot;
+        b.setAttribute('aria-label', (s.querySelector('h1,h2,h3') || {}).textContent || 'Section ' + (i + 1));
+        el.appendChild(b);
+      });
+    },
+    scroll: function (el, info) {
+      var tot = document.documentElement.scrollHeight;
+      el._fxV.style.setProperty('--fx-t', (window.scrollY / tot * 100).toFixed(2) + '%');
+      el._fxV.style.setProperty('--fx-h', Math.max(6, info.vh / tot * 100).toFixed(2) + '%');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
