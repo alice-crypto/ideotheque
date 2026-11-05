@@ -5215,6 +5215,31 @@
       for (y = 0; y < H; y++) for (x = 0; x < w; x++) if (n[y * w + x]) c.fillRect(x * S + 1, y * S + 1, S - 2, S - 2);
     }
   });
+
+  // Un ruban de lignes ondule comme un tissu dans le vent
+  FX.register('ribbon-sine', {
+    setup: function (el) { U.ensurePositioned(el); el._fxCv = U.make('canvas', 'fx-gen', el); el._fxCv.setAttribute('aria-hidden', 'true'); },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d'), n = U.num(el, 'fxLines', 34), T = t * .0005;
+      c.clearRect(0, 0, w, h);
+      c.strokeStyle = getComputedStyle(cv).color;
+      for (var i = 0; i < n; i++) {
+        var q = i / n;
+        c.globalAlpha = .15 + Math.sin(q * 3.14) * .55;
+        c.beginPath();
+        for (var x = 0; x <= w; x += 8) {
+          var y = h / 2 + Math.sin(x * .012 + T + q * 1.7) * h * .24 * (1 + Math.sin(T * .7 + q * 3)) * .6 + (q - .5) * h * .3 * Math.cos(x * .007 + T);
+          if (x) c.lineTo(x, y); else c.moveTo(x, y);
+        }
+        c.stroke();
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

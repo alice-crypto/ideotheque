@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->326<!-- /total --> effets.
+La bibliothèque contient <!-- total -->327<!-- /total --> effets.
 
 ## Règles
 
@@ -327,6 +327,7 @@ La bibliothèque contient <!-- total -->326<!-- /total --> effets.
 | `voronoi-cells` | Ambiance | Un réseau de cellules se déforme lentement, comme un tissu vivant vu au microscope |
 | `contour-lines` | Ambiance | Des courbes de niveau se déplacent doucement, comme une carte de relief qui respire |
 | `game-of-life` | Ambiance | Un automate cellulaire vit en fond : des motifs naissent, voyagent et s'éteignent |
+| `ribbon-sine` | Ambiance | Un ruban formé de dizaines de lignes fines ondule comme un tissu dans le vent |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |

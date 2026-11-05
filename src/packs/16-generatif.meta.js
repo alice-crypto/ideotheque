@@ -45,4 +45,13 @@ module.exports = [
     '<section data-fx="game-of-life">…</section>',
     '<div data-fx="game-of-life" style="width:230px;height:170px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste figée.' }),
+  E('ribbon-sine', 'Ambiance',
+    'Un ruban formé de dizaines de lignes fines ondule comme un tissu dans le vent.',
+    'Soie, fluidité, élégance scientifique.',
+    '- `data-fx-lines` (34) : nombre de lignes\n- `--fx-line` : couleur',
+    'En-têtes de page, sections d\'introduction.',
+    'Les interfaces très denses.',
+    '<section data-fx="ribbon-sine">…</section>',
+    '<div data-fx="ribbon-sine" style="width:230px;height:170px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le ruban reste immobile.' }),
 ];
