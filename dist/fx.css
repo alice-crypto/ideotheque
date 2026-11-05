@@ -5070,6 +5070,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="pop-confetti-title"] .fx-pct { position: absolute; left: 50%; top: 50%; width: 7px; height: 11px; border-radius: 1px; pointer-events: none; animation: fx-pct 1s var(--fx-ease-out) forwards; }
 @keyframes fx-pct { to { transform: translate(var(--fx-x), calc(var(--fx-y) + 26px)) rotate(var(--fx-r)); opacity: 0; } }
 
+/* Pack 21 — Détails éditoriaux */
+
+/* drop-cap-draw : une lettrine */
+[data-fx="drop-cap-draw"] .fx-dc { float: left; font-size: var(--fx-cap, 3.4em); line-height: .85; margin: .04em .1em 0 0; font-weight: 700; color: var(--fx-cap-c, var(--fx-accent)); transform: scale(1.8); opacity: 0; transform-origin: left top; transition: transform .8s var(--fx-ease-out), opacity .3s; }
+[data-fx="drop-cap-draw"] .fx-dc-r { opacity: 0; transition: opacity .7s .35s; }
+.fx-in[data-fx="drop-cap-draw"] .fx-dc { transform: none; opacity: 1; }
+.fx-in[data-fx="drop-cap-draw"] .fx-dc-r { opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
