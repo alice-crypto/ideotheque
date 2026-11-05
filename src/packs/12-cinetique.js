@@ -76,4 +76,11 @@
       });
     }
   });
+
+  // Le mot est le plus gras quand il passe au centre de l'écran
+  FX.register('scroll-weight', {
+    scroll: function (el, info) {
+      el.style.setProperty('--fx-peak', (1 - Math.abs(info.pass * 2 - 1)).toFixed(3));
+    }
+  });
 })(window.FX);
