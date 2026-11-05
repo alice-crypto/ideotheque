@@ -192,4 +192,12 @@ module.exports = [
     'Un élément sans rapport avec le son.',
     '<span data-fx="sound-bars-hover"></span>',
     '<div class="demo-chip"><span data-fx="sound-bars-hover" data-fx-auto="true" style="color:var(--fx-accent)"></span> En écoute</div>'),
+  E('pressure-word', 'Micro-interaction',
+    'Plus on appuie longtemps sur le mot, plus il s\'écrase et s\'étale, puis il rebondit au relâchement.',
+    'Un mot en caoutchouc sous le pouce.',
+    'Aucun réglage.',
+    'Clin d\'œil dans un titre ou un logo.',
+    'Un bouton dont l\'action doit partir au premier clic.',
+    '<span data-fx="pressure-word">Appuyez</span>',
+    '<p class="demo-title" data-fx="pressure-word">Appuyez</p>'),
 ];

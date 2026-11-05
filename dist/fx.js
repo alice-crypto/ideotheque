@@ -4497,6 +4497,20 @@
       });
     }
   });
+
+  // Plus on appuie longtemps, plus le mot s'écrase
+  FX.register('pressure-word', {
+    setup: function (el) {
+      el._fxP = 0; el._fxDown = false;
+      el.addEventListener('pointerdown', function () { el._fxDown = true; });
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (n) { el.addEventListener(n, function () { el._fxDown = false; }); });
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxP = el._fxDown ? Math.min(1, el._fxP + dt * 1.2) : el._fxP * .86;
+      el.style.setProperty('--fx-press', el._fxP.toFixed(3));
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
