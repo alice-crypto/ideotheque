@@ -107,4 +107,13 @@ module.exports = [
     'Les très petits boutons, où le geste ne se voit pas.',
     '<a href="#" data-fx="ink-button">Nous écrire</a>',
     '<a class="demo-ghost" href="#" data-fx="ink-button" style="text-decoration:none">Nous écrire</a>'),
+  E('gooey-menu', 'Micro-interaction',
+    'Les actions s\'échappent du bouton comme des gouttes, liées à lui par un pont liquide.',
+    'Lampe à lave, organique et ludique.',
+    '- `--fx-goo-ink` : couleur des icônes',
+    'Bouton d\'actions flottant.',
+    'Plus de 4 actions, et les sites sobres.',
+    '<div data-fx="gooey-menu"><button aria-label="Actions">+</button><a href="#">A</a><a href="#">B</a></div>',
+    '<div data-fx="gooey-menu" style="margin-top:80px"><button aria-label="Actions">+</button><a href="#" aria-label="Un">1</a><a href="#" aria-label="Deux">2</a></div>',
+    { a11y: 'Le bouton expose `aria-expanded`. Nommez chaque action avec `aria-label`.' }),
 ];

@@ -4295,6 +4295,35 @@
       el.addEventListener('pointerleave', mark);
     }
   });
+
+  // Un bouton dont les actions s'échappent comme des gouttes
+  FX.register('gooey-menu', {
+    setup: function (el) {
+      if (!document.getElementById('fx-goo')) {
+        var d = document.createElement('div');
+        d.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+        d.innerHTML = '<svg aria-hidden="true"><filter id="fx-goo"><feGaussianBlur in="SourceGraphic" stdDeviation="7"/><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 22 -9"/></filter></svg>';
+        document.body.appendChild(d);
+      }
+      var btn = el.querySelector('button');
+      var items = el.querySelectorAll('a,[data-item]');
+      // Les gouttes sont dans un calque filtré à part : les icônes restent nettes au-dessus
+      var layer = U.make('span', 'fx-goo-l', el);
+      layer.setAttribute('aria-hidden', 'true');
+      el.insertBefore(layer, el.firstChild);
+      U.make('i', '', layer);
+      items.forEach(function (a, i) {
+        a.style.setProperty('--fx-i', i + 1);
+        U.make('i', '', layer).style.setProperty('--fx-i', i + 1);
+      });
+      btn.setAttribute('aria-expanded', 'false');
+      btn.addEventListener('click', function () {
+        var on = !el.classList.contains('fx-open');
+        el.classList.toggle('fx-open', on);
+        btn.setAttribute('aria-expanded', on);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
