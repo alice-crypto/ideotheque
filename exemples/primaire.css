@@ -147,4 +147,10 @@ img, svg { display: block; max-width: 100%; }
   .pgrid { --cols: 1 !important; }
   .pfoot .wrap { grid-template-columns: 1fr; }
 }
+@media (max-width: 980px) {
+  .dash { grid-template-columns: 1fr; }
+  .dside { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .dmenu { display: flex; flex-wrap: wrap; }
+  .dcard { --w-col: 6 !important; }
+}
 /*@css*/
