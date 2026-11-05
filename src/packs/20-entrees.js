@@ -64,4 +64,19 @@
 
   // Les mots sortent du flou l'un après l'autre
   FX.register('blur-words', { entrance: true, setup: function (el) { U.splitWords(el); } });
+
+  // Des cartes sont distribuées depuis un même point
+  FX.register('card-deal', {
+    entrance: true,
+    setup: function (el) {
+      var b = el.getBoundingClientRect();
+      Array.prototype.forEach.call(el.children, function (c, i) {
+        var r = c.getBoundingClientRect();
+        c.style.setProperty('--fx-dx', (b.left + b.width / 2 - r.left - r.width / 2).toFixed(0) + 'px');
+        c.style.setProperty('--fx-dy', (b.top + b.height + 40 - r.top).toFixed(0) + 'px');
+        c.style.setProperty('--fx-r', U.rand(-22, 22).toFixed(0) + 'deg');
+        c.style.setProperty('--fx-i', i);
+      });
+    }
+  });
 })(window.FX);
