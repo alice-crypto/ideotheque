@@ -3919,6 +3919,19 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="knob-dial"] i::after { content: ""; position: absolute; left: 50%; top: 8%; width: 3px; height: 18%; margin-left: -1.5px; border-radius: 2px; background: var(--fx-accent); }
 [data-fx="knob-dial"] b { position: relative; color: #fff; font-variant-numeric: tabular-nums; font-size: 18px; }
 
+/* Pack 15 — Passages et images */
+
+/* diagonal-tiles : une vague de tuiles */
+.fx-tr-diagonal-tiles i {
+  width: 10.1%;
+  height: 14.4%;
+  background: var(--fx-tr-color, var(--fx-accent));
+  transform: scale(0);
+  transition: transform .42s var(--fx-ease-io) var(--fx-d);
+}
+.fx-tr-diagonal-tiles.fx-cover i { transform: scale(1.02); }
+.fx-tr-diagonal-tiles.fx-uncover i { transform: scale(0); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
