@@ -101,4 +101,13 @@ module.exports = [
     'Des prix sans la même période de référence : indiquez toujours « par mois ».',
     '<div data-fx="pricing-toggle-cards"><label><input type="checkbox"> Annuel</label><b data-month="19" data-year="15"></b></div>',
     '<div data-fx="pricing-toggle-cards" style="color:var(--ink);text-align:center"><label><input type="checkbox"> Annuel <span class="fx-save" style="color:var(--fx-accent)">−20 %</span></label><div style="font-size:44px;font-weight:700"><span data-month="19" data-year="15"></span> €</div></div>'),
+  E('feature-orbit-card', 'Présentation',
+    'Une liste de fonctions dont l\'élément actif change seul, avec une barre qui montre le temps restant.',
+    'Une présentation qui se déroule, sans jamais perdre la personne.',
+    '- `data-fx-hold` (3.2) : secondes par élément',
+    'Sections de fonctions d\'une page produit.',
+    'Un texte long à lire dans le temps imparti.',
+    '<ul data-fx="feature-orbit-card"><li>Rapide</li><li>Simple</li></ul>',
+    '<ul data-fx="feature-orbit-card" style="list-style:none;padding:0;margin:0;width:200px;color:var(--ink);font-size:15px"><li>Rapide</li><li>Simple</li><li>Discret</li></ul>',
+    { a11y: 'Pause au survol, réagit au focus. Avec `prefers-reduced-motion: reduce`, le défilement automatique s\'arrête.' }),
 ];
