@@ -139,4 +139,12 @@ module.exports = [
     '<section data-fx="lightning">…</section>',
     '<div data-fx="lightning" style="width:230px;height:170px"></div>',
     { trigger: 'Éclair', a11y: 'Aucun éclair avec `prefers-reduced-motion: reduce`. La fréquence reste bien inférieure à trois par seconde.' }),
+  E('sand-grain', 'Ambiance',
+    'Des grains tombent et s\'accumulent en dunes qui glissent, jusqu\'à recommencer.',
+    'Sablier, temps qui passe, patience.',
+    '- `data-fx-rate` (8) : grains par image\n- `--fx-sand` : couleur',
+    'Attentes, chargements longs, pages sur le temps.',
+    'Une petite surface : les dunes n\'ont pas le temps de se former.',
+    '<div data-fx="sand-grain" style="height:300px"></div>',
+    '<div data-fx="sand-grain" style="width:230px;height:170px"></div>'),
 ];

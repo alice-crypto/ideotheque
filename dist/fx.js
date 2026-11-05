@@ -5546,6 +5546,40 @@
       c.shadowBlur = 0;
     }
   });
+
+  // Du sable s'écoule et forme des dunes
+  FX.register('sand-grain', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+    },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, S = 3, w = Math.floor(cv.clientWidth / S), H = Math.floor(cv.clientHeight / S);
+      if (!w) return;
+      if (el._fxW !== w) {
+        el._fxW = w; cv.width = w * S; cv.height = H * S;
+        el._fxH = new Uint16Array(w);
+        for (var i = 0; i < w; i++) el._fxH[i] = Math.floor(H * .1 * (1 + Math.sin(i * .04)));
+      }
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      var c = cv.getContext('2d'), h = el._fxH;
+      c.fillStyle = getComputedStyle(cv).color;
+      for (var n = 0; n < U.num(el, 'fxRate', 8); n++) {
+        var x = Math.round(w / 2 + Math.sin(t * .0007) * w * .35 + U.rand(-6, 6));
+        x = U.clamp(x, 0, w - 1);
+        while (true) {
+          if (x > 0 && h[x - 1] + 1 < h[x]) x--;
+          else if (x < w - 1 && h[x + 1] + 1 < h[x]) x++;
+          else break;
+        }
+        h[x]++;
+        c.fillRect(x * S, (H - h[x]) * S, S, S);
+        if (h[x] > H * .85) { el._fxW = 0; c.clearRect(0, 0, cv.width, cv.height); return; }
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
