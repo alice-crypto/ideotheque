@@ -773,4 +773,16 @@
 
   // Les mots sont frappés l'un après l'autre sur l'écran
   FX.register('stamp-word', { entrance: true, setup: function (el) { U.splitWords(el); } });
+
+  // Une conversation apparaît bulle après bulle
+  FX.register('word-bubbles', {
+    entrance: true,
+    setup: function (el) {
+      var acc = 0;
+      Array.prototype.forEach.call(el.children, function (b) {
+        b.style.setProperty('--fx-d', acc + 'ms');
+        acc += 260 + b.textContent.length * U.num(el, 'fxPerChar', 16);
+      });
+    }
+  });
 })(window.FX);
