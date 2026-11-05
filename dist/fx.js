@@ -6982,6 +6982,34 @@
       el._fxSet(seq[el._fxI++ % seq.length]);
     }
   });
+
+  // Une pastille discrète indique l'enregistrement automatique
+  FX.register('save-pill', {
+    setup: function (el) {
+      el.setAttribute('role', 'status');
+      el._fxSt = function (s) {
+        var msg = { saving: 'Enregistrement…', saved: 'Enregistré', error: 'Échec, nouvel essai…', idle: '' };
+        el.dataset.fxState = s;
+        el.textContent = msg[s];
+      };
+      el._fxSt('idle');
+      el._fxC = 0;
+    },
+    trigger: function (el) {
+      clearTimeout(el._fxTo);
+      el._fxSt('saving');
+      var fail = el.dataset.fxDemo && ++el._fxC % 3 === 0;
+      el._fxTo = setTimeout(function () {
+        el._fxSt(fail ? 'error' : 'saved');
+        el._fxTo = setTimeout(function () { el._fxSt(fail ? 'saving' : 'idle'); if (fail) el._fxTo = setTimeout(function () { el._fxSt('saved'); }, 700); }, 1500);
+      }, 800);
+    },
+    tick: function (el, dt) {
+      if (!el.dataset.fxDemo || U.reduced) return;
+      el._fxW = (el._fxW || 3) + dt;
+      if (el._fxW > 3.6) { el._fxW = 0; FX.trigger(el); }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

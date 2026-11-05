@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="typing-indicator-name" data-fx-names="Noa|Sam"></div>',
     '<div data-fx="typing-indicator-name" data-fx-names="Noa|Sam" style="color:var(--ink)"></div>',
     { trigger: 'Changer', a11y: 'Rôle `status`. Les points sont décoratifs.' }),
+  E('save-pill', 'État',
+    'Une pastille discrète indique « Enregistrement… » puis « Enregistré », et s\'efface.',
+    'Tranquillité, on sait que rien n\'est perdu.',
+    '- `FX.trigger(el)` à chaque changement\n- Par code : `el._fxSt(\'saving\' | \'saved\' | \'error\' | \'idle\')`',
+    'Éditeurs, formulaires longs, réglages.',
+    'De dire « Enregistré » sans enregistrement réel : branchez-la sur la vraie réponse du serveur.',
+    '<span data-fx="save-pill"></span>',
+    '<span data-fx="save-pill" data-fx-demo="1" style="color:var(--ink);font-size:16px"></span>',
+    { trigger: 'Enregistrer', a11y: 'Rôle `status`, annoncé aux lecteurs d\'écran.' }),
 ];

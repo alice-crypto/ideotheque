@@ -4845,6 +4845,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="typing-indicator-name"] i:nth-of-type(3) { animation-delay: .3s; }
 @keyframes fx-tin { 30% { transform: translateY(-.3em); opacity: 1; } 0%, 60%, 100% { opacity: .35; transform: none; } }
 
+/* save-pill : l'enregistrement automatique */
+[data-fx="save-pill"] { display: inline-flex; align-items: center; gap: .45em; min-height: 1.5em; font-size: 12px; opacity: 0; transform: translateY(4px); transition: opacity .25s, transform .3s var(--fx-ease-out); }
+[data-fx="save-pill"]:not([data-fx-state="idle"]) { opacity: 1; transform: none; }
+[data-fx="save-pill"]::before { content: ""; width: .6em; height: .6em; border-radius: 50%; background: var(--fx-save, #888); }
+[data-fx="save-pill"][data-fx-state="saving"]::before { animation: fx-sav .8s infinite alternate; }
+[data-fx="save-pill"][data-fx-state="saved"]::before { background: var(--fx-saved, #2eaf63); }
+[data-fx="save-pill"][data-fx-state="error"]::before { background: var(--fx-err, #e10600); }
+@keyframes fx-sav { to { opacity: .3; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
