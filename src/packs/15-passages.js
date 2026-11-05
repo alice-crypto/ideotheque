@@ -360,4 +360,19 @@
       });
     }
   });
+
+  // Des photos tombent sur la table et se posent en désordre
+  FX.register('polaroid-drop', {
+    entrance: true,
+    setup: function (el) {
+      var top = el.children.length;
+      Array.prototype.forEach.call(el.children, function (c, i) {
+        c.style.setProperty('--fx-rot', U.rand(-14, 14).toFixed(1) + 'deg');
+        c.style.setProperty('--fx-dx', U.rand(-28, 28).toFixed(0) + 'px');
+        c.style.setProperty('--fx-dy', U.rand(-16, 16).toFixed(0) + 'px');
+        c.style.setProperty('--fx-i', i);
+        c.addEventListener('click', function () { c.style.zIndex = ++top; });
+      });
+    }
+  });
 })(window.FX);
