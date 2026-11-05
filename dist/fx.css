@@ -4929,6 +4929,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="typeset-lines"] .fx-line > span { display: block; transform: translateX(calc(var(--fx-dir, 1) * 40%)); opacity: 0; transition: transform .8s var(--fx-ease-out) calc(var(--fx-i) * 90ms), opacity .4s calc(var(--fx-i) * 90ms); }
 .fx-in[data-fx="typeset-lines"] .fx-line > span { transform: none; opacity: 1; }
 
+/* bounce-grid : une onde de rebonds */
+[data-fx="bounce-grid"] > * { transform: scale(0); transition: transform .6s var(--fx-ease-spring) var(--fx-d, 0ms); }
+.fx-in[data-fx="bounce-grid"] > * { transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

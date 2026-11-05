@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->410<!-- /total --> effets.
+La bibliothèque contient <!-- total -->411<!-- /total --> effets.
 
 ## Règles
 
@@ -48,6 +48,7 @@ La bibliothèque contient <!-- total -->410<!-- /total --> effets.
 | `cascade-rows` | Entrée | Les éléments d'une grille arrivent rangée par rangée, selon leur position réelle à l'écran |
 | `spotlight-in` | Entrée | Un projecteur balaye l'élément dans le noir, puis l'éclaire en entier |
 | `typeset-lines` | Entrée | Les lignes d'un texte arrivent une à une depuis des côtés alternés, et se calent sur la marge |
+| `bounce-grid` | Entrée | Les cases d'une grille rebondissent en onde, depuis le centre vers les bords |
 | `text-split` | Texte | Donner du poids à un titre en le faisant apparaître lettre par lettre |
 | `text-scramble` | Texte | Un texte brouillé en signes aléatoires qui se décode lettre par lettre, de gauche à droite |
 | `typewriter` | Texte | Le texte s'écrit lettre par lettre, suivi d'un curseur qui clignote |

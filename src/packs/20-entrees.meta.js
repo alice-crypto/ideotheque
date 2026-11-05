@@ -30,4 +30,13 @@ module.exports = [
     '<h2 data-fx="typeset-lines">Une page se compose ligne après ligne</h2>',
     '<p class="demo-para" data-fx="typeset-lines" style="color:var(--ink)">Une page se compose ligne après ligne</p>',
     { trigger: 'Rejouer' }),
+  E('bounce-grid', 'Entrée',
+    'Les cases d\'une grille rebondissent en onde, depuis le centre vers les bords.',
+    'Vivant, enjoué, une goutte dans l\'eau.',
+    '- `--fx-ease-spring` : courbe du rebond',
+    'Icônes, petites cartes, logos.',
+    'Les grandes images.',
+    '<div data-fx="bounce-grid">…</div>',
+    '<div class="demo-grid" data-fx="bounce-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
+    { trigger: 'Rejouer' }),
 ];
