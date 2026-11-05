@@ -23,3 +23,9 @@
 /* cursor-repel : le texte s'écarte du curseur */
 [data-fx="cursor-repel"] { display: inline-block; padding: .4em; margin: -.4em; }
 [data-fx="cursor-repel"] .fx-char { display: inline-block; }
+
+/* scroll-weight : la graisse culmine au centre de l'écran */
+[data-fx="scroll-weight"] {
+  font-weight: calc(200 + var(--fx-peak, 0) * 700);
+  transform: scaleX(calc(.96 + var(--fx-peak, 0) * .06));
+}
