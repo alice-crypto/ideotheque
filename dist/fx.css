@@ -3495,6 +3495,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="stairs-scroll"] { display: flex; gap: var(--fx-gap, 10px); align-items: flex-end; }
 [data-fx="stairs-scroll"] > * { transform: translateY(calc((var(--fx-i) + 1) * var(--fx-rest, 0) * var(--fx-step, 34px))); }
 
+/* wipe-scrub : un balayage en biais */
+[data-fx="wipe-scrub"] {
+  -webkit-mask: linear-gradient(var(--fx-angle, 110deg), #000 calc(var(--fx-at, 130%) - var(--fx-soft, 20%)), transparent var(--fx-at, 130%));
+  mask: linear-gradient(var(--fx-angle, 110deg), #000 calc(var(--fx-at, 130%) - var(--fx-soft, 20%)), transparent var(--fx-at, 130%));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

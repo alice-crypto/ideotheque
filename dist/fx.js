@@ -3948,6 +3948,11 @@
     setup: function (el) { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-i', i); }); },
     scroll: function (el, info) { el.style.setProperty('--fx-rest', (1 - U.easeOut(info.enter)).toFixed(3)); }
   });
+
+  // Un balayage progressif dévoile l'élément en biais
+  FX.register('wipe-scrub', {
+    scroll: function (el, info) { el.style.setProperty('--fx-at', (info.enter * 160 - 30).toFixed(1) + '%'); }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -217,4 +217,12 @@ module.exports = [
     'Les colonnes de hauteurs déjà irrégulières.',
     '<div data-fx="stairs-scroll"><div>…</div><div>…</div><div>…</div></div>',
     '<div data-fx="stairs-scroll"><div class="demo-box" style="width:44px;height:60px"></div><div class="demo-box alt" style="width:44px;height:60px"></div><div class="demo-box ink" style="width:44px;height:60px"></div><div class="demo-box" style="width:44px;height:60px"></div></div>'),
+  E('wipe-scrub', 'Défilement',
+    'Un balayage en biais au bord adouci dévoile l\'élément au fil du défilement.',
+    'Essuie-glace sur une vitre embuée.',
+    '- `--fx-angle` (110deg) : angle du balayage\n- `--fx-soft` (20%) : douceur du bord',
+    'Images et titres en grand.',
+    'Les contenus qu\'il faut lire à l\'arrivée.',
+    '<img data-fx="wipe-scrub" src="photo.jpg" alt="">',
+    '<div class="demo-box" data-fx="wipe-scrub" style="width:210px;height:140px"></div>'),
 ];
