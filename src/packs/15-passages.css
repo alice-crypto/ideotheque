@@ -213,3 +213,9 @@
 [data-fx="dither-reveal"] { overflow: hidden; }
 [data-fx="dither-reveal"] .fx-dither { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; transition: opacity var(--fx-speed, 1.4s) steps(7) .5s; }
 .fx-in[data-fx="dither-reveal"] .fx-dither { opacity: 0; }
+
+/* duotone-hover : une affiche en deux couleurs */
+[data-fx="duotone-hover"] { overflow: hidden; }
+[data-fx="duotone-hover"] img { display: block; width: 100%; height: 100%; object-fit: cover; filter: var(--fx-duo); transition: transform .6s var(--fx-ease-out); }
+[data-fx="duotone-hover"]:hover img,
+[data-fx="duotone-hover"]:focus-visible img { filter: none; transform: scale(1.05); }
