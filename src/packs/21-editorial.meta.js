@@ -188,4 +188,13 @@ module.exports = [
     '<nav data-fx="pagination-squeeze" data-fx-pages="5"></nav>',
     '<nav data-fx="pagination-squeeze" style="color:var(--ink)"></nav>',
     { trigger: 'Page suivante', a11y: 'La page courante porte `aria-current="page"`.' }),
+  E('accordion-plus-morph', 'Micro-interaction',
+    'Une foire aux questions : le panneau s\'ouvre en douceur et le plus se change en moins.',
+    'Ordonné, on n\'ouvre que ce qui nous intéresse.',
+    '- `data-fx-single="false"` : autorise plusieurs panneaux ouverts',
+    'Questions fréquentes, détails d\'une offre.',
+    'Du contenu indispensable caché par défaut.',
+    '<div data-fx="accordion-plus-morph"><div><button>Question</button><div><p>Réponse</p></div></div></div>',
+    '<div data-fx="accordion-plus-morph" style="width:215px;color:var(--ink);font-size:14px"><div><button>Est-ce gratuit ?</button><div><p>Oui, sous licence MIT.</p></div></div><div><button>Faut-il installer ?</button><div><p>Deux fichiers suffisent.</p></div></div></div>',
+    { a11y: '`aria-expanded` sur chaque bouton.' }),
 ];

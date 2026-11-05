@@ -7858,6 +7858,26 @@
     },
     trigger: function (el) { el._fxGo(); }
   });
+
+  // Une foire aux questions dont le plus se change en moins
+  FX.register('accordion-plus-morph', {
+    setup: function (el) {
+      var single = el.dataset.fxSingle !== 'false';
+      var items = Array.prototype.slice.call(el.children);
+      items.forEach(function (it) {
+        var b = it.querySelector('button');
+        if (!b) return;
+        b.setAttribute('aria-expanded', 'false');
+        U.make('i', 'fx-apm', b).setAttribute('aria-hidden', 'true');
+        b.addEventListener('click', function () {
+          var on = b.getAttribute('aria-expanded') !== 'true';
+          if (single) items.forEach(function (o) { var x = o.querySelector('button'); if (x) x.setAttribute('aria-expanded', 'false'); o.classList.remove('fx-open'); });
+          b.setAttribute('aria-expanded', on);
+          it.classList.toggle('fx-open', on);
+        });
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
