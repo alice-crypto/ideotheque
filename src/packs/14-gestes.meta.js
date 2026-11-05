@@ -72,4 +72,13 @@ module.exports = [
     '<button data-fx="hold-confirm">Maintenir pour supprimer</button>',
     '<button class="demo-btn" data-fx="hold-confirm">Maintenir</button>',
     { a11y: 'Fonctionne au clavier avec Espace ou Entrée maintenus. Prévoyez aussi une autre façon de confirmer pour les personnes qui ne peuvent pas maintenir un appui.' }),
+  E('snap-toggle', 'Micro-interaction',
+    'Le bouton de l\'interrupteur s\'étire avant de sauter de l\'autre côté, comme une goutte.',
+    'Plaisant, élastique, un petit clic satisfaisant.',
+    '- `--fx-on`, `--fx-off` : couleurs des états\n- `data-fx-on="true"` : allumé au départ\n- L\'élément émet `fx:change`.',
+    'Réglages, préférences, modes clair et sombre.',
+    'Une action qui prend du temps : l\'interrupteur doit agir aussitôt.',
+    '<span data-fx="snap-toggle" aria-label="Notifications"></span>',
+    '<span data-fx="snap-toggle" aria-label="Notifications" data-fx-on="true"></span>',
+    { trigger: 'Basculer', a11y: 'Rôle `switch`, géré au clavier. Donnez-lui un `aria-label`.' }),
 ];

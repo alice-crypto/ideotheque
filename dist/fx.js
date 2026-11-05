@@ -4212,6 +4212,23 @@
     },
     tick: function (el, dt) { el._fxStep(dt); }
   });
+
+  // Un interrupteur dont le bouton s'étire avant de sauter de l'autre côté
+  FX.register('snap-toggle', {
+    setup: function (el) {
+      el.setAttribute('role', 'switch');
+      el.tabIndex = 0;
+      el.setAttribute('aria-checked', el.dataset.fxOn === 'true' ? 'true' : 'false');
+      U.make('i', '', el).setAttribute('aria-hidden', 'true');
+      el.addEventListener('keydown', function (e) { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); FX.trigger(el); } });
+    },
+    triggerOn: 'click',
+    trigger: function (el) {
+      var on = el.getAttribute('aria-checked') !== 'true';
+      el.setAttribute('aria-checked', on);
+      el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true, detail: { on: on } }));
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

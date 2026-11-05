@@ -3631,6 +3631,30 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="hold-confirm"].fx-confirmed { animation: fx-hold-ok .4s var(--fx-ease-spring); }
 @keyframes fx-hold-ok { 40% { transform: scale(1.06); } }
 
+/* snap-toggle : un interrupteur élastique */
+[data-fx="snap-toggle"] {
+  display: inline-block;
+  position: relative;
+  width: 58px;
+  height: 32px;
+  border-radius: 99px;
+  background: var(--fx-off, #888);
+  cursor: pointer;
+  transition: background .25s;
+}
+[data-fx="snap-toggle"][aria-checked="true"] { background: var(--fx-on, var(--fx-accent)); }
+[data-fx="snap-toggle"] i {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  right: 30px;
+  border-radius: 99px;
+  background: #fff;
+  transition: left .28s var(--fx-ease-spring) .06s, right .28s var(--fx-ease-spring);
+}
+[data-fx="snap-toggle"][aria-checked="true"] i { left: 30px; right: 4px; transition: left .28s var(--fx-ease-spring), right .28s var(--fx-ease-spring) .06s; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
