@@ -3429,6 +3429,9 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="door-scroll"] .fx-door-l { left: 0; transform-origin: left; transform: rotateY(calc(var(--fx-door, 1) * -100deg)); }
 [data-fx="door-scroll"] .fx-door-r { right: 0; transform-origin: right; transform: rotateY(calc(var(--fx-door, 1) * 100deg)); }
 
+/* grid-breathe : une grille qui respire */
+[data-fx="grid-breathe"] { gap: calc(var(--fx-min, 6px) + var(--fx-air, 0) * var(--fx-max, 34px)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

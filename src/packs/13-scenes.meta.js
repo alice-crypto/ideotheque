@@ -135,4 +135,12 @@ module.exports = [
     'Les contenus indispensables tout en haut de page.',
     '<section data-fx="door-scroll">…</section>',
     '<div class="demo-box" data-fx="door-scroll" style="width:210px;height:150px"></div>'),
+  E('grid-breathe', 'Défilement',
+    'Les cases d\'une grille s\'écartent en bord d\'écran et se resserrent au centre.',
+    'Une mosaïque qui se compose quand on la regarde.',
+    '- `--fx-min` (6px) : écart au centre\n- `--fx-max` (34px) : écart ajouté aux bords',
+    'Galeries en grille, sections bento.',
+    'Les grilles déjà très serrées en hauteur.',
+    '<div data-fx="grid-breathe" style="display:grid;grid-template-columns:repeat(3,1fr)">…</div>',
+    '<div class="demo-grid" data-fx="grid-breathe"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'),
 ];

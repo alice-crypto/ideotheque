@@ -3854,6 +3854,11 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-door', U.easeInOut(U.clamp(info.enter * 1.2 - .1, 0, 1)).toFixed(3)); }
   });
+
+  // La grille se resserre en arrivant au centre
+  FX.register('grid-breathe', {
+    scroll: function (el, info) { el.style.setProperty('--fx-air', Math.abs(info.pass * 2 - 1).toFixed(3)); }
+  });
 })(window.FX);
 
 window.FX._boot();
