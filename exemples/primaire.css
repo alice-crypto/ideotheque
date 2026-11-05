@@ -34,4 +34,5 @@ img, svg { display: block; max-width: 100%; }
   outline-offset: 3px;
   box-shadow: 0 0 0 3px var(--y);
 }
+.wrap { width: min(1240px, 100% - 40px); margin-inline: auto; }
 /*@css*/
