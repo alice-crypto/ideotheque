@@ -236,4 +236,13 @@ module.exports = [
     '<div data-fx="tag-delete"><span>Design <button aria-label="Retirer">×</button></span></div>',
     '<div data-fx="tag-delete" style="width:220px"><span class="demo-chip">Design <button aria-label="Retirer">×</button></span><span class="demo-chip">Code <button aria-label="Retirer">×</button></span><span class="demo-chip">Son <button aria-label="Retirer">×</button></span></div>',
     { a11y: 'Le focus passe sur l\'étiquette voisine après la suppression.' }),
+  E('copy-pop-toast', 'Micro-interaction',
+    'Une petite bulle apparaît à l\'endroit du clic pour confirmer l\'action, puis s\'envole.',
+    'Le retour arrive là où on regarde, sans bruit.',
+    '- `data-fx-message` (Copié !) : texte de la bulle\n- `data-fx-copy` : texte à copier dans le presse-papiers',
+    'Copier un code, ajouter aux favoris, enregistrer.',
+    'Une erreur ou une information à lire longtemps : préférez `toast`.',
+    '<button data-fx="copy-pop-toast" data-fx-copy="npm i">Copier</button>',
+    '<button class="demo-ghost" data-fx="copy-pop-toast" data-fx-message="Copié !">Copier</button>',
+    { trigger: 'Cliquer', a11y: 'La bulle a le rôle `status`, annoncé par les lecteurs d\'écran.' }),
 ];

@@ -3875,6 +3875,26 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transition: width .32s var(--fx-ease-io), padding .32s var(--fx-ease-io), margin .32s var(--fx-ease-io), opacity .2s, transform .3s;
 }
 
+/* copy-pop-toast : une bulle au point de clic */
+[data-fx="copy-pop-toast"] { cursor: pointer; }
+.fx-cpt {
+  position: fixed;
+  z-index: 9999;
+  padding: .3em .7em;
+  border-radius: 99px;
+  background: var(--fx-accent);
+  color: #111;
+  font: 600 13px system-ui, sans-serif;
+  pointer-events: none;
+  animation: fx-cpt .9s var(--fx-ease-out) forwards;
+}
+@keyframes fx-cpt {
+  0% { transform: translate(-50%, -60%) scale(.5); opacity: 0; }
+  25% { transform: translate(-50%, -140%) scale(1); opacity: 1; }
+  70% { transform: translate(-50%, -160%); opacity: 1; }
+  100% { transform: translate(-50%, -200%); opacity: 0; }
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
