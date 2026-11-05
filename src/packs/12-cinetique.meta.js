@@ -109,4 +109,13 @@ module.exports = [
     '<h2 data-fx="dot-matrix">Départ 08:42</h2>',
     '<p class="demo-title" data-fx="dot-matrix" style="color:var(--ink);font-weight:800">Départ</p>',
     { trigger: 'Rejouer', a11y: 'Le texte est dans `aria-label`. Avec `prefers-reduced-motion: reduce`, le panneau s\'affiche tout de suite.' }),
+  E('ascii-decay', 'Texte',
+    'Les lettres émergent d\'une suite de blocs de densité, du plus plein au plus léger.',
+    'Terminal, signal qui se décode, machine au travail.',
+    '- `data-fx-duration` (1400) : durée en millisecondes',
+    'Produits techniques, assistants d\'IA, lignes de commande.',
+    'Les marques chaleureuses : le rendu reste froid.',
+    '<h2 data-fx="ascii-decay">Signal reçu</h2>',
+    '<p class="demo-mono" data-fx="ascii-decay">Signal reçu</p>',
+    { trigger: 'Rejouer', a11y: 'Le texte final est dans `aria-label`.' }),
 ];
