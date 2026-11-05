@@ -6612,6 +6612,24 @@
       mark(best);
     }
   });
+
+  // Un itinéraire se dessine au fil du défilement et allume ses étapes
+  FX.register('map-route-draw', {
+    setup: function (el) {
+      var path = el.querySelector('path');
+      if (!path) return;
+      var L = path.getTotalLength();
+      path.style.strokeDasharray = L;
+      el._fxP = path; el._fxL = L;
+      el._fxS = Array.prototype.slice.call(el.querySelectorAll('[data-at]')).map(function (d) { return { d: d, at: parseFloat(d.dataset.at) }; });
+    },
+    scroll: function (el, info) {
+      if (!el._fxP) return;
+      var q = el.dataset.fxDemo ? .72 : info.enter;
+      el._fxP.style.strokeDashoffset = (el._fxL * (1 - q)).toFixed(1);
+      el._fxS.forEach(function (s) { s.d.classList.toggle('fx-on', q >= s.at); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

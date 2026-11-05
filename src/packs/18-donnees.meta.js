@@ -145,4 +145,13 @@ module.exports = [
     'Les tableaux très larges sur mobile : prévoyez aussi un défilement.',
     '<table data-fx="compare-table-sweep" data-fx-best="2">…</table>',
     '<table data-fx="compare-table-sweep" data-fx-best="2" style="color:var(--ink);font-size:12px"><thead><tr><th></th><th>Libre</th><th>Pro</th></tr></thead><tbody><tr><td>Effets</td><td>100</td><td>500</td></tr><tr><td>Appui</td><td>—</td><td>Oui</td></tr></tbody></table>'),
+  E('map-route-draw', 'Présentation',
+    'Un itinéraire se dessine au fil du défilement, et chaque étape atteinte s\'allume.',
+    'Carnet de voyage, on avance avec le tracé.',
+    '- `data-at` sur chaque étape : position entre 0 et 1\n- `--fx-route`, `--fx-weight`',
+    'Voyages, histoires d\'expédition, livraisons.',
+    'Un chemin SVG qui ne suit pas l\'ordre du récit.',
+    '<svg data-fx="map-route-draw" viewBox="0 0 300 150"><path d="M10 120 C80 20 200 140 290 30"/><circle cx="10" cy="120" r="5" data-at="0"/></svg>',
+    '<svg data-fx="map-route-draw" data-fx-demo="1" viewBox="0 0 300 150" style="width:230px;color:var(--ink)"><path d="M10 120 C80 20 200 140 290 30"/><circle cx="10" cy="120" r="4" data-at="0"/><circle cx="110" cy="76" r="4" data-at=".35"/><circle cx="200" cy="90" r="4" data-at=".65"/><circle cx="290" cy="30" r="4" data-at=".98"/></svg>',
+    { a11y: 'Ajoutez `role="img"` et `aria-label` au SVG pour décrire l\'itinéraire.' }),
 ];
