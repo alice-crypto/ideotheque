@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->460<!-- /total --> effets.
+La bibliothèque contient <!-- total -->461<!-- /total --> effets.
 
 ## Règles
 
@@ -299,6 +299,7 @@ La bibliothèque contient <!-- total -->460<!-- /total --> effets.
 | `scroll-clock` | Défilement | Les aiguilles d'une horloge tournent au rythme du défilement |
 | `parallax-letters` | Défilement | Chaque lettre du titre se déplace à sa propre vitesse, et elles s'alignent au centre de l'écran |
 | `tilted-band` | Défilement | Un bandeau de couleur incliné traverse la section et son texte glisse au défilement |
+| `grid-open-scroll` | Défilement | Une grille de cases recouvre l'image, et elles disparaissent au hasard au fil du défilement |
 | `page-wipe` | Transition | Deux panneaux (couleur d'accent, puis couleur de fond) montent pour recouvrir l'écran, puis repartent par le haut sur la page suivante |
 | `bands` | Transition | Cinq bandes verticales de couleurs vives tombent l'une après l'autre pour couvrir l'écran, puis continuent leur chute |
 | `circle-expand` | Transition | Un cercle grandit depuis le point exact du clic jusqu'à couvrir l'écran, puis se referme au centre |

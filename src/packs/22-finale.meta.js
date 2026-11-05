@@ -36,4 +36,12 @@ module.exports = [
     '<div data-fx="tilted-band">Nouvelle saison</div>',
     '<div style="position:relative;width:100%;overflow:hidden;padding:30px 0"><div data-fx="tilted-band">Nouvelle saison</div></div>',
     { a11y: 'Le texte est dans `aria-label`.' }),
+  E('grid-open-scroll', 'Défilement',
+    'Une grille de cases recouvre l\'image, et elles disparaissent au hasard au fil du défilement.',
+    'Puzzle qu\'on découvre, curiosité.',
+    '- `data-fx-cols` (8), `data-fx-rows` (6), `--fx-tile`',
+    'Grandes images de chapitres.',
+    'Du contenu à lire dès l\'arrivée.',
+    '<figure data-fx="grid-open-scroll"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="grid-open-scroll"><img src="assets/city.svg" alt=""></div>'),
 ];

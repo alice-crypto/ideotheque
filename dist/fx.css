@@ -5235,6 +5235,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="tilted-band"] { display: block; width: 120%; margin-left: -10%; padding: .4em 0; overflow: hidden; white-space: nowrap; background: var(--fx-band-bg, var(--fx-accent)); color: var(--fx-band-ink, #111); font-weight: 700; transform: rotate(var(--fx-angle, -4deg)); }
 [data-fx="tilted-band"] span { display: inline-block; }
 
+/* grid-open-scroll : une mosaïque qui s'ouvre */
+[data-fx="grid-open-scroll"] { overflow: hidden; }
+[data-fx="grid-open-scroll"] .fx-gos { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(var(--fx-c), 1fr); grid-template-rows: repeat(var(--fx-rw), 1fr); pointer-events: none; }
+[data-fx="grid-open-scroll"] .fx-gos i { background: var(--fx-tile, var(--fx-dark)); opacity: 0; transition: opacity .25s; }
+[data-fx="grid-open-scroll"] .fx-gos i.fx-on { opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

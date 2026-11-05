@@ -7933,6 +7933,20 @@
     },
     scroll: function (el, info) { el.firstChild.style.transform = 'translateX(' + ((info.pass * 30) * el._fxDir - 10).toFixed(2) + '%)'; }
   });
+
+  // Une grille de cases s'ouvre au hasard sur l'image
+  FX.register('grid-open-scroll', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var C = U.num(el, 'fxCols', 8), R = U.num(el, 'fxRows', 6), g = U.make('div', 'fx-gos', el);
+      g.setAttribute('aria-hidden', 'true');
+      el.style.setProperty('--fx-c', C);
+      el.style.setProperty('--fx-rw', R);
+      el._fxC = [];
+      for (var i = 0; i < C * R; i++) el._fxC.push({ d: U.make('i', '', g), at: Math.random() * .85 });
+    },
+    scroll: function (el, info) { var p = info.enter; el._fxC.forEach(function (c) { var o = p < c.at; if (o !== c.o) { c.o = o; c.d.classList.toggle('fx-on', o); } }); }
+  });
 })(window.FX);
 
 window.FX._boot();
