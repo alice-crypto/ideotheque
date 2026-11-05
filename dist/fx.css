@@ -4785,6 +4785,27 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="error-glitch-shake"].fx-err textarea { border-color: var(--fx-err, #e10600); animation: fx-eg .4s var(--fx-ease-out); }
 @keyframes fx-eg { 20% { transform: translateX(-6px); } 40% { transform: translateX(5px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(2px); } }
 
+/* success-stamp : un coup de tampon */
+[data-fx="success-stamp"] .fx-stamp {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: .2em .6em;
+  border: 3px solid var(--fx-stamp, var(--fx-accent));
+  border-radius: 6px;
+  color: var(--fx-stamp, var(--fx-accent));
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(var(--fx-r)) scale(3);
+}
+[data-fx="success-stamp"] .fx-stamp.fx-on { animation: fx-stamp .34s var(--fx-ease-in, cubic-bezier(.6, 0, .9, .3)) forwards; }
+@keyframes fx-stamp { to { opacity: 1; transform: translate(-50%, -50%) rotate(var(--fx-r)) scale(1); } }
+[data-fx="success-stamp"].fx-stamped { animation: fx-stamped .26s .28s; }
+@keyframes fx-stamped { 30% { transform: scale(.985) translateY(2px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

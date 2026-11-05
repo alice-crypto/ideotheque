@@ -6877,6 +6877,20 @@
       if (input) input.addEventListener('input', function () { el.classList.remove('fx-err'); input.removeAttribute('aria-invalid'); var b = el.querySelector('.fx-eg-msg'); if (b) b.textContent = ''; });
     }
   });
+
+  // Un tampon « Validé » s'écrase sur l'élément
+  FX.register('success-stamp', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var s = el._fxS = U.make('span', 'fx-stamp', el);
+      s.textContent = el.dataset.fxStamp || 'Validé';
+      s.setAttribute('role', 'status');
+      s.style.setProperty('--fx-r', U.rand(-14, -6).toFixed(1) + 'deg');
+      if (el.dataset.fxAuto === 'true') FX.trigger(el);
+    },
+    triggerOn: 'fx:ok',
+    trigger: function (el) { el._fxS.classList.remove('fx-on'); void el._fxS.offsetWidth; el._fxS.classList.add('fx-on'); el.classList.add('fx-stamped'); setTimeout(function () { el.classList.remove('fx-stamped'); }, 260); }
+  });
 })(window.FX);
 
 window.FX._boot();

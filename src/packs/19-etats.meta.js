@@ -93,4 +93,13 @@ module.exports = [
     '<label data-fx="error-glitch-shake" data-fx-error="Adresse incomplète."><input></label>',
     '<label data-fx="error-glitch-shake" data-fx-error="Adresse incomplète." style="width:200px;color:var(--ink);font-size:13px"><input value="ana@" style="padding:8px;background:transparent;border:1px solid #666;border-radius:6px;color:inherit"></label>',
     { trigger: 'Montrer l\'erreur', a11y: 'Le message a le rôle `alert`, et le champ reçoit `aria-invalid`.' }),
+  E('success-stamp', 'État',
+    'Un tampon « Validé » s\'écrase sur l\'élément, avec une petite secousse au moment du choc.',
+    'Administratif et satisfaisant, l\'affaire est réglée.',
+    '- `data-fx-stamp` (Validé) : le texte\n- `data-fx-auto="true"` : déclenché à l\'affichage\n- `FX.trigger(el)` par code',
+    'Paiement accepté, dossier validé, jeu réussi.',
+    'Les actions banales : le geste doit rester rare.',
+    '<div data-fx="success-stamp">…</div>',
+    '<div class="demo-card" data-fx="success-stamp" data-fx-stamp="Payé" data-fx-auto="true" style="height:110px"><b>Facture 042</b>320 €</div>',
+    { trigger: 'Tamponner', a11y: 'Le texte du tampon a le rôle `status`.' }),
 ];
