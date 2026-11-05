@@ -60,3 +60,20 @@
 }
 .fx-go[data-fx="press-ripple-text"] .fx-prt-b { animation: fx-prt .8s var(--fx-ease-io); }
 @keyframes fx-prt { 50%, 65% { clip-path: circle(150% at var(--fx-x, 50%) var(--fx-y, 50%)); opacity: 1; } 100% { clip-path: circle(150% at var(--fx-x, 50%) var(--fx-y, 50%)); opacity: 0; } }
+
+/* swipe-reveal-row : un bandeau qui suit la ligne */
+[data-fx="swipe-reveal-row"] > * { position: relative; }
+[data-fx="swipe-reveal-row"] .fx-srr {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--fx-h, 0);
+  background: var(--fx-srr, #fff);
+  mix-blend-mode: difference;
+  transform: translateY(var(--fx-y, 0)) scaleY(0);
+  transition: transform .35s var(--fx-ease-out);
+  pointer-events: none;
+  z-index: 1;
+}
+[data-fx="swipe-reveal-row"].fx-on .fx-srr { transform: translateY(var(--fx-y, 0)) scaleY(1); }
