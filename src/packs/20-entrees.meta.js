@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="wipe-columns-in">…</div>',
     '<div data-fx="wipe-columns-in" style="display:flex;gap:6px"><div class="demo-box" style="width:60px;height:120px"></div><div class="demo-box alt" style="width:60px;height:120px"></div><div class="demo-box ink" style="width:60px;height:120px"></div></div>',
     { trigger: 'Rejouer' }),
+  E('glow-on', 'Entrée',
+    'Le texte s\'allume comme un néon : quelques ratés, puis une lueur stable.',
+    'Bar la nuit, enseigne qui se réveille.',
+    '- `data-fx-duration` (700), `--fx-glow`',
+    'Titres sur fond sombre, musique, nuit.',
+    'Les fonds clairs, ou un clignotement répété : il ne joue qu\'une fois.',
+    '<h2 data-fx="glow-on">Ouvert</h2>',
+    '<p class="demo-title" data-fx="glow-on">Ouvert</p>',
+    { trigger: 'Rejouer', a11y: 'Avec `prefers-reduced-motion: reduce`, le néon s\'allume sans ratés.' }),
 ];

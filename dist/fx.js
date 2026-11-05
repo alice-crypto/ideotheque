@@ -7344,6 +7344,18 @@
       Array.prototype.forEach.call(k, function (c, i) { c.style.setProperty('--fx-d', (i * step).toFixed(0) + 'ms'); });
     }
   });
+
+  // L'élément s'allume comme un tube néon
+  FX.register('glow-on', {
+    entrance: true,
+    reset: function (el) { el.style.setProperty('--fx-g', 0); },
+    setup: function (el) { el.style.setProperty('--fx-g', 0); },
+    enter: function (el) {
+      var seq = [0, .9, .1, .1, 1, .2, 1, 1], t0 = null;
+      if (U.reduced) { el.style.setProperty('--fx-g', 1); return; }
+      U.tween(el, U.num(el, 'fxDuration', 700), function (p) { el.style.setProperty('--fx-g', seq[Math.min(seq.length - 1, Math.floor(p * seq.length))]); }, function () { el.style.setProperty('--fx-g', 1); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
