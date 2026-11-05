@@ -38,6 +38,10 @@
     .rail > li::before { color: var(--w) !important; }
     .chat { --fx-bubble-a: var(--w); --fx-bubble-b: var(--y); color: var(--k); font-size: 15px; font-weight: 500; }
     .chat > * { border-radius: 0 !important; border: var(--rule); }
+    @media (max-width: 980px) {
+      .dcard[style*="--w-col:7"], .dcard[style*="--w-col:8"] { --w-col: 12 !important; }
+      .dcard[style*="--w-col:5"], .dcard[style*="--w-col:4"] { --w-col: 6 !important; }
+    }
     /*@css*/
   </style>
 </head>
