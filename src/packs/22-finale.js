@@ -281,4 +281,11 @@
     o.style.setProperty('--fx-sx', x < innerWidth / 2 ? 1 : -1);
     o.style.setProperty('--fx-sy', y < innerHeight / 2 ? 1 : -1);
   } } });
+
+  // Un bord en dents de scie monte et couvre l'écran
+  FX.register('zigzag-cover', { transition: { pieces: 1, cover: 800, uncover: 820, build: function (o) {
+    var n = Math.max(6, Math.round(innerWidth / 70)), pts = [];
+    for (var i = 0; i <= n; i++) pts.push((i * 100 / n).toFixed(2) + '% ' + (i % 2 ? 0 : 60) + 'px');
+    o.firstChild.style.clipPath = 'polygon(' + pts.join(',') + ',100% 100%,0 100%)';
+  } } });
 })(window.FX);
