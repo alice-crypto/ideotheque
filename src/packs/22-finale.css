@@ -236,3 +236,8 @@
 [data-fx="word-bubbles"] > * { max-width: 80%; width: fit-content; margin: 0; padding: .4em .8em; border-radius: 12px; background: var(--fx-bubble-a, rgba(128, 128, 128, .25)); align-self: flex-start; transform-origin: 0 100%; transform: scale(.4); opacity: 0; transition: transform .4s var(--fx-ease-spring) var(--fx-d), opacity .2s var(--fx-d); }
 [data-fx="word-bubbles"] > :nth-child(even) { align-self: flex-end; transform-origin: 100% 100%; background: var(--fx-bubble-b, var(--fx-accent)); color: #111; }
 .fx-in[data-fx="word-bubbles"] > * { transform: none; opacity: 1; }
+
+/* line-clamp-expand : un texte qui se déplie */
+[data-fx="line-clamp-expand"] .fx-lc { overflow: hidden; transition: max-height .5s var(--fx-ease-out); }
+[data-fx="line-clamp-expand"].fx-clamped:not(.fx-open) .fx-lc { -webkit-mask: linear-gradient(#000 45%, transparent); mask: linear-gradient(#000 45%, transparent); }
+[data-fx="line-clamp-expand"] button { margin-top: .3em; padding: 0; background: none; border: 0; color: var(--fx-accent); font: inherit; cursor: pointer; }
