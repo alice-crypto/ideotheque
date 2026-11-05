@@ -165,4 +165,13 @@ module.exports = [
     '<h2 data-fx="marker-swipe-in">Du texte en lumière</h2>',
     '<p class="demo-para" data-fx="marker-swipe-in" style="color:var(--ink)">Du texte en pleine lumière</p>',
     { trigger: 'Rejouer' }),
+  E('wipe-columns-in', 'Entrée',
+    'Des colonnes se déroulent de haut en bas l\'une après l\'autre, comme des rideaux.',
+    'Solennel et précis.',
+    'Aucun réglage.',
+    'Colonnes de texte, grandes images côte à côte.',
+    'Les éléments avec des ombres : la découpe les coupe.',
+    '<div data-fx="wipe-columns-in">…</div>',
+    '<div data-fx="wipe-columns-in" style="display:flex;gap:6px"><div class="demo-box" style="width:60px;height:120px"></div><div class="demo-box alt" style="width:60px;height:120px"></div><div class="demo-box ink" style="width:60px;height:120px"></div></div>',
+    { trigger: 'Rejouer' }),
 ];
