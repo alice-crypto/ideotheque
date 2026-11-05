@@ -674,4 +674,28 @@
       });
     }
   });
+
+  // Une carte de tâche passe de colonne en colonne
+  FX.register('kanban-move', {
+    setup: function (el) {
+      el._fxCols = Array.prototype.slice.call(el.children);
+      el._fxT = 0;
+      el._fxStep = function () {
+        var col = el._fxCols.filter(function (c) { return c.querySelector('[data-card]'); });
+        if (!col.length) return;
+        var from = col[Math.floor(Math.random() * col.length)], cards = from.querySelectorAll('[data-card]'), card = cards[cards.length - 1];
+        var i = el._fxCols.indexOf(from), to = el._fxCols[(i + 1) % el._fxCols.length];
+        var a = card.getBoundingClientRect();
+        to.appendChild(card);
+        var b = card.getBoundingClientRect();
+        if (!U.reduced && card.animate) card.animate([{ transform: 'translate(' + (a.left - b.left) + 'px,' + (a.top - b.top) + 'px) rotate(3deg)' }, { transform: 'none' }], { duration: 600, easing: 'cubic-bezier(.16,1,.3,1)' });
+      };
+    },
+    trigger: function (el) { el._fxStep(); },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxT += dt;
+      if (el._fxT > U.num(el, 'fxEvery', 1.6)) { el._fxT = 0; el._fxStep(); }
+    }
+  });
 })(window.FX);
