@@ -380,4 +380,36 @@
       if (all && (el._fxWait += dt) > 2) { el._fxWait = 0; el._fxRows.forEach(function (r, i) { el._fxSet(i, 0); }); }
     }
   });
+
+  // Des notifications s'empilent et se serrent
+  FX.register('notification-stack', {
+    setup: function (el) {
+      el.setAttribute('role', 'log');
+      el.setAttribute('aria-live', 'polite');
+      el._fxPush = function (text) {
+        var n = U.make('div', 'fx-ns', el);
+        n.textContent = text;
+        var x = U.make('button', '', n);
+        x.type = 'button'; x.textContent = '×'; x.setAttribute('aria-label', 'Fermer');
+        var bye = function () { n.classList.add('fx-out'); setTimeout(function () { n.remove(); order(); }, 280); };
+        x.addEventListener('click', bye);
+        setTimeout(bye, U.num(el, 'fxLife', 4500));
+        order();
+      };
+      var order = function () {
+        var k = el.children, max = U.num(el, 'fxMax', 3);
+        for (var i = 0; i < k.length; i++) { var d = k.length - 1 - i; k[i].style.setProperty('--fx-d', d); k[i].classList.toggle('fx-hide', d >= max); }
+      };
+      el._fxN = 0;
+    },
+    trigger: function (el) {
+      var msgs = ['Fichier enregistré', 'Nouvelle réponse', 'Export terminé', 'Rappel dans 5 minutes'];
+      el._fxPush(msgs[el._fxN++ % msgs.length]);
+    },
+    tick: function (el, dt) {
+      if (el.dataset.fxDemo !== 'true' || U.reduced) return;
+      el._fxT = (el._fxT || 1.2) + dt;
+      if (el._fxT > 1.4) { el._fxT = 0; FX.trigger(el); }
+    }
+  });
 })(window.FX);
