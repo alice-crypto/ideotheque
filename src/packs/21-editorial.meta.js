@@ -126,4 +126,13 @@ module.exports = [
     'Les liens sur plusieurs lignes.',
     '<a href="#" data-fx="underline-wave-draw">Lire la suite</a>',
     '<a class="demo-link" href="#" data-fx="underline-wave-draw" style="color:var(--ink)">Lire la suite</a>'),
+  E('emoji-burst', 'Micro-interaction',
+    'Au clic, quelques symboles s\'envolent en dérivant au-dessus de l\'élément.',
+    'Spontané, comme une réaction dans un direct.',
+    '- `data-fx-icons` : symboles séparés par `|`\n- `data-fx-count` (6)',
+    'Boutons « j\'aime », réactions, encouragements.',
+    'Une confirmation importante : l\'effet ne dit rien de précis.',
+    '<button data-fx="emoji-burst">♥ J\'aime</button>',
+    '<button class="demo-ghost" data-fx="emoji-burst" style="position:relative">♥ J\'aime</button>',
+    { trigger: 'Réagir', a11y: 'Les symboles sont masqués aux lecteurs d\'écran. Avec `prefers-reduced-motion: reduce`, rien ne s\'envole.' }),
 ];
