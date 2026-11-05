@@ -174,4 +174,13 @@ module.exports = [
     '<section data-fx="spiral-galaxy">…</section>',
     '<div data-fx="spiral-galaxy" style="width:230px;height:170px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, la galaxie reste immobile.' }),
+  E('noise-terrain', 'Ambiance',
+    'Des lignes de crêtes se succèdent et frémissent, chacune masquant la suivante.',
+    'Pulsation lointaine, signal scientifique, pochette de disque.',
+    '- `data-fx-lines` (18) : nombre de crêtes\n- `--fx-line` : couleur\n- `--fx-terrain-bg` : fond facultatif',
+    'Musique, science, sites monochromes.',
+    'Les petites surfaces.',
+    '<section data-fx="noise-terrain">…</section>',
+    '<div data-fx="noise-terrain" style="width:230px;height:170px;color:var(--ink)"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
 ];

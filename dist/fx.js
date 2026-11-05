@@ -5654,6 +5654,40 @@
       });
     }
   });
+
+  // Des crêtes montagneuses se succèdent en lignes
+  FX.register('noise-terrain', {
+    setup: function (el) { U.ensurePositioned(el); el._fxCv = U.make('canvas', 'fx-gen', el); el._fxCv.setAttribute('aria-hidden', 'true'); },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d'), n = U.num(el, 'fxLines', 18), T = t * .00035;
+      var col = getComputedStyle(cv).color, bg = U.cssVar(el, '--fx-terrain-bg', 'transparent');
+      c.clearRect(0, 0, w, h);
+      c.strokeStyle = col;
+      c.lineWidth = 1;
+      for (var i = 0; i < n; i++) {
+        var base = h * .22 + i / n * h * .72;
+        c.beginPath();
+        c.moveTo(0, h);
+        for (var x = 0; x <= w; x += 4) {
+          var q = x / w, env = Math.pow(Math.sin(q * 3.14), 2.4);
+          var y = base - env * (Math.abs(Math.sin(x * .05 + i * 1.7 + T) * Math.cos(x * .021 - i * .8 - T * .6)) * 26 + 3);
+          c.lineTo(x, y);
+        }
+        c.lineTo(w, h);
+        c.closePath();
+        c.globalCompositeOperation = 'destination-out';
+        c.fill();
+        c.globalCompositeOperation = 'source-over';
+        c.stroke();
+      }
+      if (bg !== 'transparent') { c.globalCompositeOperation = 'destination-over'; c.fillStyle = bg; c.fillRect(0, 0, w, h); c.globalCompositeOperation = 'source-over'; }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
