@@ -248,4 +248,24 @@
       if (input) input.addEventListener('change', function () { take(input.files); });
     }
   });
+
+  // Un bandeau descend quand la connexion se perd
+  FX.register('offline-banner', {
+    setup: function (el) {
+      el.setAttribute('role', 'status');
+      var off = el.dataset.fxOff || 'Vous êtes hors ligne. Vos changements seront envoyés au retour.', on = el.dataset.fxOn || 'De nouveau en ligne.', to;
+      var sync = function (state) {
+        clearTimeout(to);
+        el.textContent = state ? on : off;
+        el.classList.add('fx-show');
+        el.classList.toggle('fx-ok', state);
+        if (state) to = setTimeout(function () { el.classList.remove('fx-show'); }, 2500);
+      };
+      window.addEventListener('offline', function () { sync(false); });
+      window.addEventListener('online', function () { sync(true); });
+      if (!navigator.onLine) sync(false);
+      el._fxSync = sync; el._fxState = false;
+    },
+    trigger: function (el) { el._fxSync(el._fxState); el._fxState = !el._fxState; }
+  });
 })(window.FX);
