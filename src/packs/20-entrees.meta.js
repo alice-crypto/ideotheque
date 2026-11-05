@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="cascade-rows">…</div>',
     '<div class="demo-grid" data-fx="cascade-rows"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
     { trigger: 'Rejouer' }),
+  E('spotlight-in', 'Entrée',
+    'Un projecteur balaye l\'élément dans le noir, puis l\'éclaire en entier.',
+    'Scène de théâtre, moment d\'attente.',
+    '- `data-fx-duration` (1400) : durée en millisecondes',
+    'Grand titre, produit en vedette.',
+    'Plusieurs éléments par écran.',
+    '<h1 data-fx="spotlight-in">Ce soir</h1>',
+    '<p class="demo-title" data-fx="spotlight-in">Ce soir</p>',
+    { trigger: 'Rejouer' }),
 ];

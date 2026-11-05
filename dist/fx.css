@@ -4918,6 +4918,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="cascade-rows"] > * { opacity: 0; transform: translateY(var(--fx-distance)); transition: opacity .5s calc(var(--fx-rw, 0) * 110ms), transform .7s var(--fx-ease-out) calc(var(--fx-rw, 0) * 110ms); }
 .fx-in[data-fx="cascade-rows"] > * { opacity: 1; transform: none; }
 
+/* spotlight-in : un projecteur */
+[data-fx="spotlight-in"] {
+  -webkit-mask: radial-gradient(circle at var(--fx-x, 50%) var(--fx-y, 50%), #000 calc(var(--fx-r, 140%) * .7), transparent var(--fx-r, 140%));
+  mask: radial-gradient(circle at var(--fx-x, 50%) var(--fx-y, 50%), #000 calc(var(--fx-r, 140%) * .7), transparent var(--fx-r, 140%));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

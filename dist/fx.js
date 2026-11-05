@@ -7150,6 +7150,21 @@
       Array.prototype.forEach.call(el.children, function (c) { c.style.setProperty('--fx-rw', tops.indexOf(c.offsetTop)); });
     }
   });
+
+  // Un projecteur balaye l'élément puis l'éclaire en entier
+  FX.register('spotlight-in', {
+    entrance: true,
+    setup: function (el) { el.style.setProperty('--fx-r', '0%'); },
+    reset: function (el) { el.style.setProperty('--fx-r', '0%'); },
+    enter: function (el) {
+      U.tween(el, U.num(el, 'fxDuration', 1400), function (p) {
+        var e = U.easeInOut(p);
+        el.style.setProperty('--fx-x', (15 + Math.sin(e * 3.14) * 70).toFixed(1) + '%');
+        el.style.setProperty('--fx-y', (30 + e * 20).toFixed(1) + '%');
+        el.style.setProperty('--fx-r', (10 + e * e * 130).toFixed(1) + '%');
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
