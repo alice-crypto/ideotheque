@@ -542,4 +542,21 @@
       }
     }
   });
+
+  // Une icône de recherche qui s'ouvre en champ de saisie
+  FX.register('search-expand', {
+    setup: function (el) {
+      var input = el.querySelector('input'), btn = el.querySelector('button');
+      if (!input || !btn) return;
+      btn.setAttribute('aria-expanded', 'false');
+      var set = function (on) { el.classList.toggle('fx-open', on); btn.setAttribute('aria-expanded', on); };
+      btn.addEventListener('click', function () {
+        var on = !el.classList.contains('fx-open');
+        set(on);
+        if (on) input.focus();
+      });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Escape') { set(false); btn.focus(); } });
+      input.addEventListener('blur', function () { if (!input.value) set(false); });
+    }
+  });
 })(window.FX);
