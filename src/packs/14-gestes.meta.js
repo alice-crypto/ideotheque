@@ -99,4 +99,12 @@ module.exports = [
     '<div data-fx="star-rate" aria-label="Votre note"></div>',
     '<div data-fx="star-rate" data-fx-value="3" aria-label="Note"></div>',
     { a11y: 'Rôle `slider` réglable avec les flèches du clavier.' }),
+  E('ink-button', 'Micro-interaction',
+    'Une goutte de couleur entre dans le bouton par le côté d\'où arrive le curseur, et ressort par le côté où il part.',
+    'Liquide, le bouton connaît votre geste.',
+    '- `--fx-ink-c` : couleur de la goutte\n- `--fx-ink-fg` : couleur du texte au survol',
+    'Boutons et liens en contour.',
+    'Les très petits boutons, où le geste ne se voit pas.',
+    '<a href="#" data-fx="ink-button">Nous écrire</a>',
+    '<a class="demo-ghost" href="#" data-fx="ink-button" style="text-decoration:none">Nous écrire</a>'),
 ];

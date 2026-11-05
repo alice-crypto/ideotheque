@@ -4282,6 +4282,19 @@
       paint(val); el.setAttribute('aria-valuenow', val);
     }
   });
+
+  // Une goutte de couleur entre par le côté où arrive le curseur
+  FX.register('ink-button', {
+    setup: function (el) {
+      var mark = function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--fx-x', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--fx-y', (e.clientY - r.top) + 'px');
+      };
+      el.addEventListener('pointerenter', mark);
+      el.addEventListener('pointerleave', mark);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

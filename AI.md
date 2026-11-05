@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->277<!-- /total --> effets.
+La bibliothèque contient <!-- total -->278<!-- /total --> effets.
 
 ## Règles
 
@@ -160,6 +160,7 @@ La bibliothèque contient <!-- total -->277<!-- /total --> effets.
 | `snap-toggle` | Micro-interaction | Le bouton de l'interrupteur s'étire avant de sauter de l'autre côté, comme une goutte |
 | `stepper-pop` | Micro-interaction | Un compteur plus / moins dont le chiffre glisse dans le sens du changement et qui tremble aux limites |
 | `star-rate` | Micro-interaction | Les étoiles s'allument en vague et sautillent au survol et au choix |
+| `ink-button` | Micro-interaction | Une goutte de couleur entre dans le bouton par le côté d'où arrive le curseur, et ressort par le côté où il part |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
