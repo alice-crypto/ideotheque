@@ -21,4 +21,13 @@ module.exports = [
     '<nav data-fx="mega-index"><a href="#" data-fx-img="a.jpg">Projets</a><a href="#" data-fx-img="b.jpg">Studio</a></nav>',
     '<nav data-fx="mega-index" style="width:230px;font-size:30px;font-weight:600;color:var(--ink)"><a href="#" data-fx-img="assets/dune.svg">Dunes</a><a href="#" data-fx-img="assets/city.svg">Villes</a><a href="#" data-fx-img="assets/bloom.svg">Fleurs</a></nav>',
     { a11y: 'L\'aperçu réagit aussi au focus clavier. Il est décoratif et masqué aux lecteurs d\'écran.' }),
+  E('pill-nav-morph', 'Navigation',
+    'Une barre en pilule se réduit à l\'essentiel quand on descend, et s\'ouvre de nouveau au survol.',
+    'Discrète, elle laisse la place au contenu sans s\'en aller.',
+    '- `data-fx-after` (120) : position à partir de laquelle elle se réduit\n- Les liens secondaires vont dans `.fx-more > div`.',
+    'Sites vitrines, longues pages produit.',
+    'Une application avec beaucoup de sections.',
+    '<nav data-fx="pill-nav-morph"><a>Logo</a><div class="fx-more"><div><a>Offres</a><a>Blog</a></div></div><a>Essayer</a></nav>',
+    '<nav data-fx="pill-nav-morph" data-fx-demo="1" style="color:var(--ink);font-size:13px"><b>Halo</b><div class="fx-more"><div><span>Offres</span><span>Blog</span></div></div><span>Essayer</span></nav>',
+    { a11y: 'La barre revient à sa taille pleine dès qu\'un lien reçoit le focus.' }),
 ];
