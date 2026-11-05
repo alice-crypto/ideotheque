@@ -151,4 +151,12 @@ module.exports = [
     'Les deux faces de hauteur très différente.',
     '<div data-fx="flip-scrub"><div>Avant</div><div>Après</div></div>',
     '<div data-fx="flip-scrub" style="width:170px;height:120px;color:#111"><div class="demo-box" style="width:100%;height:100%;display:grid;place-items:center">Avant</div><div class="demo-box alt" style="width:100%;height:100%;display:grid;place-items:center">Après</div></div>'),
+  E('curtain-scrub', 'Défilement',
+    'Un rideau de couleur au bord arrondi se lève sur le contenu au fil du défilement.',
+    'Lever de rideau, souple comme un tissu.',
+    '- `--fx-curtain` : couleur du rideau',
+    'Sections qui changent d\'ambiance, images en grand.',
+    'Les fonds de la même couleur que le rideau.',
+    '<section data-fx="curtain-scrub">…</section>',
+    '<div class="demo-box alt" data-fx="curtain-scrub" style="width:210px;height:150px"></div>'),
 ];
