@@ -208,3 +208,7 @@
   mask: linear-gradient(0deg, #000 60%, transparent);
 }
 [data-fx="depth-crawl"] > * { transform: rotateX(var(--fx-tilt, 32deg)) translateY(var(--fx-y, 0)); transform-origin: 50% 100%; }
+
+/* gravity-letters : un clic et tout tombe */
+[data-fx="gravity-letters"] { cursor: pointer; display: inline-block; user-select: none; }
+[data-fx="gravity-letters"] .fx-char { display: inline-block; }
