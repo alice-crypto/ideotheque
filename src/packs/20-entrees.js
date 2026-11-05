@@ -185,4 +185,10 @@
       });
     }
   });
+
+  // Les éléments arrivent du fond et deviennent nets
+  FX.register('depth-focus-in', {
+    entrance: true,
+    setup: function (el) { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-i', i); }); }
+  });
 })(window.FX);
