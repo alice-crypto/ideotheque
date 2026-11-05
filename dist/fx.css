@@ -5303,6 +5303,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-corner-sweep.fx-cover i { transform: rotate(45deg); }
 .fx-tr-corner-sweep.fx-uncover i { transform: translate(calc(var(--fx-sx, 1) * 220vmax), calc(var(--fx-sy, 1) * 220vmax)) rotate(45deg); }
 
+/* zigzag-cover : des dents de scie */
+.fx-tr-zigzag-cover i { left: 0; right: 0; top: -70px; height: calc(100% + 140px); background: var(--fx-tr-color, var(--fx-accent)); transform: translateY(105%); transition: transform .72s var(--fx-ease-io); }
+.fx-tr-zigzag-cover.fx-cover i { transform: none; }
+.fx-tr-zigzag-cover.fx-uncover i { transform: translateY(-105%); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

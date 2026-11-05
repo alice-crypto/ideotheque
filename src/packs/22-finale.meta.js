@@ -154,4 +154,13 @@ module.exports = [
     '<a href="/page" data-fx="corner-sweep">Page</a>',
     '<button class="demo-ghost" onclick="FX.play(\'corner-sweep\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, aucune transition.' }),
+  E('zigzag-cover', 'Transition',
+    'Un pan au bord en dents de scie monte du bas, couvre l\'écran et repart par le haut.',
+    'Pop, bande dessinée, ticket de cinéma.',
+    '- `--fx-tr-color` : couleur',
+    'Sites ludiques, festivals, enfants.',
+    'Les marques institutionnelles.',
+    '<a href="/page" data-fx="zigzag-cover">Page</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'zigzag-cover\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, aucune transition.' }),
 ];
