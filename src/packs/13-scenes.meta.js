@@ -94,4 +94,12 @@ module.exports = [
     'Les sections plus courtes qu\'un écran : le fil se remplit trop vite.',
     '<section data-fx="thread-line">…</section>',
     '<div data-fx="thread-line" style="height:160px;width:210px;color:var(--ink);font-size:14px"><p style="margin:0 0 40px">Étape 1</p><p style="margin:0 0 40px">Étape 2</p><p style="margin:0">Étape 3</p></div>'),
+  E('dot-swell', 'Défilement',
+    'Une vague de points gonfle et traverse une grille au fil du défilement.',
+    'Trame d\'imprimerie vivante, onde dans un tissu.',
+    '- `data-fx-step` (16) : écart entre les points\n- `--fx-dot` : couleur des points',
+    'Fonds d\'une section sans image.',
+    'Sous un texte fin : la trame gêne la lecture.',
+    '<section data-fx="dot-swell">…</section>',
+    '<div data-fx="dot-swell" style="width:220px;height:160px"></div>'),
 ];

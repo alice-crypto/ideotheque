@@ -3402,6 +3402,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transform: scaleY(var(--fx-fill, 0));
 }
 
+/* dot-swell : une trame qui gonfle */
+[data-fx="dot-swell"] { isolation: isolate; }
+[data-fx="dot-swell"] .fx-swell { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; color: var(--fx-dot, var(--fx-accent)); pointer-events: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
