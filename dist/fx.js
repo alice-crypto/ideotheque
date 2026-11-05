@@ -4878,6 +4878,22 @@
       if (img.complete) draw(); else img.addEventListener('load', draw);
     }
   });
+
+  // Une image en deux couleurs qui retrouve ses teintes au survol
+  FX.register('duotone-hover', {
+    setup: function (el) {
+      var hex = function (s) { var v = parseInt(s.replace('#', ''), 16); return [(v >> 16 & 255) / 255, (v >> 8 & 255) / 255, (v & 255) / 255]; };
+      var a = hex(el.dataset.fxDark || '#0047ff'), b = hex(el.dataset.fxLight || '#ffd400');
+      var id = 'fx-duo-' + Math.random().toString(36).slice(2, 8);
+      var host = document.createElement('div');
+      host.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+      host.innerHTML = '<svg aria-hidden="true"><filter id="' + id + '" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".33 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 0 0 0 1 0"/><feComponentTransfer>' +
+        ['R', 'G', 'B'].map(function (c, i) { return '<feFunc' + c + ' type="table" tableValues="' + a[i].toFixed(3) + ' ' + b[i].toFixed(3) + '"/>'; }).join('') +
+        '</feComponentTransfer></filter></svg>';
+      document.body.appendChild(host);
+      el.style.setProperty('--fx-duo', 'url(#' + id + ')');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

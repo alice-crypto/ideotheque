@@ -165,4 +165,12 @@ module.exports = [
     '<figure data-fx="dither-reveal"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="dither-reveal"><img src="assets/dune.svg" alt=""></div>',
     { trigger: 'Rejouer' }),
+  E('duotone-hover', 'Image',
+    'L\'image est tirée en deux couleurs franches, et retrouve ses teintes au survol.',
+    'Affiche sérigraphiée, identité de marque très affirmée.',
+    '- `data-fx-dark`, `data-fx-light` : les deux couleurs en hexadécimal',
+    'Portraits d\'équipe, galeries, sites à identité forte.',
+    'Les photos de produits dont la couleur compte.',
+    '<figure data-fx="duotone-hover" data-fx-dark="#0047ff" data-fx-light="#ffd400"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="duotone-hover" data-fx-dark="#e10600" data-fx-light="#ffd400"><img src="assets/dune.svg" alt=""></div>'),
 ];
