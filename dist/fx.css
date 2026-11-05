@@ -4156,6 +4156,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="wave-image"] { overflow: hidden; }
 [data-fx="wave-image"] > img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); }
 
+/* scan-reveal : ligne après ligne */
+[data-fx="scan-reveal"] {
+  -webkit-mask: repeating-linear-gradient(#000 0 var(--fx-line, 0px), transparent var(--fx-line, 0px) var(--fx-gap, 10px));
+  mask: repeating-linear-gradient(#000 0 var(--fx-line, 0px), transparent var(--fx-line, 0px) var(--fx-gap, 10px));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

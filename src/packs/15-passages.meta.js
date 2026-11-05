@@ -190,4 +190,13 @@ module.exports = [
     'Une grande page d\'images : le filtre coûte cher au processeur.',
     '<figure data-fx="wave-image"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="wave-image" data-fx-auto="true"><img src="assets/dune.svg" alt=""></div>'),
+  E('scan-reveal', 'Image',
+    'L\'image apparaît par fines lignes horizontales qui s\'épaississent jusqu\'à se toucher.',
+    'Vieux téléviseur, fax, image transmise de loin.',
+    '- `data-fx-gap` (10) : écart entre les lignes\n- `data-fx-duration` (1100) : durée en millisecondes',
+    'Portfolios, archives, sites techniques.',
+    'Les petites images, où les lignes ne se distinguent pas.',
+    '<img data-fx="scan-reveal" src="photo.jpg" alt="…">',
+    '<div class="demo-media" data-fx="scan-reveal"><img src="assets/dune.svg" alt=""></div>',
+    { trigger: 'Rejouer', a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image s\'affiche complète.' }),
 ];
