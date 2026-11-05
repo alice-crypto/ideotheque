@@ -238,4 +238,13 @@ module.exports = [
     '<div data-fx="depth-crawl" style="height:320px"><div><p>Il y a bien longtemps…</p></div></div>',
     '<div data-fx="depth-crawl" style="height:150px;width:210px;color:var(--ink);text-align:center;font-size:14px"><div><p>Tout a commencé dans un petit atelier, avec une table, une idée et beaucoup de café. Trois ans plus tard, l\'équipe est toujours là.</p></div></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le texte reste au début, fixe.' }),
+  E('gravity-letters', 'Texte',
+    'Au clic, les lettres se décrochent, sont projetées puis tombent, avant de revenir à leur place.',
+    'Maladroit et drôle, on recommence pour le plaisir.',
+    'Aucun réglage : la chute est simulée.',
+    'Logo dans un pied de page, page 404, petit secret à découvrir.',
+    'Un bouton qui lance une action importante.',
+    '<span data-fx="gravity-letters">Cliquez-moi</span>',
+    '<p class="demo-title" data-fx="gravity-letters" style="font-size:30px">Cliquez-moi</p>',
+    { trigger: 'Faire tomber' }),
 ];

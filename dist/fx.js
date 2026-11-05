@@ -3599,6 +3599,29 @@
       inner.style.setProperty('--fx-y', (el.offsetHeight - el._fxY).toFixed(1) + 'px');
     }
   });
+
+  // Au clic, les lettres se décrochent et tombent, puis reviennent
+  FX.register('gravity-letters', {
+    setup: function (el) { U.splitChars(el); el._fxChars = Array.prototype.slice.call(el.querySelectorAll('.fx-char')); },
+    triggerOn: 'click',
+    trigger: function (el) {
+      if (U.reduced || el._fxFalling) return;
+      el._fxFalling = true;
+      var bits = el._fxChars.map(function () { return { x: 0, y: 0, vx: U.rand(-140, 140), vy: U.rand(-420, -120), r: 0, vr: U.rand(-300, 300) }; });
+      var start = 0, last = 0;
+      U.raf(function frame(t) {
+        if (!start) start = last = t;
+        var dt = (t - last) / 1000; last = t;
+        bits.forEach(function (b, i) {
+          b.vy += 1800 * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.r += b.vr * dt;
+          el._fxChars[i].style.transform = 'translate(' + b.x.toFixed(0) + 'px,' + b.y.toFixed(0) + 'px) rotate(' + b.r.toFixed(0) + 'deg)';
+        });
+        if (t - start < 1000) return U.raf(frame);
+        el._fxChars.forEach(function (c) { c.style.transition = 'transform .6s var(--fx-ease-spring)'; c.style.transform = ''; });
+        setTimeout(function () { el._fxChars.forEach(function (c) { c.style.transition = ''; }); el._fxFalling = false; }, 650);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
