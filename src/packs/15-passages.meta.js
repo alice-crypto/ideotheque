@@ -84,4 +84,13 @@ module.exports = [
     '<a href="/jeu" data-fx="shatter-tris">Jouer</a>',
     '<button class="demo-ghost" onclick="FX.play(\'shatter-tris\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('word-flash', 'Transition',
+    'Pendant le passage, quelques mots géants s\'enchaînent en rafale sur un aplat de couleur.',
+    'Bande-annonce, montage serré, voix forte.',
+    '- `data-fx-words` sur le lien : mots séparés par `|`\n- `--fx-tr-color`, `--fx-tr-ink` : couleurs',
+    'Pages de campagne, annonces, lancements.',
+    'La navigation habituelle d\'un site, vite répétitive.',
+    '<a href="/lancement" data-fx="word-flash" data-fx-words="Prêt|Partez">Lancement</a>',
+    '<button class="demo-ghost" data-fx-words="Trois|Deux|Un" onclick="FX.play(\'word-flash\', null, event)">Lancer la transition</button>',
+    { a11y: 'Les mots sont décoratifs. Évitez de les faire clignoter davantage : au-delà de trois éclairs par seconde, l\'effet peut gêner certaines personnes. Avec `prefers-reduced-motion: reduce`, aucune transition.' }),
 ];

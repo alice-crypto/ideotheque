@@ -4750,6 +4750,19 @@
       p.style.setProperty('--fx-rot', U.rand(-120, 120).toFixed(0) + 'deg');
     });
   } } });
+
+  // Des mots s'enchaînent en plein écran pendant le passage
+  FX.register('word-flash', { transition: { pieces: 1, cover: 900, uncover: 700, build: function (o) {
+    var src = o._fxEvent && o._fxEvent.currentTarget;
+    var words = ((src && src.dataset && src.dataset.fxWords) || 'Un|Instant|Encore').split('|'), i = 0;
+    var p = o.firstChild;
+    var next = function () {
+      if (!o.isConnected || i >= words.length) return;
+      p.textContent = words[i++];
+      setTimeout(next, 280);
+    };
+    setTimeout(next, 80);
+  } } });
 })(window.FX);
 
 window.FX._boot();

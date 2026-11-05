@@ -4015,6 +4015,22 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-shatter-tris.fx-cover i { opacity: 1; transform: none; }
 .fx-tr-shatter-tris.fx-uncover i { opacity: 0; transform: scale(.2) rotate(var(--fx-rot)); }
 
+/* word-flash : des mots en rafale */
+.fx-tr-word-flash i {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font: 800 clamp(48px, 14vw, 200px) / 1 system-ui, sans-serif;
+  letter-spacing: -.04em;
+  background: var(--fx-tr-color, var(--fx-accent));
+  color: var(--fx-tr-ink, #111);
+  opacity: 0;
+  transition: opacity .12s;
+}
+.fx-tr-word-flash.fx-cover i { opacity: 1; }
+.fx-tr-word-flash.fx-uncover i { opacity: 0; transition: opacity .5s .1s; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
