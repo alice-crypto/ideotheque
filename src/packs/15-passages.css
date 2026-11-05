@@ -149,3 +149,12 @@
 .fx-tr-scan-cover.fx-cover .fx-sc-beam { top: 100%; }
 .fx-tr-scan-cover.fx-uncover .fx-sc-fill { top: 100%; }
 .fx-tr-scan-cover.fx-uncover .fx-sc-beam { top: 100%; opacity: 0; }
+
+/* color-stack : des couches de couleur */
+.fx-tr-color-stack i {
+  inset: 0;
+  transform: translateY(101%);
+  transition: transform .62s var(--fx-ease-io) var(--fx-d);
+}
+.fx-tr-color-stack.fx-cover i { transform: none; }
+.fx-tr-color-stack.fx-uncover i { transform: translateY(-101%); transition-delay: calc(.27s - var(--fx-d)); }
