@@ -95,3 +95,7 @@
 [data-fx="split-hover-hero"] { display: flex; overflow: hidden; }
 [data-fx="split-hover-hero"] > * { flex: var(--fx-g, 1) 1 0; min-width: 0; transition: flex-grow .7s var(--fx-ease-out), filter .4s; overflow: hidden; }
 [data-fx="split-hover-hero"]:hover > *:not(.fx-on) { filter: brightness(.6) saturate(.7); }
+
+/* masonry-flow : un mur qui s'ajuste */
+[data-fx="masonry-flow"] { position: relative; }
+[data-fx="masonry-flow"] > * { position: absolute; left: 0; top: 0; transition: transform .55s var(--fx-ease-out), width .55s var(--fx-ease-out); }
