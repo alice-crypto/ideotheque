@@ -134,4 +134,41 @@
       c.stroke();
     }
   });
+
+  // Un petit automate cellulaire vit en fond
+  FX.register('game-of-life', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var cv = el._fxCv = U.make('canvas', 'fx-gen', el);
+      cv.setAttribute('aria-hidden', 'true');
+      el._fxG = null; el._fxT = 0;
+    },
+    tick: function (el, dt) {
+      var cv = el._fxCv, S = U.num(el, 'fxCell', 8), w = Math.ceil(cv.clientWidth / S), h = Math.ceil(cv.clientHeight / S);
+      if (!w) return;
+      if (!el._fxG || el._fxW !== w) {
+        el._fxW = w; el._fxH = h; cv.width = w * S; cv.height = h * S;
+        el._fxG = new Uint8Array(w * h);
+        for (var i = 0; i < w * h; i++) el._fxG[i] = Math.random() < .28 ? 1 : 0;
+      }
+      el._fxT += dt;
+      var first = !el._fxDrawn;
+      if (!first && (U.reduced || el._fxT < U.num(el, 'fxStep', 180) / 1000)) return;
+      el._fxT = 0; el._fxDrawn = true;
+      var g = el._fxG, n = new Uint8Array(w * h), H = el._fxH, alive = 0;
+      for (var y = 0; y < H; y++) for (var x = 0; x < w; x++) {
+        var k = 0;
+        for (var dy = -1; dy <= 1; dy++) for (var dx = -1; dx <= 1; dx++) if (dx || dy) k += g[((y + dy + H) % H) * w + (x + dx + w) % w];
+        var v = g[y * w + x] ? (k === 2 || k === 3) : k === 3;
+        n[y * w + x] = v ? 1 : 0;
+        alive += v ? 1 : 0;
+      }
+      if (alive < w * h * .04) for (var r = 0; r < w * h * .1; r++) n[Math.floor(Math.random() * w * h)] = 1;
+      el._fxG = n;
+      var c = cv.getContext('2d');
+      c.clearRect(0, 0, cv.width, cv.height);
+      c.fillStyle = getComputedStyle(cv).color;
+      for (y = 0; y < H; y++) for (x = 0; x < w; x++) if (n[y * w + x]) c.fillRect(x * S + 1, y * S + 1, S - 2, S - 2);
+    }
+  });
 })(window.FX);
