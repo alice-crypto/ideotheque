@@ -330,4 +330,13 @@ module.exports = [
     '<div data-fx="countdown-rings" data-fx-to="2027-01-15T18:00"></div>',
     '<div data-fx="countdown-rings" style="color:var(--ink)"></div>',
     { a11y: 'Rôle `timer`.' }),
+  E('typing-correct', 'Texte',
+    'Le texte s\'écrit, fait une faute, efface et se corrige comme une vraie personne.',
+    'Humain, drôle, le mot juste vient après avoir hésité.',
+    '- `data-fx-wrong` : version fausse\n- `data-fx-speed` (60)',
+    'Accroches au ton léger, slogans.',
+    'De longs textes.',
+    '<h1 data-fx="typing-correct" data-fx-wrong="Bonne année">Bon anniversaire</h1>',
+    '<p class="demo-title" data-fx="typing-correct" data-fx-wrong="Simplement" style="font-size:30px">Simple</p>',
+    { trigger: 'Rejouer', a11y: 'Le texte correct est dans `aria-label`. Avec `prefers-reduced-motion: reduce`, il s\'affiche directement.' }),
 ];

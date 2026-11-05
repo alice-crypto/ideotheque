@@ -5428,6 +5428,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="countdown-rings"] b { font-size: 15px; font-variant-numeric: tabular-nums; line-height: 1; margin-top: -6px; }
 [data-fx="countdown-rings"] small { position: absolute; bottom: 12px; font-size: 8px; opacity: .7; }
 
+/* typing-correct : on se trompe, on corrige */
+[data-fx="typing-correct"] { min-height: 1.2em; }
+[data-fx="typing-correct"]::after { content: ""; display: inline-block; width: 2px; height: 1em; margin-left: 2px; vertical-align: -.12em; background: currentColor; animation: fx-tcc 1s steps(1) infinite; }
+@keyframes fx-tcc { 50% { opacity: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
