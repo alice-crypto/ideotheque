@@ -3377,6 +3377,20 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transform-origin: 50% 100%;
 }
 
+/* wheel-scroll : une roue de sélection */
+[data-fx="wheel-scroll"] { position: relative; height: var(--fx-h, 150px); perspective: 500px; overflow: hidden; }
+[data-fx="wheel-scroll"] > * {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 1;
+  margin-top: -.5em;
+  backface-visibility: hidden;
+  transform: rotateX(calc(var(--fx-i) * 360deg / var(--fx-count) + var(--fx-rot, 0deg))) translateZ(var(--fx-rad, 90px));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

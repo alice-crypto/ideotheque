@@ -78,4 +78,12 @@ module.exports = [
     'Les petits éléments, où la perspective ne se voit pas.',
     '<img data-fx="plane-land" src="app.png" alt="">',
     '<div class="demo-box" data-fx="plane-land" style="width:210px;height:130px"></div>'),
+  E('wheel-scroll', 'Défilement',
+    'Une liste de mots tourne sur une roue verticale au rythme du défilement.',
+    'Sélecteur d\'horloge, mécanisme de précision.',
+    '- `data-fx-turn` (180) : rotation totale en degrés\n- `--fx-rad` (90px) : rayon de la roue\n- `--fx-h` (150px) : hauteur visible',
+    'Courtes listes de services, dates, mots clés.',
+    'Plus d\'une dizaine d\'éléments.',
+    '<div data-fx="wheel-scroll"><div>Design</div><div>Code</div><div>Motion</div></div>',
+    '<div data-fx="wheel-scroll" style="width:200px;color:var(--ink);font-size:24px;font-weight:600"><div>Design</div><div>Code</div><div>Motion</div><div>Son</div><div>Récit</div><div>Image</div><div>Lumière</div><div>Rythme</div></div>'),
 ];
