@@ -244,4 +244,24 @@
       s.innerHTML = '<svg viewBox="0 0 ' + w + ' 10" preserveAspectRatio="none"><path pathLength="1" d="' + d + '"/></svg>';
     }
   });
+
+  // Des réactions s'envolent quand on clique
+  FX.register('emoji-burst', {
+    triggerOn: 'click',
+    trigger: function (el) {
+      if (U.reduced) return;
+      U.ensurePositioned(el);
+      var list = (el.dataset.fxIcons || '♥|★|✦').split('|');
+      for (var i = 0; i < U.num(el, 'fxCount', 6); i++) {
+        var s = U.make('span', 'fx-eb', el);
+        s.setAttribute('aria-hidden', 'true');
+        s.textContent = list[Math.floor(Math.random() * list.length)];
+        s.style.setProperty('--fx-x', U.rand(-50, 50).toFixed(0) + 'px');
+        s.style.setProperty('--fx-y', U.rand(-120, -60).toFixed(0) + 'px');
+        s.style.setProperty('--fx-r', U.rand(-40, 40).toFixed(0) + 'deg');
+        s.style.animationDelay = i * 40 + 'ms';
+        setTimeout(function (n) { n.remove(); }.bind(null, s), 1300);
+      }
+    }
+  });
 })(window.FX);
