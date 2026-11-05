@@ -6949,6 +6949,21 @@
     },
     trigger: function (el) { el._fxSync(el._fxState); el._fxState = !el._fxState; }
   });
+
+  // Une pile qui se remplit et signale un niveau faible
+  FX.register('battery-level', {
+    entrance: true,
+    setup: function (el) {
+      var v = U.clamp(U.num(el, 'fxValue', 68), 0, 100);
+      el.setAttribute('role', 'meter');
+      el.setAttribute('aria-valuenow', v); el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', 100);
+      el.setAttribute('aria-label', 'Niveau');
+      el.innerHTML = '<i></i><b>' + v + ' %</b>';
+      el.style.setProperty('--fx-v', v / 100);
+      el.classList.toggle('fx-low', v < U.num(el, 'fxLow', 20));
+      el.classList.toggle('fx-charge', el.dataset.fxCharging === 'true');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

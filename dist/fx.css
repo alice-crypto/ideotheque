@@ -4828,6 +4828,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="offline-banner"].fx-show { opacity: 1; transform: none; }
 [data-fx="offline-banner"].fx-ok { background: var(--fx-on, #2eaf63); }
 
+/* battery-level : une petite pile */
+[data-fx="battery-level"] { position: relative; display: inline-grid; place-items: center; width: var(--fx-w, 96px); height: var(--fx-h, 42px); border: 2px solid currentColor; border-radius: 7px; padding: 3px; box-sizing: border-box; }
+[data-fx="battery-level"]::after { content: ""; position: absolute; right: -7px; top: 30%; bottom: 30%; width: 4px; border-radius: 0 2px 2px 0; background: currentColor; }
+[data-fx="battery-level"] i { position: absolute; left: 3px; top: 3px; bottom: 3px; width: calc(100% - 6px); border-radius: 4px; background: var(--fx-full, var(--fx-accent)); transform-origin: left; transform: scaleX(0); transition: transform 1s var(--fx-ease-out); }
+.fx-in[data-fx="battery-level"] i { transform: scaleX(var(--fx-v)); }
+[data-fx="battery-level"].fx-low i { background: var(--fx-empty, #e10600); animation: fx-bat 1s infinite alternate; }
+[data-fx="battery-level"].fx-charge i { animation: fx-bat .7s infinite alternate; }
+@keyframes fx-bat { to { opacity: .55; } }
+[data-fx="battery-level"] b { position: relative; font-size: 13px; color: #fff; text-shadow: 0 0 3px #000, 0 0 1px #000; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

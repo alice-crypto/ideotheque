@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="offline-banner"></div>',
     '<div data-fx="offline-banner" class="fx-show" data-fx-off="Vous êtes hors ligne." style="width:210px">Vous êtes hors ligne.</div>',
     { trigger: 'Changer l\'état', a11y: 'Rôle `status`. Le message reste écrit en toutes lettres.' }),
+  E('battery-level', 'État',
+    'Une petite pile se remplit jusqu\'à son niveau, et clignote doucement si elle est faible ou en charge.',
+    'Familier, compris sans explication.',
+    '- `data-fx-value` (68), `data-fx-low` (20), `data-fx-charging`\n- `--fx-full`, `--fx-empty`, `--fx-w`, `--fx-h`',
+    'Quotas, crédits restants, appareils connectés.',
+    'Une valeur précise à lire seule : le pourcentage doit rester écrit.',
+    '<div data-fx="battery-level" data-fx-value="68"></div>',
+    '<div data-fx="battery-level" data-fx-value="68" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Rôle `meter`, et le pourcentage est écrit.' }),
 ];

@@ -34,7 +34,7 @@ L'IA lit [`AI.md`](AI.md) et la fiche de l'effet, puis reproduit exactement le m
 
 ## Avec Claude
 
-Idéothèque existe en plugin pour Claude Code. Une fois installé, Claude connaît les <!-- total -->399<!-- /total --> effets : il lit leur fiche et les applique par leur nom, sans que vous ayez à lui donner `AI.md`.
+Idéothèque existe en plugin pour Claude Code. Une fois installé, Claude connaît les <!-- total -->400<!-- /total --> effets : il lit leur fiche et les applique par leur nom, sans que vous ayez à lui donner `AI.md`.
 
 ```
 /plugin install ideotheque --marketplace alice-crypto/ideotheque
@@ -89,7 +89,7 @@ Cinq marques fictives, chacune avec une landing page, un dashboard et un assista
 
 Les illustrations sont des SVG originaux (`exemples/img/`).
 
-## Les <!-- total -->399<!-- /total --> effets
+## Les <!-- total -->400<!-- /total --> effets
 
 <!-- effets:start -->
 - **Entrée (25) :** `curtain-soft`, `rise-stagger`, `blur-in`, `line-mask`, `pixel-dissolve`, `fade-up`, `slide-in`, `zoom-in-soft`, `flip-up`, `swing-in`, `iris-open`, `diagonal-wipe`, `split-reveal`, `block-reveal`, `stretch-in`, `skew-up`, `drop-bounce`, `pop-in`, `blinds-open`, `ink-spread`, `tile-cascade`, `scatter-gather`, `fold-down`, `lift-shadow`, `rule-draw`
@@ -101,7 +101,7 @@ Les illustrations sont des SVG originaux (`exemples/img/`).
 - **Image (28) :** `svg-draw`, `ken-burns`, `color-reveal`, `image-trail`, `hover-preview`, `slice-in`, `rgb-split`, `blob-mask`, `compare`, `glare`, `lens`, `photo-stack`, `liquid-hover`, `pixelate`, `flip-card`, `carousel-ring`, `drag-gallery`, `noise-reveal`, `ascii-image`, `dither-reveal`, `duotone-hover`, `mosaic-hover`, `wave-image`, `scan-reveal`, `strip-slider`, `tilt-focus`, `polaroid-drop`, `x-ray`
 - **Navigation (35) :** `burger-morph`, `menu-reveal`, `smart-header`, `tab-slider`, `dot-nav`, `top-ring`, `hover-pill`, `accordion`, `dropdown`, `scroll-spy`, `dots-morph`, `drawer`, `modal-zoom`, `header-shrink`, `focus-list`, `bento-expand`, `mega-index`, `pill-nav-morph`, `rail-progress-nav`, `command-dock`, `breadcrumb-fold`, `sticky-stack-nav`, `page-peek`, `horizontal-snap`, `split-hover-hero`, `masonry-flow`, `tab-underline-ink`, `mobile-tabbar-bump`, `toc-minimap`, `cursor-menu-ring`, `stacked-sections-tabs`, `carousel-3d-coverflow`, `skip-link-reveal`, `language-switch-flip`, `progress-steps-rail`
 - **Ambiance (45) :** `scanlines`, `dot-grid`, `grain`, `aurora`, `gradient-drift`, `grid-floor`, `starfield`, `constellation`, `wave-lines`, `vhs`, `crt`, `flashlight`, `bokeh`, `code-rain`, `blob-bg`, `halftone`, `orbit-rings`, `light-beams`, `water-ripple`, `glow-grid`, `flow-field`, `metaballs`, `voronoi-cells`, `contour-lines`, `game-of-life`, `ribbon-sine`, `particle-text`, `rain-glass`, `snow-fall`, `fireflies`, `matrix-dots-wave`, `sun-rays`, `plasma`, `equalizer-bg`, `kaleidoscope`, `lightning`, `sand-grain`, `mesh-gradient`, `tiles-flicker`, `spiral-galaxy`, `noise-terrain`, `bubble-rise`, `stipple-sun`, `wire-globe`, `heat-haze`
-- **État (33) :** `shimmer`, `orbit-loader`, `loading-bar`, `typing-dots`, `check-draw`, `cross-draw`, `confetti`, `toast`, `progress-ring`, `badge-bump`, `heart-like`, `copy-morph`, `liquid-fill`, `float`, `live-dot`, `flip-clock`, `loading-quips`, `ai-orb`, `thinking-steps`, `agent-graph`, `voice-wave`, `citation-pop`, `confidence-meter`, `diff-reveal`, `context-chips`, `skeleton-morph`, `streaming-code`, `queue-position`, `error-glitch-shake`, `success-stamp`, `unlock-slide`, `upload-drop`, `offline-banner`
+- **État (34) :** `shimmer`, `orbit-loader`, `loading-bar`, `typing-dots`, `check-draw`, `cross-draw`, `confetti`, `toast`, `progress-ring`, `badge-bump`, `heart-like`, `copy-morph`, `liquid-fill`, `float`, `live-dot`, `flip-clock`, `loading-quips`, `ai-orb`, `thinking-steps`, `agent-graph`, `voice-wave`, `citation-pop`, `confidence-meter`, `diff-reveal`, `context-chips`, `skeleton-morph`, `streaming-code`, `queue-position`, `error-glitch-shake`, `success-stamp`, `unlock-slide`, `upload-drop`, `offline-banner`, `battery-level`
 <!-- effets:end -->
 
 Tous respectent `prefers-reduced-motion`.
