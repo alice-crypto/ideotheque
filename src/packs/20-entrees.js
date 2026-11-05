@@ -49,4 +49,10 @@
       });
     }
   });
+
+  // Un cadre s'ouvre vers le haut, et l'image se pose en même temps
+  FX.register('mask-rise-image', {
+    entrance: true,
+    setup: function (el) { if (!el.firstElementChild) U.make('div', '', el); el.firstElementChild.classList.add('fx-mri'); }
+  });
 })(window.FX);
