@@ -16,6 +16,11 @@
     .dtop { background: var(--y); }
     #instr > button { border: var(--rule); border-radius: 0; background: var(--w); color: var(--k); font-weight: 700; }
     #instr ul { border-radius: 0; }
+    .tclock { font-size: clamp(64px, 8vw, 112px); font-weight: 800; letter-spacing: -.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+    .tbar { height: 16px; margin-block: 12px; border: var(--rule); }
+    .tbar i { display: block; height: 100%; width: 0; background: var(--r); transition: width .4s linear; }
+    .tbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tbtns .pbtn { padding: .65em 1em; font-size: 14px; }
     /*@css*/
   </style>
 </head>
