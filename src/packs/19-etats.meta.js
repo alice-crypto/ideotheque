@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="confidence-meter" data-fx-value="72"></div>',
     '<div data-fx="confidence-meter" data-fx-value="72" style="width:190px;color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Rôle `meter`, et le niveau est écrit en toutes lettres.' }),
+  E('diff-reveal', 'État',
+    'Le texte se corrige sous nos yeux : les mots retirés se barrent, les mots ajoutés se surlignent.',
+    'Relecture soigneuse, on comprend ce qui a changé.',
+    '- Utilisez `<del>` et `<ins>` dans le texte\n- `--fx-del`, `--fx-ins` : couleurs',
+    'Réécriture par IA, comparaison de versions, relecture.',
+    'Un grand nombre de changements : préférez une vue en deux colonnes.',
+    '<p data-fx="diff-reveal">Un texte <del>trop long</del> <ins>plus court</ins>.</p>',
+    '<p data-fx="diff-reveal" style="width:220px;color:var(--ink);font-size:18px">Un texte <del>trop long</del> <ins>plus court</ins> et <del>flou</del> <ins>précis</ins>.</p>',
+    { trigger: 'Rejouer', a11y: '`<del>` et `<ins>` gardent leur sens pour les technologies d\'assistance.' }),
 ];

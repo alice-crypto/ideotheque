@@ -6764,6 +6764,14 @@
       el.style.setProperty('--fx-v', v / 100);
     }
   });
+
+  // Un texte montre ce qui a été retiré puis ajouté
+  FX.register('diff-reveal', {
+    entrance: true,
+    setup: function (el) {
+      el.querySelectorAll('del,ins').forEach(function (d, i) { d.style.setProperty('--fx-i', i); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
