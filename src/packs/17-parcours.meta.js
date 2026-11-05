@@ -30,4 +30,13 @@ module.exports = [
     '<nav data-fx="pill-nav-morph"><a>Logo</a><div class="fx-more"><div><a>Offres</a><a>Blog</a></div></div><a>Essayer</a></nav>',
     '<nav data-fx="pill-nav-morph" data-fx-demo="1" style="color:var(--ink);font-size:13px"><b>Halo</b><div class="fx-more"><div><span>Offres</span><span>Blog</span></div></div><span>Essayer</span></nav>',
     { a11y: 'La barre revient à sa taille pleine dès qu\'un lien reçoit le focus.' }),
+  E('rail-progress-nav', 'Navigation',
+    'Un rail vertical de petits traits : le trait de la section en cours s\'allonge et se remplit au fil de la lecture.',
+    'Sobre, on sait où on est sans y penser.',
+    'Chaque lien pointe vers une section par `href="#id"`.',
+    'Longs articles, pages produit en plusieurs chapitres.',
+    'Une page de moins de trois sections.',
+    '<nav data-fx="rail-progress-nav"><a href="#a">Intro</a><a href="#b">Suite</a></nav>',
+    '<nav data-fx="rail-progress-nav" style="color:var(--ink)"><a href="#" class="fx-cur">Intro</a><a href="#">Méthode</a><a href="#">Résultats</a></nav>',
+    { a11y: 'Le lien actif porte `aria-current`.' }),
 ];
