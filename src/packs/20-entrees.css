@@ -29,3 +29,7 @@
 [data-fx="accordion-unfold"] { perspective: 900px; }
 [data-fx="accordion-unfold"] > * { transform-origin: top; transform: rotateX(-90deg); opacity: 0; transition: transform .7s var(--fx-ease-out) calc(var(--fx-i) * 130ms), opacity .2s calc(var(--fx-i) * 130ms); }
 .fx-in[data-fx="accordion-unfold"] > * { transform: none; opacity: 1; }
+
+/* blur-words : sortir du flou */
+[data-fx="blur-words"] .fx-word { filter: blur(var(--fx-blur, 10px)); opacity: 0; transform: translateY(.2em); transition: filter .7s calc(var(--fx-i) * var(--fx-stagger)), opacity .5s calc(var(--fx-i) * var(--fx-stagger)), transform .7s var(--fx-ease-out) calc(var(--fx-i) * var(--fx-stagger)); }
+.fx-in[data-fx="blur-words"] .fx-word { filter: none; opacity: 1; transform: none; }
