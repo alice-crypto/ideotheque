@@ -42,3 +42,10 @@
 
 /* bilingual-toggle : deux langues */
 [data-fx="bilingual-toggle"] { cursor: pointer; border-bottom: 1px dashed currentColor; font-variant-ligatures: none; }
+
+/* word-counter-goal : un objectif d'écriture */
+[data-fx="word-counter-goal"] { display: grid; gap: 6px; }
+[data-fx="word-counter-goal"] .fx-wc { position: relative; padding-top: 5px; font-size: 12px; font-variant-numeric: tabular-nums; }
+[data-fx="word-counter-goal"] .fx-wc::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 0 / calc(var(--fx-q, 0) * 100%) 100%, rgba(128, 128, 128, .28); transition: background-size .3s var(--fx-ease-out); }
+[data-fx="word-counter-goal"].fx-goal .fx-wc { color: var(--fx-accent); animation: fx-wc .5s var(--fx-ease-spring); }
+@keyframes fx-wc { 40% { transform: scale(1.06); } }
