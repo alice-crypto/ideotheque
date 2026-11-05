@@ -56,3 +56,11 @@
 [data-fx="command-dock"] li { padding: .5em .8em; border-radius: 8px; cursor: pointer; animation: fx-cd-in .3s var(--fx-ease-out) calc(var(--fx-i) * 30ms) both; }
 [data-fx="command-dock"] li.fx-cur { background: var(--fx-cd-bg, rgba(128, 128, 128, .2)); }
 @keyframes fx-cd-in { from { opacity: 0; transform: translateY(6px); } }
+
+/* breadcrumb-fold : un fil d'Ariane plié */
+[data-fx="breadcrumb-fold"] { display: flex; flex-wrap: wrap; align-items: center; gap: .5em; list-style: none; padding: 0; margin: 0; }
+[data-fx="breadcrumb-fold"] > *:not(:last-child)::after { content: "/"; margin-left: .5em; opacity: .4; }
+[data-fx="breadcrumb-fold"] button { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; padding: 0; }
+[data-fx="breadcrumb-fold"] .fx-bc-mid { display: none; }
+[data-fx="breadcrumb-fold"].fx-open .fx-bc-mid { display: block; animation: fx-bc .34s var(--fx-ease-out) calc(var(--fx-i) * 50ms) both; }
+@keyframes fx-bc { from { opacity: 0; transform: translateX(-8px); } }
