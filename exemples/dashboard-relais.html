@@ -81,6 +81,12 @@
       tick();
       setInterval(tick, 10000);
     })();
+    var ROUTES = [
+      { n: 'A', late: false, p: [[130, 110], [300, 200], [300, 360], [420, 400]] },
+      { n: 'S', late: false, p: [[300, 200], [800, 200]] },
+      { n: 'L', late: true, p: [[670, 80], [520, 0], [420, 400]] },
+      /*@routesjs*/
+    ];
     /*@js*/
   </script>
 </body>
