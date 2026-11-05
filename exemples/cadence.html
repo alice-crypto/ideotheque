@@ -106,6 +106,10 @@
       go.addEventListener('click', function () {
         if (timer) { stop(); go.textContent = 'Lancer'; } else { start(); go.textContent = 'Arrêter'; }
       });
+      range.addEventListener('input', function () {
+        out.textContent = range.value;
+        if (timer) start();
+      });
       /*@metrojs*/
     })();
     /*@js*/
