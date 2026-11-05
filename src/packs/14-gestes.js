@@ -324,4 +324,20 @@
       el.addEventListener('pointerleave', function () { el.style.removeProperty('--fx-gx'); el.style.removeProperty('--fx-gy'); });
     }
   });
+
+  // Les éléments grossissent à l'approche du curseur, comme un dock
+  FX.register('jelly-list', {
+    setup: function (el) {
+      var items = Array.prototype.slice.call(el.children);
+      var R = U.num(el, 'fxRadius', 110);
+      el.addEventListener('pointermove', function (e) {
+        items.forEach(function (it) {
+          var r = it.getBoundingClientRect();
+          var d = Math.abs(r.left + r.width / 2 - e.clientX);
+          it.style.setProperty('--fx-k', Math.max(0, 1 - d / R).toFixed(3));
+        });
+      });
+      el.addEventListener('pointerleave', function () { items.forEach(function (it) { it.style.setProperty('--fx-k', 0); }); });
+    }
+  });
 })(window.FX);
