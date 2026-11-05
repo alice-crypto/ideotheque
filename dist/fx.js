@@ -6053,6 +6053,19 @@
       mark();
     }
   });
+
+  // Deux panneaux : celui qu'on survole prend presque toute la place
+  FX.register('split-hover-hero', {
+    setup: function (el) {
+      var k = Array.prototype.slice.call(el.children);
+      var set = function (i) { k.forEach(function (c, j) { c.style.setProperty('--fx-g', i === j ? U.num(el, 'fxGrow', 3) : 1); c.classList.toggle('fx-on', i === j); }); };
+      k.forEach(function (c, i) {
+        c.addEventListener('pointerenter', function () { set(i); });
+        c.addEventListener('focusin', function () { set(i); });
+      });
+      el.addEventListener('pointerleave', function () { set(-1); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

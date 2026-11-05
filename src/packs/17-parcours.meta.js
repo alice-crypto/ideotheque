@@ -83,4 +83,13 @@ module.exports = [
     '<div data-fx="horizontal-snap"><div><article>…</article><article>…</article></div></div>',
     '<div data-fx="horizontal-snap" style="width:220px;color:var(--ink)"><div><div class="demo-box" style="width:160px"></div><div class="demo-box alt" style="width:160px"></div><div class="demo-box ink" style="width:160px"></div></div></div>',
     { a11y: 'Boutons nommés, et le défilement natif reste disponible au clavier et au doigt.' }),
+  E('split-hover-hero', 'Navigation',
+    'Deux panneaux se partagent l\'écran : celui qu\'on survole prend presque toute la place.',
+    'Un choix physique, on pousse une porte.',
+    '- `data-fx-grow` (3) : rapport du panneau actif',
+    'Choisir entre deux publics, deux univers, deux produits.',
+    'Sur mobile, il vaut mieux les empiler.',
+    '<section data-fx="split-hover-hero"><a href="#">Particuliers</a><a href="#">Entreprises</a></section>',
+    '<div data-fx="split-hover-hero" style="width:230px;height:150px;color:#111;font-weight:600"><a href="#" class="demo-box" style="width:auto;height:auto;display:grid;place-items:center;color:inherit;text-decoration:none;border-radius:0">Un</a><a href="#" class="demo-box alt" style="width:auto;height:auto;display:grid;place-items:center;color:inherit;text-decoration:none;border-radius:0">Deux</a></div>',
+    { a11y: 'La sélection suit aussi le focus clavier.' }),
 ];

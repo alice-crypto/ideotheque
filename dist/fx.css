@@ -4414,6 +4414,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="horizontal-snap"] .fx-hs-dots i { width: 6px; height: 6px; border-radius: 3px; background: currentColor; opacity: .35; cursor: pointer; transition: width .3s var(--fx-ease-out), opacity .3s; }
 [data-fx="horizontal-snap"] .fx-hs-dots i.fx-on { width: 18px; opacity: 1; }
 
+/* split-hover-hero : deux portes */
+[data-fx="split-hover-hero"] { display: flex; overflow: hidden; }
+[data-fx="split-hover-hero"] > * { flex: var(--fx-g, 1) 1 0; min-width: 0; transition: flex-grow .7s var(--fx-ease-out), filter .4s; overflow: hidden; }
+[data-fx="split-hover-hero"]:hover > *:not(.fx-on) { filter: brightness(.6) saturate(.7); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
