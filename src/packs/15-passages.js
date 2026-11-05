@@ -150,4 +150,13 @@
     o.children[0].className = 'fx-sc-fill';
     o.children[1].className = 'fx-sc-beam';
   } } });
+
+  // Plusieurs aplats de couleur se suivent de près
+  FX.register('color-stack', { transition: { pieces: 4, cover: 880, uncover: 920, build: function (o) {
+    var list = U.cssVar(document.documentElement, '--fx-tr-colors', '#e10600,#ffd400,#0047ff,#0c0c0e').split(',');
+    Array.prototype.forEach.call(o.children, function (p, i) {
+      p.style.background = list[i % list.length];
+      p.style.setProperty('--fx-d', i * 90 + 'ms');
+    });
+  } } });
 })(window.FX);
