@@ -101,6 +101,11 @@
         beats.forEach(function (b, i) { b.classList.toggle('on', i === n); });
         n = (n + 1) % beats.length;
       }
+      function start() { clearInterval(timer); timer = setInterval(beat, 60000 / range.value); beat(); }
+      function stop() { clearInterval(timer); timer = null; n = 0; beats.forEach(function (b) { b.classList.remove('on'); }); }
+      go.addEventListener('click', function () {
+        if (timer) { stop(); go.textContent = 'Lancer'; } else { start(); go.textContent = 'Arrêter'; }
+      });
       /*@metrojs*/
     })();
     /*@js*/
