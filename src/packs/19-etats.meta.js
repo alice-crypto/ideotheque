@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="unlock-slide" data-fx-label="Glisser pour payer"></div>',
     '<div data-fx="unlock-slide" style="width:220px;color:var(--ink)"></div>',
     { a11y: 'Le pouce est un bouton : Entrée ou Espace confirment sans glisser.' }),
+  E('upload-drop', 'État',
+    'Une zone de dépôt dont la bordure se met à tourner quand un fichier arrive au-dessus.',
+    'La zone attend le fichier et le reconnaît.',
+    '- Mettez un `<input type="file">` dans un `<label>`\n- L\'élément émet `fx:files`.',
+    'Formulaires d\'envoi, ajout de documents à un assistant.',
+    'De cacher un champ fichier sans `<label>` : il ne serait plus accessible au clavier.',
+    '<label data-fx="upload-drop"><input type="file" multiple>Déposez vos fichiers</label>',
+    '<label data-fx="upload-drop" style="width:190px;color:var(--ink)"><input type="file" multiple>Déposez vos fichiers</label>',
+    { a11y: 'Le champ de fichier reste présent et utilisable au clavier via son `<label>`.' }),
 ];

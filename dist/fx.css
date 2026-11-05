@@ -4814,6 +4814,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="unlock-slide"] button { position: absolute; left: 4px; top: 4px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #fff; color: #111; cursor: grab; touch-action: none; transform: translateX(var(--fx-x, 0)); transition: transform .35s var(--fx-ease-spring); }
 [data-fx="unlock-slide"].fx-drag button { transition: none; cursor: grabbing; }
 
+/* upload-drop : une zone qui appelle les fichiers */
+[data-fx="upload-drop"] { display: grid; justify-items: center; gap: 6px; padding: 1.4em; border-radius: 12px; text-align: center; cursor: pointer; font-size: 14px; background-image: repeating-linear-gradient(90deg, currentColor 0 8px, transparent 8px 16px), repeating-linear-gradient(90deg, currentColor 0 8px, transparent 8px 16px), repeating-linear-gradient(0deg, currentColor 0 8px, transparent 8px 16px), repeating-linear-gradient(0deg, currentColor 0 8px, transparent 8px 16px); background-size: 100% 1px, 100% 1px, 1px 100%, 1px 100%; background-position: 0 0, 0 100%, 0 0, 100% 0; background-repeat: no-repeat; transition: transform .25s var(--fx-ease-out), background-color .25s; }
+[data-fx="upload-drop"] input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+[data-fx="upload-drop"].fx-over { transform: scale(1.03); background-color: rgba(128, 128, 128, .14); animation: fx-ud .7s linear infinite; }
+@keyframes fx-ud { to { background-position: 16px 0, -16px 100%, 0 -16px, 100% 16px; } }
+[data-fx="upload-drop"] .fx-ud-list { list-style: none; padding: 0; margin: 0; font-size: 12px; }
+[data-fx="upload-drop"] .fx-ud-list li { animation: fx-ud-l .3s var(--fx-ease-out); }
+@keyframes fx-ud-l { from { opacity: 0; transform: translateY(5px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

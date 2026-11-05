@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->397<!-- /total --> effets.
+La bibliothèque contient <!-- total -->398<!-- /total --> effets.
 
 ## Règles
 
@@ -417,6 +417,7 @@ La bibliothèque contient <!-- total -->397<!-- /total --> effets.
 | `error-glitch-shake` | État | Le champ refuse d'une petite secousse, se colore et explique en mots ce qui ne va pas |
 | `success-stamp` | État | Un tampon « Validé » s'écrase sur l'élément, avec une petite secousse au moment du choc |
 | `unlock-slide` | État | Pour confirmer, on fait glisser le pouce jusqu'au bout du rail ; en lâchant avant, il revient |
+| `upload-drop` | État | Une zone de dépôt dont la bordure se met à tourner quand un fichier arrive au-dessus |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)
