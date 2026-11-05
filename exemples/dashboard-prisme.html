@@ -67,6 +67,18 @@
           <p style="margin-top:12px;font-size:14px;font-weight:600">Loyer le 10 : 1 800 €<br>Fournisseurs le 15 : 6 240 €</p>
           <!--@cash-->
         </section>
+        <section class="dcard" id="clients" style="--w-col:8">
+          <h2>Meilleurs clients</h2>
+          <div style="overflow-x:auto">
+            <table class="dtable" id="tclients">
+              <thead><tr><th>Client</th><th>Ville</th><th>Statut</th><th style="text-align:right">Commandes</th><th style="text-align:right">Montant</th></tr></thead>
+              <tbody>
+                <!--@rows-->
+              </tbody>
+            </table>
+          </div>
+          <p id="vide" hidden style="padding-top:10px;font-weight:600">Aucun client ne correspond.</p>
+        </section>
         <!--@body-->
       </main>
     </div>
