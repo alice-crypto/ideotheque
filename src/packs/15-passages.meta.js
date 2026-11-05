@@ -111,4 +111,13 @@ module.exports = [
     '<a href="/numero" data-fx="dots-cover">Numéro 12</a>',
     '<button class="demo-ghost" onclick="FX.play(\'dots-cover\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('scan-cover', 'Transition',
+    'Un rayon lumineux traverse l\'écran de haut en bas et laisse un aplat derrière lui.',
+    'Scanner, analyse, technologie.',
+    '- `--fx-tr-color` : couleur de l\'aplat\n- `--fx-accent` : couleur du rayon',
+    'Produits techniques, IA, sécurité.',
+    'Les ambiances chaleureuses.',
+    '<a href="/analyse" data-fx="scan-cover">Analyse</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'scan-cover\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];
