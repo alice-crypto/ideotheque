@@ -230,3 +230,9 @@
 /* stamp-word : un mot qui frappe */
 [data-fx="stamp-word"] .fx-word { opacity: 0; transform: scale(2.4); transition: transform .28s cubic-bezier(.7, 0, .9, .4) calc(var(--fx-i) * 200ms), opacity .1s calc(var(--fx-i) * 200ms); }
 .fx-in[data-fx="stamp-word"] .fx-word { opacity: 1; transform: none; }
+
+/* word-bubbles : une conversation */
+[data-fx="word-bubbles"] { display: flex; flex-direction: column; gap: 5px; font-size: 13px; }
+[data-fx="word-bubbles"] > * { max-width: 80%; width: fit-content; margin: 0; padding: .4em .8em; border-radius: 12px; background: var(--fx-bubble-a, rgba(128, 128, 128, .25)); align-self: flex-start; transform-origin: 0 100%; transform: scale(.4); opacity: 0; transition: transform .4s var(--fx-ease-spring) var(--fx-d), opacity .2s var(--fx-d); }
+[data-fx="word-bubbles"] > :nth-child(even) { align-self: flex-end; transform-origin: 100% 100%; background: var(--fx-bubble-b, var(--fx-accent)); color: #111; }
+.fx-in[data-fx="word-bubbles"] > * { transform: none; opacity: 1; }
