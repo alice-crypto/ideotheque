@@ -105,3 +105,7 @@
 .fx-in[data-fx="marker-swipe-in"] .fx-line:nth-child(3)::after { animation: fx-msi .7s var(--fx-ease-io) .4s both; }
 .fx-in[data-fx="marker-swipe-in"] .fx-line:nth-child(n+4)::after { animation: fx-msi .7s var(--fx-ease-io) .6s both; }
 @keyframes fx-msi { 0% { transform: translateX(-101%); } 45%, 55% { transform: none; } 100% { transform: translateX(101%); } }
+
+/* wipe-columns-in : des colonnes qui se déroulent */
+[data-fx="wipe-columns-in"] > * { clip-path: inset(0 0 100% 0); transition: clip-path .9s var(--fx-ease-io) var(--fx-d, 0ms); }
+.fx-in[data-fx="wipe-columns-in"] > * { clip-path: inset(0 0 0 0); }
