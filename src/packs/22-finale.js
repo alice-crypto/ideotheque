@@ -438,4 +438,31 @@
       el.style.setProperty('--fx-my', (el.offsetHeight * (.5 + Math.sin(t * .0011) * .4)).toFixed(0) + 'px');
     }
   });
+
+  // Des nuages dérivent à plusieurs profondeurs
+  FX.register('cloud-drift', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el.classList.add('fx-cl-host');
+      var box = U.make('div', 'fx-cl-b', el);
+      box.setAttribute('aria-hidden', 'true');
+      el._fxC = [];
+      for (var i = 0; i < U.num(el, 'fxCount', 7); i++) {
+        var c = U.make('i', '', box), z = Math.random();
+        c.style.top = U.rand(4, 70) + '%';
+        c.style.setProperty('--fx-s', (.4 + z * .9).toFixed(2));
+        c.style.opacity = (.45 + z * .55).toFixed(2);
+        el._fxC.push({ d: c, x: Math.random() * 120 - 20, v: 1.2 + z * 2.6 });
+      }
+    },
+    tick: function (el, dt) {
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      el._fxC.forEach(function (c) {
+        c.x += c.v * dt;
+        if (c.x > 110) c.x = -30;
+        c.d.style.left = c.x.toFixed(2) + '%';
+      });
+    }
+  });
 })(window.FX);
