@@ -110,4 +110,12 @@ module.exports = [
     'Les mots sans lettre ouverte : l\'effet perd son sens.',
     '<div data-fx="aperture-text"><h2>OUVERT</h2></div>',
     '<div data-fx="aperture-text" style="width:220px;height:150px;color:var(--ink)"><b style="font-size:36px">OUVERT</b></div>'),
+  E('hue-drift', 'Défilement',
+    'La couleur de l\'élément glisse doucement sur le cercle chromatique au fil du défilement.',
+    'Une journée qui passe, l\'ambiance change sans rupture.',
+    '- `data-fx-range` (140) : plage en degrés',
+    'Illustrations, dégradés, fonds d\'une longue page.',
+    'Les couleurs de marque, les photos de personnes.',
+    '<div data-fx="hue-drift">…</div>',
+    '<div class="demo-box" data-fx="hue-drift" style="width:200px;height:130px"></div>'),
 ];

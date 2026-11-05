@@ -3825,6 +3825,11 @@
     setup: function (el) { el.style.overflow = 'hidden'; },
     scroll: function (el, info) { el.style.setProperty('--fx-zoom', Math.pow(U.num(el, 'fxMax', 18), U.clamp(info.pass * 2 - .6, 0, 1)).toFixed(2)); }
   });
+
+  // La teinte glisse au fil du défilement
+  FX.register('hue-drift', {
+    scroll: function (el, info) { el.style.setProperty('--fx-hue', (info.pass * U.num(el, 'fxRange', 140)).toFixed(1) + 'deg'); }
+  });
 })(window.FX);
 
 window.FX._boot();
