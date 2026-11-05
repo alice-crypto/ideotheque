@@ -155,4 +155,13 @@ module.exports = [
     '<div data-fx="carousel-3d-coverflow"><img…><img…><img…></div>',
     '<div data-fx="carousel-3d-coverflow" style="width:230px"><div class="demo-box" style="width:100px;height:100px"></div><div class="demo-box alt" style="width:100px;height:100px"></div><div class="demo-box ink" style="width:100px;height:100px"></div><div class="demo-box alt" style="width:100px;height:100px"></div><div class="demo-box" style="width:100px;height:100px"></div></div>',
     { a11y: 'Flèches gauche et droite au clavier. Seul l\'élément central est exposé aux lecteurs d\'écran.' }),
+  E('skip-link-reveal', 'Navigation',
+    'Un lien « Aller au contenu » reste caché et descend quand on arrive sur la page au clavier.',
+    'Attention discrète pour les personnes qui naviguent au clavier.',
+    '- `href` : l\'ancre du contenu principal\n- `--fx-pos` (fixed) : positionnement\n- `data-fx-show` : force l\'affichage, pour tester',
+    'Tous les sites, à mettre en premier dans `<body>`.',
+    'Rien : cet effet ne gêne personne.',
+    '<a href="#contenu" data-fx="skip-link-reveal">Aller au contenu</a>',
+    '<a href="#" data-fx="skip-link-reveal" data-fx-show="1" style="--fx-pos:relative;left:0;top:0">Aller au contenu</a>',
+    { a11y: 'Conçu pour le clavier : le focus passe réellement sur la cible après le saut.' }),
 ];

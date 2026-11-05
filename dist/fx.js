@@ -6234,6 +6234,22 @@
       show();
     }
   });
+
+  // Un lien d'évitement qui apparaît au clavier et emmène au contenu
+  FX.register('skip-link-reveal', {
+    setup: function (el) {
+      el.addEventListener('click', function (e) {
+        var href = el.getAttribute('href');
+        if (!href || href.charAt(0) !== '#' || href.length < 2) return;
+        var t = document.querySelector(href);
+        if (!t) return;
+        e.preventDefault();
+        if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '-1');
+        t.focus({ preventScroll: true });
+        t.scrollIntoView({ behavior: U.reduced ? 'auto' : 'smooth' });
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
