@@ -209,4 +209,13 @@ module.exports = [
     '<div data-fx="wire-globe" style="height:400px"></div>',
     '<div data-fx="wire-globe" style="width:230px;height:170px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le globe reste immobile.' }),
+  E('heat-haze', 'Ambiance',
+    'L\'image tremble légèrement, comme l\'air au-dessus d\'une route brûlante.',
+    'Été, désert, mirage.',
+    '- `data-fx-scale` (7) : force de la déformation',
+    'Paysages, désert, sites de voyage.',
+    'De nombreux éléments par page : le filtre coûte cher.',
+    '<figure data-fx="heat-haze"><img src="route.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="heat-haze"><img src="assets/dune.svg" alt=""></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le filtre n\'est pas appliqué.' }),
 ];
