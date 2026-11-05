@@ -4849,6 +4849,35 @@
       U.onResize(draw);
     }
   });
+
+  // L'image passe d'un tramage 1-bit à ses vraies couleurs
+  FX.register('dither-reveal', {
+    entrance: true,
+    setup: function (el) {
+      var img = el.querySelector('img');
+      if (!img) return;
+      U.ensurePositioned(el);
+      var cv = el._fxCv = U.make('canvas', 'fx-dither', el);
+      cv.setAttribute('aria-hidden', 'true');
+      var B = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+      var draw = function () {
+        var px = U.num(el, 'fxPixel', 3), w = Math.ceil((el.offsetWidth || 200) / px), h = Math.ceil((el.offsetHeight || 150) / px);
+        cv.width = w; cv.height = h;
+        var c = cv.getContext('2d');
+        try {
+          c.drawImage(img, 0, 0, w, h);
+          var d = c.getImageData(0, 0, w, h), a = d.data;
+          for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
+            var i = (y * w + x) * 4, l = (a[i] * .3 + a[i + 1] * .59 + a[i + 2] * .11) / 255;
+            var v = l > (B[(y % 4) * 4 + x % 4] + .5) / 16 ? 255 : 0;
+            a[i] = a[i + 1] = a[i + 2] = v;
+          }
+          c.putImageData(d, 0, 0);
+        } catch (err) { cv.remove(); }
+      };
+      if (img.complete) draw(); else img.addEventListener('load', draw);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -156,4 +156,13 @@ module.exports = [
     '<figure data-fx="ascii-image"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="ascii-image" data-fx-show="1"><img src="assets/dune.svg" alt=""></div>',
     { a11y: 'L\'image garde son texte alternatif, le texte ASCII est masqué aux lecteurs d\'écran.' }),
+  E('dither-reveal', 'Image',
+    'L\'image apparaît en tramage noir et blanc de type 1-bit, puis passe par paliers à ses vraies couleurs.',
+    'Vieil ordinateur, écran qui se réveille.',
+    '- `data-fx-pixel` (3) : taille d\'un point\n- `--fx-speed` (1.4s) : durée du passage',
+    'Portfolios, culture numérique, archives.',
+    'Les images hébergées sur un autre domaine sans CORS.',
+    '<figure data-fx="dither-reveal"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="dither-reveal"><img src="assets/dune.svg" alt=""></div>',
+    { trigger: 'Rejouer' }),
 ];
