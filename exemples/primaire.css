@@ -137,4 +137,9 @@ img, svg { display: block; max-width: 100%; }
 .seg2 button:last-child { border-right: 0; }
 .seg2 button[aria-pressed="true"] { background: var(--k); color: var(--w); }
 .ex-back { background: var(--k) !important; color: var(--w) !important; border-radius: 0 !important; box-shadow: none !important; }
+@media (max-width: 900px) {
+  .pgrid { --cols: 2 !important; }
+  .phd { grid-template-columns: 1fr; gap: 12px; }
+  .pfoot .wrap { grid-template-columns: 1fr 1fr; }
+}
 /*@css*/
