@@ -15,3 +15,7 @@
 
 /* parallax-letters : des lettres à plusieurs vitesses */
 [data-fx="parallax-letters"] .fx-char { display: inline-block; transform: translateY(calc(var(--fx-t, 0px) * var(--fx-s, 0))); }
+
+/* tilted-band : un bandeau de travers */
+[data-fx="tilted-band"] { display: block; width: 120%; margin-left: -10%; padding: .4em 0; overflow: hidden; white-space: nowrap; background: var(--fx-band-bg, var(--fx-accent)); color: var(--fx-band-ink, #111); font-weight: 700; transform: rotate(var(--fx-angle, -4deg)); }
+[data-fx="tilted-band"] span { display: inline-block; }
