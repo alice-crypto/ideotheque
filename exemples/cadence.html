@@ -140,6 +140,13 @@
       });
       /*@metrojs*/
     })();
+    document.querySelectorAll('.cheat [data-fx]').forEach(function (el) {
+      new MutationObserver(function (m, o) {
+        if (!el.children.length) return;
+        o.disconnect();
+        Array.prototype.forEach.call(el.children, function (c, i) { if ((i * 7 + 3) % 6 === 0 || i % 37 === 5) c.setAttribute('data-off', ''); });
+      }).observe(el, { childList: true });
+    });
     /*@js*/
   </script>
 </body>
