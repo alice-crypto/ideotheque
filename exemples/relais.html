@@ -105,6 +105,11 @@
       var msgs = ['Votre colis est prêt, Amina arrive.', 'Amina a votre colis dans sa sacoche.', 'Elle passe le Pont Neuf : encore 6 minutes.', 'Livré à 11 h 42. Bonne journée !'];
       var el = document.getElementById('track'), out = document.getElementById('track-msg'), i = 0;
       out.textContent = msgs[0];
+      document.getElementById('track-go').addEventListener('click', function () {
+        i = (i + 1) % msgs.length;
+        FX.trigger(el);
+        out.textContent = msgs[i];
+      });
       /*@trackjs*/
     });
     /*@js*/
