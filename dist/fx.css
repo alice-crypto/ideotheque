@@ -4610,6 +4610,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="gauge-needle"] circle { fill: currentColor; }
 [data-fx="gauge-needle"] b { display: block; margin-top: 4px; font-size: 22px; font-variant-numeric: tabular-nums; }
 
+/* rank-race : un classement vivant */
+[data-fx="rank-race"] { position: relative; height: calc(var(--fx-count, 5) * var(--fx-row, 28px)); font-size: 13px; }
+[data-fx="rank-race"] .fx-rr { position: absolute; left: 0; right: 0; height: var(--fx-row, 28px); display: flex; align-items: center; gap: 6px; transform: translateY(calc(var(--fx-rank, 0) * var(--fx-row, 28px))); transition: transform .6s var(--fx-ease-out); }
+[data-fx="rank-race"] .fx-rr span { flex: 0 0 60px; }
+[data-fx="rank-race"] .fx-rr i { flex: 0 0 auto; width: calc(var(--fx-w, 0) * (100% - 110px)); height: 60%; border-radius: 3px; background: var(--fx-accent); transition: width .6s var(--fx-ease-out); }
+[data-fx="rank-race"] .fx-rr b { font-variant-numeric: tabular-nums; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

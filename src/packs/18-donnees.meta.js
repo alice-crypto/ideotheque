@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="gauge-needle" data-fx-value="72"></div>',
     '<div data-fx="gauge-needle" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Rôle `meter` avec `aria-valuenow`, valeur écrite sous le cadran.' }),
+  E('rank-race', 'Présentation',
+    'Un classement où les valeurs évoluent, et les lignes se dépassent en glissant.',
+    'Course, suspense, l\'histoire d\'une évolution.',
+    '- `data-fx-items` : « nom:valeur » séparés par des virgules\n- `data-fx-every` (1.1) : secondes entre deux mises à jour\n- `--fx-row` (28px) : hauteur d\'une ligne',
+    'Démonstrations, récits de données, classements.',
+    'De vraies données : les valeurs varient au hasard. Mettez à jour `_fxRows` vous-même dans ce cas.',
+    '<div data-fx="rank-race" data-fx-items="A:40,B:55"></div>',
+    '<div data-fx="rank-race" style="width:225px;color:var(--ink)"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le classement reste figé.' }),
 ];
