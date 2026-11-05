@@ -157,4 +157,20 @@
       U.make('i', 'fx-hr', el).setAttribute('aria-hidden', 'true');
     }
   });
+
+  // Plusieurs copies d'un grand numéro se rassemblent
+  FX.register('number-stack-in', {
+    entrance: true,
+    setup: function (el) {
+      var t = el.textContent.trim(), n = 4;
+      el.textContent = '';
+      el.setAttribute('aria-label', t);
+      for (var i = n; i >= 0; i--) {
+        var s = U.make('span', i ? 'fx-ns-c' : 'fx-ns-t', el);
+        s.textContent = t;
+        s.setAttribute('aria-hidden', 'true');
+        s.style.setProperty('--fx-i', i);
+      }
+    }
+  });
 })(window.FX);
