@@ -77,6 +77,14 @@
           <h2>Un métronome qui se voit.</h2>
           <p style="margin-top:18px;font-size:19px">Réglez le tempo et lancez. Le rythme passe par les yeux avant de passer par les mains.</p>
         </div>
+        <div class="mbox" id="metro">
+          <div class="mbpm" aria-live="off"><span id="m-bpm">96</span><small>temps / min</small></div>
+          <div class="mbeats" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="mctl">
+            <label data-fx="range-bubble" data-fx-unit=" bpm"><input id="m-range" type="range" min="40" max="208" value="96" aria-label="Tempo en battements par minute"></label>
+            <button class="pbtn" id="m-go" type="button">Lancer</button>
+          </div>
+        </div>
         <!--@metro-->
       </div>
     </section>
