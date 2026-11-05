@@ -38,4 +38,13 @@ module.exports = [
     'Les écrans tactiles comme seul support : sans curseur, l\'effet ne se voit pas.',
     '<h1 data-fx="cursor-repel">Approchez</h1>',
     '<p class="demo-title" data-fx="cursor-repel">Approchez</p>'),
+  E('scroll-weight', 'Texte',
+    'Le mot s\'épaissit en approchant du centre de l\'écran, puis s\'affine en le quittant.',
+    'Le texte a du poids, comme s\'il passait sous une loupe.',
+    'Aucun réglage : la courbe suit la traversée de l\'écran.',
+    'Listes de grands mots, manifestes, sections éditoriales.',
+    'Le texte courant, qui changerait de longueur en défilant.',
+    '<h2 data-fx="scroll-weight">Attention</h2>',
+    '<p class="demo-title" data-fx="scroll-weight">Attention</p>',
+    { a11y: 'Le texte reste lisible à toute position du défilement, l\'effet ne masque rien.' }),
 ];
