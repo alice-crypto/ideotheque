@@ -579,4 +579,21 @@
       });
     }
   });
+
+  // Une petite bulle confirme l'action à l'endroit du clic
+  FX.register('copy-pop-toast', {
+    triggerOn: 'click',
+    trigger: function (el, e) {
+      var b = document.createElement('span');
+      b.className = 'fx-cpt';
+      b.setAttribute('role', 'status');
+      b.textContent = el.dataset.fxMessage || 'Copié !';
+      var r = el.getBoundingClientRect();
+      b.style.left = (e && e.clientX ? e.clientX : r.left + r.width / 2) + 'px';
+      b.style.top = (e && e.clientY ? e.clientY : r.top) + 'px';
+      document.body.appendChild(b);
+      setTimeout(function () { b.remove(); }, 900);
+      if (el.dataset.fxCopy && navigator.clipboard) navigator.clipboard.writeText(el.dataset.fxCopy).catch(function () {});
+    }
+  });
 })(window.FX);
