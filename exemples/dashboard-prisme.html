@@ -27,6 +27,11 @@
       .dcard[style*="--w-col:8"] { --w-col: 12 !important; }
       .dcard[style*="--w-col:4"] { --w-col: 6 !important; }
     }
+    @media (max-width: 620px) {
+      .ptop { grid-template-columns: 1fr 1fr; }
+      .ptop > div { border-bottom: var(--rule); }
+      .dtop h1 { font-size: 22px; }
+    }
     /*@css*/
   </style>
 </head>
