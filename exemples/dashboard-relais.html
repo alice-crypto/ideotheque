@@ -107,6 +107,9 @@
         layer.appendChild(g);
         return { g: g, r: r, t: i * .19 };
       });
+      function place() { bikes.forEach(function (b) { var q = along(b.r.p, b.t); b.g.setAttribute('transform', 'translate(' + q[0].toFixed(1) + ' ' + q[1].toFixed(1) + ')'); }); }
+      place();
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       /*@bikejs*/
     })();
     /*@js*/
