@@ -7398,6 +7398,12 @@
       });
     }
   });
+
+  // Toute une page apparaît doucement, de haut en bas
+  FX.register('soft-page-in', {
+    entrance: true,
+    setup: function (el) { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-d', Math.min(i * 90, 450) + 'ms'); }); }
+  });
 })(window.FX);
 
 window.FX._boot();

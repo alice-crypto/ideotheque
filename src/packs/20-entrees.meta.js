@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="path-follow-in">…</div>',
     '<div class="demo-row" data-fx="path-follow-in"><div class="demo-box" style="width:44px;height:44px"></div><div class="demo-box alt" style="width:44px;height:44px"></div><div class="demo-box ink" style="width:44px;height:44px"></div><div class="demo-box alt" style="width:44px;height:44px"></div></div>',
     { trigger: 'Rejouer' }),
+  E('soft-page-in', 'Entrée',
+    'Les blocs d\'une page apparaissent doucement, de haut en bas, avec un très léger mouvement.',
+    'Calme, à peine perceptible, très soigné.',
+    'Aucun réglage. Le retard total est limité à 450 ms.',
+    'Pages d\'application, documentation, tableaux de bord.',
+    'Les pages où la vitesse perçue est critique.',
+    '<main data-fx="soft-page-in">…</main>',
+    '<div class="demo-list" data-fx="soft-page-in"><div></div><div></div><div></div><div></div></div>',
+    { trigger: 'Rejouer' }),
 ];
