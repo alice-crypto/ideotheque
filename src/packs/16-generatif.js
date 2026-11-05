@@ -270,4 +270,34 @@
       });
     }
   });
+
+  // Des flocons tombent à plusieurs profondeurs
+  FX.register('snow-fall', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxF = [];
+      for (var i = 0; i < U.num(el, 'fxCount', 70); i++) { var z = Math.random(); el._fxF.push({ x: Math.random(), y: Math.random(), z: z, a: U.rand(0, 6) }); }
+    },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      var c = cv.getContext('2d');
+      c.clearRect(0, 0, w, h);
+      c.fillStyle = getComputedStyle(cv).color;
+      el._fxF.forEach(function (f) {
+        f.y += (.03 + f.z * .09) * dt;
+        f.x += Math.sin(t * .0006 + f.a) * .0006;
+        if (f.y > 1.02) { f.y = -.02; f.x = Math.random(); }
+        c.globalAlpha = .3 + f.z * .7;
+        c.beginPath();
+        c.arc(((f.x % 1) + 1) % 1 * w, f.y * h, .6 + f.z * 2.2, 0, 7);
+        c.fill();
+      });
+    }
+  });
 })(window.FX);
