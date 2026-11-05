@@ -26,3 +26,6 @@
 [data-fx="reading-time-bar"] { display: grid; gap: 4px; font-size: 12px; }
 [data-fx="reading-time-bar"] i { display: block; height: 2px; background: rgba(128, 128, 128, .28); position: relative; }
 [data-fx="reading-time-bar"] i::after { content: ""; position: absolute; inset: 0; background: var(--fx-accent); transform-origin: left; transform: scaleX(var(--fx-p, 0)); }
+
+/* kerning-focus : une lecture sous la lampe */
+[data-fx="kerning-focus"] .fx-word { opacity: var(--fx-k, 1); filter: blur(calc((1 - var(--fx-k, 1)) * 1.6px)); transition: opacity .25s, filter .25s; }
