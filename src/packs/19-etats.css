@@ -1,1 +1,9 @@
 /* Pack 19 — États et interfaces d'IA */
+
+/* agent-graph : les étapes d'un agent */
+[data-fx="agent-graph"] { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; }
+[data-fx="agent-graph"] .fx-ag { position: relative; padding: .35em .8em; border: 1px solid rgba(128, 128, 128, .4); border-radius: 99px; transition: background .3s, color .3s, border-color .3s; }
+[data-fx="agent-graph"] .fx-ag:not(:last-child)::after { content: ""; position: absolute; left: 100%; top: 50%; width: 18px; height: 1px; background: rgba(128, 128, 128, .4); }
+[data-fx="agent-graph"] .fx-ag.fx-on { border-color: var(--fx-accent); box-shadow: 0 0 0 0 var(--fx-accent); animation: fx-ag 1s infinite; }
+[data-fx="agent-graph"] .fx-ag.fx-ok { background: var(--fx-accent); border-color: var(--fx-accent); color: #111; }
+@keyframes fx-ag { to { box-shadow: 0 0 0 8px transparent; } }
