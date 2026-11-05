@@ -3936,6 +3936,12 @@
       el._fxPath.setAttribute('d', d + ' L600 100 Z');
     }
   });
+
+  // Des éléments tournent autour d'un centre au défilement
+  FX.register('orbit-scrub', {
+    setup: function (el) { var n = el.children.length; Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-a', (i / n * 360) + 'deg'); }); },
+    scroll: function (el, info) { el.style.setProperty('--fx-turn', (info.pass * U.num(el, 'fxTurn', 240)).toFixed(1) + 'deg'); }
+  });
 })(window.FX);
 
 window.FX._boot();

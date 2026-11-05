@@ -3481,6 +3481,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="wave-morph"] svg { display: block; width: 100%; height: 100%; }
 [data-fx="wave-morph"] path { fill: var(--fx-wave, var(--fx-accent)); }
 
+/* orbit-scrub : une orbite pilotée */
+[data-fx="orbit-scrub"] { position: relative; width: var(--fx-size, 180px); height: var(--fx-size, 180px); }
+[data-fx="orbit-scrub"] > * {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  transform: rotate(calc(var(--fx-a) + var(--fx-turn, 0deg))) translateX(calc(var(--fx-size, 180px) / 2 - 16px)) rotate(calc((var(--fx-a) + var(--fx-turn, 0deg)) * -1));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -201,4 +201,12 @@ module.exports = [
     'Les interfaces denses et géométriques.',
     '<div data-fx="wave-morph"></div>',
     '<div data-fx="wave-morph" style="width:100%"></div>'),
+  E('orbit-scrub', 'Défilement',
+    'Des éléments tournent autour d\'un centre à mesure qu\'on défile, tout en restant droits.',
+    'Système solaire, équipe autour d\'une idée.',
+    '- `data-fx-turn` (240) : rotation totale en degrés\n- `--fx-size` (180px) : diamètre',
+    'Icônes autour d\'un logo, intégrations d\'un produit.',
+    'Plus de 8 éléments.',
+    '<div data-fx="orbit-scrub"><img…><img…><img…></div>',
+    '<div data-fx="orbit-scrub" style="--fx-size:150px"><span class="demo-chip" style="padding:6px">A</span><span class="demo-chip" style="padding:6px">B</span><span class="demo-chip" style="padding:6px">C</span><span class="demo-chip" style="padding:6px">D</span></div>'),
 ];
