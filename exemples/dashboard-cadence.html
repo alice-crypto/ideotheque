@@ -152,6 +152,14 @@
       document.getElementById('t-reset').addEventListener('click', function () { stop(); left = TOTAL; show(); });
       /*@tjs*/
     })();
+    document.getElementById('filtre').addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      this.querySelectorAll('button').forEach(function (o) { o.setAttribute('aria-pressed', o === b); });
+      document.querySelectorAll('#tm tbody tr').forEach(function (r) {
+        r.hidden = !!b.dataset.f && r.cells[2].textContent.trim() !== b.dataset.f;
+      });
+    });
     /*@js*/
   </script>
 </body>
