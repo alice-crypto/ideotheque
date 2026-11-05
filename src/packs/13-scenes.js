@@ -164,4 +164,13 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-grow', info.enter.toFixed(3)); }
   });
+
+  // Deux battants s'ouvrent sur le contenu
+  FX.register('door-scroll', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      ['fx-door-l', 'fx-door-r'].forEach(function (c) { U.make('i', c, el).setAttribute('aria-hidden', 'true'); });
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-door', U.easeInOut(U.clamp(info.enter * 1.2 - .1, 0, 1)).toFixed(3)); }
+  });
 })(window.FX);
