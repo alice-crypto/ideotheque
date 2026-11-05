@@ -54,4 +54,12 @@ module.exports = [
     'Plus de 7 cartes : l\'éventail devient illisible.',
     '<div data-fx="fan-scroll"><div>…</div><div>…</div><div>…</div></div>',
     '<div data-fx="fan-scroll"><div class="demo-box" style="width:90px;height:120px"></div><div class="demo-box alt" style="width:90px;height:120px"></div><div class="demo-box ink" style="width:90px;height:120px"></div><div class="demo-box" style="width:90px;height:120px"></div></div>'),
+  E('tunnel-scroll', 'Défilement',
+    'Des cadres concentriques grandissent au défilement : on a l\'impression de traverser un couloir.',
+    'Plongée, vitesse, profondeur sans 3D lourde.',
+    '- `data-fx-frames` (6) : nombre de cadres\n- `--fx-frame` : couleur des cadres',
+    'Titres de chapitre, écrans d\'introduction.',
+    'Les fonds déjà chargés en lignes.',
+    '<section data-fx="tunnel-scroll">…</section>',
+    '<div data-fx="tunnel-scroll" style="width:210px;height:150px;color:var(--ink);display:grid;place-items:center"><b>Plongée</b></div>'),
 ];

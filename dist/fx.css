@@ -3351,6 +3351,22 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transform: rotate(calc(var(--fx-k) * var(--fx-open, 1) * var(--fx-angle, 14deg)));
 }
 
+/* tunnel-scroll : un couloir de cadres */
+[data-fx="tunnel-scroll"] { overflow: hidden; perspective: 400px; }
+[data-fx="tunnel-scroll"] .fx-tun {
+  --fx-z: calc(mod(var(--fx-q) + var(--fx-dive, 0) * 2, 1));
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border: 1px solid var(--fx-frame, currentColor);
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  transform: scale(calc(.08 + var(--fx-z) * var(--fx-z) * 1.1));
+  opacity: calc(1 - var(--fx-z) * .85);
+  pointer-events: none;
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
