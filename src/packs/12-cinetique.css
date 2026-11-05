@@ -55,3 +55,7 @@
   -webkit-mask: radial-gradient(circle var(--fx-size, 90px) at var(--fx-mx, 50%) var(--fx-my, 50%), #000 60%, transparent);
   mask: radial-gradient(circle var(--fx-size, 90px) at var(--fx-mx, 50%) var(--fx-my, 50%), #000 60%, transparent);
 }
+
+/* letter-orbit : du cercle à la ligne */
+[data-fx="letter-orbit"] { white-space: nowrap; }
+[data-fx="letter-orbit"] .fx-char { display: inline-block; transform-origin: center; }
