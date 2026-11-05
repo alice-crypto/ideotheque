@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->384<!-- /total --> effets.
+La bibliothèque contient <!-- total -->385<!-- /total --> effets.
 
 ## Règles
 
@@ -139,6 +139,7 @@ La bibliothèque contient <!-- total -->384<!-- /total --> effets.
 | `compare-table-sweep` | Présentation | Dans un tableau comparatif, toute la colonne survolée s'éclaire, jusqu'à son titre |
 | `map-route-draw` | Présentation | Un itinéraire se dessine au fil du défilement, et chaque étape atteinte s'allume |
 | `team-card-spotlight` | Présentation | Des visages se chevauchent : celui qu'on survole passe devant, grandit, et son nom s'affiche |
+| `changelog-feed` | Présentation | Un journal des nouveautés dont les lignes arrivent en cascade, filtrable par type |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

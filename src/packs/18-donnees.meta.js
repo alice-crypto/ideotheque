@@ -163,4 +163,13 @@ module.exports = [
     '<div data-fx="team-card-spotlight"><img data-name="Noa" data-role="Design" alt="" src="noa.jpg"></div>',
     '<div data-fx="team-card-spotlight" style="width:225px;color:var(--ink)"><div class="demo-box" data-name="Noa" data-role="Design"></div><div class="demo-box alt" data-name="Sam" data-role="Code"></div><div class="demo-box ink" data-name="Lou" data-role="Son"></div><div class="demo-box alt" data-name="Eli" data-role="Récit"></div></div>',
     { a11y: 'Le nom change avec `aria-live`, et chaque visage peut recevoir le focus.' }),
+  E('changelog-feed', 'Présentation',
+    'Un journal des nouveautés dont les lignes arrivent en cascade, filtrable par type.',
+    'Un produit vivant, qui progresse sous nos yeux.',
+    '- `data-type` sur chaque ligne : type de changement',
+    'Journaux de versions, feuilles de route, actualités.',
+    'Une liste sans dates : ajoutez-les pour que le journal ait du sens.',
+    '<ul data-fx="changelog-feed"><li data-type="Ajout">Nouveau thème</li><li data-type="Correctif">Bug corrigé</li></ul>',
+    '<div style="width:220px;color:var(--ink);font-size:13px"><ul data-fx="changelog-feed"><li data-type="Ajout">Nouveau thème</li><li data-type="Correctif">Menu réparé</li><li data-type="Ajout">Export PDF</li></ul></div>',
+    { trigger: 'Rejouer', a11y: 'Les filtres sont des boutons avec `aria-pressed`.' }),
 ];
