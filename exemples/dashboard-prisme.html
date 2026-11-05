@@ -84,6 +84,12 @@
       document.getElementById('ventes-phrase').textContent = d.phrase;
       /*@drawjs*/
     }
+    document.getElementById('periode').addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      this.querySelectorAll('button').forEach(function (o) { o.setAttribute('aria-pressed', o === b); });
+      drawSales(b.dataset.p);
+    });
     /*@js*/
   </script>
 </body>
