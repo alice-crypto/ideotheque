@@ -79,4 +79,12 @@ module.exports = [
     'De la laisser toute l\'année.',
     '<section data-fx="snow-fall">…</section>',
     '<div data-fx="snow-fall" style="width:230px;height:170px"></div>'),
+  E('fireflies', 'Ambiance',
+    'Des lucioles errent lentement et s\'allument chacune à leur rythme.',
+    'Nuit d\'été, magie discrète.',
+    '- `data-fx-count` (26) : nombre de lucioles\n- `--fx-fly` : couleur',
+    'Fonds sombres, contes, marques poétiques.',
+    'Un fond clair : l\'effet disparaît.',
+    '<section data-fx="fireflies">…</section>',
+    '<div data-fx="fireflies" style="width:230px;height:170px"></div>'),
 ];
