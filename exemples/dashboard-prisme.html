@@ -80,6 +80,8 @@
       });
       bars.innerHTML = html;
       bars.setAttribute('aria-label', d.phrase);
+      document.getElementById('labels').innerHTML = d.labels.map(function (l) { return '<span>' + l + '</span>'; }).join('');
+      document.getElementById('ventes-phrase').textContent = d.phrase;
       /*@drawjs*/
     }
     /*@js*/
