@@ -127,4 +127,12 @@ module.exports = [
     '<div data-fx="bars-scrub" data-fx-values="30,55,40,75"></div>',
     '<div data-fx="bars-scrub" style="width:210px"></div>',
     { a11y: 'Les valeurs sont dans `aria-label`.' }),
+  E('door-scroll', 'Défilement',
+    'Deux battants s\'ouvrent en perspective sur le contenu, au fil du défilement.',
+    'Pousser une porte, entrer quelque part.',
+    '- `--fx-door-c` : couleur des battants',
+    'Ouverture d\'une galerie, d\'une boutique, d\'une histoire.',
+    'Les contenus indispensables tout en haut de page.',
+    '<section data-fx="door-scroll">…</section>',
+    '<div class="demo-box" data-fx="door-scroll" style="width:210px;height:150px"></div>'),
 ];

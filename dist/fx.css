@@ -3423,6 +3423,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transform: scaleY(calc(var(--fx-v) * clamp(.02, calc(var(--fx-grow, 1) * 1.5 - var(--fx-q) * .5), 1)));
 }
 
+/* door-scroll : on pousse la porte */
+[data-fx="door-scroll"] { perspective: 900px; overflow: hidden; }
+[data-fx="door-scroll"] > i { position: absolute; top: 0; bottom: 0; width: 50%; background: var(--fx-door-c, var(--fx-dark)); border: 1px solid rgba(255, 255, 255, .12); pointer-events: none; }
+[data-fx="door-scroll"] .fx-door-l { left: 0; transform-origin: left; transform: rotateY(calc(var(--fx-door, 1) * -100deg)); }
+[data-fx="door-scroll"] .fx-door-r { right: 0; transform-origin: right; transform: rotateY(calc(var(--fx-door, 1) * 100deg)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
