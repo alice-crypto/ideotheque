@@ -28,3 +28,7 @@
 /* particle-text : un mot en poussière */
 [data-fx="particle-text"] { display: inline-block; }
 [data-fx="particle-text"] canvas { display: block; max-width: 100%; }
+
+/* rain-glass : la pluie sur la vitre */
+[data-fx="rain-glass"] { overflow: hidden; }
+[data-fx="rain-glass"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; color: var(--fx-drop, rgba(255, 255, 255, .55)); }
