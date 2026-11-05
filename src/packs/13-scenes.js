@@ -113,4 +113,29 @@
       el.style.setProperty('--fx-fill', p.toFixed(3));
     }
   });
+
+  // Une vague fait gonfler les points d'une grille
+  FX.register('dot-swell', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-swell', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxP = .5;
+    },
+    scroll: function (el, info) { el._fxP = info.pass; },
+    tick: function (el) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight, step = U.num(el, 'fxStep', 16);
+      if (!w) return;
+      if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+      if (el._fxDrawn === el._fxP && cv.dataset.w === '' + w) return;
+      el._fxDrawn = el._fxP; cv.dataset.w = w;
+      var c = cv.getContext('2d'), front = el._fxP * (h + 160) - 80;
+      c.clearRect(0, 0, w, h);
+      c.fillStyle = getComputedStyle(cv).color;
+      for (var y = step / 2; y < h; y += step) for (var x = step / 2; x < w; x += step) {
+        var k = Math.max(0, 1 - Math.abs(y - front) / 80);
+        c.beginPath(); c.arc(x, y, .8 + k * step * .42, 0, 7); c.fill();
+      }
+    }
+  });
 })(window.FX);
