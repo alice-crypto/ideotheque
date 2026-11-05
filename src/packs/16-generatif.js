@@ -300,4 +300,38 @@
       });
     }
   });
+
+  // Des lucioles errent et s'allument tour à tour
+  FX.register('fireflies', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxF = [];
+      for (var i = 0; i < U.num(el, 'fxCount', 26); i++) el._fxF.push({ x: Math.random(), y: Math.random(), vx: 0, vy: 0, a: U.rand(0, 6), s: U.rand(.5, 1.4) });
+    },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      var c = cv.getContext('2d'), col = getComputedStyle(cv).color;
+      c.clearRect(0, 0, w, h);
+      el._fxF.forEach(function (f) {
+        f.vx = (f.vx + U.rand(-.04, .04) * dt) * .985; f.vy = (f.vy + U.rand(-.04, .04) * dt) * .985;
+        f.x += f.vx; f.y += f.vy;
+        if (f.x < 0 || f.x > 1) f.vx *= -1;
+        if (f.y < 0 || f.y > 1) f.vy *= -1;
+        var on = Math.pow(Math.max(0, Math.sin(t * .001 * f.s + f.a)), 3);
+        c.globalAlpha = on;
+        c.shadowBlur = 14;
+        c.shadowColor = col;
+        c.fillStyle = col;
+        c.beginPath();
+        c.arc(f.x * w, f.y * h, 2, 0, 7);
+        c.fill();
+      });
+    }
+  });
 })(window.FX);
