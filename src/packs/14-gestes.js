@@ -241,4 +241,33 @@
       el.lastChild.addEventListener('click', function () { change(1); });
     }
   });
+
+  // Une note dont les étoiles s'allument en vague
+  FX.register('star-rate', {
+    setup: function (el) {
+      var n = U.num(el, 'fxMax', 5), val = U.num(el, 'fxValue', 0);
+      el.setAttribute('role', 'slider');
+      el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', n);
+      el.setAttribute('aria-label', el.getAttribute('aria-label') || 'Note');
+      el.tabIndex = 0;
+      var stars = [];
+      for (var i = 0; i < n; i++) { var s = U.make('i', '', el); s.textContent = '★'; s.style.setProperty('--fx-i', i); stars.push(s); }
+      var paint = function (k) { stars.forEach(function (s, i) { s.classList.toggle('fx-on', i < k); }); };
+      var set = function (k) {
+        val = U.clamp(k, 0, n); paint(val);
+        el.setAttribute('aria-valuenow', val);
+        el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true, detail: { value: val } }));
+      };
+      stars.forEach(function (s, i) {
+        s.addEventListener('pointerenter', function () { paint(i + 1); });
+        s.addEventListener('click', function () { set(i + 1); });
+      });
+      el.addEventListener('pointerleave', function () { paint(val); });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); set(val + 1); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); set(val - 1); }
+      });
+      paint(val); el.setAttribute('aria-valuenow', val);
+    }
+  });
 })(window.FX);
