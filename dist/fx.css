@@ -3301,6 +3301,21 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="pixel-type"] { display: inline-block; }
 [data-fx="pixel-type"] canvas { display: block; max-width: 100%; image-rendering: pixelated; }
 
+/* scribble-circle : entouré au stylo */
+[data-fx="scribble-circle"] { position: relative; display: inline-block; }
+[data-fx="scribble-circle"] .fx-scribble { position: absolute; inset: -.28em -.42em; pointer-events: none; }
+[data-fx="scribble-circle"] svg { display: block; width: 100%; height: 100%; overflow: visible; }
+[data-fx="scribble-circle"] path {
+  stroke: var(--fx-pen, var(--fx-accent));
+  stroke-width: var(--fx-weight, 2.5px);
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.1s var(--fx-ease-io) .2s;
+}
+.fx-in[data-fx="scribble-circle"] path { stroke-dashoffset: 0; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

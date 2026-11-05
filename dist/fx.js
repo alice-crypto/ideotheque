@@ -3663,6 +3663,20 @@
       U.tween(el, U.num(el, 'fxDuration', 900), function (p) { el._fxDraw(steps[Math.min(4, Math.floor(p * 5))]); });
     }
   });
+
+  // Un cercle dessiné à la main entoure le mot important
+  FX.register('scribble-circle', {
+    entrance: true,
+    setup: function (el) {
+      var j = function () { return U.rand(-3, 3).toFixed(1); };
+      var d = 'M' + (12 + +j()) + ' 26 C 20 ' + (4 + +j()) + ', 170 ' + (2 + +j()) + ', 192 24 C 208 ' + (44 + +j()) + ', 110 ' + (58 + +j()) + ', 40 50 C -4 ' + (44 + +j()) + ', 2 ' + (14 + +j()) + ', 60 7 C 100 2, 150 3, 180 12';
+      var w = document.createElement('span');
+      w.className = 'fx-scribble';
+      w.setAttribute('aria-hidden', 'true');
+      w.innerHTML = '<svg viewBox="0 0 200 60" preserveAspectRatio="none"><path d="' + d + '" pathLength="1" fill="none"/></svg>';
+      el.appendChild(w);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

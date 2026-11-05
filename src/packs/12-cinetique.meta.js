@@ -256,4 +256,13 @@ module.exports = [
     '<h2 data-fx="pixel-type">Niveau 2</h2>',
     '<p class="demo-title" data-fx="pixel-type" style="color:var(--ink);font-weight:800">Niveau 2</p>',
     { trigger: 'Rejouer', a11y: 'Le texte est dans `aria-label`. Avec `prefers-reduced-motion: reduce`, il s\'affiche net.' }),
+  E('scribble-circle', 'Texte',
+    'Un cercle dessiné à la main, un peu imparfait, vient entourer un mot important.',
+    'Humain, annoté, le geste d\'un stylo sur une épreuve.',
+    '- `--fx-pen` : couleur du trait\n- `--fx-weight` (2.5px) : épaisseur',
+    'Le mot clé d\'un titre, un prix, une promesse.',
+    'Plusieurs mots par écran : le geste perd son poids.',
+    '<h2>Une <span data-fx="scribble-circle">seule</span> chose</h2>',
+    '<p class="demo-title" style="font-size:30px;color:var(--ink)">Une <span data-fx="scribble-circle">seule</span> chose</p>',
+    { trigger: 'Rejouer', a11y: 'Le dessin est masqué aux lecteurs d\'écran.' }),
 ];
