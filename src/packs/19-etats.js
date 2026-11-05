@@ -30,4 +30,24 @@
       })();
     }
   });
+
+  // Une onde vocale qui réagit quand l'assistant écoute
+  FX.register('voice-wave', {
+    setup: function (el) {
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', el.getAttribute('aria-label') || "L'assistant écoute");
+      el._fxB = [];
+      for (var i = 0; i < U.num(el, 'fxBars', 13); i++) el._fxB.push(U.make('i', '', el));
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      var level = typeof el.fxLevel === 'number' ? el.fxLevel : .5 + .5 * Math.sin(t * .0023) * Math.sin(t * .0007);
+      var n = el._fxB.length;
+      el._fxB.forEach(function (b, i) {
+        var env = Math.sin((i + .5) / n * 3.14);
+        var v = .12 + env * level * (.5 + .5 * Math.sin(t * .012 + i * 1.3));
+        b.style.transform = 'scaleY(' + v.toFixed(3) + ')';
+      });
+    }
+  });
 })(window.FX);
