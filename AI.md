@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->483<!-- /total --> effets.
+La bibliothèque contient <!-- total -->484<!-- /total --> effets.
 
 ## Règles
 
@@ -462,6 +462,7 @@ La bibliothèque contient <!-- total -->483<!-- /total --> effets.
 | `hex-glow` | Ambiance | Une grille d'alvéoles reste invisible, sauf autour du curseur où elle s'éclaire |
 | `cloud-drift` | Ambiance | Des nuages dérivent à plusieurs profondeurs, les plus proches plus vite |
 | `star-warp` | Ambiance | Les étoiles défilent depuis le centre, comme un voyage spatial qui s'accélère au survol |
+| `pendulum-wave` | Ambiance | Des pendules de longueurs différentes se désynchronisent, dessinent des vagues, puis se réalignent |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |

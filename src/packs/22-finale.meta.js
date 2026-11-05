@@ -232,4 +232,12 @@ module.exports = [
     '<section data-fx="star-warp">…</section>',
     '<div data-fx="star-warp" style="width:230px;height:170px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
+  E('pendulum-wave', 'Ambiance',
+    'Des pendules de longueurs différentes se désynchronisent, dessinent des vagues, puis se réalignent.',
+    'Physique pure, hypnose d\'un musée des sciences.',
+    '- `data-fx-count` (14), `data-fx-cycle` (42000), `--fx-gap`, `--fx-h`',
+    'Sciences, écrans d\'attente, décor.',
+    'Plusieurs à la fois.',
+    '<div data-fx="pendulum-wave"></div>',
+    '<div data-fx="pendulum-wave" style="color:var(--ink);--fx-gap:9px"></div>'),
 ];
