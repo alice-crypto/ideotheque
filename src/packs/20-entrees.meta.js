@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="bounce-grid">…</div>',
     '<div class="demo-grid" data-fx="bounce-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
     { trigger: 'Rejouer' }),
+  E('mask-rise-image', 'Entrée',
+    'Un cadre s\'ouvre de bas en haut, et l\'image se pose en se réduisant.',
+    'Luxe éditorial, révélation lente et maîtrisée.',
+    'Aucun réglage.',
+    'Grandes images de portfolio, couvertures.',
+    'Les petites vignettes.',
+    '<figure data-fx="mask-rise-image"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="mask-rise-image"><img src="assets/dune.svg" alt=""></div>',
+    { trigger: 'Rejouer' }),
 ];
