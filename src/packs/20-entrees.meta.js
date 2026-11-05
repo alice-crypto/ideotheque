@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="stagger-scale-row">…</div>',
     '<div class="demo-row" data-fx="stagger-scale-row"><div class="demo-box" style="width:38px;height:38px"></div><div class="demo-box alt" style="width:38px;height:38px"></div><div class="demo-box ink" style="width:38px;height:38px"></div><div class="demo-box alt" style="width:38px;height:38px"></div><div class="demo-box" style="width:38px;height:38px"></div></div>',
     { trigger: 'Rejouer' }),
+  E('grain-fade', 'Entrée',
+    'L\'image apparaît d\'abord à travers un grain de pellicule, puis ce grain se dissout.',
+    'Tirage argentique, chambre noire.',
+    'Aucun réglage.',
+    'Photos, portfolios, images d\'ambiance.',
+    'Du texte : le grain le rend illisible un instant.',
+    '<figure data-fx="grain-fade"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="grain-fade"><img src="assets/dune.svg" alt=""></div>',
+    { trigger: 'Rejouer' }),
 ];

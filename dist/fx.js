@@ -7256,6 +7256,22 @@
       Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-o', Math.abs(i - (n - 1) / 2).toFixed(1)); });
     }
   });
+
+  // L'image apparaît à travers un grain de pellicule
+  FX.register('grain-fade', {
+    entrance: true,
+    setup: function (el) {
+      if (!FX._fxGrainUrl) {
+        var c = document.createElement('canvas');
+        c.width = c.height = 128;
+        var x = c.getContext('2d'), im = x.createImageData(128, 128);
+        for (var i = 0; i < im.data.length; i += 4) { im.data[i + 3] = Math.random() * 255; }
+        x.putImageData(im, 0, 0);
+        FX._fxGrainUrl = 'url(' + c.toDataURL() + ')';
+      }
+      el.style.setProperty('--fx-noise', FX._fxGrainUrl);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
