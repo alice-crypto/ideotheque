@@ -109,3 +109,9 @@
 /* wipe-columns-in : des colonnes qui se déroulent */
 [data-fx="wipe-columns-in"] > * { clip-path: inset(0 0 100% 0); transition: clip-path .9s var(--fx-ease-io) var(--fx-d, 0ms); }
 .fx-in[data-fx="wipe-columns-in"] > * { clip-path: inset(0 0 0 0); }
+
+/* glow-on : un néon qui s'allume */
+[data-fx="glow-on"] {
+  color: color-mix(in srgb, var(--fx-glow, var(--fx-accent)) calc(var(--fx-g, 1) * 100%), rgba(128, 128, 128, .35));
+  text-shadow: 0 0 calc(var(--fx-g, 1) * 8px) var(--fx-glow, var(--fx-accent)), 0 0 calc(var(--fx-g, 1) * 26px) var(--fx-glow, var(--fx-accent));
+}
