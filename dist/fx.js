@@ -7831,6 +7831,33 @@
       });
     }
   });
+
+  // Une pagination dont l'indicateur s'étire d'une page à l'autre
+  FX.register('pagination-squeeze', {
+    setup: function (el) {
+      var n = U.num(el, 'fxPages', 5), cur = 1, nav = el;
+      nav.setAttribute('aria-label', nav.getAttribute('aria-label') || 'Pagination');
+      U.make('i', 'fx-pgs', el).setAttribute('aria-hidden', 'true');
+      var bs = [];
+      var go = function (p) {
+        cur = U.clamp(p, 1, n);
+        bs.forEach(function (b, i) { var on = i === cur - 1; b.setAttribute('aria-current', on ? 'page' : 'false'); });
+        var a = bs[cur - 1];
+        el.style.setProperty('--fx-l', a.offsetLeft + 'px');
+        el.style.setProperty('--fx-w', a.offsetWidth + 'px');
+        el.dispatchEvent(new CustomEvent('fx:page', { bubbles: true, detail: { page: cur } }));
+      };
+      for (var i = 1; i <= n; i++) (function (k) {
+        var b = U.make('button', '', el);
+        b.type = 'button'; b.textContent = k;
+        b.addEventListener('click', function () { go(k); });
+        bs.push(b);
+      })(i);
+      go(1);
+      el._fxGo = function () { go(cur % n + 1); };
+    },
+    trigger: function (el) { el._fxGo(); }
+  });
 })(window.FX);
 
 window.FX._boot();

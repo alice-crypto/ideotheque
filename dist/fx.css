@@ -5195,6 +5195,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="color-picker-orbit"] button::after { content: ""; position: absolute; inset: -5px; border: 2px solid var(--fx-c); border-radius: 50%; transform: scale(.6); opacity: 0; transition: transform .35s var(--fx-ease-spring), opacity .2s; }
 [data-fx="color-picker-orbit"] button[aria-checked="true"]::after { transform: none; opacity: 1; }
 
+/* pagination-squeeze : un indicateur élastique */
+[data-fx="pagination-squeeze"] { position: relative; display: inline-flex; gap: 2px; }
+[data-fx="pagination-squeeze"] button { position: relative; z-index: 1; width: 2em; height: 2em; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; transition: color .2s; }
+[data-fx="pagination-squeeze"] button[aria-current="page"] { color: var(--fx-on-ink, #111); }
+[data-fx="pagination-squeeze"] .fx-pgs { position: absolute; left: 0; top: 0; bottom: 0; width: var(--fx-w, 2em); border-radius: 8px; background: var(--fx-accent); transform: translateX(var(--fx-l, 0)); transition: transform .4s var(--fx-ease-spring); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

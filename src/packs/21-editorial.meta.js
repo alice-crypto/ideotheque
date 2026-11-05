@@ -179,4 +179,13 @@ module.exports = [
     '<div data-fx="color-picker-orbit" data-fx-target="#produit"></div>',
     '<div data-fx="color-picker-orbit"></div>',
     { a11y: 'Rôles `radiogroup` et `radio`, chaque couleur a un nom.' }),
+  E('pagination-squeeze', 'Micro-interaction',
+    'Une pagination dont l\'indicateur glisse et rebondit d\'une page à l\'autre.',
+    'Petit détail qui fait dire que tout est soigné.',
+    '- `data-fx-pages` (5)\n- L\'élément émet `fx:page`.',
+    'Listes, articles, boutiques.',
+    'Des centaines de pages sans raccourci.',
+    '<nav data-fx="pagination-squeeze" data-fx-pages="5"></nav>',
+    '<nav data-fx="pagination-squeeze" style="color:var(--ink)"></nav>',
+    { trigger: 'Page suivante', a11y: 'La page courante porte `aria-current="page"`.' }),
 ];
