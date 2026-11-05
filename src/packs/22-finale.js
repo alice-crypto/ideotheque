@@ -65,4 +65,9 @@
     },
     scroll: function (el, info) { var p = info.enter; el._fxC.forEach(function (c) { var o = p < c.at; if (o !== c.o) { c.o = o; c.d.classList.toggle('fx-on', o); } }); }
   });
+
+  // L'image plein cadre recule et se cadre
+  FX.register('zoom-out-frame', {
+    scroll: function (el, info) { el.style.setProperty('--fx-z', (1 + (1 - U.easeOut(info.enter)) * U.num(el, 'fxFrom', .8)).toFixed(3)); }
+  });
 })(window.FX);
