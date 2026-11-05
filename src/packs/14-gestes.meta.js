@@ -81,4 +81,13 @@ module.exports = [
     '<span data-fx="snap-toggle" aria-label="Notifications"></span>',
     '<span data-fx="snap-toggle" aria-label="Notifications" data-fx-on="true"></span>',
     { trigger: 'Basculer', a11y: 'Rôle `switch`, géré au clavier. Donnez-lui un `aria-label`.' }),
+  E('stepper-pop', 'Micro-interaction',
+    'Un compteur plus / moins dont le chiffre glisse dans le sens du changement et qui tremble aux limites.',
+    'Précis, sensible, on comprend sans lire.',
+    '- `data-fx-value` (1), `data-fx-min` (0), `data-fx-max` (99)\n- L\'élément émet `fx:change`.',
+    'Quantités dans un panier, nombre de personnes.',
+    'Les grandes plages de valeurs : préférez une saisie directe.',
+    '<div data-fx="stepper-pop" data-fx-value="2"></div>',
+    '<div data-fx="stepper-pop" data-fx-value="2" style="color:var(--ink);font-size:24px"></div>',
+    { a11y: 'Boutons nommés et valeur annoncée par `aria-live`.' }),
 ];

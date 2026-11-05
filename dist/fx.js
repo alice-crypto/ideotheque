@@ -4229,6 +4229,30 @@
       el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true, detail: { on: on } }));
     }
   });
+
+  // Un compteur dont le chiffre glisse dans le sens du changement
+  FX.register('stepper-pop', {
+    setup: function (el) {
+      var v = U.num(el, 'fxValue', 1), min = U.num(el, 'fxMin', 0), max = U.num(el, 'fxMax', 99);
+      el.setAttribute('role', 'group');
+      el.innerHTML = '<button type="button" aria-label="Moins">−</button><output aria-live="polite"><span></span></output><button type="button" aria-label="Plus">+</button>';
+      var out = el.querySelector('output');
+      out.firstChild.textContent = v;
+      var change = function (d) {
+        var nv = U.clamp(v + d, min, max);
+        if (nv === v) { el.classList.remove('fx-stop'); void el.offsetWidth; el.classList.add('fx-stop'); return; }
+        v = nv;
+        var s = document.createElement('span');
+        s.textContent = v;
+        s.className = d > 0 ? 'fx-up' : 'fx-down';
+        out.textContent = '';
+        out.appendChild(s);
+        el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true, detail: { value: v } }));
+      };
+      el.firstChild.addEventListener('click', function () { change(-1); });
+      el.lastChild.addEventListener('click', function () { change(1); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
