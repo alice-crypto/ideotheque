@@ -110,6 +110,14 @@
       function place() { bikes.forEach(function (b) { var q = along(b.r.p, b.t); b.g.setAttribute('transform', 'translate(' + q[0].toFixed(1) + ' ' + q[1].toFixed(1) + ')'); }); }
       place();
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var last = 0;
+      requestAnimationFrame(function frame(t) {
+        var dt = last ? Math.min((t - last) / 1000, .05) : 0;
+        last = t;
+        bikes.forEach(function (b) { b.t = (b.t + dt * .018) % 1; });
+        place();
+        requestAnimationFrame(frame);
+      });
       /*@bikejs*/
     })();
     /*@js*/
