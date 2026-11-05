@@ -160,6 +160,15 @@
       /*@bikejs*/
     })();
     var FILTRE = { etat: '', q: '' };
+    function appliquer() {
+      var n = 0;
+      document.querySelectorAll('#tb tr').forEach(function (r) {
+        var on = (!FILTRE.etat || r.cells[3].textContent.trim() === FILTRE.etat) && r.textContent.toLowerCase().indexOf(FILTRE.q) >= 0;
+        r.hidden = !on;
+        if (on) n++;
+      });
+      document.getElementById('vide').hidden = n > 0;
+    }
     /*@js*/
   </script>
 </body>
