@@ -82,3 +82,8 @@
 .fx-tr-ripple-rings i { width: 300vmax; height: 300vmax; margin: -150vmax; border-radius: 50%; transform: scale(0); transition: transform .62s var(--fx-ease-io) var(--fx-d); }
 .fx-tr-ripple-rings.fx-cover i { transform: scale(1); }
 .fx-tr-ripple-rings.fx-uncover { opacity: 0; transition: opacity .5s .1s; }
+
+/* corner-sweep : un balayage en biais */
+.fx-tr-corner-sweep i { left: 50%; top: 50%; width: 300vmax; height: 300vmax; margin: -150vmax; background: var(--fx-tr-color, var(--fx-accent)); transform: translate(calc(var(--fx-sx, 1) * -220vmax), calc(var(--fx-sy, 1) * -220vmax)) rotate(45deg); transition: transform .75s var(--fx-ease-io); }
+.fx-tr-corner-sweep.fx-cover i { transform: rotate(45deg); }
+.fx-tr-corner-sweep.fx-uncover i { transform: translate(calc(var(--fx-sx, 1) * 220vmax), calc(var(--fx-sy, 1) * 220vmax)) rotate(45deg); }
