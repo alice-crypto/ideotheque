@@ -3819,6 +3819,12 @@
       }
     }
   });
+
+  // On entre dans le mot : il grandit jusqu'à devenir l'écran
+  FX.register('aperture-text', {
+    setup: function (el) { el.style.overflow = 'hidden'; },
+    scroll: function (el, info) { el.style.setProperty('--fx-zoom', Math.pow(U.num(el, 'fxMax', 18), U.clamp(info.pass * 2 - .6, 0, 1)).toFixed(2)); }
+  });
 })(window.FX);
 
 window.FX._boot();

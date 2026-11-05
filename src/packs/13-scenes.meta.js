@@ -102,4 +102,12 @@ module.exports = [
     'Sous un texte fin : la trame gêne la lecture.',
     '<section data-fx="dot-swell">…</section>',
     '<div data-fx="dot-swell" style="width:220px;height:160px"></div>'),
+  E('aperture-text', 'Défilement',
+    'Un grand mot grandit au défilement jusqu\'à remplir l\'écran, et on passe à travers.',
+    'Traverser un mot comme une porte.',
+    '- `data-fx-max` (18) : échelle finale\n- `--fx-origin` (50% 50%) : point visé, par exemple le creux du O',
+    'Passage entre l\'accueil et la section suivante.',
+    'Les mots sans lettre ouverte : l\'effet perd son sens.',
+    '<div data-fx="aperture-text"><h2>OUVERT</h2></div>',
+    '<div data-fx="aperture-text" style="width:220px;height:150px;color:var(--ink)"><b style="font-size:36px">OUVERT</b></div>'),
 ];
