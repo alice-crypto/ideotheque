@@ -4003,6 +4003,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-fold-doors.fx-uncover .fx-l { transform: rotateY(90deg); }
 .fx-tr-fold-doors.fx-uncover .fx-r { transform: rotateY(-90deg); }
 
+/* shatter-tris : un écran en éclats */
+.fx-tr-shatter-tris i {
+  width: 12.7%;
+  height: 16.9%;
+  background: var(--fx-tr-color, var(--fx-accent));
+  opacity: 0;
+  transform: scale(.2) rotate(var(--fx-rot));
+  transition: transform .38s var(--fx-ease-out) var(--fx-d), opacity .14s var(--fx-d);
+}
+.fx-tr-shatter-tris.fx-cover i { opacity: 1; transform: none; }
+.fx-tr-shatter-tris.fx-uncover i { opacity: 0; transform: scale(.2) rotate(var(--fx-rot)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

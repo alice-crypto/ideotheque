@@ -75,4 +75,13 @@ module.exports = [
     '<a href="/galerie" data-fx="fold-doors">Galerie</a>',
     '<button class="demo-ghost" onclick="FX.play(\'fold-doors\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('shatter-tris', 'Transition',
+    'Des éclats triangulaires convergent depuis le point de clic et se referment sur l\'écran.',
+    'Vitre qui se recompose, énergie, impact.',
+    '- `--fx-tr-color` : couleur des éclats',
+    'Jeux vidéo, sport, sites à forte énergie.',
+    'Les ambiances calmes.',
+    '<a href="/jeu" data-fx="shatter-tris">Jouer</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'shatter-tris\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];
