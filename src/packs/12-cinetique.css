@@ -187,3 +187,8 @@
   white-space: nowrap;
   transform: translateX(var(--fx-x, 0)) skewX(var(--fx-s, 0deg));
 }
+
+/* path-type : du texte sur une courbe */
+[data-fx="path-type"] { display: block; width: 100%; }
+[data-fx="path-type"] svg { display: block; width: 100%; overflow: visible; }
+[data-fx="path-type"] text { fill: currentColor; font-size: var(--fx-size, 34px); font-weight: 600; }
