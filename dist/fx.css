@@ -3460,6 +3460,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="reading-marker"] .fx-word { opacity: var(--fx-dim, .22); transition: opacity .3s; }
 [data-fx="reading-marker"] .fx-word.fx-read { opacity: 1; }
 
+/* chapter-ticker : le numéro du chapitre */
+[data-fx="chapter-ticker"] { display: inline-flex; font-variant-numeric: tabular-nums; line-height: 1.2; height: 1.2em; overflow: hidden; }
+[data-fx="chapter-ticker"] .fx-tk-col { display: block; transform: translateY(calc(var(--fx-cur, 0) * -1.2em)); transition: transform .5s var(--fx-ease-io); }
+[data-fx="chapter-ticker"] .fx-tk-col b { display: block; font-weight: inherit; }
+[data-fx="chapter-ticker"] .fx-tk-tot { opacity: .5; margin-left: .3em; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

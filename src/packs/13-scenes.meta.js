@@ -176,4 +176,13 @@ module.exports = [
     '<p data-fx="reading-marker">Chaque mot s\'allume quand vous l\'atteignez.</p>',
     '<p class="demo-para" data-fx="reading-marker" style="color:var(--ink)">Chaque mot s\'allume quand vous l\'atteignez.</p>',
     { a11y: 'Les mots restent visibles et le texte complet est dans `aria-label`.' }),
+  E('chapter-ticker', 'Défilement',
+    'Un petit compteur indique le chapitre en cours, et son chiffre coulisse quand on change de section.',
+    'Une montre de précision qui suit la lecture.',
+    '- `data-fx-target` (section) : sélecteur des chapitres\n- `data-fx-count` (5) : nombre de chiffres s\'il n\'y a pas de sections',
+    'Coin d\'une page en plusieurs chapitres.',
+    'Une page à une seule section.',
+    '<div data-fx="chapter-ticker" data-fx-target="main > section"></div>',
+    '<div class="demo-mono" data-fx="chapter-ticker" data-fx-target=".aucune-section"></div>',
+    { a11y: 'Le compteur est décoratif et masqué aux lecteurs d\'écran.' }),
 ];

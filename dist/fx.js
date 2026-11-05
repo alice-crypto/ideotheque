@@ -3896,6 +3896,27 @@
       el._fxW.forEach(function (w, i) { w.classList.toggle('fx-read', i < n); });
     }
   });
+
+  // Un compteur de chapitres suit la page
+  FX.register('chapter-ticker', {
+    setup: function (el) {
+      var sel = el.dataset.fxTarget || 'section';
+      el.setAttribute('aria-hidden', 'true');
+      el.innerHTML = '<span class="fx-tk-col"></span><span class="fx-tk-tot"></span>';
+      el._fxCol = el.firstChild;
+      el._fxSec = Array.prototype.slice.call(document.querySelectorAll(sel));
+      var n = Math.max(el._fxSec.length, U.num(el, 'fxCount', 5));
+      for (var i = 1; i <= n; i++) U.make('b', '', el._fxCol).textContent = ('0' + i).slice(-2);
+      el.lastChild.textContent = '/' + ('0' + n).slice(-2);
+      el._fxCount = n;
+    },
+    scroll: function (el, info) {
+      var i = 0;
+      if (el._fxSec.length) el._fxSec.forEach(function (s, k) { if (s.getBoundingClientRect().top < info.vh * .5) i = k; });
+      else i = Math.floor(info.pass * el._fxCount * .999);
+      el.style.setProperty('--fx-cur', i);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
