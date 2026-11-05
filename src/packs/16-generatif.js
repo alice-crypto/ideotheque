@@ -765,4 +765,21 @@
       for (lo = 0; lo < 6.28; lo += Math.PI / 9) for (la = -Math.PI / 2; la < Math.PI / 2 - .01; la += D) seg(la, lo, la + D, lo);
     }
   });
+
+  // L'air chaud fait trembler l'image
+  FX.register('heat-haze', {
+    setup: function (el) {
+      var id = 'fx-haze-' + Math.random().toString(36).slice(2, 8);
+      var h = document.createElement('div');
+      h.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+      h.innerHTML = '<svg aria-hidden="true"><filter id="' + id + '"><feTurbulence type="fractalNoise" baseFrequency=".02 .09" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="' + U.num(el, 'fxScale', 7) + '"/></filter></svg>';
+      document.body.appendChild(h);
+      el._fxT = h.querySelector('feTurbulence');
+      (el.firstElementChild || el).style.filter = U.reduced ? '' : 'url(#' + id + ')';
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      el._fxT.setAttribute('baseFrequency', (.018 + Math.sin(t * .0005) * .004).toFixed(4) + ' ' + (.09 + Math.sin(t * .0013) * .03).toFixed(4));
+    }
+  });
 })(window.FX);
