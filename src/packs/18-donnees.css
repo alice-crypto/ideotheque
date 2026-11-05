@@ -1,1 +1,18 @@
 /* Pack 18 — Données et présentation */
+
+/* radial-bars : un graphique en soleil */
+[data-fx="radial-bars"] { position: relative; display: inline-block; width: var(--fx-size, 160px); aspect-ratio: 1; }
+[data-fx="radial-bars"] i {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: var(--fx-w, 6px);
+  height: calc(var(--fx-v) * 34% + 8%);
+  margin-left: calc(var(--fx-w, 6px) / -2);
+  border-radius: 3px;
+  background: var(--fx-bar, var(--fx-accent));
+  transform-origin: 50% 100%;
+  transform: rotate(var(--fx-a)) translateY(-40%) scaleY(0);
+  transition: transform .6s var(--fx-ease-spring) calc(var(--fx-i) * 40ms);
+}
+.fx-in[data-fx="radial-bars"] i { transform: rotate(var(--fx-a)) translateY(-40%) scaleY(1); }
