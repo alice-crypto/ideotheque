@@ -201,3 +201,8 @@
 }
 [data-fx="skip-link-reveal"]:focus,
 [data-fx="skip-link-reveal"][data-fx-show] { transform: none; }
+
+/* language-switch-flip : un sigle qui bascule */
+[data-fx="language-switch-flip"] { display: inline-grid; place-items: center; width: 2.6em; height: 2.6em; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font: 600 13px var(--fx-font, inherit); cursor: pointer; perspective: 200px; }
+[data-fx="language-switch-flip"] .fx-ls-in { display: block; animation: fx-ls .4s var(--fx-ease-out); }
+@keyframes fx-ls { from { transform: rotateX(-90deg); opacity: 0; } }
