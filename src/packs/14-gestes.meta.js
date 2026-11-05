@@ -116,4 +116,12 @@ module.exports = [
     '<div data-fx="gooey-menu"><button aria-label="Actions">+</button><a href="#">A</a><a href="#">B</a></div>',
     '<div data-fx="gooey-menu" style="margin-top:80px"><button aria-label="Actions">+</button><a href="#" aria-label="Un">1</a><a href="#" aria-label="Deux">2</a></div>',
     { a11y: 'Le bouton expose `aria-expanded`. Nommez chaque action avec `aria-label`.' }),
+  E('liquid-glass', 'Micro-interaction',
+    'Une plaque de verre floute ce qui passe derrière, et son reflet suit le curseur.',
+    'Matière précieuse, interface en couches, lumière réelle.',
+    '- `--fx-blur` (14px) : flou de l\'arrière-plan\n- `--fx-radius` (22px) : arrondi',
+    'Cartes et barres posées sur une image ou un dégradé.',
+    'Un fond uni : on ne voit pas le verre. Vérifiez aussi le contraste du texte.',
+    '<div data-fx="liquid-glass">…</div>',
+    '<div style="position:absolute;inset:0;background:url(assets/dune.svg) center/cover;display:grid;place-items:center"><div data-fx="liquid-glass" style="width:170px;padding:20px;color:#fff;font-weight:600">Verre</div></div>'),
 ];

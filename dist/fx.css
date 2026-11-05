@@ -3723,6 +3723,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="gooey-menu"]:not(.fx-open) a,
 [data-fx="gooey-menu"]:not(.fx-open) [data-item] { visibility: hidden; }
 
+/* liquid-glass : une plaque de verre */
+[data-fx="liquid-glass"] {
+  position: relative;
+  border-radius: var(--fx-radius, 22px);
+  background: radial-gradient(circle at var(--fx-gx, 30%) var(--fx-gy, 10%), rgba(255, 255, 255, .34), rgba(255, 255, 255, .06) 55%);
+  -webkit-backdrop-filter: blur(var(--fx-blur, 14px)) saturate(1.5);
+  backdrop-filter: blur(var(--fx-blur, 14px)) saturate(1.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(255, 255, 255, .12), 0 16px 40px rgba(0, 0, 0, .25);
+  transition: --fx-gx .2s;
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
