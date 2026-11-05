@@ -5213,6 +5213,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="accordion-plus-morph"] .fx-open > :not(button) { grid-template-rows: 1fr; }
 [data-fx="accordion-plus-morph"] > * > :not(button) > * { min-height: 0; margin: 0; padding-bottom: .1em; }
 
+/* Pack 22 — Dernières idées */
+
+/* sticky-slideshow : un cadre et des images qui défilent */
+[data-fx="sticky-slideshow"] { position: relative; }
+[data-fx="sticky-slideshow"] > div { position: sticky; top: var(--fx-top, 0); height: var(--fx-frame, 100vh); overflow: hidden; }
+[data-fx="sticky-slideshow"] img,
+[data-fx="sticky-slideshow"] .fx-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s; }
+[data-fx="sticky-slideshow"] .fx-cur { opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
