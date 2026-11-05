@@ -16,3 +16,7 @@
 /* contour-lines : une carte topographique */
 [data-fx="contour-lines"] { isolation: isolate; }
 [data-fx="contour-lines"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-line, currentColor); }
+
+/* game-of-life : un petit monde en pixels */
+[data-fx="game-of-life"] { isolation: isolate; }
+[data-fx="game-of-life"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-cell, var(--fx-accent)); image-rendering: pixelated; }
