@@ -166,4 +166,13 @@
     o.children[0].className = 'fx-a';
     o.children[1].className = 'fx-b';
   } } });
+
+  // Une page se tourne comme dans un livre
+  FX.register('page-turn', { transition: { pieces: 2, cover: 900, uncover: 900, build: function (o) {
+    o.style.perspective = '2000px';
+    var rtl = getComputedStyle(document.documentElement).direction === 'rtl';
+    o.style.setProperty('--fx-side', rtl ? '100%' : '0%');
+    o.children[0].className = 'fx-page';
+    o.children[1].className = 'fx-fold';
+  } } });
 })(window.FX);
