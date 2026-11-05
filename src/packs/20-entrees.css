@@ -120,3 +120,8 @@
 [data-fx="curtain-words"] .fx-word { overflow: hidden; vertical-align: top; padding-bottom: .08em; }
 [data-fx="curtain-words"] .fx-cw { display: inline-block; transform: translateY(110%) rotate(6deg); transform-origin: left bottom; transition: transform .8s var(--fx-ease-out) calc(var(--fx-i) * 60ms); }
 .fx-in[data-fx="curtain-words"] .fx-cw { transform: none; }
+
+/* flip-board-in : un tableau qui se retourne */
+[data-fx="flip-board-in"] { perspective: 800px; }
+[data-fx="flip-board-in"] > * { transform: rotateY(90deg); opacity: 0; transition: transform .55s var(--fx-ease-out) calc(var(--fx-o) * 55ms), opacity .1s calc(var(--fx-o) * 55ms); }
+.fx-in[data-fx="flip-board-in"] > * { transform: none; opacity: 1; }
