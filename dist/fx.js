@@ -4072,6 +4072,29 @@
       if (s.drag) { s.vx *= .8; s.vy *= .8; }
     }
   });
+
+  // Une étiquette accompagne le curseur au survol
+  FX.register('cursor-label', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var l = U.make('span', 'fx-cl', el);
+      l.textContent = el.dataset.fxLabel || 'Voir';
+      l.setAttribute('aria-hidden', 'true');
+      var s = el._fxS = { x: 0, y: 0, tx: 0, ty: 0, l: l };
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        s.tx = e.clientX - r.left; s.ty = e.clientY - r.top;
+        el.classList.add('fx-on');
+      });
+      el.addEventListener('pointerleave', function () { el.classList.remove('fx-on'); });
+    },
+    tick: function (el) {
+      var s = el._fxS;
+      s.x = U.lerp(s.x, s.tx, .16); s.y = U.lerp(s.y, s.ty, .16);
+      s.l.style.setProperty('--fx-x', s.x.toFixed(1) + 'px');
+      s.l.style.setProperty('--fx-y', s.y.toFixed(1) + 'px');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

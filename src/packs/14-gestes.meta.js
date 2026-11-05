@@ -19,4 +19,13 @@ module.exports = [
     'Un élément qui contient des liens ou du texte à sélectionner.',
     '<div data-fx="squish-drag">…</div>',
     '<div class="demo-box" data-fx="squish-drag" style="width:110px;height:110px;border-radius:50%"></div>'),
+  E('cursor-label', 'Micro-interaction',
+    'Au survol, une pastille portant un mot accompagne le curseur.',
+    'Le curseur annonce ce qui va se passer.',
+    '- `data-fx-label` (Voir) : le texte de la pastille',
+    'Cartes de projet, vidéos, images cliquables.',
+    'Le tactile comme seul support, et les zones de petite taille.',
+    '<a href="#" data-fx="cursor-label" data-fx-label="Lire">…</a>',
+    '<div class="demo-card" data-fx="cursor-label" data-fx-label="Ouvrir" style="height:130px"><b>Projet</b>Survolez la carte.</div>',
+    { a11y: 'La pastille est décorative : le lien garde son propre intitulé.' }),
 ];
