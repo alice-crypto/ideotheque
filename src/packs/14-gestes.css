@@ -15,3 +15,7 @@
   transition: opacity .25s;
 }
 [data-fx="spring-follow"].fx-on .fx-spring-dot { opacity: 1; }
+
+/* squish-drag : un objet élastique */
+[data-fx="squish-drag"] { cursor: grab; user-select: none; will-change: transform; }
+[data-fx="squish-drag"].fx-grab { cursor: grabbing; }
