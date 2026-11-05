@@ -102,3 +102,13 @@
   transition: transform .42s var(--fx-ease-out), opacity .3s;
 }
 [data-fx="quote-card-shuffle"] > .fx-out { transform: translateX(70%) rotate(14deg); opacity: 0; }
+
+/* pricing-toggle-cards : des tarifs vivants */
+[data-fx="pricing-toggle-cards"] label { display: inline-flex; align-items: center; gap: .5em; cursor: pointer; font-size: 13px; }
+[data-fx="pricing-toggle-cards"] input { appearance: none; width: 36px; height: 20px; margin: 0; border-radius: 10px; background: rgba(128, 128, 128, .4); position: relative; cursor: pointer; transition: background .25s; }
+[data-fx="pricing-toggle-cards"] input::after { content: ""; position: absolute; left: 2px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .3s var(--fx-ease-spring); }
+[data-fx="pricing-toggle-cards"] input:checked { background: var(--fx-accent); }
+[data-fx="pricing-toggle-cards"] input:checked::after { transform: translateX(16px); }
+[data-fx="pricing-toggle-cards"] .fx-save { opacity: 0; transform: scale(.7); transition: opacity .2s, transform .3s var(--fx-ease-spring); }
+[data-fx="pricing-toggle-cards"].fx-year .fx-save { opacity: 1; transform: none; }
+[data-fx="pricing-toggle-cards"] [data-month] { font-variant-numeric: tabular-nums; }
