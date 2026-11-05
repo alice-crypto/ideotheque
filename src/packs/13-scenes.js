@@ -20,4 +20,24 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-open', info.enter.toFixed(3)); }
   });
+
+  // Le texte s'écrit au fil du défilement, et s'efface si on remonte
+  FX.register('scroll-typing', {
+    setup: function (el) {
+      el._fxTxt = el.textContent.trim();
+      el.setAttribute('aria-label', el._fxTxt);
+      el.textContent = '';
+      el._fxShown = U.make('span', 'fx-st-on', el);
+      el._fxRest = U.make('span', 'fx-st-off', el);
+      el._fxShown.setAttribute('aria-hidden', 'true');
+      el._fxRest.setAttribute('aria-hidden', 'true');
+    },
+    scroll: function (el, info) {
+      var n = Math.round(info.enter * el._fxTxt.length);
+      if (n === el._fxN) return;
+      el._fxN = n;
+      el._fxShown.textContent = el._fxTxt.slice(0, n);
+      el._fxRest.textContent = el._fxTxt.slice(n);
+    }
+  });
 })(window.FX);
