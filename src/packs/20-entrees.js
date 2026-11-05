@@ -191,4 +191,10 @@
     entrance: true,
     setup: function (el) { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-i', i); }); }
   });
+
+  // Un surligneur traverse chaque ligne l'une après l'autre
+  FX.register('marker-swipe-in', {
+    entrance: true,
+    setup: function (el) { var r = function () { U.splitLines(el); }; r(); U.onResize(r); }
+  });
 })(window.FX);
