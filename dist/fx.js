@@ -5504,6 +5504,48 @@
       c.restore();
     }
   });
+
+  // Un éclair zèbre le fond de temps en temps
+  FX.register('lightning', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxWait = 1; el._fxLife = 0;
+    },
+    trigger: function (el) { el._fxWait = 0; },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d');
+      c.globalCompositeOperation = 'destination-out';
+      c.fillStyle = 'rgba(0,0,0,.25)';
+      c.fillRect(0, 0, w, h);
+      c.globalCompositeOperation = 'source-over';
+      el._fxWait -= dt;
+      if (el._fxWait > 0) return;
+      el._fxWait = U.rand(1.6, 5);
+      var pts = [[U.rand(.2, .8) * w, 0], [U.rand(.2, .8) * w, h]];
+      for (var d = h / 3, it = 0; it < 6; it++, d /= 2) {
+        var n = [];
+        pts.forEach(function (p, i) {
+          n.push(p);
+          if (i < pts.length - 1) n.push([(p[0] + pts[i + 1][0]) / 2 + U.rand(-d, d), (p[1] + pts[i + 1][1]) / 2]);
+        });
+        pts = n;
+      }
+      c.strokeStyle = getComputedStyle(cv).color;
+      c.lineWidth = 1.5;
+      c.shadowBlur = 12;
+      c.shadowColor = c.strokeStyle;
+      c.beginPath();
+      pts.forEach(function (p, i) { if (i) c.lineTo(p[0], p[1]); else c.moveTo(p[0], p[1]); });
+      c.stroke();
+      c.shadowBlur = 0;
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

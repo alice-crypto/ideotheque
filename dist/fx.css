@@ -4275,6 +4275,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="kaleidoscope"] { isolation: isolate; overflow: hidden; }
 [data-fx="kaleidoscope"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
+/* lightning : un éclair */
+[data-fx="lightning"] { isolation: isolate; overflow: hidden; }
+[data-fx="lightning"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-bolt, #fff); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

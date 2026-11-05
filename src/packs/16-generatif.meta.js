@@ -130,4 +130,13 @@ module.exports = [
     '<div data-fx="kaleidoscope" style="height:400px"></div>',
     '<div data-fx="kaleidoscope" style="width:200px;height:170px;border-radius:50%"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
+  E('lightning', 'Ambiance',
+    'Un éclair généré au hasard zèbre le fond, quelques instants, à des moments imprévus.',
+    'Énergie brute, orage au loin.',
+    '- `--fx-bolt` : couleur de l\'éclair\n- Par code : `FX.trigger(el)` lance un éclair',
+    'Fonds sombres, jeux, boissons énergisantes.',
+    'Les personnes photosensibles : gardez les éclairs rares et peu lumineux.',
+    '<section data-fx="lightning">…</section>',
+    '<div data-fx="lightning" style="width:230px;height:170px"></div>',
+    { trigger: 'Éclair', a11y: 'Aucun éclair avec `prefers-reduced-motion: reduce`. La fréquence reste bien inférieure à trois par seconde.' }),
 ];
