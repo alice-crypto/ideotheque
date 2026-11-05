@@ -105,4 +105,24 @@
       el.style.setProperty('--fx-sy', (s.rx * .5).toFixed(1) + 'px');
     }
   });
+
+  // Au clic, un cercle part du doigt et inverse la couleur du bouton
+  FX.register('press-ripple-text', {
+    setup: function (el) {
+      var text = el.textContent;
+      el.innerHTML = '<span class="fx-prt-a"></span><span class="fx-prt-b" aria-hidden="true"></span>';
+      el.firstChild.textContent = text; el.lastChild.textContent = text;
+    },
+    triggerOn: 'click',
+    trigger: function (el, e) {
+      var r = el.getBoundingClientRect();
+      var keyboard = !e || !e.clientX;
+      el.style.setProperty('--fx-x', (keyboard ? r.width / 2 : e.clientX - r.left) + 'px');
+      el.style.setProperty('--fx-y', (keyboard ? r.height / 2 : e.clientY - r.top) + 'px');
+      el.classList.remove('fx-go');
+      void el.offsetWidth;
+      el.classList.add('fx-go');
+      setTimeout(function () { el.classList.remove('fx-go'); }, 800);
+    }
+  });
 })(window.FX);
