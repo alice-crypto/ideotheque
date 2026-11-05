@@ -120,4 +120,22 @@
     },
     trigger: function (el) { el._fxFlip(); }
   });
+
+  // Un champ d'écriture qui compte les mots jusqu'à un objectif
+  FX.register('word-counter-goal', {
+    setup: function (el) {
+      var area = el.querySelector('textarea,[contenteditable]'), goal = U.num(el, 'fxGoal', 30);
+      var out = U.make('div', 'fx-wc', el);
+      out.setAttribute('aria-live', 'polite');
+      var upd = function () {
+        var t = area ? (area.value != null ? area.value : area.textContent) : '';
+        var n = t.trim() ? t.trim().split(/\s+/).length : 0, ok = n >= goal;
+        el.style.setProperty('--fx-q', Math.min(1, n / goal).toFixed(3));
+        out.textContent = n + ' / ' + goal + ' mots';
+        if (ok !== el._fxOk) { el._fxOk = ok; el.classList.toggle('fx-goal', ok); if (ok) el.dispatchEvent(new CustomEvent('fx:goal', { bubbles: true })); }
+      };
+      if (area) area.addEventListener('input', upd);
+      upd();
+    }
+  });
 })(window.FX);
