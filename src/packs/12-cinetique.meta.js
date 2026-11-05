@@ -247,4 +247,13 @@ module.exports = [
     '<span data-fx="gravity-letters">Cliquez-moi</span>',
     '<p class="demo-title" data-fx="gravity-letters" style="font-size:30px">Cliquez-moi</p>',
     { trigger: 'Faire tomber' }),
+  E('pixel-type', 'Texte',
+    'Le mot apparaît en très gros pixels, puis gagne en netteté par paliers jusqu\'à l\'image finale.',
+    'Jeu vidéo qui se charge, mémoire numérique.',
+    '- `data-fx-duration` (900) : durée en millisecondes',
+    'Jeux, culture numérique, produits techniques au ton léger.',
+    'Une typographie fine, qui disparaît aux premiers paliers.',
+    '<h2 data-fx="pixel-type">Niveau 2</h2>',
+    '<p class="demo-title" data-fx="pixel-type" style="color:var(--ink);font-weight:800">Niveau 2</p>',
+    { trigger: 'Rejouer', a11y: 'Le texte est dans `aria-label`. Avec `prefers-reduced-motion: reduce`, il s\'affiche net.' }),
 ];

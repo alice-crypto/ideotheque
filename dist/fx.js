@@ -3622,6 +3622,47 @@
       });
     }
   });
+
+  // Le mot passe de gros pixels à une image nette, par paliers
+  FX.register('pixel-type', {
+    entrance: true,
+    setup: function (el) {
+      var txt = el.textContent.trim();
+      el.setAttribute('aria-label', txt); el.setAttribute('role', 'img');
+      var cs = getComputedStyle(el), fs = parseFloat(cs.fontSize);
+      var font = cs.fontWeight + ' ' + fs + 'px ' + cs.fontFamily, color = cs.color;
+      el.textContent = '';
+      var cv = U.make('canvas', '', el), ctx = cv.getContext('2d');
+      var w, h, lastBlock = U.reduced ? 1 : 16;
+      var size = function () {
+        ctx.font = font;
+        w = Math.ceil(ctx.measureText(txt).width); h = Math.ceil(fs * 1.25);
+        cv.width = w; cv.height = h;
+      };
+      size();
+      var off = document.createElement('canvas'), o = off.getContext('2d');
+      if (document.fonts) document.fonts.load(font).then(function () { size(); el._fxDraw(lastBlock); });
+      el._fxDraw = function (block) {
+        lastBlock = block;
+        ctx.font = font;
+        if (Math.ceil(ctx.measureText(txt).width) !== w) size();
+        var sw = Math.max(1, Math.ceil(w / block)), sh = Math.max(1, Math.ceil(h / block));
+        off.width = sw; off.height = sh;
+        o.setTransform(sw / w, 0, 0, sh / h, 0, 0);
+        o.font = font; o.fillStyle = color; o.textBaseline = 'middle';
+        o.fillText(txt, 0, h / 2);
+        ctx.clearRect(0, 0, w, h);
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(off, 0, 0, w, h);
+      };
+      el._fxDraw(U.reduced ? 1 : 16);
+    },
+    reset: function (el) { el._fxDraw(16); },
+    enter: function (el) {
+      var steps = [16, 8, 4, 2, 1];
+      U.tween(el, U.num(el, 'fxDuration', 900), function (p) { el._fxDraw(steps[Math.min(4, Math.floor(p * 5))]); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
