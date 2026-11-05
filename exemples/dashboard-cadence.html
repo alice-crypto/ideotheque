@@ -21,6 +21,11 @@
     .tbar i { display: block; height: 100%; width: 0; background: var(--r); transition: width .4s linear; }
     .tbtns { display: flex; flex-wrap: wrap; gap: 8px; }
     .tbtns .pbtn { padding: .65em 1em; font-size: 14px; }
+    .todo { display: grid; }
+    .todo .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--k); font-size: 17px; font-weight: 600; }
+    .todo .row:last-child { border-bottom: 0; }
+    .todo small { font: 600 12px "IBM Plex Mono", monospace; white-space: nowrap; }
+    .todo { --fx-accent: var(--r); }
     /*@css*/
   </style>
 </head>
