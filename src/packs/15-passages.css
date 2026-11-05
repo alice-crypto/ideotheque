@@ -1,1 +1,12 @@
 /* Pack 15 — Passages et images */
+
+/* diagonal-tiles : une vague de tuiles */
+.fx-tr-diagonal-tiles i {
+  width: 10.1%;
+  height: 14.4%;
+  background: var(--fx-tr-color, var(--fx-accent));
+  transform: scale(0);
+  transition: transform .42s var(--fx-ease-io) var(--fx-d);
+}
+.fx-tr-diagonal-tiles.fx-cover i { transform: scale(1.02); }
+.fx-tr-diagonal-tiles.fx-uncover i { transform: scale(0); }
