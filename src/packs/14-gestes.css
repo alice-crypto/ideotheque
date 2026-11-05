@@ -312,3 +312,13 @@
   transform: scale(calc(1 + var(--fx-press, 0) * .28), calc(1 - var(--fx-press, 0) * .42));
   transform-origin: bottom;
 }
+
+/* price-flip : le prix bascule */
+[data-fx="price-flip"] { display: inline-grid; overflow: hidden; font-variant-numeric: tabular-nums; }
+[data-fx="price-flip"] > span { grid-area: 1 / 1; }
+[data-fx="price-flip"] .fx-pf-in { animation: fx-pf-in .36s var(--fx-ease-out); --fx-from: -100%; }
+[data-fx="price-flip"] .fx-pf-in.up { --fx-from: 100%; }
+[data-fx="price-flip"] .fx-pf-out { animation: fx-pf-out .3s var(--fx-ease-out) forwards; --fx-to: 100%; }
+[data-fx="price-flip"] .fx-pf-out.up { --fx-to: -100%; }
+@keyframes fx-pf-in { from { transform: translateY(var(--fx-from)); opacity: 0; } }
+@keyframes fx-pf-out { to { transform: translateY(var(--fx-to)); opacity: 0; } }
