@@ -3562,6 +3562,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 }
 [data-fx="cursor-label"].fx-on .fx-cl { scale: 1; transform: translate(var(--fx-x, 0), var(--fx-y, 0)) translate(-50%, -50%); }
 
+/* hover-tilt-text : un titre en volume */
+[data-fx="hover-tilt-text"] {
+  display: inline-block;
+  transform: perspective(500px) rotateX(var(--fx-rx, 0deg)) rotateY(var(--fx-ry, 0deg));
+  text-shadow: var(--fx-sx, 0) var(--fx-sy, 0) 0 var(--fx-tilt-shadow, rgba(0, 0, 0, .35));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

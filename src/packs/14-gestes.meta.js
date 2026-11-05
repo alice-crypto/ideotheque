@@ -28,4 +28,12 @@ module.exports = [
     '<a href="#" data-fx="cursor-label" data-fx-label="Lire">…</a>',
     '<div class="demo-card" data-fx="cursor-label" data-fx-label="Ouvrir" style="height:130px"><b>Projet</b>Survolez la carte.</div>',
     { a11y: 'La pastille est décorative : le lien garde son propre intitulé.' }),
+  E('hover-tilt-text', 'Micro-interaction',
+    'Le mot pivote en 3D vers le curseur et son ombre se déplace à l\'opposé.',
+    'Relief d\'une enseigne, mot qu\'on regarde de biais.',
+    '- `data-fx-max` (26) : angle maximal en degrés\n- `--fx-tilt-shadow` : couleur de l\'ombre',
+    'Titres courts, numéros, logos.',
+    'Les paragraphes.',
+    '<h2 data-fx="hover-tilt-text">Relief</h2>',
+    '<p class="demo-title" data-fx="hover-tilt-text" style="--fx-tilt-shadow:rgba(255,91,46,.7)">Relief</p>'),
 ];
