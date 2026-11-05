@@ -123,4 +123,6 @@ img, svg { display: block; max-width: 100%; }
 .vbars i.r { background: var(--r); }
 .vbars i.y { background: var(--y); outline: 1px solid var(--k); outline-offset: -1px; }
 @keyframes pr-bar { from { transform: scaleY(0); } }
+.vlabels { display: flex; gap: 6px; margin-top: 5px; font: 500 11px "IBM Plex Mono", monospace; }
+.vlabels span { flex: 1; text-align: center; min-width: 0; }
 /*@css*/
