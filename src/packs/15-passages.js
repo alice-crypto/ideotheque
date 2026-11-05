@@ -310,4 +310,37 @@
       el.style.setProperty('--fx-gap', gap + 'px');
     }
   });
+
+  // Un diaporama qui change d'image par bandes verticales
+  FX.register('strip-slider', {
+    setup: function (el) {
+      var imgs = Array.prototype.slice.call(el.querySelectorAll('img'));
+      if (imgs.length < 2) return;
+      var n = U.num(el, 'fxStrips', 8), i = 0, t = 0;
+      el.setAttribute('role', 'group');
+      el.setAttribute('aria-roledescription', 'diaporama');
+      imgs.forEach(function (im, k) { if (k) im.setAttribute('aria-hidden', 'true'); });
+      var wrap = U.make('div', 'fx-strips', el);
+      wrap.setAttribute('aria-hidden', 'true');
+      var strips = [];
+      for (var k = 0; k < n; k++) {
+        var s = U.make('i', '', wrap);
+        s.style.setProperty('--fx-k', k);
+        s.style.backgroundPosition = (n > 1 ? k * 100 / (n - 1) : 0) + '% 50%';
+        s.style.backgroundSize = n * 100 + '% 100%';
+        strips.push(s);
+      }
+      var show = function () {
+        i = (i + 1) % imgs.length;
+        strips.forEach(function (s) { s.style.backgroundImage = 'url("' + imgs[i].getAttribute('src') + '")'; });
+        el.classList.remove('fx-go'); void el.offsetWidth; el.classList.add('fx-go');
+        setTimeout(function () { imgs.forEach(function (im, k) { im.classList.toggle('fx-cur', k === i); }); }, 900);
+      };
+      imgs[0].classList.add('fx-cur');
+      el._fxNext = show;
+      el._fxTick = function (dt) { if (el.matches(':hover')) return; t += dt * 1000; if (t > U.num(el, 'fxHold', 3200)) { t = 0; show(); } };
+    },
+    tick: function (el, dt) { if (el._fxTick && !U.reduced) el._fxTick(dt); },
+    trigger: function (el) { if (el._fxNext) el._fxNext(); }
+  });
 })(window.FX);
