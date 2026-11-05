@@ -146,4 +146,13 @@ module.exports = [
     '<div data-fx="stacked-sections-tabs"><section><button>Un</button><div>…</div></section><section><button>Deux</button><div>…</div></section></div>',
     '<div data-fx="stacked-sections-tabs" style="width:230px;--fx-h:150px;color:var(--ink);font-size:13px;--fx-width:190px"><section><button>Un</button><div>Premier chapitre.</div></section><section><button>Deux</button><div>Deuxième chapitre.</div></section><section><button>Trois</button><div>Troisième chapitre.</div></section></div>',
     { a11y: 'Chaque onglet est un bouton avec `aria-expanded`.' }),
+  E('carousel-3d-coverflow', 'Navigation',
+    'Des couvertures sont disposées en perspective : celle du centre est de face, les autres pivotent sur les côtés.',
+    'Bac à disques, on feuillette une collection.',
+    '- `--fx-step` (54px) : écart entre deux éléments\n- `--fx-h` (160px) : hauteur',
+    'Albums, livres, portfolios.',
+    'Un texte à lire sur les éléments des côtés.',
+    '<div data-fx="carousel-3d-coverflow"><img…><img…><img…></div>',
+    '<div data-fx="carousel-3d-coverflow" style="width:230px"><div class="demo-box" style="width:100px;height:100px"></div><div class="demo-box alt" style="width:100px;height:100px"></div><div class="demo-box ink" style="width:100px;height:100px"></div><div class="demo-box alt" style="width:100px;height:100px"></div><div class="demo-box" style="width:100px;height:100px"></div></div>',
+    { a11y: 'Flèches gauche et droite au clavier. Seul l\'élément central est exposé aux lecteurs d\'écran.' }),
 ];

@@ -6209,6 +6209,31 @@
       open(0);
     }
   });
+
+  // Des couvertures en perspective autour de l'élément central
+  FX.register('carousel-3d-coverflow', {
+    setup: function (el) {
+      var k = Array.prototype.slice.call(el.children), cur = Math.floor(k.length / 2);
+      el.tabIndex = 0;
+      el.setAttribute('role', 'group');
+      el.setAttribute('aria-roledescription', 'carrousel');
+      var show = function () {
+        k.forEach(function (c, i) {
+          var d = i - cur;
+          c.style.setProperty('--fx-d', d);
+          c.style.setProperty('--fx-a', Math.abs(d));
+          c.style.zIndex = 20 - Math.abs(d);
+          c.setAttribute('aria-hidden', d !== 0);
+        });
+      };
+      k.forEach(function (c, i) { c.addEventListener('click', function () { cur = i; show(); }); });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { cur = Math.max(0, cur - 1); show(); }
+        if (e.key === 'ArrowRight') { cur = Math.min(k.length - 1, cur + 1); show(); }
+      });
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
