@@ -126,3 +126,10 @@
 [data-fx="battery-level"].fx-charge i { animation: fx-bat .7s infinite alternate; }
 @keyframes fx-bat { to { opacity: .55; } }
 [data-fx="battery-level"] b { position: relative; font-size: 13px; color: #fff; text-shadow: 0 0 3px #000, 0 0 1px #000; }
+
+/* typing-indicator-name : qui écrit */
+[data-fx="typing-indicator-name"] { font-size: 13px; min-height: 1.4em; }
+[data-fx="typing-indicator-name"] i { display: inline-block; width: .32em; height: .32em; margin-left: .18em; border-radius: 50%; background: currentColor; animation: fx-tin 1s infinite; }
+[data-fx="typing-indicator-name"] i:nth-of-type(2) { animation-delay: .15s; }
+[data-fx="typing-indicator-name"] i:nth-of-type(3) { animation-delay: .3s; }
+@keyframes fx-tin { 30% { transform: translateY(-.3em); opacity: 1; } 0%, 60%, 100% { opacity: .35; transform: none; } }
