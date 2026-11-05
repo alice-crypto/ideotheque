@@ -785,4 +785,29 @@
       });
     }
   });
+
+  // Un texte long qui se déplie jusqu'à sa vraie hauteur
+  FX.register('line-clamp-expand', {
+    setup: function (el) {
+      var box = document.createElement('div');
+      box.className = 'fx-lc';
+      while (el.firstChild) box.appendChild(el.firstChild);
+      el.appendChild(box);
+      var lines = U.num(el, 'fxLines', 3), lh = parseFloat(getComputedStyle(box).lineHeight) || 20, min = lh * lines;
+      box.style.maxHeight = min + 'px';
+      if (box.scrollHeight <= min + 2) { box.style.maxHeight = 'none'; return; }
+      el.classList.add('fx-clamped');
+      var b = U.make('button', '', el);
+      b.type = 'button';
+      b.textContent = el.dataset.fxMore || 'Lire la suite';
+      b.setAttribute('aria-expanded', 'false');
+      b.addEventListener('click', function () {
+        var on = !el.classList.contains('fx-open');
+        el.classList.toggle('fx-open', on);
+        box.style.maxHeight = (on ? box.scrollHeight : min) + 'px';
+        b.textContent = on ? (el.dataset.fxLess || 'Réduire') : (el.dataset.fxMore || 'Lire la suite');
+        b.setAttribute('aria-expanded', on);
+      });
+    }
+  });
 })(window.FX);
