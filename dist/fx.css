@@ -3466,6 +3466,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="chapter-ticker"] .fx-tk-col b { display: block; font-weight: inherit; }
 [data-fx="chapter-ticker"] .fx-tk-tot { opacity: .5; margin-left: .3em; }
 
+/* frame-drift : l'image glisse dans son cadre */
+[data-fx="frame-drift"] { overflow: hidden; }
+[data-fx="frame-drift"] > * {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(var(--fx-zoom, 1.25)) translateY(var(--fx-d, 0));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

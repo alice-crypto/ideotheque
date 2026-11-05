@@ -185,4 +185,12 @@ module.exports = [
     '<div data-fx="chapter-ticker" data-fx-target="main > section"></div>',
     '<div class="demo-mono" data-fx="chapter-ticker" data-fx-target=".aucune-section"></div>',
     { a11y: 'Le compteur est décoratif et masqué aux lecteurs d\'écran.' }),
+  E('frame-drift', 'Défilement',
+    'L\'image glisse lentement à l\'intérieur de son cadre, qui reste immobile.',
+    'Une fenêtre de train, le monde passe derrière.',
+    '- `data-fx-range` (16) : course en pourcentage\n- `--fx-zoom` (1.25) : agrandissement de l\'image',
+    'Portfolios, images d\'articles.',
+    'Les images recadrées avec précision : leurs bords sont coupés.',
+    '<figure data-fx="frame-drift"><img src="photo.jpg" alt=""></figure>',
+    '<div class="demo-media" data-fx="frame-drift"><img src="assets/dune.svg" alt=""></div>'),
 ];

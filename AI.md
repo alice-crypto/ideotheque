@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->258<!-- /total --> effets.
+La bibliothèque contient <!-- total -->259<!-- /total --> effets.
 
 ## Règles
 
@@ -190,6 +190,7 @@ La bibliothèque contient <!-- total -->258<!-- /total --> effets.
 | `letters-scrub` | Défilement | Les lettres d'un titre, dispersées, se rassemblent à mesure qu'on défile vers lui |
 | `reading-marker` | Défilement | Les mots passent du gris au plein quand ils atteignent la ligne de lecture |
 | `chapter-ticker` | Défilement | Un petit compteur indique le chapitre en cours, et son chiffre coulisse quand on change de section |
+| `frame-drift` | Défilement | L'image glisse lentement à l'intérieur de son cadre, qui reste immobile |
 | `page-wipe` | Transition | Deux panneaux (couleur d'accent, puis couleur de fond) montent pour recouvrir l'écran, puis repartent par le haut sur la page suivante |
 | `bands` | Transition | Cinq bandes verticales de couleurs vives tombent l'une après l'autre pour couvrir l'écran, puis continuent leur chute |
 | `circle-expand` | Transition | Un cercle grandit depuis le point exact du clic jusqu'à couvrir l'écran, puis se referme au centre |

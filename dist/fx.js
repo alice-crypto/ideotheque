@@ -3917,6 +3917,11 @@
       el.style.setProperty('--fx-cur', i);
     }
   });
+
+  // L'image coulisse lentement à l'intérieur de son cadre
+  FX.register('frame-drift', {
+    scroll: function (el, info) { el.style.setProperty('--fx-d', ((info.pass - .5) * U.num(el, 'fxRange', 16)).toFixed(2) + '%'); }
+  });
 })(window.FX);
 
 window.FX._boot();
