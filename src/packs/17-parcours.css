@@ -166,3 +166,11 @@
 [data-fx="cursor-menu-ring"].fx-open button,
 [data-fx="cursor-menu-ring"].fx-open a { opacity: 1; pointer-events: auto; transform: translate(var(--fx-x), var(--fx-y)); }
 [data-fx="cursor-menu-ring"] :is(button, a):focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* stacked-sections-tabs : un classeur */
+[data-fx="stacked-sections-tabs"] { display: flex; height: var(--fx-h, 260px); overflow: hidden; }
+[data-fx="stacked-sections-tabs"] > * { flex: 0 0 var(--fx-tab, 38px); overflow: hidden; display: flex; transition: flex-grow .6s var(--fx-ease-out); min-width: var(--fx-tab, 38px); }
+[data-fx="stacked-sections-tabs"] > .fx-open { flex-grow: 1; }
+[data-fx="stacked-sections-tabs"] button { flex: 0 0 var(--fx-tab, 38px); writing-mode: vertical-rl; background: none; border: 0; border-right: 1px solid rgba(128, 128, 128, .3); color: inherit; font: inherit; cursor: pointer; padding: .6em 0; }
+[data-fx="stacked-sections-tabs"] > * > :not(button) { flex: 1 0 auto; width: calc(var(--fx-width, 220px) - var(--fx-tab, 38px)); padding: .8em; opacity: 0; transition: opacity .3s; }
+[data-fx="stacked-sections-tabs"] > .fx-open > :not(button) { opacity: 1; transition-delay: .2s; }
