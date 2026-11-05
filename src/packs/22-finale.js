@@ -82,4 +82,14 @@
       el._fxC.forEach(function (c, i) { c.style.transform = 'translateY(' + (Math.sin(ph + i * .5) * a).toFixed(1) + 'px)'; });
     }
   });
+
+  // Un titre n'est pleinement visible qu'au centre de l'écran
+  FX.register('title-fade-pass', {
+    scroll: function (el, info) {
+      var d = Math.abs(info.pass - .5) * 2;
+      el.style.setProperty('--fx-a', U.clamp(1.4 - d * 1.6, 0, 1).toFixed(3));
+      el.style.setProperty('--fx-b', (d * d * U.num(el, 'fxBlur', 8)).toFixed(2) + 'px');
+      el.style.setProperty('--fx-y', ((.5 - info.pass) * 40).toFixed(1) + 'px');
+    }
+  });
 })(window.FX);
