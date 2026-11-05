@@ -463,4 +463,24 @@
       el._fxW[el._fxI].classList.add('fx-on');
     }
   });
+
+  // Le curseur est un soleil : l'ombre du titre part à l'opposé
+  FX.register('sun-shadow', {
+    setup: function (el) {
+      var cast = function (dx, dy) {
+        var n = U.num(el, 'fxLength', 18), col = U.cssVar(el, '--fx-shadow', 'rgba(0,0,0,.35)'), s = [];
+        for (var i = 1; i <= n; i++) s.push((dx * i).toFixed(1) + 'px ' + (dy * i).toFixed(1) + 'px 0 ' + col);
+        el.style.textShadow = s.join(',');
+      };
+      cast(.7, .7);
+      if (!U.canHover || U.reduced) return;
+      window.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > innerHeight + 200) return;
+        var dx = r.left + r.width / 2 - e.clientX, dy = r.top + r.height / 2 - e.clientY;
+        var d = Math.sqrt(dx * dx + dy * dy) || 1;
+        cast(dx / d, dy / d);
+      }, { passive: true });
+    }
+  });
 })(window.FX);
