@@ -45,4 +45,13 @@ module.exports = [
     '<button data-fx="press-ripple-text">Envoyer</button>',
     '<button class="demo-btn" data-fx="press-ripple-text">Envoyer</button>',
     { trigger: 'Cliquer' }),
+  E('swipe-reveal-row', 'Micro-interaction',
+    'Un bandeau unique glisse de ligne en ligne dans une liste et inverse le texte qu\'il recouvre.',
+    'Un stabilo qui suit l\'œil, une liste très réactive.',
+    '- `--fx-srr` (blanc) : couleur du bandeau',
+    'Listes de projets, d\'articles, de services.',
+    'Les listes dont les lignes contiennent des images.',
+    '<ul data-fx="swipe-reveal-row"><li>…</li><li>…</li></ul>',
+    '<div data-fx="swipe-reveal-row" style="width:210px;color:var(--ink);font-size:18px"><div style="padding:8px">Direction</div><div style="padding:8px">Image</div><div style="padding:8px">Son</div><div style="padding:8px">Récit</div></div>',
+    { a11y: 'Le bandeau suit aussi le focus clavier.' }),
 ];
