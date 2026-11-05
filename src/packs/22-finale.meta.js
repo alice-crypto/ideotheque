@@ -364,4 +364,13 @@ module.exports = [
     '<h1 data-fx="stamp-word">Plus vite. Plus fort.</h1>',
     '<p class="demo-title" data-fx="stamp-word" style="font-size:28px">Plus vite. Plus fort.</p>',
     { trigger: 'Rejouer' }),
+  E('word-bubbles', 'Texte',
+    'Une conversation apparaît bulle après bulle, à un rythme proche de la vraie frappe.',
+    'Familier, on suit la conversation.',
+    '- `data-fx-per-char` (16) : millisecondes par signe\n- `--fx-bubble-a`, `--fx-bubble-b`',
+    'Démonstrations d\'assistants, témoignages.',
+    'De longs échanges : le dernier message arrive trop tard.',
+    '<div data-fx="word-bubbles"><p>Bonjour</p><p>Que puis-je faire ?</p></div>',
+    '<div data-fx="word-bubbles" style="width:215px;color:var(--ink)"><p>Résume ce texte</p><p>Voici trois points</p><p>Merci !</p></div>',
+    { trigger: 'Rejouer' }),
 ];
