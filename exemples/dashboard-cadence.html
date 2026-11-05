@@ -183,6 +183,13 @@
         r.hidden = !!b.dataset.f && r.cells[2].textContent.trim() !== b.dataset.f;
       });
     });
+    document.querySelectorAll('.hc').forEach(function (el) {
+      new MutationObserver(function (m, o) {
+        if (!el.children.length) return;
+        o.disconnect();
+        Array.prototype.forEach.call(el.children, function (c, i) { if ((i * 5 + 2) % 9 === 0) c.setAttribute('data-off', ''); });
+      }).observe(el, { childList: true });
+    });
     /*@js*/
   </script>
 </body>
