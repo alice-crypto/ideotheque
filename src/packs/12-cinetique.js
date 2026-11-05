@@ -414,4 +414,16 @@
       });
     }
   });
+
+  // Le titre glisse de côté quand on défile vite, puis revient
+  FX.register('drift-title', {
+    setup: function (el) { el._fxX = 0; },
+    tick: function (el) {
+      if (U.reduced) return;
+      var target = U.velocity() * U.num(el, 'fxDrift', 3);
+      el._fxX += (target - el._fxX) * .08;
+      el.style.setProperty('--fx-x', el._fxX.toFixed(1) + 'px');
+      el.style.setProperty('--fx-s', U.clamp(el._fxX * .05, -8, 8).toFixed(2) + 'deg');
+    }
+  });
 })(window.FX);
