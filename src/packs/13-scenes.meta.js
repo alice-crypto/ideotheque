@@ -46,4 +46,12 @@ module.exports = [
     'Les contenus qu\'il faut comparer ligne à ligne.',
     '<div data-fx="cross-rows"><div>…</div><div>…</div></div>',
     '<div data-fx="cross-rows" style="width:100%"><div><span class="demo-chip">Atlas</span><span class="demo-chip">Halo</span><span class="demo-chip">Ocre</span><span class="demo-chip">Brume</span></div><div><span class="demo-chip">Verdure</span><span class="demo-chip">Atlas</span><span class="demo-chip">Halo</span><span class="demo-chip">Ocre</span></div></div>'),
+  E('fan-scroll', 'Défilement',
+    'Des cartes empilées s\'ouvrent en éventail à mesure qu\'on défile.',
+    'Un jeu de cartes qu\'on déploie, un geste de magicien.',
+    '- `--fx-angle` (14deg) : angle entre deux cartes',
+    'Présenter 3 à 7 produits, offres ou projets.',
+    'Plus de 7 cartes : l\'éventail devient illisible.',
+    '<div data-fx="fan-scroll"><div>…</div><div>…</div><div>…</div></div>',
+    '<div data-fx="fan-scroll"><div class="demo-box" style="width:90px;height:120px"></div><div class="demo-box alt" style="width:90px;height:120px"></div><div class="demo-box ink" style="width:90px;height:120px"></div><div class="demo-box" style="width:90px;height:120px"></div></div>'),
 ];
