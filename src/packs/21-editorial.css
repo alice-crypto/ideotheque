@@ -83,3 +83,11 @@
   transition: transform .25s var(--fx-ease-out), box-shadow .25s;
 }
 [data-fx="sticker-peel-hover"]:hover { box-shadow: 0 14px 24px rgba(0, 0, 0, .35); }
+
+/* underline-wave-draw : un trait de plume */
+[data-fx="underline-wave-draw"] { position: relative; display: inline-block; text-decoration: none; padding-bottom: .22em; }
+[data-fx="underline-wave-draw"] .fx-uwd { position: absolute; left: 0; right: 0; bottom: 0; height: .34em; }
+[data-fx="underline-wave-draw"] svg { display: block; width: 100%; height: 100%; overflow: visible; }
+[data-fx="underline-wave-draw"] path { fill: none; stroke: var(--fx-pen, var(--fx-accent)); stroke-width: 2px; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: -1; transition: stroke-dashoffset .55s var(--fx-ease-io); }
+[data-fx="underline-wave-draw"]:hover path,
+[data-fx="underline-wave-draw"]:focus-visible path { stroke-dashoffset: 0; }
