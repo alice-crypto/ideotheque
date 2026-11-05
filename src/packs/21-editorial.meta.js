@@ -66,4 +66,13 @@ module.exports = [
     '<h2 data-fx="bilingual-toggle" data-fx-other="Make it simple">Faire simple</h2>',
     '<p class="demo-title" data-fx="bilingual-toggle" data-fx-other="Make it simple" style="font-size:26px;display:inline-block">Faire simple</p>',
     { trigger: 'Basculer', a11y: 'Le texte courant reste dans `aria-label`.' }),
+  E('word-counter-goal', 'Texte',
+    'Un compteur de mots avance vers un objectif, et salue d\'une pulsation quand il est atteint.',
+    'Encouragement, écrire devient un petit jeu.',
+    '- `data-fx-goal` (30) : objectif en mots\n- L\'élément émet `fx:goal`.',
+    'Éditeurs, journaux, formulaires.',
+    'Une limite stricte : c\'est un objectif, pas une contrainte.',
+    '<div data-fx="word-counter-goal"><textarea></textarea></div>',
+    '<div data-fx="word-counter-goal" data-fx-goal="8" style="width:215px;color:var(--ink);font-size:13px"><textarea rows="3" aria-label="Votre texte" style="background:transparent;border:1px solid #555;border-radius:6px;color:inherit;padding:6px;font:inherit;width:100%;box-sizing:border-box">Écrivez ici quelques mots pour voir</textarea></div>',
+    { a11y: 'Le décompte est annoncé par `aria-live`.' }),
 ];
