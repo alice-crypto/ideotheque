@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="stacked-progress" data-fx-parts="Loyer:50,Repas:30,Reste:20"></div>',
     '<div data-fx="stacked-progress" style="width:220px;color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Les valeurs sont aussi écrites en texte dans la légende.' }),
+  E('versus-bars', 'Présentation',
+    'Deux valeurs se font face : les barres partent de chaque bord et se rencontrent à la frontière.',
+    'Duel, match, avant et après.',
+    '- `data-fx-a`, `data-fx-b` : valeurs\n- `data-fx-name-a`, `data-fx-name-b` : noms\n- `--fx-a-c`, `--fx-b-c` : couleurs',
+    'Comparaison de deux options, résultats, gains.',
+    'Plus de deux valeurs.',
+    '<div data-fx="versus-bars" data-fx-a="62" data-fx-b="38"></div>',
+    '<div data-fx="versus-bars" data-fx-a="72" data-fx-b="28" data-fx-name-a="Sans" data-fx-name-b="Avec" style="width:220px;color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Les valeurs sont écrites en texte à côté des barres.' }),
 ];

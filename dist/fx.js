@@ -6368,6 +6368,17 @@
       });
     }
   });
+
+  // Deux valeurs face à face, chacune pousse depuis son côté
+  FX.register('versus-bars', {
+    entrance: true,
+    setup: function (el) {
+      var a = U.num(el, 'fxA', 62), b = U.num(el, 'fxB', 38), na = el.dataset.fxNameA || 'Avant', nb = el.dataset.fxNameB || 'Après';
+      el.innerHTML = '<div class="fx-vs-l"><b>' + a + '</b><span>' + na + '</span></div><div class="fx-vs-r"><span>' + nb + '</span><b>' + b + '</b></div><div class="fx-vs-bar"><i class="a"></i><i class="b"></i></div>';
+      el.style.setProperty('--fx-a', a / (a + b));
+      el.classList.add(a >= b ? 'fx-a-wins' : 'fx-b-wins');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

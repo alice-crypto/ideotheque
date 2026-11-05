@@ -4588,6 +4588,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="stacked-progress"] .fx-sp-leg { display: flex; flex-wrap: wrap; gap: .4em 1em; list-style: none; padding: 0; margin: 0; font-size: 13px; }
 [data-fx="stacked-progress"] .fx-sp-leg li::before { content: ""; display: inline-block; width: .6em; height: .6em; margin-right: .4em; border-radius: 2px; background: color-mix(in srgb, var(--fx-accent) calc(100% - var(--fx-i) * 28%), rgba(128, 128, 128, .5)); }
 
+/* versus-bars : un face-à-face */
+[data-fx="versus-bars"] { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; font-size: 13px; }
+[data-fx="versus-bars"] b { font-size: 26px; margin: 0 .2em; font-variant-numeric: tabular-nums; }
+[data-fx="versus-bars"] .fx-vs-r { text-align: right; }
+[data-fx="versus-bars"] .fx-vs-bar { grid-column: 1 / -1; display: flex; gap: 3px; height: 10px; }
+[data-fx="versus-bars"] .fx-vs-bar i { display: block; height: 100%; width: 0; transition: width .9s var(--fx-ease-out); }
+[data-fx="versus-bars"] .fx-vs-bar .a { background: var(--fx-a-c, var(--fx-accent)); border-radius: 3px 0 0 3px; }
+[data-fx="versus-bars"] .fx-vs-bar .b { margin-left: auto; background: var(--fx-b-c, var(--fx-accent-2)); border-radius: 0 3px 3px 0; }
+.fx-in[data-fx="versus-bars"] .fx-vs-bar .a { width: calc(var(--fx-a) * 100% - 2px); }
+.fx-in[data-fx="versus-bars"] .fx-vs-bar .b { width: calc((1 - var(--fx-a)) * 100% - 2px); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
