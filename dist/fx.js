@@ -7031,6 +7031,36 @@
       el.style.setProperty('--fx-shadow', (1 - (Math.sin(t * .0016) + 1) * .12).toFixed(3));
     }
   });
+
+  // Plusieurs tâches avancent, chacune à son rythme
+  FX.register('multi-file-progress', {
+    setup: function (el) {
+      var names = (el.dataset.fxItems || 'photos.zip|contrat.pdf|notes.md').split('|');
+      el._fxRows = names.map(function (n) {
+        var r = U.make('div', 'fx-mf', el);
+        r.innerHTML = '<span></span><i role="progressbar" aria-valuemin="0" aria-valuemax="100"><b></b></i><em></em>';
+        r.firstChild.textContent = n;
+        r.children[1].setAttribute('aria-label', n);
+        return { el: r, p: 0, s: U.rand(.1, .4) };
+      });
+      el._fxSet = function (i, v) {
+        var r = el._fxRows[i];
+        r.p = U.clamp(v, 0, 1);
+        r.el.style.setProperty('--fx-v', r.p);
+        r.el.children[1].setAttribute('aria-valuenow', Math.round(r.p * 100));
+        r.el.lastChild.textContent = r.p >= 1 ? '✓' : Math.round(r.p * 100) + ' %';
+        r.el.classList.toggle('fx-ok', r.p >= 1);
+      };
+      el._fxRows.forEach(function (r, i) { el._fxSet(i, 0); });
+      el._fxWait = 0;
+    },
+    tick: function (el, dt) {
+      if (U.reduced || el.dataset.fxManual === 'true') return;
+      var all = true;
+      el._fxRows.forEach(function (r, i) { if (r.p < 1) { all = false; el._fxSet(i, r.p + r.s * dt); } });
+      if (all && (el._fxWait += dt) > 2) { el._fxWait = 0; el._fxRows.forEach(function (r, i) { el._fxSet(i, 0); }); }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

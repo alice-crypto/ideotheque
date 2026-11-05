@@ -164,4 +164,13 @@ module.exports = [
     'De masquer une erreur derrière un état vide.',
     '<div data-fx="empty-state-float"><img src="vide.svg" alt=""><p>Rien pour l\'instant.</p></div>',
     '<div data-fx="empty-state-float" style="color:var(--ink);font-size:13px"><div class="demo-box" style="width:70px;height:70px;border-radius:50%"></div><p>Rien pour l\'instant.</p></div>'),
+  E('multi-file-progress', 'État',
+    'Plusieurs tâches avancent en même temps, chacune avec sa barre, sa valeur et sa coche.',
+    'Contrôle, on suit tout sans attendre à l\'aveugle.',
+    '- `data-fx-items` : noms séparés par `|`\n- `data-fx-manual="true"` : progression pilotée par `el._fxSet(i, valeur)`',
+    'Envois de fichiers, tâches d\'agents, exports.',
+    'Une progression simulée pour une vraie tâche : passez en mode manuel.',
+    '<div data-fx="multi-file-progress" data-fx-manual="true" data-fx-items="a.zip|b.pdf"></div>',
+    '<div data-fx="multi-file-progress" style="width:215px;color:var(--ink)"></div>',
+    { a11y: 'Rôle `progressbar` avec `aria-valuenow` sur chaque ligne.' }),
 ];
