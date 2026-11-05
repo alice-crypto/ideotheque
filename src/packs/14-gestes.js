@@ -83,4 +83,26 @@
       s.l.style.setProperty('--fx-y', s.y.toFixed(1) + 'px');
     }
   });
+
+  // Le texte pivote en 3D vers le curseur, avec un reflet qui glisse
+  FX.register('hover-tilt-text', {
+    setup: function (el) {
+      var s = el._fxS = { rx: 0, ry: 0, tx: 0, ty: 0 };
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        s.ty = ((e.clientX - r.left) / r.width - .5) * U.num(el, 'fxMax', 26);
+        s.tx = -((e.clientY - r.top) / r.height - .5) * U.num(el, 'fxMax', 26);
+      });
+      el.addEventListener('pointerleave', function () { s.tx = s.ty = 0; });
+    },
+    tick: function (el) {
+      var s = el._fxS;
+      if (U.reduced) return;
+      s.rx = U.lerp(s.rx, s.tx, .1); s.ry = U.lerp(s.ry, s.ty, .1);
+      el.style.setProperty('--fx-rx', s.rx.toFixed(2) + 'deg');
+      el.style.setProperty('--fx-ry', s.ry.toFixed(2) + 'deg');
+      el.style.setProperty('--fx-sx', (s.ry * -.5).toFixed(1) + 'px');
+      el.style.setProperty('--fx-sy', (s.rx * .5).toFixed(1) + 'px');
+    }
+  });
 })(window.FX);
