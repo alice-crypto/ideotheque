@@ -49,4 +49,13 @@
       p.style.setProperty('--fx-d', U.rand(0, 280).toFixed(0) + 'ms');
     });
   } } });
+
+  // Des colonnes montent en escalier
+  FX.register('stair-bars', { transition: { pieces: 9, cover: 880, uncover: 920, build: function (o) {
+    var flip = Math.random() < .5, n = o.children.length;
+    Array.prototype.forEach.call(o.children, function (p, i) {
+      p.style.left = i * 100 / n + '%';
+      p.style.setProperty('--fx-d', (flip ? n - 1 - i : i) * 45 + 'ms');
+    });
+  } } });
 })(window.FX);
