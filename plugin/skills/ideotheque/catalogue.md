@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->492<!-- /total --> effets.
+La bibliothèque contient <!-- total -->493<!-- /total --> effets.
 
 ## Règles
 
@@ -182,6 +182,7 @@ La bibliothèque contient <!-- total -->492<!-- /total --> effets.
 | `funnel-steps` | Présentation | Un entonnoir de barres centrées montre ce qui reste à chaque étape, avec le taux de passage |
 | `treemap-grow` | Présentation | Une carte de rectangles proportionnels s'assemble : plus la valeur est grande, plus la surface l'est |
 | `bubble-pack` | Présentation | Des bulles proportionnelles gonflent et se serrent les unes contre les autres |
+| `kanban-move` | Présentation | Sur un tableau de tâches, les cartes passent d'une colonne à l'autre comme si une équipe travaillait |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

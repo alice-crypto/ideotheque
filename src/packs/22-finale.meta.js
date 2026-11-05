@@ -312,4 +312,13 @@ module.exports = [
     '<div data-fx="bubble-pack" data-fx-items="A:50,B:30"></div>',
     '<div data-fx="bubble-pack" style="width:225px"></div>',
     { trigger: 'Rejouer', a11y: 'Les valeurs sont résumées dans `aria-label`.' }),
+  E('kanban-move', 'Présentation',
+    'Sur un tableau de tâches, les cartes passent d\'une colonne à l\'autre comme si une équipe travaillait.',
+    'Une équipe invisible avance.',
+    '- `data-fx-every` (1.6) : secondes entre deux mouvements\n- `data-card` sur les cartes',
+    'Démonstrations de logiciels, pages d\'accueil.',
+    'De faire croire à une activité réelle sur de vrais comptes.',
+    '<div data-fx="kanban-move"><div><p data-card>Écrire</p></div><div></div><div></div></div>',
+    '<div data-fx="kanban-move" style="width:225px"><div><div data-card>Écrire</div><div data-card>Relire</div></div><div><div data-card>Tester</div></div><div></div></div>',
+    { trigger: 'Déplacer', a11y: 'Avec `prefers-reduced-motion: reduce`, les cartes ne bougent que sur demande.' }),
 ];
