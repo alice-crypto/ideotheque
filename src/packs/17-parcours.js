@@ -35,4 +35,30 @@
       });
     }
   });
+
+  // Une liste de grands liens dont l'aperçu change au survol
+  FX.register('mega-index', {
+    setup: function (el) {
+      var pv = U.make('div', 'fx-mi-pv', el);
+      pv.setAttribute('aria-hidden', 'true');
+      var links = el.querySelectorAll('a');
+      var show = function (a) {
+        links.forEach(function (o) { o.classList.toggle('fx-dim', o !== a); });
+        var src = a.dataset.fxImg;
+        if (src) pv.style.backgroundImage = 'url("' + src + '")';
+        pv.classList.add('fx-on');
+      };
+      var hide = function () {
+        links.forEach(function (o) { o.classList.remove('fx-dim'); });
+        pv.classList.remove('fx-on');
+      };
+      links.forEach(function (a) {
+        if (a.dataset.fxImg) (new Image()).src = a.dataset.fxImg;
+        a.addEventListener('pointerenter', function () { show(a); });
+        a.addEventListener('focus', function () { show(a); });
+        a.addEventListener('blur', hide);
+      });
+      el.addEventListener('pointerleave', hide);
+    }
+  });
 })(window.FX);
