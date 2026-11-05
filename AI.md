@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->367<!-- /total --> effets.
+La bibliothèque contient <!-- total -->368<!-- /total --> effets.
 
 ## Règles
 
@@ -122,6 +122,7 @@ La bibliothèque contient <!-- total -->367<!-- /total --> effets.
 | `expand-panels` | Présentation | Des panneaux côte à côte ; celui qu'on survole s'élargit pendant que les autres se resserrent |
 | `prompt-box` | Présentation | Un champ de saisie qui écrit tout seul des exemples de demandes, les garde un instant, puis les efface |
 | `radial-bars` | Présentation | Des barres rayonnent autour d'un centre et poussent une à une vers l'extérieur |
+| `sparkline-draw` | Présentation | Une petite courbe de tendance se dessine, sa zone apparaît et un point marque la dernière valeur |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |
