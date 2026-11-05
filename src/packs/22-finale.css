@@ -157,3 +157,9 @@
 [data-fx="back-to-top-progress"] circle { fill: none; stroke-width: 2.5; }
 [data-fx="back-to-top-progress"] .b { stroke: rgba(255, 255, 255, .2); }
 [data-fx="back-to-top-progress"] .o { stroke: var(--fx-accent); stroke-dasharray: var(--fx-v, 0) 100; }
+
+/* tag-filter-flip : filtrer sans couper */
+[data-fx="tag-filter-flip"] [data-tags] { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+[data-fx="tag-filter-flip"] [data-tags] button { padding: .25em .7em; border: 1px solid rgba(128, 128, 128, .4); border-radius: 99px; background: none; color: inherit; font: 12px inherit; cursor: pointer; }
+[data-fx="tag-filter-flip"] [data-tags] button[aria-pressed="true"] { background: var(--fx-accent); border-color: var(--fx-accent); color: #111; }
+[data-fx="tag-filter-flip"] [hidden] { display: none; }
