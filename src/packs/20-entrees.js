@@ -27,4 +27,14 @@
       });
     }
   });
+
+  // Les lignes glissent de chaque côté et se calent sur la marge
+  FX.register('typeset-lines', {
+    entrance: true,
+    setup: function (el) {
+      var run = function () { U.splitLines(el); el.querySelectorAll('.fx-line > span').forEach(function (s, i) { s.style.setProperty('--fx-dir', i % 2 ? 1 : -1); }); };
+      run();
+      U.onResize(run);
+    }
+  });
 })(window.FX);
