@@ -175,4 +175,29 @@
       });
     }
   });
+
+  // Il faut maintenir le bouton pour confirmer
+  FX.register('hold-confirm', {
+    setup: function (el) {
+      var t = 0, holding = false, done = false, dur = U.num(el, 'fxHold', 1200);
+      var start = function () { if (done) return; holding = true; el.classList.add('fx-hold'); };
+      var stop = function () { holding = false; if (!done) { t = 0; el.style.setProperty('--fx-h', 0); el.classList.remove('fx-hold'); } };
+      el.addEventListener('pointerdown', start);
+      ['pointerup', 'pointerleave', 'pointercancel', 'blur'].forEach(function (n) { el.addEventListener(n, stop); });
+      el.addEventListener('keydown', function (e) { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); start(); } });
+      el.addEventListener('keyup', stop);
+      el._fxStep = function (dt) {
+        if (!holding || done) return;
+        t += dt * 1000;
+        el.style.setProperty('--fx-h', Math.min(1, t / dur).toFixed(3));
+        if (t >= dur) {
+          done = true;
+          el.classList.add('fx-confirmed');
+          el.dispatchEvent(new CustomEvent('fx:confirm', { bubbles: true }));
+          setTimeout(function () { done = false; holding = false; t = 0; el.style.setProperty('--fx-h', 0); el.classList.remove('fx-confirmed', 'fx-hold'); }, 1600);
+        }
+      };
+    },
+    tick: function (el, dt) { el._fxStep(dt); }
+  });
 })(window.FX);
