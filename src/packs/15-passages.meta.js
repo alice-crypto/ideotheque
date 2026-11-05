@@ -30,4 +30,13 @@ module.exports = [
     '<a href="/histoire" data-fx="clock-wipe">Histoire</a>',
     '<button class="demo-ghost" onclick="FX.play(\'clock-wipe\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('ink-drops', 'Transition',
+    'Plusieurs gouttes d\'encre apparaissent et grandissent jusqu\'à recouvrir l\'écran.',
+    'Organique, encre qui se répand sur du papier.',
+    '- `--fx-tr-color` : couleur de l\'encre',
+    'Sites éditoriaux, marques artisanales.',
+    'Les marques très géométriques.',
+    '<a href="/journal" data-fx="ink-drops">Journal</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'ink-drops\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];

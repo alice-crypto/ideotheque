@@ -4681,6 +4681,15 @@
       U.raf(run);
     })(0);
   } } });
+
+  // Des gouttes d'encre grandissent jusqu'à couvrir l'écran
+  FX.register('ink-drops', { transition: { pieces: 12, cover: 950, uncover: 900, build: function (o) {
+    Array.prototype.forEach.call(o.children, function (p, i) {
+      p.style.left = (i % 4 + U.rand(.1, .9)) * 25 + '%';
+      p.style.top = (Math.floor(i / 4) + U.rand(.1, .9)) * 33 + '%';
+      p.style.setProperty('--fx-d', U.rand(0, 280).toFixed(0) + 'ms');
+    });
+  } } });
 })(window.FX);
 
 window.FX._boot();
