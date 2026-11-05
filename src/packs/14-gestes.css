@@ -132,3 +132,15 @@
   transition: left .28s var(--fx-ease-spring) .06s, right .28s var(--fx-ease-spring);
 }
 [data-fx="snap-toggle"][aria-checked="true"] i { left: 30px; right: 4px; transition: left .28s var(--fx-ease-spring), right .28s var(--fx-ease-spring) .06s; }
+
+/* stepper-pop : un compteur vivant */
+[data-fx="stepper-pop"] { display: inline-flex; align-items: center; gap: .4em; }
+[data-fx="stepper-pop"] button { width: 2em; height: 2em; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="stepper-pop"] output { min-width: 2ch; text-align: center; overflow: hidden; font-variant-numeric: tabular-nums; }
+[data-fx="stepper-pop"] output span { display: inline-block; }
+[data-fx="stepper-pop"] .fx-up { animation: fx-sp-u .28s var(--fx-ease-out); }
+[data-fx="stepper-pop"] .fx-down { animation: fx-sp-d .28s var(--fx-ease-out); }
+@keyframes fx-sp-u { from { transform: translateY(100%); opacity: 0; } }
+@keyframes fx-sp-d { from { transform: translateY(-100%); opacity: 0; } }
+[data-fx="stepper-pop"].fx-stop output { animation: fx-sp-s .24s; }
+@keyframes fx-sp-s { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
