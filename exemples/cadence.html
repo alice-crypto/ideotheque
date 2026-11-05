@@ -71,7 +71,6 @@
     @media (prefers-reduced-motion: reduce) {
       .mbeats i { transition: none; }
     }
-    /*@css*/
   </style>
 </head>
 <body>
@@ -202,7 +201,6 @@
     </div>
   </footer>
   <div data-fx="progress-bar" aria-hidden="true"></div>
-  <!--@html-->
   <a class="ex-back" href="index.html" data-fx-tr="stair-bars">← Tous les exemples</a>
   <script src="../dist/fx.js" defer></script>
   <script>
@@ -231,7 +229,6 @@
         Array.prototype.forEach.call(el.children, function (c, i) { if ((i * 7 + 3) % 6 === 0 || i % 37 === 5) c.setAttribute('data-off', ''); });
       }).observe(el, { childList: true });
     });
-    /*@js*/
   </script>
 </body>
 </html>
