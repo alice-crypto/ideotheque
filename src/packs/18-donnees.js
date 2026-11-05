@@ -244,4 +244,27 @@
       if (el._fxT >= el._fxD) el._fxNext();
     }
   });
+
+  // Un mur de logos dont les cases se retournent une à une
+  FX.register('logo-wall-flip', {
+    setup: function (el) {
+      var all = (el.dataset.fxLogos || 'Atlas|Brume|Halo|Ocre|Verdure|Nord|Sable|Iris|Onde').split('|'), n = U.num(el, 'fxCells', 6);
+      el.style.setProperty('--fx-cells', Math.ceil(n / 2));
+      el.setAttribute('aria-label', 'Références : ' + all.join(', '));
+      el.setAttribute('role', 'img');
+      var cells = [];
+      for (var i = 0; i < n; i++) { var c = U.make('span', '', el); c.setAttribute('aria-hidden', 'true'); c.textContent = all[i % all.length]; cells.push(c); }
+      el._fxC = cells; el._fxNx = n; el._fxAll = all; el._fxT = 0;
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxT += dt;
+      if (el._fxT < U.num(el, 'fxEvery', 1.1)) return;
+      el._fxT = 0;
+      var c = el._fxC[Math.floor(Math.random() * el._fxC.length)], t = el._fxAll[el._fxNx++ % el._fxAll.length];
+      c.classList.add('fx-flip');
+      setTimeout(function () { c.textContent = t; }, 220);
+      setTimeout(function () { c.classList.remove('fx-flip'); }, 460);
+    }
+  });
 })(window.FX);
