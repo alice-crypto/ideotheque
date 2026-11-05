@@ -58,3 +58,17 @@
   transform: perspective(1000px) rotateX(calc(var(--fx-land, 0) * var(--fx-tilt, 32deg))) scale(calc(1 - var(--fx-land, 0) * .12));
   transform-origin: 50% 100%;
 }
+
+/* wheel-scroll : une roue de sélection */
+[data-fx="wheel-scroll"] { position: relative; height: var(--fx-h, 150px); perspective: 500px; overflow: hidden; }
+[data-fx="wheel-scroll"] > * {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 1;
+  margin-top: -.5em;
+  backface-visibility: hidden;
+  transform: rotateX(calc(var(--fx-i) * 360deg / var(--fx-count) + var(--fx-rot, 0deg))) translateZ(var(--fx-rad, 90px));
+}
