@@ -202,3 +202,13 @@
 [data-fx="kanban-move"] { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; font-size: 11px; }
 [data-fx="kanban-move"] > * { display: flex; flex-direction: column; gap: 4px; min-height: var(--fx-h, 130px); padding: 5px; border-radius: 8px; background: rgba(128, 128, 128, .14); }
 [data-fx="kanban-move"] [data-card] { padding: .5em; border-radius: 5px; background: var(--fx-card, #2a2a30); color: #fff; }
+
+/* countdown-rings : un compte à rebours */
+[data-fx="countdown-rings"] { display: inline-flex; gap: 6px; }
+[data-fx="countdown-rings"] > div { position: relative; display: grid; place-items: center; width: var(--fx-size, 52px); height: var(--fx-size, 52px); }
+[data-fx="countdown-rings"] svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+[data-fx="countdown-rings"] circle { fill: none; stroke-width: 2.5; }
+[data-fx="countdown-rings"] .b { stroke: rgba(128, 128, 128, .28); }
+[data-fx="countdown-rings"] .o { stroke: var(--fx-accent); stroke-dasharray: var(--fx-v, 0) 100; transition: stroke-dasharray .5s; }
+[data-fx="countdown-rings"] b { font-size: 15px; font-variant-numeric: tabular-nums; line-height: 1; margin-top: -6px; }
+[data-fx="countdown-rings"] small { position: absolute; bottom: 12px; font-size: 8px; opacity: .7; }
