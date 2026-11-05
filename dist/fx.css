@@ -5173,6 +5173,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="cursor-compass"] { display: grid; grid-template-columns: repeat(var(--fx-cols, 7), 1fr); gap: var(--fx-gap, 10px); }
 [data-fx="cursor-compass"] i { display: block; height: 3px; border-radius: 2px; background: linear-gradient(90deg, currentColor 40%, var(--fx-accent) 40%); margin: 10px 0; transition: transform .18s linear; }
 
+/* double-click-like : un cœur au double appui */
+[data-fx="double-click-like"] { user-select: none; overflow: hidden; }
+[data-fx="double-click-like"] .fx-dcl { position: absolute; font-size: var(--fx-size, 72px); line-height: 1; color: var(--fx-heart, #e10600); pointer-events: none; transform: translate(-50%, -50%); animation: fx-dcl .9s var(--fx-ease-out) forwards; }
+@keyframes fx-dcl { 0% { transform: translate(-50%, -50%) rotate(var(--fx-r)) scale(0); } 25% { transform: translate(-50%, -50%) rotate(var(--fx-r)) scale(1.25); } 45%, 70% { transform: translate(-50%, -50%) rotate(var(--fx-r)) scale(1); opacity: 1; } 100% { transform: translate(-50%, -110%) rotate(var(--fx-r)) scale(1.05); opacity: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -143,4 +143,13 @@ module.exports = [
     'De grandes grilles : le calcul se fait à chaque mouvement.',
     '<div data-fx="cursor-compass"></div>',
     '<div data-fx="cursor-compass" style="width:215px;color:var(--ink)"></div>'),
+  E('double-click-like', 'Micro-interaction',
+    'Un double appui sur l\'image fait apparaître un gros cœur à cet endroit.',
+    'Geste familier, plaisir immédiat.',
+    '- `--fx-heart`, `--fx-size` (72px)\n- L\'élément émet `fx:like`.',
+    'Galeries, portfolios, réseaux.',
+    'Que ce soit la seule façon d\'aimer : ajoutez aussi un bouton visible.',
+    '<figure data-fx="double-click-like"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="double-click-like"><img src="assets/bloom.svg" alt=""></div>',
+    { trigger: 'Aimer', a11y: 'Prévoyez un vrai bouton « J\'aime » pour le clavier et les lecteurs d\'écran.' }),
 ];
