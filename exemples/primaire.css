@@ -131,4 +131,5 @@ img, svg { display: block; max-width: 100%; }
 .hbar i { display: block; height: 14px; background: var(--c, var(--b)); width: calc(var(--v) * 1%); animation: pr-w .8s var(--fx-ease-out) both; }
 .hbar b { text-align: right; font-variant-numeric: tabular-nums; }
 @keyframes pr-w { from { width: 0; } }
+.dsearch { flex: 1; max-width: 340px; padding: .6em .8em; border: var(--rule); background: var(--w); color: var(--k); font: inherit; font-size: 14px; }
 /*@css*/
