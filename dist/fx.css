@@ -4894,6 +4894,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="notification-stack"] .fx-ns.fx-out { opacity: 0; translate: 40px 0; transition: opacity .25s, translate .28s; }
 [data-fx="notification-stack"] button { background: none; border: 0; color: inherit; cursor: pointer; }
 
+/* prompt-suggestions : des pistes pour commencer */
+[data-fx="prompt-suggestions"] { display: flex; flex-wrap: wrap; gap: 6px; }
+[data-fx="prompt-suggestions"] > * { padding: .45em .9em; border: 1px solid rgba(128, 128, 128, .4); border-radius: 99px; background: none; color: inherit; font: inherit; font-size: 13px; cursor: pointer; animation: fx-ps .5s var(--fx-ease-out) calc(var(--fx-i) * 70ms) both; transition: transform .25s var(--fx-ease-out), background .2s, border-color .2s; }
+[data-fx="prompt-suggestions"] > *:hover,
+[data-fx="prompt-suggestions"] > *:focus-visible { transform: translateY(-2px); border-color: var(--fx-accent); }
+@keyframes fx-ps { from { opacity: 0; transform: translateY(10px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

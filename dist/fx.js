@@ -7093,6 +7093,21 @@
       if (el._fxT > 1.4) { el._fxT = 0; FX.trigger(el); }
     }
   });
+
+  // Des suggestions qui remplissent le champ d'une IA
+  FX.register('prompt-suggestions', {
+    setup: function (el) {
+      Array.prototype.forEach.call(el.children, function (b, i) {
+        b.style.setProperty('--fx-i', i);
+        b.addEventListener('click', function () {
+          var target = el.dataset.fxTarget && document.querySelector(el.dataset.fxTarget);
+          var text = b.dataset.prompt || b.textContent.trim();
+          if (target) { target.value = text; target.focus(); target.dispatchEvent(new Event('input', { bubbles: true })); }
+          el.dispatchEvent(new CustomEvent('fx:pick', { bubbles: true, detail: { text: text } }));
+        });
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -182,4 +182,12 @@ module.exports = [
     '<div data-fx="notification-stack"></div>',
     '<div data-fx="notification-stack" data-fx-demo="true" style="width:220px"></div>',
     { trigger: 'Ajouter', a11y: 'Rôle `log`, chaque message a son bouton de fermeture.' }),
+  E('prompt-suggestions', 'État',
+    'Des pastilles arrivent en cascade et proposent des idées ; un clic remplit le champ de l\'assistant.',
+    'L\'angoisse de la page blanche disparaît.',
+    '- `data-fx-target` : sélecteur du champ à remplir\n- `data-prompt` : texte complet, s\'il diffère du libellé\n- L\'élément émet `fx:pick`.',
+    'Accueil d\'un assistant, recherche, formulaires.',
+    'Plus de 5 suggestions : on ne les lit plus.',
+    '<div data-fx="prompt-suggestions" data-fx-target="#demande"><button>Résumer un texte</button></div>',
+    '<div data-fx="prompt-suggestions" style="width:220px;color:var(--ink)"><button>Résumer un texte</button><button>Traduire</button><button>Proposer un titre</button></div>'),
 ];
