@@ -166,3 +166,17 @@
   transition: transform .5s var(--fx-ease-io) calc(var(--fx-o) * var(--fx-stagger));
 }
 .fx-in[data-fx="redact-reveal"] .fx-word::after { transform: scaleX(0); }
+
+/* sticker-letters : un collage d'étiquettes */
+[data-fx="sticker-letters"] .fx-char {
+  display: inline-block;
+  padding: .04em .14em;
+  margin: .03em;
+  background: var(--fx-accent);
+  color: var(--fx-sticker-ink, #111);
+  border: 2px solid #111;
+  box-shadow: 3px 3px 0 #111;
+  transform: rotate(var(--fx-r)) scale(0);
+  transition: transform .5s var(--fx-ease-spring) calc(var(--fx-i) * var(--fx-stagger));
+}
+.fx-in[data-fx="sticker-letters"] .fx-char { transform: rotate(var(--fx-r)) scale(1); }
