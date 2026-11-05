@@ -152,4 +152,13 @@ module.exports = [
     '<figure data-fx="double-click-like"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="double-click-like"><img src="assets/bloom.svg" alt=""></div>',
     { trigger: 'Aimer', a11y: 'Prévoyez un vrai bouton « J\'aime » pour le clavier et les lecteurs d\'écran.' }),
+  E('range-bubble', 'Micro-interaction',
+    'Un curseur de réglage dont la valeur suit dans une petite bulle au-dessus du pouce.',
+    'Précis, on voit ce qu\'on choisit.',
+    '- `data-fx-unit` : unité affichée',
+    'Budgets, prix, réglages.',
+    'Des valeurs très précises : prévoyez aussi une saisie.',
+    '<label data-fx="range-bubble" data-fx-unit=" €"><input type="range"></label>',
+    '<label data-fx="range-bubble" data-fx-unit=" €" style="width:215px"><input type="range" min="0" max="500" value="180" aria-label="Budget"></label>',
+    { a11y: 'Curseur natif, utilisable au clavier.' }),
 ];

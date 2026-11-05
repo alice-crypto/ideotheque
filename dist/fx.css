@@ -5178,6 +5178,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="double-click-like"] .fx-dcl { position: absolute; font-size: var(--fx-size, 72px); line-height: 1; color: var(--fx-heart, #e10600); pointer-events: none; transform: translate(-50%, -50%); animation: fx-dcl .9s var(--fx-ease-out) forwards; }
 @keyframes fx-dcl { 0% { transform: translate(-50%, -50%) rotate(var(--fx-r)) scale(0); } 25% { transform: translate(-50%, -50%) rotate(var(--fx-r)) scale(1.25); } 45%, 70% { transform: translate(-50%, -50%) rotate(var(--fx-r)) scale(1); opacity: 1; } 100% { transform: translate(-50%, -110%) rotate(var(--fx-r)) scale(1.05); opacity: 0; } }
 
+/* range-bubble : un curseur qui parle */
+[data-fx="range-bubble"] { position: relative; display: block; padding-top: 1.8em; }
+[data-fx="range-bubble"] input { width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="range-bubble"] .fx-rb { position: absolute; top: 0; left: calc(var(--fx-p, 0) * (100% - 16px) + 8px); padding: .12em .5em; border-radius: 6px; background: var(--fx-accent); color: #111; font-size: 12px; font-variant-numeric: tabular-nums; transform: translateX(-50%) scale(.85); transition: transform .2s var(--fx-ease-spring); }
+[data-fx="range-bubble"].fx-on .fx-rb { transform: translateX(-50%) translateY(-2px) scale(1.1); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
