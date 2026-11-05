@@ -37,4 +37,16 @@
       U.onResize(run);
     }
   });
+
+  // Les cases rebondissent en onde depuis le centre
+  FX.register('bounce-grid', {
+    entrance: true,
+    setup: function (el) {
+      var b = el.getBoundingClientRect(), cx = b.left + b.width / 2, cy = b.top + b.height / 2;
+      Array.prototype.forEach.call(el.children, function (c) {
+        var r = c.getBoundingClientRect();
+        c.style.setProperty('--fx-d', (Math.hypot(r.left + r.width / 2 - cx, r.top + r.height / 2 - cy) * 1.6).toFixed(0) + 'ms');
+      });
+    }
+  });
 })(window.FX);
