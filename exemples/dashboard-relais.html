@@ -24,6 +24,10 @@
     .log time { font: 600 12px "IBM Plex Mono", monospace; padding-top: 2px; }
     .neuf { animation: pr-neuf 1.2s; }
     @keyframes pr-neuf { 0%, 60% { background: var(--y); } }
+    .crew { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 14px; font-weight: 600; }
+    .crew li { display: grid; grid-template-columns: 30px 1fr auto; align-items: center; gap: 10px; }
+    .crew i { display: grid; place-items: center; height: 30px; font-style: normal; font-weight: 800; color: var(--w); background: var(--b); }
+    .crew i.r { background: var(--r); }
     /*@css*/
   </style>
 </head>
