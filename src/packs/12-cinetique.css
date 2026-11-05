@@ -103,3 +103,11 @@
 
 /* ascii-decay : du bloc à la lettre */
 [data-fx="ascii-decay"] { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; }
+
+/* hop-row : une onde de sauts */
+[data-fx="hop-row"] .fx-char { display: inline-block; }
+.fx-hop[data-fx="hop-row"] .fx-char { animation: fx-hop .46s var(--fx-ease) calc(var(--fx-d) * 40ms) both; }
+@keyframes fx-hop {
+  40% { transform: translateY(var(--fx-hop, -.35em)) scaleY(1.08); }
+  75% { transform: translateY(0) scaleY(.9); }
+}
