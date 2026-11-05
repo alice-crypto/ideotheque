@@ -125,4 +125,25 @@
       setTimeout(function () { el.classList.remove('fx-go'); }, 800);
     }
   });
+
+  // Un bandeau unique glisse d'une ligne à l'autre
+  FX.register('swipe-reveal-row', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var bg = U.make('i', 'fx-srr', el);
+      bg.setAttribute('aria-hidden', 'true');
+      el.insertBefore(bg, el.firstChild);
+      var go = function (row) {
+        el.style.setProperty('--fx-y', row.offsetTop + 'px');
+        el.style.setProperty('--fx-h', row.offsetHeight + 'px');
+        el.classList.add('fx-on');
+      };
+      Array.prototype.forEach.call(el.children, function (row) {
+        if (row === bg) return;
+        row.addEventListener('pointerenter', function () { go(row); });
+        row.addEventListener('focusin', function () { go(row); });
+      });
+      el.addEventListener('pointerleave', function () { el.classList.remove('fx-on'); });
+    }
+  });
 })(window.FX);
