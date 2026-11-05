@@ -172,3 +172,7 @@
   translate: -50% -50%;
   transform: rotate(calc(var(--fx-a) + var(--fx-turn, 0deg))) translateX(calc(var(--fx-size, 180px) / 2 - 16px)) rotate(calc((var(--fx-a) + var(--fx-turn, 0deg)) * -1));
 }
+
+/* stairs-scroll : un escalier qui s'aplanit */
+[data-fx="stairs-scroll"] { display: flex; gap: var(--fx-gap, 10px); align-items: flex-end; }
+[data-fx="stairs-scroll"] > * { transform: translateY(calc((var(--fx-i) + 1) * var(--fx-rest, 0) * var(--fx-step, 34px))); }
