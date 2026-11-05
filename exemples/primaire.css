@@ -45,4 +45,17 @@ img, svg { display: block; max-width: 100%; }
 .on-b { background: var(--b); color: var(--w); }
 .on-y { background: var(--y); color: var(--k); }
 .on-k { background: var(--k); color: var(--w); }
+.pbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  padding: .95em 1.4em;
+  border: var(--rule);
+  background: var(--k);
+  color: var(--w);
+  font: 700 15px/1 "Archivo", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .18s var(--fx-ease-out), box-shadow .18s var(--fx-ease-out);
+}
 /*@css*/
