@@ -62,4 +62,12 @@ img, svg { display: block; max-width: 100%; }
 .pbtn:active { transform: none; box-shadow: none; }
 .pbtn.ghost { background: transparent; color: inherit; border-color: currentColor; }
 .pbtn.yel { background: var(--y); color: var(--k); border-color: var(--k); }
+.phead {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--w);
+  border-bottom: var(--rule);
+}
+.phead .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
 /*@css*/
