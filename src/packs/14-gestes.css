@@ -282,3 +282,8 @@
 }
 [data-fx="image-pop-link"]:hover .fx-ipl,
 [data-fx="image-pop-link"]:focus-visible .fx-ipl { width: var(--fx-open, 1.8em); }
+
+/* drag-reorder : une liste qu'on réordonne */
+[data-fx="drag-reorder"] { touch-action: none; }
+[data-fx="drag-reorder"] > * { cursor: grab; user-select: none; transition: transform .2s var(--fx-ease-out), box-shadow .2s; }
+[data-fx="drag-reorder"] > .fx-drag { position: relative; z-index: 2; cursor: grabbing; transition: box-shadow .2s; box-shadow: 0 12px 30px rgba(0, 0, 0, .35); }
