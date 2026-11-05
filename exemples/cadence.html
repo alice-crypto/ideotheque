@@ -26,6 +26,10 @@
     .mbox { border: 2px solid var(--w); padding: clamp(18px, 3vw, 34px); display: grid; gap: 18px; }
     .mbpm { font-size: clamp(70px, 10vw, 150px); font-weight: 800; letter-spacing: -.05em; line-height: 1; font-variant-numeric: tabular-nums; }
     .mbpm small { font-size: .2em; letter-spacing: 0; margin-left: .3em; }
+    .mbeats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .mbeats i { aspect-ratio: 1; border: 2px solid var(--w); transition: background .28s; }
+    .mbeats i.on { background: var(--y); transition: none; }
+    .mbeats i:first-child.on { background: var(--r); }
     /*@css*/
   </style>
 </head>
