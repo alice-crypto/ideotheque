@@ -4764,6 +4764,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="skeleton-morph"].fx-ready::before { opacity: 0; animation: none; }
 @keyframes fx-skm { to { filter: brightness(1.7); } }
 
+/* streaming-code : du code qui s'écrit */
+[data-fx="streaming-code"] { margin: 0; font: 13px / 1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; text-align: left; }
+[data-fx="streaming-code"] .k { color: var(--fx-kw, var(--fx-accent)); }
+[data-fx="streaming-code"] .s { color: var(--fx-str, #ffd400); }
+[data-fx="streaming-code"] .c { opacity: .55; }
+[data-fx="streaming-code"] .fx-cur { display: inline-block; width: .55em; height: 1em; vertical-align: -.15em; background: currentColor; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

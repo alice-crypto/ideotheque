@@ -66,4 +66,13 @@ module.exports = [
     '<article data-fx="skeleton-morph"><p>Votre contenu…</p></article>',
     '<div data-fx="skeleton-morph" style="width:220px;color:var(--ink);font-size:15px"><p style="margin:0">Le contenu arrive ici, sans faire sauter la page autour de lui.</p></div>',
     { trigger: 'Rejouer', a11y: '`aria-busy` indique le chargement aux lecteurs d\'écran.' }),
+  E('streaming-code', 'État',
+    'Du code s\'écrit tout seul, par petits groupes de signes, avec une coloration simple.',
+    'Assistant au travail, productivité de programmeur.',
+    '- `data-fx-speed` (22) : millisecondes entre deux groupes\n- `--fx-kw`, `--fx-str` : couleurs\n- L\'élément émet `fx:done`.',
+    'Présentation d\'un assistant de code, documentation.',
+    'De longs fichiers : l\'attente devient lassante.',
+    '<pre data-fx="streaming-code">const a = 1;</pre>',
+    '<pre data-fx="streaming-code" style="width:225px;color:var(--ink);font-size:11px">// Applique un effet\nconst titre = \'Bonjour\';\nfunction go() {\n  return FX.play(\'iris\');\n}</pre>',
+    { trigger: 'Rejouer', a11y: 'Le code complet est dans `aria-label`.' }),
 ];

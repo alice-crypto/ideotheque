@@ -6803,6 +6803,34 @@
     reset: function (el) { clearTimeout(el._fxTo); el.classList.remove('fx-ready'); el.setAttribute('aria-busy', 'true'); },
     enter: function (el) { el._fxTo = setTimeout(el._fxDone, U.num(el, 'fxWait', 1500)); }
   });
+
+  // Du code s'écrit tout seul, avec une coloration simple
+  FX.register('streaming-code', {
+    entrance: true,
+    setup: function (el) {
+      el._fxSrc = el.textContent.replace(/^\n/, '');
+      el.setAttribute('aria-label', el._fxSrc);
+      if (!U.reduced) el.textContent = '';
+    },
+    reset: function (el) { el._fxS = (el._fxS || 0) + 1; el.textContent = ''; },
+    enter: function (el) {
+      var run = el._fxS = (el._fxS || 0) + 1, src = el._fxSrc, i = 0;
+      var esc = function (s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+      var hl = function (s) {
+        return esc(s).replace(/(\/\/.*)|('[^']*'?|"[^"]*"?)|\b(function|const|let|var|return|if|else|for|await|async|import|from)\b/g, function (m, c, q, k) {
+          return '<span class="' + (c ? 'c' : q ? 's' : 'k') + '">' + m + '</span>';
+        });
+      };
+      if (U.reduced) { el.innerHTML = hl(src); return; }
+      (function next() {
+        if (run !== el._fxS) return;
+        i = Math.min(src.length, i + 1 + Math.floor(Math.random() * 3));
+        el.innerHTML = hl(src.slice(0, i)) + (i < src.length ? '<i class="fx-cur"></i>' : '');
+        if (i < src.length) setTimeout(next, U.num(el, 'fxSpeed', 22));
+        else el.dispatchEvent(new CustomEvent('fx:done', { bubbles: true }));
+      })();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
