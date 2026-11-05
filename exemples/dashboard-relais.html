@@ -49,6 +49,12 @@
         <section class="dcard kpi" style="--w-col:3"><h2>Délai moyen</h2><b data-fx="count-up" data-fx-to="38">38</b><span>minutes, ↓ 4 min</span></section>
         <section class="dcard kpi on-y" style="--w-col:3"><h2>À l'heure</h2><b data-fx="count-up" data-fx-to="97">97</b><span>%, objectif 95 %</span></section>
         <section class="dcard kpi on-r" style="--w-col:3"><h2>En retard</h2><b>1</b><span>course à surveiller</span></section>
+        <section class="dcard" id="carte" style="--w-col:8">
+          <div class="legend" style="justify-content:space-between"><h2 style="margin:0;font-size:15px;line-height:1.2;font-stretch:100%;letter-spacing:-.01em">Vélos en direct</h2><span><i style="background:var(--b)"></i>En route <i style="background:var(--r);margin-left:8px"></i>En retard <i style="background:var(--k);margin-left:8px"></i>Relais</span></div>
+          <svg id="map" viewBox="0 0 800 400" role="img" aria-label="Plan de la ville avec les vélos en cours de livraison">
+            <!--@map-->
+          </svg>
+        </section>
         <!--@body-->
       </main>
     </div>
