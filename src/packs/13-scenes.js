@@ -309,4 +309,22 @@
       });
     }
   });
+
+  // Une jauge circulaire se remplit selon le défilement de l'élément
+  FX.register('scroll-gauge', {
+    setup: function (el) {
+      el.setAttribute('role', 'meter');
+      el.setAttribute('aria-valuemin', '0');
+      el.setAttribute('aria-valuemax', '100');
+      el.innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" class="fx-g-bg"/><circle cx="50" cy="50" r="44" pathLength="100" class="fx-g-on"/></svg><b></b>';
+      el._fxV = el.querySelector('b');
+      el._fxGoal = U.num(el, 'fxGoal', 100);
+    },
+    scroll: function (el, info) {
+      var v = Math.round(info.enter * el._fxGoal);
+      el.style.setProperty('--fx-v', v);
+      el._fxV.textContent = v + '%';
+      el.setAttribute('aria-valuenow', v);
+    }
+  });
 })(window.FX);
