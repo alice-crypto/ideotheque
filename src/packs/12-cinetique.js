@@ -245,4 +245,26 @@
     reset: function (el) { el._fxPaint(0); },
     enter: function (el) { U.tween(el, U.num(el, 'fxDuration', 1200), el._fxPaint); }
   });
+
+  // Les lettres se résolvent à travers des blocs de densité
+  FX.register('ascii-decay', {
+    entrance: true,
+    setup: function (el) {
+      var txt = el.textContent.trim();
+      el._fxTxt = txt;
+      el.setAttribute('aria-label', txt);
+      el._fxShow = function (p) {
+        var ramp = '█▓▒░', out = '';
+        for (var i = 0; i < txt.length; i++) {
+          var q = U.clamp(p * 1.6 - i / txt.length * .6, 0, 1);
+          if (txt[i] === ' ' || q >= 1) out += txt[i];
+          else out += q <= 0 ? ' ' : ramp.charAt(Math.floor(q * ramp.length));
+        }
+        el.textContent = out;
+      };
+      if (!U.reduced) el._fxShow(0);
+    },
+    reset: function (el) { el._fxShow(0); },
+    enter: function (el) { U.tween(el, U.num(el, 'fxDuration', 1400), el._fxShow); }
+  });
 })(window.FX);
