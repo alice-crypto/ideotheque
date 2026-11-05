@@ -4763,6 +4763,17 @@
     };
     setTimeout(next, 80);
   } } });
+
+  // Des rangées de texte glissent en sens alternés
+  FX.register('text-cover', { transition: { pieces: 6, cover: 850, uncover: 880, build: function (o) {
+    var word = (document.documentElement.dataset.fxWord || document.title.split(/[\s—–-]/)[0] || 'Idéothèque') + ' ';
+    Array.prototype.forEach.call(o.children, function (p, i) {
+      p.textContent = word.repeat(14);
+      p.style.top = i * 100 / 6 + '%';
+      p.style.setProperty('--fx-dir', i % 2 ? 1 : -1);
+      p.style.setProperty('--fx-d', i * 40 + 'ms');
+    });
+  } } });
 })(window.FX);
 
 window.FX._boot();
