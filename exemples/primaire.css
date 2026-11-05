@@ -95,4 +95,5 @@ img, svg { display: block; max-width: 100%; }
 .shape.q { clip-path: polygon(0 0, 100% 0, 100% 100%); }
 .shape.h { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); border-radius: 100% 0 0 0; }
 .dash { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
+.dside { position: sticky; top: 0; height: 100vh; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; padding: 20px 14px; background: var(--k); color: var(--w); }
 /*@css*/
