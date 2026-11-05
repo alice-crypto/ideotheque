@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->314<!-- /total --> effets.
+La bibliothèque contient <!-- total -->315<!-- /total --> effets.
 
 ## Règles
 
@@ -280,6 +280,7 @@ La bibliothèque contient <!-- total -->314<!-- /total --> effets.
 | `ascii-image` | Image | L'image se change en texte ASCII au survol, chaque signe suivant sa luminosité |
 | `dither-reveal` | Image | L'image apparaît en tramage noir et blanc de type 1-bit, puis passe par paliers à ses vraies couleurs |
 | `duotone-hover` | Image | L'image est tirée en deux couleurs franches, et retrouve ses teintes au survol |
+| `mosaic-hover` | Image | Au repos, l'image est éparpillée en petites cellules, qui se recomposent au survol |
 | `burger-morph` | Navigation | Les trois barres du bouton de menu se transforment en croix quand le menu est ouvert |
 | `menu-reveal` | Navigation | Un menu plein écran s'ouvre en cercle depuis le bouton, puis ses liens arrivent en cascade |
 | `smart-header` | Navigation | L'en-tête se cache quand on descend dans la page et réapparaît dès qu'on remonte |

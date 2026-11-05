@@ -173,4 +173,13 @@ module.exports = [
     'Les photos de produits dont la couleur compte.',
     '<figure data-fx="duotone-hover" data-fx-dark="#0047ff" data-fx-light="#ffd400"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="duotone-hover" data-fx-dark="#e10600" data-fx-light="#ffd400"><img src="assets/dune.svg" alt=""></div>'),
+  E('mosaic-hover', 'Image',
+    'Au repos, l\'image est éparpillée en petites cellules, qui se recomposent au survol.',
+    'Un puzzle qui se résout en un geste, curiosité.',
+    '- `data-fx-cols` (6), `data-fx-rows` (4) : découpage',
+    'Galeries, couvertures de projets.',
+    'Une image à reconnaître au premier coup d\'œil.',
+    '<figure data-fx="mosaic-hover" style="aspect-ratio:3/2"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="mosaic-hover"><img src="assets/dune.svg" alt=""></div>',
+    { a11y: 'L\'image d\'origine et son texte alternatif restent présents pour les lecteurs d\'écran.' }),
 ];

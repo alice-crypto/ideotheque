@@ -4141,6 +4141,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="duotone-hover"]:hover img,
 [data-fx="duotone-hover"]:focus-visible img { filter: none; transform: scale(1.05); }
 
+/* mosaic-hover : une image en morceaux */
+[data-fx="mosaic-hover"] { display: grid; grid-template-columns: repeat(var(--fx-c), 1fr); grid-template-rows: repeat(var(--fx-rw), 1fr); position: relative; }
+[data-fx="mosaic-hover"] .fx-sr-img { position: absolute; width: 1px; height: 1px; opacity: 0; }
+[data-fx="mosaic-hover"] i {
+  background-size: calc(var(--fx-c) * 100%) calc(var(--fx-rw) * 100%);
+  transform: translate(var(--fx-dx), var(--fx-dy)) rotate(var(--fx-dr)) scale(.86);
+  transition: transform .5s var(--fx-ease-out);
+}
+[data-fx="mosaic-hover"]:hover i,
+[data-fx="mosaic-hover"]:focus-visible i { transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
