@@ -7422,6 +7422,25 @@
       }
     }
   });
+
+  // Un titre arrive et lance quelques éclats autour de lui
+  FX.register('pop-confetti-title', {
+    entrance: true,
+    reset: function (el) { el.querySelectorAll('.fx-pct').forEach(function (i) { i.remove(); }); },
+    enter: function (el) {
+      if (U.reduced) return;
+      U.ensurePositioned(el);
+      for (var k = 0; k < U.num(el, 'fxBits', 16); k++) {
+        var b = U.make('i', 'fx-pct', el), a = Math.random() * 6.283, d = U.rand(40, 110);
+        b.setAttribute('aria-hidden', 'true');
+        b.style.setProperty('--fx-x', (Math.cos(a) * d).toFixed(0) + 'px');
+        b.style.setProperty('--fx-y', (Math.sin(a) * d * .7).toFixed(0) + 'px');
+        b.style.setProperty('--fx-r', U.rand(-180, 180).toFixed(0) + 'deg');
+        b.style.background = ['var(--fx-accent)', 'var(--fx-accent-2)', 'currentColor'][k % 3];
+        setTimeout(function (n) { n.remove(); }.bind(null, b), 1100);
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

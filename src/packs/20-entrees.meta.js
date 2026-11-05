@@ -237,4 +237,13 @@ module.exports = [
     '<h1 data-fx="slice-column-text">Réglage</h1>',
     '<p class="demo-title" data-fx="slice-column-text">Réglage</p>',
     { trigger: 'Rejouer', a11y: 'Le texte est dans `aria-label`, les copies sont masquées.' }),
+  E('pop-confetti-title', 'Entrée',
+    'Un titre gonfle à son arrivée et lance quelques éclats colorés autour de lui.',
+    'Bonne nouvelle, petit moment de joie.',
+    '- `data-fx-bits` (16) : nombre d\'éclats',
+    'Page de remerciement, objectif atteint, anniversaire.',
+    'Les erreurs ou les messages sérieux.',
+    '<h2 data-fx="pop-confetti-title">Bravo !</h2>',
+    '<p class="demo-title" data-fx="pop-confetti-title">Bravo !</p>',
+    { trigger: 'Rejouer', a11y: 'Avec `prefers-reduced-motion: reduce`, le titre s\'affiche sans éclats.' }),
 ];
