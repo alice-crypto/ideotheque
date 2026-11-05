@@ -39,4 +39,13 @@ module.exports = [
     '<nav data-fx="rail-progress-nav"><a href="#a">Intro</a><a href="#b">Suite</a></nav>',
     '<nav data-fx="rail-progress-nav" style="color:var(--ink)"><a href="#" class="fx-cur">Intro</a><a href="#">Méthode</a><a href="#">Résultats</a></nav>',
     { a11y: 'Le lien actif porte `aria-current`.' }),
+  E('command-dock', 'Navigation',
+    'Une palette de commandes : on tape, la liste se filtre en direct, et on valide au clavier.',
+    'Rapide, compétent, l\'outil d\'une personne qui sait ce qu\'elle veut.',
+    '- `data-fx-shortcut="true"` : donne le focus avec Ctrl/Cmd + K\n- L\'élément émet `fx:pick` avec le texte choisi.',
+    'Applications, tableaux de bord, documentation.',
+    'Une liste de moins de cinq actions.',
+    '<div data-fx="command-dock"><input aria-label="Commande"><ul><li>Nouveau</li><li>Exporter</li></ul></div>',
+    '<div data-fx="command-dock" style="width:220px;color:var(--ink);font-size:13px"><input aria-label="Commande" placeholder="Rechercher…"><ul><li>Nouveau projet</li><li>Exporter</li><li>Partager</li></ul></div>',
+    { a11y: 'Rôles `combobox`, `listbox`, `option`, entièrement utilisable au clavier.' }),
 ];

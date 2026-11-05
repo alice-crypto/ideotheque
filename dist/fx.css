@@ -4372,6 +4372,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="rail-progress-nav"] a.fx-cur { opacity: 1; }
 [data-fx="rail-progress-nav"] a.fx-cur i { width: 44px; }
 
+/* command-dock : une palette de commandes */
+[data-fx="command-dock"] { border: 1px solid rgba(128, 128, 128, .35); border-radius: 12px; overflow: hidden; }
+[data-fx="command-dock"] input { width: 100%; box-sizing: border-box; padding: .8em 1em; background: none; border: 0; border-bottom: 1px solid rgba(128, 128, 128, .25); outline: 0; color: inherit; font: inherit; }
+[data-fx="command-dock"] ul { list-style: none; margin: 0; padding: 4px; }
+[data-fx="command-dock"] li { padding: .5em .8em; border-radius: 8px; cursor: pointer; animation: fx-cd-in .3s var(--fx-ease-out) calc(var(--fx-i) * 30ms) both; }
+[data-fx="command-dock"] li.fx-cur { background: var(--fx-cd-bg, rgba(128, 128, 128, .2)); }
+@keyframes fx-cd-in { from { opacity: 0; transform: translateY(6px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
