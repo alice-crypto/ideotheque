@@ -3265,6 +3265,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 }
 .fx-in[data-fx="sticker-letters"] .fx-char { transform: rotate(var(--fx-r)) scale(1); }
 
+/* drift-title : le titre est emporté par le défilement */
+[data-fx="drift-title"] {
+  display: inline-block;
+  white-space: nowrap;
+  transform: translateX(var(--fx-x, 0)) skewX(var(--fx-s, 0deg));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

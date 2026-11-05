@@ -195,4 +195,13 @@ module.exports = [
     '<h1 data-fx="sticker-letters" data-fx-colors="#e10600,#ffd400,#0047ff">SOLDES</h1>',
     '<p class="demo-title" data-fx="sticker-letters" data-fx-colors="#ff3b30,#ffd400,#4d7cff" style="font-size:30px">SOLDES</p>',
     { trigger: 'Rejouer' }),
+  E('drift-title', 'Texte',
+    'Quand on défile vite, le titre glisse de côté et s\'incline, puis revient à sa place.',
+    'Élan, inertie, un titre qui a du poids.',
+    '- `data-fx-drift` (3) : amplitude du glissement',
+    'Grands titres de pages éditoriales longues.',
+    'Les titres qui touchent déjà les bords de l\'écran.',
+    '<h2 data-fx="drift-title">En mouvement</h2>',
+    '<p class="demo-title" data-fx="drift-title" style="font-size:30px">En mouvement</p>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le titre reste immobile.' }),
 ];
