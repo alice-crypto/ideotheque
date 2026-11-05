@@ -7228,6 +7228,25 @@
       for (var i = 0; i < n; i++) U.make('i', '', b).style.setProperty('--fx-i', i);
     }
   });
+
+  // Un cadre se dessine autour du contenu, puis le contenu apparaît
+  FX.register('line-draw-box', {
+    entrance: true,
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var host = U.make('span', 'fx-ldb', el);
+      host.setAttribute('aria-hidden', 'true');
+      host.innerHTML = '<svg><rect pathLength="1" x="1" y="1"/></svg>';
+      var fit = function () {
+        var r = host.querySelector('rect');
+        r.setAttribute('width', Math.max(0, el.offsetWidth - 2));
+        r.setAttribute('height', Math.max(0, el.offsetHeight - 2));
+        r.setAttribute('rx', U.num(el, 'fxRadius', 10));
+      };
+      fit();
+      U.onResize(fit);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

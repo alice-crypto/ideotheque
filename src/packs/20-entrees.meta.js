@@ -84,4 +84,13 @@ module.exports = [
     '<h2 data-fx="shutter-text">Déclic</h2>',
     '<p class="demo-title" data-fx="shutter-text">Déclic</p>',
     { trigger: 'Rejouer' }),
+  E('line-draw-box', 'Entrée',
+    'Un cadre se dessine autour du contenu, puis celui-ci apparaît.',
+    'Plan d\'architecte, soin du détail.',
+    '- `data-fx-radius` (10), `--fx-line`',
+    'Cartes, chiffres, encadrés.',
+    'Un élément dont la taille change pendant l\'animation.',
+    '<div data-fx="line-draw-box"><p>…</p></div>',
+    '<div data-fx="line-draw-box" style="padding:18px 24px;color:var(--ink)"><b>Plan directeur</b></div>',
+    { trigger: 'Rejouer' }),
 ];
