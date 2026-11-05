@@ -142,3 +142,10 @@
 [data-fx="pendulum-wave"] { display: inline-flex; gap: var(--fx-gap, 5px); height: var(--fx-h, 130px); }
 [data-fx="pendulum-wave"] i { position: relative; width: 1px; height: 100%; background: linear-gradient(currentColor, currentColor) no-repeat 0 0 / 1px calc(100% - 12px); transform-origin: top; transform: rotate(var(--fx-a, 0deg)); }
 [data-fx="pendulum-wave"] i::after { content: ""; position: absolute; left: -5px; bottom: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--fx-accent); }
+
+/* drawer-push : un panneau qui pousse */
+[data-fx="drawer-push"] { position: relative; overflow: hidden; }
+[data-fx="drawer-push"] aside { position: absolute; left: 0; top: 0; bottom: 0; width: var(--fx-w, 60%); transform: translateX(-100%); background: var(--fx-drawer-bg, #222); color: #fff; transition: transform .5s var(--fx-ease-out); }
+[data-fx="drawer-push"] > :not(aside) { transition: transform .5s var(--fx-ease-out); }
+[data-fx="drawer-push"].fx-open aside { transform: none; }
+[data-fx="drawer-push"].fx-open > :not(aside) { transform: translateX(var(--fx-w, 60%)); }
