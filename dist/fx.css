@@ -4248,6 +4248,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="matrix-dots-wave"] { isolation: isolate; overflow: hidden; }
 [data-fx="matrix-dots-wave"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-dot, var(--fx-accent)); }
 
+/* sun-rays : un soleil de dessin animé */
+[data-fx="sun-rays"] {
+  background: repeating-conic-gradient(from var(--fx-ray, 0deg) at var(--fx-at, 50% 100%), var(--fx-a, #ffd400) 0 var(--fx-w, 12deg), var(--fx-b, #e10600) var(--fx-w, 12deg) calc(var(--fx-w, 12deg) * 2));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

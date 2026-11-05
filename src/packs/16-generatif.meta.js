@@ -95,4 +95,13 @@ module.exports = [
     'Les pages longues où plusieurs canvas tourneraient en même temps.',
     '<section data-fx="matrix-dots-wave">…</section>',
     '<div data-fx="matrix-dots-wave" style="width:230px;height:170px"></div>'),
+  E('sun-rays', 'Ambiance',
+    'Des rayons de couleur tournent lentement autour d\'un point, comme un soleil de dessin animé.',
+    'Rétro, joyeux, foire ou pochette de disque.',
+    '- `data-fx-speed` (8) : degrés par seconde\n- `--fx-a`, `--fx-b` : les deux couleurs\n- `--fx-w` (12deg) : largeur d\'un rayon\n- `--fx-at` (50% 100%) : centre',
+    'Annonces, promotions, pages festives.',
+    'Sous du texte sans encadré : le contraste change sans arrêt.',
+    '<section data-fx="sun-rays">…</section>',
+    '<div data-fx="sun-rays" style="width:230px;height:170px;border-radius:12px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, les rayons restent immobiles.' }),
 ];
