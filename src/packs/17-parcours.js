@@ -236,4 +236,25 @@
       el.addEventListener('pointerleave', function () { set(-1); });
     }
   });
+
+  // Un mur dont les colonnes se remplissent et se réorganisent en douceur
+  FX.register('masonry-flow', {
+    setup: function (el) {
+      var kids = Array.prototype.slice.call(el.children);
+      var layout = function () {
+        var w = el.clientWidth, gap = U.num(el, 'fxGap', 8), min = U.num(el, 'fxMin', 80);
+        var cols = Math.max(1, Math.floor((w + gap) / (min + gap))), cw = (w - gap * (cols - 1)) / cols, H = new Array(cols).fill(0);
+        kids.forEach(function (k) {
+          k.style.width = cw + 'px';
+          var c = H.indexOf(Math.min.apply(null, H));
+          k.style.transform = 'translate(' + (c * (cw + gap)) + 'px,' + H[c] + 'px)';
+          H[c] += k.offsetHeight + gap;
+        });
+        el.style.height = Math.max.apply(null, H) + 'px';
+      };
+      layout();
+      U.onResize(layout);
+      el.querySelectorAll('img').forEach(function (i) { if (!i.complete) i.addEventListener('load', layout); });
+    }
+  });
 })(window.FX);
