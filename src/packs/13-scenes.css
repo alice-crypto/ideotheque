@@ -113,3 +113,8 @@
 
 /* grid-breathe : une grille qui respire */
 [data-fx="grid-breathe"] { gap: calc(var(--fx-min, 6px) + var(--fx-air, 0) * var(--fx-max, 34px)); }
+
+/* flip-scrub : une carte qui se retourne */
+[data-fx="flip-scrub"] { display: grid; perspective: 900px; }
+[data-fx="flip-scrub"] > * { grid-area: 1 / 1; backface-visibility: hidden; transform: rotateY(var(--fx-a, 0deg)); }
+[data-fx="flip-scrub"] > :last-child { transform: rotateY(calc(var(--fx-a, 0deg) + 180deg)); }
