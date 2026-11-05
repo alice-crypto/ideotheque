@@ -770,4 +770,7 @@
   FX.register('vertical-type-flip', {
     setup: function (el) { U.splitChars(el); el.querySelectorAll('.fx-char').forEach(function (c, i) { c.style.setProperty('--fx-i', i); }); }
   });
+
+  // Les mots sont frappés l'un après l'autre sur l'écran
+  FX.register('stamp-word', { entrance: true, setup: function (el) { U.splitWords(el); } });
 })(window.FX);
