@@ -67,3 +67,8 @@
 .fx-lb { position: fixed; inset: 0; z-index: 9990; background: rgba(0, 0, 0, 0); cursor: zoom-out; outline: 0; transition: background .4s; }
 .fx-lb.fx-on { background: rgba(0, 0, 0, .86); }
 .fx-lb img { object-fit: cover; transition: transform .45s var(--fx-ease-out); }
+
+/* scratch-reveal : une carte à gratter */
+[data-fx="scratch-reveal"] { overflow: hidden; }
+[data-fx="scratch-reveal"] .fx-scr { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; transition: opacity .5s; }
+[data-fx="scratch-reveal"].fx-done .fx-scr { opacity: 0; pointer-events: none; }
