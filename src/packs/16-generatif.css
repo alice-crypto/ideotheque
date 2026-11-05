@@ -1,1 +1,5 @@
 /* Pack 16 — Fonds génératifs */
+
+/* flow-field : des veines qui se dessinent */
+[data-fx="flow-field"] { isolation: isolate; }
+[data-fx="flow-field"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-line, var(--fx-accent)); }
