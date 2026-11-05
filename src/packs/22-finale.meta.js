@@ -52,4 +52,12 @@ module.exports = [
     'Les images de petite résolution.',
     '<figure data-fx="zoom-out-frame"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="zoom-out-frame"><img src="assets/bloom.svg" alt=""></div>'),
+  E('wave-text-scroll', 'Défilement',
+    'Une onde parcourt le mot quand on défile, et il s\'immobilise à l\'arrêt.',
+    'Liquide, ludique, le mot suit votre main.',
+    '- `data-fx-amp` (14) : amplitude en pixels',
+    'Titres courts, marques joyeuses.',
+    'Les longues phrases.',
+    '<h2 data-fx="wave-text-scroll">Onduler</h2>',
+    '<p class="demo-title" data-fx="wave-text-scroll">Onduler</p>'),
 ];

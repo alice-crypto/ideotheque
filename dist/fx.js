@@ -7952,6 +7952,18 @@
   FX.register('zoom-out-frame', {
     scroll: function (el, info) { el.style.setProperty('--fx-z', (1 + (1 - U.easeOut(info.enter)) * U.num(el, 'fxFrom', .8)).toFixed(3)); }
   });
+
+  // Le texte ondule quand on défile
+  FX.register('wave-text-scroll', {
+    setup: function (el) {
+      U.splitChars(el);
+      el._fxC = el.querySelectorAll('.fx-char');
+    },
+    scroll: function (el, info) {
+      var ph = info.pass * 18, a = U.num(el, 'fxAmp', 14) * Math.sin(info.pass * 3.14);
+      el._fxC.forEach(function (c, i) { c.style.transform = 'translateY(' + (Math.sin(ph + i * .5) * a).toFixed(1) + 'px)'; });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
