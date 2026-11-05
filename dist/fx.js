@@ -3785,6 +3785,15 @@
     setup: function (el) { el._fxK = el.children.length; Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-i', i); }); el.style.setProperty('--fx-count', el._fxK); },
     scroll: function (el, info) { el.style.setProperty('--fx-rot', ((info.pass - .5) * U.num(el, 'fxTurn', 180)).toFixed(1) + 'deg'); }
   });
+
+  // Un fil se remplit le long de la section
+  FX.register('thread-line', {
+    setup: function (el) { U.ensurePositioned(el); var t = U.make('i', 'fx-thread', el); t.setAttribute('aria-hidden', 'true'); U.make('b', '', t); },
+    scroll: function (el, info) {
+      var p = U.clamp((info.vh * .6 - info.rect.top) / Math.max(1, info.rect.height), 0, 1);
+      el.style.setProperty('--fx-fill', p.toFixed(3));
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

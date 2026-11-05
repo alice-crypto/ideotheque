@@ -86,4 +86,12 @@ module.exports = [
     'Plus d\'une dizaine d\'éléments.',
     '<div data-fx="wheel-scroll"><div>Design</div><div>Code</div><div>Motion</div></div>',
     '<div data-fx="wheel-scroll" style="width:200px;color:var(--ink);font-size:24px;font-weight:600"><div>Design</div><div>Code</div><div>Motion</div><div>Son</div><div>Récit</div><div>Image</div><div>Lumière</div><div>Rythme</div></div>'),
+  E('thread-line', 'Défilement',
+    'Un fil vertical se remplit de couleur le long d\'une section, à mesure qu\'on avance.',
+    'On suit un parcours, on sait où on en est.',
+    '- `--fx-rail` : couleur du rail\n- `--fx-pad` (28px) : retrait du contenu',
+    'Frises, étapes, longs articles.',
+    'Les sections plus courtes qu\'un écran : le fil se remplit trop vite.',
+    '<section data-fx="thread-line">…</section>',
+    '<div data-fx="thread-line" style="height:160px;width:210px;color:var(--ink);font-size:14px"><p style="margin:0 0 40px">Étape 1</p><p style="margin:0 0 40px">Étape 2</p><p style="margin:0">Étape 3</p></div>'),
 ];
