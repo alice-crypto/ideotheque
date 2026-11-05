@@ -312,4 +312,16 @@
       });
     }
   });
+
+  // Une plaque de verre dont le reflet suit le curseur
+  FX.register('liquid-glass', {
+    setup: function (el) {
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--fx-gx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+        el.style.setProperty('--fx-gy', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      });
+      el.addEventListener('pointerleave', function () { el.style.removeProperty('--fx-gx'); el.style.removeProperty('--fx-gy'); });
+    }
+  });
 })(window.FX);
