@@ -96,4 +96,8 @@ img, svg { display: block; max-width: 100%; }
 .shape.h { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); border-radius: 100% 0 0 0; }
 .dash { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
 .dside { position: sticky; top: 0; height: 100vh; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; padding: 20px 14px; background: var(--k); color: var(--w); }
+.dmenu { display: grid; gap: 2px; }
+.dmenu a { display: flex; align-items: center; gap: 10px; padding: 9px 10px; font-weight: 600; font-size: 14px; text-decoration: none; }
+.dmenu a:hover { background: var(--b); }
+.dmenu a[aria-current] { background: var(--y); color: var(--k); }
 /*@css*/
