@@ -192,4 +192,13 @@ module.exports = [
     '<h1 data-fx="curtain-words">Un titre qui se lève</h1>',
     '<p class="demo-para" data-fx="curtain-words" style="color:var(--ink)">Un titre qui se lève en douceur</p>',
     { trigger: 'Rejouer' }),
+  E('flip-board-in', 'Entrée',
+    'Les cases d\'un tableau se retournent dans le désordre et révèlent leur contenu.',
+    'Jeu de mémoire, curiosité.',
+    'Aucun réglage.',
+    'Grilles de chiffres, logos, petites cartes.',
+    'Un ordre de lecture important.',
+    '<div data-fx="flip-board-in">…</div>',
+    '<div class="demo-grid" data-fx="flip-board-in"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
+    { trigger: 'Rejouer' }),
 ];
