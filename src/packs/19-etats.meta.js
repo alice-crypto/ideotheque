@@ -75,4 +75,13 @@ module.exports = [
     '<pre data-fx="streaming-code">const a = 1;</pre>',
     '<pre data-fx="streaming-code" style="width:225px;color:var(--ink);font-size:11px">// Applique un effet\nconst titre = \'Bonjour\';\nfunction go() {\n  return FX.play(\'iris\');\n}</pre>',
     { trigger: 'Rejouer', a11y: 'Le code complet est dans `aria-label`.' }),
+  E('queue-position', 'État',
+    'Une file d\'attente qui avance : on voit sa place et le nombre de personnes restantes.',
+    'Attente honnête, on sait où on en est.',
+    '- `data-fx-start` (6), `data-fx-every` (1.4), `data-fx-loop`\n- L\'élément émet `fx:ready`.',
+    'Files d\'attente, services très demandés, modèles d\'IA.',
+    'De fausses files d\'attente, pour créer une rareté qui n\'existe pas.',
+    '<div data-fx="queue-position" data-fx-start="4"></div>',
+    '<div data-fx="queue-position" data-fx-loop="true" style="color:var(--ink)"></div>',
+    { a11y: 'Rôle `status`, avec un message en toutes lettres.' }),
 ];

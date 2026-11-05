@@ -6831,6 +6831,36 @@
       })();
     }
   });
+
+  // Une file d'attente qui avance, avec la place restante
+  FX.register('queue-position', {
+    setup: function (el) {
+      var start = U.num(el, 'fxStart', 6);
+      el.setAttribute('role', 'status');
+      el.innerHTML = '<div class="fx-q-row"></div><span></span>';
+      var row = el.firstChild;
+      for (var i = 0; i < start; i++) U.make('i', '', row);
+      el._fxQ = { n: start - 1, t: 0, row: row, msg: el.lastChild };
+      el._fxPaint = function () {
+        var q = el._fxQ;
+        Array.prototype.forEach.call(row.children, function (d, i) { d.classList.toggle('fx-me', i === q.n); d.classList.toggle('fx-gone', i > q.n); });
+        q.msg.textContent = q.n > 0 ? q.n + (q.n > 1 ? ' personnes devant vous' : ' personne devant vous') : "C'est à vous !";
+      };
+      el._fxPaint();
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      var q = el._fxQ;
+      q.t += dt;
+      if (q.t < U.num(el, 'fxEvery', 1.4)) return;
+      q.t = 0;
+      if (q.n > 0) {
+        q.n--;
+        el._fxPaint();
+        if (!q.n) el.dispatchEvent(new CustomEvent('fx:ready', { bubbles: true }));
+      } else if (el.dataset.fxLoop === 'true') { q.n = q.row.children.length - 1; el._fxPaint(); }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
