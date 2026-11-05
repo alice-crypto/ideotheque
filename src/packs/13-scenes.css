@@ -137,3 +137,7 @@
   transform: translate(calc(var(--fx-dx) * var(--fx-left, 0)), calc(var(--fx-dy) * var(--fx-left, 0))) rotate(calc(var(--fx-dr) * var(--fx-left, 0)));
   opacity: calc(1 - var(--fx-left, 0) * .7);
 }
+
+/* reading-marker : le texte s'éclaire à la lecture */
+[data-fx="reading-marker"] .fx-word { opacity: var(--fx-dim, .22); transition: opacity .3s; }
+[data-fx="reading-marker"] .fx-word.fx-read { opacity: 1; }
