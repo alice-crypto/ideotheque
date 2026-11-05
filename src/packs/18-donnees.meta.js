@@ -84,4 +84,13 @@ module.exports = [
     '<span data-fx="number-ticker-reel">48 210</span>',
     '<span class="demo-number" data-fx="number-ticker-reel" style="color:var(--ink);font-size:44px">48 210</span>',
     { trigger: 'Rejouer', a11y: 'La valeur finale est dans `aria-label`.' }),
+  E('quote-card-shuffle', 'Présentation',
+    'Une pile de témoignages : la première carte s\'envole et part au fond, la suivante avance.',
+    'Cartes qu\'on feuillette, plusieurs voix qui se succèdent.',
+    '- `data-fx-hold` (3.5) : secondes par carte\n- `--fx-h` (130px) : hauteur',
+    'Témoignages clients, citations.',
+    'Des cartes de hauteur très différente.',
+    '<div data-fx="quote-card-shuffle"><blockquote>…</blockquote><blockquote>…</blockquote></div>',
+    '<div data-fx="quote-card-shuffle" style="width:200px"><div class="demo-card" style="width:auto"><b>Claire</b>« Enfin simple. »</div><div class="demo-card" style="width:auto"><b>Nadia</b>« Rapide et beau. »</div><div class="demo-card" style="width:auto"><b>Tom</b>« On l\'utilise tous. »</div></div>',
+    { trigger: 'Carte suivante', a11y: 'Pause au survol. Seule la première carte est exposée aux lecteurs d\'écran.' }),
 ];

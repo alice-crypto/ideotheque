@@ -6485,6 +6485,27 @@
       });
     }
   });
+
+  // Une pile de témoignages dont la première carte part au fond
+  FX.register('quote-card-shuffle', {
+    setup: function (el) {
+      el._fxT = 0;
+      el._fxOrder = function () { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-pos', i); c.style.zIndex = 30 - i; c.setAttribute('aria-hidden', i > 0); }); };
+      el._fxOrder();
+      el._fxNext = function () {
+        var f = el.firstElementChild;
+        f.classList.add('fx-out');
+        setTimeout(function () { f.classList.remove('fx-out'); el.appendChild(f); el._fxOrder(); }, 420);
+      };
+      el.addEventListener('click', el._fxNext);
+    },
+    trigger: function (el) { el._fxNext(); },
+    tick: function (el, dt) {
+      if (U.reduced || el.matches(':hover')) return;
+      el._fxT += dt;
+      if (el._fxT > U.num(el, 'fxHold', 3.5)) { el._fxT = 0; el._fxNext(); }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
