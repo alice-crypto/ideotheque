@@ -83,4 +83,5 @@ img, svg { display: block; max-width: 100%; }
 .phd h2 { font-size: clamp(38px, 6.2vw, 92px); }
 .pgrid { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); border-top: var(--rule); border-left: var(--rule); }
 .pgrid > * { border-right: var(--rule); border-bottom: var(--rule); padding: 26px; min-width: 0; }
+.pfig { font-size: clamp(44px, 6vw, 88px); font-weight: 800; letter-spacing: -.04em; line-height: 1; font-variant-numeric: tabular-nums; }
 /*@css*/
