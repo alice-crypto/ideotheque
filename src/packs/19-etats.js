@@ -329,4 +329,25 @@
       if (el._fxW > 3.6) { el._fxW = 0; FX.trigger(el); }
     }
   });
+
+  // Une illustration flotte doucement quand il n'y a rien à afficher
+  FX.register('empty-state-float', {
+    setup: function (el) {
+      var s = el._fxS = { x: 0, y: 0, tx: 0, ty: 0 };
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        s.tx = ((e.clientX - r.left) / r.width - .5) * 12;
+        s.ty = ((e.clientY - r.top) / r.height - .5) * 12;
+      });
+      el.addEventListener('pointerleave', function () { s.tx = s.ty = 0; });
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      var s = el._fxS;
+      s.x = U.lerp(s.x, s.tx, .06); s.y = U.lerp(s.y, s.ty, .06);
+      el.style.setProperty('--fx-x', s.x.toFixed(1) + 'px');
+      el.style.setProperty('--fx-y', (s.y + Math.sin(t * .0016) * 6).toFixed(1) + 'px');
+      el.style.setProperty('--fx-shadow', (1 - (Math.sin(t * .0016) + 1) * .12).toFixed(3));
+    }
+  });
 })(window.FX);
