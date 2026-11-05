@@ -5128,6 +5128,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="typo-specimen"] label { display: flex; align-items: center; justify-content: space-between; gap: .6em; }
 [data-fx="typo-specimen"] input { flex: 1; accent-color: var(--fx-accent); min-width: 0; }
 
+/* headline-replace-scroll : un mot qui change */
+[data-fx="headline-replace-scroll"] .fx-hr-w { display: inline-block; overflow: hidden; vertical-align: bottom; color: var(--fx-accent); }
+[data-fx="headline-replace-scroll"] .fx-hr-in { display: inline-block; animation: fx-hrs .45s var(--fx-ease-out); }
+@keyframes fx-hrs { from { transform: translateY(100%); opacity: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

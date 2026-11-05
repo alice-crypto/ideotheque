@@ -7598,6 +7598,33 @@
       });
     }
   });
+
+  // Dans un titre fixe, un mot change avec la section
+  FX.register('headline-replace-scroll', {
+    setup: function (el) {
+      el._fxSecs = Array.prototype.slice.call(document.querySelectorAll(el.dataset.fxTarget || '[data-word]'));
+      el._fxWords = (el.dataset.fxWords || 'créer|tester|publier').split('|');
+      el.setAttribute('aria-live', 'off');
+      el.innerHTML = '<span class="fx-hr-w"></span>';
+      el._fxBox = el.firstChild;
+      el._fxI = -1;
+    },
+    scroll: function (el, info) {
+      var i;
+      if (el._fxSecs.length) {
+        i = 0;
+        el._fxSecs.forEach(function (s, k) { if (s.getBoundingClientRect().top < info.vh / 2) i = k; });
+      } else i = Math.min(el._fxWords.length - 1, Math.floor(info.pass * el._fxWords.length));
+      if (i === el._fxI) return;
+      el._fxI = i;
+      var w = el._fxSecs.length ? el._fxSecs[i].dataset.word : el._fxWords[i];
+      var s = document.createElement('span');
+      s.className = 'fx-hr-in';
+      s.textContent = w;
+      el._fxBox.textContent = '';
+      el._fxBox.appendChild(s);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

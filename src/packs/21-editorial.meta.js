@@ -84,4 +84,12 @@ module.exports = [
     '<div data-fx="typo-specimen">Bonjour</div>',
     '<div data-fx="typo-specimen" style="width:220px;color:var(--ink)">Bonjour</div>',
     { a11y: 'Curseurs natifs, utilisables au clavier ; le texte est modifiable avec un nom accessible.' }),
+  E('headline-replace-scroll', 'Texte',
+    'Dans une phrase fixe, un mot change selon la section qu\'on est en train de lire.',
+    'Une phrase qui suit la conversation.',
+    '- `data-word` sur chaque section, ou `data-fx-words` : mots séparés par `|`',
+    'Titre collant le long d\'une page de fonctions.',
+    'Une phrase qui perd son sens quand le mot change.',
+    '<h2>Pour <span data-fx="headline-replace-scroll"></span></h2>',
+    '<p class="demo-title" style="font-size:30px;color:var(--ink)">Pour <span data-fx="headline-replace-scroll"></span></p>'),
 ];
