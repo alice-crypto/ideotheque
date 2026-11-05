@@ -186,4 +186,13 @@ module.exports = [
     '<p data-fx="redact-reveal">Le projet sera annoncé demain matin.</p>',
     '<p class="demo-para" data-fx="redact-reveal" style="color:var(--ink);font-size:20px">Le projet sera annoncé demain matin.</p>',
     { trigger: 'Rejouer', a11y: 'Le texte est dans `aria-label` et reste lisible par les lecteurs d\'écran dès le départ.' }),
+  E('sticker-letters', 'Texte',
+    'Chaque lettre est une étiquette collée de travers, qui claque à son arrivée.',
+    'Collage, néo-brutalisme, cahier d\'écolier punk.',
+    '- `data-fx-colors` : couleurs séparées par des virgules\n- `--fx-stagger` (70ms) : écart entre deux lettres',
+    'Titres d\'un ton libre, événements, produits pour le grand public.',
+    'Les marques institutionnelles, les textes longs.',
+    '<h1 data-fx="sticker-letters" data-fx-colors="#e10600,#ffd400,#0047ff">SOLDES</h1>',
+    '<p class="demo-title" data-fx="sticker-letters" data-fx-colors="#ff3b30,#ffd400,#4d7cff" style="font-size:30px">SOLDES</p>',
+    { trigger: 'Rejouer' }),
 ];
