@@ -144,4 +144,10 @@
       p.style.setProperty('--fx-d', (Math.hypot((c + .5) / C - cx, (r + .5) / R - cy) * 460).toFixed(0) + 'ms');
     });
   } } });
+
+  // Un rayon traverse l'écran et laisse un aplat derrière lui
+  FX.register('scan-cover', { transition: { pieces: 2, cover: 760, uncover: 780, build: function (o) {
+    o.children[0].className = 'fx-sc-fill';
+    o.children[1].className = 'fx-sc-beam';
+  } } });
 })(window.FX);
