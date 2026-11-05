@@ -116,3 +116,9 @@
 [data-fx="rich-tooltip-follow"] { cursor: help; }
 .fx-rt { position: fixed; z-index: 9990; max-width: 240px; padding: .5em .8em; border-radius: 8px; background: #111; color: #fff; font-size: 13px; line-height: 1.35; opacity: 0; pointer-events: none; transform: translateY(4px) scale(.97); transition: opacity .15s, transform .2s var(--fx-ease-out); }
 .fx-rt.fx-on { opacity: 1; transform: none; }
+
+/* color-picker-orbit : choisir une couleur */
+[data-fx="color-picker-orbit"] { display: inline-flex; gap: 10px; }
+[data-fx="color-picker-orbit"] button { position: relative; width: 26px; height: 26px; border: 0; border-radius: 50%; background: var(--fx-c); cursor: pointer; }
+[data-fx="color-picker-orbit"] button::after { content: ""; position: absolute; inset: -5px; border: 2px solid var(--fx-c); border-radius: 50%; transform: scale(.6); opacity: 0; transition: transform .35s var(--fx-ease-spring), opacity .2s; }
+[data-fx="color-picker-orbit"] button[aria-checked="true"]::after { transform: none; opacity: 1; }
