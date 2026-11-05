@@ -96,3 +96,7 @@
   transition: transform calc(var(--fx-speed, 900ms) + var(--fx-i) * 90ms) var(--fx-ease-out);
 }
 .fx-in[data-fx="slot-letters"] .fx-slot-col { transform: translateY(calc(var(--fx-rolls) * -1.1em)); }
+
+/* dot-matrix : un panneau de points */
+[data-fx="dot-matrix"] { display: inline-block; }
+[data-fx="dot-matrix"] canvas { display: block; max-width: 100%; }
