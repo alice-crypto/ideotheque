@@ -25,3 +25,7 @@
 [data-fx="grid-open-scroll"] .fx-gos { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(var(--fx-c), 1fr); grid-template-rows: repeat(var(--fx-rw), 1fr); pointer-events: none; }
 [data-fx="grid-open-scroll"] .fx-gos i { background: var(--fx-tile, var(--fx-dark)); opacity: 0; transition: opacity .25s; }
 [data-fx="grid-open-scroll"] .fx-gos i.fx-on { opacity: 1; }
+
+/* zoom-out-frame : un zoom arrière */
+[data-fx="zoom-out-frame"] { overflow: hidden; }
+[data-fx="zoom-out-frame"] > * { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(var(--fx-z, 1)); }
