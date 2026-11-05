@@ -110,4 +110,13 @@ module.exports = [
     '<div data-fx="tab-underline-ink" role="tablist"><button role="tab">Jour</button><button role="tab">Mois</button></div>',
     '<div data-fx="tab-underline-ink" role="tablist" style="color:var(--ink);font-size:16px"><button role="tab">Jour</button><button role="tab">Semaine</button><button role="tab">Mois</button></div>',
     { a11y: 'L\'état `aria-selected` suit l\'onglet actif. Ajoutez vos panneaux avec `aria-controls`.' }),
+  E('mobile-tabbar-bump', 'Navigation',
+    'Une barre d\'onglets mobile : une pastille glisse sous l\'icône active, qui se soulève.',
+    'Ludique et net, on sait d\'un coup d\'œil où on est.',
+    '- `--fx-bar-bg` : fond de la barre\n- `--fx-bump-ink` : couleur de l\'icône active',
+    'Applications mobiles, maquettes de produit.',
+    'Plus de 5 onglets.',
+    '<nav data-fx="mobile-tabbar-bump"><a href="#" aria-label="Accueil">⌂</a><a href="#" aria-label="Recherche">⌕</a></nav>',
+    '<nav data-fx="mobile-tabbar-bump" style="width:210px"><a href="#" aria-label="Accueil">⌂</a><a href="#" aria-label="Recherche">⌕</a><a href="#" aria-label="Favoris">♡</a><a href="#" aria-label="Profil">☺</a></nav>',
+    { a11y: 'Le lien actif porte `aria-current`. Nommez chaque icône avec `aria-label`.' }),
 ];

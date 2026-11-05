@@ -6117,6 +6117,21 @@
       U.onResize(function () { var a = el.querySelector('[aria-selected="true"]'); if (a) move(a, true); });
     }
   });
+
+  // Une barre d'onglets dont le renflement glisse sous l'icône active
+  FX.register('mobile-tabbar-bump', {
+    setup: function (el) {
+      var tabs = Array.prototype.slice.call(el.querySelectorAll('button,a'));
+      U.make('i', 'fx-bump', el).setAttribute('aria-hidden', 'true');
+      var set = function (t) {
+        tabs.forEach(function (o) { o.classList.toggle('fx-cur', o === t); if (o === t) o.setAttribute('aria-current', 'page'); else o.removeAttribute('aria-current'); });
+        el.style.setProperty('--fx-x', (t.offsetLeft + t.offsetWidth / 2) + 'px');
+      };
+      tabs.forEach(function (t) { t.addEventListener('click', function (e) { if (t.tagName === 'A' && t.getAttribute('href') === '#') e.preventDefault(); set(t); }); });
+      if (tabs[0]) set(tabs[0]);
+      U.onResize(function () { var c = el.querySelector('.fx-cur'); if (c) set(c); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

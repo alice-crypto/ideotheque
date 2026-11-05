@@ -4439,6 +4439,24 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transition: left .28s var(--fx-ease-out), right .28s var(--fx-ease-out);
 }
 
+/* mobile-tabbar-bump : un renflement qui suit l'onglet */
+[data-fx="mobile-tabbar-bump"] { position: relative; display: flex; justify-content: space-around; padding: 10px 6px; border-radius: 18px; background: var(--fx-bar-bg, #222); }
+[data-fx="mobile-tabbar-bump"] button,
+[data-fx="mobile-tabbar-bump"] a { position: relative; z-index: 1; flex: 1; background: none; border: 0; color: #fff; font-size: 18px; cursor: pointer; text-align: center; text-decoration: none; opacity: .55; transition: transform .4s var(--fx-ease-spring), opacity .25s; }
+[data-fx="mobile-tabbar-bump"] .fx-cur { transform: translateY(-10px); opacity: 1; color: var(--fx-bump-ink, #111); }
+[data-fx="mobile-tabbar-bump"] .fx-bump {
+  position: absolute;
+  left: 0;
+  top: -12px;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  border-radius: 50%;
+  background: var(--fx-accent);
+  transform: translateX(var(--fx-x, 0));
+  transition: transform .45s var(--fx-ease-out);
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
