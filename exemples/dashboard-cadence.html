@@ -91,6 +91,7 @@
           if (!left) stop();
         }, 1000);
       });
+      document.getElementById('t-reset').addEventListener('click', function () { stop(); left = TOTAL; show(); });
       /*@tjs*/
     })();
     /*@js*/
