@@ -118,4 +118,13 @@ module.exports = [
     'Les couleurs de marque, les photos de personnes.',
     '<div data-fx="hue-drift">…</div>',
     '<div class="demo-box" data-fx="hue-drift" style="width:200px;height:130px"></div>'),
+  E('bars-scrub', 'Défilement',
+    'Les barres d\'un graphique montent et redescendent selon qu\'on défile dans un sens ou l\'autre.',
+    'Une donnée qu\'on a sous la main, le récit progresse.',
+    '- `data-fx-values` : valeurs séparées par des virgules\n- `--fx-h` (120px), `--fx-gap` (6px), `--fx-bar` : hauteur, écart, couleur',
+    'Récit de données, résultats d\'un rapport.',
+    'Un graphique à lire précisément : ajoutez aussi les chiffres.',
+    '<div data-fx="bars-scrub" data-fx-values="30,55,40,75"></div>',
+    '<div data-fx="bars-scrub" style="width:210px"></div>',
+    { a11y: 'Les valeurs sont dans `aria-label`.' }),
 ];

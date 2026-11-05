@@ -3830,6 +3830,21 @@
   FX.register('hue-drift', {
     scroll: function (el, info) { el.style.setProperty('--fx-hue', (info.pass * U.num(el, 'fxRange', 140)).toFixed(1) + 'deg'); }
   });
+
+  // Les barres montent et redescendent avec le défilement
+  FX.register('bars-scrub', {
+    setup: function (el) {
+      var v = (el.dataset.fxValues || '30,55,40,75,60,95').split(',').map(Number), max = Math.max.apply(null, v);
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', 'Valeurs : ' + v.join(', '));
+      v.forEach(function (n, i) {
+        var b = U.make('i', '', el);
+        b.style.setProperty('--fx-v', n / max);
+        b.style.setProperty('--fx-q', i / v.length);
+      });
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-grow', info.enter.toFixed(3)); }
+  });
 })(window.FX);
 
 window.FX._boot();

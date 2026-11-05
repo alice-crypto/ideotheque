@@ -3413,6 +3413,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 /* hue-drift : la couleur change avec le récit */
 [data-fx="hue-drift"] { filter: hue-rotate(var(--fx-hue, 0deg)); }
 
+/* bars-scrub : un graphique piloté par le défilement */
+[data-fx="bars-scrub"] { display: flex; align-items: flex-end; gap: var(--fx-gap, 6px); height: var(--fx-h, 120px); }
+[data-fx="bars-scrub"] i {
+  flex: 1;
+  height: 100%;
+  background: var(--fx-bar, var(--fx-accent));
+  transform-origin: bottom;
+  transform: scaleY(calc(var(--fx-v) * clamp(.02, calc(var(--fx-grow, 1) * 1.5 - var(--fx-q) * .5), 1)));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
