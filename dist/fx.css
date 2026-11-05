@@ -3821,6 +3821,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 }
 [data-fx="swipe-card"].fx-fly > :first-child { transition: transform .3s var(--fx-ease-out), opacity .3s; }
 
+/* sound-bars-hover : un égaliseur */
+[data-fx="sound-bars-hover"] { display: inline-flex; align-items: flex-end; gap: 2px; height: var(--fx-h, 22px); }
+[data-fx="sound-bars-hover"] i { width: var(--fx-w, 3px); height: 100%; border-radius: 2px; background: currentColor; transform-origin: bottom; transform: scaleY(.18); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

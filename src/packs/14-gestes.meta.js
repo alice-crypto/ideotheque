@@ -184,4 +184,12 @@ module.exports = [
     '<div data-fx="swipe-card" style="height:300px"><article>…</article><article>…</article></div>',
     '<div data-fx="swipe-card" style="width:170px;height:120px"><div class="demo-box" style="width:100%;height:100%"></div><div class="demo-box alt" style="width:100%;height:100%"></div><div class="demo-box ink" style="width:100%;height:100%"></div></div>',
     { a11y: 'Flèches gauche et droite au clavier. Offrez aussi des boutons visibles.' }),
+  E('sound-bars-hover', 'Micro-interaction',
+    'Un petit égaliseur dont les barres ne s\'animent qu\'au survol, ou en continu.',
+    'Musique qui démarre, présence sonore discrète.',
+    '- `data-fx-bars` (5) : nombre de barres\n- `data-fx-auto="true"` : en continu\n- `--fx-h` (22px), `--fx-w` (3px)',
+    'Lecteur audio, titre en cours, bouton « écouter ».',
+    'Un élément sans rapport avec le son.',
+    '<span data-fx="sound-bars-hover"></span>',
+    '<div class="demo-chip"><span data-fx="sound-bars-hover" data-fx-auto="true" style="color:var(--fx-accent)"></span> En écoute</div>'),
 ];

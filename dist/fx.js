@@ -4477,6 +4477,26 @@
       });
     }
   });
+
+  // Un petit égaliseur s'anime au survol
+  FX.register('sound-bars-hover', {
+    setup: function (el) {
+      var n = U.num(el, 'fxBars', 5);
+      el.setAttribute('aria-hidden', 'true');
+      el._fxB = [];
+      for (var i = 0; i < n; i++) el._fxB.push({ el: U.make('i', '', el), v: .2, a: U.rand(.006, .012), b: U.rand(.002, .006) });
+      el._fxAll = el.dataset.fxAuto === 'true';
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      var hot = el._fxAll || el.matches(':hover') || (el.parentElement && el.parentElement.matches(':hover'));
+      el._fxB.forEach(function (b) {
+        var tg = hot ? .25 + .75 * Math.abs(Math.sin(t * b.a) * Math.cos(t * b.b)) : .18;
+        b.v = U.lerp(b.v, tg, .22);
+        b.el.style.transform = 'scaleY(' + b.v.toFixed(3) + ')';
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
