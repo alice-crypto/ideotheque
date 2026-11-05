@@ -218,4 +218,13 @@ module.exports = [
     '<label data-fx="checkbox-scribble"><input type="checkbox"><span>Relire le texte</span></label>',
     '<label data-fx="checkbox-scribble" style="color:var(--ink);font-size:18px"><input type="checkbox" checked><span>Relire le texte</span></label>',
     { a11y: 'La vraie case à cocher reste utilisée, avec son focus clavier.' }),
+  E('search-expand', 'Micro-interaction',
+    'Une icône de recherche s\'ouvre en un champ de saisie, et se referme s\'il reste vide.',
+    'Compact, l\'outil apparaît seulement quand on le veut.',
+    '- `--fx-width` (180px) : largeur ouverte',
+    'Entêtes, barres d\'outils.',
+    'Un site où la recherche est l\'action principale : gardez alors le champ ouvert.',
+    '<div data-fx="search-expand"><input aria-label="Rechercher"><button aria-label="Ouvrir la recherche">⌕</button></div>',
+    '<div data-fx="search-expand" style="color:var(--ink)"><input aria-label="Rechercher" placeholder="Chercher…"><button aria-label="Ouvrir la recherche">⌕</button></div>',
+    { trigger: 'Ouvrir', a11y: 'Bouton nommé, `aria-expanded`, fermeture avec Échap et retour du focus.' }),
 ];

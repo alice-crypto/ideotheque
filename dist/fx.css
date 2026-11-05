@@ -3856,6 +3856,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="checkbox-scribble"] .fx-cs-line { position: absolute; left: -2px; right: -2px; top: 50%; height: .5em; margin-top: -.25em; }
 [data-fx="checkbox-scribble"] .fx-cs-line path { transition-delay: .18s; stroke-width: 2px; }
 
+/* search-expand : une loupe qui s'ouvre */
+[data-fx="search-expand"] { display: inline-flex; align-items: center; border: 1px solid currentColor; border-radius: 99px; overflow: hidden; }
+[data-fx="search-expand"] button { width: 40px; height: 40px; flex: none; background: none; border: 0; color: inherit; cursor: pointer; font-size: 16px; }
+[data-fx="search-expand"] input { width: 0; padding: 0; border: 0; outline: 0; background: none; color: inherit; font: inherit; transition: width .4s var(--fx-ease-out), padding .4s var(--fx-ease-out); }
+[data-fx="search-expand"].fx-open input { width: var(--fx-width, 180px); padding-left: 14px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
