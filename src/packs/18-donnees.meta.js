@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="timeline-scrub"><p data-date="2019">Création.</p><p data-date="2024">Lancement.</p></div>',
     '<div data-fx="timeline-scrub" style="width:220px;color:var(--ink);font-size:13px"><p data-date="2019">L\'atelier ouvre.</p><p data-date="2022">Premier produit.</p><p data-date="2026">Une équipe de vingt.</p></div>',
     { a11y: 'Rôles `tablist` et `tab`, flèches au clavier, changement annoncé par `aria-live`.' }),
+  E('number-ticker-reel', 'Présentation',
+    'Chaque chiffre est une bobine qui tourne et s\'arrête sur la bonne valeur, de gauche à droite.',
+    'Pompe à essence, compteur mécanique, précision.',
+    '- `data-fx-value` : valeur affichée',
+    'Chiffres clés, compteurs de page d\'accueil.',
+    'Une police sans chiffres à chasse fixe.',
+    '<span data-fx="number-ticker-reel">48 210</span>',
+    '<span class="demo-number" data-fx="number-ticker-reel" style="color:var(--ink);font-size:44px">48 210</span>',
+    { trigger: 'Rejouer', a11y: 'La valeur finale est dans `aria-label`.' }),
 ];

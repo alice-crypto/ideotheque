@@ -6466,6 +6466,25 @@
       set(0);
     }
   });
+
+  // Des bobines de chiffres tournent et s'arrêtent sur le nombre
+  FX.register('number-ticker-reel', {
+    entrance: true,
+    setup: function (el) {
+      var txt = (el.dataset.fxValue || el.textContent).trim();
+      el.setAttribute('aria-label', txt);
+      el.textContent = '';
+      Array.from(txt).forEach(function (ch, i) {
+        var box = U.make('span', 'fx-ntr', el);
+        box.setAttribute('aria-hidden', 'true');
+        if (!/\d/.test(ch)) { box.textContent = ch; box.classList.add('fx-ntr-fix'); return; }
+        var col = U.make('span', 'fx-ntr-col', box), s = '';
+        for (var k = 0; k < 20; k++) s += k % 10 + '\n';
+        col.textContent = s + ch;
+        col.style.setProperty('--fx-i', i);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
