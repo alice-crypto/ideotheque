@@ -173,4 +173,16 @@
       }
     }
   });
+
+  // Des filets se dessinent et les lignes de la liste arrivent
+  FX.register('list-strike-in', {
+    entrance: true,
+    setup: function (el) {
+      Array.prototype.forEach.call(el.children, function (c, i) {
+        c.style.setProperty('--fx-i', i);
+        U.ensurePositioned(c);
+        U.make('i', 'fx-lsi', c).setAttribute('aria-hidden', 'true');
+      });
+    }
+  });
 })(window.FX);
