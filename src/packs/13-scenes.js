@@ -40,4 +40,20 @@
       el._fxRest.textContent = el._fxTxt.slice(n);
     }
   });
+
+  // Une bande de texte géant traverse l'écran au défilement
+  FX.register('band-slide', {
+    setup: function (el) {
+      var t = el.textContent.trim();
+      el.setAttribute('aria-label', t);
+      el.textContent = '';
+      var b = U.make('span', 'fx-band', el);
+      b.setAttribute('aria-hidden', 'true');
+      b.textContent = (t + ' — ').repeat(6);
+    },
+    scroll: function (el, info) {
+      var dir = el.dataset.fxDir === 'right' ? 1 : -1;
+      el.style.setProperty('--fx-x', (info.pass * dir * U.num(el, 'fxTravel', 40)).toFixed(2) + '%');
+    }
+  });
 })(window.FX);
