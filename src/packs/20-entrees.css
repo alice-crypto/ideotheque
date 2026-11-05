@@ -33,3 +33,7 @@
 /* blur-words : sortir du flou */
 [data-fx="blur-words"] .fx-word { filter: blur(var(--fx-blur, 10px)); opacity: 0; transform: translateY(.2em); transition: filter .7s calc(var(--fx-i) * var(--fx-stagger)), opacity .5s calc(var(--fx-i) * var(--fx-stagger)), transform .7s var(--fx-ease-out) calc(var(--fx-i) * var(--fx-stagger)); }
 .fx-in[data-fx="blur-words"] .fx-word { filter: none; opacity: 1; transform: none; }
+
+/* card-deal : on distribue les cartes */
+[data-fx="card-deal"] > * { transform: translate(var(--fx-dx, 0), var(--fx-dy, 0)) rotate(var(--fx-r, 0deg)); opacity: 0; transition: transform .7s var(--fx-ease-out) calc(var(--fx-i) * 110ms), opacity .2s calc(var(--fx-i) * 110ms); }
+.fx-in[data-fx="card-deal"] > * { transform: none; opacity: 1; }
