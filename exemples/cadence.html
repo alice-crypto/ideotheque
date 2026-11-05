@@ -60,6 +60,9 @@
       .crow, .cmetro, .cstreak, .cvoix, .cprix { grid-template-columns: 1fr; }
       .cwave { justify-content: flex-start; }
     }
+    @media (max-width: 900px) {
+      .cprix > :first-child { border-right: 0; border-bottom: var(--rule); }
+    }
     /*@css*/
   </style>
 </head>
