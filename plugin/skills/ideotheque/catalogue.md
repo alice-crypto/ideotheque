@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->273<!-- /total --> effets.
+La bibliothèque contient <!-- total -->274<!-- /total --> effets.
 
 ## Règles
 
@@ -156,6 +156,7 @@ La bibliothèque contient <!-- total -->273<!-- /total --> effets.
 | `press-ripple-text` | Micro-interaction | Au clic, un cercle part du doigt et inverse les couleurs du bouton, y compris celles du texte |
 | `swipe-reveal-row` | Micro-interaction | Un bandeau unique glisse de ligne en ligne dans une liste et inverse le texte qu'il recouvre |
 | `trail-dots` | Micro-interaction | Une chaîne de perles suit le curseur, chacune poursuivant la précédente |
+| `hold-confirm` | Micro-interaction | Il faut maintenir le bouton enfoncé jusqu'à ce qu'il soit plein : c'est la confirmation |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

@@ -63,4 +63,13 @@ module.exports = [
     '<section data-fx="trail-dots">…</section>',
     '<div class="demo-card" data-fx="trail-dots" style="height:130px"><b>Dessinez</b>Déplacez le curseur ici.</div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, la chaîne ne se déplace pas.' }),
+  E('hold-confirm', 'Micro-interaction',
+    'Il faut maintenir le bouton enfoncé jusqu\'à ce qu\'il soit plein : c\'est la confirmation.',
+    'Geste délibéré, l\'action a du poids.',
+    '- `data-fx-hold` (1200) : durée d\'appui en millisecondes\n- `--fx-hold-fill` : couleur de remplissage\n- L\'élément émet `fx:confirm` une fois la durée atteinte.',
+    'Suppression, paiement, action difficile à annuler.',
+    'Les actions courantes : le geste devient une corvée.',
+    '<button data-fx="hold-confirm">Maintenir pour supprimer</button>',
+    '<button class="demo-btn" data-fx="hold-confirm">Maintenir</button>',
+    { a11y: 'Fonctionne au clavier avec Espace ou Entrée maintenus. Prévoyez aussi une autre façon de confirmer pour les personnes qui ne peuvent pas maintenir un appui.' }),
 ];
