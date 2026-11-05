@@ -357,4 +357,14 @@
       }
     }
   });
+
+  // Des rayons tournent lentement autour d'un point
+  FX.register('sun-rays', {
+    setup: function (el) { el._fxA = 0; },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxA = (el._fxA + dt * U.num(el, 'fxSpeed', 8)) % 360;
+      el.style.setProperty('--fx-ray', el._fxA.toFixed(1) + 'deg');
+    }
+  });
 })(window.FX);
