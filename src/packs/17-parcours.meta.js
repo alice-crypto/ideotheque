@@ -92,4 +92,13 @@ module.exports = [
     '<section data-fx="split-hover-hero"><a href="#">Particuliers</a><a href="#">Entreprises</a></section>',
     '<div data-fx="split-hover-hero" style="width:230px;height:150px;color:#111;font-weight:600"><a href="#" class="demo-box" style="width:auto;height:auto;display:grid;place-items:center;color:inherit;text-decoration:none;border-radius:0">Un</a><a href="#" class="demo-box alt" style="width:auto;height:auto;display:grid;place-items:center;color:inherit;text-decoration:none;border-radius:0">Deux</a></div>',
     { a11y: 'La sélection suit aussi le focus clavier.' }),
+  E('masonry-flow', 'Navigation',
+    'Un mur de cartes irrégulier : chacune va dans la colonne la plus courte, et tout glisse quand la largeur change.',
+    'Pinterest bien rangé, un mur qui s\'ajuste seul.',
+    '- `data-fx-gap` (8), `data-fx-min` (80) : écart et largeur minimale d\'une colonne',
+    'Galeries, inspirations, articles.',
+    'L\'ordre de lecture important : le placement visuel ne suit pas exactement le DOM.',
+    '<div data-fx="masonry-flow"><img…><img…><img…></div>',
+    '<div data-fx="masonry-flow" style="width:220px"><div class="demo-box" style="height:40px"></div><div class="demo-box alt" style="height:55px"></div><div class="demo-box ink" style="height:32px"></div><div class="demo-box alt" style="height:44px"></div><div class="demo-box" style="height:28px"></div><div class="demo-box ink" style="height:40px"></div></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, les éléments changent de place sans animation.' }),
 ];
