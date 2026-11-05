@@ -72,3 +72,14 @@
   backface-visibility: hidden;
   transform: rotateX(calc(var(--fx-i) * 360deg / var(--fx-count) + var(--fx-rot, 0deg))) translateZ(var(--fx-rad, 90px));
 }
+
+/* thread-line : un fil conducteur */
+[data-fx="thread-line"] { padding-left: var(--fx-pad, 28px); }
+[data-fx="thread-line"] .fx-thread { position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: var(--fx-rail, rgba(128, 128, 128, .3)); }
+[data-fx="thread-line"] .fx-thread b {
+  position: absolute;
+  inset: 0;
+  background: var(--fx-accent);
+  transform-origin: top;
+  transform: scaleY(var(--fx-fill, 0));
+}
