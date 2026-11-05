@@ -225,4 +225,23 @@
       tog.addEventListener('change', render);
     }
   });
+
+  // Une liste de fonctions dont l'élément actif change et se remplit
+  FX.register('feature-orbit-card', {
+    setup: function (el) {
+      var k = Array.prototype.slice.call(el.children), cur = 0;
+      el._fxT = 0; el._fxD = U.num(el, 'fxHold', 3.2);
+      var set = function (i) { cur = i; el._fxT = 0; k.forEach(function (c, j) { c.classList.toggle('fx-cur', j === i); if (j === i) c.setAttribute('aria-current', 'true'); else c.removeAttribute('aria-current'); }); };
+      k.forEach(function (c, i) { c.tabIndex = 0; c.addEventListener('pointerenter', function () { set(i); }); c.addEventListener('focus', function () { set(i); }); U.make('i', 'fx-foc', c).setAttribute('aria-hidden', 'true'); });
+      set(0);
+      el._fxNext = function () { set((cur + 1) % k.length); };
+      el._fxCur = function () { return k[cur]; };
+    },
+    tick: function (el, dt) {
+      if (U.reduced || el.matches(':hover')) return;
+      el._fxT += dt;
+      el._fxCur().style.setProperty('--fx-q', Math.min(1, el._fxT / el._fxD).toFixed(3));
+      if (el._fxT >= el._fxD) el._fxNext();
+    }
+  });
 })(window.FX);
