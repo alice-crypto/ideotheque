@@ -159,4 +159,12 @@ module.exports = [
     'Les fonds de la même couleur que le rideau.',
     '<section data-fx="curtain-scrub">…</section>',
     '<div class="demo-box alt" data-fx="curtain-scrub" style="width:210px;height:150px"></div>'),
+  E('letters-scrub', 'Défilement',
+    'Les lettres d\'un titre, dispersées, se rassemblent à mesure qu\'on défile vers lui.',
+    'Un puzzle qui se résout sous nos yeux.',
+    'Aucun réglage : la dispersion est aléatoire.',
+    'Grands titres de section.',
+    'Les titres longs et le texte courant.',
+    '<h2 data-fx="letters-scrub">Rassemblés</h2>',
+    '<p class="demo-title" data-fx="letters-scrub" style="font-size:30px">Rassemblés</p>'),
 ];
