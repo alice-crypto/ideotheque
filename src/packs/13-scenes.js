@@ -71,4 +71,18 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-open', U.easeOut(info.enter).toFixed(3)); }
   });
+
+  // On plonge à travers des cadres concentriques
+  FX.register('tunnel-scroll', {
+    setup: function (el) {
+      var n = U.num(el, 'fxFrames', 6);
+      U.ensurePositioned(el);
+      for (var i = 0; i < n; i++) {
+        var f = U.make('i', 'fx-tun', el);
+        f.setAttribute('aria-hidden', 'true');
+        f.style.setProperty('--fx-q', i / n);
+      }
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-dive', info.pass.toFixed(3)); }
+  });
 })(window.FX);
