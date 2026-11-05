@@ -220,4 +220,17 @@
       });
     }
   });
+
+  // Un autocollant se décolle un peu au survol
+  FX.register('sticker-peel-hover', {
+    setup: function (el) {
+      el.style.setProperty('--fx-rot', U.rand(-8, 8).toFixed(1) + 'deg');
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--fx-rx', (-(e.clientY - r.top) / r.height * 18 + 9).toFixed(1) + 'deg');
+        el.style.setProperty('--fx-ry', ((e.clientX - r.left) / r.width * 22 - 11).toFixed(1) + 'deg');
+      });
+      el.addEventListener('pointerleave', function () { el.style.setProperty('--fx-rx', '0deg'); el.style.setProperty('--fx-ry', '0deg'); });
+    }
+  });
 })(window.FX);
