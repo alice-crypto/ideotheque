@@ -444,4 +444,24 @@
       });
     }
   });
+
+  // Un parcours en étapes dont la ligne avance en courant
+  FX.register('progress-steps-rail', {
+    setup: function (el) {
+      var st = Array.prototype.slice.call(el.children), n = st.length, cur = U.num(el, 'fxStep', 0);
+      U.make('i', 'fx-psr', el).setAttribute('aria-hidden', 'true');
+      el._fxSet = function (i) {
+        cur = U.clamp(i, 0, n - 1);
+        st.forEach(function (s, j) {
+          s.classList.toggle('fx-done', j < cur);
+          s.classList.toggle('fx-cur', j === cur);
+          if (j === cur) s.setAttribute('aria-current', 'step'); else s.removeAttribute('aria-current');
+        });
+        el.style.setProperty('--fx-p', n > 1 ? cur / (n - 1) : 1);
+      };
+      el._fxSet(cur);
+      el._fxN = function () { el._fxSet((cur + 1) % n); };
+    },
+    trigger: function (el) { el._fxN(); }
+  });
 })(window.FX);
