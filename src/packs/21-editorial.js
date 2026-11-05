@@ -315,4 +315,24 @@
     },
     trigger: function (el) { el._fxBurst(el.offsetWidth / 2, el.offsetHeight / 2); }
   });
+
+  // Un curseur dont la valeur suit dans une bulle
+  FX.register('range-bubble', {
+    setup: function (el) {
+      var input = el.querySelector('input[type="range"]');
+      if (!input) return;
+      var b = U.make('output', 'fx-rb', el), unit = el.dataset.fxUnit || '';
+      var upd = function () {
+        var min = +input.min || 0, max = +input.max || 100, p = (input.value - min) / (max - min);
+        el.style.setProperty('--fx-p', p.toFixed(3));
+        b.textContent = input.value + unit;
+      };
+      input.addEventListener('input', upd);
+      input.addEventListener('pointerdown', function () { el.classList.add('fx-on'); });
+      input.addEventListener('focus', function () { el.classList.add('fx-on'); });
+      input.addEventListener('blur', function () { el.classList.remove('fx-on'); });
+      window.addEventListener('pointerup', function () { if (document.activeElement !== input) el.classList.remove('fx-on'); });
+      upd();
+    }
+  });
 })(window.FX);
