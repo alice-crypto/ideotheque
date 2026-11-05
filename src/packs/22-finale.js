@@ -366,4 +366,28 @@
       });
     }
   });
+
+  // Plusieurs couches de vagues se balancent
+  FX.register('sea-layers', {
+    setup: function (el) { U.ensurePositioned(el); el._fxCv = U.make('canvas', 'fx-gen', el); el._fxCv.setAttribute('aria-hidden', 'true'); },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d'), cols = U.cssVar(el, '--fx-sea', '#9ec4ff,#4d8bff,#0047ff,#002a99').split(',');
+      c.clearRect(0, 0, w, h);
+      cols.forEach(function (col, i) {
+        var base = h * (.42 + i * .14), T = t * .001 * (.5 + i * .25);
+        c.fillStyle = col;
+        c.beginPath();
+        c.moveTo(0, h);
+        for (var x = 0; x <= w + 8; x += 8) c.lineTo(x, base + Math.sin(x * .018 + T + i * 1.7) * (10 + i * 3) + Math.sin(x * .007 - T) * 7);
+        c.lineTo(w, h);
+        c.closePath();
+        c.fill();
+      });
+    }
+  });
 })(window.FX);
