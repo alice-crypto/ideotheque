@@ -3239,6 +3239,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 /* ink-bleed : l'encre se stabilise */
 [data-fx="ink-bleed"] { filter: url(#fx-ink); opacity: 0; display: inline-block; }
 
+/* redact-reveal : la censure se lève */
+[data-fx="redact-reveal"] .fx-word { position: relative; display: inline-block; }
+[data-fx="redact-reveal"] .fx-word::after {
+  content: "";
+  position: absolute;
+  inset: .05em -.05em;
+  background: var(--fx-bar, currentColor);
+  transform-origin: right;
+  transition: transform .5s var(--fx-ease-io) calc(var(--fx-o) * var(--fx-stagger));
+}
+.fx-in[data-fx="redact-reveal"] .fx-word::after { transform: scaleX(0); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

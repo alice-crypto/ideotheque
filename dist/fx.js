@@ -3492,6 +3492,18 @@
     },
     reset: function (el) { el.style.filter = ''; el.style.opacity = 0; }
   });
+
+  // Des barres noires se retirent des mots, dans le désordre
+  FX.register('redact-reveal', {
+    entrance: true,
+    setup: function (el) {
+      U.splitWords(el);
+      var ws = Array.prototype.slice.call(el.querySelectorAll('.fx-word'));
+      ws.map(function (w) { return { w: w, r: Math.random() }; })
+        .sort(function (a, b) { return a.r - b.r; })
+        .forEach(function (o, i) { o.w.style.setProperty('--fx-o', i); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

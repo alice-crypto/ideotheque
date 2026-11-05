@@ -177,4 +177,13 @@ module.exports = [
     '<h2 data-fx="ink-bleed">Manuscrit</h2>',
     '<p class="demo-title" data-fx="ink-bleed">Manuscrit</p>',
     { trigger: 'Rejouer', a11y: 'Avec `prefers-reduced-motion: reduce`, le texte s\'affiche net.' }),
+  E('redact-reveal', 'Texte',
+    'Le texte est caviardé de barres noires, qui se retirent mot à mot dans le désordre.',
+    'Secret, enquête, dossier déclassifié.',
+    '- `--fx-bar` : couleur des barres\n- `--fx-stagger` (70ms) : écart entre deux mots',
+    'Citations, chiffres révélés, révélation d\'un nom.',
+    'Les longs textes : le désordre gêne la lecture.',
+    '<p data-fx="redact-reveal">Le projet sera annoncé demain matin.</p>',
+    '<p class="demo-para" data-fx="redact-reveal" style="color:var(--ink);font-size:20px">Le projet sera annoncé demain matin.</p>',
+    { trigger: 'Rejouer', a11y: 'Le texte est dans `aria-label` et reste lisible par les lecteurs d\'écran dès le départ.' }),
 ];
