@@ -5115,6 +5115,39 @@
       });
     }
   });
+
+  // Des cellules vivantes se déforment doucement
+  FX.register('voronoi-cells', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var cv = U.make('canvas', 'fx-vor', el);
+      cv.setAttribute('aria-hidden', 'true');
+      cv.width = 64; cv.height = 48;
+      var pts = [];
+      for (var i = 0; i < U.num(el, 'fxCount', 14); i++) pts.push({ x: Math.random(), y: Math.random(), a: U.rand(0, 6), s: U.rand(.1, .3) });
+      el._fxV = { cv: cv, pts: pts, t: 0 };
+    },
+    tick: function (el, dt, t) {
+      var g = el._fxV;
+      g.t += dt;
+      if (g.t < .05 && g.drawn) return;
+      if (U.reduced && g.drawn) return;
+      g.t = 0; g.drawn = true;
+      var c = g.cv.getContext('2d'), W = 64, H = 48, img = c.createImageData(W, H), d = img.data;
+      var a = U.cssVar(el, '--fx-cell', '#ff5b2e'), hex = parseInt(a.replace('#', ''), 16), R = hex >> 16 & 255, G = hex >> 8 & 255, B = hex & 255;
+      var px = g.pts.map(function (p) { return [(p.x + Math.sin(t * .0003 * p.s * 4 + p.a) * .1) * W, (p.y + Math.cos(t * .0003 * p.s * 4 + p.a) * .1) * H]; });
+      for (var y = 0; y < H; y++) for (var x = 0; x < W; x++) {
+        var m1 = 1e9, m2 = 1e9;
+        for (var k = 0; k < px.length; k++) {
+          var dx = x - px[k][0], dy = y - px[k][1], q = dx * dx + dy * dy;
+          if (q < m1) { m2 = m1; m1 = q; } else if (q < m2) m2 = q;
+        }
+        var e = Math.sqrt(m2) - Math.sqrt(m1), i = (y * W + x) * 4, v = Math.min(1, e / 4);
+        d[i] = R; d[i + 1] = G; d[i + 2] = B; d[i + 3] = (1 - v) * 255;
+      }
+      c.putImageData(img, 0, 0);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

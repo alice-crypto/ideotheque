@@ -20,4 +20,12 @@ module.exports = [
     'Plusieurs fonds de ce type par page.',
     '<section data-fx="metaballs">…</section>',
     '<div data-fx="metaballs" style="width:230px;height:170px"></div>'),
+  E('voronoi-cells', 'Ambiance',
+    'Un réseau de cellules se déforme lentement, comme un tissu vivant vu au microscope.',
+    'Biologie, cellules, nature calculée.',
+    '- `data-fx-count` (14) : nombre de cellules\n- `--fx-cell` (hexadécimal) : couleur des contours',
+    'Sites de science, de santé, d\'environnement.',
+    'Les pages déjà denses : le motif attire l\'œil.',
+    '<section data-fx="voronoi-cells" style="--fx-cell:#0047ff">…</section>',
+    '<div data-fx="voronoi-cells" style="width:230px;height:170px"></div>'),
 ];
