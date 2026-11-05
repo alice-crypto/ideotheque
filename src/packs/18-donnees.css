@@ -16,3 +16,13 @@
   transition: transform .6s var(--fx-ease-spring) calc(var(--fx-i) * 40ms);
 }
 .fx-in[data-fx="radial-bars"] i { transform: rotate(var(--fx-a)) translateY(-40%) scaleY(1); }
+
+/* sparkline-draw : une courbe compacte */
+[data-fx="sparkline-draw"] { position: relative; display: inline-block; width: var(--fx-w, 160px); height: var(--fx-h, 48px); color: var(--fx-line, var(--fx-accent)); }
+[data-fx="sparkline-draw"] svg { display: block; width: 100%; height: 100%; overflow: visible; }
+[data-fx="sparkline-draw"] .fx-sl-line { fill: none; stroke: currentColor; stroke-width: 2px; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s var(--fx-ease-io); }
+[data-fx="sparkline-draw"] .fx-sl-area { fill: currentColor; opacity: 0; transition: opacity .6s .7s; }
+[data-fx="sparkline-draw"] i { position: absolute; width: 8px; height: 8px; margin: -4px; border-radius: 50%; background: currentColor; transform: scale(0); transition: transform .3s var(--fx-ease-spring) 1s; }
+.fx-in[data-fx="sparkline-draw"] .fx-sl-line { stroke-dashoffset: 0; }
+.fx-in[data-fx="sparkline-draw"] .fx-sl-area { opacity: .14; }
+.fx-in[data-fx="sparkline-draw"] i { transform: none; }
