@@ -242,4 +242,13 @@ module.exports = [
     '<section data-fx="speed-lines">…</section>',
     '<div data-fx="speed-lines" data-fx-demo="1" style="width:220px;height:150px;color:var(--ink)"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, aucun trait n\'apparaît.' }),
+  E('scroll-gauge', 'Défilement',
+    'Une jauge circulaire se remplit jusqu\'à sa valeur quand elle entre à l\'écran.',
+    'Mesure qui monte, un objectif atteint.',
+    '- `data-fx-goal` (100) : valeur finale\n- `--fx-size` (120px), `--fx-weight` (7) : taille et épaisseur',
+    'Chiffres clés, résultats d\'un rapport.',
+    'Une valeur qu\'on doit voir sans défiler.',
+    '<div data-fx="scroll-gauge" data-fx-goal="82"></div>',
+    '<div data-fx="scroll-gauge" data-fx-goal="82" style="color:var(--ink)"></div>',
+    { a11y: 'La valeur est exposée par `role="meter"` et `aria-valuenow`.' }),
 ];
