@@ -215,4 +215,12 @@ module.exports = [
     'Les fonds clairs.',
     '<section data-fx="hex-glow">…</section>',
     '<div data-fx="hex-glow" style="width:230px;height:170px"></div>'),
+  E('cloud-drift', 'Ambiance',
+    'Des nuages dérivent à plusieurs profondeurs, les plus proches plus vite.',
+    'Après-midi tranquille, dessin d\'enfant.',
+    '- `data-fx-count` (7), `--fx-cloud`',
+    'Voyages, enfance, météo.',
+    'Un fond sombre sans changer la couleur.',
+    '<section data-fx="cloud-drift" style="background:#0047ff">…</section>',
+    '<div data-fx="cloud-drift" style="width:230px;height:170px;background:#0047ff;border-radius:12px"></div>'),
 ];
