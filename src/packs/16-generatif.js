@@ -722,4 +722,47 @@
       });
     }
   });
+
+  // Un globe en fil de fer tourne, et suit le curseur
+  FX.register('wire-globe', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxRot = 0; el._fxTilt = .4; el._fxTg = .4; el._fxSp = 0;
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el._fxTg = ((e.clientY - r.top) / r.height - .5) * 1.2;
+        el._fxSp = ((e.clientX - r.left) / r.width - .5) * 1.6;
+      });
+      el.addEventListener('pointerleave', function () { el._fxSp = 0; el._fxTg = .4; });
+    },
+    tick: function (el, dt) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      el._fxRot += dt * (.25 + el._fxSp);
+      el._fxTilt = U.lerp(el._fxTilt, el._fxTg, .06);
+      var c = cv.getContext('2d'), R = Math.min(w, h) * .44, rot = el._fxRot, ct = Math.cos(el._fxTilt), st = Math.sin(el._fxTilt);
+      c.clearRect(0, 0, w, h);
+      c.strokeStyle = getComputedStyle(cv).color;
+      var seg = function (lat0, lon0, lat1, lon1) {
+        var P = function (la, lo) {
+          var x = Math.cos(la) * Math.sin(lo + rot), y = Math.sin(la), z = Math.cos(la) * Math.cos(lo + rot);
+          return [x, y * ct - z * st, y * st + z * ct];
+        };
+        var a = P(lat0, lon0), b = P(lat1, lon1), front = (a[2] + b[2]) / 2;
+        c.globalAlpha = front > 0 ? .9 : .16;
+        c.beginPath();
+        c.moveTo(w / 2 + a[0] * R, h / 2 + a[1] * R);
+        c.lineTo(w / 2 + b[0] * R, h / 2 + b[1] * R);
+        c.stroke();
+      };
+      var D = Math.PI / 18;
+      for (var la = -Math.PI / 2 + Math.PI / 9; la < Math.PI / 2 - .01; la += Math.PI / 9) for (var lo = 0; lo < 6.28; lo += D) seg(la, lo, la, lo + D);
+      for (lo = 0; lo < 6.28; lo += Math.PI / 9) for (la = -Math.PI / 2; la < Math.PI / 2 - .01; la += D) seg(la, lo, la + D, lo);
+    }
+  });
 })(window.FX);
