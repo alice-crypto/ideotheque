@@ -4080,6 +4080,23 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-color-stack.fx-cover i { transform: none; }
 .fx-tr-color-stack.fx-uncover i { transform: translateY(-101%); transition-delay: calc(.27s - var(--fx-d)); }
 
+/* x-cross : un X qui prend toute la place */
+.fx-tr-x-cross i {
+  left: 50%;
+  top: 50%;
+  width: var(--fx-len);
+  height: var(--fx-len);
+  margin: calc(var(--fx-len) / -2);
+  background: var(--fx-tr-color, var(--fx-accent));
+  transition: transform .72s var(--fx-ease-io);
+}
+.fx-tr-x-cross .fx-a { transform: rotate(45deg) scale(1, 0); }
+.fx-tr-x-cross .fx-b { transform: rotate(-45deg) scale(1, 0); }
+.fx-tr-x-cross.fx-cover .fx-a { transform: rotate(45deg) scale(1, 1); }
+.fx-tr-x-cross.fx-cover .fx-b { transform: rotate(-45deg) scale(1, 1); }
+.fx-tr-x-cross.fx-uncover .fx-a { transform: rotate(45deg) scale(0, 1); }
+.fx-tr-x-cross.fx-uncover .fx-b { transform: rotate(-45deg) scale(0, 1); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

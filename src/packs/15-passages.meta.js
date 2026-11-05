@@ -129,4 +129,13 @@ module.exports = [
     '<a href="/equipe" data-fx="color-stack">Équipe</a>',
     '<button class="demo-ghost" onclick="FX.play(\'color-stack\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('x-cross', 'Transition',
+    'Un grand X s\'épaissit jusqu\'à couvrir l\'écran, puis se retire par les côtés.',
+    'Graphisme tranché, signature d\'une marque.',
+    '- `--fx-tr-color` : couleur',
+    'Marques au logo en X ou en croix, sites très graphiques.',
+    'Une interface d\'erreur : le X évoque un refus.',
+    '<a href="/x" data-fx="x-cross">Entrer</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'x-cross\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];
