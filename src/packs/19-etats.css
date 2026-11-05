@@ -59,3 +59,10 @@
 [data-fx="streaming-code"] .s { color: var(--fx-str, #ffd400); }
 [data-fx="streaming-code"] .c { opacity: .55; }
 [data-fx="streaming-code"] .fx-cur { display: inline-block; width: .55em; height: 1em; vertical-align: -.15em; background: currentColor; }
+
+/* queue-position : votre place dans la file */
+[data-fx="queue-position"] { display: grid; gap: 8px; justify-items: center; font-size: 13px; }
+[data-fx="queue-position"] .fx-q-row { display: flex; gap: 8px; }
+[data-fx="queue-position"] i { width: 16px; height: 16px; border-radius: 50%; background: rgba(128, 128, 128, .4); transition: transform .4s var(--fx-ease-spring), opacity .4s, background .3s; }
+[data-fx="queue-position"] i.fx-me { background: var(--fx-accent); transform: scale(1.35); }
+[data-fx="queue-position"] i.fx-gone { opacity: .14; transform: scale(.7); }
