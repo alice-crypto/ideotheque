@@ -101,6 +101,12 @@
   <a class="ex-back" href="index.html" data-fx-tr="corner-sweep">← Tous les exemples</a>
   <script src="../dist/fx.js" defer></script>
   <script>
+    window.addEventListener('load', function () {
+      var msgs = ['Votre colis est prêt, Amina arrive.', 'Amina a votre colis dans sa sacoche.', 'Elle passe le Pont Neuf : encore 6 minutes.', 'Livré à 11 h 42. Bonne journée !'];
+      var el = document.getElementById('track'), out = document.getElementById('track-msg'), i = 0;
+      out.textContent = msgs[0];
+      /*@trackjs*/
+    });
     /*@js*/
   </script>
 </body>
