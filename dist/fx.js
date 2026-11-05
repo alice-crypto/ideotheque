@@ -6749,6 +6749,21 @@
       });
     }
   });
+
+  // Une petite barre dit à quel point la réponse est sûre
+  FX.register('confidence-meter', {
+    entrance: true,
+    setup: function (el) {
+      var v = U.clamp(U.num(el, 'fxValue', 72), 0, 100);
+      var lvl = v >= 75 ? 'Élevée' : v >= 40 ? 'Moyenne' : 'Faible';
+      el.classList.add('fx-lvl-' + (v >= 75 ? 'h' : v >= 40 ? 'm' : 'l'));
+      el.setAttribute('role', 'meter');
+      el.setAttribute('aria-valuenow', v); el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', 100);
+      el.setAttribute('aria-label', 'Confiance');
+      el.innerHTML = '<span>Confiance : ' + lvl + '</span><i><b></b></i>';
+      el.style.setProperty('--fx-v', v / 100);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

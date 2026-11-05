@@ -30,4 +30,13 @@ module.exports = [
     '<p data-fx="citation-pop">Selon l\'étude <a data-source="Rapport 2026" href="…"></a>…</p>',
     '<p data-fx="citation-pop" style="width:220px;color:var(--ink);font-size:15px">Le taux a doublé <span data-source="Rapport annuel 2026"></span> en trois ans <span data-source="Note de synthèse"></span>.</p>',
     { a11y: 'Chaque pastille a un nom complet pour les lecteurs d\'écran.' }),
+  E('confidence-meter', 'État',
+    'Une petite barre indique, en mots et en longueur, à quel point une réponse est sûre.',
+    'Honnêteté, la machine admet ses doutes.',
+    '- `data-fx-value` (72) : valeur entre 0 et 100\n- `--fx-high`, `--fx-mid`, `--fx-low` : couleurs',
+    'Réponses d\'IA, prédictions, résultats d\'analyse.',
+    'Une valeur inventée : il faut une vraie mesure derrière.',
+    '<div data-fx="confidence-meter" data-fx-value="72"></div>',
+    '<div data-fx="confidence-meter" data-fx-value="72" style="width:190px;color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Rôle `meter`, et le niveau est écrit en toutes lettres.' }),
 ];
