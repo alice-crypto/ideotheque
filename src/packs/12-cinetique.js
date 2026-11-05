@@ -283,4 +283,15 @@
       });
     }
   });
+
+  // Le haut et le bas du mot glissent en sens contraire au défilement
+  FX.register('half-shift', {
+    scroll: function (el, info) { el.style.setProperty('--fx-shift', ((info.pass - .5) * U.num(el, 'fxShift', 60)).toFixed(1) + 'px'); },
+    setup: function (el) {
+      var t = el.textContent.trim();
+      el.setAttribute('aria-label', t);
+      el.innerHTML = '';
+      ['fx-h-a', 'fx-h-b'].forEach(function (c) { var s = U.make('span', c, el); s.textContent = t; s.setAttribute('aria-hidden', 'true'); });
+    }
+  });
 })(window.FX);
