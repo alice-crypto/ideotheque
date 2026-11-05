@@ -34,7 +34,7 @@ L'IA lit [`AI.md`](AI.md) et la fiche de l'effet, puis reproduit exactement le m
 
 ## Avec Claude
 
-Idéothèque existe en plugin pour Claude Code. Une fois installé, Claude connaît les <!-- total -->222<!-- /total --> effets : il lit leur fiche et les applique par leur nom, sans que vous ayez à lui donner `AI.md`.
+Idéothèque existe en plugin pour Claude Code. Une fois installé, Claude connaît les <!-- total -->223<!-- /total --> effets : il lit leur fiche et les applique par leur nom, sans que vous ayez à lui donner `AI.md`.
 
 ```
 /plugin install ideotheque --marketplace alice-crypto/ideotheque
@@ -89,11 +89,11 @@ Cinq marques fictives, chacune avec une landing page, un dashboard et un assista
 
 Les illustrations sont des SVG originaux (`exemples/img/`).
 
-## Les <!-- total -->222<!-- /total --> effets
+## Les <!-- total -->223<!-- /total --> effets
 
 <!-- effets:start -->
 - **Entrée (25) :** `curtain-soft`, `rise-stagger`, `blur-in`, `line-mask`, `pixel-dissolve`, `fade-up`, `slide-in`, `zoom-in-soft`, `flip-up`, `swing-in`, `iris-open`, `diagonal-wipe`, `split-reveal`, `block-reveal`, `stretch-in`, `skew-up`, `drop-bounce`, `pop-in`, `blinds-open`, `ink-spread`, `tile-cascade`, `scatter-gather`, `fold-down`, `lift-shadow`, `rule-draw`
-- **Texte (42) :** `text-split`, `text-scramble`, `typewriter`, `word-rise`, `wave-text`, `glitch-text`, `gradient-flow`, `highlight-sweep`, `strike-draw`, `track-in`, `proximity-weight`, `word-rotator`, `odometer`, `stroke-fill`, `long-shadow`, `letter-focus`, `slice-hover`, `scroll-ink`, `char-flip`, `neon-flicker`, `wavy-underline`, `image-text`, `velocity-stretch`, `edge-label`, `stream-text`, `text-shimmer`, `weight-wave`, `letter-rain`, `headline-collapse`, `cursor-repel`, `scroll-weight`, `letter-accordion`, `spot-fill`, `letter-orbit`, `mirror-type`, `echo-stack`, `slot-letters`, `dot-matrix`, `ascii-decay`, `hop-row`, `half-shift`, `hover-marquee`
+- **Texte (43) :** `text-split`, `text-scramble`, `typewriter`, `word-rise`, `wave-text`, `glitch-text`, `gradient-flow`, `highlight-sweep`, `strike-draw`, `track-in`, `proximity-weight`, `word-rotator`, `odometer`, `stroke-fill`, `long-shadow`, `letter-focus`, `slice-hover`, `scroll-ink`, `char-flip`, `neon-flicker`, `wavy-underline`, `image-text`, `velocity-stretch`, `edge-label`, `stream-text`, `text-shimmer`, `weight-wave`, `letter-rain`, `headline-collapse`, `cursor-repel`, `scroll-weight`, `letter-accordion`, `spot-fill`, `letter-orbit`, `mirror-type`, `echo-stack`, `slot-letters`, `dot-matrix`, `ascii-decay`, `hop-row`, `half-shift`, `hover-marquee`, `cube-words`
 - **Présentation (20) :** `count-up`, `pill-grow`, `preloader`, `marquee`, `band-loader`, `bars-grow`, `marquee-vertical`, `timeline`, `spotlight-focus`, `logo-cycle`, `quote-rotator`, `circle-text`, `split-flap`, `line-chart`, `scroll-cue`, `peel`, `holo-card`, `donut`, `expand-panels`, `prompt-box`
 - **Micro-interaction (28) :** `underline-draw`, `roll-text`, `magnetic`, `tilt-card`, `corner-marks`, `cursor`, `ripple-click`, `fill-up`, `border-trace`, `shine-sweep`, `spotlight-card`, `press-squash`, `icon-nudge`, `lift-hover`, `jelly`, `swap-text`, `conic-border`, `underline-fill`, `zoom-frame`, `tooltip-pop`, `click-burst`, `switch-morph`, `shake`, `fan-out`, `depth-hover`, `blob-morph`, `pulse-ring`, `invert-sweep`
 - **Défilement (19) :** `scroll-expand`, `parallax`, `progress-bar`, `stack-cards`, `pin-horizontal`, `scroll-rotate`, `scale-on-scroll`, `fade-exit`, `hero-shrink`, `bg-shift`, `scroll-unveil`, `scroll-count`, `path-scroll`, `perspective-scroll`, `skew-scroll`, `split-columns`, `blur-exit`, `scatter-scroll`, `fill-scroll`

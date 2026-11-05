@@ -3415,6 +3415,29 @@
       el.style.setProperty('--fx-t', (w / U.num(el, 'fxSpeed', 80)).toFixed(2) + 's');
     }
   });
+
+  // Les mots sont posés sur un cube qui tourne d'un quart de tour
+  FX.register('cube-words', {
+    setup: function (el) {
+      var words = (el.dataset.fxWords || el.textContent).split('|').map(function (s) { return s.trim(); }).slice(0, 4);
+      el.setAttribute('aria-label', words.join(', '));
+      el.textContent = '';
+      var cube = U.make('span', 'fx-cube', el);
+      cube.setAttribute('aria-hidden', 'true');
+      words.forEach(function (w, i) { var f = U.make('span', 'fx-face', cube); f.textContent = w; f.style.setProperty('--fx-i', i); });
+      el._fxCube = { cube: cube, n: 0, t: 0, count: words.length };
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      var s = el._fxCube;
+      s.t += dt * 1000;
+      if (s.t < U.num(el, 'fxHold', 1800)) return;
+      s.t = 0;
+      s.n++;
+      if (s.n % 4 >= s.count) s.n += 4 - s.n % 4;
+      s.cube.style.setProperty('--fx-turn', s.n);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

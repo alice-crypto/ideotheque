@@ -143,4 +143,13 @@ module.exports = [
     'Les textes qu\'il faut lire entièrement sans survol s\'ils sont coupés.',
     '<a href="#" data-fx="hover-marquee">Tous les projets</a>',
     '<a class="demo-roll" href="#" data-fx="hover-marquee" style="color:var(--ink);width:220px">Tous les projets</a>'),
+  E('cube-words', 'Texte',
+    'Plusieurs mots sont posés sur les faces d\'un cube, qui tourne d\'un quart de tour pour passer au suivant.',
+    'Solide, mécanique, un présentoir qui pivote.',
+    '- `data-fx-words` : les mots séparés par `|` (4 au plus)\n- `data-fx-hold` (1800) : pause sur chaque mot, en millisecondes',
+    'Une accroche dont un mot change : « pour les équipes, les artistes… ».',
+    'Les mots de largeur très différente sans réserver la place nécessaire.',
+    '<span data-fx="cube-words" data-fx-words="Créer|Tester|Publier"></span>',
+    '<p class="demo-title" data-fx="cube-words" data-fx-words="Créer|Tester|Publier" style="width:170px;font-size:36px;text-align:left"></p>',
+    { a11y: 'Tous les mots sont dans `aria-label`. Avec `prefers-reduced-motion: reduce`, le premier mot reste affiché.' }),
 ];

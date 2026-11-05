@@ -3209,6 +3209,24 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="hover-marquee"]:focus-visible .fx-hm-track { animation-play-state: running; }
 @keyframes fx-hm { to { transform: translateX(calc(var(--fx-w) * -1)); } }
 
+/* cube-words : des mots sur un cube */
+[data-fx="cube-words"] { display: inline-block; height: 1.1em; perspective: 600px; vertical-align: bottom; }
+[data-fx="cube-words"] .fx-cube {
+  display: block;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: translateZ(-.55em) rotateX(calc(var(--fx-turn, 0) * 90deg));
+  transition: transform .8s var(--fx-ease-io);
+}
+[data-fx="cube-words"] .fx-face {
+  position: absolute;
+  left: 0;
+  white-space: nowrap;
+  line-height: 1.1;
+  backface-visibility: hidden;
+  transform: rotateX(calc(var(--fx-i) * -90deg)) translateZ(.55em);
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
