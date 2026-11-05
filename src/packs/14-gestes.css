@@ -287,3 +287,14 @@
 [data-fx="drag-reorder"] { touch-action: none; }
 [data-fx="drag-reorder"] > * { cursor: grab; user-select: none; transition: transform .2s var(--fx-ease-out), box-shadow .2s; }
 [data-fx="drag-reorder"] > .fx-drag { position: relative; z-index: 2; cursor: grabbing; transition: box-shadow .2s; box-shadow: 0 12px 30px rgba(0, 0, 0, .35); }
+
+/* swipe-card : une pile de cartes */
+[data-fx="swipe-card"] { position: relative; touch-action: pan-y; cursor: grab; }
+[data-fx="swipe-card"] > * {
+  position: absolute;
+  inset: 0;
+  translate: 0 calc(var(--fx-pos, 0) * 10px);
+  scale: calc(1 - var(--fx-pos, 0) * .05);
+  transition: translate .3s var(--fx-ease-out), scale .3s var(--fx-ease-out);
+}
+[data-fx="swipe-card"].fx-fly > :first-child { transition: transform .3s var(--fx-ease-out), opacity .3s; }
