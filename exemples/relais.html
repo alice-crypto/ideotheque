@@ -23,6 +23,10 @@
     .rmap { background: var(--w); border: var(--rule); color: var(--k); box-shadow: 12px 12px 0 var(--r); }
     .rmap svg { display: block; width: 100%; height: auto; }
     .rmap .streets path { stroke: var(--k); stroke-width: 1; fill: none; stroke-dasharray: none; }
+    .rnums { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .rnums > div { padding: clamp(22px, 3.4vw, 44px) 20px; border-right: var(--rule); }
+    .rnums > div:last-child { border-right: 0; }
+    .rnums p { font-weight: 600; margin-top: 8px; }
     /*@css*/
   </style>
 </head>
