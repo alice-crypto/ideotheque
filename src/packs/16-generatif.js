@@ -692,4 +692,34 @@
       });
     }
   });
+
+  // Un soleil en pointillés, comme une gravure qui respire
+  FX.register('stipple-sun', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxP = [];
+      for (var i = 0; i < U.num(el, 'fxCount', 1500); i++) {
+        var a = Math.random() * 6.283, r = Math.pow(Math.random(), .6);
+        el._fxP.push({ a: a, r: r * 1.3, s: Math.random(), o: U.rand(0, 6) });
+      }
+    },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d'), R = Math.min(w, h) * .36, T = t * .001;
+      c.clearRect(0, 0, w, h);
+      c.fillStyle = getComputedStyle(cv).color;
+      el._fxP.forEach(function (p) {
+        // Plein au centre, puis des points de plus en plus rares
+        if (p.r > 1 && p.s > 1 - (p.r - 1) * 2.8 + .1) return;
+        var rr = p.r + Math.sin(T + p.o) * .012;
+        c.fillRect(w / 2 + Math.cos(p.a) * rr * R, h / 2 + Math.sin(p.a) * rr * R, 1.3, 1.3);
+      });
+    }
+  });
 })(window.FX);
