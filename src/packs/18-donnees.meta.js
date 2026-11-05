@@ -119,4 +119,13 @@ module.exports = [
     '<div data-fx="logo-wall-flip" data-fx-logos="Atlas|Halo"></div>',
     '<div data-fx="logo-wall-flip" style="width:225px;color:var(--ink);font-size:13px"></div>',
     { a11y: 'Tous les noms sont dans `aria-label`.' }),
+  E('stat-reveal-split', 'Présentation',
+    'Un très grand chiffre monte en comptant, puis son libellé se dévoile juste en dessous.',
+    'Affirmé, une preuve qu\'on annonce avec calme.',
+    '- `data-fx-value` (87), `data-fx-suffix` (%), `data-fx-label`\n- `--fx-size` (64px)',
+    'Résultats, rapports annuels, preuves chiffrées.',
+    'Un chiffre non vérifié : l\'effet lui donne un grand poids.',
+    '<div data-fx="stat-reveal-split" data-fx-value="87" data-fx-label="de clients fidèles"></div>',
+    '<div data-fx="stat-reveal-split" data-fx-value="87" data-fx-label="de clients fidèles" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le texte complet est dans `aria-label`.' }),
 ];
