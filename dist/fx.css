@@ -3734,6 +3734,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transition: --fx-gx .2s;
 }
 
+/* jelly-list : un dock réactif */
+[data-fx="jelly-list"] { display: inline-flex; align-items: flex-end; gap: var(--fx-gap, 8px); }
+[data-fx="jelly-list"] > * {
+  transform: scale(calc(1 + var(--fx-k, 0) * var(--fx-zoom, .6)));
+  transform-origin: bottom;
+  margin-inline: calc(var(--fx-k, 0) * 12px);
+  transition: transform .18s var(--fx-ease-out), margin .18s var(--fx-ease-out);
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

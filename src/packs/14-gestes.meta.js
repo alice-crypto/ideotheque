@@ -124,4 +124,12 @@ module.exports = [
     'Un fond uni : on ne voit pas le verre. Vérifiez aussi le contraste du texte.',
     '<div data-fx="liquid-glass">…</div>',
     '<div style="position:absolute;inset:0;background:url(assets/dune.svg) center/cover;display:grid;place-items:center"><div data-fx="liquid-glass" style="width:170px;padding:20px;color:#fff;font-weight:600">Verre</div></div>'),
+  E('jelly-list', 'Micro-interaction',
+    'Les icônes d\'une rangée grossissent à l\'approche du curseur et poussent leurs voisines, comme un dock.',
+    'Douceur d\'un système d\'exploitation, précision et rebond.',
+    '- `data-fx-radius` (110) : rayon d\'action\n- `--fx-zoom` (.6) : agrandissement maximal',
+    'Barres d\'outils, rangées d\'icônes, réseaux sociaux.',
+    'Une navigation principale sur mobile : l\'effet ne s\'y voit pas.',
+    '<nav data-fx="jelly-list"><a>…</a><a>…</a></nav>',
+    '<div data-fx="jelly-list"><div class="demo-box" style="width:36px;height:36px"></div><div class="demo-box alt" style="width:36px;height:36px"></div><div class="demo-box ink" style="width:36px;height:36px"></div><div class="demo-box" style="width:36px;height:36px"></div><div class="demo-box alt" style="width:36px;height:36px"></div></div>'),
 ];
