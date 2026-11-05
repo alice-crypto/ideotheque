@@ -3149,6 +3149,12 @@
       })(0);
     }
   });
+
+  // Le titre se resserre pendant qu'on défile vers lui
+  FX.register('headline-collapse', {
+    scroll: true,
+    setup: function (el) { el.style.setProperty('--fx-gap', U.num(el, 'fxGap', .6) + 'em'); }
+  });
 })(window.FX);
 
 window.FX._boot();

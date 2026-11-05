@@ -3097,6 +3097,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="letter-rain"] .fx-char { display: inline-block; opacity: 0; will-change: transform; }
 .fx-in[data-fx="letter-rain"] .fx-char { will-change: auto; }
 
+/* headline-collapse : les lettres se rapprochent au défilement */
+[data-fx="headline-collapse"] {
+  white-space: nowrap;
+  letter-spacing: calc(var(--fx-gap, .6em) * (1 - var(--fx-p, 0)) - .02em);
+  opacity: calc(.2 + var(--fx-p, 0) * .8);
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

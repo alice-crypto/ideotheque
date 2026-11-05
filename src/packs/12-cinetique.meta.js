@@ -21,4 +21,13 @@ module.exports = [
     '<h1 data-fx="letter-rain">Gravité</h1>',
     '<p class="demo-title" data-fx="letter-rain">Gravité</p>',
     { trigger: 'Rejouer' }),
+  E('headline-collapse', 'Texte',
+    'Un titre très espacé se resserre peu à peu au défilement jusqu\'à former un mot compact.',
+    'Mise au point progressive, le mot prend corps.',
+    '- `data-fx-gap` (.6) : écart de départ, en em',
+    'Titres d\'une seule ligne en tête de section.',
+    'Les titres longs : à l\'écart maximal, ils dépassent de l\'écran.',
+    '<h2 data-fx="headline-collapse">Ensemble</h2>',
+    '<p class="demo-title" data-fx="headline-collapse" style="font-size:30px">Ensemble</p>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le titre garde sa position selon le défilement mais rien n\'est animé en boucle.' }),
 ];

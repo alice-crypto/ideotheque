@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->208<!-- /total --> effets.
+La bibliothèque contient <!-- total -->209<!-- /total --> effets.
 
 ## Règles
 
@@ -73,6 +73,7 @@ La bibliothèque contient <!-- total -->208<!-- /total --> effets.
 | `text-shimmer` | Texte | Un reflet traverse le texte en boucle, pour dire « en train de réfléchir » |
 | `weight-wave` | Texte | Une vague de graisse parcourt le titre, de la lettre la plus fine à la plus épaisse |
 | `letter-rain` | Texte | Les lettres tombent du haut de l'écran et rebondissent sur la ligne de base |
+| `headline-collapse` | Texte | Un titre très espacé se resserre peu à peu au défilement jusqu'à former un mot compact |
 | `count-up` | Présentation | Mettre en scène un chiffre clé en le faisant défiler de 0 jusqu'à sa valeur |
 | `pill-grow` | Présentation | Une gélule s'ouvre au milieu d'un titre, puis une pastille glisse à l'intérieur, comme un interrupteur qu'on active |
 | `preloader` | Présentation | Un écran de chargement chiffré de 0 à 100 %, avec une barre de progression, qui se lève vers le haut pour révéler la page |
