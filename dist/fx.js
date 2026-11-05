@@ -7489,6 +7489,25 @@
       U.onResize(r);
     }
   });
+
+  // Un petit bandeau indique le temps de lecture restant
+  FX.register('reading-time-bar', {
+    setup: function (el) {
+      var target = document.querySelector(el.dataset.fxTarget || 'article');
+      var words = target ? target.textContent.trim().split(/\s+/).length : U.num(el, 'fxWords', 1200);
+      el._fxMin = Math.max(1, Math.ceil(words / U.num(el, 'fxWpm', 220)));
+      el._fxT = target;
+      el.setAttribute('role', 'status');
+      el.innerHTML = '<span></span><i></i>';
+    },
+    scroll: function (el, info) {
+      var p = info.pass;
+      if (el._fxT) { var r = el._fxT.getBoundingClientRect(); p = U.clamp(-r.top / Math.max(1, r.height - info.vh), 0, 1); }
+      var m = Math.ceil(el._fxMin * (1 - p));
+      if (m !== el._fxLast) { el._fxLast = m; el.firstChild.textContent = m > 0 ? m + ' min restante' + (m > 1 ? 's' : '') : 'Lecture terminée'; }
+      el.style.setProperty('--fx-p', p.toFixed(3));
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

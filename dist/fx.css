@@ -5094,6 +5094,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="pull-quote-rise"] .fx-line > span { display: block; transform: translateY(105%); transition: transform .8s var(--fx-ease-out) calc(var(--fx-i) * 90ms + .25s); }
 .fx-in[data-fx="pull-quote-rise"] .fx-line > span { transform: none; }
 
+/* reading-time-bar : le temps de lecture */
+[data-fx="reading-time-bar"] { display: grid; gap: 4px; font-size: 12px; }
+[data-fx="reading-time-bar"] i { display: block; height: 2px; background: rgba(128, 128, 128, .28); position: relative; }
+[data-fx="reading-time-bar"] i::after { content: ""; position: absolute; inset: 0; background: var(--fx-accent); transform-origin: left; transform: scaleX(var(--fx-p, 0)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

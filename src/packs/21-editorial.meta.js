@@ -30,4 +30,13 @@ module.exports = [
     '<blockquote data-fx="pull-quote-rise">Faire simple prend du temps.</blockquote>',
     '<p class="demo-para" data-fx="pull-quote-rise" style="color:var(--ink)">Faire simple prend beaucoup de temps.</p>',
     { trigger: 'Rejouer' }),
+  E('reading-time-bar', 'Texte',
+    'Un petit bandeau indique le temps de lecture restant et avance avec la lecture.',
+    'Respectueux, on sait à quoi s\'engager.',
+    '- `data-fx-target` (article), `data-fx-wpm` (220) : mots par minute',
+    'Articles, guides, documentation.',
+    'Les textes de moins d\'une minute.',
+    '<div data-fx="reading-time-bar" data-fx-target="article"></div>',
+    '<div data-fx="reading-time-bar" data-fx-target=".aucun-article" style="width:200px;color:var(--ink)"></div>',
+    { a11y: 'Rôle `status` ; le texte ne change que chaque minute, pour ne pas bavarder.' }),
 ];
