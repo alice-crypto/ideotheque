@@ -7,3 +7,8 @@
   transform: scaleY(calc(1 + var(--fx-w, .5) * .08));
   transform-origin: bottom;
 }
+
+/* letter-rain : pluie de lettres avec rebond */
+[data-fx="letter-rain"] { overflow: visible; }
+[data-fx="letter-rain"] .fx-char { display: inline-block; opacity: 0; will-change: transform; }
+.fx-in[data-fx="letter-rain"] .fx-char { will-change: auto; }
