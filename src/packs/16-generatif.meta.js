@@ -28,4 +28,12 @@ module.exports = [
     'Les pages déjà denses : le motif attire l\'œil.',
     '<section data-fx="voronoi-cells" style="--fx-cell:#0047ff">…</section>',
     '<div data-fx="voronoi-cells" style="width:230px;height:170px"></div>'),
+  E('contour-lines', 'Ambiance',
+    'Des courbes de niveau se déplacent doucement, comme une carte de relief qui respire.',
+    'Randonnée, cartographie, précision scientifique.',
+    '- `--fx-line` : couleur des lignes',
+    'Sites de voyage, de plein air, d\'analyse de données.',
+    'Sous un petit texte sans fond.',
+    '<section data-fx="contour-lines">…</section>',
+    '<div data-fx="contour-lines" style="width:230px;height:170px;color:var(--ink)"></div>'),
 ];
