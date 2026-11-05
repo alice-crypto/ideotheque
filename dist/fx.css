@@ -3104,6 +3104,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   opacity: calc(.2 + var(--fx-p, 0) * .8);
 }
 
+/* cursor-repel : le texte s'écarte du curseur */
+[data-fx="cursor-repel"] { display: inline-block; padding: .4em; margin: -.4em; }
+[data-fx="cursor-repel"] .fx-char { display: inline-block; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

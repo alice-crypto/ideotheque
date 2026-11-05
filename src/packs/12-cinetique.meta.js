@@ -30,4 +30,12 @@ module.exports = [
     '<h2 data-fx="headline-collapse">Ensemble</h2>',
     '<p class="demo-title" data-fx="headline-collapse" style="font-size:30px">Ensemble</p>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le titre garde sa position selon le défilement mais rien n\'est animé en boucle.' }),
+  E('cursor-repel', 'Texte',
+    'Les lettres s\'écartent du curseur comme des aimants de même pôle, puis reviennent en place.',
+    'Tactile, surprenant, on a envie de jouer avec le titre.',
+    '- `data-fx-radius` (110) : rayon d\'action en pixels\n- `data-fx-force` (34) : déplacement maximal en pixels',
+    'Grands titres de portfolios, écrans d\'accueil.',
+    'Les écrans tactiles comme seul support : sans curseur, l\'effet ne se voit pas.',
+    '<h1 data-fx="cursor-repel">Approchez</h1>',
+    '<p class="demo-title" data-fx="cursor-repel">Approchez</p>'),
 ];
