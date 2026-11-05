@@ -93,4 +93,13 @@ module.exports = [
     'Des grilles sans espace entre les images.',
     '<div data-fx="grid-dim-hover"><img…><img…></div>',
     '<div data-fx="grid-dim-hover" style="display:flex;gap:6px"><div class="demo-box" style="width:60px;height:100px"></div><div class="demo-box alt" style="width:60px;height:100px"></div><div class="demo-box ink" style="width:60px;height:100px"></div></div>'),
+  E('film-scrub', 'Image',
+    'On parcourt une séquence d\'images en déplaçant le curseur, comme une pellicule qu\'on fait glisser.',
+    'Montage à la table, on trouve le bon instant.',
+    'Mettez toutes les images de la séquence dans l\'élément.',
+    'Rotation d\'un produit, étapes d\'une construction.',
+    'Des images lourdes : toutes sont chargées.',
+    '<figure data-fx="film-scrub"><img…><img…><img…></figure>',
+    '<div class="demo-media" data-fx="film-scrub"><img src="assets/dune.svg" alt=""><img src="assets/city.svg" alt=""><img src="assets/bloom.svg" alt=""><img src="assets/prism.svg" alt=""></div>',
+    { a11y: 'Donnez un texte alternatif à la première image et laissez les autres vides.' }),
 ];
