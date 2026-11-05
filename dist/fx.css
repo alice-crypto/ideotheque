@@ -5251,6 +5251,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 /* title-fade-pass : au centre de l'attention */
 [data-fx="title-fade-pass"] { opacity: var(--fx-a, 1); filter: blur(var(--fx-b, 0px)); transform: translateY(var(--fx-y, 0)); }
 
+/* hover-zoom-pan : voir de plus près */
+[data-fx="hover-zoom-pan"] { overflow: hidden; cursor: zoom-in; }
+[data-fx="hover-zoom-pan"] > * { display: block; width: 100%; height: 100%; object-fit: cover; transform-origin: var(--fx-ox, 50%) var(--fx-oy, 50%); transition: transform .35s var(--fx-ease-out); }
+[data-fx="hover-zoom-pan"]:hover > * { transform: scale(var(--fx-zoom, 2)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

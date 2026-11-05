@@ -7974,6 +7974,17 @@
       el.style.setProperty('--fx-y', ((.5 - info.pass) * 40).toFixed(1) + 'px');
     }
   });
+
+  // L'image s'agrandit et suit le curseur pour voir les détails
+  FX.register('hover-zoom-pan', {
+    setup: function (el) {
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--fx-ox', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+        el.style.setProperty('--fx-oy', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

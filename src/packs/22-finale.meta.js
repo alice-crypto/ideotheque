@@ -68,4 +68,12 @@ module.exports = [
     'Une information à retrouver facilement.',
     '<h2 data-fx="title-fade-pass">Une seule idée</h2>',
     '<p class="demo-title" data-fx="title-fade-pass" style="font-size:28px">Une seule idée</p>'),
+  E('hover-zoom-pan', 'Image',
+    'Au survol, l\'image s\'agrandit et suit le curseur pour montrer les détails.',
+    'Loupe de joaillier, on inspecte le produit.',
+    '- `--fx-zoom` (2) : agrandissement',
+    'Fiches produit, cartes, œuvres.',
+    'Une image de faible résolution.',
+    '<figure data-fx="hover-zoom-pan"><img src="produit.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="hover-zoom-pan"><img src="assets/bloom.svg" alt=""></div>'),
 ];
