@@ -142,3 +142,6 @@
   backface-visibility: hidden;
   transform: rotateX(calc(var(--fx-i) * -90deg)) translateZ(.55em);
 }
+
+/* case-shuffle : majuscules et minuscules se mélangent */
+[data-fx="case-shuffle"] { display: inline-block; white-space: nowrap; font-feature-settings: "tnum"; }
