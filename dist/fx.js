@@ -8005,6 +8005,20 @@
       });
     }
   });
+
+  // Dans une galerie, tout s'estompe sauf l'image survolée
+  FX.register('grid-dim-hover', {
+    setup: function (el) {
+      Array.prototype.forEach.call(el.children, function (c) {
+        var on = function () { el.classList.add('fx-on'); Array.prototype.forEach.call(el.children, function (o) { o.classList.toggle('fx-cur', o === c); }); };
+        c.addEventListener('pointerenter', on);
+        c.addEventListener('focusin', on);
+      });
+      var off = function () { el.classList.remove('fx-on'); };
+      el.addEventListener('pointerleave', off);
+      el.addEventListener('focusout', function (e) { if (!el.contains(e.relatedTarget)) off(); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

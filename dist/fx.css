@@ -5262,6 +5262,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="hotspot-image"] .fx-hs-t { position: absolute; bottom: calc(100% + 8px); left: 50%; width: max-content; max-width: 150px; padding: .3em .6em; border-radius: 6px; background: #111; color: #fff; font-size: 12px; opacity: 0; pointer-events: none; transform: translate(-50%, 4px); transition: opacity .18s, transform .2s var(--fx-ease-out); }
 [data-fx="hotspot-image"] [aria-expanded="true"] .fx-hs-t { opacity: 1; transform: translate(-50%, 0); }
 
+/* grid-dim-hover : se concentrer sur une image */
+[data-fx="grid-dim-hover"] > * { transition: opacity .35s, filter .35s, transform .5s var(--fx-ease-out); }
+[data-fx="grid-dim-hover"].fx-on > :not(.fx-cur) { opacity: .35; filter: grayscale(.8); }
+[data-fx="grid-dim-hover"].fx-on > .fx-cur { transform: scale(1.03); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -85,4 +85,12 @@ module.exports = [
     '<figure data-fx="hotspot-image"><img…><button data-x="30" data-y="60" data-text="Semelle"></button></figure>',
     '<div class="demo-media" data-fx="hotspot-image"><img src="assets/city.svg" alt=""><button data-x="30" data-y="60" data-text="Le vieux quartier"></button><button data-x="72" data-y="35" data-text="La tour"></button></div>',
     { a11y: 'Les points sont de vrais boutons, avec `aria-expanded` et un nom.' }),
+  E('grid-dim-hover', 'Image',
+    'Dans une galerie, tout s\'estompe sauf l\'image qu\'on survole.',
+    'Le regard se concentre, sans cliquer.',
+    'Aucun réglage.',
+    'Galeries, équipes, grilles de projets.',
+    'Des grilles sans espace entre les images.',
+    '<div data-fx="grid-dim-hover"><img…><img…></div>',
+    '<div data-fx="grid-dim-hover" style="display:flex;gap:6px"><div class="demo-box" style="width:60px;height:100px"></div><div class="demo-box alt" style="width:60px;height:100px"></div><div class="demo-box ink" style="width:60px;height:100px"></div></div>'),
 ];
