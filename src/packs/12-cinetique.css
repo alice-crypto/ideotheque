@@ -145,3 +145,9 @@
 
 /* case-shuffle : majuscules et minuscules se mélangent */
 [data-fx="case-shuffle"] { display: inline-block; white-space: nowrap; font-feature-settings: "tnum"; }
+
+/* breathe-track : le texte respire */
+[data-fx="breathe-track"] {
+  letter-spacing: calc(.02em + var(--fx-b, 0) * var(--fx-air, .16em));
+  opacity: calc(.72 + var(--fx-b, 0) * .28);
+}
