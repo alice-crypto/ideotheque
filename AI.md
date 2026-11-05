@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->300<!-- /total --> effets.
+La bibliothèque contient <!-- total -->301<!-- /total --> effets.
 
 ## Règles
 
@@ -248,6 +248,7 @@ La bibliothèque contient <!-- total -->300<!-- /total --> effets.
 | `clock-wipe` | Transition | L'écran est balayé par un secteur qui tourne, comme l'aiguille d'une horloge |
 | `ink-drops` | Transition | Plusieurs gouttes d'encre apparaissent et grandissent jusqu'à recouvrir l'écran |
 | `stair-bars` | Transition | Des colonnes montent l'une après l'autre en escalier, puis repartent vers le haut |
+| `wave-cover` | Transition | Une vague liquide monte du bas, recouvre l'écran, puis s'en va vers le haut |
 | `svg-draw` | Image | Les tracés d'une illustration SVG se dessinent l'un après l'autre, comme à la main |
 | `ken-burns` | Image | L'image avance et glisse très lentement en boucle, comme dans un documentaire |
 | `color-reveal` | Image | L'image en noir et blanc retrouve ses couleurs (et grossit à peine) au survol |

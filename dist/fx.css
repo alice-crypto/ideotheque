@@ -3975,6 +3975,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-stair-bars.fx-cover i { transform: none; }
 .fx-tr-stair-bars.fx-uncover i { transform: translateY(-100%); }
 
+/* wave-cover : une marée sur l'écran */
+.fx-tr-wave-cover i { inset: 0; }
+.fx-tr-wave-cover path { fill: var(--fx-tr-color, var(--fx-accent)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

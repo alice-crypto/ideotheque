@@ -48,4 +48,13 @@ module.exports = [
     '<a href="/agenda" data-fx="stair-bars">Agenda</a>',
     '<button class="demo-ghost" onclick="FX.play(\'stair-bars\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('wave-cover', 'Transition',
+    'Une vague liquide monte du bas, recouvre l\'écran, puis s\'en va vers le haut.',
+    'Marée, souplesse, un geste liquide.',
+    '- `--fx-tr-color` : couleur',
+    'Marques de boisson, de bien-être, sites joyeux.',
+    'Les interfaces de travail.',
+    '<a href="/menu" data-fx="wave-cover">Menu</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'wave-cover\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];
