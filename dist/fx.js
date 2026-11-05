@@ -7217,6 +7217,17 @@
       });
     }
   });
+
+  // Des bandes s'ouvrent comme un obturateur sur l'élément
+  FX.register('shutter-text', {
+    entrance: true,
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var b = U.make('span', 'fx-sht', el), n = U.num(el, 'fxBands', 6);
+      b.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) U.make('i', '', b).style.setProperty('--fx-i', i);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

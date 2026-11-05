@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="card-deal">…</div>',
     '<div data-fx="card-deal" style="display:flex;gap:6px"><div class="demo-box" style="width:60px;height:86px"></div><div class="demo-box alt" style="width:60px;height:86px"></div><div class="demo-box ink" style="width:60px;height:86px"></div></div>',
     { trigger: 'Rejouer' }),
+  E('shutter-text', 'Entrée',
+    'Des bandes verticales couvrent l\'élément et se replient une à une, comme un obturateur.',
+    'Déclenchement photo, net et rythmé.',
+    '- `data-fx-bands` (6), `--fx-shutter`',
+    'Titres, images, chiffres clés.',
+    'Une couleur proche du fond : l\'effet ne se voit plus.',
+    '<h2 data-fx="shutter-text">Déclic</h2>',
+    '<p class="demo-title" data-fx="shutter-text">Déclic</p>',
+    { trigger: 'Rejouer' }),
 ];
