@@ -65,4 +65,13 @@ module.exports = [
     'Plus de 8 titres : ils occupent trop d\'écran.',
     '<article data-fx="sticky-stack-nav"><h2>Un</h2><p>…</p><h2>Deux</h2><p>…</p></article>',
     '<div data-fx="sticky-stack-nav" class="demo-scroll" style="color:var(--ink);font-size:13px;--fx-head-bg:#1a1a20"><h3>Un</h3><p style="padding:10px;height:130px;margin:0">Faites défiler ce cadre.</p><h3>Deux</h3><p style="padding:10px;height:130px;margin:0">Les titres s\'empilent.</p><h3>Trois</h3><p style="padding:10px;height:130px;margin:0">Et restent à portée.</p></div>'),
+  E('page-peek', 'Navigation',
+    'Un panneau dépasse du bas de l\'écran : on le tire vers le haut, il s\'arrête à mi-hauteur ou en haut.',
+    'Geste d\'application mobile, naturel et précis.',
+    '- `data-fx-peek` (56) : hauteur visible au repos\n- `--fx-h` (100%) : hauteur totale\n- `--fx-peek-bg` : fond',
+    'Détails sur une carte, lecteur audio, filtres sur mobile.',
+    'Une page sans image ou carte derrière le panneau.',
+    '<aside data-fx="page-peek"><button>Détails</button><div>…</div></aside>',
+    '<div style="position:absolute;inset:0;overflow:hidden;background:url(assets/city.svg) center/cover"><aside data-fx="page-peek" style="color:#fff;--fx-h:90%"><button>Détails</button><div style="padding:0 14px;font-size:13px">Tirez la poignée.</div></aside></div>',
+    { a11y: 'La poignée est un bouton activable au clavier, avec `aria-expanded`.' }),
 ];

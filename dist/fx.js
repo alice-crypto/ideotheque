@@ -5998,6 +5998,33 @@
       U.onResize(layout);
     }
   });
+
+  // Un panneau qu'on tire vers le haut depuis le bas de l'écran
+  FX.register('page-peek', {
+    setup: function (el) {
+      var handle = el.querySelector('button') || el.firstElementChild, startY = 0, base = 0, drag = false, stops = [0, .5, 1], cur = 0;
+      var H = function () { return el.offsetHeight - U.num(el, 'fxPeek', 56); };
+      var go = function (i) {
+        cur = i;
+        el.style.setProperty('--fx-pos', (H() * (1 - stops[i])) + 'px');
+        if (handle) handle.setAttribute('aria-expanded', i > 0);
+      };
+      go(0);
+      if (!handle) return;
+      handle.addEventListener('pointerdown', function (e) { drag = true; startY = e.clientY; base = H() * (1 - stops[cur]); el.classList.add('fx-drag'); if (e.isTrusted) handle.setPointerCapture(e.pointerId); });
+      handle.addEventListener('pointermove', function (e) { if (drag) el.style.setProperty('--fx-pos', U.clamp(base + e.clientY - startY, 0, H()) + 'px'); });
+      handle.addEventListener('pointerup', function (e) {
+        if (!drag) return;
+        drag = false; el.classList.remove('fx-drag');
+        var moved = Math.abs(e.clientY - startY) > 6;
+        if (!moved) return go((cur + 1) % stops.length);
+        var q = 1 - parseFloat(el.style.getPropertyValue('--fx-pos')) / H(), best = 0;
+        stops.forEach(function (s, i) { if (Math.abs(s - q) < Math.abs(stops[best] - q)) best = i; });
+        go(best);
+      });
+      handle.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go((cur + 1) % stops.length); } });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
