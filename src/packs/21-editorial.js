@@ -97,4 +97,27 @@
       el.style.setProperty('--fx-t', (track.scrollWidth / 2 / U.num(el, 'fxSpeed', 50)).toFixed(1) + 's');
     }
   });
+
+  // Une phrase bascule entre deux langues, lettre par lettre
+  FX.register('bilingual-toggle', {
+    setup: function (el) {
+      var a = el.textContent.trim(), b = el.dataset.fxOther || a, cur = a, lang = false;
+      el.setAttribute('aria-label', a);
+      var morph = function (to) {
+        var from = cur, n = Math.max(from.length, to.length);
+        U.tween(el, U.num(el, 'fxDuration', 650), function (p) {
+          var c = Math.floor(p * (n + 6)), s = '';
+          for (var i = 0; i < n; i++) {
+            if (i < c - 6) s += to.charAt(i);
+            else if (i < c) s += to.charAt(i) && to.charAt(i) !== ' ' ? U.GLYPHS.charAt(Math.floor(Math.random() * U.GLYPHS.length)) : ' ';
+            else s += from.charAt(i);
+          }
+          el.textContent = p >= 1 ? to : s;
+        }, function () { cur = to; el.textContent = to; el.setAttribute('aria-label', to); });
+      };
+      el._fxFlip = function () { lang = !lang; morph(lang ? b : a); };
+      el.addEventListener('click', el._fxFlip);
+    },
+    trigger: function (el) { el._fxFlip(); }
+  });
 })(window.FX);
