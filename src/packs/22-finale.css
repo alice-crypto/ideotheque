@@ -197,3 +197,8 @@
 [data-fx="bubble-pack"] { position: relative; height: var(--fx-h, 160px); font-size: 11px; }
 [data-fx="bubble-pack"] span { position: absolute; display: grid; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--fx-accent) calc(100% - var(--fx-i) * 13%), var(--fx-accent-2)); color: #111; transform: scale(0); transition: transform .6s var(--fx-ease-spring) calc(var(--fx-i) * 70ms); }
 .fx-in[data-fx="bubble-pack"] span { transform: none; }
+
+/* kanban-move : un tableau qui travaille */
+[data-fx="kanban-move"] { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; font-size: 11px; }
+[data-fx="kanban-move"] > * { display: flex; flex-direction: column; gap: 4px; min-height: var(--fx-h, 130px); padding: 5px; border-radius: 8px; background: rgba(128, 128, 128, .14); }
+[data-fx="kanban-move"] [data-card] { padding: .5em; border-radius: 5px; background: var(--fx-card, #2a2a30); color: #fff; }
