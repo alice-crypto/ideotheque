@@ -111,4 +111,15 @@
       })();
     }
   });
+
+  // Le squelette de chargement se fond dans le vrai contenu
+  FX.register('skeleton-morph', {
+    entrance: true,
+    setup: function (el) {
+      el.setAttribute('aria-busy', 'true');
+      el._fxDone = function () { el.classList.add('fx-ready'); el.setAttribute('aria-busy', 'false'); };
+    },
+    reset: function (el) { clearTimeout(el._fxTo); el.classList.remove('fx-ready'); el.setAttribute('aria-busy', 'true'); },
+    enter: function (el) { el._fxTo = setTimeout(el._fxDone, U.num(el, 'fxWait', 1500)); }
+  });
 })(window.FX);
