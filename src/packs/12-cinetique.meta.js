@@ -91,4 +91,13 @@ module.exports = [
     '<h1 data-fx="echo-stack">Écho</h1>',
     '<p class="demo-title" data-fx="echo-stack" style="margin-bottom:30px">Écho</p>',
     { a11y: 'Les copies sont masquées aux lecteurs d\'écran.' }),
+  E('slot-letters', 'Texte',
+    'Chaque lettre défile comme un rouleau de machine à sous, puis s\'arrête à son tour sur le bon signe.',
+    'Mécanique, ludique, un petit suspense.',
+    '- `data-fx-rolls` (8) : signes avant l\'arrêt\n- `--fx-speed` (900ms) : durée du premier rouleau',
+    'Noms de marque, chiffres clés, annonces.',
+    'Les textes longs : l\'effet devient une attente.',
+    '<h2 data-fx="slot-letters">JACKPOT</h2>',
+    '<p class="demo-mono" data-fx="slot-letters">JACKPOT</p>',
+    { trigger: 'Rejouer', a11y: 'Le texte final est dans `aria-label`, les rouleaux sont masqués aux lecteurs d\'écran.' }),
 ];

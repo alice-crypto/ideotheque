@@ -3284,6 +3284,26 @@
       el.style.setProperty('--fx-open', ((Math.sin(t * .0012) + 1) / 2).toFixed(3));
     }
   });
+
+  // Chaque lettre est un rouleau de machine à sous qui s'arrête à son tour
+  FX.register('slot-letters', {
+    entrance: true,
+    setup: function (el) {
+      var txt = el.textContent.trim(), rolls = U.num(el, 'fxRolls', 8);
+      el.setAttribute('aria-label', txt);
+      el.textContent = '';
+      Array.from(txt).forEach(function (ch, i) {
+        var box = U.make('span', 'fx-slot', el);
+        box.setAttribute('aria-hidden', 'true');
+        var col = U.make('span', 'fx-slot-col', box);
+        var s = '';
+        for (var k = 0; k < rolls; k++) s += U.GLYPHS.charAt(Math.floor(Math.random() * U.GLYPHS.length)) + '\n';
+        col.textContent = s + ch;
+        col.style.setProperty('--fx-rolls', rolls);
+        col.style.setProperty('--fx-i', i);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

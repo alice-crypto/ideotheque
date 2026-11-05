@@ -3170,6 +3170,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transform: translateY(calc(var(--fx-i) * var(--fx-open, .5) * var(--fx-step, .2em)));
 }
 
+/* slot-letters : des rouleaux qui s'arrêtent à la suite */
+[data-fx="slot-letters"] { display: inline-flex; }
+[data-fx="slot-letters"] .fx-slot { display: inline-block; height: 1.1em; line-height: 1.1; overflow: hidden; }
+[data-fx="slot-letters"] .fx-slot-col {
+  display: block;
+  white-space: pre;
+  text-align: center;
+  transition: transform calc(var(--fx-speed, 900ms) + var(--fx-i) * 90ms) var(--fx-ease-out);
+}
+.fx-in[data-fx="slot-letters"] .fx-slot-col { transform: translateY(calc(var(--fx-rolls) * -1.1em)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
