@@ -137,4 +137,13 @@ module.exports = [
     '<div style="position:relative"><div data-fx="cursor-menu-ring"><button>A</button><button>B</button></div></div>',
     '<div style="position:relative;width:230px;height:170px"><div data-fx="cursor-menu-ring" data-fx-demo="1"><button aria-label="Couper">✂</button><button aria-label="Copier">⧉</button><button aria-label="Coller">▤</button><button aria-label="Effacer">✕</button></div></div>',
     { trigger: 'Ouvrir', a11y: 'Navigation aux flèches, Échap pour fermer. Prévoyez aussi un accès aux mêmes actions ailleurs.' }),
+  E('stacked-sections-tabs', 'Navigation',
+    'Des sections empilées côte à côte, comme les onglets d\'un classeur : celle qu\'on ouvre prend la place.',
+    'Archives bien rangées, on feuillette le contenu.',
+    '- `--fx-tab` (38px) : largeur d\'un onglet\n- `--fx-h` (260px) : hauteur\n- `--fx-width` (220px) : largeur du contenu ouvert',
+    'Étapes, services, chapitres courts.',
+    'Plus de 5 sections, ou sur un écran très étroit.',
+    '<div data-fx="stacked-sections-tabs"><section><button>Un</button><div>…</div></section><section><button>Deux</button><div>…</div></section></div>',
+    '<div data-fx="stacked-sections-tabs" style="width:230px;--fx-h:150px;color:var(--ink);font-size:13px;--fx-width:190px"><section><button>Un</button><div>Premier chapitre.</div></section><section><button>Deux</button><div>Deuxième chapitre.</div></section><section><button>Trois</button><div>Troisième chapitre.</div></section></div>',
+    { a11y: 'Chaque onglet est un bouton avec `aria-expanded`.' }),
 ];
