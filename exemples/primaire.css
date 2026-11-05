@@ -58,4 +58,6 @@ img, svg { display: block; max-width: 100%; }
   cursor: pointer;
   transition: transform .18s var(--fx-ease-out), box-shadow .18s var(--fx-ease-out);
 }
+.pbtn:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--y); }
+.pbtn:active { transform: none; box-shadow: none; }
 /*@css*/
