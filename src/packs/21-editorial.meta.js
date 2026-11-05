@@ -161,4 +161,13 @@ module.exports = [
     '<label data-fx="range-bubble" data-fx-unit=" €"><input type="range"></label>',
     '<label data-fx="range-bubble" data-fx-unit=" €" style="width:215px"><input type="range" min="0" max="500" value="180" aria-label="Budget"></label>',
     { a11y: 'Curseur natif, utilisable au clavier.' }),
+  E('rich-tooltip-follow', 'Micro-interaction',
+    'Une info-bulle suit le curseur en restant toujours à l\'intérieur de l\'écran.',
+    'Précision d\'outil professionnel.',
+    '- `data-fx-tip` : texte\n- `data-fx-delay` (120) : délai en millisecondes',
+    'Graphiques, tableaux, icônes, abréviations.',
+    'Une information indispensable sur écran tactile.',
+    '<abbr data-fx="rich-tooltip-follow" data-fx-tip="Taux mensuel">TM</abbr>',
+    '<span class="demo-chip" data-fx="rich-tooltip-follow" data-fx-tip="Taux de croissance mensuel, en pour cent">Survolez-moi</span>',
+    { a11y: '`aria-describedby`, s\'ouvre au focus, se ferme avec Échap.' }),
 ];

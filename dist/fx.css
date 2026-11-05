@@ -5184,6 +5184,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="range-bubble"] .fx-rb { position: absolute; top: 0; left: calc(var(--fx-p, 0) * (100% - 16px) + 8px); padding: .12em .5em; border-radius: 6px; background: var(--fx-accent); color: #111; font-size: 12px; font-variant-numeric: tabular-nums; transform: translateX(-50%) scale(.85); transition: transform .2s var(--fx-ease-spring); }
 [data-fx="range-bubble"].fx-on .fx-rb { transform: translateX(-50%) translateY(-2px) scale(1.1); }
 
+/* rich-tooltip-follow : une info-bulle qui suit */
+[data-fx="rich-tooltip-follow"] { cursor: help; }
+.fx-rt { position: fixed; z-index: 9990; max-width: 240px; padding: .5em .8em; border-radius: 8px; background: #111; color: #fff; font-size: 13px; line-height: 1.35; opacity: 0; pointer-events: none; transform: translateY(4px) scale(.97); transition: opacity .15s, transform .2s var(--fx-ease-out); }
+.fx-rt.fx-on { opacity: 1; transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
