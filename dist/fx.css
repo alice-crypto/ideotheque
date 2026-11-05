@@ -4464,6 +4464,32 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="toc-minimap"] a:hover { background: var(--fx-accent); }
 [data-fx="toc-minimap"] .fx-mm-view { position: absolute; left: -3px; right: -3px; top: var(--fx-t, 0); height: var(--fx-h, 20%); border: 1.5px solid var(--fx-accent); border-radius: 4px; pointer-events: none; }
 
+/* cursor-menu-ring : un menu en cercle */
+[data-fx="cursor-menu-ring"] { position: absolute; width: 0; height: 0; }
+[data-fx="cursor-menu-ring"] button,
+[data-fx="cursor-menu-ring"] a {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  margin: -20px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--fx-ring-bg, var(--fx-accent));
+  color: var(--fx-ring-ink, #111);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(.3);
+  transition: transform .34s var(--fx-ease-spring) calc(var(--fx-i) * 25ms), opacity .2s;
+}
+[data-fx="cursor-menu-ring"].fx-open button,
+[data-fx="cursor-menu-ring"].fx-open a { opacity: 1; pointer-events: auto; transform: translate(var(--fx-x), var(--fx-y)); }
+[data-fx="cursor-menu-ring"] :is(button, a):focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

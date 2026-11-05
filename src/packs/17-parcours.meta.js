@@ -128,4 +128,13 @@ module.exports = [
     '<aside data-fx="toc-minimap" data-fx-target="article > section"></aside>',
     '<aside data-fx="toc-minimap" data-fx-target=".aucune-section"></aside>',
     { a11y: 'Rôle de navigation, et un lien nommé pour chaque section.' }),
+  E('cursor-menu-ring', 'Navigation',
+    'Un clic droit ouvre un menu en cercle sous le curseur, et les actions rejoignent leur place autour de lui.',
+    'Outil de création, geste rapide de professionnel.',
+    '- `data-fx-radius` (62) : rayon du cercle\n- Le parent de l\'élément reçoit le clic droit.',
+    'Éditeurs, jeux, outils de dessin.',
+    'Un site public : le clic droit n\'y est pas un geste attendu.',
+    '<div style="position:relative"><div data-fx="cursor-menu-ring"><button>A</button><button>B</button></div></div>',
+    '<div style="position:relative;width:230px;height:170px"><div data-fx="cursor-menu-ring" data-fx-demo="1"><button aria-label="Couper">✂</button><button aria-label="Copier">⧉</button><button aria-label="Coller">▤</button><button aria-label="Effacer">✕</button></div></div>',
+    { trigger: 'Ouvrir', a11y: 'Navigation aux flèches, Échap pour fermer. Prévoyez aussi un accès aux mêmes actions ailleurs.' }),
 ];
