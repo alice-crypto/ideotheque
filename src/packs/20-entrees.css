@@ -144,3 +144,8 @@
 /* soft-page-in : une arrivée toute douce */
 [data-fx="soft-page-in"] > * { opacity: 0; transform: translateY(8px); transition: opacity .7s var(--fx-d, 0ms), transform .9s var(--fx-ease-out) var(--fx-d, 0ms); }
 .fx-in[data-fx="soft-page-in"] > * { opacity: 1; transform: none; }
+
+/* slice-column-text : un mot en tranches */
+[data-fx="slice-column-text"] { display: inline-grid; white-space: nowrap; overflow: hidden; }
+[data-fx="slice-column-text"] span { grid-area: 1 / 1; transform: translateY(var(--fx-dy)); opacity: 0; transition: transform .8s var(--fx-ease-out) calc(var(--fx-i) * 35ms), opacity .2s calc(var(--fx-i) * 35ms); }
+.fx-in[data-fx="slice-column-text"] span { transform: none; opacity: 1; }
