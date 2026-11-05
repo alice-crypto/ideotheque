@@ -208,4 +208,12 @@ module.exports = [
     '<figure data-fx="strip-slider" style="height:400px"><img src="a.jpg" alt="…"><img src="b.jpg" alt=""></figure>',
     '<div class="demo-media" data-fx="strip-slider"><img src="assets/dune.svg" alt=""><img src="assets/city.svg" alt=""></div>',
     { trigger: 'Image suivante', a11y: 'Le diaporama se met en pause au survol. Avec `prefers-reduced-motion: reduce`, il ne change plus seul.' }),
+  E('tilt-focus', 'Image',
+    'Une bande de l\'image reste nette et suit le curseur, le reste est flou, comme une photo de maquette.',
+    'Miniature, regard qui se pose, profondeur photographique.',
+    '- `--fx-blur` (7px) : force du flou',
+    'Paysages urbains, vues d\'ensemble.',
+    'Les portraits ou les images déjà floues.',
+    '<figure data-fx="tilt-focus"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="tilt-focus"><img src="assets/dune.svg" alt=""></div>'),
 ];

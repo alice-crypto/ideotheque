@@ -4171,6 +4171,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-go[data-fx="strip-slider"] .fx-strips i { animation: fx-strip .9s var(--fx-ease-io) calc(var(--fx-k) * 40ms) both; }
 @keyframes fx-strip { 0% { transform: scaleY(0); } 60%, 100% { transform: scaleY(1); } }
 
+/* tilt-focus : une bande de netteté */
+[data-fx="tilt-focus"] { position: relative; overflow: hidden; }
+[data-fx="tilt-focus"] img { display: block; width: 100%; height: 100%; object-fit: cover; }
+[data-fx="tilt-focus"] .fx-tf-blur {
+  position: absolute;
+  inset: 0;
+  filter: blur(var(--fx-blur, 7px));
+  -webkit-mask: linear-gradient(#000 calc(var(--fx-fy, 50%) - 22%), transparent calc(var(--fx-fy, 50%) - 6%), transparent calc(var(--fx-fy, 50%) + 6%), #000 calc(var(--fx-fy, 50%) + 22%));
+  mask: linear-gradient(#000 calc(var(--fx-fy, 50%) - 22%), transparent calc(var(--fx-fy, 50%) - 6%), transparent calc(var(--fx-fy, 50%) + 6%), #000 calc(var(--fx-fy, 50%) + 22%));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
