@@ -206,3 +206,12 @@
 [data-fx="language-switch-flip"] { display: inline-grid; place-items: center; width: 2.6em; height: 2.6em; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font: 600 13px var(--fx-font, inherit); cursor: pointer; perspective: 200px; }
 [data-fx="language-switch-flip"] .fx-ls-in { display: block; animation: fx-ls .4s var(--fx-ease-out); }
 @keyframes fx-ls { from { transform: rotateX(-90deg); opacity: 0; } }
+
+/* progress-steps-rail : un parcours en étapes */
+[data-fx="progress-steps-rail"] { position: relative; display: flex; justify-content: space-between; list-style: none; padding: 0; margin: 0; counter-reset: fx-psr; }
+[data-fx="progress-steps-rail"]::before { content: ""; position: absolute; left: 14px; right: 14px; top: 13px; height: 2px; background: rgba(128, 128, 128, .35); }
+[data-fx="progress-steps-rail"] .fx-psr { position: absolute; left: 14px; right: 14px; top: 13px; height: 2px; background: var(--fx-accent); transform-origin: left; transform: scaleX(var(--fx-p, 0)); transition: transform .5s var(--fx-ease-out); }
+[data-fx="progress-steps-rail"] > li { position: relative; z-index: 1; display: grid; justify-items: center; gap: 4px; font-size: 12px; counter-increment: fx-psr; }
+[data-fx="progress-steps-rail"] > li::before { content: counter(fx-psr); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--fx-step-bg, #222); color: #fff; font-weight: 600; transition: background .3s .15s, transform .3s var(--fx-ease-spring) .15s; }
+[data-fx="progress-steps-rail"] > .fx-done::before { background: var(--fx-accent); color: #111; }
+[data-fx="progress-steps-rail"] > .fx-cur::before { background: var(--fx-accent); color: #111; transform: scale(1.15); }
