@@ -90,3 +90,7 @@
 .fx-in[data-fx="list-strike-in"] > * { color: inherit; }
 [data-fx="list-strike-in"] .fx-lsi { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: currentColor; color: var(--fx-rule, rgba(128, 128, 128, .5)); transform: scaleX(0); transform-origin: left; transition: transform .8s var(--fx-ease-io) calc(var(--fx-i) * 80ms); }
 .fx-in[data-fx="list-strike-in"] .fx-lsi { transform: scaleX(1); }
+
+/* depth-focus-in : venu du fond */
+[data-fx="depth-focus-in"] > * { transform: scale(.6) translateY(-20px); filter: blur(12px); opacity: 0; transition: transform .9s var(--fx-ease-out) calc(var(--fx-i) * 90ms), filter .9s calc(var(--fx-i) * 90ms), opacity .5s calc(var(--fx-i) * 90ms); }
+.fx-in[data-fx="depth-focus-in"] > * { transform: none; filter: none; opacity: 1; }
