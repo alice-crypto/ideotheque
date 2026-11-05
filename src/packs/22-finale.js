@@ -390,4 +390,38 @@
       });
     }
   });
+
+  // Des poussières flottent dans un rayon de lumière
+  FX.register('dust-motes', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxD = [];
+      for (var i = 0; i < U.num(el, 'fxCount', 60); i++) el._fxD.push({ x: Math.random(), y: Math.random(), z: Math.random(), a: U.rand(0, 6) });
+      el._fxM = null;
+      el.addEventListener('pointermove', function (e) { var r = el.getBoundingClientRect(); el._fxM = [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]; });
+      el.addEventListener('pointerleave', function () { el._fxM = null; });
+    },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d'), M = el._fxM;
+      c.clearRect(0, 0, w, h);
+      c.fillStyle = getComputedStyle(cv).color;
+      el._fxD.forEach(function (d) {
+        d.x += Math.sin(t * .0003 + d.a) * .0004;
+        d.y -= (.01 + d.z * .02) * dt;
+        if (d.y < -.02) { d.y = 1.02; d.x = Math.random(); }
+        if (M) { d.x += (M[0] - d.x) * .002; d.y += (M[1] - d.y) * .002; }
+        c.globalAlpha = (.15 + d.z * .6) * (.6 + .4 * Math.sin(t * .001 + d.a));
+        c.beginPath();
+        c.arc(d.x * w, d.y * h, .5 + d.z * 1.6, 0, 7);
+        c.fill();
+      });
+    }
+  });
 })(window.FX);
