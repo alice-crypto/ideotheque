@@ -327,4 +327,35 @@
       el._fxV.style.setProperty('--fx-h', Math.max(6, info.vh / tot * 100).toFixed(2) + '%');
     }
   });
+
+  // Un menu radial qui s'ouvre sous le curseur
+  FX.register('cursor-menu-ring', {
+    setup: function (el) {
+      var items = Array.prototype.slice.call(el.querySelectorAll('button,a')), n = items.length, cur = -1;
+      items.forEach(function (b, i) {
+        var a = i / n * 6.283 - 1.571;
+        b.style.setProperty('--fx-x', (Math.cos(a) * U.num(el, 'fxRadius', 62)).toFixed(1) + 'px');
+        b.style.setProperty('--fx-y', (Math.sin(a) * U.num(el, 'fxRadius', 62)).toFixed(1) + 'px');
+        b.style.setProperty('--fx-i', i);
+      });
+      var open = function (x, y) {
+        var o = (el.offsetParent || el.parentElement).getBoundingClientRect();
+        el.style.left = (x - o.left) + 'px';
+        el.style.top = (y - o.top) + 'px';
+        el.classList.add('fx-open');
+      };
+      var close = function () { el.classList.remove('fx-open'); items.forEach(function (b) { b.classList.remove('fx-cur'); }); cur = -1; };
+      var host = el.parentElement;
+      host.addEventListener('contextmenu', function (e) { e.preventDefault(); open(e.clientX, e.clientY); items[0].focus({ preventScroll: true }); });
+      document.addEventListener('pointerdown', function (e) { if (!el.contains(e.target)) close(); });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); items[(items.indexOf(document.activeElement) + 1) % n].focus(); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); items[(items.indexOf(document.activeElement) - 1 + n) % n].focus(); }
+      });
+      if (el.dataset.fxDemo) { var r = el.parentElement.getBoundingClientRect(); open(r.left + r.width / 2, r.top + r.height / 2); }
+      el._fxOpen = open;
+    },
+    trigger: function (el, e) { var r = el.parentElement.getBoundingClientRect(); el._fxOpen(r.left + r.width / 2, r.top + r.height / 2); }
+  });
 })(window.FX);
