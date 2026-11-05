@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="versus-bars" data-fx-a="62" data-fx-b="38"></div>',
     '<div data-fx="versus-bars" data-fx-a="72" data-fx-b="28" data-fx-name-a="Sans" data-fx-name-b="Avec" style="width:220px;color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Les valeurs sont écrites en texte à côté des barres.' }),
+  E('gauge-needle', 'Présentation',
+    'Un cadran dont l\'aiguille monte jusqu\'à la valeur, puis oscille un instant.',
+    'Tableau de bord d\'une voiture, instrument physique.',
+    '- `data-fx-value` (72), `data-fx-max` (100)\n- `--fx-w` (170px) : largeur',
+    'Scores, performance, vitesse.',
+    'De petites différences : un cadran n\'est pas très précis.',
+    '<div data-fx="gauge-needle" data-fx-value="72"></div>',
+    '<div data-fx="gauge-needle" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Rôle `meter` avec `aria-valuenow`, valeur écrite sous le cadran.' }),
 ];
