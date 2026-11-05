@@ -19,4 +19,11 @@ body {
   color: var(--k);
   font: 400 17px/1.5 "Archivo", system-ui, sans-serif;
 }
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 800;
+  line-height: .98;
+  letter-spacing: -.03em;
+  font-stretch: 112%;
+}
 /*@css*/
