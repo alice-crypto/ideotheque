@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="reading-time-bar" data-fx-target="article"></div>',
     '<div data-fx="reading-time-bar" data-fx-target=".aucun-article" style="width:200px;color:var(--ink)"></div>',
     { a11y: 'Rôle `status` ; le texte ne change que chaque minute, pour ne pas bavarder.' }),
+  E('kerning-focus', 'Texte',
+    'Autour du curseur, les mots sont nets ; le reste du paragraphe s\'estompe.',
+    'Une lampe de lecture, concentration.',
+    '- `data-fx-radius` (130) : rayon d\'action en pixels',
+    'Citations, manifestes, moments de lecture.',
+    'Le texte principal d\'une page : tout le monde n\'a pas de curseur.',
+    '<p data-fx="kerning-focus">…</p>',
+    '<p class="demo-para" data-fx="kerning-focus" style="color:var(--ink);font-size:18px">Autour du curseur, les mots sont nets et le reste s\'estompe doucement.</p>',
+    { a11y: 'Au repos, tout le texte est net. L\'effet ne change rien pour les lecteurs d\'écran.' }),
 ];
