@@ -94,6 +94,15 @@
   <a class="ex-back" href="index.html" data-fx-tr="stair-bars">← Tous les exemples</a>
   <script src="../dist/fx.js" defer></script>
   <script>
+    (function () {
+      var range = document.getElementById('m-range'), out = document.getElementById('m-bpm'), go = document.getElementById('m-go');
+      var beats = document.querySelectorAll('.mbeats i'), timer = null, n = 0;
+      function beat() {
+        beats.forEach(function (b, i) { b.classList.toggle('on', i === n); });
+        n = (n + 1) % beats.length;
+      }
+      /*@metrojs*/
+    })();
     /*@js*/
   </script>
 </body>
