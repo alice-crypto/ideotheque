@@ -48,3 +48,7 @@
   opacity: calc(1 - var(--fx-z) * .85);
   pointer-events: none;
 }
+
+/* depth-stack : un diorama en plans */
+[data-fx="depth-stack"] { display: grid; place-items: center; overflow: hidden; }
+[data-fx="depth-stack"] > * { grid-area: 1 / 1; transform: translateY(calc(var(--fx-y, 0px) * var(--fx-z, 1))); }
