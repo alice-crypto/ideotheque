@@ -163,4 +163,13 @@ module.exports = [
     '<a href="/page" data-fx="zigzag-cover">Page</a>',
     '<button class="demo-ghost" onclick="FX.play(\'zigzag-cover\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, aucune transition.' }),
+  E('mirror-split', 'Transition',
+    'Deux moitiés se ferment vers le centre de l\'écran, avec une ligne de lumière à leur rencontre.',
+    'Science-fiction, sas qui se ferme.',
+    '- `--fx-tr-color`, `--fx-accent`',
+    'Sites techniques, jeux, produits.',
+    'Les marques chaleureuses.',
+    '<a href="/page" data-fx="mirror-split">Page</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'mirror-split\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, aucune transition.' }),
 ];

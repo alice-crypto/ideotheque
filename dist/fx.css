@@ -5308,6 +5308,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-zigzag-cover.fx-cover i { transform: none; }
 .fx-tr-zigzag-cover.fx-uncover i { transform: translateY(-105%); }
 
+/* mirror-split : deux moitiés */
+.fx-tr-mirror-split i { left: 0; right: 0; transition: transform .62s var(--fx-ease-io); }
+.fx-tr-mirror-split .fx-t, .fx-tr-mirror-split .fx-b { height: 50.2%; background: var(--fx-tr-color, var(--fx-dark)); }
+.fx-tr-mirror-split .fx-t { top: 0; transform: translateY(-101%); }
+.fx-tr-mirror-split .fx-b { bottom: 0; transform: translateY(101%); }
+.fx-tr-mirror-split .fx-line { top: 50%; height: 2px; margin-top: -1px; background: var(--fx-accent); box-shadow: 0 0 18px var(--fx-accent); transform: scaleX(0); }
+.fx-tr-mirror-split.fx-cover .fx-t, .fx-tr-mirror-split.fx-cover .fx-b { transform: none; }
+.fx-tr-mirror-split.fx-cover .fx-line { transform: scaleX(1); }
+.fx-tr-mirror-split.fx-uncover .fx-t { transform: translateY(-101%); }
+.fx-tr-mirror-split.fx-uncover .fx-b { transform: translateY(101%); }
+.fx-tr-mirror-split.fx-uncover .fx-line { opacity: 0; transition: opacity .2s; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
