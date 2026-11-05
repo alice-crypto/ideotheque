@@ -76,3 +76,11 @@
 [data-fx="horizon-rise"] .fx-hr { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--fx-line, currentColor); transform: scaleX(0); transition: transform .6s var(--fx-ease-io); }
 .fx-in[data-fx="horizon-rise"] .fx-hr-in { transform: none; }
 .fx-in[data-fx="horizon-rise"] .fx-hr { transform: scaleX(1); }
+
+/* number-stack-in : un numéro en couches */
+[data-fx="number-stack-in"] { display: inline-grid; line-height: 1; font-variant-numeric: tabular-nums; }
+[data-fx="number-stack-in"] span { grid-area: 1 / 1; }
+[data-fx="number-stack-in"] .fx-ns-c { color: transparent; -webkit-text-stroke: 1px currentColor; -webkit-text-stroke-color: var(--fx-accent); transform: translate(calc(var(--fx-i) * 8px), calc(var(--fx-i) * 8px)); opacity: calc(1 - var(--fx-i) * .18); transition: transform .9s var(--fx-ease-out) calc(var(--fx-i) * 50ms), opacity .9s; }
+[data-fx="number-stack-in"] .fx-ns-t { opacity: 0; transition: opacity .4s .6s; }
+.fx-in[data-fx="number-stack-in"] .fx-ns-c { transform: none; opacity: 0; }
+.fx-in[data-fx="number-stack-in"] .fx-ns-t { opacity: 1; }
