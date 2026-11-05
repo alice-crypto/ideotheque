@@ -212,3 +212,7 @@
 /* gravity-letters : un clic et tout tombe */
 [data-fx="gravity-letters"] { cursor: pointer; display: inline-block; user-select: none; }
 [data-fx="gravity-letters"] .fx-char { display: inline-block; }
+
+/* pixel-type : du pixel à la lettre */
+[data-fx="pixel-type"] { display: inline-block; }
+[data-fx="pixel-type"] canvas { display: block; max-width: 100%; image-rendering: pixelated; }
