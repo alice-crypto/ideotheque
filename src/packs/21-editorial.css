@@ -128,3 +128,15 @@
 [data-fx="pagination-squeeze"] button { position: relative; z-index: 1; width: 2em; height: 2em; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; transition: color .2s; }
 [data-fx="pagination-squeeze"] button[aria-current="page"] { color: var(--fx-on-ink, #111); }
 [data-fx="pagination-squeeze"] .fx-pgs { position: absolute; left: 0; top: 0; bottom: 0; width: var(--fx-w, 2em); border-radius: 8px; background: var(--fx-accent); transform: translateX(var(--fx-l, 0)); transition: transform .4s var(--fx-ease-spring); }
+
+/* accordion-plus-morph : des questions */
+[data-fx="accordion-plus-morph"] > * { border-top: 1px solid rgba(128, 128, 128, .28); }
+[data-fx="accordion-plus-morph"] button { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: .7em 0; background: none; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+[data-fx="accordion-plus-morph"] .fx-apm { position: relative; flex: none; width: 14px; height: 14px; }
+[data-fx="accordion-plus-morph"] .fx-apm::before,
+[data-fx="accordion-plus-morph"] .fx-apm::after { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: currentColor; transition: transform .35s var(--fx-ease-out); }
+[data-fx="accordion-plus-morph"] .fx-apm::after { transform: rotate(90deg); }
+[data-fx="accordion-plus-morph"] button[aria-expanded="true"] .fx-apm::after { transform: none; }
+[data-fx="accordion-plus-morph"] > * > :not(button) { display: grid; grid-template-rows: 0fr; overflow: hidden; transition: grid-template-rows .4s var(--fx-ease-out); }
+[data-fx="accordion-plus-morph"] .fx-open > :not(button) { grid-template-rows: 1fr; }
+[data-fx="accordion-plus-morph"] > * > :not(button) > * { min-height: 0; margin: 0; padding-bottom: .1em; }
