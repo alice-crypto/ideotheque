@@ -48,6 +48,10 @@
     .cq { --fx-h: 240px; color: var(--k); }
     .cq > div { background: var(--w); border: var(--rule); padding: 26px; font-size: 22px; font-weight: 600; line-height: 1.25; }
     .cq cite { display: block; margin-top: 12px; font: 600 13px "IBM Plex Mono", monospace; }
+    .cprix { display: grid; grid-template-columns: 1fr 1fr; border: var(--rule); background: var(--w); }
+    .cprix > * { padding: clamp(22px, 4vw, 50px); }
+    .cprix > :first-child { background: var(--r); color: var(--w); border-right: var(--rule); }
+    .cprix .big { font-size: clamp(80px, 13vw, 200px); font-weight: 800; letter-spacing: -.06em; line-height: .9; }
     /*@css*/
   </style>
 </head>
