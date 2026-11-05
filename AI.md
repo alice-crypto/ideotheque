@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->376<!-- /total --> effets.
+La bibliothèque contient <!-- total -->377<!-- /total --> effets.
 
 ## Règles
 
@@ -131,6 +131,7 @@ La bibliothèque contient <!-- total -->376<!-- /total --> effets.
 | `timeline-scrub` | Présentation | Une frise de dates : survoler ou choisir une date remplit le rail et affiche son histoire |
 | `number-ticker-reel` | Présentation | Chaque chiffre est une bobine qui tourne et s'arrête sur la bonne valeur, de gauche à droite |
 | `quote-card-shuffle` | Présentation | Une pile de témoignages : la première carte s'envole et part au fond, la suivante avance |
+| `pricing-toggle-cards` | Présentation | La bascule mensuel / annuel fait défiler les prix des cartes et fait apparaître le badge d'économie |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

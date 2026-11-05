@@ -93,4 +93,12 @@ module.exports = [
     '<div data-fx="quote-card-shuffle"><blockquote>…</blockquote><blockquote>…</blockquote></div>',
     '<div data-fx="quote-card-shuffle" style="width:200px"><div class="demo-card" style="width:auto"><b>Claire</b>« Enfin simple. »</div><div class="demo-card" style="width:auto"><b>Nadia</b>« Rapide et beau. »</div><div class="demo-card" style="width:auto"><b>Tom</b>« On l\'utilise tous. »</div></div>',
     { trigger: 'Carte suivante', a11y: 'Pause au survol. Seule la première carte est exposée aux lecteurs d\'écran.' }),
+  E('pricing-toggle-cards', 'Présentation',
+    'La bascule mensuel / annuel fait défiler les prix des cartes et fait apparaître le badge d\'économie.',
+    'Rassurant, on voit tout de suite ce qu\'on gagne.',
+    '- `data-month` et `data-year` sur chaque prix\n- `.fx-save` : badge d\'économie',
+    'Pages de tarifs.',
+    'Des prix sans la même période de référence : indiquez toujours « par mois ».',
+    '<div data-fx="pricing-toggle-cards"><label><input type="checkbox"> Annuel</label><b data-month="19" data-year="15"></b></div>',
+    '<div data-fx="pricing-toggle-cards" style="color:var(--ink);text-align:center"><label><input type="checkbox"> Annuel <span class="fx-save" style="color:var(--fx-accent)">−20 %</span></label><div style="font-size:44px;font-weight:700"><span data-month="19" data-year="15"></span> €</div></div>'),
 ];
