@@ -89,3 +89,7 @@
     radial-gradient(at var(--fx-x3, 80%) var(--fx-y3, 80%), var(--fx-d, #0047ff) 0, transparent 55%),
     var(--fx-mesh-bg, #fff);
 }
+
+/* tiles-flicker : une façade de fenêtres */
+[data-fx="tiles-flicker"] { isolation: isolate; overflow: hidden; }
+[data-fx="tiles-flicker"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-tile, var(--fx-accent)); }
