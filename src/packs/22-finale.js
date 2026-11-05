@@ -153,4 +153,19 @@
       el._fxShow = show;
     }
   });
+
+  // Les bords s'assombrissent et le centre suit le regard
+  FX.register('vignette-focus', {
+    setup: function (el) {
+      var s = el._fxS = { x: 50, y: 50, tx: 50, ty: 50 };
+      el.addEventListener('pointermove', function (e) { var r = el.getBoundingClientRect(); s.tx = (e.clientX - r.left) / r.width * 100; s.ty = (e.clientY - r.top) / r.height * 100; });
+      el.addEventListener('pointerleave', function () { s.tx = s.ty = 50; });
+    },
+    tick: function (el) {
+      var s = el._fxS;
+      s.x = U.lerp(s.x, s.tx, .08); s.y = U.lerp(s.y, s.ty, .08);
+      el.style.setProperty('--fx-vx', s.x.toFixed(1) + '%');
+      el.style.setProperty('--fx-vy', s.y.toFixed(1) + '%');
+    }
+  });
 })(window.FX);
