@@ -3942,6 +3942,12 @@
     setup: function (el) { var n = el.children.length; Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-a', (i / n * 360) + 'deg'); }); },
     scroll: function (el, info) { el.style.setProperty('--fx-turn', (info.pass * U.num(el, 'fxTurn', 240)).toFixed(1) + 'deg'); }
   });
+
+  // Les blocs s'alignent comme des marches
+  FX.register('stairs-scroll', {
+    setup: function (el) { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-i', i); }); },
+    scroll: function (el, info) { el.style.setProperty('--fx-rest', (1 - U.easeOut(info.enter)).toFixed(3)); }
+  });
 })(window.FX);
 
 window.FX._boot();

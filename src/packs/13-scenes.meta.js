@@ -209,4 +209,12 @@ module.exports = [
     'Plus de 8 éléments.',
     '<div data-fx="orbit-scrub"><img…><img…><img…></div>',
     '<div data-fx="orbit-scrub" style="--fx-size:150px"><span class="demo-chip" style="padding:6px">A</span><span class="demo-chip" style="padding:6px">B</span><span class="demo-chip" style="padding:6px">C</span><span class="demo-chip" style="padding:6px">D</span></div>'),
+  E('stairs-scroll', 'Défilement',
+    'Une rangée de blocs forme un escalier qui s\'aplanit jusqu\'à une ligne parfaite.',
+    'Ordre qui s\'installe, marches qui se rangent.',
+    '- `--fx-step` (34px) : hauteur d\'une marche\n- `--fx-gap` (10px) : écart',
+    'Colonnes de chiffres, rangées d\'images.',
+    'Les colonnes de hauteurs déjà irrégulières.',
+    '<div data-fx="stairs-scroll"><div>…</div><div>…</div><div>…</div></div>',
+    '<div data-fx="stairs-scroll"><div class="demo-box" style="width:44px;height:60px"></div><div class="demo-box alt" style="width:44px;height:60px"></div><div class="demo-box ink" style="width:44px;height:60px"></div><div class="demo-box" style="width:44px;height:60px"></div></div>'),
 ];
