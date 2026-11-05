@@ -19,3 +19,7 @@
   letter-spacing: calc(var(--fx-gap, .6em) * (1 - var(--fx-p, 0)) - .02em);
   opacity: calc(.2 + var(--fx-p, 0) * .8);
 }
+
+/* cursor-repel : le texte s'écarte du curseur */
+[data-fx="cursor-repel"] { display: inline-block; padding: .4em; margin: -.4em; }
+[data-fx="cursor-repel"] .fx-char { display: inline-block; }
