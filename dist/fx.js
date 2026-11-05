@@ -7678,6 +7678,17 @@
       el.addEventListener('pointerleave', function () { el.style.setProperty('--fx-rx', '0deg'); el.style.setProperty('--fx-ry', '0deg'); });
     }
   });
+
+  // Un soulignement ondulé se dessine sous le lien
+  FX.register('underline-wave-draw', {
+    setup: function (el) {
+      var w = Math.max(60, Math.round(el.offsetWidth || 120)), d = 'M0 5', n = Math.round(w / 12);
+      for (var i = 0; i < n; i++) d += ' q ' + (w / n / 2).toFixed(1) + ' ' + (i % 2 ? 7 : -7) + ' ' + (w / n).toFixed(1) + ' 0';
+      var s = U.make('span', 'fx-uwd', el);
+      s.setAttribute('aria-hidden', 'true');
+      s.innerHTML = '<svg viewBox="0 0 ' + w + ' 10" preserveAspectRatio="none"><path pathLength="1" d="' + d + '"/></svg>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -118,4 +118,12 @@ module.exports = [
     'Du texte long.',
     '<span data-fx="sticker-peel-hover">Nouveau !</span>',
     '<span data-fx="sticker-peel-hover" style="font-size:22px">Nouveau !</span>'),
+  E('underline-wave-draw', 'Micro-interaction',
+    'Au survol, un soulignement ondulé se dessine sous le lien, et s\'efface par l\'autre côté en partant.',
+    'Écriture à la plume, geste personnel.',
+    '- `--fx-pen` : couleur',
+    'Liens de titre, appels à l\'action discrets.',
+    'Les liens sur plusieurs lignes.',
+    '<a href="#" data-fx="underline-wave-draw">Lire la suite</a>',
+    '<a class="demo-link" href="#" data-fx="underline-wave-draw" style="color:var(--ink)">Lire la suite</a>'),
 ];
