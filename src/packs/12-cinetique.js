@@ -267,4 +267,20 @@
     reset: function (el) { el._fxShow(0); },
     enter: function (el) { U.tween(el, U.num(el, 'fxDuration', 1400), el._fxShow); }
   });
+
+  // Au survol, un saut se propage depuis la lettre touchée
+  FX.register('hop-row', {
+    setup: function (el) {
+      U.splitChars(el);
+      var cs = Array.prototype.slice.call(el.querySelectorAll('.fx-char'));
+      cs.forEach(function (c, i) {
+        c.addEventListener('pointerenter', function () {
+          if (el.classList.contains('fx-hop')) return;
+          cs.forEach(function (o, k) { o.style.setProperty('--fx-d', Math.abs(k - i)); });
+          el.classList.add('fx-hop');
+          setTimeout(function () { el.classList.remove('fx-hop'); }, 500 + cs.length * 40);
+        });
+      });
+    }
+  });
 })(window.FX);
