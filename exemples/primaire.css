@@ -35,4 +35,10 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: 0 0 0 3px var(--y);
 }
 .wrap { width: min(1240px, 100% - 40px); margin-inline: auto; }
+.tag {
+  display: inline-block;
+  font: 600 12px/1 "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
 /*@css*/
