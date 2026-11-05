@@ -57,3 +57,14 @@
 [data-fx="versus-bars"] .fx-vs-bar .b { margin-left: auto; background: var(--fx-b-c, var(--fx-accent-2)); border-radius: 0 3px 3px 0; }
 .fx-in[data-fx="versus-bars"] .fx-vs-bar .a { width: calc(var(--fx-a) * 100% - 2px); }
 .fx-in[data-fx="versus-bars"] .fx-vs-bar .b { width: calc((1 - var(--fx-a)) * 100% - 2px); }
+
+/* gauge-needle : un cadran */
+[data-fx="gauge-needle"] { position: relative; display: inline-block; width: var(--fx-w, 170px); text-align: center; }
+[data-fx="gauge-needle"] svg { display: block; width: 100%; overflow: visible; }
+[data-fx="gauge-needle"] path { fill: none; stroke-width: 8; stroke-linecap: round; }
+[data-fx="gauge-needle"] .bg { stroke: rgba(128, 128, 128, .25); }
+[data-fx="gauge-needle"] .on { stroke: var(--fx-accent); stroke-dasharray: var(--fx-q, 0) 1; }
+[data-fx="gauge-needle"] .nd { transform-origin: 60px 62px; transform: rotate(calc(var(--fx-q, 0) * 180deg - 90deg)); }
+[data-fx="gauge-needle"] line { stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+[data-fx="gauge-needle"] circle { fill: currentColor; }
+[data-fx="gauge-needle"] b { display: block; margin-top: 4px; font-size: 22px; font-variant-numeric: tabular-nums; }
