@@ -3284,6 +3284,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 /* sun-shadow : une ombre qui suit le soleil */
 [data-fx="sun-shadow"] { --fx-shadow: rgba(0, 0, 0, .35); display: inline-block; position: relative; }
 
+/* depth-crawl : du texte qui part vers l'horizon */
+[data-fx="depth-crawl"] {
+  overflow: hidden;
+  perspective: 240px;
+  -webkit-mask: linear-gradient(0deg, #000 60%, transparent);
+  mask: linear-gradient(0deg, #000 60%, transparent);
+}
+[data-fx="depth-crawl"] > * { transform: rotateX(var(--fx-tilt, 32deg)) translateY(var(--fx-y, 0)); transform-origin: 50% 100%; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

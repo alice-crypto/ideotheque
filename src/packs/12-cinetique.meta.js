@@ -229,4 +229,13 @@ module.exports = [
     'Les fonds sombres, où l\'ombre disparaît.',
     '<h1 data-fx="sun-shadow">Midi</h1>',
     '<p class="demo-title" data-fx="sun-shadow" style="--fx-shadow:rgba(255,91,46,.55)">Midi</p>'),
+  E('depth-crawl', 'Texte',
+    'Un bloc de texte monte et s\'éloigne vers l\'horizon sur un plan incliné.',
+    'Générique de film, récit épique, un brin de second degré.',
+    '- `data-fx-speed` (22) : vitesse en pixels par seconde\n- `--fx-tilt` (32deg) : inclinaison du plan',
+    'Pages d\'histoire d\'une marque, écrans de fin.',
+    'Une information à lire en entier : le texte défile sans s\'arrêter.',
+    '<div data-fx="depth-crawl" style="height:320px"><div><p>Il y a bien longtemps…</p></div></div>',
+    '<div data-fx="depth-crawl" style="height:150px;width:210px;color:var(--ink);text-align:center;font-size:14px"><div><p>Tout a commencé dans un petit atelier, avec une table, une idée et beaucoup de café. Trois ans plus tard, l\'équipe est toujours là.</p></div></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le texte reste au début, fixe.' }),
 ];
