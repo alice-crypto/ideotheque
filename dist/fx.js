@@ -8145,6 +8145,17 @@
       el.style.setProperty('--fx-cr', s.r.toFixed(1) + 'px');
     }
   });
+
+  // Des anneaux de couleur partent du point de clic
+  FX.register('ripple-rings', { transition: { pieces: 5, cover: 900, uncover: 850, build: function (o) {
+    var e = o._fxEvent, x = e && e.clientX != null ? e.clientX : innerWidth / 2, y = e && e.clientY != null ? e.clientY : innerHeight / 2;
+    var list = U.cssVar(document.documentElement, '--fx-tr-colors', '#e10600,#ffd400,#0047ff,#e10600,#0c0c0e').split(',');
+    Array.prototype.forEach.call(o.children, function (p, i) {
+      p.style.left = x + 'px'; p.style.top = y + 'px';
+      p.style.background = list[i % list.length];
+      p.style.setProperty('--fx-d', i * 70 + 'ms');
+    });
+  } } });
 })(window.FX);
 
 window.FX._boot();

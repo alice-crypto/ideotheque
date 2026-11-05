@@ -136,4 +136,13 @@ module.exports = [
     'Une image dont la couleur est l\'information principale.',
     '<figure data-fx="color-splash"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="color-splash" data-fx-auto="true"><img src="assets/bloom.svg" alt=""></div>'),
+  E('ripple-rings', 'Transition',
+    'Des anneaux de couleur partent du point de clic et recouvrent l\'écran l\'un après l\'autre.',
+    'Pierre dans l\'eau, cible, énergie.',
+    '- `--fx-tr-colors` sur `:root` : couleurs séparées par des virgules',
+    'Identités colorées, sites joyeux.',
+    'Les interfaces sobres.',
+    '<a href="/page" data-fx="ripple-rings">Page</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'ripple-rings\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, aucune transition.' }),
 ];
