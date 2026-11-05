@@ -27,4 +27,13 @@ module.exports = [
     'Les textes qu\'il faut lire tout de suite.',
     '<h2 data-fx="parallax-letters">Apesanteur</h2>',
     '<p class="demo-title" data-fx="parallax-letters" style="font-size:28px">Apesanteur</p>'),
+  E('tilted-band', 'Défilement',
+    'Un bandeau de couleur incliné traverse la section et son texte glisse au défilement.',
+    'Affiche, chantier, ruban de signalisation.',
+    '- `data-fx-dir` (left)\n- `--fx-angle` (-4deg), `--fx-band-bg`, `--fx-band-ink`',
+    'Séparations de sections, annonces.',
+    'Du texte à lire entièrement.',
+    '<div data-fx="tilted-band">Nouvelle saison</div>',
+    '<div style="position:relative;width:100%;overflow:hidden;padding:30px 0"><div data-fx="tilted-band">Nouvelle saison</div></div>',
+    { a11y: 'Le texte est dans `aria-label`.' }),
 ];

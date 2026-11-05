@@ -7919,6 +7919,20 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-t', ((.5 - info.pass) * U.num(el, 'fxAmp', 160)).toFixed(1) + 'px'); }
   });
+
+  // Un bandeau incliné traverse la section
+  FX.register('tilted-band', {
+    setup: function (el) {
+      var t = el.textContent.trim();
+      el.setAttribute('aria-label', t);
+      el.textContent = '';
+      var s = U.make('span', '', el);
+      s.setAttribute('aria-hidden', 'true');
+      s.textContent = (t + ' ✦ ').repeat(10);
+      el._fxDir = el.dataset.fxDir === 'right' ? 1 : -1;
+    },
+    scroll: function (el, info) { el.firstChild.style.transform = 'translateX(' + ((info.pass * 30) * el._fxDir - 10).toFixed(2) + '%)'; }
+  });
 })(window.FX);
 
 window.FX._boot();
