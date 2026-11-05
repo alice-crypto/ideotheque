@@ -4381,6 +4381,18 @@
       el.style.setProperty('--fx-ang', el._fxA.toFixed(1) + 'deg');
     }
   });
+
+  // Le coin d'une note se soulève à l'approche du curseur
+  FX.register('sticky-note-peel', {
+    setup: function (el) {
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        var d = Math.hypot(r.right - e.clientX, r.bottom - e.clientY);
+        el.style.setProperty('--fx-lift', U.clamp(1 - d / (r.width * .9), .12, 1).toFixed(3));
+      });
+      el.addEventListener('pointerleave', function () { el.style.setProperty('--fx-lift', 0); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

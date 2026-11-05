@@ -149,4 +149,12 @@ module.exports = [
     'Plusieurs cartes à la fois : une seule doit attirer l\'œil.',
     '<div data-fx="border-chase">…</div>',
     '<div class="demo-card" data-fx="border-chase"><b>Offre Pro</b>La plus choisie.</div>'),
+  E('sticky-note-peel', 'Micro-interaction',
+    'Le coin d\'une note se soulève à l\'approche du curseur, comme un vrai papier.',
+    'Bureau, papier, un bout d\'humain dans l\'écran.',
+    '- `--fx-note` : couleur du papier',
+    'Citations, rappels, petits mots.',
+    'Les interfaces très lisses.',
+    '<aside data-fx="sticky-note-peel">Penser à relire.</aside>',
+    '<div data-fx="sticky-note-peel" style="width:170px;height:130px;padding:16px;font-weight:600">Penser à relire.</div>'),
 ];

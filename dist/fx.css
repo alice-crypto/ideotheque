@@ -3773,6 +3773,25 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   pointer-events: none;
 }
 
+/* sticky-note-peel : une note qui se décolle */
+[data-fx="sticky-note-peel"] {
+  position: relative;
+  background: var(--fx-note, #ffd400);
+  color: #111;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--fx-lift, 0) * 44px), calc(100% - var(--fx-lift, 0) * 44px) 100%, 0 100%);
+  transition: clip-path .25s var(--fx-ease-out);
+}
+[data-fx="sticky-note-peel"]::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(var(--fx-lift, 0) * 44px);
+  height: calc(var(--fx-lift, 0) * 44px);
+  background: linear-gradient(135deg, rgba(0, 0, 0, .35), rgba(255, 255, 255, .6) 48%, transparent 50%);
+  transition: width .25s var(--fx-ease-out), height .25s var(--fx-ease-out);
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
