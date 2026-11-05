@@ -12,4 +12,13 @@ module.exports = [
     '<a href="/projets" data-fx="diagonal-tiles">Projets</a>',
     '<button class="demo-ghost" onclick="FX.play(\'diagonal-tiles\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('spiral-tiles', 'Transition',
+    'Des tuiles couvrent l\'écran en spirale, du bord vers le centre.',
+    'Hypnotique, un mécanisme qui se referme.',
+    '- `--fx-tr-color` : couleur des tuiles',
+    'Sites créatifs, révélations d\'un projet.',
+    'Les parcours où l\'on enchaîne vite les pages.',
+    '<a href="/projets" data-fx="spiral-tiles">Projets</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'spiral-tiles\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];

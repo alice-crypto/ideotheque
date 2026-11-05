@@ -4652,6 +4652,22 @@
       p.style.setProperty('--fx-d', (c + r) * 28 + 'ms');
     });
   } } });
+
+  // Des tuiles se posent en spirale vers le centre
+  FX.register('spiral-tiles', { transition: { pieces: 48, cover: 1050, uncover: 1050, build: function (o) {
+    var C = 8, R = 6, t = 0, l = 0, b = R - 1, r = C - 1, n = 0, kids = o.children;
+    var place = function (x, y) {
+      var p = kids[y * C + x];
+      p.style.left = x * 100 / C + '%'; p.style.top = y * 100 / R + '%';
+      p.style.setProperty('--fx-d', n++ * 12 + 'ms');
+    };
+    while (t <= b && l <= r) {
+      for (var x = l; x <= r; x++) place(x, t); t++;
+      for (var y = t; y <= b; y++) place(r, y); r--;
+      if (t <= b) { for (x = r; x >= l; x--) place(x, b); b--; }
+      if (l <= r) { for (y = b; y >= t; y--) place(l, y); l++; }
+    }
+  } } });
 })(window.FX);
 
 window.FX._boot();
