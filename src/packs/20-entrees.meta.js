@@ -129,4 +129,13 @@ module.exports = [
     '<h2 data-fx="horizon-rise">Aurore</h2>',
     '<p class="demo-title" data-fx="horizon-rise">Aurore</p>',
     { trigger: 'Rejouer' }),
+  E('number-stack-in', 'Entrée',
+    'Plusieurs copies en contour d\'un grand numéro se rassemblent et forment le numéro final.',
+    'Écho, impression en plusieurs passages.',
+    'Aucun réglage.',
+    'Numéros de chapitre, dates, chiffres clés.',
+    'Les petits numéros.',
+    '<div data-fx="number-stack-in">03</div>',
+    '<div class="demo-number" data-fx="number-stack-in" style="color:var(--ink)">03</div>',
+    { trigger: 'Rejouer', a11y: 'Le numéro est dans `aria-label`, les copies sont masquées.' }),
 ];
