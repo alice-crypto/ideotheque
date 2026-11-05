@@ -182,3 +182,11 @@
   -webkit-mask: linear-gradient(var(--fx-angle, 110deg), #000 calc(var(--fx-at, 130%) - var(--fx-soft, 20%)), transparent var(--fx-at, 130%));
   mask: linear-gradient(var(--fx-angle, 110deg), #000 calc(var(--fx-at, 130%) - var(--fx-soft, 20%)), transparent var(--fx-at, 130%));
 }
+
+/* card-recede : la section part au second plan */
+[data-fx="card-recede"] {
+  transform: scale(calc(1 - var(--fx-out, 0) * var(--fx-depth, .1)));
+  border-radius: calc(var(--fx-out, 0) * var(--fx-round, 28px));
+  filter: brightness(calc(1 - var(--fx-out, 0) * .45));
+  transform-origin: 50% 0;
+}
