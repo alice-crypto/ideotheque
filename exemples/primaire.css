@@ -13,4 +13,10 @@
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--w);
+  color: var(--k);
+  font: 400 17px/1.5 "Archivo", system-ui, sans-serif;
+}
 /*@css*/
