@@ -288,4 +288,11 @@
     for (var i = 0; i <= n; i++) pts.push((i * 100 / n).toFixed(2) + '% ' + (i % 2 ? 0 : 60) + 'px');
     o.firstChild.style.clipPath = 'polygon(' + pts.join(',') + ',100% 100%,0 100%)';
   } } });
+
+  // Deux moitiés se ferment au centre avec une ligne de lumière
+  FX.register('mirror-split', { transition: { pieces: 3, cover: 720, uncover: 760, build: function (o) {
+    o.children[0].className = 'fx-t';
+    o.children[1].className = 'fx-b';
+    o.children[2].className = 'fx-line';
+  } } });
 })(window.FX);
