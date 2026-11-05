@@ -4393,6 +4393,23 @@
       el.addEventListener('pointerleave', function () { el.style.setProperty('--fx-lift', 0); });
     }
   });
+
+  // Une petite image s'ouvre au milieu de la ligne au survol du lien
+  FX.register('image-pop-link', {
+    setup: function (el) {
+      var i = document.createElement('img');
+      i.src = el.dataset.fxImg || 'assets/dune.svg';
+      i.alt = '';
+      i.className = 'fx-ipl';
+      i.setAttribute('aria-hidden', 'true');
+      var at = U.num(el, 'fxAt', -1);
+      var words = el.textContent.trim().split(' ');
+      if (at < 0) at = Math.ceil(words.length / 2);
+      el.textContent = words.slice(0, at).join(' ') + ' ';
+      el.appendChild(i);
+      el.appendChild(document.createTextNode(' ' + words.slice(at).join(' ')));
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

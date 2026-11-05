@@ -157,4 +157,13 @@ module.exports = [
     'Les interfaces très lisses.',
     '<aside data-fx="sticky-note-peel">Penser à relire.</aside>',
     '<div data-fx="sticky-note-peel" style="width:170px;height:130px;padding:16px;font-weight:600">Penser à relire.</div>'),
+  E('image-pop-link', 'Micro-interaction',
+    'Au survol du lien, une petite image s\'ouvre au milieu de la ligne et écarte les mots.',
+    'Élégance éditoriale, le texte s\'ouvre sur l\'image.',
+    '- `data-fx-img` : adresse de l\'image\n- `data-fx-at` : place de l\'image, en nombre de mots\n- `--fx-open` (1.8em) : largeur ouverte',
+    'Grands liens, listes de projets.',
+    'Les liens sur plusieurs lignes.',
+    '<a href="#" data-fx="image-pop-link" data-fx-img="photo.jpg">Notre dernier projet</a>',
+    '<a class="demo-link" href="#" data-fx="image-pop-link" data-fx-img="assets/dune.svg" style="color:var(--ink)">Dernier projet</a>',
+    { a11y: 'L\'image est décorative et masquée aux lecteurs d\'écran.' }),
 ];
