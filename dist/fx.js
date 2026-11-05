@@ -5984,6 +5984,20 @@
       });
     }
   });
+
+  // Les titres de section s'empilent en haut de l'écran
+  FX.register('sticky-stack-nav', {
+    setup: function (el) {
+      var layout = function () {
+        var heads = el.querySelectorAll(el.dataset.fxHead || 'h2,h3');
+        var top = U.num(el, 'fxTop', 0);
+        heads.forEach(function (h, i) { h.style.setProperty('--fx-top', top + 'px'); h.style.zIndex = 10 + i; top += h.offsetHeight; });
+        heads.forEach(function (h, i) { h.style.setProperty('--fx-bot', (top - parseFloat(h.style.getPropertyValue('--fx-top')) - h.offsetHeight) + 'px'); });
+      };
+      layout();
+      U.onResize(layout);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

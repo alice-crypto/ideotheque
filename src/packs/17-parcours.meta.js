@@ -57,4 +57,12 @@ module.exports = [
     '<ol data-fx="breadcrumb-fold"><li><a href="#">Accueil</a></li><li><a href="#">Docs</a></li><li><a href="#">API</a></li><li>FX</li></ol>',
     '<ol data-fx="breadcrumb-fold" style="color:var(--ink);font-size:14px"><li><a href="#" style="color:inherit">Accueil</a></li><li><a href="#" style="color:inherit">Docs</a></li><li><a href="#" style="color:inherit">API</a></li><li>Effets</li></ol>',
     { a11y: 'Le bouton est nommé, et le focus passe sur le premier niveau révélé.' }),
+  E('sticky-stack-nav', 'Navigation',
+    'Les titres de section s\'empilent en haut de l\'écran pendant qu\'on descend, et ceux à venir attendent en bas.',
+    'Un classeur à onglets, tout reste à portée de main.',
+    '- `data-fx-head` (h2,h3) : sélecteur des titres\n- `data-fx-top` (0) : décalage du haut, utile sous une barre\n- `--fx-head-bg` : fond des titres',
+    'Foire aux questions, longues listes, documentation.',
+    'Plus de 8 titres : ils occupent trop d\'écran.',
+    '<article data-fx="sticky-stack-nav"><h2>Un</h2><p>…</p><h2>Deux</h2><p>…</p></article>',
+    '<div data-fx="sticky-stack-nav" class="demo-scroll" style="color:var(--ink);font-size:13px;--fx-head-bg:#1a1a20"><h3>Un</h3><p style="padding:10px;height:130px;margin:0">Faites défiler ce cadre.</p><h3>Deux</h3><p style="padding:10px;height:130px;margin:0">Les titres s\'empilent.</p><h3>Trois</h3><p style="padding:10px;height:130px;margin:0">Et restent à portée.</p></div>'),
 ];
