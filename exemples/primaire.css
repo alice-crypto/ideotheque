@@ -132,4 +132,8 @@ img, svg { display: block; max-width: 100%; }
 .hbar b { text-align: right; font-variant-numeric: tabular-nums; }
 @keyframes pr-w { from { width: 0; } }
 .dsearch { flex: 1; max-width: 340px; padding: .6em .8em; border: var(--rule); background: var(--w); color: var(--k); font: inherit; font-size: 14px; }
+.seg2 { display: inline-flex; border: var(--rule); }
+.seg2 button { padding: .45em .8em; border: 0; border-right: var(--rule); background: var(--w); color: var(--k); font: 600 13px "Archivo", sans-serif; cursor: pointer; }
+.seg2 button:last-child { border-right: 0; }
+.seg2 button[aria-pressed="true"] { background: var(--k); color: var(--w); }
 /*@css*/
