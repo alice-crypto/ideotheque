@@ -85,3 +85,9 @@
 [data-fx="timeline-scrub"] button[aria-selected="true"]::before { background: var(--fx-accent); transform: scale(1.4); }
 [data-fx="timeline-scrub"] .fx-ts-in { animation: fx-ts .35s var(--fx-ease-out); }
 @keyframes fx-ts { from { opacity: 0; transform: translateY(8px); } }
+
+/* number-ticker-reel : des bobines de chiffres */
+[data-fx="number-ticker-reel"] { display: inline-flex; font-variant-numeric: tabular-nums; }
+[data-fx="number-ticker-reel"] .fx-ntr { display: inline-block; white-space: pre; height: 1.15em; line-height: 1.15; overflow: hidden; }
+[data-fx="number-ticker-reel"] .fx-ntr-col { display: block; white-space: pre; transition: transform calc(1.3s + var(--fx-i) * .14s) var(--fx-ease-out); }
+.fx-in[data-fx="number-ticker-reel"] .fx-ntr-col { transform: translateY(-23em); }
