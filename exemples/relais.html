@@ -27,6 +27,11 @@
     .rnums > div { padding: clamp(22px, 3.4vw, 44px) 20px; border-right: var(--rule); }
     .rnums > div:last-child { border-right: 0; }
     .rnums p { font-weight: 600; margin-top: 8px; }
+    .rtrack { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; border: var(--rule); padding: clamp(20px, 3vw, 36px); }
+    .rtrack [data-fx="progress-steps-rail"] { --fx-accent: var(--r); --fx-step-bg: var(--k); font-size: 14px; }
+    .rtrack [data-fx="progress-steps-rail"] > li::before { color: var(--w) !important; }
+    .rtrack [data-fx="progress-steps-rail"]::before { background: var(--k); }
+    .rmsg { margin-top: 22px; font-size: clamp(22px, 2.6vw, 34px); font-weight: 700; letter-spacing: -.02em; min-height: 1.2em; }
     /*@css*/
   </style>
 </head>
