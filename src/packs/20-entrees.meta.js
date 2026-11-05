@@ -66,4 +66,13 @@ module.exports = [
     '<p data-fx="blur-words">Une idée à la fois.</p>',
     '<p class="demo-para" data-fx="blur-words" style="color:var(--ink)">Une idée à la fois, sans bruit.</p>',
     { trigger: 'Rejouer' }),
+  E('card-deal', 'Entrée',
+    'Des cartes partent d\'un même paquet en bas et rejoignent leur place, comme distribuées à une table.',
+    'Geste de croupier, plaisir de la surprise.',
+    'Aucun réglage : les trajets sont calculés.',
+    'Offres, équipe, galeries courtes.',
+    'Un conteneur qui change de taille après le chargement.',
+    '<div data-fx="card-deal">…</div>',
+    '<div data-fx="card-deal" style="display:flex;gap:6px"><div class="demo-box" style="width:60px;height:86px"></div><div class="demo-box alt" style="width:60px;height:86px"></div><div class="demo-box ink" style="width:60px;height:86px"></div></div>',
+    { trigger: 'Rejouer' }),
 ];
