@@ -221,4 +221,12 @@ module.exports = [
     'Les textes longs : la couleur finit par distraire.',
     '<p data-fx="color-cycle-words">Lire, créer, partager, recommencer.</p>',
     '<p class="demo-para" data-fx="color-cycle-words" style="color:var(--ink)">Lire, créer, partager, recommencer.</p>'),
+  E('sun-shadow', 'Texte',
+    'Une longue ombre pleine part à l\'opposé du curseur, comme si celui-ci était le soleil.',
+    'Cadran solaire, relief, volume sans 3D.',
+    '- `data-fx-length` (18) : longueur de l\'ombre, en pixels\n- `--fx-shadow` : couleur de l\'ombre',
+    'Titres sur aplat clair ou coloré.',
+    'Les fonds sombres, où l\'ombre disparaît.',
+    '<h1 data-fx="sun-shadow">Midi</h1>',
+    '<p class="demo-title" data-fx="sun-shadow" style="--fx-shadow:rgba(255,91,46,.55)">Midi</p>'),
 ];
