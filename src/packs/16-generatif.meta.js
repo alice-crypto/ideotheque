@@ -183,4 +183,12 @@ module.exports = [
     '<section data-fx="noise-terrain">…</section>',
     '<div data-fx="noise-terrain" style="width:230px;height:170px;color:var(--ink)"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
+  E('bubble-rise', 'Ambiance',
+    'Des bulles montent en ondulant et éclatent si le curseur les touche.',
+    'Aquarium, boisson pétillante, petit jeu sans enjeu.',
+    '- `data-fx-count` (22) : nombre de bulles\n- `--fx-bubble` : couleur',
+    'Boissons, produits pour enfants, pages ludiques.',
+    'Les sites sérieux.',
+    '<section data-fx="bubble-rise">…</section>',
+    '<div data-fx="bubble-rise" style="width:230px;height:170px;color:var(--ink)"></div>'),
 ];

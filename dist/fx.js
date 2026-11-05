@@ -5688,6 +5688,54 @@
       if (bg !== 'transparent') { c.globalCompositeOperation = 'destination-over'; c.fillStyle = bg; c.fillRect(0, 0, w, h); c.globalCompositeOperation = 'source-over'; }
     }
   });
+
+  // Des bulles montent, éclatent quand on les touche
+  FX.register('bubble-rise', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var cv = el._fxCv = U.make('canvas', 'fx-gen', el);
+      cv.setAttribute('aria-hidden', 'true');
+      var bs = el._fxB = [], rings = el._fxR = [];
+      var spawn = function (b) { b.x = Math.random(); b.y = 1 + Math.random() * .4; b.r = U.rand(5, 18); b.a = U.rand(0, 6); return b; };
+      for (var i = 0; i < U.num(el, 'fxCount', 22); i++) { var b = spawn({}); b.y = Math.random(); bs.push(b); }
+      el._fxSp = spawn;
+      el.addEventListener('pointermove', function (e) {
+        var q = cv.getBoundingClientRect(), mx = e.clientX - q.left, my = e.clientY - q.top;
+        bs.forEach(function (b) {
+          var dx = b.x * q.width - mx, dy = b.y * q.height - my;
+          if (dx * dx + dy * dy < b.r * b.r) { rings.push({ x: b.x * q.width, y: b.y * q.height, r: b.r, l: 1 }); spawn(b); }
+        });
+      });
+    },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d');
+      c.clearRect(0, 0, w, h);
+      c.strokeStyle = getComputedStyle(cv).color;
+      c.lineWidth = 1.5;
+      el._fxB.forEach(function (b) {
+        b.y -= (.03 + .9 / b.r * .05) * dt;
+        if (b.y * h < -b.r) el._fxSp(b);
+        c.globalAlpha = .75;
+        c.beginPath();
+        c.arc(b.x * w + Math.sin(t * .001 + b.a) * 7, b.y * h, b.r, 0, 7);
+        c.stroke();
+      });
+      el._fxR = el._fxR.filter(function (r) {
+        r.l -= dt * 3; r.r += dt * 60;
+        if (r.l <= 0) return false;
+        c.globalAlpha = r.l;
+        c.beginPath();
+        c.arc(r.x, r.y, r.r, 0, 7);
+        c.stroke();
+        return true;
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
