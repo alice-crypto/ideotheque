@@ -559,4 +559,24 @@
       input.addEventListener('blur', function () { if (!input.value) set(false); });
     }
   });
+
+  // L'étiquette supprimée s'envole et les autres comblent la place
+  FX.register('tag-delete', {
+    setup: function (el) {
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('button');
+        if (!b || !el.contains(b)) return;
+        var tag = b.parentElement;
+        tag.style.width = tag.offsetWidth + 'px';
+        void tag.offsetWidth;
+        tag.classList.add('fx-out');
+        var next = tag.nextElementSibling || tag.previousElementSibling;
+        setTimeout(function () {
+          tag.remove();
+          if (next && next.querySelector('button')) next.querySelector('button').focus({ preventScroll: true });
+          el.dispatchEvent(new CustomEvent('fx:remove', { bubbles: true }));
+        }, 340);
+      });
+    }
+  });
 })(window.FX);
