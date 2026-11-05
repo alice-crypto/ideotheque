@@ -66,3 +66,10 @@
 [data-fx="queue-position"] i { width: 16px; height: 16px; border-radius: 50%; background: rgba(128, 128, 128, .4); transition: transform .4s var(--fx-ease-spring), opacity .4s, background .3s; }
 [data-fx="queue-position"] i.fx-me { background: var(--fx-accent); transform: scale(1.35); }
 [data-fx="queue-position"] i.fx-gone { opacity: .14; transform: scale(.7); }
+
+/* error-glitch-shake : un refus lisible */
+[data-fx="error-glitch-shake"] { display: grid; gap: 4px; }
+[data-fx="error-glitch-shake"] .fx-eg-msg { font-size: 12px; color: var(--fx-err, #e10600); min-height: 1.2em; }
+[data-fx="error-glitch-shake"].fx-err input,
+[data-fx="error-glitch-shake"].fx-err textarea { border-color: var(--fx-err, #e10600); animation: fx-eg .4s var(--fx-ease-out); }
+@keyframes fx-eg { 20% { transform: translateX(-6px); } 40% { transform: translateX(5px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(2px); } }
