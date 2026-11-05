@@ -59,3 +59,15 @@
 /* letter-orbit : du cercle à la ligne */
 [data-fx="letter-orbit"] { white-space: nowrap; }
 [data-fx="letter-orbit"] .fx-char { display: inline-block; transform-origin: center; }
+
+/* mirror-type : un reflet qui ondule */
+[data-fx="mirror-type"] { display: inline-block; line-height: 1; }
+[data-fx="mirror-type"] span { display: block; }
+[data-fx="mirror-type"] .fx-mir-low {
+  transform: scaleY(-.8) skewX(var(--fx-sk, 0deg));
+  transform-origin: center;
+  margin-top: -.06em;
+  opacity: var(--fx-reflect, .4);
+  -webkit-mask: linear-gradient(0deg, #000, transparent 85%);
+  mask: linear-gradient(0deg, #000, transparent 85%);
+}
