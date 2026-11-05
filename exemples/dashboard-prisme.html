@@ -133,6 +133,18 @@
       b.style.cssText = 'all:unset;cursor:pointer';
       th.textContent = '';
       th.appendChild(b);
+      b.addEventListener('click', function () {
+        var asc = th.getAttribute('aria-sort') !== 'ascending';
+        document.querySelectorAll('#tclients th').forEach(function (o) { o.removeAttribute('aria-sort'); });
+        th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+        var body = document.querySelector('#tclients tbody');
+        Array.prototype.slice.call(body.rows).sort(function (x, y) {
+          var A = x.cells[col].textContent, B = y.cells[col].textContent;
+          var na = parseFloat(A.replace(/\s/g, '')), nb = parseFloat(B.replace(/\s/g, ''));
+          var c = !isNaN(na) && !isNaN(nb) ? na - nb : A.localeCompare(B, 'fr');
+          return asc ? c : -c;
+        }).forEach(function (r) { body.appendChild(r); });
+      });
       /*@sortjs*/
     });
     /*@js*/
