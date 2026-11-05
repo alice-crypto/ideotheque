@@ -99,6 +99,16 @@
       }
       return p[p.length - 1];
     }
+    (function () {
+      var NS = 'http://www.w3.org/2000/svg', layer = document.getElementById('bikes');
+      var bikes = ROUTES.map(function (r, i) {
+        var g = document.createElementNS(NS, 'g');
+        g.innerHTML = '<circle r="13" fill="' + (r.late ? 'var(--r)' : 'var(--b)') + '" stroke="var(--w)" stroke-width="2"/><text text-anchor="middle" y="4" style="fill:var(--w)">' + r.n + '</text>';
+        layer.appendChild(g);
+        return { g: g, r: r, t: i * .19 };
+      });
+      /*@bikejs*/
+    })();
     /*@js*/
   </script>
 </body>
