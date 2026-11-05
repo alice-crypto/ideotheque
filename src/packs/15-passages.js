@@ -275,4 +275,27 @@
       }
     }
   });
+
+  // L'image ondule comme une surface d'eau au survol
+  FX.register('wave-image', {
+    setup: function (el) {
+      var id = 'fx-wv-' + Math.random().toString(36).slice(2, 8);
+      var h = document.createElement('div');
+      h.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+      h.innerHTML = '<svg aria-hidden="true"><filter id="' + id + '"><feTurbulence type="turbulence" baseFrequency=".012 .05" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter></svg>';
+      document.body.appendChild(h);
+      el._fxT = h.querySelector('feTurbulence'); el._fxM = h.querySelector('feDisplacementMap');
+      el._fxA = 0;
+      (el.querySelector('img') || el).style.filter = 'url(#' + id + ')';
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      var tg = (el.matches(':hover') || el.dataset.fxAuto === 'true') ? U.num(el, 'fxScale', 24) : 0;
+      el._fxA = U.lerp(el._fxA, tg, .07);
+      if (el._fxA < .1 && !tg) { if (el._fxOn) { el._fxM.setAttribute('scale', 0); el._fxOn = false; } return; }
+      el._fxOn = true;
+      el._fxM.setAttribute('scale', el._fxA.toFixed(1));
+      el._fxT.setAttribute('baseFrequency', (.012 + Math.sin(t * .0007) * .004).toFixed(4) + ' ' + (.05 + Math.cos(t * .0009) * .012).toFixed(4));
+    }
+  });
 })(window.FX);
