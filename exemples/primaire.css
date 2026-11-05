@@ -78,4 +78,5 @@ img, svg { display: block; max-width: 100%; }
 .pnav { display: flex; gap: 26px; font-weight: 600; font-size: 15px; }
 .pnav a { text-decoration: none; padding-block: 6px; border-bottom: 3px solid transparent; }
 .pnav a:hover { border-color: var(--r); }
+.psec { padding-block: clamp(64px, 9vw, 130px); border-bottom: var(--rule); }
 /*@css*/
