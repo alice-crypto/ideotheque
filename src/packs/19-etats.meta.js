@@ -190,4 +190,13 @@ module.exports = [
     'Plus de 5 suggestions : on ne les lit plus.',
     '<div data-fx="prompt-suggestions" data-fx-target="#demande"><button>Résumer un texte</button></div>',
     '<div data-fx="prompt-suggestions" style="width:220px;color:var(--ink)"><button>Résumer un texte</button><button>Traduire</button><button>Proposer un titre</button></div>'),
+  E('model-switcher', 'État',
+    'Un petit bouton ouvre une liste de modes ou de modèles, avec une coche sur le choix en cours.',
+    'Précis, un outil de professionnel sans encombrement.',
+    '- `data-fx-options` : choix séparés par `|`\n- L\'élément émet `fx:change`.',
+    'Assistants d\'IA, modes de rendu, langues.',
+    'Plus de 7 options.',
+    '<div data-fx="model-switcher" data-fx-options="Rapide|Précis"></div>',
+    '<div data-fx="model-switcher" style="color:var(--ink)"></div>',
+    { a11y: 'Rôles `listbox` et `option`, navigation aux flèches et fermeture avec Échap.' }),
 ];

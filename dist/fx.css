@@ -4901,6 +4901,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="prompt-suggestions"] > *:focus-visible { transform: translateY(-2px); border-color: var(--fx-accent); }
 @keyframes fx-ps { from { opacity: 0; transform: translateY(10px); } }
 
+/* model-switcher : un choix de mode */
+[data-fx="model-switcher"] { position: relative; display: inline-block; font-size: 13px; }
+[data-fx="model-switcher"] > button { padding: .4em 2em .4em .8em; border: 1px solid rgba(128, 128, 128, .4); border-radius: 8px; background: none; color: inherit; font: inherit; cursor: pointer; position: relative; }
+[data-fx="model-switcher"] > button::after { content: "⌄"; position: absolute; right: .7em; top: .2em; transition: transform .25s; }
+[data-fx="model-switcher"].fx-open > button::after { transform: rotate(180deg); }
+[data-fx="model-switcher"] ul { position: absolute; left: 0; top: calc(100% + 4px); min-width: 100%; z-index: 5; list-style: none; margin: 0; padding: 4px; border-radius: 8px; background: var(--fx-menu, #222); color: #fff; visibility: hidden; opacity: 0; transform: translateY(-6px) scale(.97); transform-origin: top; transition: opacity .18s, transform .22s var(--fx-ease-out), visibility .22s; }
+[data-fx="model-switcher"].fx-open ul { visibility: visible; opacity: 1; transform: none; }
+[data-fx="model-switcher"] li { padding: .35em .6em; border-radius: 5px; cursor: pointer; white-space: nowrap; }
+[data-fx="model-switcher"] li:hover { background: rgba(255, 255, 255, .12); }
+[data-fx="model-switcher"] li[aria-selected="true"]::after { content: " ✓"; color: var(--fx-accent); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
