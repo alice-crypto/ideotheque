@@ -75,3 +75,9 @@
   background: var(--fx-head-bg, var(--fx-dark));
   border-bottom: 1px solid rgba(128, 128, 128, .25);
 }
+
+/* page-peek : un panneau à tirer */
+[data-fx="page-peek"] { position: absolute; left: 0; right: 0; bottom: 0; height: var(--fx-h, 100%); border-radius: 16px 16px 0 0; background: var(--fx-peek-bg, #222); transform: translateY(var(--fx-pos, 0)); transition: transform .45s var(--fx-ease-out); }
+[data-fx="page-peek"].fx-drag { transition: none; }
+[data-fx="page-peek"] > button { display: block; width: 100%; padding: 12px; background: none; border: 0; color: inherit; font: inherit; cursor: grab; touch-action: none; }
+[data-fx="page-peek"] > button::before { content: ""; display: block; width: 36px; height: 4px; margin: 0 auto 8px; border-radius: 2px; background: currentColor; opacity: .4; }
