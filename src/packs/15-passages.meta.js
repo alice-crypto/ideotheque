@@ -102,4 +102,13 @@ module.exports = [
     '<a href="/tournee" data-fx="text-cover">Tournée</a>',
     '<button class="demo-ghost" onclick="FX.play(\'text-cover\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('dots-cover', 'Transition',
+    'Une trame de points grossit depuis le point de clic jusqu\'à former un aplat.',
+    'Impression en demi-teintes, onde qui se propage.',
+    '- `--fx-tr-color` : couleur',
+    'Magazines, sites à forte identité graphique.',
+    'Les écrans très modestes : 140 éléments à animer.',
+    '<a href="/numero" data-fx="dots-cover">Numéro 12</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'dots-cover\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];

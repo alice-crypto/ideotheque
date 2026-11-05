@@ -4049,6 +4049,19 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-text-cover.fx-cover i { transform: none; }
 .fx-tr-text-cover.fx-uncover i { transform: translateX(calc(var(--fx-dir) * -110%)); }
 
+/* dots-cover : une trame qui se referme */
+.fx-tr-dots-cover i {
+  width: 22vmax;
+  height: 22vmax;
+  margin: -11vmax;
+  border-radius: 50%;
+  background: var(--fx-tr-color, var(--fx-accent));
+  transform: scale(0);
+  transition: transform .42s var(--fx-ease-io) var(--fx-d);
+}
+.fx-tr-dots-cover.fx-cover i { transform: scale(1); }
+.fx-tr-dots-cover.fx-uncover i { transform: scale(0); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
