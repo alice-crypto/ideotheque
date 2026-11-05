@@ -42,6 +42,11 @@
     .rplans h3 { font-size: 22px; }
     .rplans .p { font-size: clamp(54px, 6.4vw, 92px); font-weight: 800; letter-spacing: -.05em; line-height: 1; }
     .rplans .pbtn { justify-content: center; margin-top: 8px; }
+    @media (max-width: 900px) {
+      .rhero-g, .rzones { grid-template-columns: 1fr; min-height: 0; }
+      .rtrack { grid-template-columns: 1fr; }
+      .rmap { box-shadow: 6px 6px 0 var(--r); }
+    }
     /*@css*/
   </style>
 </head>
