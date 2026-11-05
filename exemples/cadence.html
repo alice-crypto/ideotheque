@@ -30,6 +30,9 @@
     .mbeats i { aspect-ratio: 1; border: 2px solid var(--w); transition: background .28s; }
     .mbeats i.on { background: var(--y); transition: none; }
     .mbeats i:first-child.on { background: var(--r); }
+    .mctl { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: end; }
+    .mctl .pbtn { background: var(--y); color: var(--k); border-color: var(--y); min-width: 110px; justify-content: center; }
+    .mctl [data-fx="range-bubble"] { --fx-accent: var(--y); }
     /*@css*/
   </style>
 </head>
