@@ -126,4 +126,13 @@ module.exports = [
     'Le texte courant : réservé aux mots isolés.',
     '<a href="#" data-fx="hop-row">Découvrir</a>',
     '<a class="demo-roll" href="#" data-fx="hop-row" style="color:var(--ink)">Découvrir</a>'),
+  E('half-shift', 'Texte',
+    'Le mot est coupé à l\'horizontale, et ses deux moitiés glissent en sens contraire au défilement.',
+    'Tension, faille, le titre se recale exactement au centre de l\'écran.',
+    '- `data-fx-shift` (60) : amplitude en pixels',
+    'Grands titres de section en capitales.',
+    'Les petites tailles et les textes de plusieurs lignes.',
+    '<h2 data-fx="half-shift">Rupture</h2>',
+    '<p class="demo-title" data-fx="half-shift">Rupture</p>',
+    { a11y: 'Le texte est dans `aria-label`, les deux copies sont masquées aux lecteurs d\'écran.' }),
 ];
