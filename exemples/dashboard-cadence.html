@@ -102,6 +102,19 @@
           <div data-fx="gauge-needle" data-fx-value="91" style="--fx-w:min(240px,100%)"></div>
           <p style="margin:6px auto 0;font-size:14px;font-weight:600">Très bien. Attention au fa dièse, souvent un peu bas.</p>
         </section>
+        <section class="dcard" id="morceaux" style="--w-col:8">
+          <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px"><h2 style="margin:0;font-size:15px;line-height:1.2;font-stretch:100%;letter-spacing:-.01em">Mes morceaux</h2>
+            <div class="seg2" id="filtre" role="group" aria-label="Filtrer les morceaux">
+              <!--@seg-->
+            </div>
+          </div>
+          <div style="overflow-x:auto"><table class="dtable" id="tm">
+            <thead><tr><th>Morceau</th><th>Compositeur</th><th>État</th><th style="text-align:right">Tempo</th><th style="text-align:right">Maîtrise</th></tr></thead>
+            <tbody>
+              <!--@rows-->
+            </tbody>
+          </table></div>
+        </section>
         <!--@body-->
       </main>
     </div>
