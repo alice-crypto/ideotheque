@@ -78,4 +78,25 @@
       if (el.dataset.fxDemo) setInterval(function () { el.classList.toggle('fx-small'); }, 1800);
     }
   });
+
+  // Un rail vertical indique la section et la progression
+  FX.register('rail-progress-nav', {
+    setup: function (el) {
+      var links = Array.prototype.slice.call(el.querySelectorAll('a[href^="#"]'));
+      el._fxL = links.map(function (a) { return { a: a, t: document.querySelector(a.getAttribute('href').length > 1 ? a.getAttribute('href') : null) }; }).filter(function (o) { return o.t; });
+      links.forEach(function (a) { U.make('i', '', a).setAttribute('aria-hidden', 'true'); });
+      if (!el._fxL.length && links.length) links[0].classList.add('fx-cur');
+    },
+    scroll: function (el, info) {
+      if (!el._fxL.length) { el.style.setProperty('--fx-q', info.pass.toFixed(3)); return; }
+      var cur = 0, mid = info.vh / 2;
+      el._fxL.forEach(function (o, i) { if (o.t.getBoundingClientRect().top < mid) cur = i; });
+      el._fxL.forEach(function (o, i) {
+        var on = i === cur;
+        o.a.classList.toggle('fx-cur', on);
+        if (on) { o.a.setAttribute('aria-current', 'true'); var r = o.t.getBoundingClientRect(); o.a.style.setProperty('--fx-q', U.clamp((mid - r.top) / r.height, 0, 1).toFixed(3)); }
+        else o.a.removeAttribute('aria-current');
+      });
+    }
+  });
 })(window.FX);
