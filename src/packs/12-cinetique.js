@@ -354,4 +354,14 @@
       el.textContent = Array.from(el._fxOrig).map(function (c) { return Math.random() < .5 ? c.toUpperCase() : c.toLowerCase(); }).join('');
     }
   });
+
+  // L'espacement des lettres inspire et expire
+  FX.register('breathe-track', {
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      var c = (t / U.num(el, 'fxCycle', 6000)) % 1;
+      var v = c < .45 ? U.easeInOut(c / .45) : c < .55 ? 1 : 1 - U.easeInOut((c - .55) / .45);
+      el.style.setProperty('--fx-b', v.toFixed(3));
+    }
+  });
 })(window.FX);
