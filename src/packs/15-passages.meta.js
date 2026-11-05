@@ -225,4 +225,12 @@ module.exports = [
     '<div data-fx="polaroid-drop"><figure><img src="a.jpg" alt="…"></figure><figure><img src="b.jpg" alt="…"></figure></div>',
     '<div data-fx="polaroid-drop"><div><img src="assets/dune.svg" alt="" style="display:block;width:110px;height:90px;object-fit:cover"></div><div><img src="assets/city.svg" alt="" style="display:block;width:110px;height:90px;object-fit:cover"></div><div><img src="assets/dune.svg" alt="" style="display:block;width:110px;height:90px;object-fit:cover"></div></div>',
     { trigger: 'Rejouer' }),
+  E('x-ray', 'Image',
+    'Le curseur fait apparaître une seconde image dans un cercle, comme une radio de la première.',
+    'Regard à travers la matière, on découvre ce qu\'il y a dessous.',
+    '- `data-fx-radius` (70) : rayon de la lentille\n- `data-fx-auto="true"` : la lentille se déplace seule',
+    'Avant / après, coupe d\'un objet, plan et photo.',
+    'Une seconde image qui porte une information essentielle : elle reste cachée sans curseur.',
+    '<figure data-fx="x-ray"><img src="objet.jpg" alt="…"><img src="coupe.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="x-ray" data-fx-auto="true"><img src="assets/dune.svg" alt=""><img src="assets/city.svg" alt=""></div>'),
 ];

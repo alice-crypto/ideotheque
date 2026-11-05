@@ -5016,6 +5016,30 @@
       });
     }
   });
+
+  // Le curseur révèle une seconde image, comme une radio
+  FX.register('x-ray', {
+    setup: function (el) {
+      var s = el._fxS = { x: 0, y: 0, tx: 0, ty: 0, r: 0, on: false };
+      el.addEventListener('pointermove', function (e) {
+        var b = el.getBoundingClientRect();
+        s.tx = e.clientX - b.left; s.ty = e.clientY - b.top; s.on = true;
+      });
+      el.addEventListener('pointerleave', function () { s.on = false; });
+    },
+    tick: function (el, dt, t) {
+      var s = el._fxS;
+      if (el.dataset.fxAuto === 'true' && !s.on) {
+        s.tx = el.offsetWidth * (.5 + Math.sin(t * .0009) * .35);
+        s.ty = el.offsetHeight * (.5 + Math.cos(t * .0013) * .3);
+      }
+      s.x = U.lerp(s.x, s.tx, .14); s.y = U.lerp(s.y, s.ty, .14);
+      s.r = U.lerp(s.r, s.on || el.dataset.fxAuto === 'true' ? U.num(el, 'fxRadius', 70) : 0, .12);
+      el.style.setProperty('--fx-x', s.x.toFixed(1) + 'px');
+      el.style.setProperty('--fx-y', s.y.toFixed(1) + 'px');
+      el.style.setProperty('--fx-r', s.r.toFixed(1) + 'px');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
