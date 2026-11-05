@@ -16,3 +16,7 @@
 /* scroll-typing : on écrit en défilant */
 [data-fx="scroll-typing"] .fx-st-off { visibility: hidden; }
 [data-fx="scroll-typing"] .fx-st-on { border-right: .08em solid var(--fx-caret, currentColor); }
+
+/* band-slide : un bandeau de texte lié au défilement */
+[data-fx="band-slide"] { display: block; overflow: hidden; white-space: nowrap; }
+[data-fx="band-slide"] .fx-band { display: inline-block; transform: translateX(var(--fx-x, 0)); will-change: transform; }
