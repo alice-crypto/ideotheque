@@ -99,4 +99,36 @@
       });
     }
   });
+
+  // Une palette de commandes qui filtre en direct
+  FX.register('command-dock', {
+    setup: function (el) {
+      var input = el.querySelector('input'), items = Array.prototype.slice.call(el.querySelectorAll('li')), cur = 0;
+      if (!input) return;
+      input.setAttribute('role', 'combobox');
+      input.setAttribute('aria-expanded', 'true');
+      var list = el.querySelector('ul');
+      if (list) list.setAttribute('role', 'listbox');
+      var vis = function () { return items.filter(function (i) { return !i.hidden; }); };
+      var mark = function () {
+        var v = vis();
+        items.forEach(function (i) { i.classList.remove('fx-cur'); i.setAttribute('role', 'option'); i.setAttribute('aria-selected', 'false'); });
+        if (v[cur]) { v[cur].classList.add('fx-cur'); v[cur].setAttribute('aria-selected', 'true'); }
+      };
+      input.addEventListener('input', function () {
+        var q = input.value.trim().toLowerCase();
+        items.forEach(function (i) { i.hidden = i.textContent.toLowerCase().indexOf(q) === -1; });
+        cur = 0; mark();
+      });
+      input.addEventListener('keydown', function (e) {
+        var v = vis();
+        if (e.key === 'ArrowDown') { e.preventDefault(); cur = (cur + 1) % Math.max(1, v.length); mark(); }
+        if (e.key === 'ArrowUp') { e.preventDefault(); cur = (cur - 1 + v.length) % Math.max(1, v.length); mark(); }
+        if (e.key === 'Enter' && v[cur]) { e.preventDefault(); el.dispatchEvent(new CustomEvent('fx:pick', { bubbles: true, detail: { text: v[cur].textContent.trim() } })); var a = v[cur].querySelector('a'); if (a) a.click(); }
+      });
+      items.forEach(function (i, k) { i.style.setProperty('--fx-i', k); i.addEventListener('pointerenter', function () { cur = vis().indexOf(i); mark(); }); });
+      mark();
+      window.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'k' && el.dataset.fxShortcut === 'true') { e.preventDefault(); input.focus(); } });
+    }
+  });
 })(window.FX);
