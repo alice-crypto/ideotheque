@@ -12,3 +12,6 @@
 [data-fx="scroll-clock"] i { position: absolute; left: 50%; bottom: 50%; width: 3px; margin-left: -1.5px; border-radius: 2px; background: currentColor; transform-origin: bottom; }
 [data-fx="scroll-clock"] .h { height: 26%; transform: rotate(var(--fx-h, 0deg)); }
 [data-fx="scroll-clock"] .m { height: 38%; background: var(--fx-accent); transform: rotate(var(--fx-m, 0deg)); }
+
+/* parallax-letters : des lettres à plusieurs vitesses */
+[data-fx="parallax-letters"] .fx-char { display: inline-block; transform: translateY(calc(var(--fx-t, 0px) * var(--fx-s, 0))); }
