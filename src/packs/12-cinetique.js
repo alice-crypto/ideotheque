@@ -83,4 +83,22 @@
       el.style.setProperty('--fx-peak', (1 - Math.abs(info.pass * 2 - 1)).toFixed(3));
     }
   });
+
+  // La lettre survolée s'étire et ses voisines suivent, comme un accordéon
+  FX.register('letter-accordion', {
+    setup: function (el) {
+      U.splitChars(el);
+      var cs = Array.prototype.slice.call(el.querySelectorAll('.fx-char'));
+      function set(active) {
+        cs.forEach(function (c, i) {
+          var d = active < 0 ? 9 : Math.abs(i - active);
+          c.style.setProperty('--fx-a', Math.max(0, 1 - d / 3).toFixed(2));
+        });
+      }
+      cs.forEach(function (c, i) { c.addEventListener('pointerenter', function () { set(i); }); });
+      el.addEventListener('pointerleave', function () { set(-1); });
+      el.addEventListener('focusin', function () { set(0); });
+      el.addEventListener('focusout', function () { set(-1); });
+    }
+  });
 })(window.FX);
