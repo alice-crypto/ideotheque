@@ -60,3 +60,7 @@
 [data-fx="headline-replace-scroll"] .fx-hr-w { display: inline-block; overflow: hidden; vertical-align: bottom; color: var(--fx-accent); }
 [data-fx="headline-replace-scroll"] .fx-hr-in { display: inline-block; animation: fx-hrs .45s var(--fx-ease-out); }
 @keyframes fx-hrs { from { transform: translateY(100%); opacity: 0; } }
+
+/* highlight-terms-sweep : un surligneur sur les mots clés */
+[data-fx="highlight-terms-sweep"] mark { color: inherit; background: linear-gradient(var(--fx-mark, var(--fx-accent)), var(--fx-mark, var(--fx-accent))) no-repeat 0 85% / 0 40%; transition: background-size .5s var(--fx-ease-out) calc(var(--fx-i) * 220ms); }
+.fx-in[data-fx="highlight-terms-sweep"] mark { background-size: 100% 40%; }
