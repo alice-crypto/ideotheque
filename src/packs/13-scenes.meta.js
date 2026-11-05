@@ -12,4 +12,12 @@ module.exports = [
     '<img data-fx="circle-unveil" src="photo.jpg" alt="">',
     '<div class="demo-box" data-fx="circle-unveil" style="width:200px;height:150px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'élément suit toujours le défilement, sans animation en boucle.' }),
+  E('slat-scroll', 'Défilement',
+    'Des lames horizontales recouvrent l\'image et s\'ouvrent une à une au défilement.',
+    'Un store qu\'on remonte, la lumière entre par tranches.',
+    '- `data-fx-slats` (7) : nombre de lames\n- `--fx-slat` : couleur des lames',
+    'Images plein cadre, ouvertures de sections.',
+    'Les éléments de moins de 120 px de haut.',
+    '<figure data-fx="slat-scroll"><img src="photo.jpg" alt=""></figure>',
+    '<div class="demo-box" data-fx="slat-scroll" style="width:200px;height:150px"></div>'),
 ];
