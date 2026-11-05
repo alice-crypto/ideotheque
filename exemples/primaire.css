@@ -127,4 +127,8 @@ img, svg { display: block; max-width: 100%; }
 .vlabels span { flex: 1; text-align: center; min-width: 0; }
 .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 10px; font-size: 12px; font-weight: 600; }
 .legend i { display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: -1px; }
+.hbar { display: grid; grid-template-columns: 96px 1fr 40px; align-items: center; gap: 8px; font-size: 13px; padding-block: 4px; }
+.hbar i { display: block; height: 14px; background: var(--c, var(--b)); width: calc(var(--v) * 1%); animation: pr-w .8s var(--fx-ease-out) both; }
+.hbar b { text-align: right; font-variant-numeric: tabular-nums; }
+@keyframes pr-w { from { width: 0; } }
 /*@css*/
