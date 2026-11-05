@@ -7910,6 +7910,15 @@
       el.style.setProperty('--fx-h', (total * .5) + 'deg');
     }
   });
+
+  // Chaque lettre monte à sa propre vitesse
+  FX.register('parallax-letters', {
+    setup: function (el) {
+      U.splitChars(el);
+      el.querySelectorAll('.fx-char').forEach(function (c) { c.style.setProperty('--fx-s', U.rand(-1, 1).toFixed(2)); });
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-t', ((.5 - info.pass) * U.num(el, 'fxAmp', 160)).toFixed(1) + 'px'); }
+  });
 })(window.FX);
 
 window.FX._boot();

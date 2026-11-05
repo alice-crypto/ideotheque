@@ -19,4 +19,12 @@ module.exports = [
     'Une heure réelle à lire.',
     '<div data-fx="scroll-clock"></div>',
     '<div data-fx="scroll-clock" style="color:var(--ink)"></div>'),
+  E('parallax-letters', 'Défilement',
+    'Chaque lettre du titre se déplace à sa propre vitesse, et elles s\'alignent au centre de l\'écran.',
+    'Mot en apesanteur, qui se compose au bon moment.',
+    '- `data-fx-amp` (160) : amplitude',
+    'Titres de section en grand.',
+    'Les textes qu\'il faut lire tout de suite.',
+    '<h2 data-fx="parallax-letters">Apesanteur</h2>',
+    '<p class="demo-title" data-fx="parallax-letters" style="font-size:28px">Apesanteur</p>'),
 ];

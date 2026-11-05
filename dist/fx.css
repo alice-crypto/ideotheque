@@ -5228,6 +5228,9 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="scroll-clock"] .h { height: 26%; transform: rotate(var(--fx-h, 0deg)); }
 [data-fx="scroll-clock"] .m { height: 38%; background: var(--fx-accent); transform: rotate(var(--fx-m, 0deg)); }
 
+/* parallax-letters : des lettres à plusieurs vitesses */
+[data-fx="parallax-letters"] .fx-char { display: inline-block; transform: translateY(calc(var(--fx-t, 0px) * var(--fx-s, 0))); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
