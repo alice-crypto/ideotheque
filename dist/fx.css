@@ -5078,6 +5078,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-in[data-fx="drop-cap-draw"] .fx-dc { transform: none; opacity: 1; }
 .fx-in[data-fx="drop-cap-draw"] .fx-dc-r { opacity: 1; }
 
+/* margin-note : une note en marge */
+[data-fx="margin-note"] .fx-mn-ref { position: relative; border-bottom: 1px dotted currentColor; cursor: help; }
+[data-fx="margin-note"] .fx-mn-ref::after { content: var(--fx-n); font-size: .7em; vertical-align: .5em; margin-left: .1em; color: var(--fx-accent); }
+[data-fx="margin-note"] .fx-mn { position: absolute; left: 0; top: 100%; z-index: 2; width: max-content; max-width: 220px; background: var(--fx-note-bg, #222); color: #fff; padding: 0 .5em; border-radius: 4px; font-size: .78em; line-height: 1.35; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .35s var(--fx-ease-out), opacity .25s; }
+[data-fx="margin-note"] .fx-mn-ref:hover .fx-mn,
+[data-fx="margin-note"] .fx-mn-ref:focus .fx-mn,
+[data-fx="margin-note"] [data-fx-show] .fx-mn { max-height: 6em; opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

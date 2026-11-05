@@ -7463,6 +7463,22 @@
       r.setAttribute('aria-hidden', 'true');
     }
   });
+
+  // Une note en marge s'éclaire quand on survole sa référence
+  FX.register('margin-note', {
+    setup: function (el) {
+      var refs = el.querySelectorAll('[data-note]');
+      refs.forEach(function (r, i) {
+        r.classList.add('fx-mn-ref');
+        r.tabIndex = 0;
+        var n = document.createElement('small');
+        n.className = 'fx-mn';
+        n.textContent = (i + 1) + '. ' + r.dataset.note;
+        r.appendChild(n);
+        r.style.setProperty('--fx-n', '"' + (i + 1) + '"');
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
