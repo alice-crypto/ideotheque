@@ -79,4 +79,6 @@ img, svg { display: block; max-width: 100%; }
 .pnav a { text-decoration: none; padding-block: 6px; border-bottom: 3px solid transparent; }
 .pnav a:hover { border-color: var(--r); }
 .psec { padding-block: clamp(64px, 9vw, 130px); border-bottom: var(--rule); }
+.phd { display: grid; grid-template-columns: 1fr 3fr; gap: 24px; margin-bottom: clamp(36px, 5vw, 70px); }
+.phd h2 { font-size: clamp(38px, 6.2vw, 92px); }
 /*@css*/
