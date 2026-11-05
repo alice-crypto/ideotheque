@@ -4719,6 +4719,16 @@
       U.raf(frame);
     })(0);
   } } });
+
+  // Des lames horizontales et verticales se croisent
+  FX.register('cross-blinds', { transition: { pieces: 16, cover: 800, uncover: 850, build: function (o) {
+    Array.prototype.forEach.call(o.children, function (p, i) {
+      var v = i % 2 === 0, k = Math.floor(i / 2);
+      p.className = v ? 'fx-v' : 'fx-h';
+      p.style[v ? 'left' : 'top'] = k * 12.5 + '%';
+      p.style.setProperty('--fx-d', k * 28 + 'ms');
+    });
+  } } });
 })(window.FX);
 
 window.FX._boot();

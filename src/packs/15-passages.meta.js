@@ -57,4 +57,13 @@ module.exports = [
     '<a href="/menu" data-fx="wave-cover">Menu</a>',
     '<button class="demo-ghost" onclick="FX.play(\'wave-cover\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('cross-blinds', 'Transition',
+    'Des lames verticales et horizontales s\'ouvrent et se croisent jusqu\'à couvrir l\'écran.',
+    'Tissage, grille suisse, précision.',
+    '- `--fx-tr-color` : couleur',
+    'Sites de design, d\'architecture, de typographie.',
+    'Les marques douces et rondes.',
+    '<a href="/ateliers" data-fx="cross-blinds">Ateliers</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'cross-blinds\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];
