@@ -54,4 +54,13 @@ module.exports = [
     '<section data-fx="ribbon-sine">…</section>',
     '<div data-fx="ribbon-sine" style="width:230px;height:170px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le ruban reste immobile.' }),
+  E('particle-text', 'Ambiance',
+    'Des particules se rassemblent pour former un mot, et s\'écartent quand le curseur passe.',
+    'Poussière d\'étoiles, un mot qui se tient de justesse.',
+    '- `data-fx-step` (3) : densité des particules',
+    'Un seul mot en grand, écran d\'accueil.',
+    'Les phrases entières : le nombre de particules explose.',
+    '<h1 data-fx="particle-text">Stellaire</h1>',
+    '<p class="demo-title" data-fx="particle-text" style="color:var(--ink);font-weight:800">Stellaire</p>',
+    { a11y: 'Le texte est dans `aria-label`. Avec `prefers-reduced-motion: reduce`, le mot s\'affiche directement.' }),
 ];

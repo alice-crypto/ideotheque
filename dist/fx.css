@@ -4228,6 +4228,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="ribbon-sine"] { isolation: isolate; }
 [data-fx="ribbon-sine"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-line, var(--fx-accent)); }
 
+/* particle-text : un mot en poussière */
+[data-fx="particle-text"] { display: inline-block; }
+[data-fx="particle-text"] canvas { display: block; max-width: 100%; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

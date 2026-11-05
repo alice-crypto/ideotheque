@@ -5240,6 +5240,46 @@
       }
     }
   });
+
+  // Des particules forment un mot et s'écartent du curseur
+  FX.register('particle-text', {
+    setup: function (el) {
+      var txt = el.textContent.trim(), cs = getComputedStyle(el), fs = parseFloat(cs.fontSize) || 48;
+      el.setAttribute('aria-label', txt); el.setAttribute('role', 'img');
+      el.textContent = '';
+      var cv = U.make('canvas', '', el), font = (cs.fontWeight || 700) + ' ' + fs + 'px ' + cs.fontFamily;
+      var g = el._fxG = { cv: cv, p: [], mx: -999, my: -999, col: cs.color };
+      var scan = function () {
+        var m = document.createElement('canvas').getContext('2d');
+        m.font = font;
+        var w = Math.ceil(m.measureText(txt).width) + 8, h = Math.ceil(fs * 1.3);
+        m.canvas.width = w; m.canvas.height = h;
+        m.font = font; m.textBaseline = 'middle'; m.fillText(txt, 4, h / 2);
+        var d = m.getImageData(0, 0, w, h).data, step = U.num(el, 'fxStep', 3);
+        g.p = [];
+        for (var y = 0; y < h; y += step) for (var x = 0; x < w; x += step) if (d[(y * w + x) * 4 + 3] > 128)
+          g.p.push({ tx: x, ty: y, x: U.reduced ? x : Math.random() * w, y: U.reduced ? y : Math.random() * h, vx: 0, vy: 0 });
+        cv.width = w; cv.height = h;
+      };
+      scan();
+      if (document.fonts) document.fonts.load(font).then(scan);
+      el.addEventListener('pointermove', function (e) { var r = cv.getBoundingClientRect(); g.mx = e.clientX - r.left; g.my = e.clientY - r.top; });
+      el.addEventListener('pointerleave', function () { g.mx = g.my = -999; });
+    },
+    tick: function (el) {
+      var g = el._fxG, c = g.cv.getContext('2d');
+      c.clearRect(0, 0, g.cv.width, g.cv.height);
+      c.fillStyle = g.col;
+      g.p.forEach(function (p) {
+        var dx = p.x - g.mx, dy = p.y - g.my, d = dx * dx + dy * dy;
+        if (d < 1600 && !U.reduced) { var f = (1600 - d) / 1600 * 2.4; d = Math.sqrt(d) || 1; p.vx += dx / d * f; p.vy += dy / d * f; }
+        p.vx += (p.tx - p.x) * .05; p.vy += (p.ty - p.y) * .05;
+        p.vx *= .82; p.vy *= .82;
+        p.x += p.vx; p.y += p.vy;
+        c.fillRect(p.x, p.y, 2, 2);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
