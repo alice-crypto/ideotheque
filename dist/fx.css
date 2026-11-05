@@ -4682,6 +4682,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="world-pins"] .r { fill: none; stroke: var(--fx-accent); transform-box: fill-box; transform-origin: center; animation: fx-wp 2.2s ease-out calc(var(--fx-i) * 300ms) infinite; }
 @keyframes fx-wp { to { transform: scale(4); opacity: 0; } }
 
+/* compare-table-sweep : une colonne qui s'éclaire */
+[data-fx="compare-table-sweep"] { border-collapse: collapse; }
+[data-fx="compare-table-sweep"] th,
+[data-fx="compare-table-sweep"] td { padding: .5em .7em; border-bottom: 1px solid rgba(128, 128, 128, .2); text-align: center; transition: background .2s, color .2s; }
+[data-fx="compare-table-sweep"] :is(th, td):first-child { text-align: left; }
+[data-fx="compare-table-sweep"] .fx-col { background: var(--fx-col, rgba(128, 128, 128, .18)); }
+[data-fx="compare-table-sweep"] thead .fx-col { color: var(--fx-accent); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -137,4 +137,12 @@ module.exports = [
     '<div data-fx="world-pins" data-fx-pins="48,2;40,-74"></div>',
     '<div data-fx="world-pins" style="width:230px;color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Donnez un `aria-label` qui dit ce que montre la carte.' }),
+  E('compare-table-sweep', 'Présentation',
+    'Dans un tableau comparatif, toute la colonne survolée s\'éclaire, jusqu\'à son titre.',
+    'Lecture guidée, on compare sans se perdre.',
+    '- `data-fx-best` : index de la colonne mise en avant au repos\n- `--fx-col` : couleur de la colonne',
+    'Tableaux de tarifs, comparaisons de produits.',
+    'Les tableaux très larges sur mobile : prévoyez aussi un défilement.',
+    '<table data-fx="compare-table-sweep" data-fx-best="2">…</table>',
+    '<table data-fx="compare-table-sweep" data-fx-best="2" style="color:var(--ink);font-size:12px"><thead><tr><th></th><th>Libre</th><th>Pro</th></tr></thead><tbody><tr><td>Effets</td><td>100</td><td>500</td></tr><tr><td>Appui</td><td>—</td><td>Oui</td></tr></tbody></table>'),
 ];

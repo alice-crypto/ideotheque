@@ -6598,6 +6598,20 @@
       el.innerHTML = svg + '</svg>';
     }
   });
+
+  // Dans un tableau, la colonne survolée s'illumine en entier
+  FX.register('compare-table-sweep', {
+    setup: function (el) {
+      var cells = el.querySelectorAll('th,td'), best = U.num(el, 'fxBest', -1);
+      var mark = function (i) { cells.forEach(function (c) { c.classList.toggle('fx-col', c.cellIndex === i); }); };
+      cells.forEach(function (c) {
+        c.addEventListener('pointerenter', function () { if (c.cellIndex > 0) mark(c.cellIndex); });
+        c.addEventListener('focusin', function () { if (c.cellIndex > 0) mark(c.cellIndex); });
+      });
+      el.addEventListener('pointerleave', function () { mark(best); });
+      mark(best);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
