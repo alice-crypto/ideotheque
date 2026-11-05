@@ -125,3 +125,10 @@
 [data-fx="logo-wall-flip"] span { display: grid; place-items: center; padding: 1em .4em; background: var(--fx-cell-bg, #16151a); font-weight: 600; }
 [data-fx="logo-wall-flip"] .fx-flip { animation: fx-lw .44s var(--fx-ease-io); }
 @keyframes fx-lw { 50% { transform: rotateX(90deg); } }
+
+/* stat-reveal-split : un chiffre en scène */
+[data-fx="stat-reveal-split"] { display: grid; gap: .2em; }
+[data-fx="stat-reveal-split"] b { font-size: var(--fx-size, 64px); line-height: 1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; transform: translateY(.3em); opacity: 0; transition: transform .8s var(--fx-ease-out), opacity .3s; }
+[data-fx="stat-reveal-split"] span { clip-path: inset(0 100% 0 0); transition: clip-path .8s var(--fx-ease-io) .5s; }
+.fx-in[data-fx="stat-reveal-split"] b { transform: none; opacity: 1; }
+.fx-in[data-fx="stat-reveal-split"] span { clip-path: inset(0 0 0 0); }
