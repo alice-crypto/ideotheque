@@ -20,3 +20,7 @@
 /* band-slide : un bandeau de texte lié au défilement */
 [data-fx="band-slide"] { display: block; overflow: hidden; white-space: nowrap; }
 [data-fx="band-slide"] .fx-band { display: inline-block; transform: translateX(var(--fx-x, 0)); will-change: transform; }
+
+/* cross-rows : des lignes qui se croisent */
+[data-fx="cross-rows"] { overflow: hidden; display: grid; gap: var(--fx-gap, 10px); }
+[data-fx="cross-rows"] > * { display: flex; gap: var(--fx-gap, 10px); white-space: nowrap; transform: translateX(calc(var(--fx-t, 0px) * var(--fx-dir, 1))); }
