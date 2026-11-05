@@ -269,3 +269,16 @@
   background: linear-gradient(135deg, rgba(0, 0, 0, .35), rgba(255, 255, 255, .6) 48%, transparent 50%);
   transition: width .25s var(--fx-ease-out), height .25s var(--fx-ease-out);
 }
+
+/* image-pop-link : une image s'ouvre dans la ligne */
+[data-fx="image-pop-link"] .fx-ipl {
+  display: inline-block;
+  height: .9em;
+  width: 0;
+  border-radius: .22em;
+  object-fit: cover;
+  vertical-align: -.08em;
+  transition: width .45s var(--fx-ease-out);
+}
+[data-fx="image-pop-link"]:hover .fx-ipl,
+[data-fx="image-pop-link"]:focus-visible .fx-ipl { width: var(--fx-open, 1.8em); }
