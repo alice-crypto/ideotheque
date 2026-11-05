@@ -36,4 +36,13 @@ module.exports = [
     'Sous un petit texte sans fond.',
     '<section data-fx="contour-lines">…</section>',
     '<div data-fx="contour-lines" style="width:230px;height:170px;color:var(--ink)"></div>'),
+  E('game-of-life', 'Ambiance',
+    'Un automate cellulaire vit en fond : des motifs naissent, voyagent et s\'éteignent.',
+    'Vie artificielle, curiosité de programmeur.',
+    '- `data-fx-cell` (8) : taille d\'une cellule\n- `data-fx-step` (180) : millisecondes par génération\n- `--fx-cell` : couleur',
+    'Sites de développeurs, pages 404, écrans de chargement.',
+    'Les fonds de texte : le clignotement gêne la lecture.',
+    '<section data-fx="game-of-life">…</section>',
+    '<div data-fx="game-of-life" style="width:230px;height:170px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste figée.' }),
 ];
