@@ -21,4 +21,13 @@ module.exports = [
     '<span data-fx="sparkline-draw" data-fx-values="3,5,4,8"></span>',
     '<span data-fx="sparkline-draw"></span>',
     { trigger: 'Rejouer', a11y: 'La tendance est résumée dans `aria-label`.' }),
+  E('heat-calendar', 'Présentation',
+    'Un calendrier d\'activité : de petites cases plus ou moins colorées s\'allument en vague.',
+    'Assiduité, une habitude qui se voit.',
+    '- `data-fx-weeks` (16) : nombre de semaines\n- `data-fx-values` : valeurs entre 0 et 1, sinon des valeurs d\'exemple',
+    'Contributions, habitudes, présence.',
+    'Des données réelles sans `data-fx-values` : les valeurs d\'exemple sont aléatoires.',
+    '<div data-fx="heat-calendar" data-fx-weeks="26" data-fx-values="…"></div>',
+    '<div data-fx="heat-calendar" style="--fx-width:220px"></div>',
+    { trigger: 'Rejouer', a11y: 'Donnez un `aria-label` qui résume l\'activité.' }),
 ];
