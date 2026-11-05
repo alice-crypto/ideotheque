@@ -3456,6 +3456,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   opacity: calc(1 - var(--fx-left, 0) * .7);
 }
 
+/* reading-marker : le texte s'éclaire à la lecture */
+[data-fx="reading-marker"] .fx-word { opacity: var(--fx-dim, .22); transition: opacity .3s; }
+[data-fx="reading-marker"] .fx-word.fx-read { opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

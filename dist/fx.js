@@ -3883,6 +3883,19 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-left', (1 - U.easeOut(info.enter)).toFixed(3)); }
   });
+
+  // Les mots passent du gris au plein quand on les atteint
+  FX.register('reading-marker', {
+    setup: function (el) { U.splitWords(el); el._fxW = el.querySelectorAll('.fx-word'); el._fxN = -1; },
+    scroll: function (el, info) {
+      var line = info.vh * U.num(el, 'fxLine', .65);
+      var p = U.clamp((line - info.rect.top) / Math.max(1, info.rect.height), 0, 1);
+      var n = Math.round(p * el._fxW.length);
+      if (n === el._fxN) return;
+      el._fxN = n;
+      el._fxW.forEach(function (w, i) { w.classList.toggle('fx-read', i < n); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

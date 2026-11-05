@@ -167,4 +167,13 @@ module.exports = [
     'Les titres longs et le texte courant.',
     '<h2 data-fx="letters-scrub">Rassemblés</h2>',
     '<p class="demo-title" data-fx="letters-scrub" style="font-size:30px">Rassemblés</p>'),
+  E('reading-marker', 'Défilement',
+    'Les mots passent du gris au plein quand ils atteignent la ligne de lecture.',
+    'Un doigt qui suit la ligne, un texte qu\'on découvre.',
+    '- `data-fx-line` (.65) : hauteur de la ligne de lecture dans l\'écran\n- `--fx-dim` (.22) : opacité des mots non lus',
+    'Manifestes, déclarations d\'intention.',
+    'Le texte d\'un article entier, qui doit rester lisible tout de suite.',
+    '<p data-fx="reading-marker">Chaque mot s\'allume quand vous l\'atteignez.</p>',
+    '<p class="demo-para" data-fx="reading-marker" style="color:var(--ink)">Chaque mot s\'allume quand vous l\'atteignez.</p>',
+    { a11y: 'Les mots restent visibles et le texte complet est dans `aria-label`.' }),
 ];
