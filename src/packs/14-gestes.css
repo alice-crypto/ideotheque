@@ -302,3 +302,13 @@
 /* sound-bars-hover : un égaliseur */
 [data-fx="sound-bars-hover"] { display: inline-flex; align-items: flex-end; gap: 2px; height: var(--fx-h, 22px); }
 [data-fx="sound-bars-hover"] i { width: var(--fx-w, 3px); height: 100%; border-radius: 2px; background: currentColor; transform-origin: bottom; transform: scaleY(.18); }
+
+/* pressure-word : un mot sous la pression */
+[data-fx="pressure-word"] {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  font-weight: calc(400 + var(--fx-press, 0) * 500);
+  transform: scale(calc(1 + var(--fx-press, 0) * .28), calc(1 - var(--fx-press, 0) * .42));
+  transform-origin: bottom;
+}
