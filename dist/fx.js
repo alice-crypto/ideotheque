@@ -7193,6 +7193,12 @@
     entrance: true,
     setup: function (el) { if (!el.firstElementChild) U.make('div', '', el); el.firstElementChild.classList.add('fx-mri'); }
   });
+
+  // Des panneaux se déplient comme un paravent
+  FX.register('accordion-unfold', {
+    entrance: true,
+    setup: function (el) { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-i', i); c.classList.add(i % 2 ? 'fx-odd' : 'fx-even'); }); }
+  });
 })(window.FX);
 
 window.FX._boot();

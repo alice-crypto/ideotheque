@@ -48,4 +48,13 @@ module.exports = [
     '<figure data-fx="mask-rise-image"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="mask-rise-image"><img src="assets/dune.svg" alt=""></div>',
     { trigger: 'Rejouer' }),
+  E('accordion-unfold', 'Entrée',
+    'Des panneaux se déplient les uns après les autres, comme une feuille pliée.',
+    'Papier, dépliant, origami.',
+    'Aucun réglage.',
+    'Listes de cartes, étapes.',
+    'Une longue liste : le dernier arrive trop tard.',
+    '<div data-fx="accordion-unfold"><div>…</div><div>…</div></div>',
+    '<div data-fx="accordion-unfold" style="display:grid;gap:4px;width:200px"><div class="demo-box" style="width:100%;height:42px"></div><div class="demo-box alt" style="width:100%;height:42px"></div><div class="demo-box ink" style="width:100%;height:42px"></div></div>',
+    { trigger: 'Rejouer' }),
 ];

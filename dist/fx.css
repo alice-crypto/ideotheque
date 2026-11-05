@@ -4939,6 +4939,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-in[data-fx="mask-rise-image"] { clip-path: inset(0 0 0 0); }
 .fx-in[data-fx="mask-rise-image"] .fx-mri { transform: none; }
 
+/* accordion-unfold : un paravent */
+[data-fx="accordion-unfold"] { perspective: 900px; }
+[data-fx="accordion-unfold"] > * { transform-origin: top; transform: rotateX(-90deg); opacity: 0; transition: transform .7s var(--fx-ease-out) calc(var(--fx-i) * 130ms), opacity .2s calc(var(--fx-i) * 130ms); }
+.fx-in[data-fx="accordion-unfold"] > * { transform: none; opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
