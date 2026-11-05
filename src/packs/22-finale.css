@@ -119,3 +119,7 @@
 /* sea-layers : une mer en couches */
 [data-fx="sea-layers"] { isolation: isolate; overflow: hidden; }
 [data-fx="sea-layers"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
+/* dust-motes : un rayon de lumière */
+[data-fx="dust-motes"] { isolation: isolate; overflow: hidden; background-image: linear-gradient(110deg, transparent 30%, var(--fx-beam, rgba(255, 255, 255, .06)) 45%, transparent 65%); }
+[data-fx="dust-motes"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-dust, currentColor); }
