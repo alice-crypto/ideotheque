@@ -173,4 +173,13 @@ module.exports = [
     '<div data-fx="multi-file-progress" data-fx-manual="true" data-fx-items="a.zip|b.pdf"></div>',
     '<div data-fx="multi-file-progress" style="width:215px;color:var(--ink)"></div>',
     { a11y: 'Rôle `progressbar` avec `aria-valuenow` sur chaque ligne.' }),
+  E('notification-stack', 'État',
+    'Des notifications s\'empilent, les plus anciennes reculent, puis se retirent seules.',
+    'Ordre, plusieurs messages sans encombrer.',
+    '- `data-fx-max` (3), `data-fx-life` (4500)\n- Par code : `el._fxPush(\'Message\')`',
+    'Applications, tableaux de bord, assistants.',
+    'Une information importante qui disparaît seule : laissez-la plus longtemps.',
+    '<div data-fx="notification-stack"></div>',
+    '<div data-fx="notification-stack" data-fx-demo="true" style="width:220px"></div>',
+    { trigger: 'Ajouter', a11y: 'Rôle `log`, chaque message a son bouton de fermeture.' }),
 ];
