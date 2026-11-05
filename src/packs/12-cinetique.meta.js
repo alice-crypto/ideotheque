@@ -82,4 +82,13 @@ module.exports = [
     '<h1 data-fx="mirror-type">Reflet</h1>',
     '<p class="demo-title" data-fx="mirror-type">Reflet</p>',
     { a11y: 'Le reflet est masqué aux lecteurs d\'écran.' }),
+  E('echo-stack', 'Texte',
+    'Le titre se répète derrière lui en copies de contour, qui s\'ouvrent et se referment lentement.',
+    'Affiche imprimée, vibration, répétition rythmée.',
+    '- `data-fx-count` (5) : nombre d\'échos\n- `--fx-step` (.2em) : écart entre deux échos\n- `--fx-echo` : couleur du contour',
+    'Titres de campagne, affiches, pages d\'événement.',
+    'Plusieurs titres par écran : l\'effet perd son impact.',
+    '<h1 data-fx="echo-stack">Écho</h1>',
+    '<p class="demo-title" data-fx="echo-stack" style="margin-bottom:30px">Écho</p>',
+    { a11y: 'Les copies sont masquées aux lecteurs d\'écran.' }),
 ];

@@ -3156,6 +3156,20 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   mask: linear-gradient(0deg, #000, transparent 85%);
 }
 
+/* echo-stack : un titre et ses échos */
+[data-fx="echo-stack"] .fx-echo-box { position: relative; display: inline-block; isolation: isolate; }
+[data-fx="echo-stack"] .fx-echo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--fx-echo, var(--fx-accent));
+  opacity: calc(1 - var(--fx-i) / (var(--fx-n) + 1));
+  transform: translateY(calc(var(--fx-i) * var(--fx-open, .5) * var(--fx-step, .2em)));
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
