@@ -109,4 +109,13 @@
       U.onResize(fit);
     }
   });
+
+  // Une rangée s'ouvre depuis son centre
+  FX.register('stagger-scale-row', {
+    entrance: true,
+    setup: function (el) {
+      var n = el.children.length;
+      Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-o', Math.abs(i - (n - 1) / 2).toFixed(1)); });
+    }
+  });
 })(window.FX);
