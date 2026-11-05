@@ -64,3 +64,14 @@
 [data-fx="breadcrumb-fold"] .fx-bc-mid { display: none; }
 [data-fx="breadcrumb-fold"].fx-open .fx-bc-mid { display: block; animation: fx-bc .34s var(--fx-ease-out) calc(var(--fx-i) * 50ms) both; }
 @keyframes fx-bc { from { opacity: 0; transform: translateX(-8px); } }
+
+/* sticky-stack-nav : des titres qui s'empilent */
+[data-fx="sticky-stack-nav"] h2,
+[data-fx="sticky-stack-nav"] h3 {
+  position: sticky;
+  top: var(--fx-top, 0);
+  bottom: var(--fx-bot, 0);
+  margin: 0;
+  background: var(--fx-head-bg, var(--fx-dark));
+  border-bottom: 1px solid rgba(128, 128, 128, .25);
+}
