@@ -90,4 +90,13 @@ module.exports = [
     '<div data-fx="stepper-pop" data-fx-value="2"></div>',
     '<div data-fx="stepper-pop" data-fx-value="2" style="color:var(--ink);font-size:24px"></div>',
     { a11y: 'Boutons nommés et valeur annoncée par `aria-live`.' }),
+  E('star-rate', 'Micro-interaction',
+    'Les étoiles s\'allument en vague et sautillent au survol et au choix.',
+    'Une récompense, noter devient agréable.',
+    '- `data-fx-max` (5), `data-fx-value` (0)\n- `--fx-star`, `--fx-star-off` : couleurs\n- L\'élément émet `fx:change`.',
+    'Avis, satisfaction, retours sur une réponse d\'IA.',
+    'Une échelle sérieuse qui demande de la nuance.',
+    '<div data-fx="star-rate" aria-label="Votre note"></div>',
+    '<div data-fx="star-rate" data-fx-value="3" aria-label="Note"></div>',
+    { a11y: 'Rôle `slider` réglable avec les flèches du clavier.' }),
 ];
