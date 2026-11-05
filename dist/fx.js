@@ -8347,6 +8347,41 @@
       });
     }
   });
+
+  // Un voyage dans les étoiles, qui s'accélère au survol
+  FX.register('star-warp', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxS = [];
+      for (var i = 0; i < U.num(el, 'fxCount', 180); i++) el._fxS.push({ x: U.rand(-1, 1), y: U.rand(-1, 1), z: Math.random() });
+      el._fxV = .2;
+    },
+    tick: function (el, dt) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      el._fxV = U.lerp(el._fxV, el.matches(':hover') ? .9 : U.num(el, 'fxSpeed', .18), .03);
+      var c = cv.getContext('2d'), v = el._fxV;
+      c.clearRect(0, 0, w, h);
+      c.strokeStyle = getComputedStyle(cv).color;
+      el._fxS.forEach(function (s) {
+        var oz = s.z;
+        s.z -= v * dt;
+        if (s.z <= .02) { s.z = 1; s.x = U.rand(-1, 1); s.y = U.rand(-1, 1); return; }
+        var k = .4 * Math.min(w, h);
+        c.globalAlpha = 1 - s.z;
+        c.lineWidth = (1 - s.z) * 1.8;
+        c.beginPath();
+        c.moveTo(w / 2 + s.x * k / oz, h / 2 + s.y * k / oz);
+        c.lineTo(w / 2 + s.x * k / s.z, h / 2 + s.y * k / s.z);
+        c.stroke();
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

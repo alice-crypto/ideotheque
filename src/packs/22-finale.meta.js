@@ -223,4 +223,13 @@ module.exports = [
     'Un fond sombre sans changer la couleur.',
     '<section data-fx="cloud-drift" style="background:#0047ff">…</section>',
     '<div data-fx="cloud-drift" style="width:230px;height:170px;background:#0047ff;border-radius:12px"></div>'),
+  E('star-warp', 'Ambiance',
+    'Les étoiles défilent depuis le centre, comme un voyage spatial qui s\'accélère au survol.',
+    'Vitesse, départ, exploration.',
+    '- `data-fx-count` (180), `data-fx-speed` (.18), `--fx-star`',
+    'Écrans d\'accueil, lancements, jeux.',
+    'Une page calme, ou de grandes surfaces permanentes.',
+    '<section data-fx="star-warp">…</section>',
+    '<div data-fx="star-warp" style="width:230px;height:170px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
 ];
