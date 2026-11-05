@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="context-chips" data-fx-items="a.pdf|b.md"></div>',
     '<div data-fx="context-chips" style="width:220px;color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Les ajouts sont annoncés par `aria-live`.' }),
+  E('skeleton-morph', 'État',
+    'Des lignes grises de chargement se dissolvent en place pour laisser apparaître le vrai texte.',
+    'Sans rupture, le contenu arrive sans faire sauter la page.',
+    '- `data-fx-wait` (1500) : durée d\'attente, ou appelez `el._fxDone()` quand les données arrivent\n- `--fx-bone` : couleur des lignes',
+    'Chargement de cartes, de listes, de réponses.',
+    'Une attente de moins de 300 ms : affichez directement le contenu.',
+    '<article data-fx="skeleton-morph"><p>Votre contenu…</p></article>',
+    '<div data-fx="skeleton-morph" style="width:220px;color:var(--ink);font-size:15px"><p style="margin:0">Le contenu arrive ici, sans faire sauter la page autour de lui.</p></div>',
+    { trigger: 'Rejouer', a11y: '`aria-busy` indique le chargement aux lecteurs d\'écran.' }),
 ];
