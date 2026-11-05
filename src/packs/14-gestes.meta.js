@@ -132,4 +132,13 @@ module.exports = [
     'Une navigation principale sur mobile : l\'effet ne s\'y voit pas.',
     '<nav data-fx="jelly-list"><a>…</a><a>…</a></nav>',
     '<div data-fx="jelly-list"><div class="demo-box" style="width:36px;height:36px"></div><div class="demo-box alt" style="width:36px;height:36px"></div><div class="demo-box ink" style="width:36px;height:36px"></div><div class="demo-box" style="width:36px;height:36px"></div><div class="demo-box alt" style="width:36px;height:36px"></div></div>'),
+  E('focus-beam', 'Micro-interaction',
+    'Le cadre de focus glisse d\'un champ à l\'autre au lieu d\'apparaître et de disparaître.',
+    'On sent le parcours, le clavier devient un plaisir.',
+    '- `--fx-radius` (8px) : arrondi du cadre',
+    'Formulaires, barres d\'outils, palettes de commandes.',
+    'Rien à éviter en général, mais gardez un focus visible si le JS est absent.',
+    '<form data-fx="focus-beam"><input><input></form>',
+    '<form data-fx="focus-beam" style="display:grid;gap:12px;width:200px" onsubmit="return false"><input placeholder="Nom" style="padding:8px;background:transparent;border:1px solid #555;color:var(--ink);border-radius:8px"><input placeholder="Courriel" style="padding:8px;background:transparent;border:1px solid #555;color:var(--ink);border-radius:8px"></form>',
+    { a11y: 'Rend le focus plus visible, sans le remplacer pour la navigation au clavier.' }),
 ];
