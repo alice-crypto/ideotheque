@@ -208,3 +208,8 @@
 [data-fx="ascii-image"]:hover .fx-ascii,
 [data-fx="ascii-image"]:focus-visible .fx-ascii,
 [data-fx="ascii-image"][data-fx-show] .fx-ascii { opacity: 1; }
+
+/* dither-reveal : du 1-bit à la couleur */
+[data-fx="dither-reveal"] { overflow: hidden; }
+[data-fx="dither-reveal"] .fx-dither { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; transition: opacity var(--fx-speed, 1.4s) steps(7) .5s; }
+.fx-in[data-fx="dither-reveal"] .fx-dither { opacity: 0; }
