@@ -3331,6 +3331,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transform: scaleY(clamp(0, calc(1 - (var(--fx-open, 1) * 1.6 - var(--fx-q) * .6)), 1));
 }
 
+/* scroll-typing : on écrit en défilant */
+[data-fx="scroll-typing"] .fx-st-off { visibility: hidden; }
+[data-fx="scroll-typing"] .fx-st-on { border-right: .08em solid var(--fx-caret, currentColor); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

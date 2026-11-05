@@ -20,4 +20,13 @@ module.exports = [
     'Les éléments de moins de 120 px de haut.',
     '<figure data-fx="slat-scroll"><img src="photo.jpg" alt=""></figure>',
     '<div class="demo-box" data-fx="slat-scroll" style="width:200px;height:150px"></div>'),
+  E('scroll-typing', 'Défilement',
+    'Le texte s\'écrit à mesure qu\'on défile, et s\'efface si on remonte.',
+    'On tient le stylo, le rythme de lecture est le nôtre.',
+    '- `--fx-caret` : couleur du curseur',
+    'Citations, phrases de manifeste.',
+    'Les textes de plus de quelques lignes.',
+    '<p data-fx="scroll-typing">Chaque mot arrive quand vous êtes prêt.</p>',
+    '<p class="demo-para" data-fx="scroll-typing" style="color:var(--ink)">Chaque mot arrive quand vous êtes prêt.</p>',
+    { a11y: 'Le texte complet est dans `aria-label` dès le départ.' }),
 ];
