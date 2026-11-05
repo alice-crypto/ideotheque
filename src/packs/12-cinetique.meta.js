@@ -73,4 +73,13 @@ module.exports = [
     '<h2 data-fx="letter-orbit">Satellite</h2>',
     '<p class="demo-title" data-fx="letter-orbit" style="font-size:32px">Satellite</p>',
     { trigger: 'Rejouer' }),
+  E('mirror-type', 'Texte',
+    'Le titre se reflète sous lui-même, avec un reflet qui ondule lentement.',
+    'Calme, comme un mot posé au bord de l\'eau.',
+    '- `--fx-reflect` (.4) : opacité du reflet',
+    'Titres courts au-dessus d\'une zone vide, écrans d\'accueil.',
+    'Les mises en page serrées : le reflet occupe de la hauteur.',
+    '<h1 data-fx="mirror-type">Reflet</h1>',
+    '<p class="demo-title" data-fx="mirror-type">Reflet</p>',
+    { a11y: 'Le reflet est masqué aux lecteurs d\'écran.' }),
 ];

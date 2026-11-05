@@ -3246,6 +3246,23 @@
     reset: function (el) { el._fxPlace(0); },
     enter: function (el) { U.tween(el, U.num(el, 'fxDuration', 1500), el._fxPlace); }
   });
+
+  // Le titre se reflète dessous, comme sur l'eau
+  FX.register('mirror-type', {
+    setup: function (el) {
+      var txt = el.textContent.trim();
+      el.innerHTML = '';
+      U.make('span', 'fx-mir-top', el).textContent = txt;
+      var m = U.make('span', 'fx-mir-low', el);
+      m.textContent = txt;
+      m.setAttribute('aria-hidden', 'true');
+      el._fxLow = m;
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      el._fxLow.style.setProperty('--fx-sk', (Math.sin(t * .0016) * 4).toFixed(2) + 'deg');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
