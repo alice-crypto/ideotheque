@@ -398,4 +398,35 @@
       el.appendChild(document.createTextNode(' ' + words.slice(at).join(' ')));
     }
   });
+
+  // Une liste que l'on réorganise en faisant glisser, et les voisins s'écartent
+  FX.register('drag-reorder', {
+    setup: function (el) {
+      Array.prototype.forEach.call(el.children, function (it) {
+        it.tabIndex = 0;
+        var startY = 0, drag = false;
+        it.addEventListener('pointerdown', function (e) {
+          drag = true; startY = e.clientY; it.classList.add('fx-drag');
+          if (it.setPointerCapture && e.isTrusted) it.setPointerCapture(e.pointerId);
+        });
+        it.addEventListener('pointermove', function (e) {
+          if (!drag) return;
+          var dy = e.clientY - startY;
+          it.style.transform = 'translateY(' + dy + 'px) scale(1.03)';
+          var h = it.offsetHeight;
+          if (dy > h * .6 && it.nextElementSibling) { el.insertBefore(it.nextElementSibling, it); startY += h; flash(it); }
+          else if (dy < -h * .6 && it.previousElementSibling) { el.insertBefore(it, it.previousElementSibling); startY -= h; flash(it); }
+        });
+        var end = function () { drag = false; it.classList.remove('fx-drag'); it.style.transform = ''; };
+        it.addEventListener('pointerup', end);
+        it.addEventListener('pointercancel', end);
+        it.addEventListener('keydown', function (e) {
+          if (!e.altKey) return;
+          if (e.key === 'ArrowDown' && it.nextElementSibling) { e.preventDefault(); el.insertBefore(it.nextElementSibling, it); it.focus(); }
+          if (e.key === 'ArrowUp' && it.previousElementSibling) { e.preventDefault(); el.insertBefore(it, it.previousElementSibling); it.focus(); }
+        });
+      });
+      function flash() { el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true })); }
+    }
+  });
 })(window.FX);
