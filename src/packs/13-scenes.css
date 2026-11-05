@@ -1,1 +1,4 @@
 /* Pack 13 — Scènes de défilement */
+
+/* circle-unveil : un œil qui s'ouvre au défilement */
+[data-fx="circle-unveil"] { clip-path: circle(max(var(--fx-r, 75%), var(--fx-min, 6%)) at var(--fx-at, 50% 50%)); }
