@@ -248,4 +248,16 @@
     entrance: true,
     setup: function (el) { el.style.setProperty('--fx-delay', U.num(el, 'fxDelay', 0) + 'ms'); }
   });
+
+  // Les éléments rejoignent leur place par une trajectoire courbe
+  FX.register('path-follow-in', {
+    entrance: true,
+    setup: function (el) {
+      Array.prototype.forEach.call(el.children, function (c, i) {
+        var x = U.rand(-160, 160), y = U.rand(60, 140), cx = x * U.rand(-.6, .6), cy = y + U.rand(40, 90);
+        c.style.setProperty('--fx-path', 'path("M ' + x.toFixed(0) + ' ' + y.toFixed(0) + ' Q ' + cx.toFixed(0) + ' ' + cy.toFixed(0) + ' 0 0")');
+        c.style.setProperty('--fx-i', i);
+      });
+    }
+  });
 })(window.FX);
