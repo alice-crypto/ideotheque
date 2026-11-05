@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->322<!-- /total --> effets.
+La bibliothèque contient <!-- total -->323<!-- /total --> effets.
 
 ## Règles
 
@@ -323,6 +323,7 @@ La bibliothèque contient <!-- total -->322<!-- /total --> effets.
 | `water-ripple` | Ambiance | Des ondes se forment à la surface quand on bouge ou clique, et des gouttes tombent d'elles-mêmes de temps en temps |
 | `glow-grid` | Ambiance | Une grille fine, estompée sur les bords, dont les lignes s'allument autour du curseur |
 | `flow-field` | Ambiance | Des milliers de petits traits suivent un courant invisible et dessinent des veines qui s'effacent lentement |
+| `metaballs` | Ambiance | Des bulles se rencontrent, s'étirent et fusionnent en une masse liquide |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |

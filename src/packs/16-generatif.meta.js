@@ -12,4 +12,12 @@ module.exports = [
     '<section data-fx="flow-field">…</section>',
     '<div data-fx="flow-field" style="width:230px;height:170px"></div>',
     { a11y: 'Le canvas est décoratif. Avec `prefers-reduced-motion: reduce`, il affiche une image fixe.' }),
+  E('metaballs', 'Ambiance',
+    'Des bulles se rencontrent, s\'étirent et fusionnent en une masse liquide.',
+    'Lampe à lave, calme hypnotique.',
+    '- `data-fx-count` (7) : nombre de bulles\n- `--fx-blob` : couleur',
+    'Fonds de section, écrans d\'attente, marques ludiques.',
+    'Plusieurs fonds de ce type par page.',
+    '<section data-fx="metaballs">…</section>',
+    '<div data-fx="metaballs" style="width:230px;height:170px"></div>'),
 ];

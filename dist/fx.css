@@ -4207,6 +4207,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="flow-field"] { isolation: isolate; }
 [data-fx="flow-field"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-line, var(--fx-accent)); }
 
+/* metaballs : une lampe à lave */
+[data-fx="metaballs"] { overflow: hidden; isolation: isolate; }
+[data-fx="metaballs"] .fx-meta-box { position: absolute; inset: 0; z-index: -1; filter: url(#fx-meta); }
+[data-fx="metaballs"] .fx-meta-box i { position: absolute; left: 0; top: 0; border-radius: 50%; background: var(--fx-blob, var(--fx-accent)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
