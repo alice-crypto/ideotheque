@@ -100,3 +100,6 @@
 /* dot-matrix : un panneau de points */
 [data-fx="dot-matrix"] { display: inline-block; }
 [data-fx="dot-matrix"] canvas { display: block; max-width: 100%; }
+
+/* ascii-decay : du bloc à la lettre */
+[data-fx="ascii-decay"] { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; }
