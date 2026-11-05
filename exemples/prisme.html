@@ -33,6 +33,11 @@
     .proof { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
     .proof blockquote { margin: 0; font-size: clamp(28px, 3.6vw, 52px); font-weight: 700; line-height: 1.05; letter-spacing: -.03em; }
     .proof cite { display: block; margin-top: 18px; font: 600 13px "IBM Plex Mono", monospace; }
+    .plan { display: flex; flex-direction: column; gap: 14px; }
+    .plan h3 { font-size: 22px; }
+    .plan .price { font-size: clamp(50px, 6vw, 84px); font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+    .plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 15px; flex: 1; }
+    .plan li::before { content: "■"; margin-right: .5em; font-size: .7em; color: var(--r); vertical-align: 1px; }
     /*@css*/
   </style>
 </head>
