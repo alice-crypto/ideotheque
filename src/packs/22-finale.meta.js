@@ -172,4 +172,12 @@ module.exports = [
     '<a href="/page" data-fx="mirror-split">Page</a>',
     '<button class="demo-ghost" onclick="FX.play(\'mirror-split\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, aucune transition.' }),
+  E('radar-sweep', 'Ambiance',
+    'Un faisceau de radar tourne et révèle des échos, qui s\'effacent lentement.',
+    'Surveillance, poste de contrôle, recherche en cours.',
+    '- `data-fx-blips` (7), `data-fx-speed` (70), `--fx-radar`, `--fx-size`',
+    'Sécurité, recherche, surveillance d\'un service.',
+    'Des échos présentés comme de vraies données.',
+    '<div data-fx="radar-sweep"></div>',
+    '<div data-fx="radar-sweep"></div>'),
 ];
