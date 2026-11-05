@@ -576,4 +576,22 @@
       });
     }
   });
+
+  // Une barre latérale qui se replie sur ses icônes
+  FX.register('sidebar-collapse', {
+    setup: function (el) {
+      var btn = el.querySelector('button[data-toggle]'), key = el.dataset.fxKey;
+      var set = function (on) {
+        el.classList.toggle('fx-small', on);
+        if (btn) { btn.setAttribute('aria-expanded', !on); btn.setAttribute('aria-label', on ? 'Déplier le menu' : 'Replier le menu'); }
+        if (key) try { localStorage.setItem(key, on ? '1' : '0'); } catch (err) {}
+      };
+      var start = false;
+      if (key) try { start = localStorage.getItem(key) === '1'; } catch (err) {}
+      set(start);
+      if (btn) btn.addEventListener('click', function () { set(!el.classList.contains('fx-small')); });
+      el.querySelectorAll('a').forEach(function (a) { var s = a.querySelector('span'); if (s) a.title = s.textContent; });
+    },
+    trigger: function (el) { el.classList.toggle('fx-small'); }
+  });
 })(window.FX);
