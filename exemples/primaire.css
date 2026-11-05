@@ -125,4 +125,6 @@ img, svg { display: block; max-width: 100%; }
 @keyframes pr-bar { from { transform: scaleY(0); } }
 .vlabels { display: flex; gap: 6px; margin-top: 5px; font: 500 11px "IBM Plex Mono", monospace; }
 .vlabels span { flex: 1; text-align: center; min-width: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 10px; font-size: 12px; font-weight: 600; }
+.legend i { display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: -1px; }
 /*@css*/
