@@ -3600,6 +3600,23 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 }
 [data-fx="swipe-reveal-row"].fx-on .fx-srr { transform: translateY(var(--fx-y, 0)) scaleY(1); }
 
+/* trail-dots : un collier derrière le curseur */
+[data-fx="trail-dots"] { overflow: hidden; }
+[data-fx="trail-dots"] .fx-td {
+  position: absolute;
+  left: -8px;
+  top: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--fx-accent);
+  scale: var(--fx-q);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+[data-fx="trail-dots"].fx-on .fx-td { opacity: calc(var(--fx-q) * .9); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

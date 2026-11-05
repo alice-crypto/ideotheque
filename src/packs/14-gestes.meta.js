@@ -54,4 +54,13 @@ module.exports = [
     '<ul data-fx="swipe-reveal-row"><li>…</li><li>…</li></ul>',
     '<div data-fx="swipe-reveal-row" style="width:210px;color:var(--ink);font-size:18px"><div style="padding:8px">Direction</div><div style="padding:8px">Image</div><div style="padding:8px">Son</div><div style="padding:8px">Récit</div></div>',
     { a11y: 'Le bandeau suit aussi le focus clavier.' }),
+  E('trail-dots', 'Micro-interaction',
+    'Une chaîne de perles suit le curseur, chacune poursuivant la précédente.',
+    'Serpent souple, le geste laisse une trace.',
+    '- `data-fx-count` (10) : nombre de perles',
+    'Fonds de section d\'accueil, petites zones de jeu.',
+    'Une page entière : l\'effet devient fatigant.',
+    '<section data-fx="trail-dots">…</section>',
+    '<div class="demo-card" data-fx="trail-dots" style="height:130px"><b>Dessinez</b>Déplacez le curseur ici.</div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, la chaîne ne se déplace pas.' }),
 ];
