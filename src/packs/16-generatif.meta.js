@@ -191,4 +191,13 @@ module.exports = [
     'Les sites sérieux.',
     '<section data-fx="bubble-rise">…</section>',
     '<div data-fx="bubble-rise" style="width:230px;height:170px;color:var(--ink)"></div>'),
+  E('stipple-sun', 'Ambiance',
+    'Un soleil dessiné en points denses respire légèrement, comme une gravure ancienne devenue vivante.',
+    'Livre d\'astronomie, encre, patience.',
+    '- `data-fx-count` (1500) : nombre de points\n- `--fx-point` : couleur',
+    'Éditions, science, sites à l\'esthétique de gravure.',
+    'Les très petites tailles.',
+    '<div data-fx="stipple-sun" style="height:300px"></div>',
+    '<div data-fx="stipple-sun" style="width:230px;height:170px;color:var(--ink)"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
 ];

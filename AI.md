@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->343<!-- /total --> effets.
+La bibliothèque contient <!-- total -->344<!-- /total --> effets.
 
 ## Règles
 
@@ -344,6 +344,7 @@ La bibliothèque contient <!-- total -->343<!-- /total --> effets.
 | `spiral-galaxy` | Ambiance | Une galaxie en spirale tourne sur elle-même, ses bras se tordant lentement |
 | `noise-terrain` | Ambiance | Des lignes de crêtes se succèdent et frémissent, chacune masquant la suivante |
 | `bubble-rise` | Ambiance | Des bulles montent en ondulant et éclatent si le curseur les touche |
+| `stipple-sun` | Ambiance | Un soleil dessiné en points denses respire légèrement, comme une gravure ancienne devenue vivante |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |
