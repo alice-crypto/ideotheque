@@ -141,4 +141,12 @@ module.exports = [
     '<form data-fx="focus-beam"><input><input></form>',
     '<form data-fx="focus-beam" style="display:grid;gap:12px;width:200px" onsubmit="return false"><input placeholder="Nom" style="padding:8px;background:transparent;border:1px solid #555;color:var(--ink);border-radius:8px"><input placeholder="Courriel" style="padding:8px;background:transparent;border:1px solid #555;color:var(--ink);border-radius:8px"></form>',
     { a11y: 'Rend le focus plus visible, sans le remplacer pour la navigation au clavier.' }),
+  E('border-chase', 'Micro-interaction',
+    'Une lumière fait le tour de la carte, et accélère lorsqu\'on la survole.',
+    'Énergie contenue, circuit sous tension.',
+    '- `data-fx-idle` (50) : vitesse au repos, en degrés par seconde\n- `--fx-weight` (2px), `--fx-radius` (14px)',
+    'Carte mise en avant, offre recommandée, bouton d\'IA.',
+    'Plusieurs cartes à la fois : une seule doit attirer l\'œil.',
+    '<div data-fx="border-chase">…</div>',
+    '<div class="demo-card" data-fx="border-chase"><b>Offre Pro</b>La plus choisie.</div>'),
 ];

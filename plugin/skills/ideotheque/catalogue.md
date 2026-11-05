@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->282<!-- /total --> effets.
+La bibliothèque contient <!-- total -->283<!-- /total --> effets.
 
 ## Règles
 
@@ -165,6 +165,7 @@ La bibliothèque contient <!-- total -->282<!-- /total --> effets.
 | `liquid-glass` | Micro-interaction | Une plaque de verre floute ce qui passe derrière, et son reflet suit le curseur |
 | `jelly-list` | Micro-interaction | Les icônes d'une rangée grossissent à l'approche du curseur et poussent leurs voisines, comme un dock |
 | `focus-beam` | Micro-interaction | Le cadre de focus glisse d'un champ à l'autre au lieu d'apparaître et de disparaître |
+| `border-chase` | Micro-interaction | Une lumière fait le tour de la carte, et accélère lorsqu'on la survole |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

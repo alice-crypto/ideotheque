@@ -3758,6 +3758,21 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 }
 [data-fx="focus-beam"].fx-on .fx-beam { opacity: 1; }
 
+/* border-chase : une lumière qui court */
+[data-fx="border-chase"] { position: relative; border-radius: var(--fx-radius, 14px); }
+[data-fx="border-chase"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: var(--fx-weight, 2px);
+  border-radius: inherit;
+  background: conic-gradient(from var(--fx-ang, 0deg), transparent 0 70%, var(--fx-accent) 90%, #fff 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
