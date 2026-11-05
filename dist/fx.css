@@ -4097,6 +4097,20 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-x-cross.fx-uncover .fx-a { transform: rotate(45deg) scale(0, 1); }
 .fx-tr-x-cross.fx-uncover .fx-b { transform: rotate(-45deg) scale(0, 1); }
 
+/* page-turn : on tourne la page */
+.fx-tr-page-turn .fx-page {
+  inset: 0;
+  background: var(--fx-tr-color, #f4f1ea);
+  transform-origin: var(--fx-side, 0%) 50%;
+  transform: rotateY(-100deg);
+  transition: transform .85s var(--fx-ease-io);
+  box-shadow: inset 60px 0 80px -60px rgba(0, 0, 0, .3);
+}
+.fx-tr-page-turn .fx-fold { inset: 0; background: linear-gradient(90deg, rgba(0, 0, 0, .35), transparent 30%); opacity: 0; transition: opacity .6s; }
+.fx-tr-page-turn.fx-cover .fx-page { transform: none; }
+.fx-tr-page-turn.fx-cover .fx-fold { opacity: 1; }
+.fx-tr-page-turn.fx-uncover .fx-page { transform: rotateY(100deg); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

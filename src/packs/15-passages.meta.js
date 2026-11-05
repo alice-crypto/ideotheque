@@ -138,4 +138,13 @@ module.exports = [
     '<a href="/x" data-fx="x-cross">Entrer</a>',
     '<button class="demo-ghost" onclick="FX.play(\'x-cross\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('page-turn', 'Transition',
+    'Une feuille pivote depuis le bord de l\'écran, comme une page de livre qu\'on tourne.',
+    'Lecture, papier, un chapitre qui se termine.',
+    '- `--fx-tr-color` : couleur de la feuille',
+    'Magazines, livres, récits en chapitres.',
+    'Les sites sans registre éditorial.',
+    '<a href="/chapitre-2" data-fx="page-turn">Chapitre 2</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'page-turn\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];
