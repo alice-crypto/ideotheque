@@ -3922,6 +3922,20 @@
   FX.register('frame-drift', {
     scroll: function (el, info) { el.style.setProperty('--fx-d', ((info.pass - .5) * U.num(el, 'fxRange', 16)).toFixed(2) + '%'); }
   });
+
+  // La bordure de section ondule quand on défile
+  FX.register('wave-morph', {
+    setup: function (el) {
+      el.setAttribute('aria-hidden', 'true');
+      el.innerHTML = '<svg viewBox="0 0 600 100" preserveAspectRatio="none"><path/></svg>';
+      el._fxPath = el.querySelector('path');
+    },
+    scroll: function (el, info) {
+      var a = 10 + Math.abs(U.velocity()) * .5 + U.num(el, 'fxAmp', 22) * Math.sin(info.pass * 3.14), ph = info.pass * 9, d = 'M0 100 L0 50';
+      for (var x = 0; x <= 600; x += 30) d += ' L' + x + ' ' + (50 + Math.sin(x * .012 + ph) * a).toFixed(1);
+      el._fxPath.setAttribute('d', d + ' L600 100 Z');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

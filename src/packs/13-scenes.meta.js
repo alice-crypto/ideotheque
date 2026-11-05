@@ -193,4 +193,12 @@ module.exports = [
     'Les images recadrées avec précision : leurs bords sont coupés.',
     '<figure data-fx="frame-drift"><img src="photo.jpg" alt=""></figure>',
     '<div class="demo-media" data-fx="frame-drift"><img src="assets/dune.svg" alt=""></div>'),
+  E('wave-morph', 'Défilement',
+    'Le bord qui sépare deux sections est une vague qui ondule selon le défilement.',
+    'Liquide, une marée entre les sections.',
+    '- `data-fx-amp` (22) : amplitude\n- `--fx-wave` : couleur\n- `--fx-h` (90px) : hauteur',
+    'Séparateurs entre sections de couleurs différentes.',
+    'Les interfaces denses et géométriques.',
+    '<div data-fx="wave-morph"></div>',
+    '<div data-fx="wave-morph" style="width:100%"></div>'),
 ];

@@ -3476,6 +3476,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transform: scale(var(--fx-zoom, 1.25)) translateY(var(--fx-d, 0));
 }
 
+/* wave-morph : une bordure en vague */
+[data-fx="wave-morph"] { display: block; height: var(--fx-h, 90px); }
+[data-fx="wave-morph"] svg { display: block; width: 100%; height: 100%; }
+[data-fx="wave-morph"] path { fill: var(--fx-wave, var(--fx-accent)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
