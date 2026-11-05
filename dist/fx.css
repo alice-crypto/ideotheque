@@ -4201,6 +4201,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="x-ray"] > * { display: block; width: 100%; height: 100%; object-fit: cover; }
 [data-fx="x-ray"] > :last-child { position: absolute; inset: 0; clip-path: circle(var(--fx-r, 0px) at var(--fx-x, 50%) var(--fx-y, 50%)); }
 
+/* Pack 16 — Fonds génératifs */
+
+/* flow-field : des veines qui se dessinent */
+[data-fx="flow-field"] { isolation: isolate; }
+[data-fx="flow-field"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-line, var(--fx-accent)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
