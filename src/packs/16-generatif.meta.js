@@ -63,4 +63,12 @@ module.exports = [
     '<h1 data-fx="particle-text">Stellaire</h1>',
     '<p class="demo-title" data-fx="particle-text" style="color:var(--ink);font-weight:800">Stellaire</p>',
     { a11y: 'Le texte est dans `aria-label`. Avec `prefers-reduced-motion: reduce`, le mot s\'affiche directement.' }),
+  E('rain-glass', 'Ambiance',
+    'Des gouttes glissent par à-coups sur l\'élément, comme de la pluie sur une vitre.',
+    'Mélancolie, intérieur chaud, café un jour de pluie.',
+    '- `data-fx-drops` (28) : nombre de gouttes\n- `--fx-drop` : couleur des gouttes',
+    'Images sombres, sites d\'ambiance, musique.',
+    'Les marques joyeuses, ou au-dessus d\'un texte.',
+    '<figure data-fx="rain-glass"><img src="ville.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="rain-glass"><img src="assets/city.svg" alt=""></div>'),
 ];

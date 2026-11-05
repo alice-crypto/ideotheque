@@ -5280,6 +5280,40 @@
       });
     }
   });
+
+  // Des gouttes glissent sur une vitre
+  FX.register('rain-glass', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxD = [];
+      for (var i = 0; i < U.num(el, 'fxDrops', 28); i++) el._fxD.push({ x: Math.random(), y: Math.random(), r: U.rand(1.2, 3.4), v: 0, w: U.rand(0, 2) });
+    },
+    tick: function (el, dt) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      var c = cv.getContext('2d');
+      c.globalCompositeOperation = 'destination-out';
+      c.fillStyle = 'rgba(0,0,0,.05)';
+      c.fillRect(0, 0, w, h);
+      c.globalCompositeOperation = 'source-over';
+      c.fillStyle = getComputedStyle(cv).color;
+      el._fxD.forEach(function (d) {
+        d.w -= dt;
+        if (d.w <= 0) { d.v = U.rand(.06, .4); d.w = U.rand(.2, 1.8); }
+        d.y += d.v * dt;
+        d.v *= .985;
+        if (d.y > 1.05) { d.y = -.05; d.x = Math.random(); }
+        c.beginPath();
+        c.ellipse(d.x * w, d.y * h, d.r, d.r * 1.3, 0, 0, 7);
+        c.fill();
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
