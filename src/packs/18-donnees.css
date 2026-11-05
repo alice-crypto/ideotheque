@@ -148,3 +148,8 @@
 [data-fx="compare-table-sweep"] :is(th, td):first-child { text-align: left; }
 [data-fx="compare-table-sweep"] .fx-col { background: var(--fx-col, rgba(128, 128, 128, .18)); }
 [data-fx="compare-table-sweep"] thead .fx-col { color: var(--fx-accent); }
+
+/* map-route-draw : un itinéraire */
+[data-fx="map-route-draw"] path { fill: none; stroke: var(--fx-route, var(--fx-accent)); stroke-width: var(--fx-weight, 3); stroke-linecap: round; }
+[data-fx="map-route-draw"] [data-at] { fill: currentColor; opacity: .3; transform-box: fill-box; transform-origin: center; transition: opacity .3s, transform .4s var(--fx-ease-spring), fill .3s; }
+[data-fx="map-route-draw"] [data-at].fx-on { opacity: 1; fill: var(--fx-route, var(--fx-accent)); transform: scale(1.5); }
