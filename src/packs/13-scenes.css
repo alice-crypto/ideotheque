@@ -87,3 +87,7 @@
 /* dot-swell : une trame qui gonfle */
 [data-fx="dot-swell"] { isolation: isolate; }
 [data-fx="dot-swell"] .fx-swell { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; color: var(--fx-dot, var(--fx-accent)); pointer-events: none; }
+
+/* aperture-text : on traverse le mot */
+[data-fx="aperture-text"] { display: grid; place-items: center; }
+[data-fx="aperture-text"] > * { transform: scale(var(--fx-zoom, 1)); transform-origin: var(--fx-origin, 50% 50%); white-space: nowrap; }
