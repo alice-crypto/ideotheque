@@ -120,4 +120,13 @@ module.exports = [
     '<label data-fx="upload-drop"><input type="file" multiple>Déposez vos fichiers</label>',
     '<label data-fx="upload-drop" style="width:190px;color:var(--ink)"><input type="file" multiple>Déposez vos fichiers</label>',
     { a11y: 'Le champ de fichier reste présent et utilisable au clavier via son `<label>`.' }),
+  E('offline-banner', 'État',
+    'Un bandeau descend quand la connexion se perd, puis passe au vert au retour et s\'efface.',
+    'Rassurant : le problème est connu et rien n\'est perdu.',
+    '- `data-fx-off`, `data-fx-on` : messages\n- `--fx-off`, `--fx-on` : couleurs',
+    'Applications web, éditeurs, formulaires longs.',
+    'De promettre un envoi différé que l\'application ne fait pas : adaptez le message.',
+    '<div data-fx="offline-banner"></div>',
+    '<div data-fx="offline-banner" class="fx-show" data-fx-off="Vous êtes hors ligne." style="width:210px">Vous êtes hors ligne.</div>',
+    { trigger: 'Changer l\'état', a11y: 'Rôle `status`. Le message reste écrit en toutes lettres.' }),
 ];
