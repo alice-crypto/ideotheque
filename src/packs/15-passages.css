@@ -274,3 +274,8 @@
   transition: transform .55s var(--fx-ease-out) calc(var(--fx-i) * 120ms), opacity .2s calc(var(--fx-i) * 120ms);
 }
 .fx-in[data-fx="polaroid-drop"] > * { opacity: 1; transform: translate(var(--fx-dx), var(--fx-dy)) rotate(var(--fx-rot)); }
+
+/* x-ray : une lentille à rayons X */
+[data-fx="x-ray"] { position: relative; overflow: hidden; }
+[data-fx="x-ray"] > * { display: block; width: 100%; height: 100%; object-fit: cover; }
+[data-fx="x-ray"] > :last-child { position: absolute; inset: 0; clip-path: circle(var(--fx-r, 0px) at var(--fx-x, 50%) var(--fx-y, 50%)); }
