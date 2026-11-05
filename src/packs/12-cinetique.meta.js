@@ -204,4 +204,13 @@ module.exports = [
     '<h2 data-fx="drift-title">En mouvement</h2>',
     '<p class="demo-title" data-fx="drift-title" style="font-size:30px">En mouvement</p>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le titre reste immobile.' }),
+  E('path-type', 'Texte',
+    'Le texte suit une ligne ondulée et y avance en continu, comme un ruban.',
+    'Fluide, organique, une enseigne qui ondule.',
+    '- `data-fx-path` : tracé SVG personnalisé\n- `data-fx-speed` (2.4) : vitesse\n- `--fx-size` (34px) : taille du texte, à l\'échelle du dessin',
+    'Séparateurs de sections, accroches décoratives.',
+    'Une information indispensable : le texte n\'est jamais lu d\'un seul regard.',
+    '<div data-fx="path-type">Livraison offerte</div>',
+    '<div data-fx="path-type" style="color:var(--ink);width:230px">Livraison offerte</div>',
+    { a11y: 'Le texte est dans `aria-label`, le dessin est masqué aux lecteurs d\'écran.' }),
 ];

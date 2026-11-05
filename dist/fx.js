@@ -3529,6 +3529,25 @@
       el.style.setProperty('--fx-s', U.clamp(el._fxX * .05, -8, 8).toFixed(2) + 'deg');
     }
   });
+
+  // Le texte suit une courbe et y avance en continu
+  FX.register('path-type', {
+    setup: function (el) {
+      var txt = el.textContent.trim();
+      var id = 'fx-path-' + Math.random().toString(36).slice(2, 8);
+      el.setAttribute('aria-label', txt);
+      el.setAttribute('role', 'img');
+      el.innerHTML = '<svg viewBox="0 0 600 160" aria-hidden="true"><path id="' + id + '" d="' + (el.dataset.fxPath || 'M-20 90 C 120 -10, 220 190, 320 90 S 520 -10, 640 90') + '" fill="none"/><text><textPath href="#' + id + '"></textPath></text></svg>';
+      el._fxTp = el.querySelector('textPath');
+      el._fxTp.textContent = (txt + ' · ').repeat(4);
+      el._fxO = 0;
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxO = (el._fxO + dt * U.num(el, 'fxSpeed', 2.4)) % 25;
+      el._fxTp.setAttribute('startOffset', (-el._fxO) + '%');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

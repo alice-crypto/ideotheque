@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->229<!-- /total --> effets.
+La bibliothèque contient <!-- total -->230<!-- /total --> effets.
 
 ## Règles
 
@@ -94,6 +94,7 @@ La bibliothèque contient <!-- total -->229<!-- /total --> effets.
 | `redact-reveal` | Texte | Le texte est caviardé de barres noires, qui se retirent mot à mot dans le désordre |
 | `sticker-letters` | Texte | Chaque lettre est une étiquette collée de travers, qui claque à son arrivée |
 | `drift-title` | Texte | Quand on défile vite, le titre glisse de côté et s'incline, puis revient à sa place |
+| `path-type` | Texte | Le texte suit une ligne ondulée et y avance en continu, comme un ruban |
 | `count-up` | Présentation | Mettre en scène un chiffre clé en le faisant défiler de 0 jusqu'à sa valeur |
 | `pill-grow` | Présentation | Une gélule s'ouvre au milieu d'un titre, puis une pastille glisse à l'intérieur, comme un interrupteur qu'on active |
 | `preloader` | Présentation | Un écran de chargement chiffré de 0 à 100 %, avec une barre de progression, qui se lève vers le haut pour révéler la page |
