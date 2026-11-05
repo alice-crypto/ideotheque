@@ -38,3 +38,20 @@
   transform: scaleX(calc(1 + var(--fx-a, 0) * .55));
   transition: transform .45s var(--fx-ease-spring), margin .45s var(--fx-ease-spring), color .3s;
 }
+
+/* spot-fill : le contour se remplit sous le curseur */
+[data-fx="spot-fill"] .fx-sf {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--fx-stroke, currentColor);
+}
+[data-fx="spot-fill"] .fx-sf::after {
+  content: attr(data-fx-label);
+  position: absolute;
+  inset: 0;
+  color: var(--fx-fill, var(--fx-accent));
+  -webkit-text-stroke: 0;
+  -webkit-mask: radial-gradient(circle var(--fx-size, 90px) at var(--fx-mx, 50%) var(--fx-my, 50%), #000 60%, transparent);
+  mask: radial-gradient(circle var(--fx-size, 90px) at var(--fx-mx, 50%) var(--fx-my, 50%), #000 60%, transparent);
+}
