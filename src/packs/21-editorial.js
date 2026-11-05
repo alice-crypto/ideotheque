@@ -63,4 +63,20 @@
       el.style.setProperty('--fx-p', p.toFixed(3));
     }
   });
+
+  // Autour du curseur, les mots sont nets et le reste s'estompe
+  FX.register('kerning-focus', {
+    setup: function (el) {
+      U.splitWords(el);
+      var ws = el.querySelectorAll('.fx-word');
+      el.addEventListener('pointermove', function (e) {
+        ws.forEach(function (w) {
+          var r = w.getBoundingClientRect();
+          var d = Math.hypot(r.left + r.width / 2 - e.clientX, r.top + r.height / 2 - e.clientY);
+          w.style.setProperty('--fx-k', U.clamp(1 - d / U.num(el, 'fxRadius', 130), .12, 1).toFixed(2));
+        });
+      });
+      el.addEventListener('pointerleave', function () { ws.forEach(function (w) { w.style.removeProperty('--fx-k'); }); });
+    }
+  });
 })(window.FX);
