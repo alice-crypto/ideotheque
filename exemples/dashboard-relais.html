@@ -169,6 +169,7 @@
       });
       document.getElementById('vide').hidden = n > 0;
     }
+    document.getElementById('q').addEventListener('input', function () { FILTRE.q = this.value.trim().toLowerCase(); appliquer(); });
     /*@js*/
   </script>
 </body>
