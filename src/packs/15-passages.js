@@ -58,4 +58,24 @@
       p.style.setProperty('--fx-d', (flip ? n - 1 - i : i) * 45 + 'ms');
     });
   } } });
+
+  // Une vague liquide monte et recouvre l'écran
+  FX.register('wave-cover', { transition: { pieces: 1, cover: 900, uncover: 950, build: function (o) {
+    var p = o.firstChild;
+    p.innerHTML = '<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%;height:100%;display:block"><path/></svg>';
+    var path = p.querySelector('path'), t0 = null, lastOut = null;
+    (function frame(t) {
+      if (!o.isConnected) return;
+      if (t0 === null) t0 = t;
+      var out = o.classList.contains('fx-uncover');
+      if (out && lastOut === null) lastOut = t;
+      var a = Math.min(1, (t - t0) / 850), c = out ? Math.min(1, (t - lastOut) / 850) : 0;
+      var top = 110 - U.easeInOut(a) * 120, bot = 110 - U.easeInOut(c) * 120;
+      var amp = Math.sin(a * 3.14) * 10, ampB = Math.sin(c * 3.14) * 10;
+      var d = 'M0 ' + top.toFixed(1) + ' Q25 ' + (top - amp).toFixed(1) + ' 50 ' + top.toFixed(1) + ' T100 ' + top.toFixed(1);
+      d += out ? ' L100 ' + bot.toFixed(1) + ' Q75 ' + (bot + ampB).toFixed(1) + ' 50 ' + bot.toFixed(1) + ' T0 ' + bot.toFixed(1) + ' Z' : ' L100 100 L0 100 Z';
+      path.setAttribute('d', d);
+      U.raf(frame);
+    })(0);
+  } } });
 })(window.FX);
