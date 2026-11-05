@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="number-stack-in">03</div>',
     '<div class="demo-number" data-fx="number-stack-in" style="color:var(--ink)">03</div>',
     { trigger: 'Rejouer', a11y: 'Le numéro est dans `aria-label`, les copies sont masquées.' }),
+  E('list-strike-in', 'Entrée',
+    'Des filets se dessinent de gauche à droite, et le texte de chaque ligne apparaît juste après.',
+    'Grille suisse, sobriété.',
+    '- `--fx-rule` : couleur des filets',
+    'Listes de services, CV, palmarès.',
+    'Les lignes contenant des images.',
+    '<ul data-fx="list-strike-in"><li>…</li><li>…</li></ul>',
+    '<div data-fx="list-strike-in" style="width:210px;color:var(--ink);font-size:15px"><div>Direction</div><div>Image</div><div>Son</div></div>',
+    { trigger: 'Rejouer' }),
 ];
