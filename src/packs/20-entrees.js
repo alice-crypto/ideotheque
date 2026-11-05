@@ -233,4 +233,13 @@
       });
     }
   });
+
+  // Les cases se retournent dans le désordre et révèlent le tableau
+  FX.register('flip-board-in', {
+    entrance: true,
+    setup: function (el) {
+      var k = Array.prototype.slice.call(el.children), o = k.map(function (_, i) { return i; }).sort(function () { return Math.random() - .5; });
+      k.forEach(function (c, i) { c.style.setProperty('--fx-o', o[i]); });
+    }
+  });
 })(window.FX);
