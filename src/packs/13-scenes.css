@@ -130,3 +130,10 @@
   transform: translateY(calc(var(--fx-lift, 1) * -100%));
   pointer-events: none;
 }
+
+/* letters-scrub : le mot se rassemble */
+[data-fx="letters-scrub"] .fx-char {
+  display: inline-block;
+  transform: translate(calc(var(--fx-dx) * var(--fx-left, 0)), calc(var(--fx-dy) * var(--fx-left, 0))) rotate(calc(var(--fx-dr) * var(--fx-left, 0)));
+  opacity: calc(1 - var(--fx-left, 0) * .7);
+}
