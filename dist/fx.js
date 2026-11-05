@@ -8476,6 +8476,23 @@
     },
     trigger: function (el) { el.classList.toggle('fx-small'); }
   });
+
+  // Un camembert dont les parts s'ouvrent au survol
+  FX.register('pie-explode', {
+    entrance: true,
+    setup: function (el) {
+      var parts = (el.dataset.fxParts || 'Design:40,Code:30,Son:20,Récit:10').split(',').map(function (s) { var p = s.split(':'); return { n: p[0], v: +p[1] }; });
+      var sum = parts.reduce(function (a, p) { return a + p.v; }, 0), a = -Math.PI / 2, svg = '<svg viewBox="-60 -60 120 120" aria-hidden="true">';
+      parts.forEach(function (p, i) {
+        var b = a + p.v / sum * Math.PI * 2, mid = (a + b) / 2, big = b - a > Math.PI ? 1 : 0;
+        svg += '<path style="--fx-i:' + i + ';--fx-x:' + (Math.cos(mid) * 6).toFixed(1) + 'px;--fx-y:' + (Math.sin(mid) * 6).toFixed(1) + 'px" d="M0 0 L' + (Math.cos(a) * 50).toFixed(2) + ' ' + (Math.sin(a) * 50).toFixed(2) + ' A50 50 0 ' + big + ' 1 ' + (Math.cos(b) * 50).toFixed(2) + ' ' + (Math.sin(b) * 50).toFixed(2) + ' Z"><title>' + p.n + ' ' + Math.round(p.v / sum * 100) + ' %</title></path>';
+        a = b;
+      });
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', parts.map(function (p) { return p.n + ' ' + Math.round(p.v / sum * 100) + ' %'; }).join(', '));
+      el.innerHTML = svg + '</svg>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -5389,6 +5389,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="sidebar-collapse"] button { align-self: flex-end; background: none; border: 0; color: inherit; cursor: pointer; transition: transform .35s; }
 [data-fx="sidebar-collapse"].fx-small button { transform: rotate(180deg); align-self: center; }
 
+/* pie-explode : un camembert ouvert */
+[data-fx="pie-explode"] { display: inline-block; width: var(--fx-size, 150px); }
+[data-fx="pie-explode"] svg { display: block; overflow: visible; transform: rotate(-20deg) scale(.8); opacity: 0; transition: transform .8s var(--fx-ease-out), opacity .4s; }
+.fx-in[data-fx="pie-explode"] svg { transform: none; opacity: 1; }
+[data-fx="pie-explode"] path { fill: color-mix(in srgb, var(--fx-accent) calc(100% - var(--fx-i) * 22%), var(--fx-accent-2)); stroke: var(--fx-gap, #111); stroke-width: 1; cursor: pointer; transition: transform .3s var(--fx-ease-spring); }
+[data-fx="pie-explode"] path:hover { transform: translate(var(--fx-x), var(--fx-y)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

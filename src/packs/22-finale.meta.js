@@ -276,4 +276,13 @@ module.exports = [
     '<nav data-fx="sidebar-collapse"><button data-toggle>‹</button><a href="#">⌂ <span>Accueil</span></a></nav>',
     '<nav data-fx="sidebar-collapse" style="color:var(--ink);font-size:13px;border:1px solid #333;border-radius:8px"><button data-toggle>‹</button><a href="#">⌂ <span>Accueil</span></a><a href="#">⌕ <span>Recherche</span></a><a href="#">♡ <span>Favoris</span></a></nav>',
     { trigger: 'Replier', a11y: 'Bouton nommé avec `aria-expanded`. Le libellé reste dans le lien pour les lecteurs d\'écran.' }),
+  E('pie-explode', 'Présentation',
+    'Un camembert arrive en tournant, et la part survolée sort légèrement du disque.',
+    'Clair et vivant, une répartition qu\'on explore.',
+    '- `data-fx-parts` : « nom:valeur »\n- `--fx-size` (150px), `--fx-gap`',
+    'Répartitions simples, budgets.',
+    'Plus de 5 parts : préférez un autre graphique.',
+    '<div data-fx="pie-explode" data-fx-parts="A:40,B:60"></div>',
+    '<div data-fx="pie-explode"></div>',
+    { trigger: 'Rejouer', a11y: 'Les valeurs sont résumées dans `aria-label`.' }),
 ];
