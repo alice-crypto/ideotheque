@@ -160,4 +160,25 @@
       el._fxLow.style.setProperty('--fx-sk', (Math.sin(t * .0016) * 4).toFixed(2) + 'deg');
     }
   });
+
+  // Le titre se répète en éventail derrière lui
+  FX.register('echo-stack', {
+    setup: function (el) {
+      var txt = el.textContent.trim(), n = U.num(el, 'fxCount', 5);
+      el.textContent = '';
+      var box = U.make('span', 'fx-echo-box', el);
+      box.textContent = txt;
+      for (var i = 1; i <= n; i++) {
+        var s = U.make('span', 'fx-echo', box);
+        s.textContent = txt;
+        s.setAttribute('aria-hidden', 'true');
+        s.style.setProperty('--fx-i', i);
+      }
+      el.style.setProperty('--fx-n', n);
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      el.style.setProperty('--fx-open', ((Math.sin(t * .0012) + 1) / 2).toFixed(3));
+    }
+  });
 })(window.FX);
