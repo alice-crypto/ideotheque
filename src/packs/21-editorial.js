@@ -264,4 +264,33 @@
       }
     }
   });
+
+  // Une grille d'aiguilles s'oriente vers le curseur
+  FX.register('cursor-compass', {
+    setup: function (el) {
+      var n = U.num(el, 'fxCount', 42);
+      el.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) U.make('i', '', el);
+      var nodes = el.children;
+      var look = function (x, y) {
+        for (var k = 0; k < nodes.length; k++) {
+          var r = nodes[k].getBoundingClientRect();
+          nodes[k].style.transform = 'rotate(' + Math.atan2(y - r.top - r.height / 2, x - r.left - r.width / 2).toFixed(3) + 'rad)';
+        }
+      };
+      if (!U.reduced) window.addEventListener('pointermove', function (e) {
+        var b = el.getBoundingClientRect();
+        if (b.bottom < -100 || b.top > innerHeight + 100) return;
+        look(e.clientX, e.clientY);
+      }, { passive: true });
+      el._fxLook = look;
+      el._fxA = 0;
+    },
+    tick: function (el, dt) {
+      if (U.reduced || U.canHover) return;
+      el._fxA += dt;
+      var b = el.getBoundingClientRect();
+      el._fxLook(b.left + b.width / 2 + Math.cos(el._fxA) * 100, b.top + b.height / 2 + Math.sin(el._fxA) * 100);
+    }
+  });
 })(window.FX);
