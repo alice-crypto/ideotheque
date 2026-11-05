@@ -166,4 +166,13 @@ module.exports = [
     '<a href="#" data-fx="image-pop-link" data-fx-img="photo.jpg">Notre dernier projet</a>',
     '<a class="demo-link" href="#" data-fx="image-pop-link" data-fx-img="assets/dune.svg" style="color:var(--ink)">Dernier projet</a>',
     { a11y: 'L\'image est décorative et masquée aux lecteurs d\'écran.' }),
+  E('drag-reorder', 'Micro-interaction',
+    'On fait glisser une ligne de la liste, et les autres s\'écartent pour lui faire de la place.',
+    'Direct et concret, comme déplacer des fiches sur une table.',
+    'L\'élément émet `fx:change` à chaque changement d\'ordre.',
+    'Listes de priorités, playlists, étapes.',
+    'Les listes longues sur mobile, où le geste entre en conflit avec le défilement.',
+    '<ul data-fx="drag-reorder"><li>…</li><li>…</li></ul>',
+    '<div data-fx="drag-reorder" style="display:grid;gap:6px;width:200px"><div class="demo-chip">Idée</div><div class="demo-chip">Maquette</div><div class="demo-chip">Prototype</div></div>',
+    { a11y: 'Au clavier : focus sur une ligne, puis Alt + flèche haut ou bas.' }),
 ];
