@@ -91,6 +91,7 @@ Trois autres marques n'utilisent que le rouge, le bleu et le jaune primaires, av
 
 | Marque | Landing page | Dashboard |
 | --- | --- | --- |
+| Prisme, analyse pour petites équipes | [prisme.html](exemples/prisme.html) | [dashboard-prisme.html](exemples/dashboard-prisme.html) |
 
 Les illustrations sont des SVG originaux (`exemples/img/`).
 
