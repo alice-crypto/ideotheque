@@ -39,4 +39,36 @@
       g.done = true;
     }
   });
+
+  // Des bulles se rencontrent et fusionnent comme dans une lampe à lave
+  FX.register('metaballs', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      if (!document.getElementById('fx-meta')) {
+        var d = document.createElement('div');
+        d.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+        d.innerHTML = '<svg aria-hidden="true"><filter id="fx-meta"><feGaussianBlur stdDeviation="12"/><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 30 -12"/></filter></svg>';
+        document.body.appendChild(d);
+      }
+      var box = U.make('div', 'fx-meta-box', el);
+      box.setAttribute('aria-hidden', 'true');
+      el._fxB = [];
+      for (var i = 0; i < U.num(el, 'fxCount', 7); i++) {
+        var b = U.make('i', '', box), s = U.rand(36, 90);
+        b.style.width = b.style.height = s + 'px';
+        el._fxB.push({ el: b, s: s, x: Math.random(), y: Math.random(), vx: U.rand(-.1, .1), vy: U.rand(-.12, .12) });
+      }
+    },
+    tick: function (el, dt) {
+      var w = el.offsetWidth, h = el.offsetHeight;
+      el._fxB.forEach(function (b) {
+        if (!U.reduced) {
+          b.x += b.vx * dt; b.y += b.vy * dt;
+          if (b.x < 0 || b.x > 1) b.vx *= -1;
+          if (b.y < 0 || b.y > 1) b.vy *= -1;
+        }
+        b.el.style.transform = 'translate(' + (b.x * w - b.s / 2).toFixed(1) + 'px,' + (b.y * h - b.s / 2).toFixed(1) + 'px)';
+      });
+    }
+  });
 })(window.FX);
