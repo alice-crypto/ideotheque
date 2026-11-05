@@ -30,6 +30,9 @@
     .steps li { border-top: 3px solid var(--w); padding-top: 14px; counter-increment: st; }
     .steps li::before { content: counter(st); display: block; font-size: clamp(70px, 9vw, 130px); font-weight: 800; line-height: 1; letter-spacing: -.05em; color: var(--y); }
     .steps h3 { font-size: 26px; margin: 10px 0 8px; }
+    .proof { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
+    .proof blockquote { margin: 0; font-size: clamp(28px, 3.6vw, 52px); font-weight: 700; line-height: 1.05; letter-spacing: -.03em; }
+    .proof cite { display: block; margin-top: 18px; font: 600 13px "IBM Plex Mono", monospace; }
     /*@css*/
   </style>
 </head>
