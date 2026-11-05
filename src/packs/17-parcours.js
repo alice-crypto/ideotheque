@@ -131,4 +131,27 @@
       window.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'k' && el.dataset.fxShortcut === 'true') { e.preventDefault(); input.focus(); } });
     }
   });
+
+  // Un fil d'Ariane qui replie ses niveaux intermédiaires
+  FX.register('breadcrumb-fold', {
+    setup: function (el) {
+      var items = Array.prototype.slice.call(el.children);
+      if (items.length <= U.num(el, 'fxKeep', 3)) return;
+      var mid = items.slice(1, -1);
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'fx-bc-more';
+      btn.textContent = '…';
+      btn.setAttribute('aria-label', 'Afficher ' + mid.length + ' niveaux');
+      btn.setAttribute('aria-expanded', 'false');
+      el.insertBefore(btn, items[1]);
+      mid.forEach(function (m, i) { m.classList.add('fx-bc-mid'); m.style.setProperty('--fx-i', i); });
+      btn.addEventListener('click', function () {
+        el.classList.add('fx-open');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.hidden = true;
+        if (mid[0].querySelector('a')) mid[0].querySelector('a').focus();
+      });
+    }
+  });
 })(window.FX);
