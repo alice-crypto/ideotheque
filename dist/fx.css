@@ -3371,6 +3371,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="depth-stack"] { display: grid; place-items: center; overflow: hidden; }
 [data-fx="depth-stack"] > * { grid-area: 1 / 1; transform: translateY(calc(var(--fx-y, 0px) * var(--fx-z, 1))); }
 
+/* plane-land : l'écran se pose à plat */
+[data-fx="plane-land"] {
+  transform: perspective(1000px) rotateX(calc(var(--fx-land, 0) * var(--fx-tilt, 32deg))) scale(calc(1 - var(--fx-land, 0) * .12));
+  transform-origin: 50% 100%;
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

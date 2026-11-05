@@ -3774,6 +3774,11 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-y', ((.5 - info.pass) * U.num(el, 'fxAmp', 180)).toFixed(1) + 'px'); }
   });
+
+  // Une interface couchée se redresse et se pose
+  FX.register('plane-land', {
+    scroll: function (el, info) { el.style.setProperty('--fx-land', (1 - U.easeOut(info.enter)).toFixed(3)); }
+  });
 })(window.FX);
 
 window.FX._boot();

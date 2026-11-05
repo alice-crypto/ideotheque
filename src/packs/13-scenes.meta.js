@@ -70,4 +70,12 @@ module.exports = [
     'Les textes à lire : ils se chevauchent en mouvement.',
     '<div data-fx="depth-stack"><img data-depth=".2" …><img data-depth=".8" …></div>',
     '<div data-fx="depth-stack" style="width:220px;height:150px"><div class="demo-box" data-depth=".2" style="width:150px;height:110px"></div><div class="demo-box alt" data-depth=".6" style="width:100px;height:70px"></div><div class="demo-box ink" data-depth="1" style="width:50px;height:34px"></div></div>'),
+  E('plane-land', 'Défilement',
+    'Un écran couché en perspective se redresse et se pose face à nous au défilement.',
+    'Atterrissage, présentation solennelle d\'un produit.',
+    '- `--fx-tilt` (32deg) : inclinaison de départ',
+    'Capture d\'interface sur une landing page.',
+    'Les petits éléments, où la perspective ne se voit pas.',
+    '<img data-fx="plane-land" src="app.png" alt="">',
+    '<div class="demo-box" data-fx="plane-land" style="width:210px;height:130px"></div>'),
 ];
