@@ -119,3 +119,9 @@
 [data-fx="feature-orbit-card"] > .fx-cur { opacity: 1; }
 [data-fx="feature-orbit-card"] .fx-foc { position: absolute; left: 0; bottom: 0; right: 0; height: 2px; background: var(--fx-accent); transform-origin: left; transform: scaleX(0); }
 [data-fx="feature-orbit-card"] > .fx-cur .fx-foc { transform: scaleX(var(--fx-q, 0)); }
+
+/* logo-wall-flip : un mur de logos */
+[data-fx="logo-wall-flip"] { display: grid; grid-template-columns: repeat(var(--fx-cells, 3), 1fr); gap: 1px; background: rgba(128, 128, 128, .25); perspective: 500px; }
+[data-fx="logo-wall-flip"] span { display: grid; place-items: center; padding: 1em .4em; background: var(--fx-cell-bg, #16151a); font-weight: 600; }
+[data-fx="logo-wall-flip"] .fx-flip { animation: fx-lw .44s var(--fx-ease-io); }
+@keyframes fx-lw { 50% { transform: rotateX(90deg); } }
