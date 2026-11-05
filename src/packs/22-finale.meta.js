@@ -294,4 +294,13 @@ module.exports = [
     '<div data-fx="funnel-steps" data-fx-steps="Visites:1000,Clients:96"></div>',
     '<div data-fx="funnel-steps" style="width:220px;color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Les valeurs sont écrites en texte.' }),
+  E('treemap-grow', 'Présentation',
+    'Une carte de rectangles proportionnels s\'assemble : plus la valeur est grande, plus la surface l\'est.',
+    'Vue d\'ensemble dense, tout tient en un regard.',
+    '- `data-fx-items` : « nom:valeur »\n- `--fx-h` (150px), `--fx-gap`',
+    'Stockage, budgets, parts de marché.',
+    'De très petites valeurs : leur nom ne tient plus.',
+    '<div data-fx="treemap-grow" data-fx-items="A:60,B:30,C:10"></div>',
+    '<div data-fx="treemap-grow" style="width:225px"></div>',
+    { trigger: 'Rejouer', a11y: 'Chaque rectangle porte son nom en texte et sa valeur dans `title`.' }),
 ];

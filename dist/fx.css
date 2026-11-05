@@ -5403,6 +5403,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-in[data-fx="funnel-steps"] i { transform: none; }
 [data-fx="funnel-steps"] span { position: relative; white-space: nowrap; text-shadow: 0 0 4px rgba(0, 0, 0, .55); }
 
+/* treemap-grow : une carte de surfaces */
+[data-fx="treemap-grow"] { position: relative; height: var(--fx-h, 150px); font-size: 12px; }
+[data-fx="treemap-grow"] > div { position: absolute; box-sizing: border-box; padding: .4em; overflow: hidden; border: 1px solid var(--fx-gap, #111); color: #fff; background: color-mix(in srgb, var(--fx-accent) calc(100% - var(--fx-i) * 18%), #222); transform: scale(.85); opacity: 0; transition: transform .6s var(--fx-ease-out) calc(var(--fx-i) * 70ms), opacity .3s calc(var(--fx-i) * 70ms); }
+.fx-in[data-fx="treemap-grow"] > div { transform: none; opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
