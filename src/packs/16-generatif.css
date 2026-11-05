@@ -12,3 +12,7 @@
 /* voronoi-cells : un tissu vivant */
 [data-fx="voronoi-cells"] { isolation: isolate; overflow: hidden; }
 [data-fx="voronoi-cells"] .fx-vor { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
+/* contour-lines : une carte topographique */
+[data-fx="contour-lines"] { isolation: isolate; }
+[data-fx="contour-lines"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-line, currentColor); }
