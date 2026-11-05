@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="rank-race" data-fx-items="A:40,B:55"></div>',
     '<div data-fx="rank-race" style="width:225px;color:var(--ink)"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le classement reste figé.' }),
+  E('timeline-scrub', 'Présentation',
+    'Une frise de dates : survoler ou choisir une date remplit le rail et affiche son histoire.',
+    'Récit maîtrisé, on remonte le temps à son rythme.',
+    '- Chaque enfant porte `data-date` et contient son texte.',
+    'Histoire d\'une entreprise, parcours, versions d\'un produit.',
+    'Plus de 7 dates sur une ligne.',
+    '<div data-fx="timeline-scrub"><p data-date="2019">Création.</p><p data-date="2024">Lancement.</p></div>',
+    '<div data-fx="timeline-scrub" style="width:220px;color:var(--ink);font-size:13px"><p data-date="2019">L\'atelier ouvre.</p><p data-date="2022">Premier produit.</p><p data-date="2026">Une équipe de vingt.</p></div>',
+    { a11y: 'Rôles `tablist` et `tab`, flèches au clavier, changement annoncé par `aria-live`.' }),
 ];

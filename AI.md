@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->373<!-- /total --> effets.
+La bibliothèque contient <!-- total -->374<!-- /total --> effets.
 
 ## Règles
 
@@ -128,6 +128,7 @@ La bibliothèque contient <!-- total -->373<!-- /total --> effets.
 | `versus-bars` | Présentation | Deux valeurs se font face : les barres partent de chaque bord et se rencontrent à la frontière |
 | `gauge-needle` | Présentation | Un cadran dont l'aiguille monte jusqu'à la valeur, puis oscille un instant |
 | `rank-race` | Présentation | Un classement où les valeurs évoluent, et les lignes se dépassent en glissant |
+| `timeline-scrub` | Présentation | Une frise de dates : survoler ou choisir une date remplit le rail et affiche son histoire |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

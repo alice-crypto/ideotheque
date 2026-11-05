@@ -6430,6 +6430,42 @@
       el._fxDraw();
     }
   });
+
+  // Une frise où chaque date affiche son histoire
+  FX.register('timeline-scrub', {
+    setup: function (el) {
+      var items = Array.prototype.slice.call(el.children);
+      var rail = U.make('div', 'fx-ts-rail', el), out = U.make('div', 'fx-ts-out', el);
+      rail.setAttribute('role', 'tablist');
+      out.setAttribute('aria-live', 'polite');
+      var dots = items.map(function (it, i) {
+        it.hidden = true;
+        var b = U.make('button', '', rail);
+        b.type = 'button';
+        b.setAttribute('role', 'tab');
+        b.textContent = it.dataset.date || i + 1;
+        b.style.setProperty('--fx-x', items.length > 1 ? i / (items.length - 1) : 0);
+        b.addEventListener('click', function () { set(i); });
+        b.addEventListener('pointerenter', function () { set(i); });
+        return b;
+      });
+      var set = function (i) {
+        dots.forEach(function (d, k) { d.setAttribute('aria-selected', k === i); d.tabIndex = k === i ? 0 : -1; });
+        rail.style.setProperty('--fx-p', items.length > 1 ? i / (items.length - 1) : 0);
+        out.innerHTML = '';
+        var c = items[i].cloneNode(true);
+        c.hidden = false;
+        c.className = 'fx-ts-in';
+        out.appendChild(c);
+      };
+      rail.addEventListener('keydown', function (e) {
+        var i = dots.indexOf(document.activeElement);
+        if (e.key === 'ArrowRight' && dots[i + 1]) { set(i + 1); dots[i + 1].focus(); }
+        if (e.key === 'ArrowLeft' && dots[i - 1]) { set(i - 1); dots[i - 1].focus(); }
+      });
+      set(0);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

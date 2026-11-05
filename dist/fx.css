@@ -4617,6 +4617,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="rank-race"] .fx-rr i { flex: 0 0 auto; width: calc(var(--fx-w, 0) * (100% - 110px)); height: 60%; border-radius: 3px; background: var(--fx-accent); transition: width .6s var(--fx-ease-out); }
 [data-fx="rank-race"] .fx-rr b { font-variant-numeric: tabular-nums; }
 
+/* timeline-scrub : une frise qu'on parcourt */
+[data-fx="timeline-scrub"] .fx-ts-rail { position: relative; height: 34px; margin: 0 14px 10px; border-top: 2px solid rgba(128, 128, 128, .3); }
+[data-fx="timeline-scrub"] .fx-ts-rail::before { content: ""; position: absolute; left: 0; top: -2px; height: 2px; width: calc(var(--fx-p, 0) * 100%); background: var(--fx-accent); transition: width .4s var(--fx-ease-out); }
+[data-fx="timeline-scrub"] button { position: absolute; top: -6px; left: calc(var(--fx-x) * 100%); transform: translateX(-50%); padding: 12px 2px 0; background: none; border: 0; color: inherit; font: 12px inherit; cursor: pointer; opacity: .6; }
+[data-fx="timeline-scrub"] button::before { content: ""; position: absolute; top: 0; left: 50%; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: currentColor; transition: background .3s, transform .3s var(--fx-ease-spring); }
+[data-fx="timeline-scrub"] button[aria-selected="true"] { opacity: 1; }
+[data-fx="timeline-scrub"] button[aria-selected="true"]::before { background: var(--fx-accent); transform: scale(1.4); }
+[data-fx="timeline-scrub"] .fx-ts-in { animation: fx-ts .35s var(--fx-ease-out); }
+@keyframes fx-ts { from { opacity: 0; transform: translateY(8px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
