@@ -355,4 +355,13 @@ module.exports = [
     'Un seul mot long.',
     '<span data-fx="vertical-type-flip">JOUR</span>',
     '<span class="demo-title" data-fx="vertical-type-flip" style="font-size:26px">JOUR</span>'),
+  E('stamp-word', 'Texte',
+    'Les mots sont frappés l\'un après l\'autre, comme des coups de tampon.',
+    'Puissant, un slogan qu\'on martèle.',
+    'Aucun réglage.',
+    'Slogans de 2 à 5 mots.',
+    'Les textes longs.',
+    '<h1 data-fx="stamp-word">Plus vite. Plus fort.</h1>',
+    '<p class="demo-title" data-fx="stamp-word" style="font-size:28px">Plus vite. Plus fort.</p>',
+    { trigger: 'Rejouer' }),
 ];
