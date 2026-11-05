@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->380<!-- /total --> effets.
+La bibliothèque contient <!-- total -->381<!-- /total --> effets.
 
 ## Règles
 
@@ -135,6 +135,7 @@ La bibliothèque contient <!-- total -->380<!-- /total --> effets.
 | `feature-orbit-card` | Présentation | Une liste de fonctions dont l'élément actif change seul, avec une barre qui montre le temps restant |
 | `logo-wall-flip` | Présentation | Un mur de noms ou de logos : à tour de rôle, une case se retourne pour en montrer un autre |
 | `stat-reveal-split` | Présentation | Un très grand chiffre monte en comptant, puis son libellé se dévoile juste en dessous |
+| `world-pins` | Présentation | Une carte du monde en points, sur laquelle des épingles s'allument et émettent une onde |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

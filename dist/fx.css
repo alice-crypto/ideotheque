@@ -4674,6 +4674,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-in[data-fx="stat-reveal-split"] b { transform: none; opacity: 1; }
 .fx-in[data-fx="stat-reveal-split"] span { clip-path: inset(0 0 0 0); }
 
+/* world-pins : une carte en points */
+[data-fx="world-pins"] svg { display: block; width: 100%; }
+[data-fx="world-pins"] .d { fill: currentColor; opacity: .28; }
+[data-fx="world-pins"] .p { fill: var(--fx-accent); transform: scale(0); transition: transform .4s var(--fx-ease-spring) calc(var(--fx-i) * 160ms); }
+.fx-in[data-fx="world-pins"] .p { transform: none; }
+[data-fx="world-pins"] .r { fill: none; stroke: var(--fx-accent); transform-box: fill-box; transform-origin: center; animation: fx-wp 2.2s ease-out calc(var(--fx-i) * 300ms) infinite; }
+@keyframes fx-wp { to { transform: scale(4); opacity: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

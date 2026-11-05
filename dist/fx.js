@@ -6580,6 +6580,24 @@
     reset: function (el) { el._fxW(0); },
     enter: function (el) { U.tween(el, 1200, el._fxW); }
   });
+
+  // Une carte en points avec des épingles qui s'allument
+  FX.register('world-pins', {
+    entrance: true,
+    setup: function (el) {
+      var pins = (el.dataset.fxPins || '48,2;40,-74;35,139;-23,-46;51,0;1,103').split(';').map(function (s) { return s.split(',').map(Number); });
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', el.getAttribute('aria-label') || pins.length + ' implantations dans le monde');
+      var svg = '<svg viewBox="0 0 360 170" aria-hidden="true">';
+      // Grandes masses de terre approximées par des ellipses : suffisant pour un décor en points
+      var land = [[-100, 45, 50, 25], [-60, -15, 22, 32], [15, 50, 25, 15], [20, 5, 26, 32], [90, 45, 62, 25], [135, -25, 20, 12]];
+      for (var y = -60; y <= 80; y += 6) for (var x = -170; x <= 175; x += 6) {
+        if (land.some(function (l) { var dx = (x - l[0]) / l[2], dy = (y - l[1]) / l[3]; return dx * dx + dy * dy < 1; })) svg += '<circle class="d" cx="' + (x + 180) + '" cy="' + (85 - y) + '" r="1.2"/>';
+      }
+      pins.forEach(function (p, i) { svg += '<g class="p" style="--fx-i:' + i + ';transform-origin:' + (p[1] + 180) + 'px ' + (85 - p[0]) + 'px"><circle cx="' + (p[1] + 180) + '" cy="' + (85 - p[0]) + '" r="3"/><circle class="r" cx="' + (p[1] + 180) + '" cy="' + (85 - p[0]) + '" r="3"/></g>'; });
+      el.innerHTML = svg + '</svg>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

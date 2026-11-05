@@ -128,4 +128,13 @@ module.exports = [
     '<div data-fx="stat-reveal-split" data-fx-value="87" data-fx-label="de clients fidèles"></div>',
     '<div data-fx="stat-reveal-split" data-fx-value="87" data-fx-label="de clients fidèles" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le texte complet est dans `aria-label`.' }),
+  E('world-pins', 'Présentation',
+    'Une carte du monde en points, sur laquelle des épingles s\'allument et émettent une onde.',
+    'Présence mondiale, réseau vivant.',
+    '- `data-fx-pins` : « latitude,longitude » séparés par `;`',
+    'Implantations, clients, réseaux de partenaires.',
+    'Une carte de précision : les continents sont stylisés.',
+    '<div data-fx="world-pins" data-fx-pins="48,2;40,-74"></div>',
+    '<div data-fx="world-pins" style="width:230px;color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Donnez un `aria-label` qui dit ce que montre la carte.' }),
 ];
