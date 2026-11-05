@@ -66,4 +66,13 @@ module.exports = [
     '<a href="/ateliers" data-fx="cross-blinds">Ateliers</a>',
     '<button class="demo-ghost" onclick="FX.play(\'cross-blinds\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('fold-doors', 'Transition',
+    'Deux panneaux se referment en 3D comme les portes d\'un ascenseur qui se rabat.',
+    'Solennel, on passe dans une autre pièce.',
+    '- `--fx-tr-color` : couleur des panneaux',
+    'Marques de luxe, hôtels, galeries.',
+    'Les pages courtes consultées souvent.',
+    '<a href="/galerie" data-fx="fold-doors">Galerie</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'fold-doors\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];

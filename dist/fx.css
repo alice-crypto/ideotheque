@@ -3988,6 +3988,21 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-tr-cross-blinds.fx-uncover .fx-v { transform: scaleX(0); }
 .fx-tr-cross-blinds.fx-uncover .fx-h { transform: scaleY(0); }
 
+/* fold-doors : des portes qui se ferment */
+.fx-tr-fold-doors i {
+  top: 0;
+  bottom: 0;
+  width: 50.2%;
+  background: linear-gradient(90deg, var(--fx-tr-color, var(--fx-dark)), color-mix(in srgb, var(--fx-tr-color, var(--fx-dark)) 80%, #000));
+  transition: transform .75s var(--fx-ease-io);
+}
+.fx-tr-fold-doors .fx-l { left: 0; transform-origin: left; transform: rotateY(90deg); }
+.fx-tr-fold-doors .fx-r { right: 0; transform-origin: right; transform: rotateY(-90deg); }
+.fx-tr-fold-doors.fx-cover .fx-l { transform: none; }
+.fx-tr-fold-doors.fx-cover .fx-r { transform: none; }
+.fx-tr-fold-doors.fx-uncover .fx-l { transform: rotateY(90deg); }
+.fx-tr-fold-doors.fx-uncover .fx-r { transform: rotateY(-90deg); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
