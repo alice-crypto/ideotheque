@@ -189,4 +189,17 @@
     setup: function (el) { U.ensurePositioned(el); U.make('i', 'fx-cs', el).setAttribute('aria-hidden', 'true'); },
     scroll: function (el, info) { el.style.setProperty('--fx-lift', U.easeOut(info.enter).toFixed(3)); }
   });
+
+  // Les lettres dispersées se rassemblent au défilement
+  FX.register('letters-scrub', {
+    setup: function (el) {
+      U.splitChars(el);
+      el.querySelectorAll('.fx-char').forEach(function (c) {
+        c.style.setProperty('--fx-dx', U.rand(-90, 90).toFixed(0) + 'px');
+        c.style.setProperty('--fx-dy', U.rand(-70, 70).toFixed(0) + 'px');
+        c.style.setProperty('--fx-dr', U.rand(-120, 120).toFixed(0) + 'deg');
+      });
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-left', (1 - U.easeOut(info.enter)).toFixed(3)); }
+  });
 })(window.FX);
