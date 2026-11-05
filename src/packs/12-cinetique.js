@@ -483,4 +483,17 @@
       }, { passive: true });
     }
   });
+
+  // Le texte s'éloigne vers l'horizon, en perspective
+  FX.register('depth-crawl', {
+    setup: function (el) { el._fxY = el.offsetHeight * .75; },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      var inner = el.firstElementChild;
+      if (!inner) return;
+      el._fxY += dt * U.num(el, 'fxSpeed', 22);
+      if (el._fxY > inner.offsetHeight + el.offsetHeight) el._fxY = 0;
+      inner.style.setProperty('--fx-y', (el.offsetHeight - el._fxY).toFixed(1) + 'px');
+    }
+  });
 })(window.FX);
