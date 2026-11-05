@@ -3092,6 +3092,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   transform-origin: bottom;
 }
 
+/* letter-rain : pluie de lettres avec rebond */
+[data-fx="letter-rain"] { overflow: visible; }
+[data-fx="letter-rain"] .fx-char { display: inline-block; opacity: 0; will-change: transform; }
+.fx-in[data-fx="letter-rain"] .fx-char { will-change: auto; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
