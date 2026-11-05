@@ -258,4 +258,13 @@ module.exports = [
     '<button data-fx="back-to-top-progress"></button>',
     '<button data-fx="back-to-top-progress" data-fx-demo="1" style="--fx-v:60"></button>',
     { a11y: 'Bouton nommé, et le bouton n\'est pas actif quand il est invisible.' }),
+  E('tag-filter-flip', 'Navigation',
+    'Une grille se filtre par étiquette, et les éléments restants glissent vers leur nouvelle place.',
+    'Fluide, on comprend ce qui a bougé.',
+    '- `data-tag` sur chaque élément : étiquettes séparées par des espaces\n- Conteneurs `[data-tags]` et `[data-grid]`',
+    'Portfolios, catalogues, documentation.',
+    'Une très grande grille : l\'animation porte sur chaque élément.',
+    '<div data-fx="tag-filter-flip"><div data-tags></div><div data-grid><a data-tag="web">…</a></div></div>',
+    '<div data-fx="tag-filter-flip" style="width:220px;color:var(--ink)"><div data-tags></div><div data-grid class="demo-row" style="justify-content:flex-start;padding:0"><div class="demo-box" data-tag="Web" style="width:46px;height:46px"></div><div class="demo-box alt" data-tag="Print" style="width:46px;height:46px"></div><div class="demo-box ink" data-tag="Web" style="width:46px;height:46px"></div><div class="demo-box alt" data-tag="Son" style="width:46px;height:46px"></div></div></div>',
+    { a11y: 'Les filtres sont des boutons avec `aria-pressed`.' }),
 ];

@@ -8430,6 +8430,34 @@
       if (!el.dataset.fxDemo) el.classList.toggle('fx-show', window.scrollY > U.num(el, 'fxAfter', 400));
     }
   });
+
+  // Une grille filtrable dont les éléments glissent à leur nouvelle place
+  FX.register('tag-filter-flip', {
+    setup: function (el) {
+      var bar = el.querySelector('[data-tags]'), grid = el.querySelector('[data-grid]');
+      if (!bar || !grid) return;
+      var items = Array.prototype.slice.call(grid.children), tags = ['Tout'];
+      items.forEach(function (i) { (i.dataset.tag || '').split(' ').forEach(function (t) { if (t && tags.indexOf(t) < 0) tags.push(t); }); });
+      var apply = function (tag) {
+        var first = new Map();
+        items.forEach(function (i) { if (!i.hidden) first.set(i, i.getBoundingClientRect()); });
+        items.forEach(function (i) { i.hidden = !(tag === 'Tout' || (i.dataset.tag || '').split(' ').indexOf(tag) >= 0); });
+        items.forEach(function (i) {
+          if (i.hidden || U.reduced || !i.animate) return;
+          var l = i.getBoundingClientRect(), f = first.get(i);
+          if (f) i.animate([{ transform: 'translate(' + (f.left - l.left) + 'px,' + (f.top - l.top) + 'px)' }, { transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.16,1,.3,1)' });
+          else i.animate([{ opacity: 0, transform: 'scale(.8)' }, { opacity: 1, transform: 'none' }], { duration: 300 });
+        });
+      };
+      tags.forEach(function (t, k) {
+        var b = U.make('button', '', bar);
+        b.type = 'button';
+        b.textContent = t;
+        b.setAttribute('aria-pressed', !k);
+        b.addEventListener('click', function () { bar.querySelectorAll('button').forEach(function (o) { o.setAttribute('aria-pressed', o === b); }); apply(t); });
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
