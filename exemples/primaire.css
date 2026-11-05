@@ -84,4 +84,9 @@ img, svg { display: block; max-width: 100%; }
 .pgrid { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); border-top: var(--rule); border-left: var(--rule); }
 .pgrid > * { border-right: var(--rule); border-bottom: var(--rule); padding: 26px; min-width: 0; }
 .pfig { font-size: clamp(44px, 6vw, 88px); font-weight: 800; letter-spacing: -.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.pfoot { background: var(--k); color: var(--w); padding-block: 56px; }
+.pfoot .wrap { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
+.pfoot a { display: block; padding-block: 3px; text-decoration: none; }
+.pfoot a:hover { color: var(--y); }
+.pfoot small { display: block; margin-top: 18px; font-size: 13px; }
 /*@css*/
