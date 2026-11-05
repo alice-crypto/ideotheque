@@ -51,6 +51,11 @@
       .comp { max-width: 440px; }
       .bento { --fx-cols: 2; }
     }
+    @media (max-width: 620px) {
+      .bento { --fx-cols: 1; grid-auto-rows: auto; }
+      .bento > .fx-big { grid-column: auto; grid-row: auto; }
+      .phead .pbtn { padding: .7em .9em; font-size: 13px; }
+    }
     /*@css*/
   </style>
 </head>
