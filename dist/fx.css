@@ -3862,6 +3862,19 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="search-expand"] input { width: 0; padding: 0; border: 0; outline: 0; background: none; color: inherit; font: inherit; transition: width .4s var(--fx-ease-out), padding .4s var(--fx-ease-out); }
 [data-fx="search-expand"].fx-open input { width: var(--fx-width, 180px); padding-left: 14px; }
 
+/* tag-delete : une étiquette qui s'envole */
+[data-fx="tag-delete"] { display: flex; flex-wrap: wrap; gap: 6px; }
+[data-fx="tag-delete"] > * { display: inline-flex; align-items: center; gap: .4em; overflow: hidden; white-space: nowrap; }
+[data-fx="tag-delete"] button { background: none; border: 0; color: inherit; cursor: pointer; padding: 0; font: inherit; }
+[data-fx="tag-delete"] .fx-out {
+  width: 0 !important;
+  padding-inline: 0 !important;
+  margin-inline: -3px;
+  opacity: 0;
+  transform: translateY(-14px) rotate(-8deg);
+  transition: width .32s var(--fx-ease-io), padding .32s var(--fx-ease-io), margin .32s var(--fx-ease-io), opacity .2s, transform .3s;
+}
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

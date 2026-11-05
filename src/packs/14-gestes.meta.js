@@ -227,4 +227,13 @@ module.exports = [
     '<div data-fx="search-expand"><input aria-label="Rechercher"><button aria-label="Ouvrir la recherche">⌕</button></div>',
     '<div data-fx="search-expand" style="color:var(--ink)"><input aria-label="Rechercher" placeholder="Chercher…"><button aria-label="Ouvrir la recherche">⌕</button></div>',
     { trigger: 'Ouvrir', a11y: 'Bouton nommé, `aria-expanded`, fermeture avec Échap et retour du focus.' }),
+  E('tag-delete', 'Micro-interaction',
+    'L\'étiquette supprimée s\'envole vers le haut, et les autres glissent pour combler la place.',
+    'Léger, sans punition, on enlève sans se tromper.',
+    'L\'élément émet `fx:remove`.',
+    'Filtres actifs, mots clés, destinataires.',
+    'Une suppression importante sans possibilité d\'annuler.',
+    '<div data-fx="tag-delete"><span>Design <button aria-label="Retirer">×</button></span></div>',
+    '<div data-fx="tag-delete" style="width:220px"><span class="demo-chip">Design <button aria-label="Retirer">×</button></span><span class="demo-chip">Code <button aria-label="Retirer">×</button></span><span class="demo-chip">Son <button aria-label="Retirer">×</button></span></div>',
+    { a11y: 'Le focus passe sur l\'étiquette voisine après la suppression.' }),
 ];
