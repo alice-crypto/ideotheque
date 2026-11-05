@@ -41,4 +41,8 @@ img, svg { display: block; max-width: 100%; }
   letter-spacing: .08em;
   text-transform: uppercase;
 }
+.on-r { background: var(--r); color: var(--w); }
+.on-b { background: var(--b); color: var(--w); }
+.on-y { background: var(--y); color: var(--k); }
+.on-k { background: var(--k); color: var(--w); }
 /*@css*/
