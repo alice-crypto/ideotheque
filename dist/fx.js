@@ -7807,6 +7807,30 @@
       el.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
     }
   });
+
+  // Des pastilles de couleur changent la teinte d'un produit
+  FX.register('color-picker-orbit', {
+    setup: function (el) {
+      var cols = (el.dataset.fxColors || '#e10600|#ffd400|#0047ff|#111111').split('|');
+      var names = (el.dataset.fxNames || cols.join('|')).split('|');
+      var t = el.dataset.fxTarget && document.querySelector(el.dataset.fxTarget);
+      el.setAttribute('role', 'radiogroup');
+      el.setAttribute('aria-label', el.getAttribute('aria-label') || 'Couleur');
+      cols.forEach(function (c, i) {
+        var b = U.make('button', '', el);
+        b.type = 'button';
+        b.setAttribute('role', 'radio');
+        b.setAttribute('aria-label', names[i]);
+        b.style.setProperty('--fx-c', c);
+        b.addEventListener('click', function () {
+          el.querySelectorAll('button').forEach(function (o) { o.setAttribute('aria-checked', o === b); });
+          if (t) t.style.setProperty('--fx-color', c);
+          el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true, detail: { color: c } }));
+        });
+        if (!i) b.setAttribute('aria-checked', 'true');
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

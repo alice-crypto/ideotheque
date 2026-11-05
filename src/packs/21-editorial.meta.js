@@ -170,4 +170,13 @@ module.exports = [
     '<abbr data-fx="rich-tooltip-follow" data-fx-tip="Taux mensuel">TM</abbr>',
     '<span class="demo-chip" data-fx="rich-tooltip-follow" data-fx-tip="Taux de croissance mensuel, en pour cent">Survolez-moi</span>',
     { a11y: '`aria-describedby`, s\'ouvre au focus, se ferme avec Échap.' }),
+  E('color-picker-orbit', 'Micro-interaction',
+    'Des pastilles de couleur changent la teinte d\'un produit, avec un anneau qui marque le choix.',
+    'On essaie sans s\'engager, comme en boutique.',
+    '- `data-fx-colors`, `data-fx-names` : séparés par `|`\n- `data-fx-target` : élément qui reçoit `--fx-color`',
+    'Fiches produit, personnalisation.',
+    'Des couleurs sans nom : donnez-leur un `data-fx-names` pour l\'accessibilité.',
+    '<div data-fx="color-picker-orbit" data-fx-target="#produit"></div>',
+    '<div data-fx="color-picker-orbit"></div>',
+    { a11y: 'Rôles `radiogroup` et `radio`, chaque couleur a un nom.' }),
 ];
