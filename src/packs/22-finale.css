@@ -32,3 +32,6 @@
 
 /* wave-text-scroll : le mot ondule */
 [data-fx="wave-text-scroll"] .fx-char { display: inline-block; }
+
+/* title-fade-pass : au centre de l'attention */
+[data-fx="title-fade-pass"] { opacity: var(--fx-a, 1); filter: blur(var(--fx-b, 0px)); transform: translateY(var(--fx-y, 0)); }
