@@ -84,3 +84,9 @@
 [data-fx="number-stack-in"] .fx-ns-t { opacity: 0; transition: opacity .4s .6s; }
 .fx-in[data-fx="number-stack-in"] .fx-ns-c { transform: none; opacity: 0; }
 .fx-in[data-fx="number-stack-in"] .fx-ns-t { opacity: 1; }
+
+/* list-strike-in : une liste suisse */
+[data-fx="list-strike-in"] > * { padding: .5em 0; color: transparent; transition: color .5s calc(var(--fx-i) * 80ms + .2s); }
+.fx-in[data-fx="list-strike-in"] > * { color: inherit; }
+[data-fx="list-strike-in"] .fx-lsi { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: currentColor; color: var(--fx-rule, rgba(128, 128, 128, .5)); transform: scaleX(0); transform-origin: left; transition: transform .8s var(--fx-ease-io) calc(var(--fx-i) * 80ms); }
+.fx-in[data-fx="list-strike-in"] .fx-lsi { transform: scaleX(1); }
