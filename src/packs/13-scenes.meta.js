@@ -62,4 +62,12 @@ module.exports = [
     'Les fonds déjà chargés en lignes.',
     '<section data-fx="tunnel-scroll">…</section>',
     '<div data-fx="tunnel-scroll" style="width:210px;height:150px;color:var(--ink);display:grid;place-items:center"><b>Plongée</b></div>'),
+  E('depth-stack', 'Défilement',
+    'Plusieurs couches se déplacent à des vitesses différentes selon leur profondeur.',
+    'Un diorama en papier, un paysage qui s\'étage.',
+    '- `data-fx-amp` (180) : amplitude en pixels\n- `data-depth` sur chaque enfant : profondeur entre 0 et 1',
+    'Scènes illustrées, en-têtes de page.',
+    'Les textes à lire : ils se chevauchent en mouvement.',
+    '<div data-fx="depth-stack"><img data-depth=".2" …><img data-depth=".8" …></div>',
+    '<div data-fx="depth-stack" style="width:220px;height:150px"><div class="demo-box" data-depth=".2" style="width:150px;height:110px"></div><div class="demo-box alt" data-depth=".6" style="width:100px;height:70px"></div><div class="demo-box ink" data-depth="1" style="width:50px;height:34px"></div></div>'),
 ];
