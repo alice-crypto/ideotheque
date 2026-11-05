@@ -295,4 +295,28 @@
     o.children[1].className = 'fx-b';
     o.children[2].className = 'fx-line';
   } } });
+
+  // Un radar balaye et révèle des échos
+  FX.register('radar-sweep', {
+    setup: function (el) {
+      el.setAttribute('aria-hidden', 'true');
+      el._fxA = 0;
+      el._fxE = [];
+      for (var i = 0; i < U.num(el, 'fxBlips', 7); i++) {
+        var d = U.make('i', '', el), a = Math.random() * 360, r = U.rand(16, 46);
+        d.style.left = (50 + Math.cos(a / 57.3) * r) + '%';
+        d.style.top = (50 + Math.sin(a / 57.3) * r) + '%';
+        el._fxE.push({ d: d, a: (a + 90 + 360) % 360 });
+      }
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      var prev = el._fxA;
+      el._fxA = (prev + dt * U.num(el, 'fxSpeed', 70)) % 360;
+      el.style.setProperty('--fx-a', el._fxA.toFixed(1) + 'deg');
+      el._fxE.forEach(function (b) {
+        if ((prev < b.a && el._fxA >= b.a) || (prev > el._fxA && (b.a > prev || b.a <= el._fxA))) { b.d.classList.remove('fx-hit'); void b.d.offsetWidth; b.d.classList.add('fx-hit'); }
+      });
+    }
+  });
 })(window.FX);
