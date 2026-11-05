@@ -6025,6 +6025,34 @@
       handle.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go((cur + 1) % stops.length); } });
     }
   });
+
+  // Une rangée horizontale avec accroche et commandes
+  FX.register('horizontal-snap', {
+    setup: function (el) {
+      var track = el.firstElementChild, items = Array.prototype.slice.call(track.children), cur = 0;
+      var bar = U.make('div', 'fx-hs-bar', el);
+      bar.innerHTML = '<button type="button" aria-label="Précédent">←</button><span class="fx-hs-dots"></span><button type="button" aria-label="Suivant">→</button>';
+      var dots = bar.querySelector('.fx-hs-dots');
+      items.forEach(function (it, i) {
+        var d = U.make('i', '', dots);
+        d.addEventListener('click', function () { go(i); });
+      });
+      var go = function (i) {
+        i = U.clamp(i, 0, items.length - 1);
+        track.scrollTo({ left: items[i].offsetLeft - track.offsetLeft, behavior: U.reduced ? 'auto' : 'smooth' });
+      };
+      bar.firstChild.addEventListener('click', function () { go(cur - 1); });
+      bar.lastChild.addEventListener('click', function () { go(cur + 1); });
+      var mark = function () {
+        var best = 0, bd = 1e9;
+        items.forEach(function (it, i) { var d = Math.abs(it.offsetLeft - track.offsetLeft - track.scrollLeft); if (d < bd) { bd = d; best = i; } });
+        cur = best;
+        Array.prototype.forEach.call(dots.children, function (d, i) { d.classList.toggle('fx-on', i === best); });
+      };
+      track.addEventListener('scroll', function () { U.raf(mark); }, { passive: true });
+      mark();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

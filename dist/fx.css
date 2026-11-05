@@ -4405,6 +4405,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="page-peek"] > button { display: block; width: 100%; padding: 12px; background: none; border: 0; color: inherit; font: inherit; cursor: grab; touch-action: none; }
 [data-fx="page-peek"] > button::before { content: ""; display: block; width: 36px; height: 4px; margin: 0 auto 8px; border-radius: 2px; background: currentColor; opacity: .4; }
 
+/* horizontal-snap : une rangée qui s'accroche */
+[data-fx="horizontal-snap"] > :first-child { display: flex; gap: var(--fx-gap, 10px); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+[data-fx="horizontal-snap"] > :first-child > * { flex: none; scroll-snap-align: start; }
+[data-fx="horizontal-snap"] .fx-hs-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+[data-fx="horizontal-snap"] .fx-hs-bar button { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; padding: 4px 8px; }
+[data-fx="horizontal-snap"] .fx-hs-dots { display: flex; gap: 5px; }
+[data-fx="horizontal-snap"] .fx-hs-dots i { width: 6px; height: 6px; border-radius: 3px; background: currentColor; opacity: .35; cursor: pointer; transition: width .3s var(--fx-ease-out), opacity .3s; }
+[data-fx="horizontal-snap"] .fx-hs-dots i.fx-on { width: 18px; opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

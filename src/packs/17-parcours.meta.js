@@ -74,4 +74,13 @@ module.exports = [
     '<aside data-fx="page-peek"><button>Détails</button><div>…</div></aside>',
     '<div style="position:absolute;inset:0;overflow:hidden;background:url(assets/city.svg) center/cover"><aside data-fx="page-peek" style="color:#fff;--fx-h:90%"><button>Détails</button><div style="padding:0 14px;font-size:13px">Tirez la poignée.</div></aside></div>',
     { a11y: 'La poignée est un bouton activable au clavier, avec `aria-expanded`.' }),
+  E('horizontal-snap', 'Navigation',
+    'Une rangée horizontale qui s\'accroche à chaque élément, avec des flèches et des points qui suivent.',
+    'Natif et fluide, comme une galerie de téléphone.',
+    '- `--fx-gap` (10px) : écart',
+    'Cartes de produits, témoignages, galeries.',
+    'Du contenu essentiel caché à droite sans aucun indice de défilement.',
+    '<div data-fx="horizontal-snap"><div><article>…</article><article>…</article></div></div>',
+    '<div data-fx="horizontal-snap" style="width:220px;color:var(--ink)"><div><div class="demo-box" style="width:160px"></div><div class="demo-box alt" style="width:160px"></div><div class="demo-box ink" style="width:160px"></div></div></div>',
+    { a11y: 'Boutons nommés, et le défilement natif reste disponible au clavier et au doigt.' }),
 ];
