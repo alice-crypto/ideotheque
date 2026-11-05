@@ -71,4 +71,12 @@ module.exports = [
     'Les marques joyeuses, ou au-dessus d\'un texte.',
     '<figure data-fx="rain-glass"><img src="ville.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="rain-glass"><img src="assets/city.svg" alt=""></div>'),
+  E('snow-fall', 'Ambiance',
+    'Des flocons tombent à plusieurs profondeurs, les plus proches plus vite et plus grands.',
+    'Calme de l\'hiver, fête discrète.',
+    '- `data-fx-count` (70) : nombre de flocons\n- `--fx-snow` : couleur',
+    'Pages saisonnières, sites de montagne.',
+    'De la laisser toute l\'année.',
+    '<section data-fx="snow-fall">…</section>',
+    '<div data-fx="snow-fall" style="width:230px;height:170px"></div>'),
 ];

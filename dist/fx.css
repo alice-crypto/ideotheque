@@ -4236,6 +4236,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="rain-glass"] { overflow: hidden; }
 [data-fx="rain-glass"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; color: var(--fx-drop, rgba(255, 255, 255, .55)); }
 
+/* snow-fall : la neige */
+[data-fx="snow-fall"] { overflow: hidden; }
+[data-fx="snow-fall"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; color: var(--fx-snow, #fff); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
