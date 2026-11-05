@@ -1,1 +1,7 @@
 /* Pack 21 — Détails éditoriaux */
+
+/* drop-cap-draw : une lettrine */
+[data-fx="drop-cap-draw"] .fx-dc { float: left; font-size: var(--fx-cap, 3.4em); line-height: .85; margin: .04em .1em 0 0; font-weight: 700; color: var(--fx-cap-c, var(--fx-accent)); transform: scale(1.8); opacity: 0; transform-origin: left top; transition: transform .8s var(--fx-ease-out), opacity .3s; }
+[data-fx="drop-cap-draw"] .fx-dc-r { opacity: 0; transition: opacity .7s .35s; }
+.fx-in[data-fx="drop-cap-draw"] .fx-dc { transform: none; opacity: 1; }
+.fx-in[data-fx="drop-cap-draw"] .fx-dc-r { opacity: 1; }
