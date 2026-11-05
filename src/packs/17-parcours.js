@@ -358,4 +358,25 @@
     },
     trigger: function (el, e) { var r = el.parentElement.getBoundingClientRect(); el._fxOpen(r.left + r.width / 2, r.top + r.height / 2); }
   });
+
+  // Des sections empilées comme des onglets de classeur
+  FX.register('stacked-sections-tabs', {
+    setup: function (el) {
+      var secs = Array.prototype.slice.call(el.children), n = secs.length;
+      el.style.setProperty('--fx-n', n);
+      var open = function (i) {
+        secs.forEach(function (s, j) {
+          var on = i === j;
+          s.classList.toggle('fx-open', on);
+          var b = s.querySelector('button');
+          if (b) b.setAttribute('aria-expanded', on);
+        });
+      };
+      secs.forEach(function (s, i) {
+        var b = s.querySelector('button');
+        if (b) b.addEventListener('click', function () { open(i); });
+      });
+      open(0);
+    }
+  });
 })(window.FX);
