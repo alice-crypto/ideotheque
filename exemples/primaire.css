@@ -113,4 +113,9 @@ img, svg { display: block; max-width: 100%; }
 .pill.b { background: var(--b); color: var(--w); }
 .pill.y { background: var(--y); color: var(--k); }
 .pill.k { background: var(--k); color: var(--w); }
+.dtable { width: 100%; border-collapse: collapse; font-size: 14px; }
+.dtable th { text-align: left; font: 600 11px "IBM Plex Mono", monospace; letter-spacing: .05em; text-transform: uppercase; padding: 6px 8px; border-bottom: var(--rule); }
+.dtable td { padding: 9px 8px; border-bottom: 1px solid var(--k); }
+.dtable td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.dtable tbody tr:hover { background: var(--y); }
 /*@css*/
