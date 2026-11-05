@@ -353,4 +353,30 @@
       set(k[0]);
     }
   });
+
+  // Un journal des nouveautés, filtrable par type
+  FX.register('changelog-feed', {
+    entrance: true,
+    setup: function (el) {
+      var items = Array.prototype.slice.call(el.children), types = [];
+      items.forEach(function (it, i) {
+        it.style.setProperty('--fx-i', i);
+        if (it.dataset.type && types.indexOf(it.dataset.type) < 0) types.push(it.dataset.type);
+      });
+      if (!types.length) return;
+      var bar = document.createElement('div');
+      bar.className = 'fx-cf-bar';
+      el.parentNode.insertBefore(bar, el);
+      ['Tout'].concat(types).forEach(function (t, k) {
+        var b = U.make('button', '', bar);
+        b.type = 'button';
+        b.textContent = t;
+        b.setAttribute('aria-pressed', k === 0);
+        b.addEventListener('click', function () {
+          bar.querySelectorAll('button').forEach(function (o) { o.setAttribute('aria-pressed', o === b); });
+          items.forEach(function (it) { it.hidden = !(k === 0 || it.dataset.type === t); });
+        });
+      });
+    }
+  });
 })(window.FX);
