@@ -173,4 +173,13 @@ module.exports = [
     '<button data-fx="language-switch-flip" data-fx-langs="FR|EN"></button>',
     '<button data-fx="language-switch-flip" data-fx-langs="FR|EN|ES" style="color:var(--ink);font-size:16px"></button>',
     { a11y: 'Bouton nommé. Le code conserve la langue de `<html>` à jour pour les lecteurs d\'écran.' }),
+  E('progress-steps-rail', 'Navigation',
+    'Une ligne court d\'étape en étape, et chaque étape franchie change de couleur.',
+    'On avance, on voit le chemin restant, on reste motivé.',
+    '- `data-fx-step` (0) : étape de départ\n- Étape suivante : `FX.trigger(el)`',
+    'Formulaires en plusieurs étapes, commandes, inscriptions.',
+    'Plus de 6 étapes.',
+    '<ol data-fx="progress-steps-rail"><li>Panier</li><li>Livraison</li><li>Paiement</li></ol>',
+    '<ol data-fx="progress-steps-rail" data-fx-step="1" style="width:220px;color:var(--ink)"><li>Panier</li><li>Livraison</li><li>Paiement</li></ol>',
+    { trigger: 'Étape suivante', a11y: 'L\'étape courante porte `aria-current="step"`.' }),
 ];
