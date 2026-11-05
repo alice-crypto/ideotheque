@@ -128,4 +128,12 @@ module.exports = [
     '<div data-fx="scratch-reveal"><p>−20 %</p></div>',
     '<div data-fx="scratch-reveal" style="width:210px;height:120px;display:grid;place-items:center;color:var(--ink);font-size:34px;font-weight:700"><span>−20 %</span></div>',
     { trigger: 'Tout révéler', a11y: 'Le contenu reste dans la page pour les lecteurs d\'écran. Entrée révèle tout au clavier si l\'élément a le focus.' }),
+  E('color-splash', 'Image',
+    'L\'image est en noir et blanc, et la couleur n\'apparaît qu\'autour du curseur.',
+    'Souvenir qui reprend vie, découverte.',
+    '- `data-fx-radius` (70), `data-fx-auto="true"`',
+    'Portraits, archives, reportages.',
+    'Une image dont la couleur est l\'information principale.',
+    '<figure data-fx="color-splash"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="color-splash" data-fx-auto="true"><img src="assets/bloom.svg" alt=""></div>'),
 ];

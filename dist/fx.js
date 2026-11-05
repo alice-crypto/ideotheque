@@ -8120,6 +8120,31 @@
     },
     trigger: function (el) { el.classList.add('fx-done'); }
   });
+
+  // L'image est grise, sauf autour du curseur
+  FX.register('color-splash', {
+    setup: function (el) {
+      var s = el._fxS = { x: 0, y: 0, tx: 0, ty: 0, r: 0, on: false };
+      var img = el.querySelector('img');
+      if (!img) return;
+      var c = img.cloneNode();
+      c.alt = '';
+      c.setAttribute('aria-hidden', 'true');
+      c.className = 'fx-cs-top';
+      el.appendChild(c);
+      el.addEventListener('pointermove', function (e) { var r = el.getBoundingClientRect(); s.tx = e.clientX - r.left; s.ty = e.clientY - r.top; s.on = true; });
+      el.addEventListener('pointerleave', function () { s.on = false; });
+    },
+    tick: function (el, dt, t) {
+      var s = el._fxS, auto = el.dataset.fxAuto === 'true' && !s.on;
+      if (auto) { s.tx = el.offsetWidth * (.5 + Math.cos(t * .001) * .3); s.ty = el.offsetHeight * (.5 + Math.sin(t * .0014) * .3); }
+      s.x = U.lerp(s.x, s.tx, .14); s.y = U.lerp(s.y, s.ty, .14);
+      s.r = U.lerp(s.r, s.on || auto ? U.num(el, 'fxRadius', 70) : 0, .1);
+      el.style.setProperty('--fx-cx', s.x.toFixed(1) + 'px');
+      el.style.setProperty('--fx-cy', s.y.toFixed(1) + 'px');
+      el.style.setProperty('--fx-cr', s.r.toFixed(1) + 'px');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
