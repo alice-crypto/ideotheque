@@ -87,6 +87,11 @@ Cinq marques fictives, chacune avec une landing page, un dashboard et un assista
 | Halo, musique de concentration | [halo.html](exemples/halo.html) | [dashboard-halo.html](exemples/dashboard-halo.html) |
 | Atlas, voyages lents en train | [atlas.html](exemples/atlas.html) | [dashboard-atlas.html](exemples/dashboard-atlas.html) |
 
+Trois autres marques n'utilisent que le rouge, le bleu et le jaune primaires, avec le noir et le blanc pour le texte et les filets. Elles n'ont pas d'assistant IA.
+
+| Marque | Landing page | Dashboard |
+| --- | --- | --- |
+
 Les illustrations sont des SVG originaux (`exemples/img/`).
 
 ## Les <!-- total -->500<!-- /total --> effets
