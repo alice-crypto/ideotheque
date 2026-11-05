@@ -267,4 +267,19 @@
       setTimeout(function () { c.classList.remove('fx-flip'); }, 460);
     }
   });
+
+  // Un grand chiffre monte pendant que son libellé se dévoile
+  FX.register('stat-reveal-split', {
+    entrance: true,
+    setup: function (el) {
+      var v = U.num(el, 'fxValue', 87), s = el.dataset.fxSuffix || '%', l = el.dataset.fxLabel || '';
+      el.innerHTML = '<b></b><span></span>';
+      el.lastChild.textContent = l;
+      el.setAttribute('aria-label', v + ' ' + s + ' ' + l);
+      el._fxW = function (p) { el.firstChild.textContent = Math.round(v * U.easeOut(p)) + s; };
+      el._fxW(0);
+    },
+    reset: function (el) { el._fxW(0); },
+    enter: function (el) { U.tween(el, 1200, el._fxW); }
+  });
 })(window.FX);
