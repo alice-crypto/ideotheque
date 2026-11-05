@@ -1,0 +1,14 @@
+/* Pages en couleurs primaires : rouge, bleu, jaune, avec le noir et le blanc pour le texte et les filets */
+:root {
+  --r: #e30613;
+  --b: #0b3bff;
+  --y: #ffd500;
+  --k: #0a0a0a;
+  --w: #ffffff;
+  --fx-accent: var(--r);
+  --fx-accent-2: var(--b);
+  --fx-ink: var(--k);
+  --fx-dark: var(--k);
+  --rule: 2px solid var(--k);
+}
+/*@css*/
