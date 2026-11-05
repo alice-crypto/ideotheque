@@ -153,4 +153,9 @@ img, svg { display: block; max-width: 100%; }
   .dmenu { display: flex; flex-wrap: wrap; }
   .dcard { --w-col: 6 !important; }
 }
+@media (max-width: 620px) {
+  .dcard { grid-column: 1 / -1; }
+  .dbody { padding-inline: 14px; }
+  .dtop { flex-wrap: wrap; padding-inline: 14px; position: static; }
+}
 /*@css*/
