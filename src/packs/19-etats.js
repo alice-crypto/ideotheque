@@ -232,4 +232,20 @@
       b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); done(); } });
     }
   });
+
+  // Une zone de dépôt qui réagit à l'arrivée de fichiers
+  FX.register('upload-drop', {
+    setup: function (el) {
+      var input = el.querySelector('input[type="file"]');
+      var list = U.make('ul', 'fx-ud-list', el);
+      var take = function (files) {
+        Array.prototype.forEach.call(files, function (f) { var li = U.make('li', '', list); li.textContent = f.name; });
+        el.dispatchEvent(new CustomEvent('fx:files', { bubbles: true, detail: { files: files } }));
+      };
+      ['dragenter', 'dragover'].forEach(function (n) { el.addEventListener(n, function (e) { e.preventDefault(); el.classList.add('fx-over'); }); });
+      ['dragleave', 'drop'].forEach(function (n) { el.addEventListener(n, function (e) { e.preventDefault(); el.classList.remove('fx-over'); }); });
+      el.addEventListener('drop', function (e) { if (e.dataTransfer) take(e.dataTransfer.files); });
+      if (input) input.addEventListener('change', function () { take(input.files); });
+    }
+  });
 })(window.FX);
