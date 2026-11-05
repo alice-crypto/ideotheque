@@ -156,4 +156,13 @@ module.exports = [
     '<section data-fx="mesh-gradient">…</section>',
     '<div data-fx="mesh-gradient" style="width:230px;height:170px;border-radius:12px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le dégradé reste immobile.' }),
+  E('tiles-flicker', 'Ambiance',
+    'Une grille de tuiles s\'allume et s\'éteint au hasard, comme les fenêtres d\'un immeuble la nuit.',
+    'Ville qui vit, données qui circulent.',
+    '- `data-fx-cell` (22) : taille d\'une tuile\n- `--fx-tile` : couleur',
+    'Fonds d\'accueil de produits techniques, tableaux de bord.',
+    'Une très grande surface sur un appareil modeste.',
+    '<section data-fx="tiles-flicker">…</section>',
+    '<div data-fx="tiles-flicker" style="width:230px;height:170px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, les tuiles restent fixes.' }),
 ];

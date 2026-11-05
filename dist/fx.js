@@ -5592,6 +5592,37 @@
       }
     }
   });
+
+  // Une façade de tuiles qui s'allument au hasard
+  FX.register('tiles-flicker', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+    },
+    tick: function (el, dt) {
+      var cv = el._fxCv, S = U.num(el, 'fxCell', 22), w = Math.ceil(cv.clientWidth / S), h = Math.ceil(cv.clientHeight / S);
+      if (!w) return;
+      if (el._fxW !== w) {
+        el._fxW = w; cv.width = w * S; cv.height = h * S;
+        el._fxV = new Float32Array(w * h);
+        el._fxTg = new Float32Array(w * h);
+        for (var i = 0; i < w * h; i++) el._fxTg[i] = Math.random() * .6;
+      }
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      var c = cv.getContext('2d'), V = el._fxV, G = el._fxTg;
+      c.clearRect(0, 0, cv.width, cv.height);
+      c.fillStyle = getComputedStyle(cv).color;
+      for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
+        var k = y * w + x;
+        if (Math.random() < .004) G[k] = Math.random() < .15 ? 1 : Math.random() * .3;
+        V[k] += (G[k] - V[k]) * .06;
+        c.globalAlpha = V[k];
+        c.fillRect(x * S + 1, y * S + 1, S - 2, S - 2);
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
