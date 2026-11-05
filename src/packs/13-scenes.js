@@ -85,4 +85,12 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-dive', info.pass.toFixed(3)); }
   });
+
+  // Chaque couche se déplace selon sa profondeur
+  FX.register('depth-stack', {
+    setup: function (el) {
+      Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-z', c.dataset.depth || (i + 1) / el.children.length); });
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-y', ((.5 - info.pass) * U.num(el, 'fxAmp', 180)).toFixed(1) + 'px'); }
+  });
 })(window.FX);
