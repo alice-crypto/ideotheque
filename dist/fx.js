@@ -7404,6 +7404,24 @@
     entrance: true,
     setup: function (el) { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-d', Math.min(i * 90, 450) + 'ms'); }); }
   });
+
+  // Le mot arrive en tranches verticales décalées
+  FX.register('slice-column-text', {
+    entrance: true,
+    setup: function (el) {
+      var t = el.textContent.trim(), n = U.num(el, 'fxSlices', 7);
+      el.setAttribute('aria-label', t);
+      el.textContent = '';
+      for (var i = 0; i < n; i++) {
+        var s = U.make('span', '', el);
+        s.setAttribute('aria-hidden', 'true');
+        s.textContent = t;
+        s.style.clipPath = 'inset(0 ' + (100 - (i + 1) * 100 / n).toFixed(2) + '% 0 ' + (i * 100 / n).toFixed(2) + '%)';
+        s.style.setProperty('--fx-dy', (i % 2 ? 1 : -1) * U.rand(50, 120) + '%');
+        s.style.setProperty('--fx-i', i);
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

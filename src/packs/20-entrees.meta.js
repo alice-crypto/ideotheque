@@ -228,4 +228,13 @@ module.exports = [
     '<main data-fx="soft-page-in">…</main>',
     '<div class="demo-list" data-fx="soft-page-in"><div></div><div></div><div></div><div></div></div>',
     { trigger: 'Rejouer' }),
+  E('slice-column-text', 'Entrée',
+    'Le mot arrive en tranches verticales, qui montent ou descendent pour se recaler.',
+    'Machine à sous, code-barres, précision électronique.',
+    '- `data-fx-slices` (7) : nombre de tranches',
+    'Grands titres d\'un seul mot.',
+    'Plusieurs lignes.',
+    '<h1 data-fx="slice-column-text">Réglage</h1>',
+    '<p class="demo-title" data-fx="slice-column-text">Réglage</p>',
+    { trigger: 'Rejouer', a11y: 'Le texte est dans `aria-label`, les copies sont masquées.' }),
 ];
