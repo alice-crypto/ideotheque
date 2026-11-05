@@ -106,4 +106,6 @@ img, svg { display: block; max-width: 100%; }
 .dbody { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; padding: 20px 24px 40px; }
 .dcard { grid-column: span var(--w-col, 4); min-width: 0; border: var(--rule); padding: 16px; background: var(--w); }
 .dcard > h2 { font-size: 15px; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; line-height: 1.2; font-stretch: 100%; }
+.kpi b { display: block; font-size: 38px; font-weight: 800; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.kpi span { display: block; margin-top: 6px; font-size: 13px; font-weight: 600; }
 /*@css*/
