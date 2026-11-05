@@ -3859,6 +3859,11 @@
   FX.register('grid-breathe', {
     scroll: function (el, info) { el.style.setProperty('--fx-air', Math.abs(info.pass * 2 - 1).toFixed(3)); }
   });
+
+  // La carte se retourne au fil du défilement
+  FX.register('flip-scrub', {
+    scroll: function (el, info) { el.style.setProperty('--fx-a', (U.clamp(info.pass * 2 - .5, 0, 1) * 180).toFixed(1) + 'deg'); }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -143,4 +143,12 @@ module.exports = [
     'Les grilles déjà très serrées en hauteur.',
     '<div data-fx="grid-breathe" style="display:grid;grid-template-columns:repeat(3,1fr)">…</div>',
     '<div class="demo-grid" data-fx="grid-breathe"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'),
+  E('flip-scrub', 'Défilement',
+    'Une carte à deux faces se retourne au fil du défilement.',
+    'Un avant et un après, une carte tournée sur une table.',
+    'Le premier enfant est la face, le dernier est le dos.',
+    'Avant / après, question / réponse.',
+    'Les deux faces de hauteur très différente.',
+    '<div data-fx="flip-scrub"><div>Avant</div><div>Après</div></div>',
+    '<div data-fx="flip-scrub" style="width:170px;height:120px;color:#111"><div class="demo-box" style="width:100%;height:100%;display:grid;place-items:center">Avant</div><div class="demo-box alt" style="width:100%;height:100%;display:grid;place-items:center">Après</div></div>'),
 ];
