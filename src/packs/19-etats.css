@@ -142,3 +142,9 @@
 [data-fx="save-pill"][data-fx-state="saved"]::before { background: var(--fx-saved, #2eaf63); }
 [data-fx="save-pill"][data-fx-state="error"]::before { background: var(--fx-err, #e10600); }
 @keyframes fx-sav { to { opacity: .3; } }
+
+/* empty-state-float : un état vide accueillant */
+[data-fx="empty-state-float"] { display: grid; justify-items: center; gap: .5em; text-align: center; }
+[data-fx="empty-state-float"] > :first-child { transform: translate(var(--fx-x, 0), var(--fx-y, 0)); }
+[data-fx="empty-state-float"]::after { content: ""; order: 1; width: 56px; height: 8px; margin-top: -4px; border-radius: 50%; background: rgba(0, 0, 0, .35); transform: scaleX(var(--fx-shadow, 1)); }
+[data-fx="empty-state-float"] > :not(:first-child) { order: 2; margin: 0; }
