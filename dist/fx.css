@@ -4297,6 +4297,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="tiles-flicker"] { isolation: isolate; overflow: hidden; }
 [data-fx="tiles-flicker"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-tile, var(--fx-accent)); }
 
+/* spiral-galaxy : une galaxie */
+[data-fx="spiral-galaxy"] { isolation: isolate; overflow: hidden; }
+[data-fx="spiral-galaxy"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-star, #fff); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

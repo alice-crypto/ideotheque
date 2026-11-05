@@ -5623,6 +5623,37 @@
       }
     }
   });
+
+  // Une galaxie tourne lentement sur elle-même
+  FX.register('spiral-galaxy', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      var arms = U.num(el, 'fxArms', 3);
+      el._fxS = [];
+      for (var i = 0; i < U.num(el, 'fxCount', 520); i++) {
+        var r = Math.pow(Math.random(), 1.7);
+        el._fxS.push({ r: r, a: (i % arms) / arms * 6.283 + r * 5 + U.rand(-.3, .3) * (1 - r * .4), z: Math.random() });
+      }
+    },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d'), R = Math.min(w, h) * .48, T = t * .00012;
+      c.clearRect(0, 0, w, h);
+      c.fillStyle = getComputedStyle(cv).color;
+      el._fxS.forEach(function (s) {
+        var a = s.a + T / (s.r + .25);
+        c.globalAlpha = .25 + s.z * .75;
+        var d = 1 + s.z * 1.2;
+        c.fillRect(w / 2 + Math.cos(a) * s.r * R * 1.3, h / 2 + Math.sin(a) * s.r * R * .75, d, d);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

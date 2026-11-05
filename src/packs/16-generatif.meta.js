@@ -165,4 +165,13 @@ module.exports = [
     '<section data-fx="tiles-flicker">…</section>',
     '<div data-fx="tiles-flicker" style="width:230px;height:170px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, les tuiles restent fixes.' }),
+  E('spiral-galaxy', 'Ambiance',
+    'Une galaxie en spirale tourne sur elle-même, ses bras se tordant lentement.',
+    'Vertige, immensité, science et poésie.',
+    '- `data-fx-arms` (3), `data-fx-count` (520)\n- `--fx-star` : couleur',
+    'Espace, sciences, sites sombres et contemplatifs.',
+    'Les fonds clairs.',
+    '<section data-fx="spiral-galaxy">…</section>',
+    '<div data-fx="spiral-galaxy" style="width:230px;height:170px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, la galaxie reste immobile.' }),
 ];
