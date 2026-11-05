@@ -322,3 +322,14 @@
 [data-fx="price-flip"] .fx-pf-out.up { --fx-to: -100%; }
 @keyframes fx-pf-in { from { transform: translateY(var(--fx-from)); opacity: 0; } }
 @keyframes fx-pf-out { to { transform: translateY(var(--fx-to)); opacity: 0; } }
+
+/* checkbox-scribble : cocher au stylo */
+[data-fx="checkbox-scribble"] { display: inline-flex; align-items: center; gap: .5em; cursor: pointer; }
+[data-fx="checkbox-scribble"] input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+[data-fx="checkbox-scribble"] .fx-cs-box { width: 1.2em; height: 1.2em; border: 2px solid currentColor; border-radius: .25em; flex: none; }
+[data-fx="checkbox-scribble"] input:focus-visible + .fx-cs-box { outline: 2px solid var(--fx-accent); outline-offset: 2px; }
+[data-fx="checkbox-scribble"] svg { display: block; width: 100%; height: 100%; overflow: visible; }
+[data-fx="checkbox-scribble"] path { fill: none; stroke: var(--fx-pen, var(--fx-accent)); stroke-width: 3px; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .3s var(--fx-ease-out); }
+[data-fx="checkbox-scribble"] input:checked ~ * path { stroke-dashoffset: 0; }
+[data-fx="checkbox-scribble"] .fx-cs-line { position: absolute; left: -2px; right: -2px; top: 50%; height: .5em; margin-top: -.25em; }
+[data-fx="checkbox-scribble"] .fx-cs-line path { transition-delay: .18s; stroke-width: 2px; }
