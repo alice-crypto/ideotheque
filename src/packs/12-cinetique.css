@@ -196,3 +196,6 @@
 /* color-cycle-words : la couleur circule */
 [data-fx="color-cycle-words"] .fx-word { transition: color .7s; }
 [data-fx="color-cycle-words"] .fx-word.fx-on { color: var(--fx-accent); transition-duration: .12s; }
+
+/* sun-shadow : une ombre qui suit le soleil */
+[data-fx="sun-shadow"] { --fx-shadow: rgba(0, 0, 0, .35); display: inline-block; position: relative; }
