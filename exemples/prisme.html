@@ -45,6 +45,12 @@
     .qalist button { font-size: 20px; font-weight: 700; padding: .9em 0 !important; }
     .qalist p { overflow: hidden; padding-bottom: 0 !important; }
     .qalist .fx-open p { padding-bottom: 1em !important; }
+    @media (max-width: 900px) {
+      .hero-grid, .proof, .qa { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .comp { max-width: 440px; }
+      .bento { --fx-cols: 2; }
+    }
     /*@css*/
   </style>
 </head>
