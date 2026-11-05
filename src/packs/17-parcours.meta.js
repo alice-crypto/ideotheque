@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="command-dock"><input aria-label="Commande"><ul><li>Nouveau</li><li>Exporter</li></ul></div>',
     '<div data-fx="command-dock" style="width:220px;color:var(--ink);font-size:13px"><input aria-label="Commande" placeholder="Rechercher…"><ul><li>Nouveau projet</li><li>Exporter</li><li>Partager</li></ul></div>',
     { a11y: 'Rôles `combobox`, `listbox`, `option`, entièrement utilisable au clavier.' }),
+  E('breadcrumb-fold', 'Navigation',
+    'Un fil d\'Ariane replie ses niveaux intermédiaires derrière « … » et les déroule au clic.',
+    'Rangé, on voit le début et la fin du chemin.',
+    '- `data-fx-keep` (3) : nombre de niveaux à partir duquel le repli s\'applique',
+    'Documentation, boutiques, arborescences profondes.',
+    'Les chemins courts.',
+    '<ol data-fx="breadcrumb-fold"><li><a href="#">Accueil</a></li><li><a href="#">Docs</a></li><li><a href="#">API</a></li><li>FX</li></ol>',
+    '<ol data-fx="breadcrumb-fold" style="color:var(--ink);font-size:14px"><li><a href="#" style="color:inherit">Accueil</a></li><li><a href="#" style="color:inherit">Docs</a></li><li><a href="#" style="color:inherit">API</a></li><li>Effets</li></ol>',
+    { a11y: 'Le bouton est nommé, et le focus passe sur le premier niveau révélé.' }),
 ];
