@@ -110,4 +110,13 @@ module.exports = [
     '<ul data-fx="feature-orbit-card"><li>Rapide</li><li>Simple</li></ul>',
     '<ul data-fx="feature-orbit-card" style="list-style:none;padding:0;margin:0;width:200px;color:var(--ink);font-size:15px"><li>Rapide</li><li>Simple</li><li>Discret</li></ul>',
     { a11y: 'Pause au survol, réagit au focus. Avec `prefers-reduced-motion: reduce`, le défilement automatique s\'arrête.' }),
+  E('logo-wall-flip', 'Présentation',
+    'Un mur de noms ou de logos : à tour de rôle, une case se retourne pour en montrer un autre.',
+    'Une longue liste de références, sans tout montrer à la fois.',
+    '- `data-fx-logos` : noms séparés par `|`\n- `data-fx-cells` (6), `data-fx-every` (1.1)\n- `--fx-cell-bg` : fond des cases',
+    'Logos clients, partenaires, médias.',
+    'Des références inventées : le mur doit rester vrai.',
+    '<div data-fx="logo-wall-flip" data-fx-logos="Atlas|Halo"></div>',
+    '<div data-fx="logo-wall-flip" style="width:225px;color:var(--ink);font-size:13px"></div>',
+    { a11y: 'Tous les noms sont dans `aria-label`.' }),
 ];
