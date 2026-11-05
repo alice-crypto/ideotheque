@@ -101,3 +101,7 @@
 /* noise-terrain : des lignes de crêtes */
 [data-fx="noise-terrain"] { isolation: isolate; overflow: hidden; }
 [data-fx="noise-terrain"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-line, currentColor); }
+
+/* bubble-rise : des bulles */
+[data-fx="bubble-rise"] { isolation: isolate; overflow: hidden; }
+[data-fx="bubble-rise"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-bubble, currentColor); }
