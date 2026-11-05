@@ -44,4 +44,12 @@ module.exports = [
     'Du contenu à lire dès l\'arrivée.',
     '<figure data-fx="grid-open-scroll"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="grid-open-scroll"><img src="assets/city.svg" alt=""></div>'),
+  E('zoom-out-frame', 'Défilement',
+    'L\'image part très agrandie et recule au fil du défilement jusqu\'à entrer dans son cadre.',
+    'Prise de recul, on découvre le contexte.',
+    '- `data-fx-from` (.8) : agrandissement de départ',
+    'Photos de paysages, de produits.',
+    'Les images de petite résolution.',
+    '<figure data-fx="zoom-out-frame"><img src="photo.jpg" alt="…"></figure>',
+    '<div class="demo-media" data-fx="zoom-out-frame"><img src="assets/bloom.svg" alt=""></div>'),
 ];
