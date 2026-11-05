@@ -3229,6 +3229,23 @@
       el.style.setProperty('--fx-my', (r.height / 2).toFixed(0) + 'px');
     }
   });
+
+  // Les lettres tournent en cercle puis se posent sur la ligne
+  FX.register('letter-orbit', {
+    entrance: true,
+    setup: function (el) { U.splitChars(el); el._fxChars = Array.prototype.slice.call(el.querySelectorAll('.fx-char')); el._fxPlace = function (p) {
+      var n = el._fxChars.length, R = U.num(el, 'fxRadius', 70);
+      el._fxChars.forEach(function (c, i) {
+        var q = U.easeInOut(U.clamp(p * 1.4 - i / n * .4, 0, 1));
+        var a = i / n * Math.PI * 2 + (1 - q) * 3;
+        var dx = Math.cos(a) * R * (1 - q), dy = Math.sin(a) * R * (1 - q);
+        c.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px) rotate(' + ((1 - q) * a * 57.3).toFixed(0) + 'deg)';
+        c.style.opacity = Math.min(1, p * 4);
+      });
+    }; el._fxPlace(0); },
+    reset: function (el) { el._fxPlace(0); },
+    enter: function (el) { U.tween(el, U.num(el, 'fxDuration', 1500), el._fxPlace); }
+  });
 })(window.FX);
 
 window.FX._boot();

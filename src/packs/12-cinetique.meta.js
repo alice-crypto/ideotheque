@@ -64,4 +64,13 @@ module.exports = [
     '<h1 data-fx="spot-fill">Lumière</h1>',
     '<p class="demo-title" data-fx="spot-fill" style="color:var(--ink);--fx-stroke:var(--ink);--fx-size:46px">Lumière</p>',
     { a11y: 'Le texte reste lisible en contour. Avec `prefers-reduced-motion: reduce`, le halo ne se déplace plus tout seul.' }),
+  E('letter-orbit', 'Texte',
+    'Les lettres tournent en cercle, puis se déposent une à une sur la ligne.',
+    'Un mobile qui se range, un mot qui se forme tout seul.',
+    '- `data-fx-radius` (70) : rayon de l\'orbite\n- `data-fx-duration` (1500) : durée en millisecondes',
+    'Logos animés, écrans de chargement, titres courts.',
+    'Les mots de plus de 12 lettres, qui s\'emmêlent.',
+    '<h2 data-fx="letter-orbit">Satellite</h2>',
+    '<p class="demo-title" data-fx="letter-orbit" style="font-size:32px">Satellite</p>',
+    { trigger: 'Rejouer' }),
 ];
