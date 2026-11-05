@@ -61,3 +61,9 @@
 /* vignette-focus : une vignette qui suit le regard */
 [data-fx="vignette-focus"] { position: relative; overflow: hidden; }
 [data-fx="vignette-focus"]::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at var(--fx-vx, 50%) var(--fx-vy, 50%), transparent 22%, var(--fx-dark-a, rgba(0, 0, 0, .75)) 80%); }
+
+/* lightbox-flip : l'image grandit sans couture */
+[data-fx="lightbox-flip"] img { cursor: zoom-in; }
+.fx-lb { position: fixed; inset: 0; z-index: 9990; background: rgba(0, 0, 0, 0); cursor: zoom-out; outline: 0; transition: background .4s; }
+.fx-lb.fx-on { background: rgba(0, 0, 0, .86); }
+.fx-lb img { object-fit: cover; transition: transform .45s var(--fx-ease-out); }
