@@ -144,3 +144,9 @@
 @keyframes fx-sp-d { from { transform: translateY(-100%); opacity: 0; } }
 [data-fx="stepper-pop"].fx-stop output { animation: fx-sp-s .24s; }
 @keyframes fx-sp-s { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
+
+/* star-rate : une note joyeuse */
+[data-fx="star-rate"] { display: inline-flex; gap: .15em; cursor: pointer; font-size: 28px; }
+[data-fx="star-rate"] i { font-style: normal; color: var(--fx-star-off, rgba(128, 128, 128, .4)); transition: color .2s calc(var(--fx-i) * 30ms); }
+[data-fx="star-rate"] i.fx-on { color: var(--fx-star, #ffd400); animation: fx-star .36s var(--fx-ease-spring) calc(var(--fx-i) * 30ms); }
+@keyframes fx-star { 40% { transform: scale(1.3) rotate(8deg); } }
