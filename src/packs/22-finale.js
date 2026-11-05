@@ -137,4 +137,20 @@
       el.addEventListener('focusout', function (e) { if (!el.contains(e.relatedTarget)) off(); });
     }
   });
+
+  // On parcourt une séquence d'images en déplaçant le curseur
+  FX.register('film-scrub', {
+    setup: function (el) {
+      var imgs = el.querySelectorAll('img');
+      el.style.touchAction = 'pan-y';
+      var show = function (p) {
+        var k = U.clamp(Math.floor(p * imgs.length), 0, imgs.length - 1);
+        imgs.forEach(function (im, i) { im.classList.toggle('fx-cur', i === k); });
+        el.style.setProperty('--fx-p', p.toFixed(3));
+      };
+      el.addEventListener('pointermove', function (e) { var r = el.getBoundingClientRect(); show((e.clientX - r.left) / r.width); });
+      show(0);
+      el._fxShow = show;
+    }
+  });
 })(window.FX);
