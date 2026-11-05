@@ -189,4 +189,13 @@ module.exports = [
     '<section data-fx="circuit-pulse">…</section>',
     '<div data-fx="circuit-pulse" style="width:230px;height:170px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
+  E('sea-layers', 'Ambiance',
+    'Plusieurs couches de vagues se balancent à des rythmes différents.',
+    'Bord de mer, livre illustré.',
+    '- `--fx-sea` : couleurs séparées par des virgules, du fond vers l\'avant',
+    'En-têtes de voyage, marques de bien-être.',
+    'Sous du texte long.',
+    '<section data-fx="sea-layers">…</section>',
+    '<div data-fx="sea-layers" style="width:230px;height:170px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
 ];

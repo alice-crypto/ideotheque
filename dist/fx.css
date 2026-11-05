@@ -5331,6 +5331,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="circuit-pulse"] { isolation: isolate; overflow: hidden; }
 [data-fx="circuit-pulse"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-line, var(--fx-accent)); }
 
+/* sea-layers : une mer en couches */
+[data-fx="sea-layers"] { isolation: isolate; overflow: hidden; }
+[data-fx="sea-layers"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
