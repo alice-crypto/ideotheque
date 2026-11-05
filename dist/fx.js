@@ -3304,6 +3304,50 @@
       });
     }
   });
+
+  // Le titre s'allume point par point, comme un panneau d'affichage
+  FX.register('dot-matrix', {
+    entrance: true,
+    setup: function (el) {
+      var txt = el.textContent.trim();
+      el.setAttribute('aria-label', txt);
+      el.setAttribute('role', 'img');
+      el.textContent = '';
+      var cv = U.make('canvas', '', el), ctx = cv.getContext('2d');
+      var cs = getComputedStyle(el), fs = parseFloat(cs.fontSize);
+      var step = U.num(el, 'fxStep', 4), w, h, dots, last = 0;
+      var font = cs.fontWeight + ' ' + fs + 'px ' + cs.fontFamily;
+      var scan = function () {
+        var off = document.createElement('canvas').getContext('2d');
+        off.font = font;
+        w = Math.ceil(off.measureText(txt).width); h = Math.ceil(fs * 1.2);
+        off.canvas.width = w; off.canvas.height = h;
+        off.font = font; off.textBaseline = 'middle'; off.fillText(txt, 0, h / 2);
+        var data = off.getImageData(0, 0, w, h).data;
+        dots = [];
+        for (var y = 0; y < h; y += step) for (var x = 0; x < w; x += step) if (data[(y * w + x) * 4 + 3] > 120) dots.push([x, y]);
+        cv.width = w; cv.height = h;
+      };
+      scan();
+      if (document.fonts) document.fonts.load(font).then(function () { scan(); el._fxPaint(last); });
+      el._fxPaint = function (p) {
+        last = p;
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = cs.color;
+        dots.forEach(function (d) {
+          var a = U.clamp(p * 1.5 - d[0] / w * .5, 0, 1);
+          if (a <= 0) return;
+          ctx.globalAlpha = a;
+          ctx.beginPath();
+          ctx.arc(d[0], d[1], step * .4, 0, 7);
+          ctx.fill();
+        });
+      };
+      el._fxPaint(0);
+    },
+    reset: function (el) { el._fxPaint(0); },
+    enter: function (el) { U.tween(el, U.num(el, 'fxDuration', 1200), el._fxPaint); }
+  });
 })(window.FX);
 
 window.FX._boot();

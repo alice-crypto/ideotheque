@@ -100,4 +100,13 @@ module.exports = [
     '<h2 data-fx="slot-letters">JACKPOT</h2>',
     '<p class="demo-mono" data-fx="slot-letters">JACKPOT</p>',
     { trigger: 'Rejouer', a11y: 'Le texte final est dans `aria-label`, les rouleaux sont masqués aux lecteurs d\'écran.' }),
+  E('dot-matrix', 'Texte',
+    'Le titre s\'allume point par point, de gauche à droite, comme un panneau d\'affichage.',
+    'Technique, signalétique, gare ou stade.',
+    '- `data-fx-step` (4) : écart entre les points en pixels\n- `data-fx-duration` (1200) : durée en millisecondes',
+    'Grands titres techniques, tableaux de bord, chiffres d\'annonce.',
+    'Les petites tailles : sous 28 px, les points ne forment plus de lettres.',
+    '<h2 data-fx="dot-matrix">Départ 08:42</h2>',
+    '<p class="demo-title" data-fx="dot-matrix" style="color:var(--ink);font-weight:800">Départ</p>',
+    { trigger: 'Rejouer', a11y: 'Le texte est dans `aria-label`. Avec `prefers-reduced-motion: reduce`, le panneau s\'affiche tout de suite.' }),
 ];

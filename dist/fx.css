@@ -3181,6 +3181,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 }
 .fx-in[data-fx="slot-letters"] .fx-slot-col { transform: translateY(calc(var(--fx-rolls) * -1.1em)); }
 
+/* dot-matrix : un panneau de points */
+[data-fx="dot-matrix"] { display: inline-block; }
+[data-fx="dot-matrix"] canvas { display: block; max-width: 100%; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
