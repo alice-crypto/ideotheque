@@ -234,6 +234,7 @@
         Array.prototype.forEach.call(el.children, function (c, i) { if ((i * 5 + 2) % 9 === 0) c.setAttribute('data-off', ''); });
       }).observe(el, { childList: true });
     });
+    document.getElementById('br').addEventListener('input', function () { document.getElementById('b').textContent = this.value; });
     /*@js*/
   </script>
 </body>
