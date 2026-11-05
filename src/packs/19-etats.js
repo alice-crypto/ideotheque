@@ -427,4 +427,30 @@
       });
     }
   });
+
+  // Un sélecteur compact pour choisir un mode ou un modèle
+  FX.register('model-switcher', {
+    setup: function (el) {
+      var opts = (el.dataset.fxOptions || 'Rapide|Équilibré|Précis').split('|'), cur = 0;
+      el.innerHTML = '<button type="button" aria-haspopup="listbox" aria-expanded="false"></button><ul role="listbox" tabindex="-1"></ul>';
+      var btn = el.firstChild, ul = el.lastChild;
+      opts.forEach(function (o, i) { var li = U.make('li', '', ul); li.textContent = o; li.setAttribute('role', 'option'); li.style.setProperty('--fx-i', i); li.addEventListener('click', function () { pick(i); }); });
+      var pick = function (i) {
+        cur = i;
+        btn.textContent = opts[i];
+        Array.prototype.forEach.call(ul.children, function (l, k) { l.setAttribute('aria-selected', k === i); });
+        set(false);
+        el.dispatchEvent(new CustomEvent('fx:change', { bubbles: true, detail: { value: opts[i] } }));
+      };
+      var set = function (on) { el.classList.toggle('fx-open', on); btn.setAttribute('aria-expanded', on); };
+      btn.addEventListener('click', function () { set(!el.classList.contains('fx-open')); });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { set(false); btn.focus(); }
+        if (e.key === 'ArrowDown') { e.preventDefault(); set(true); pick((cur + 1) % opts.length); set(true); }
+        if (e.key === 'ArrowUp') { e.preventDefault(); set(true); pick((cur - 1 + opts.length) % opts.length); set(true); }
+      });
+      document.addEventListener('pointerdown', function (e) { if (!el.contains(e.target)) set(false); });
+      pick(0);
+    }
+  });
 })(window.FX);
