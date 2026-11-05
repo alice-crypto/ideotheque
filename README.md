@@ -93,6 +93,7 @@ Trois autres marques n'utilisent que le rouge, le bleu et le jaune primaires, av
 | --- | --- | --- |
 | Prisme, analyse pour petites équipes | [prisme.html](exemples/prisme.html) | [dashboard-prisme.html](exemples/dashboard-prisme.html) |
 | Cadence, pratique musicale | [cadence.html](exemples/cadence.html) | [dashboard-cadence.html](exemples/dashboard-cadence.html) |
+| Relais, livraison à vélo | [relais.html](exemples/relais.html) | [dashboard-relais.html](exemples/dashboard-relais.html) |
 
 Les illustrations sont des SVG originaux (`exemples/img/`).
 
