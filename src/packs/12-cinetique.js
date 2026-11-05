@@ -52,4 +52,28 @@
     scroll: true,
     setup: function (el) { el.style.setProperty('--fx-gap', U.num(el, 'fxGap', .6) + 'em'); }
   });
+
+  // Les lettres s'écartent du curseur et reviennent en douceur
+  FX.register('cursor-repel', {
+    setup: function (el) {
+      U.splitChars(el);
+      var s = el._fxS = { chars: Array.prototype.slice.call(el.querySelectorAll('.fx-char')).map(function (c) { return { el: c, x: 0, y: 0 }; }), mx: -9999, my: -9999 };
+      if (!U.canHover || U.reduced) return;
+      el.addEventListener('pointermove', function (e) { s.mx = e.clientX; s.my = e.clientY; });
+      el.addEventListener('pointerleave', function () { s.mx = s.my = -9999; });
+    },
+    tick: function (el) {
+      var s = el._fxS, R = U.num(el, 'fxRadius', 110), F = U.num(el, 'fxForce', 34);
+      if (U.reduced) return;
+      s.chars.forEach(function (c) {
+        var r = c.el.getBoundingClientRect();
+        var dx = r.left + r.width / 2 - c.x - s.mx, dy = r.top + r.height / 2 - c.y - s.my;
+        var d = Math.sqrt(dx * dx + dy * dy) || 1;
+        var k = Math.max(0, 1 - d / R);
+        c.x += (dx / d * F * k - c.x) * .14;
+        c.y += (dy / d * F * k - c.y) * .14;
+        c.el.style.transform = 'translate(' + c.x.toFixed(1) + 'px,' + c.y.toFixed(1) + 'px)';
+      });
+    }
+  });
 })(window.FX);
