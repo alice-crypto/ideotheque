@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->357<!-- /total --> effets.
+La bibliothèque contient <!-- total -->358<!-- /total --> effets.
 
 ## Règles
 
@@ -313,6 +313,7 @@ La bibliothèque contient <!-- total -->357<!-- /total --> effets.
 | `horizontal-snap` | Navigation | Une rangée horizontale qui s'accroche à chaque élément, avec des flèches et des points qui suivent |
 | `split-hover-hero` | Navigation | Deux panneaux se partagent l'écran : celui qu'on survole prend presque toute la place |
 | `masonry-flow` | Navigation | Un mur de cartes irrégulier : chacune va dans la colonne la plus courte, et tout glisse quand la largeur change |
+| `tab-underline-ink` | Navigation | Le trait sous l'onglet s'étire jusqu'au suivant, puis se rétracte, comme une goutte d'encre |
 | `scanlines` | Ambiance | Des lignes d'écran cathodique et un balayage lumineux passent sur un visuel, avec un léger scintillement |
 | `dot-grid` | Ambiance | Une trame de points recouvre le fond ; autour du curseur, les points grossissent et prennent la couleur d'accent |
 | `grain` | Ambiance | Un grain de pellicule animé recouvre le contenu, comme un film argentique |

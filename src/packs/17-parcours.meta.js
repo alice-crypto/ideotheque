@@ -101,4 +101,13 @@ module.exports = [
     '<div data-fx="masonry-flow"><img…><img…><img…></div>',
     '<div data-fx="masonry-flow" style="width:220px"><div class="demo-box" style="height:40px"></div><div class="demo-box alt" style="height:55px"></div><div class="demo-box ink" style="height:32px"></div><div class="demo-box alt" style="height:44px"></div><div class="demo-box" style="height:28px"></div><div class="demo-box ink" style="height:40px"></div></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, les éléments changent de place sans animation.' }),
+  E('tab-underline-ink', 'Navigation',
+    'Le trait sous l\'onglet s\'étire jusqu\'au suivant, puis se rétracte, comme une goutte d\'encre.',
+    'Fluide, organique, un détail qui signe l\'interface.',
+    'Aucun réglage : le trait suit l\'onglet choisi.',
+    'Onglets, filtres, sélecteurs de période.',
+    'Plus de 6 onglets sur une ligne.',
+    '<div data-fx="tab-underline-ink" role="tablist"><button role="tab">Jour</button><button role="tab">Mois</button></div>',
+    '<div data-fx="tab-underline-ink" role="tablist" style="color:var(--ink);font-size:16px"><button role="tab">Jour</button><button role="tab">Semaine</button><button role="tab">Mois</button></div>',
+    { a11y: 'L\'état `aria-selected` suit l\'onglet actif. Ajoutez vos panneaux avec `aria-controls`.' }),
 ];
