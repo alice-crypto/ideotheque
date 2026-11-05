@@ -146,4 +146,33 @@
       el.addEventListener('pointerleave', function () { el.classList.remove('fx-on'); });
     }
   });
+
+  // Une chaîne de perles suit le curseur
+  FX.register('trail-dots', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      var n = U.num(el, 'fxCount', 10), s = el._fxS = { pts: [], tx: 0, ty: 0 };
+      for (var i = 0; i < n; i++) {
+        var d = U.make('i', 'fx-td', el);
+        d.setAttribute('aria-hidden', 'true');
+        d.style.setProperty('--fx-q', 1 - i / n);
+        s.pts.push({ x: 0, y: 0, el: d });
+      }
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        s.tx = e.clientX - r.left; s.ty = e.clientY - r.top;
+        el.classList.add('fx-on');
+      });
+      el.addEventListener('pointerleave', function () { el.classList.remove('fx-on'); });
+    },
+    tick: function (el) {
+      var s = el._fxS, px = s.tx, py = s.ty;
+      if (U.reduced) return;
+      s.pts.forEach(function (p) {
+        p.x = U.lerp(p.x, px, .34); p.y = U.lerp(p.y, py, .34);
+        p.el.style.transform = 'translate(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px)';
+        px = p.x; py = p.y;
+      });
+    }
+  });
 })(window.FX);
