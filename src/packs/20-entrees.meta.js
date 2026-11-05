@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="accordion-unfold"><div>…</div><div>…</div></div>',
     '<div data-fx="accordion-unfold" style="display:grid;gap:4px;width:200px"><div class="demo-box" style="width:100%;height:42px"></div><div class="demo-box alt" style="width:100%;height:42px"></div><div class="demo-box ink" style="width:100%;height:42px"></div></div>',
     { trigger: 'Rejouer' }),
+  E('blur-words', 'Entrée',
+    'Les mots sortent du flou l\'un après l\'autre.',
+    'Mise au point douce, on sort d\'un rêve.',
+    '- `--fx-blur` (10px), `--fx-stagger` (70ms)',
+    'Accroches, sous-titres.',
+    'Les longs paragraphes : le flou coûte cher.',
+    '<p data-fx="blur-words">Une idée à la fois.</p>',
+    '<p class="demo-para" data-fx="blur-words" style="color:var(--ink)">Une idée à la fois, sans bruit.</p>',
+    { trigger: 'Rejouer' }),
 ];

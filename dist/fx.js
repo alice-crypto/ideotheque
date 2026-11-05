@@ -7199,6 +7199,9 @@
     entrance: true,
     setup: function (el) { Array.prototype.forEach.call(el.children, function (c, i) { c.style.setProperty('--fx-i', i); c.classList.add(i % 2 ? 'fx-odd' : 'fx-even'); }); }
   });
+
+  // Les mots sortent du flou l'un après l'autre
+  FX.register('blur-words', { entrance: true, setup: function (el) { U.splitWords(el); } });
 })(window.FX);
 
 window.FX._boot();
