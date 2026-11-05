@@ -60,4 +60,6 @@ img, svg { display: block; max-width: 100%; }
 }
 .pbtn:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--y); }
 .pbtn:active { transform: none; box-shadow: none; }
+.pbtn.ghost { background: transparent; color: inherit; border-color: currentColor; }
+.pbtn.yel { background: var(--y); color: var(--k); border-color: var(--k); }
 /*@css*/
