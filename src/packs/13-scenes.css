@@ -24,3 +24,11 @@
 /* cross-rows : des lignes qui se croisent */
 [data-fx="cross-rows"] { overflow: hidden; display: grid; gap: var(--fx-gap, 10px); }
 [data-fx="cross-rows"] > * { display: flex; gap: var(--fx-gap, 10px); white-space: nowrap; transform: translateX(calc(var(--fx-t, 0px) * var(--fx-dir, 1))); }
+
+/* fan-scroll : un jeu de cartes qui s'ouvre */
+[data-fx="fan-scroll"] { display: grid; justify-items: center; }
+[data-fx="fan-scroll"] > * {
+  grid-area: 1 / 1;
+  transform-origin: 50% 130%;
+  transform: rotate(calc(var(--fx-k) * var(--fx-open, 1) * var(--fx-angle, 14deg)));
+}
