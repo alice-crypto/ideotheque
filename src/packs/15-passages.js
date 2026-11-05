@@ -175,4 +175,37 @@
     o.children[0].className = 'fx-page';
     o.children[1].className = 'fx-fold';
   } } });
+
+  // L'image se transforme en texte ASCII au survol
+  FX.register('ascii-image', {
+    setup: function (el) {
+      var img = el.querySelector('img');
+      if (!img) return;
+      U.ensurePositioned(el);
+      var pre = U.make('pre', 'fx-ascii', el);
+      pre.setAttribute('aria-hidden', 'true');
+      var draw = function () {
+        var cols = U.num(el, 'fxCols', 46), w = el.offsetWidth || 200, h = el.offsetHeight || 150;
+        var rows = Math.max(1, Math.round(cols * h / w * .5));
+        var c = document.createElement('canvas');
+        c.width = cols; c.height = rows;
+        var x = c.getContext('2d');
+        try {
+          x.drawImage(img, 0, 0, cols, rows);
+          var d = x.getImageData(0, 0, cols, rows).data, ramp = ' .:-=+*#%@', s = '';
+          for (var j = 0; j < rows; j++) {
+            for (var i = 0; i < cols; i++) {
+              var k = (j * cols + i) * 4, l = (d[k] * .3 + d[k + 1] * .59 + d[k + 2] * .11) / 255;
+              s += ramp.charAt(Math.floor(l * (ramp.length - .01)));
+            }
+            s += '\n';
+          }
+          pre.textContent = s;
+          pre.style.fontSize = (w / cols / .6).toFixed(2) + 'px';
+        } catch (err) { pre.textContent = ''; }
+      };
+      if (img.complete) draw(); else img.addEventListener('load', draw);
+      U.onResize(draw);
+    }
+  });
 })(window.FX);
