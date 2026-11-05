@@ -159,4 +159,11 @@
       p.style.setProperty('--fx-d', i * 90 + 'ms');
     });
   } } });
+
+  // Un grand X se dessine et s'épaissit jusqu'à couvrir l'écran
+  FX.register('x-cross', { transition: { pieces: 2, cover: 800, uncover: 820, build: function (o) {
+    o.style.setProperty('--fx-len', Math.hypot(innerWidth, innerHeight) * 1.1 + 'px');
+    o.children[0].className = 'fx-a';
+    o.children[1].className = 'fx-b';
+  } } });
 })(window.FX);
