@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="news-ticker-pause"><p>Lancement jeudi</p><p>Nouvelle boutique</p></div>',
     '<div data-fx="news-ticker-pause" style="width:230px;color:var(--ink);font-size:14px"><p>Lancement jeudi</p><p>Nouvelle boutique à Lyon</p><p>Horaires d\'été</p></div>',
     { a11y: 'Bouton pause nommé, pause au focus. Les copies sont masquées aux lecteurs d\'écran.' }),
+  E('bilingual-toggle', 'Texte',
+    'Une phrase bascule entre deux langues, en passant par quelques signes aléatoires.',
+    'International, traduction en direct.',
+    '- `data-fx-other` : texte dans l\'autre langue\n- `data-fx-duration` (650)',
+    'Accroches de sites bilingues, slogans.',
+    'Tout un paragraphe.',
+    '<h2 data-fx="bilingual-toggle" data-fx-other="Make it simple">Faire simple</h2>',
+    '<p class="demo-title" data-fx="bilingual-toggle" data-fx-other="Make it simple" style="font-size:26px;display:inline-block">Faire simple</p>',
+    { trigger: 'Basculer', a11y: 'Le texte courant reste dans `aria-label`.' }),
 ];
