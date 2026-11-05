@@ -81,6 +81,7 @@
         clock.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
         bar.style.width = ((TOTAL - left) / TOTAL * 100) + '%';
       }
+      function stop() { clearInterval(timer); timer = null; go.textContent = 'Lancer'; }
       /*@tjs*/
     })();
     /*@js*/
