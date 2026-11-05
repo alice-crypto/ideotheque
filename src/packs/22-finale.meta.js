@@ -60,4 +60,12 @@ module.exports = [
     'Les longues phrases.',
     '<h2 data-fx="wave-text-scroll">Onduler</h2>',
     '<p class="demo-title" data-fx="wave-text-scroll">Onduler</p>'),
+  E('title-fade-pass', 'Défilement',
+    'Un titre n\'est pleinement visible et net que lorsqu\'il passe au centre de l\'écran.',
+    'Une idée à la fois, le reste s\'efface.',
+    '- `data-fx-blur` (8) : flou maximal',
+    'Suite de grandes phrases, manifestes.',
+    'Une information à retrouver facilement.',
+    '<h2 data-fx="title-fade-pass">Une seule idée</h2>',
+    '<p class="demo-title" data-fx="title-fade-pass" style="font-size:28px">Une seule idée</p>'),
 ];
