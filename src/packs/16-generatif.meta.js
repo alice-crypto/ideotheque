@@ -104,4 +104,13 @@ module.exports = [
     '<section data-fx="sun-rays">…</section>',
     '<div data-fx="sun-rays" style="width:230px;height:170px;border-radius:12px"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, les rayons restent immobiles.' }),
+  E('plasma', 'Ambiance',
+    'Un plasma coloré se déforme en continu, calculé point par point entre trois couleurs.',
+    'Démo rétro, lave lumineuse, années 90 revisitées.',
+    '- `--fx-a`, `--fx-b`, `--fx-c` : les trois couleurs, en hexadécimal',
+    'Écrans d\'accueil audacieux, musique, jeux.',
+    'Sous du texte fin, et pour les personnes sensibles aux grands mouvements de couleur : gardez une petite surface.',
+    '<section data-fx="plasma">…</section>',
+    '<div data-fx="plasma" style="width:230px;height:170px;border-radius:12px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
 ];

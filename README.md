@@ -34,7 +34,7 @@ L'IA lit [`AI.md`](AI.md) et la fiche de l'effet, puis reproduit exactement le m
 
 ## Avec Claude
 
-Idéothèque existe en plugin pour Claude Code. Une fois installé, Claude connaît les <!-- total -->333<!-- /total --> effets : il lit leur fiche et les applique par leur nom, sans que vous ayez à lui donner `AI.md`.
+Idéothèque existe en plugin pour Claude Code. Une fois installé, Claude connaît les <!-- total -->334<!-- /total --> effets : il lit leur fiche et les applique par leur nom, sans que vous ayez à lui donner `AI.md`.
 
 ```
 /plugin install ideotheque --marketplace alice-crypto/ideotheque
@@ -89,7 +89,7 @@ Cinq marques fictives, chacune avec une landing page, un dashboard et un assista
 
 Les illustrations sont des SVG originaux (`exemples/img/`).
 
-## Les <!-- total -->333<!-- /total --> effets
+## Les <!-- total -->334<!-- /total --> effets
 
 <!-- effets:start -->
 - **Entrée (25) :** `curtain-soft`, `rise-stagger`, `blur-in`, `line-mask`, `pixel-dissolve`, `fade-up`, `slide-in`, `zoom-in-soft`, `flip-up`, `swing-in`, `iris-open`, `diagonal-wipe`, `split-reveal`, `block-reveal`, `stretch-in`, `skew-up`, `drop-bounce`, `pop-in`, `blinds-open`, `ink-spread`, `tile-cascade`, `scatter-gather`, `fold-down`, `lift-shadow`, `rule-draw`
@@ -100,7 +100,7 @@ Les illustrations sont des SVG originaux (`exemples/img/`).
 - **Transition (32) :** `page-wipe`, `bands`, `circle-expand`, `slash`, `pixel-wipe`, `shutter`, `curtain-close`, `fade-through`, `zoom-through`, `push-slide`, `arc-rise`, `glitch-cut`, `tile-flip`, `iris`, `title-card`, `view-morph`, `diagonal-tiles`, `spiral-tiles`, `clock-wipe`, `ink-drops`, `stair-bars`, `wave-cover`, `cross-blinds`, `fold-doors`, `shatter-tris`, `word-flash`, `text-cover`, `dots-cover`, `scan-cover`, `color-stack`, `x-cross`, `page-turn`
 - **Image (28) :** `svg-draw`, `ken-burns`, `color-reveal`, `image-trail`, `hover-preview`, `slice-in`, `rgb-split`, `blob-mask`, `compare`, `glare`, `lens`, `photo-stack`, `liquid-hover`, `pixelate`, `flip-card`, `carousel-ring`, `drag-gallery`, `noise-reveal`, `ascii-image`, `dither-reveal`, `duotone-hover`, `mosaic-hover`, `wave-image`, `scan-reveal`, `strip-slider`, `tilt-focus`, `polaroid-drop`, `x-ray`
 - **Navigation (15) :** `burger-morph`, `menu-reveal`, `smart-header`, `tab-slider`, `dot-nav`, `top-ring`, `hover-pill`, `accordion`, `dropdown`, `scroll-spy`, `dots-morph`, `drawer`, `modal-zoom`, `header-shrink`, `focus-list`
-- **Ambiance (32) :** `scanlines`, `dot-grid`, `grain`, `aurora`, `gradient-drift`, `grid-floor`, `starfield`, `constellation`, `wave-lines`, `vhs`, `crt`, `flashlight`, `bokeh`, `code-rain`, `blob-bg`, `halftone`, `orbit-rings`, `light-beams`, `water-ripple`, `glow-grid`, `flow-field`, `metaballs`, `voronoi-cells`, `contour-lines`, `game-of-life`, `ribbon-sine`, `particle-text`, `rain-glass`, `snow-fall`, `fireflies`, `matrix-dots-wave`, `sun-rays`
+- **Ambiance (33) :** `scanlines`, `dot-grid`, `grain`, `aurora`, `gradient-drift`, `grid-floor`, `starfield`, `constellation`, `wave-lines`, `vhs`, `crt`, `flashlight`, `bokeh`, `code-rain`, `blob-bg`, `halftone`, `orbit-rings`, `light-beams`, `water-ripple`, `glow-grid`, `flow-field`, `metaballs`, `voronoi-cells`, `contour-lines`, `game-of-life`, `ribbon-sine`, `particle-text`, `rain-glass`, `snow-fall`, `fireflies`, `matrix-dots-wave`, `sun-rays`, `plasma`
 - **État (19) :** `shimmer`, `orbit-loader`, `loading-bar`, `typing-dots`, `check-draw`, `cross-draw`, `confetti`, `toast`, `progress-ring`, `badge-bump`, `heart-like`, `copy-morph`, `liquid-fill`, `float`, `live-dot`, `flip-clock`, `loading-quips`, `ai-orb`, `thinking-steps`
 <!-- effets:end -->
 
