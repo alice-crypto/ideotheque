@@ -7356,6 +7356,21 @@
       U.tween(el, U.num(el, 'fxDuration', 700), function (p) { el.style.setProperty('--fx-g', seq[Math.min(seq.length - 1, Math.floor(p * seq.length))]); }, function () { el.style.setProperty('--fx-g', 1); });
     }
   });
+
+  // Chaque mot monte de derrière sa ligne
+  FX.register('curtain-words', {
+    entrance: true,
+    setup: function (el) {
+      U.splitWords(el);
+      el.querySelectorAll('.fx-word').forEach(function (w) {
+        var i = document.createElement('span');
+        i.className = 'fx-cw';
+        i.textContent = w.textContent;
+        w.textContent = '';
+        w.appendChild(i);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

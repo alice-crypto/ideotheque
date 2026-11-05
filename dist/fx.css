@@ -5030,6 +5030,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
   text-shadow: 0 0 calc(var(--fx-g, 1) * 8px) var(--fx-glow, var(--fx-accent)), 0 0 calc(var(--fx-g, 1) * 26px) var(--fx-glow, var(--fx-accent));
 }
 
+/* curtain-words : des mots qui se lèvent */
+[data-fx="curtain-words"] .fx-word { overflow: hidden; vertical-align: top; padding-bottom: .08em; }
+[data-fx="curtain-words"] .fx-cw { display: inline-block; transform: translateY(110%) rotate(6deg); transform-origin: left bottom; transition: transform .8s var(--fx-ease-out) calc(var(--fx-i) * 60ms); }
+.fx-in[data-fx="curtain-words"] .fx-cw { transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

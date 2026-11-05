@@ -183,4 +183,13 @@ module.exports = [
     '<h2 data-fx="glow-on">Ouvert</h2>',
     '<p class="demo-title" data-fx="glow-on">Ouvert</p>',
     { trigger: 'Rejouer', a11y: 'Avec `prefers-reduced-motion: reduce`, le néon s\'allume sans ratés.' }),
+  E('curtain-words', 'Entrée',
+    'Chaque mot monte depuis sous sa ligne, avec un léger basculement.',
+    'Rythme de générique, assurance.',
+    'Aucun réglage.',
+    'Grands titres, accroches.',
+    'Les textes longs.',
+    '<h1 data-fx="curtain-words">Un titre qui se lève</h1>',
+    '<p class="demo-para" data-fx="curtain-words" style="color:var(--ink)">Un titre qui se lève en douceur</p>',
+    { trigger: 'Rejouer' }),
 ];
