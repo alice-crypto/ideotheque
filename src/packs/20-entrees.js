@@ -145,4 +145,16 @@
       });
     }
   });
+
+  // Une ligne se dessine, puis le contenu se lève derrière elle
+  FX.register('horizon-rise', {
+    entrance: true,
+    setup: function (el) {
+      var w = document.createElement('span');
+      w.className = 'fx-hr-in';
+      while (el.firstChild) w.appendChild(el.firstChild);
+      el.appendChild(w);
+      U.make('i', 'fx-hr', el).setAttribute('aria-hidden', 'true');
+    }
+  });
 })(window.FX);
