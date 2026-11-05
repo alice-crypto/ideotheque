@@ -4580,6 +4580,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 }
 .fx-in[data-fx="heat-calendar"] i { transform: none; opacity: 1; }
 
+/* stacked-progress : une barre en parts */
+[data-fx="stacked-progress"] { display: grid; gap: 8px; }
+[data-fx="stacked-progress"] .fx-sp-bar { display: flex; gap: 2px; height: var(--fx-h, 12px); }
+[data-fx="stacked-progress"] .fx-sp-bar i { flex: 0 0 auto; width: 0; border-radius: 3px; background: color-mix(in srgb, var(--fx-accent) calc(100% - var(--fx-i) * 28%), rgba(128, 128, 128, .5)); transition: width .7s var(--fx-ease-out) calc(var(--fx-i) * 180ms); }
+.fx-in[data-fx="stacked-progress"] .fx-sp-bar i { width: calc(var(--fx-w) * 100% - 2px); }
+[data-fx="stacked-progress"] .fx-sp-leg { display: flex; flex-wrap: wrap; gap: .4em 1em; list-style: none; padding: 0; margin: 0; font-size: 13px; }
+[data-fx="stacked-progress"] .fx-sp-leg li::before { content: ""; display: inline-block; width: .6em; height: .6em; margin-right: .4em; border-radius: 2px; background: color-mix(in srgb, var(--fx-accent) calc(100% - var(--fx-i) * 28%), rgba(128, 128, 128, .5)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

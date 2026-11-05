@@ -6349,6 +6349,25 @@
       }
     }
   });
+
+  // Une barre répartie en segments avec sa légende
+  FX.register('stacked-progress', {
+    entrance: true,
+    setup: function (el) {
+      var parts = (el.dataset.fxParts || 'Design:40,Code:35,Son:25').split(',').map(function (s) { var p = s.split(':'); return { n: p[0], v: parseFloat(p[1]) }; });
+      var sum = parts.reduce(function (a, p) { return a + p.v; }, 0);
+      var bar = U.make('div', 'fx-sp-bar', el), leg = U.make('ul', 'fx-sp-leg', el);
+      bar.setAttribute('aria-hidden', 'true');
+      parts.forEach(function (p, i) {
+        var s = U.make('i', '', bar);
+        s.style.setProperty('--fx-w', p.v / sum);
+        s.style.setProperty('--fx-i', i);
+        var li = U.make('li', '', leg);
+        li.style.setProperty('--fx-i', i);
+        li.textContent = p.n + ' ' + Math.round(p.v / sum * 100) + ' %';
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

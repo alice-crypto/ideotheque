@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="heat-calendar" data-fx-weeks="26" data-fx-values="…"></div>',
     '<div data-fx="heat-calendar" style="--fx-width:220px"></div>',
     { trigger: 'Rejouer', a11y: 'Donnez un `aria-label` qui résume l\'activité.' }),
+  E('stacked-progress', 'Présentation',
+    'Une seule barre répartie en segments, qui s\'étendent à la suite, avec leur légende en dessous.',
+    'Clair, la part de chacun en un regard.',
+    '- `data-fx-parts` : « nom:valeur » séparés par des virgules\n- `--fx-h` (12px) : hauteur',
+    'Budgets, répartition du temps, stockage.',
+    'Plus de 5 parts.',
+    '<div data-fx="stacked-progress" data-fx-parts="Loyer:50,Repas:30,Reste:20"></div>',
+    '<div data-fx="stacked-progress" style="width:220px;color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Les valeurs sont aussi écrites en texte dans la légende.' }),
 ];
