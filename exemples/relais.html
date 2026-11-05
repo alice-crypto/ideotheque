@@ -47,6 +47,12 @@
       .rtrack { grid-template-columns: 1fr; }
       .rmap { box-shadow: 6px 6px 0 var(--r); }
     }
+    @media (max-width: 620px) {
+      .rnums { grid-template-columns: 1fr; }
+      .rnums > div { border-right: 0; border-bottom: var(--rule); }
+      .rnums > div:last-child { border-bottom: 0; }
+      .phead .pbtn { padding: .7em .9em; font-size: 13px; }
+    }
     /*@css*/
   </style>
 </head>
