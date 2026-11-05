@@ -92,4 +92,13 @@ module.exports = [
     'Une phrase qui perd son sens quand le mot change.',
     '<h2>Pour <span data-fx="headline-replace-scroll"></span></h2>',
     '<p class="demo-title" style="font-size:30px;color:var(--ink)">Pour <span data-fx="headline-replace-scroll"></span></p>'),
+  E('highlight-terms-sweep', 'Texte',
+    'Des mots clés se surlignent l\'un après l\'autre dans un paragraphe.',
+    'Un lecteur attentif a déjà préparé le texte.',
+    '- `data-fx-terms` : termes séparés par `|`\n- `--fx-mark` : couleur',
+    'Résumés, résultats de recherche, réponses d\'IA.',
+    'Trop de termes : plus rien ne ressort.',
+    '<p data-fx="highlight-terms-sweep" data-fx-terms="rapide|simple">Un outil rapide et simple.</p>',
+    '<p data-fx="highlight-terms-sweep" data-fx-terms="rapide|simple" style="width:215px;margin:0;color:var(--ink);font-size:18px">Un outil rapide à prendre en main et simple à partager.</p>',
+    { trigger: 'Rejouer', a11y: '`<mark>` garde son sens pour les technologies d\'assistance.' }),
 ];

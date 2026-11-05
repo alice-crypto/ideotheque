@@ -7625,6 +7625,29 @@
       el._fxBox.appendChild(s);
     }
   });
+
+  // Des mots clés se surlignent l'un après l'autre dans le texte
+  FX.register('highlight-terms-sweep', {
+    entrance: true,
+    setup: function (el) {
+      var terms = (el.dataset.fxTerms || '').split('|').filter(Boolean);
+      if (!terms.length) return;
+      var esc = function (s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); };
+      var re = new RegExp('(' + terms.map(esc).join('|') + ')', 'gi'), i = 0;
+      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(function (n) {
+        if (!re.test(n.nodeValue)) return;
+        re.lastIndex = 0;
+        var f = document.createDocumentFragment(), parts = n.nodeValue.split(re);
+        parts.forEach(function (p, k) {
+          if (k % 2) { var m = document.createElement('mark'); m.textContent = p; m.style.setProperty('--fx-i', i++); f.appendChild(m); }
+          else if (p) f.appendChild(document.createTextNode(p));
+        });
+        n.replaceWith(f);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
