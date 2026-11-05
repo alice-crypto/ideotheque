@@ -177,6 +177,19 @@
       FILTRE.etat = b.dataset.f;
       appliquer();
     });
+    (function () {
+      var num = 1043, clients = ['Boulangerie Nord', 'Galerie Onze', 'Cycles Martin', 'Thé & Co'];
+      document.getElementById('add').addEventListener('click', function () {
+        var tr = document.createElement('tr');
+        tr.className = 'neuf';
+        tr.innerHTML = '<td>' + num + '</td><td>' + clients[num % clients.length] + '</td><td>Sami</td><td><span class="pill b">En route</span></td><td class="num">12:45</td>';
+        num++;
+        document.getElementById('tb').prepend(tr);
+        var k = document.getElementById('k-route');
+        k.textContent = +k.textContent + 1;
+        appliquer();
+      });
+    })();
     /*@js*/
   </script>
 </body>
