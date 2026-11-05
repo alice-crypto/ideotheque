@@ -4966,6 +4966,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="line-draw-box"] rect { fill: none; stroke: var(--fx-line, currentColor); stroke-width: 1.5; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1s var(--fx-ease-io); }
 .fx-in[data-fx="line-draw-box"] rect { stroke-dashoffset: 0; }
 
+/* stagger-scale-row : une rangée qui s'ouvre */
+[data-fx="stagger-scale-row"] > * { opacity: 0; transform: scale(.7); transition: opacity .35s calc(var(--fx-o) * 90ms), transform .6s var(--fx-ease-spring) calc(var(--fx-o) * 90ms); }
+.fx-in[data-fx="stagger-scale-row"] > * { opacity: 1; transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

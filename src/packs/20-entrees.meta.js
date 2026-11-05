@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="line-draw-box"><p>…</p></div>',
     '<div data-fx="line-draw-box" style="padding:18px 24px;color:var(--ink)"><b>Plan directeur</b></div>',
     { trigger: 'Rejouer' }),
+  E('stagger-scale-row', 'Entrée',
+    'Une rangée d\'éléments s\'ouvre depuis son centre vers ses bords.',
+    'Équilibré, symétrique, sûr de lui.',
+    'Aucun réglage.',
+    'Logos, icônes de réseaux, boutons.',
+    'Une rangée de 2 éléments.',
+    '<div data-fx="stagger-scale-row">…</div>',
+    '<div class="demo-row" data-fx="stagger-scale-row"><div class="demo-box" style="width:38px;height:38px"></div><div class="demo-box alt" style="width:38px;height:38px"></div><div class="demo-box ink" style="width:38px;height:38px"></div><div class="demo-box alt" style="width:38px;height:38px"></div><div class="demo-box" style="width:38px;height:38px"></div></div>',
+    { trigger: 'Rejouer' }),
 ];
