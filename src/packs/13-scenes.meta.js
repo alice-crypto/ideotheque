@@ -233,4 +233,13 @@ module.exports = [
     'Les sections sans fond : on ne voit plus la carte.',
     '<section data-fx="card-recede">…</section>',
     '<div class="demo-box alt" data-fx="card-recede" data-fx-demo="1" style="width:210px;height:150px"></div>'),
+  E('speed-lines', 'Défilement',
+    'Des traits verticaux apparaissent quand on défile vite, puis s\'effacent au repos.',
+    'Bande dessinée, sensation de vitesse.',
+    '- `data-fx-lines` (26) : nombre de traits\n- `--fx-line` : couleur',
+    'Sites de sport, automobile, jeu vidéo.',
+    'Les ambiances calmes.',
+    '<section data-fx="speed-lines">…</section>',
+    '<div data-fx="speed-lines" data-fx-demo="1" style="width:220px;height:150px;color:var(--ink)"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, aucun trait n\'apparaît.' }),
 ];

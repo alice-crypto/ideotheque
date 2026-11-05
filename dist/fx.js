@@ -3961,6 +3961,35 @@
       el.style.setProperty('--fx-out', (el.dataset.fxDemo ? info.pass : out).toFixed(3));
     }
   });
+
+  // Des lignes de vitesse apparaissent quand on défile vite
+  FX.register('speed-lines', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-speed', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxLn = [];
+      for (var i = 0; i < U.num(el, 'fxLines', 26); i++) el._fxLn.push({ x: Math.random(), y: Math.random(), k: U.rand(.4, 1) });
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var v = el.dataset.fxDemo ? 60 * (.5 + .5 * Math.sin(t * .002)) : U.velocity();
+      var c = cv.getContext('2d');
+      c.clearRect(0, 0, w, h);
+      if (Math.abs(v) < 1) return;
+      c.strokeStyle = getComputedStyle(cv).color;
+      c.lineWidth = 1;
+      el._fxLn.forEach(function (l) {
+        l.y = (l.y + v * l.k * .0009 + 1) % 1;
+        var y = l.y * h, len = Math.abs(v) * l.k * 1.8;
+        c.globalAlpha = Math.min(1, Math.abs(v) / 40) * l.k;
+        c.beginPath(); c.moveTo(l.x * w, y); c.lineTo(l.x * w, y + len); c.stroke();
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
