@@ -8156,6 +8156,13 @@
       p.style.setProperty('--fx-d', i * 70 + 'ms');
     });
   } } });
+
+  // Un grand triangle balaye l'écran depuis le coin le plus proche
+  FX.register('corner-sweep', { transition: { pieces: 1, cover: 780, uncover: 800, build: function (o) {
+    var e = o._fxEvent, x = e && e.clientX != null ? e.clientX : 0, y = e && e.clientY != null ? e.clientY : 0;
+    o.style.setProperty('--fx-sx', x < innerWidth / 2 ? 1 : -1);
+    o.style.setProperty('--fx-sy', y < innerHeight / 2 ? 1 : -1);
+  } } });
 })(window.FX);
 
 window.FX._boot();

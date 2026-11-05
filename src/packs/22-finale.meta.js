@@ -145,4 +145,13 @@ module.exports = [
     '<a href="/page" data-fx="ripple-rings">Page</a>',
     '<button class="demo-ghost" onclick="FX.play(\'ripple-rings\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, aucune transition.' }),
+  E('corner-sweep', 'Transition',
+    'Un grand pan de couleur balaye l\'écran en diagonale depuis le coin le plus proche du clic.',
+    'Vif, le geste part de la main.',
+    '- `--fx-tr-color` : couleur',
+    'Sport, mode, sites énergiques.',
+    'Les navigations très fréquentes.',
+    '<a href="/page" data-fx="corner-sweep">Page</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'corner-sweep\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, aucune transition.' }),
 ];
