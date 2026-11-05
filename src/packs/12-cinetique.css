@@ -111,3 +111,9 @@
   40% { transform: translateY(var(--fx-hop, -.35em)) scaleY(1.08); }
   75% { transform: translateY(0) scaleY(.9); }
 }
+
+/* half-shift : le mot se coupe en deux */
+[data-fx="half-shift"] { display: inline-grid; white-space: nowrap; }
+[data-fx="half-shift"] span { grid-area: 1 / 1; }
+[data-fx="half-shift"] .fx-h-a { clip-path: inset(0 0 50% 0); transform: translateX(var(--fx-shift, 0)); }
+[data-fx="half-shift"] .fx-h-b { clip-path: inset(50% 0 0 0); transform: translateX(calc(var(--fx-shift, 0px) * -1)); }
