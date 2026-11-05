@@ -298,4 +298,16 @@
       el._fxT.setAttribute('baseFrequency', (.012 + Math.sin(t * .0007) * .004).toFixed(4) + ' ' + (.05 + Math.cos(t * .0009) * .012).toFixed(4));
     }
   });
+
+  // L'image apparaît par lignes de plus en plus épaisses
+  FX.register('scan-reveal', {
+    entrance: true,
+    setup: function (el) { el.style.setProperty('--fx-line', '0px'); },
+    reset: function (el) { el.style.setProperty('--fx-line', '0px'); },
+    enter: function (el) {
+      var gap = U.num(el, 'fxGap', 10);
+      U.tween(el, U.num(el, 'fxDuration', 1100), function (p) { el.style.setProperty('--fx-line', (U.easeInOut(p) * (gap + 1)).toFixed(2) + 'px'); }, function () { el.style.setProperty('--fx-line', (gap + 2) + 'px'); });
+      el.style.setProperty('--fx-gap', gap + 'px');
+    }
+  });
 })(window.FX);
