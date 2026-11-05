@@ -73,6 +73,15 @@
       annee: { phrase: 'Décembre pèse presque un cinquième de votre année.', labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'], a: [40, 38, 46, 50, 54, 60, 48, 36, 58, 64, 78, 100], b: [18, 20, 24, 28, 30, 34, 30, 22, 36, 44, 60, 86] }
       /*@datajs*/
     };
+    function drawSales(p) {
+      var d = DATA[p], bars = document.getElementById('bars'), html = '';
+      d.labels.forEach(function (l, i) {
+        html += '<span style="flex:1;display:flex;align-items:flex-end;gap:2px;height:100%;min-width:0"><i style="--v:' + d.a[i] + ';--n:' + i + '"></i><i class="r" style="--v:' + d.b[i] + ';--n:' + i + '"></i></span>';
+      });
+      bars.innerHTML = html;
+      bars.setAttribute('aria-label', d.phrase);
+      /*@drawjs*/
+    }
     /*@js*/
   </script>
 </body>
