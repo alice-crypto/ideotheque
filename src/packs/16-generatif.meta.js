@@ -200,4 +200,13 @@ module.exports = [
     '<div data-fx="stipple-sun" style="height:300px"></div>',
     '<div data-fx="stipple-sun" style="width:230px;height:170px;color:var(--ink)"></div>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
+  E('wire-globe', 'Ambiance',
+    'Un globe en fil de fer tourne sur lui-même, et sa vitesse et son inclinaison suivent le curseur.',
+    'Présence mondiale, station de contrôle.',
+    '- `--fx-line` : couleur des lignes',
+    'Portée internationale, réseaux, logistique.',
+    'Un site purement local.',
+    '<div data-fx="wire-globe" style="height:400px"></div>',
+    '<div data-fx="wire-globe" style="width:230px;height:170px"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le globe reste immobile.' }),
 ];

@@ -4313,6 +4313,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="stipple-sun"] { isolation: isolate; overflow: hidden; }
 [data-fx="stipple-sun"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-point, currentColor); }
 
+/* wire-globe : un globe en fil de fer */
+[data-fx="wire-globe"] { isolation: isolate; overflow: hidden; }
+[data-fx="wire-globe"] .fx-gen { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; color: var(--fx-line, var(--fx-accent)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
