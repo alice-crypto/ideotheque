@@ -147,4 +147,13 @@ module.exports = [
     '<ul data-fx="list-strike-in"><li>…</li><li>…</li></ul>',
     '<div data-fx="list-strike-in" style="width:210px;color:var(--ink);font-size:15px"><div>Direction</div><div>Image</div><div>Son</div></div>',
     { trigger: 'Rejouer' }),
+  E('depth-focus-in', 'Entrée',
+    'Les éléments arrivent du fond de l\'écran et deviennent nets en approchant.',
+    'Caméra qui fait le point, profondeur cinématographique.',
+    'Aucun réglage.',
+    'Cartes, listes courtes, images.',
+    'De nombreux éléments : le flou est coûteux.',
+    '<div data-fx="depth-focus-in">…</div>',
+    '<div data-fx="depth-focus-in" style="display:flex;gap:6px"><div class="demo-box" style="width:60px;height:80px"></div><div class="demo-box alt" style="width:60px;height:80px"></div><div class="demo-box ink" style="width:60px;height:80px"></div></div>',
+    { trigger: 'Rejouer' }),
 ];
