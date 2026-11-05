@@ -158,4 +158,9 @@ img, svg { display: block; max-width: 100%; }
   .dbody { padding-inline: 14px; }
   .dtop { flex-wrap: wrap; padding-inline: 14px; position: static; }
 }
+@media (prefers-reduced-motion: reduce) {
+  .vbars i, .hbar i { animation: none; }
+  .pbtn { transition: none; }
+  html { scroll-behavior: auto; }
+}
 /*@css*/
