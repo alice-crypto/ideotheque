@@ -4751,6 +4751,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="diff-reveal"] ins { background: linear-gradient(var(--fx-ins, rgba(46, 175, 99, .35)), var(--fx-ins, rgba(46, 175, 99, .35))) no-repeat 0 90% / 0 100%; opacity: 0; transition: background-size .4s var(--fx-ease-out) calc(var(--fx-i) * 280ms), opacity .2s calc(var(--fx-i) * 280ms); }
 .fx-in[data-fx="diff-reveal"] ins { opacity: 1; background-size: 100% 100%; }
 
+/* context-chips : ce que l'assistant lit */
+[data-fx="context-chips"] { display: flex; flex-wrap: wrap; gap: 5px; font-size: 12px; }
+[data-fx="context-chips"] .fx-cc { padding: .25em .7em; border-radius: 6px; background: var(--fx-chip, rgba(128, 128, 128, .2)); animation: fx-cc .9s var(--fx-ease-out) both; }
+@keyframes fx-cc { 0% { transform: translateY(6px) scale(.9); opacity: 0; } 35% { transform: none; opacity: 1; background: var(--fx-accent); color: #111; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

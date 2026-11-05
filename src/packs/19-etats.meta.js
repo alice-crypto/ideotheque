@@ -48,4 +48,13 @@ module.exports = [
     '<p data-fx="diff-reveal">Un texte <del>trop long</del> <ins>plus court</ins>.</p>',
     '<p data-fx="diff-reveal" style="width:220px;color:var(--ink);font-size:18px">Un texte <del>trop long</del> <ins>plus court</ins> et <del>flou</del> <ins>précis</ins>.</p>',
     { trigger: 'Rejouer', a11y: '`<del>` et `<ins>` gardent leur sens pour les technologies d\'assistance.' }),
+  E('context-chips', 'État',
+    'De petites étiquettes apparaissent une à une pour montrer ce que l\'assistant lit.',
+    'Transparence, on sait sur quoi repose la réponse.',
+    '- `data-fx-items` : éléments séparés par `|`\n- `data-fx-step` (500) : millisecondes entre deux étiquettes',
+    'Assistants avec recherche ou fichiers.',
+    'D\'afficher des fichiers que l\'assistant ne lit pas vraiment.',
+    '<div data-fx="context-chips" data-fx-items="a.pdf|b.md"></div>',
+    '<div data-fx="context-chips" style="width:220px;color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Les ajouts sont annoncés par `aria-live`.' }),
 ];

@@ -6772,6 +6772,26 @@
       el.querySelectorAll('del,ins').forEach(function (d, i) { d.style.setProperty('--fx-i', i); });
     }
   });
+
+  // De petites étiquettes montrent ce que l'assistant est en train de lire
+  FX.register('context-chips', {
+    entrance: true,
+    setup: function (el) {
+      el._fxList = (el.dataset.fxItems || 'rapport.pdf|notes.md|budget.xlsx').split('|');
+      el.setAttribute('aria-live', 'polite');
+    },
+    reset: function (el) { el._fxK = (el._fxK || 0) + 1; el.textContent = ''; },
+    enter: function (el) {
+      var run = el._fxK = (el._fxK || 0) + 1, i = 0;
+      el.textContent = '';
+      (function add() {
+        if (run !== el._fxK || i >= el._fxList.length) return;
+        var s = U.make('span', 'fx-cc', el);
+        s.textContent = el._fxList[i++];
+        if (U.reduced) add(); else setTimeout(add, U.num(el, 'fxStep', 500));
+      })();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
