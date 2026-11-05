@@ -156,4 +156,12 @@ module.exports = [
     '<span data-fx="save-pill"></span>',
     '<span data-fx="save-pill" data-fx-demo="1" style="color:var(--ink);font-size:16px"></span>',
     { trigger: 'Enregistrer', a11y: 'Rôle `status`, annoncé aux lecteurs d\'écran.' }),
+  E('empty-state-float', 'État',
+    'Une illustration flotte doucement, son ombre suit, et un message invite à commencer.',
+    'Chaleureux, un écran vide qui donne envie d\'agir.',
+    'Le premier enfant flotte, les suivants sont le texte et le bouton.',
+    'Listes vides, premier usage, résultats absents.',
+    'De masquer une erreur derrière un état vide.',
+    '<div data-fx="empty-state-float"><img src="vide.svg" alt=""><p>Rien pour l\'instant.</p></div>',
+    '<div data-fx="empty-state-float" style="color:var(--ink);font-size:13px"><div class="demo-box" style="width:70px;height:70px;border-radius:50%"></div><p>Rien pour l\'instant.</p></div>'),
 ];
