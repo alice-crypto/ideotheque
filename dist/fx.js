@@ -5463,6 +5463,47 @@
       });
     }
   });
+
+  // Des formes colorées se multiplient en kaléidoscope
+  FX.register('kaleidoscope', {
+    setup: function (el) {
+      U.ensurePositioned(el);
+      el._fxCv = U.make('canvas', 'fx-gen', el);
+      el._fxCv.setAttribute('aria-hidden', 'true');
+      el._fxS = (el.dataset.fxColors || '#e10600,#ffd400,#0047ff').split(',');
+    },
+    tick: function (el, dt, t) {
+      var cv = el._fxCv, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (U.reduced && el._fxDone) return;
+      el._fxDone = true;
+      if (cv.width !== w) { cv.width = w; cv.height = h; }
+      var c = cv.getContext('2d'), n = U.num(el, 'fxSides', 8), R = Math.max(w, h) * .62, T = t * .0003;
+      c.clearRect(0, 0, w, h);
+      c.save();
+      c.translate(w / 2, h / 2);
+      for (var i = 0; i < n * 2; i++) {
+        c.save();
+        c.rotate(i * Math.PI / n);
+        if (i % 2) c.scale(1, -1);
+        c.beginPath();
+        c.moveTo(0, 0);
+        c.arc(0, 0, R, 0, Math.PI / n);
+        c.closePath();
+        c.clip();
+        el._fxS.forEach(function (col, k) {
+          c.fillStyle = col;
+          c.beginPath();
+          var r = R * (.18 + k * .22) + Math.sin(T * 4 + k) * R * .1;
+          var a = Math.PI / n * (.5 + .5 * Math.sin(T * 3 + k * 2));
+          c.arc(Math.cos(a) * r, Math.sin(a) * r, R * (.1 + .05 * Math.sin(T * 5 + k)), 0, 7);
+          c.fill();
+        });
+        c.restore();
+      }
+      c.restore();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

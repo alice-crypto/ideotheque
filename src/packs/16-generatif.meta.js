@@ -121,4 +121,13 @@ module.exports = [
     'Les pages qui n\'ont rien à voir avec le son.',
     '<section data-fx="equalizer-bg">…</section>',
     '<div data-fx="equalizer-bg" style="width:230px;height:170px"></div>'),
+  E('kaleidoscope', 'Ambiance',
+    'Des formes colorées se multiplient par symétrie autour d\'un centre, et se transforment lentement.',
+    'Jouet d\'enfance, vitrail vivant.',
+    '- `data-fx-sides` (8) : nombre de secteurs\n- `data-fx-colors` : couleurs séparées par des virgules',
+    'Écrans d\'attente, festivals, pages ludiques.',
+    'Sous du texte, ou sur une très grande surface.',
+    '<div data-fx="kaleidoscope" style="height:400px"></div>',
+    '<div data-fx="kaleidoscope" style="width:200px;height:170px;border-radius:50%"></div>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, l\'image reste fixe.' }),
 ];
