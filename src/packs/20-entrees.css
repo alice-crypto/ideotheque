@@ -65,3 +65,7 @@
   transition: opacity .5s, --fx-grain-a 1.2s .35s;
 }
 .fx-in[data-fx="grain-fade"] { opacity: 1; --fx-grain-a: 1; }
+
+/* rotate-tile-in : une mosaïque qui s'emboîte */
+[data-fx="rotate-tile-in"] > * { transform: rotate(var(--fx-r, 90deg)) scale(.7); opacity: 0; transition: transform .6s var(--fx-ease-io) calc(var(--fx-i) * 40ms), opacity .25s calc(var(--fx-i) * 40ms); }
+.fx-in[data-fx="rotate-tile-in"] > * { transform: none; opacity: 1; }
