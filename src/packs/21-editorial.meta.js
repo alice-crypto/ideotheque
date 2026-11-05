@@ -101,4 +101,13 @@ module.exports = [
     '<p data-fx="highlight-terms-sweep" data-fx-terms="rapide|simple">Un outil rapide et simple.</p>',
     '<p data-fx="highlight-terms-sweep" data-fx-terms="rapide|simple" style="width:215px;margin:0;color:var(--ink);font-size:18px">Un outil rapide à prendre en main et simple à partager.</p>',
     { trigger: 'Rejouer', a11y: '`<mark>` garde son sens pour les technologies d\'assistance.' }),
+  E('footnote-spring', 'Micro-interaction',
+    'Un clic sur une référence amène à sa note, qui rebondit et s\'allume pour se signaler.',
+    'On ne perd pas sa ligne, on trouve tout de suite.',
+    'Les références sont des liens vers l\'ancre de la note.',
+    'Articles, rapports, documentation.',
+    'Rien : c\'est un petit confort sans inconvénient.',
+    '<article data-fx="footnote-spring"><a href="#n1">1</a> … <p id="n1">Note.</p></article>',
+    '<div data-fx="footnote-spring" style="width:215px;color:var(--ink);font-size:13px"><p style="margin:0 0 10px">Voir la note <a href="#fx-n-demo" style="color:var(--fx-accent)">1</a>.</p><p id="fx-n-demo" style="margin:0;padding:4px">1. Vérifiée en 2026.</p></div>',
+    { a11y: 'Le focus passe sur la note.' }),
 ];

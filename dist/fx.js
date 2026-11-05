@@ -7648,6 +7648,23 @@
       });
     }
   });
+
+  // Une référence amène à sa note, qui rebondit pour se signaler
+  FX.register('footnote-spring', {
+    setup: function (el) {
+      el.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        var t = document.querySelector(a.getAttribute('href').length > 1 ? a.getAttribute('href') : null);
+        if (!t) return;
+        e.preventDefault();
+        t.scrollIntoView({ behavior: U.reduced ? 'auto' : 'smooth', block: 'center' });
+        t.classList.remove('fx-fn'); void t.offsetWidth; t.classList.add('fx-fn');
+        if (!t.hasAttribute('tabindex')) t.tabIndex = -1;
+        t.focus({ preventScroll: true });
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

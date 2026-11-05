@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->445<!-- /total --> effets.
+La bibliothèque contient <!-- total -->446<!-- /total --> effets.
 
 ## Règles
 
@@ -235,6 +235,7 @@ La bibliothèque contient <!-- total -->445<!-- /total --> effets.
 | `tag-delete` | Micro-interaction | L'étiquette supprimée s'envole vers le haut, et les autres glissent pour combler la place |
 | `copy-pop-toast` | Micro-interaction | Une petite bulle apparaît à l'endroit du clic pour confirmer l'action, puis s'envole |
 | `knob-dial` | Micro-interaction | Un bouton rotatif qu'on tourne en glissant vers le haut ou vers le bas, comme sur une console |
+| `footnote-spring` | Micro-interaction | Un clic sur une référence amène à sa note, qui rebondit et s'allume pour se signaler |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
