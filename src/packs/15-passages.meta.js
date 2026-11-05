@@ -39,4 +39,13 @@ module.exports = [
     '<a href="/journal" data-fx="ink-drops">Journal</a>',
     '<button class="demo-ghost" onclick="FX.play(\'ink-drops\', null, event)">Lancer la transition</button>',
     { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
+  E('stair-bars', 'Transition',
+    'Des colonnes montent l\'une après l\'autre en escalier, puis repartent vers le haut.',
+    'Rythme musical, un clavier qu\'on parcourt.',
+    '- `--fx-tr-color` : couleur des colonnes',
+    'Sites de musique, d\'événements, de sport.',
+    'Les navigations très fréquentes.',
+    '<a href="/agenda" data-fx="stair-bars">Agenda</a>',
+    '<button class="demo-ghost" onclick="FX.play(\'stair-bars\', null, event)">Lancer la transition</button>',
+    { a11y: 'Avec `prefers-reduced-motion: reduce`, le changement de page se fait sans transition.' }),
 ];
