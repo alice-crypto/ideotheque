@@ -111,4 +111,13 @@ module.exports = [
     '<figure data-fx="grain-fade"><img src="photo.jpg" alt="…"></figure>',
     '<div class="demo-media" data-fx="grain-fade"><img src="assets/dune.svg" alt=""></div>',
     { trigger: 'Rejouer' }),
+  E('rotate-tile-in', 'Entrée',
+    'Les tuiles d\'une mosaïque arrivent en pivotant de quarts de tour, et s\'emboîtent.',
+    'Casse-tête résolu, mécanique et jeu.',
+    'Aucun réglage : les angles sont aléatoires.',
+    'Motifs décoratifs, icônes carrées.',
+    'Les images avec du texte.',
+    '<div data-fx="rotate-tile-in">…</div>',
+    '<div class="demo-grid" data-fx="rotate-tile-in"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
+    { trigger: 'Rejouer' }),
 ];

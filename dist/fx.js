@@ -7272,6 +7272,17 @@
       el.style.setProperty('--fx-noise', FX._fxGrainUrl);
     }
   });
+
+  // Les tuiles pivotent d'un quart de tour pour se ranger
+  FX.register('rotate-tile-in', {
+    entrance: true,
+    setup: function (el) {
+      Array.prototype.forEach.call(el.children, function (c, i) {
+        c.style.setProperty('--fx-r', [90, 180, 270, -90][Math.floor(Math.random() * 4)] + 'deg');
+        c.style.setProperty('--fx-i', i);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
