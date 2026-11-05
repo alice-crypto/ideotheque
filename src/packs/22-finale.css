@@ -228,6 +228,7 @@
 [data-fx="vertical-type-flip"]:hover .fx-char { transform: translate(calc((var(--fx-i) - var(--fx-n) / 2) * .9em), calc((var(--fx-n) / 2 - var(--fx-i)) * 1em)); }
 
 /* stamp-word : un mot qui frappe */
+[data-fx="stamp-word"] { overflow-x: clip; }
 [data-fx="stamp-word"] .fx-word { opacity: 0; transform: scale(2.4); transition: transform .28s cubic-bezier(.7, 0, .9, .4) calc(var(--fx-i) * 200ms), opacity .1s calc(var(--fx-i) * 200ms); }
 .fx-in[data-fx="stamp-word"] .fx-word { opacity: 1; transform: none; }
 
