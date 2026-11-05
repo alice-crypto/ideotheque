@@ -118,4 +118,9 @@ img, svg { display: block; max-width: 100%; }
 .dtable td { padding: 9px 8px; border-bottom: 1px solid var(--k); }
 .dtable td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .dtable tbody tr:hover { background: var(--y); }
+.vbars { display: flex; align-items: flex-end; gap: 6px; height: 190px; border-bottom: var(--rule); }
+.vbars i { flex: 1; display: block; height: calc(var(--v) * 1%); background: var(--b); transform-origin: bottom; animation: pr-bar .8s var(--fx-ease-out) both; animation-delay: calc(var(--n, 0) * 40ms); }
+.vbars i.r { background: var(--r); }
+.vbars i.y { background: var(--y); outline: 1px solid var(--k); outline-offset: -1px; }
+@keyframes pr-bar { from { transform: scaleY(0); } }
 /*@css*/
