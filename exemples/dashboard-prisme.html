@@ -126,6 +126,15 @@
       });
       document.getElementById('vide').hidden = n > 0;
     });
+    document.querySelectorAll('#tclients th').forEach(function (th, col) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = th.textContent;
+      b.style.cssText = 'all:unset;cursor:pointer';
+      th.textContent = '';
+      th.appendChild(b);
+      /*@sortjs*/
+    });
     /*@js*/
   </script>
 </body>
