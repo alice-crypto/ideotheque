@@ -82,6 +82,15 @@
         bar.style.width = ((TOTAL - left) / TOTAL * 100) + '%';
       }
       function stop() { clearInterval(timer); timer = null; go.textContent = 'Lancer'; }
+      go.addEventListener('click', function () {
+        if (timer) return stop();
+        go.textContent = 'Pause';
+        timer = setInterval(function () {
+          left = Math.max(0, left - 1);
+          show();
+          if (!left) stop();
+        }, 1000);
+      });
       /*@tjs*/
     })();
     /*@js*/
