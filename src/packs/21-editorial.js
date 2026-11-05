@@ -34,4 +34,14 @@
       });
     }
   });
+
+  // Une grande citation monte, précédée de ses guillemets
+  FX.register('pull-quote-rise', {
+    entrance: true,
+    setup: function (el) {
+      var r = function () { U.splitLines(el); };
+      r();
+      U.onResize(r);
+    }
+  });
 })(window.FX);
