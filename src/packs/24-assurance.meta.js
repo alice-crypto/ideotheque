@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="life-events-rail" data-fx-items="20:Études:Santé|30:Enfant:Famille"></div>',
     '<div data-fx="life-events-rail" style="color:var(--ink)"></div>',
     { a11y: 'Curseur nommé, résultat annoncé.' }),
+  E('quote-resume', 'Micro-interaction',
+    'Un formulaire s\'enregistre en local à chaque saisie, et se reprend à la visite suivante.',
+    'Respect du temps déjà donné.',
+    '- `data-fx-key` : clé d\'enregistrement\n- chaque champ doit avoir un `name`',
+    'Devis, candidatures, longs formulaires.',
+    'D\'enregistrer des données de santé ou bancaires dans le navigateur.',
+    '<form data-fx="quote-resume"><input name="ville"></form>',
+    '<form data-fx="quote-resume" data-fx-key="fx-demo-quote" style="color:var(--ink)"><input name="ville" placeholder="Votre ville" aria-label="Ville" style="padding:6px"><input name="km" placeholder="Km par an" aria-label="Km par an" style="padding:6px"></form>',
+    { a11y: 'Les messages sont dans une région `status`. Les champs sensibles ne doivent pas être enregistrés.' }),
 ];

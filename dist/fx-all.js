@@ -9634,6 +9634,30 @@
       go();
     }
   });
+
+  // Un devis qui se reprend là où on l'avait laissé, sur le même appareil
+  FX.register('quote-resume', {
+    setup: function (el) {
+      var key = el.dataset.fxKey || 'fx-quote', bar = document.createElement('div'), saved = null;
+      bar.className = 'fx-qr'; bar.setAttribute('role', 'status');
+      el.insertBefore(bar, el.firstChild);
+      var fields = el.querySelectorAll('input,select,textarea');
+      var read = function () { var o = {}; fields.forEach(function (f) { if (f.name) o[f.name] = f.type === 'checkbox' ? f.checked : f.value; }); return o; };
+      var write = function (o) { fields.forEach(function (f) { if (f.name in o) { if (f.type === 'checkbox') f.checked = o[f.name]; else f.value = o[f.name]; } }); };
+      try { saved = JSON.parse(localStorage.getItem(key)); } catch (err) {}
+      var tell = function (t) { bar.textContent = t; bar.classList.remove('fx-go'); void bar.offsetWidth; bar.classList.add('fx-go'); };
+      if (saved && saved.d) {
+        write(saved.d);
+        tell('Devis repris. ');
+        var b = U.make('button', '', bar);
+        b.type = 'button'; b.textContent = 'Repartir de zéro';
+        b.addEventListener('click', function () { fields.forEach(function (f) { if (f.type === 'checkbox') f.checked = false; else f.value = ''; }); try { localStorage.removeItem(key); } catch (err) {} tell('Formulaire vidé.'); });
+      }
+      el.addEventListener('input', function () {
+        try { localStorage.setItem(key, JSON.stringify({ d: read() })); tell('Enregistré sur cet appareil'); } catch (err) {}
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
