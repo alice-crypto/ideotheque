@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="window-light"></div>',
     '<div data-fx="window-light" style="width:215px"></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran ; fixe en mouvement réduit.' }),
+  E('project-sheet', 'Présentation',
+    'Une fiche technique trace ses filets et révèle ses informations ligne par ligne.',
+    'Rigueur d\'agence, chaque chiffre à sa place.',
+    '- `data-fx-items` : « étiquette:valeur » séparés par `|`',
+    'Projets, produits, fiches techniques.',
+    'Des mentions légales trop longues : la fiche doit rester courte.',
+    '<div data-fx="project-sheet" data-fx-items="Surface:1 480 m²|Lieu:Bordeaux"></div>',
+    '<div data-fx="project-sheet" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Vraie liste de définitions.' }),
 ];
