@@ -266,4 +266,24 @@
     tick: function (el, dt) { el._fxTick(dt); },
     trigger: function (el) { el._fxOn(); setTimeout(el._fxOff, 1300); }
   });
+
+  // Une cuve et ses deux vannes : le niveau monte ou descend en continu
+  FX.register('tank-valve', {
+    setup: function (el) {
+      var lv = U.num(el, 'fxLevel', 40) / 100;
+      el.innerHTML = '<button type="button" class="in" aria-pressed="true">Vanne d\'entrée</button><div class="fx-tv" aria-hidden="true"><i></i></div><button type="button" class="out" aria-pressed="false">Vanne de sortie</button><output aria-live="polite"></output>';
+      var bi = el.querySelector('.in'), bo = el.querySelector('.out'), o = el.querySelector('output');
+      [bi, bo].forEach(function (b) { b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); }); });
+      var last = -1;
+      el._fxStep = function (dt) {
+        var a = bi.getAttribute('aria-pressed') === 'true', c = bo.getAttribute('aria-pressed') === 'true';
+        lv = U.clamp(lv + ((a ? .1 : 0) - (c ? .14 : 0)) * dt, 0, 1);
+        el.style.setProperty('--fx-q', lv);
+        el.classList.toggle('fx-a', a); el.classList.toggle('fx-c', c);
+        var v = Math.round(lv * 100);
+        if (Math.floor(v / 5) !== last) { last = Math.floor(v / 5); o.textContent = v + ' %' + (v >= 95 ? ', cuve pleine' : v <= 5 ? ', cuve vide' : ''); }
+      };
+    },
+    tick: function (el, dt) { if (el._fxStep) el._fxStep(dt); }
+  });
 })(window.FX);
