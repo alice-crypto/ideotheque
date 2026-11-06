@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="axo-explode" data-fx-items="Toiture|Socle"></div>',
     '<div data-fx="axo-explode" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés, écartement aussi au focus, et le nom est annoncé.' }),
+  E('material-swatch', 'Micro-interaction',
+    'Des échantillons changent le matériau de la façade dans un balayage.',
+    'On touche la matière sans échantillon en main.',
+    '- `--fx-w` (210px)',
+    'Architecture, configurateurs, cuisines, revêtements.',
+    'De laisser ces textures sur un vrai projet : utilisez de vraies photos de matière.',
+    '<div data-fx="material-swatch"></div>',
+    '<div data-fx="material-swatch" style="color:var(--ink)"></div>',
+    { a11y: 'Échantillons nommés, choix exposé et annoncé.' }),
 ];
