@@ -354,4 +354,19 @@
       });
     }
   });
+
+  // Des intérêts qui s'accumulent à la seconde
+  FX.register('interest-accrual', {
+    setup: function (el) {
+      el._fxBase = U.num(el, 'fxCapital', 10000);
+      el._fxPerS = el._fxBase * U.num(el, 'fxRate', 3) / 100 / 31536000;
+      el._fxStart = Date.now();
+      el.setAttribute('role', 'timer');
+      el.innerHTML = '<b></b><small>' + U.num(el, 'fxRate', 3) + ' % par an, à titre d\'illustration</small>';
+    },
+    tick: function (el) {
+      var v = el._fxBase + el._fxPerS * (Date.now() - el._fxStart) / 1000;
+      el.firstChild.textContent = v.toLocaleString('fr-FR', { minimumFractionDigits: 6, maximumFractionDigits: 6 }) + ' €';
+    }
+  });
 })(window.FX);

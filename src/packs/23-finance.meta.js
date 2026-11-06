@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="coin-stacks" data-fx-items="2025:18|2026:27"></div>',
     '<div data-fx="coin-stacks" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Les valeurs sont dans `aria-label`.' }),
+  E('interest-accrual', 'Présentation',
+    'Un montant grandit à la seconde près, jusqu\'au millionième, pour rendre concret l\'effet d\'un taux.',
+    'L\'argent travaille pendant qu\'on lit.',
+    '- `data-fx-capital` (10000), `data-fx-rate` (3)',
+    'Comptes d\'épargne, pédagogie financière.',
+    'De laisser croire que le gain est garanti.',
+    '<div data-fx="interest-accrual" data-fx-capital="10000" data-fx-rate="3"></div>',
+    '<div data-fx="interest-accrual" style="color:var(--ink)"></div>',
+    { a11y: 'Rôle `timer`, qui n\'est pas annoncé en continu.' }),
 ];
