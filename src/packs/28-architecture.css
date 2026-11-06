@@ -30,3 +30,13 @@
 [data-fx="material-swatch"] button { width: 34px; height: 34px; padding: 0; border: 2px solid transparent; border-radius: 50%; cursor: pointer; transition: transform .2s var(--fx-ease-spring); }
 [data-fx="material-swatch"] [aria-pressed="true"] { border-color: currentColor; transform: scale(1.12); }
 @keyframes fx-ms { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0); } }
+
+/* project-index : un index de projets */
+[data-fx="project-index"] { display: grid; width: min(100%, var(--fx-w, 235px)); font-size: 14px; }
+[data-fx="project-index"] button { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: baseline; padding: 6px 0; border: 0; border-top: 1px solid currentColor; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+[data-fx="project-index"] span { transition: transform .3s var(--fx-ease-out); }
+[data-fx="project-index"] [aria-expanded="true"] span, [data-fx="project-index"] button:hover span { transform: translateX(6px); }
+[data-fx="project-index"] small { font-size: 10px; opacity: .75; }
+[data-fx="project-index"] .fx-pi { max-height: 0; overflow: hidden; transition: max-height .45s var(--fx-ease-out); }
+[data-fx="project-index"] [aria-expanded="true"] + .fx-pi { max-height: 80px; }
+[data-fx="project-index"] img { display: block; width: 100%; height: 80px; object-fit: cover; }
