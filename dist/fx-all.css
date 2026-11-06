@@ -6598,6 +6598,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="floor-view"] input { min-width: 0; accent-color: var(--fx-accent); }
 [data-fx="floor-view"] output b { font-size: 14px; }
 
+/* rent-ratio : la règle des trois fois */
+[data-fx="rent-ratio"] { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="rent-ratio"] label { display: grid; gap: 2px; }
+[data-fx="rent-ratio"] input { width: 100%; box-sizing: border-box; padding: 4px; font: inherit; }
+[data-fx="rent-ratio"] .fx-rr { grid-column: 1 / -1; display: flex; gap: 3px; }
+[data-fx="rent-ratio"] .fx-rr i { flex: 1; height: 18px; background: linear-gradient(90deg, var(--fx-warn, #e8930c) calc(var(--fx-f, 0) * 100%), color-mix(in srgb, currentColor 15%, transparent) 0); transition: background .2s; }
+[data-fx="rent-ratio"].fx-ok .fx-rr i { background: linear-gradient(90deg, var(--fx-ok, #2eaf63) calc(var(--fx-f, 0) * 100%), color-mix(in srgb, currentColor 15%, transparent) 0); }
+[data-fx="rent-ratio"] output { grid-column: 1 / -1; font-size: 12px; font-weight: 700; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

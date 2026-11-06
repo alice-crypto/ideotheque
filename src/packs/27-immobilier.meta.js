@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="floor-view" data-fx-floors="8"></div>',
     '<div data-fx="floor-view" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, étage et prix annoncés.' }),
+  E('rent-ratio', 'Micro-interaction',
+    'Revenu et loyer remplissent des blocs, et le seuil des trois fois est vérifié.',
+    'On sait à quoi s\'attendre avant d\'envoyer son dossier.',
+    '- `data-fx-income`, `data-fx-rent`, `data-fx-ratio` (3)',
+    'Location, garant, comparaison de budget.',
+    'De faire passer cette règle d\'usage pour une loi : d\'autres garanties existent.',
+    '<div data-fx="rent-ratio" data-fx-income="2400" data-fx-rent="900"></div>',
+    '<div data-fx="rent-ratio" style="color:var(--ink)"></div>',
+    { a11y: 'Champs étiquetés, résultat annoncé.' }),
 ];
