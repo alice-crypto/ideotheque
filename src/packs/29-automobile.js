@@ -429,4 +429,20 @@
       el.innerHTML = '<div class="fx-ss2" role="img" aria-label="' + n + ' étoiles sur 5">' + h + '</div><ul>' + R.map(function (r, i) { return '<li style="--fx-q:' + r[1] / 100 + ';--fx-i:' + i + '"><span>' + r[0] + '</span><em></em><b>' + r[1] + ' %</b></li>'; }).join('') + '</ul><small>Résultats fictifs</small>';
     }
   });
+
+  // Une voiture passe dans l'angle mort, et le témoin s'allume
+  FX.register('blind-spot', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-bs" aria-hidden="true"><i class="fx-bs-z"></i><i class="fx-bs-m"></i><i class="fx-bs-o"></i><u></u></div><output aria-live="off"></output>';
+      el._fxO = el.querySelector('.fx-bs-o'); el._fxOut = el.querySelector('output');
+      el._fxOut.textContent = 'Voie libre';
+    },
+    tick: function (el, dt, t) {
+      var q = ((t / U.num(el, 'fxPace', 5)) % 1), y = 130 - q * 180;
+      if (U.reduced) y = 40;
+      el._fxO.style.transform = 'translateY(' + y + 'px)';
+      var near = y > 10 && y < 80;
+      if (near !== el._fxNear) { el._fxNear = near; el.classList.toggle('fx-alert', near); el._fxOut.textContent = near ? 'Véhicule dans l\'angle mort' : 'Voie libre'; }
+    }
+  });
 })(window.FX);
