@@ -146,3 +146,11 @@
 [data-fx="pool-card"] i { position: absolute; width: 20px; height: 20px; margin: -10px; border: 2px solid #fff; border-radius: 50%; animation: fx-pool-ring 1.2s ease-out forwards; }
 @keyframes fx-pool-caustic { to { background-position: 40px 30px, -30px 40px, 0 0; } }
 @keyframes fx-pool-ring { to { transform: scale(7); opacity: 0; } }
+
+/* sunset-bar : l'heure du coucher de soleil */
+[data-fx="sunset-bar"] { width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="sunset-bar"] .fx-sb2 { position: relative; height: 18px; border-radius: 9px; background: linear-gradient(90deg, #111a39 0 22%, #f6a56a 28%, #8fd2f6 40% 66%, #f2823f 76%, #1e1432 84%); }
+[data-fx="sunset-bar"] i { position: absolute; left: calc(var(--fx-q) * 100%); top: -3px; bottom: -3px; width: 2px; background: #fff; box-shadow: 0 0 0 1px #000; }
+[data-fx="sunset-bar"] u { position: absolute; left: calc(var(--fx-s) * 100%); top: 2px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #ffcb4f; box-shadow: 0 0 10px #ff9b2f; }
+[data-fx="sunset-bar"] p { margin: 7px 0 0; }
+[data-fx="sunset-bar"] b { font-size: 18px; }
