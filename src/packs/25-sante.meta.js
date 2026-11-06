@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="ecg-line" data-fx-bpm="72"></div>',
     '<div data-fx="ecg-line"></div>',
     { a11y: 'Rôle `img` avec une description. Avec le mouvement réduit, le tracé reste fixe.' }),
+  E('lab-range', 'Présentation',
+    'Un résultat d\'analyse se place sur sa plage de référence, et le statut est écrit.',
+    'Compréhensible sans s\'inquiéter à tort.',
+    '- `data-fx-value`, `data-fx-lo`, `data-fx-hi`, `data-fx-unit`, `data-fx-name`',
+    'Résultats d\'analyses, indicateurs, seuils techniques.',
+    'D\'interpréter un résultat à la place d\'un soignant : ajoutez toujours ce renvoi.',
+    '<div data-fx="lab-range" data-fx-name="Analyse fictive" data-fx-value="5.8" data-fx-lo="4" data-fx-hi="5.6"></div>',
+    '<div data-fx="lab-range" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Valeur, plage et statut sont écrits en texte, et le statut n\'est pas donné par la seule couleur.' }),
 ];
