@@ -70,4 +70,26 @@
       el.innerHTML = '<div class="fx-rd" aria-hidden="true"><i></i></div><strong>' + days + ' jours</strong><span>' + left + ' comprimés, ' + per + ' par jour</span><span>Boîte vide le ' + end.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }) + '</span>';
     }
   });
+
+  // Une fréquence d'effet indésirable montrée en personnes sur cent
+  FX.register('side-effect-scale', {
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Maux de tête:10|Nausées:5|Vertiges:1').split('|').map(function (r) { return r.split(':'); }), sel = U.make('div', 'fx-se-b', el), dots = U.make('div', 'fx-se', el), out = U.make('output', '', el);
+      dots.setAttribute('aria-hidden', 'true');
+      out.setAttribute('aria-live', 'polite');
+      for (var i = 0; i < 100; i++) U.make('i', '', dots).style.setProperty('--fx-i', i);
+      var pick = function (r, b) {
+        sel.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+        Array.prototype.forEach.call(dots.children, function (d, i) { d.classList.toggle('fx-on', i < +r[1]); });
+        out.textContent = r[0] + ' : environ ' + r[1] + ' personne' + (+r[1] > 1 ? 's' : '') + ' sur 100';
+      };
+      rows.forEach(function (r, i) {
+        var b = U.make('button', '', sel);
+        b.type = 'button'; b.textContent = r[0];
+        b.addEventListener('click', function () { pick(r, b); });
+        if (!i) pick(r, b);
+      });
+      U.make('small', '', el).textContent = 'Valeurs fictives';
+    }
+  });
 })(window.FX);
