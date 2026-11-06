@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->733<!-- /total --> effets.
+La bibliothèque contient <!-- total -->734<!-- /total --> effets.
 
 ## Règles
 
@@ -753,6 +753,7 @@ La bibliothèque contient <!-- total -->733<!-- /total --> effets.
 | `delivery-window` | État | Un créneau de livraison se pose sur la journée, avec un repère à l'heure actuelle |
 | `fleet-dots` | État | Des véhicules circulent sur un plan, et leur état se distingue par la forme et la couleur |
 | `peak-clock` | État | Une horloge de 24 heures montre les heures creuses, avec l'heure réelle et le temps avant la prochaine |
+| `energy-flow` | État | Selon l'heure, des tirets circulent entre le soleil, la maison, la batterie et le réseau |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)

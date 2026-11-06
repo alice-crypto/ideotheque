@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="appliance-meter" data-fx-items="Four:2400|Télé:100"></div>',
     '<div data-fx="appliance-meter" style="color:var(--ink)"></div>',
     { a11y: 'Vraies cases, puissance et coût annoncés. Disque fixe en mouvement réduit.' }),
+  E('energy-flow', 'État',
+    'Selon l\'heure, des tirets circulent entre le soleil, la maison, la batterie et le réseau.',
+    'La maison devient une petite centrale qu\'on comprend.',
+    '- `data-fx-hour` (13)',
+    'Solaire, batteries, tableaux de bord.',
+    'De montrer ce modèle comme un relevé réel : les valeurs sont simulées.',
+    '<div data-fx="energy-flow" data-fx-hour="13"></div>',
+    '<div data-fx="energy-flow" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, bilan écrit et annoncé.' }),
 ];

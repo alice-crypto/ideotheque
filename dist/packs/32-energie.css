@@ -105,3 +105,20 @@
 [data-fx="appliance-meter"] input { margin: 0; accent-color: var(--fx-accent); }
 [data-fx="appliance-meter"] output { grid-column: 1 / -1; }
 [data-fx="appliance-meter"] output b { font-size: 17px; }
+
+/* energy-flow : les flux de la maison */
+[data-fx="energy-flow"] { position: relative; display: grid; gap: 4px; width: min(100%, var(--fx-w, 235px)); font-size: 10px; }
+[data-fx="energy-flow"] svg { width: 100%; }
+[data-fx="energy-flow"] path { fill: none; stroke: color-mix(in srgb, currentColor 22%, transparent); stroke-width: 3; }
+[data-fx="energy-flow"] path.fx-on { stroke: var(--fx-up, #2eaf63); stroke-dasharray: 6 5; animation: fx-energy-run .7s linear infinite; }
+[data-fx="energy-flow"] path.fx-back { stroke: var(--fx-accent); animation-direction: reverse; }
+[data-fx="energy-flow"] circle { fill: currentColor; }
+[data-fx="energy-flow"] span { position: absolute; font-weight: 700; padding: 1px 4px; border-radius: 3px; background: color-mix(in srgb, currentColor 14%, transparent); }
+[data-fx="energy-flow"] .s { left: 4%; top: 12px; }
+[data-fx="energy-flow"] .h { right: 2%; top: 12px; }
+[data-fx="energy-flow"] .g { left: 4%; top: 88px; }
+[data-fx="energy-flow"] .b2 { right: 2%; top: 88px; }
+[data-fx="energy-flow"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
+[data-fx="energy-flow"] input { min-width: 0; accent-color: var(--fx-accent); }
+[data-fx="energy-flow"] output { font-size: 11px; }
+@keyframes fx-energy-run { to { stroke-dashoffset: -11; } }
