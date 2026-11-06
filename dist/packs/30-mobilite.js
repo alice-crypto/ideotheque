@@ -387,4 +387,21 @@
       el.style.setProperty('--fx-b', (-el._fxA * el._fxGear()) + 'deg');
     }
   });
+
+  // Jusqu'où on peut aller avec la batterie qui reste
+  FX.register('battery-radius', {
+    setup: function (el) {
+      var max = U.num(el, 'fxRange', 40), back = el.dataset.fxBack !== 'false';
+      el.innerHTML = '<div class="fx-br" aria-hidden="true"><i></i><u></u></div><label>Batterie <input type="range" min="5" max="100" step="5"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxValue', 60);
+      var go = function () {
+        var q = r.value / 100, km = max * q, reach = back ? km / 2 : km;
+        el.style.setProperty('--fx-q', q);
+        o.innerHTML = '<b>' + r.value + ' %</b> · ' + Math.round(km) + ' km au total, soit ' + Math.round(reach) + ' km avec retour';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

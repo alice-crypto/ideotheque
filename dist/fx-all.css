@@ -7339,6 +7339,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="gear-cogs"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
 [data-fx="gear-cogs"] output b { font-size: 15px; }
 
+/* battery-radius : jusqu'où aller */
+[data-fx="battery-radius"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 220px)); font-size: 11px; }
+[data-fx="battery-radius"] .fx-br { position: relative; height: 108px; overflow: hidden; background: repeating-linear-gradient(90deg, #fff1 0 1px, transparent 1px 22px), repeating-linear-gradient(0deg, #fff1 0 1px, transparent 1px 22px), #55665a; }
+[data-fx="battery-radius"] .fx-br i { position: absolute; left: 50%; top: 50%; width: 200px; height: 200px; margin: -100px; border-radius: 50%; background: color-mix(in srgb, var(--fx-accent) 40%, transparent); border: 2px solid var(--fx-accent); box-sizing: border-box; transform: scale(var(--fx-q, .5)); transition: transform .3s var(--fx-ease-out); }
+[data-fx="battery-radius"] u { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px; border-radius: 50%; background: #fff; }
+[data-fx="battery-radius"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
+[data-fx="battery-radius"] input { min-width: 0; accent-color: var(--fx-accent); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

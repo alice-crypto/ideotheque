@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="gear-cogs" data-fx-front="40" data-fx-rear="18"></div>',
     '<div data-fx="gear-cogs" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, résultat annoncé. Mouvement réduit : pignons fixes.' }),
+  E('battery-radius', 'Présentation',
+    'Un disque montre jusqu\'où l\'on peut aller avec la batterie restante.',
+    'On part l\'esprit tranquille, ou on recharge.',
+    '- `data-fx-range` (40), `data-fx-value` (60)\n- `data-fx-back` : compter le retour (par défaut)',
+    'Trottinettes, véhicules électriques, drones.',
+    'De faire passer ce rayon pour une carte : il ignore le relief et le vent.',
+    '<div data-fx="battery-radius" data-fx-range="40"></div>',
+    '<div data-fx="battery-radius" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, distances écrites et annoncées.' }),
 ];
