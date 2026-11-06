@@ -8629,6 +8629,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="daily-special"] .fx-now { font-weight: 800; color: var(--fx-accent); }
 @keyframes fx-daily-open { from { opacity: 0; transform: translateY(-5px); } }
 
+/* dough-rise : une pâte qui lève */
+[data-fx="dough-rise"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 215px)); font-size: 11px; }
+[data-fx="dough-rise"] .fx-dr2 { display: flex; align-items: flex-end; justify-content: center; height: 76px; border-bottom: 4px solid currentColor; }
+[data-fx="dough-rise"] i { width: 70px; height: 30px; border-radius: 50% 50% 8px 8px / 90% 90% 8px 8px; background: radial-gradient(circle at 40% 30%, #fbecc8, #e0bd82); transform-origin: bottom; animation: fx-dough-rise var(--fx-sp, 2s) ease-in-out infinite alternate; }
+[data-fx="dough-rise"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="dough-rise"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="dough-rise"] output b { font-size: 15px; }
+@keyframes fx-dough-rise { to { transform: scale(1.3, 2.2); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -14720,6 +14720,24 @@
       b.addEventListener('click', function () { u.hidden = !u.hidden; b.setAttribute('aria-expanded', !u.hidden); });
     }
   });
+
+  // Une pâte qui lève plus vite quand il fait chaud
+  FX.register('dough-rise', {
+    setup: function (el) {
+      var base = U.num(el, 'fxHours', 2);
+      el.innerHTML = '<div class="fx-dr2" aria-hidden="true"><i></i></div><label>Pièce à <b></b><input type="range" min="10" max="34"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxTemp', 22);
+      var go = function () {
+        var t = +r.value, h = base * Math.pow(2, (24 - t) / 8);
+        el.querySelector('label b').textContent = t + ' °C';
+        el.style.setProperty('--fx-sp', Math.min(5, Math.max(.8, h)) + 's');
+        o.innerHTML = 'Levée en <b>' + (h >= 1 ? Math.floor(h) + ' h ' : '') + String(Math.round(h % 1 * 60)).padStart(2, '0') + ' min</b> (ordre de grandeur)';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="daily-special"></div>',
     '<div data-fx="daily-special" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le texte reste lu. Bouton `aria-expanded`.' }),
+  E('dough-rise', 'Micro-interaction',
+    'La température de la pièce change le temps de levée d\'une pâte, qui gonfle à l\'écran.',
+    'Du temps et de la chaleur, comme le boulanger.',
+    '- `data-fx-hours` (2), `data-fx-temp` (22)',
+    'Boulangerie, recettes, ateliers.',
+    'De prendre ce calcul pour une règle : la levure et l\'hydratation changent tout.',
+    '<div data-fx="dough-rise" data-fx-temp="22"></div>',
+    '<div data-fx="dough-rise" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, durée annoncée. La bibliothèque coupe le gonflement en mouvement réduit.' }),
 ];
