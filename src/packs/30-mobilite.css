@@ -169,3 +169,14 @@
 [data-fx="traffic-light"] i:nth-child(1).fx-on { background: #f03b30; box-shadow: 0 0 14px #f03b30; }
 [data-fx="traffic-light"] i:nth-child(2).fx-on { background: #ffbe2e; box-shadow: 0 0 14px #ffbe2e; }
 [data-fx="traffic-light"] i:nth-child(3).fx-on { background: #2fce6f; box-shadow: 0 0 14px #2fce6f; }
+
+/* live-bus : un bus qui approche */
+[data-fx="live-bus"] { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="live-bus"] ol { margin: 0; padding: 0; list-style: none; }
+[data-fx="live-bus"] li { position: relative; display: flex; align-items: center; gap: 8px; height: 26px; }
+[data-fx="live-bus"] li:not(:last-child)::after { content: ''; position: absolute; left: 7px; top: 18px; height: 16px; width: 2px; background: color-mix(in srgb, currentColor 30%, transparent); }
+[data-fx="live-bus"] i { width: 12px; height: 12px; margin: 0 1px; border: 2px solid currentColor; border-radius: 50%; box-sizing: border-box; transition: background .25s, transform .3s var(--fx-ease-spring); }
+[data-fx="live-bus"] .fx-past { opacity: .4; }
+[data-fx="live-bus"] .fx-bus i { background: var(--fx-accent); border-color: var(--fx-accent); transform: scale(1.5); }
+[data-fx="live-bus"] .fx-me { font-weight: 800; color: var(--fx-accent); }
+[data-fx="live-bus"] output { max-width: 80px; font-weight: 700; }
