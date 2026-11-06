@@ -88,4 +88,21 @@
       el.innerHTML = h + '</ul>';
     }
   });
+
+  // Le prix au mètre carré, comparé à celui du quartier
+  FX.register('price-per-m2', {
+    setup: function (el) {
+      var price = U.num(el, 'fxPrice', 285000), area = U.num(el, 'fxArea', 62), ref = U.num(el, 'fxRef', 4300);
+      el.innerHTML = '<label>Surface <b></b><input type="range" min="15" max="150" value="' + area + '"></label><div class="fx-m2" aria-hidden="true"><em></em><i></i></div><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), b = el.querySelector('b'), o = el.querySelector('output');
+      var go = function () {
+        var a = +r.value, pm = Math.round(price / a), gap = Math.round((pm / ref - 1) * 100);
+        b.textContent = a + ' m²';
+        el.style.setProperty('--fx-q', U.clamp(pm / (ref * 2), 0, 1));
+        o.innerHTML = '<b>' + pm.toLocaleString('fr-FR') + ' €/m²</b><br>' + (gap === 0 ? 'Au niveau du quartier' : Math.abs(gap) + ' % ' + (gap > 0 ? 'au-dessus' : 'en dessous') + ' du quartier');
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
