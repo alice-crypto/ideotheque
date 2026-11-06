@@ -369,4 +369,22 @@
       go();
     }
   });
+
+  // Le dossier passe-t-il la règle du revenu égal à trois fois le loyer ?
+  FX.register('rent-ratio', {
+    setup: function (el) {
+      var need = U.num(el, 'fxRatio', 3);
+      el.innerHTML = '<label>Revenus <input type="number" min="0" step="50" value="' + U.num(el, 'fxIncome', 2400) + '"></label><label>Loyer <input type="number" min="0" step="10" value="' + U.num(el, 'fxRent', 900) + '"></label><div class="fx-rr" aria-hidden="true"></div><output aria-live="polite"></output>';
+      var I = el.querySelectorAll('input'), box = el.querySelector('.fx-rr'), o = el.querySelector('output');
+      for (var i = 0; i < need + 1; i++) U.make('i', '', box);
+      var go = function () {
+        var a = +I[0].value || 0, b = +I[1].value || 1, q = a / b, ok = q >= need;
+        el.classList.toggle('fx-ok', ok);
+        Array.prototype.forEach.call(box.children, function (d, k) { d.style.setProperty('--fx-f', U.clamp(q - k, 0, 1)); });
+        o.textContent = String(q.toFixed(1)).replace('.', ',') + ' fois le loyer · ' + (ok ? 'Seuil atteint' : 'Il manque ' + Math.ceil(need * b - a) + ' €');
+      };
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
