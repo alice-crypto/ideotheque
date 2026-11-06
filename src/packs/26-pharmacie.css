@@ -127,3 +127,15 @@
 [data-fx="blister-pop"] .fx-pop { background: #0002; box-shadow: inset 0 2px 4px #0005; cursor: default; }
 [data-fx="blister-pop"] .fx-pop i { animation: fx-bp .55s ease-in forwards; }
 @keyframes fx-bp { 30% { transform: translateY(-20px) scale(1.2); } 100% { transform: translateY(50px) rotate(90deg); opacity: 0; } }
+
+/* dropper-count : un compte-gouttes */
+[data-fx="dropper-count"] { display: grid; gap: 6px; justify-items: center; font-size: 12px; text-align: center; }
+[data-fx="dropper-count"] .fx-dr { position: relative; width: 70px; height: 90px; }
+[data-fx="dropper-count"] .fx-dr::before { content: ''; position: absolute; left: 31px; top: 0; width: 8px; height: 20px; border-radius: 0 0 4px 4px; background: currentColor; }
+[data-fx="dropper-count"] u { position: absolute; left: 32px; top: 18px; width: 6px; height: 8px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: var(--fx-drop, #e8930c); opacity: 0; }
+[data-fx="dropper-count"] u.fx-go { animation: fx-dr .35s ease-in; }
+[data-fx="dropper-count"] .fx-dr > div { position: absolute; left: 12px; right: 12px; bottom: 0; height: 52px; border: 2px solid currentColor; border-top: 0; border-radius: 0 0 8px 8px; overflow: hidden; }
+[data-fx="dropper-count"] .fx-dr i { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--fx-q, 0) * 100%); background: var(--fx-drop, #e8930c); transition: height .25s .25s var(--fx-ease-out); }
+[data-fx="dropper-count"] button { padding: 4px 10px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="dropper-count"] button:disabled { opacity: .4; }
+@keyframes fx-dr { 0% { opacity: 1; } 90% { opacity: 1; transform: translateY(40px); } 100% { opacity: 0; transform: translateY(44px); } }
