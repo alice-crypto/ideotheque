@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="project-sheet" data-fx-items="Surface:1 480 m²|Lieu:Bordeaux"></div>',
     '<div data-fx="project-sheet" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Vraie liste de définitions.' }),
+  E('skyline-rise', 'Défilement',
+    'Une silhouette de ville se lève, tour après tour, au fil du défilement.',
+    'Le matin sur la ville, l\'ambition d\'un projet urbain.',
+    '- `data-fx-towers` (18), `data-fx-seed` (7)\n- `--fx-h`, `--fx-sky`',
+    'Immobilier, villes, hero de banque ou de promoteur.',
+    'De la confondre avec une vraie ville : c\'est un dessin généré.',
+    '<div data-fx="skyline-rise" data-fx-seed="7"></div>',
+    '<div data-fx="skyline-rise" style="width:215px"></div>',
+    { trigger: 'Rejouer', a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
 ];

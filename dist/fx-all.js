@@ -11433,6 +11433,22 @@
       });
     }
   });
+
+  // Une ville dont les tours montent au fil du défilement
+  FX.register('skyline-rise', {
+    setup: function (el) {
+      var n = U.num(el, 'fxTowers', 18), s = U.num(el, 'fxSeed', 7), box = U.make('div', 'fx-sr', el), R = function () { s = (s * 16807) % 2147483647; return s / 2147483647; };
+      box.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) {
+        var t = U.make('i', '', box);
+        t.style.setProperty('--fx-t', (.25 + R() * .75).toFixed(3));
+        t.style.setProperty('--fx-d', R().toFixed(3));
+        t.style.flex = (1 + R() * 1.5).toFixed(2) + ' 1 0';
+      }
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-q', U.clamp(info.enter * 1.3, 0, 1).toFixed(3)); },
+    trigger: function (el) { U.tween(el, 1400, function (p) { el.style.setProperty('--fx-q', U.easeOut(p)); }); }
+  });
 })(window.FX);
 
 window.FX._boot();

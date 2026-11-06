@@ -6845,6 +6845,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="project-sheet"] dt { opacity: .7; }
 [data-fx="project-sheet"] dd { margin: 0; font-weight: 700; }
 
+/* skyline-rise : une ville qui se lève */
+[data-fx="skyline-rise"] { display: block; width: 100%; height: var(--fx-h, 150px); overflow: hidden; background: var(--fx-sky, linear-gradient(#1c2a55, #f0926a)); }
+[data-fx="skyline-rise"] .fx-sr { display: flex; align-items: flex-end; gap: 2px; height: 100%; }
+[data-fx="skyline-rise"] i { height: calc(var(--fx-t) * 100%); background: repeating-linear-gradient(0deg, transparent 0 5px, #ffd46b55 5px 7px), #12182b; transform: translateY(calc((1 - var(--fx-q, 1) * (1 + var(--fx-d) * .3)) * 100%)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
