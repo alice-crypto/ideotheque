@@ -136,4 +136,24 @@
       note.textContent = 'Exemple fictif';
     }
   });
+
+  // Une ordonnance envoyée, préparée, puis prête à retirer
+  FX.register('rx-ready', {
+    setup: function (el) {
+      var S = (el.dataset.fxItems || 'Reçue|En préparation|Prête à retirer').split('|'), ol = U.make('ol', '', el), live = U.make('output', '', el);
+      live.setAttribute('aria-live', 'polite');
+      S.forEach(function (t) { U.make('li', '', ol).textContent = t; });
+      el._fxSet = function (n) {
+        n = U.clamp(n, 0, S.length - 1);
+        el.style.setProperty('--fx-q', n / (S.length - 1));
+        Array.prototype.forEach.call(ol.children, function (li, i) { li.classList.toggle('fx-done', i <= n); });
+        el.classList.toggle('fx-ready', n === S.length - 1);
+        live.textContent = S[n];
+      };
+      el._fxN = U.num(el, 'fxStep', 0);
+      el._fxSet(el._fxN);
+      new MutationObserver(function () { el._fxN = U.num(el, 'fxStep', 0); el._fxSet(el._fxN); }).observe(el, { attributes: true, attributeFilter: ['data-fx-step'] });
+    },
+    trigger: function (el) { el._fxN = (el._fxN + 1) % 3; el._fxSet(el._fxN); }
+  });
 })(window.FX);
