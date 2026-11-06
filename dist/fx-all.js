@@ -15076,6 +15076,15 @@
       });
     }
   });
+
+  // L'heure du coucher de soleil calculée pour le lieu et le jour
+  FX.register('sunset-bar', {
+    setup: function (el) {
+      var lat = U.num(el, 'fxLat', 43.3) * Math.PI / 180, lon = U.num(el, 'fxLon', 5.4), now = new Date(), start = new Date(now.getFullYear(), 0, 0), n = Math.floor((now - start) / 86400000), dec = -23.44 * Math.PI / 180 * Math.cos(2 * Math.PI / 365 * (n + 10)), ha = Math.acos(U.clamp((Math.sin(-.0145) - Math.sin(lat) * Math.sin(dec)) / (Math.cos(lat) * Math.cos(dec)), -1, 1)), set = 12 + ha * 12 / Math.PI - lon / 15 - now.getTimezoneOffset() / 60, h = Math.floor(set), m = Math.round((set - h) * 60), cur = now.getHours() + now.getMinutes() / 60, left = set - cur;
+      el.style.setProperty('--fx-q', U.clamp(cur / 24, 0, 1)); el.style.setProperty('--fx-s', U.clamp(set / 24, 0, 1));
+      el.innerHTML = '<div class="fx-sb2" aria-hidden="true"><i></i><u></u></div><p>Coucher du soleil vers <b>' + h + ' h ' + String(m).padStart(2, '0') + '</b><br>' + (left > 0 ? 'Dans ' + Math.floor(left) + ' h ' + String(Math.round(left % 1 * 60)).padStart(2, '0') : 'C\'est passé pour aujourd\'hui') + '</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="pool-card" data-fx-temp="27"></div>',
     '<div data-fx="pool-card" data-fx-from="0" data-fx-to="24"></div>',
     { a11y: 'Température et horaire en texte. Les ondes sont un simple décor.' }),
+  E('sunset-bar', 'État',
+    'L\'heure réelle du coucher de soleil est calculée pour un lieu, et le temps restant s\'écrit.',
+    'On réserve sa table sur la terrasse à la bonne heure.',
+    '- `data-fx-lat` (43.3), `data-fx-lon` (5.4)',
+    'Hôtels, bars, randonnée, photographie.',
+    'Une précision à la minute : c\'est une approximation.',
+    '<div data-fx="sunset-bar" data-fx-lat="43.3" data-fx-lon="5.4"></div>',
+    '<div data-fx="sunset-bar" style="color:var(--ink)"></div>',
+    { a11y: 'Heure et temps restant écrits en texte.' }),
 ];
