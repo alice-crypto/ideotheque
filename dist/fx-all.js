@@ -9673,6 +9673,25 @@
       el.innerHTML = h;
     }
   });
+
+  // Après un sinistre, le temps qu'il reste pour déclarer
+  FX.register('incident-timer', {
+    setup: function (el) {
+      var days = U.num(el, 'fxDays', 5), start = el.dataset.fxStart ? new Date(el.dataset.fxStart) : new Date(Date.now() - 86400000 * U.num(el, 'fxAgo', 2));
+      var end = +start + days * 86400000;
+      el.innerHTML = '<div class="fx-it" role="timer"><b></b><span></span></div><div class="fx-it-b" aria-hidden="true"><i></i></div><small>Délai de déclaration : ' + days + ' jours (à vérifier au contrat)</small>';
+      var b = el.querySelector('b'), s = el.querySelector('span'), bar = el.querySelector('i');
+      var go = function () {
+        var left = end - Date.now(), q = U.clamp(left / (days * 86400000), 0, 1), h = Math.max(0, Math.floor(left / 3600000));
+        b.textContent = left <= 0 ? 'Délai dépassé' : Math.floor(h / 24) + ' j ' + h % 24 + ' h';
+        s.textContent = left <= 0 ? '' : 'pour déclarer';
+        bar.style.width = q * 100 + '%';
+        el.classList.toggle('fx-urgent', q < .25);
+      };
+      go();
+      setInterval(go, 60000);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

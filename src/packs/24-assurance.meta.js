@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="gap-coverage" data-fx-need="2400" data-fx-items="Pension:900"></div>',
     '<div data-fx="gap-coverage" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Tous les montants sont écrits, les colonnes sont décoratives.' }),
+  E('incident-timer', 'Micro-interaction',
+    'Un compteur indique le temps restant pour déclarer un sinistre.',
+    'Cadre clair dans un moment confus, sans panique.',
+    '- `data-fx-start` : instant du sinistre\n- `data-fx-days` (5), `data-fx-ago` (2) pour la démonstration',
+    'Déclarations, garanties à délai, rétractation.',
+    'Un délai faux : il engage. Les jours ouvrés ne sont pas calculés ici, seule une durée continue l\'est.',
+    '<div data-fx="incident-timer" data-fx-start="2027-01-10" data-fx-days="5"></div>',
+    '<div data-fx="incident-timer" style="color:var(--ink)"></div>',
+    { a11y: 'Rôle `timer`, et le temps est écrit en jours et en heures.' }),
 ];
