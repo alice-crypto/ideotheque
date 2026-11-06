@@ -131,3 +131,12 @@
 [data-fx="tape-measure"] i.fx-b { height: 12px; }
 [data-fx="tape-measure"] .fx-tm-c { position: relative; width: 44px; height: 44px; border-radius: 10px; background: var(--fx-accent); z-index: 1; }
 [data-fx="tape-measure"] .fx-tm-c::after { content: ''; position: absolute; inset: 12px; border-radius: 50%; border: 2px solid #fff; }
+
+/* blueprint-draw : un plan qui se trace */
+[data-fx="blueprint-draw"] { display: block; padding: 8px; width: min(100%, var(--fx-w, 240px)); box-sizing: border-box; background: linear-gradient(#fff2 1px, transparent 1px) 0 0 / 14px 14px, linear-gradient(90deg, #fff2 1px, transparent 1px) 0 0 / 14px 14px, var(--fx-paper, #12408a); }
+[data-fx="blueprint-draw"] svg { display: block; width: 100%; }
+[data-fx="blueprint-draw"] line { stroke: #fff; stroke-width: 2; stroke-linecap: square; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .5s ease-out calc(var(--fx-i) * 170ms); }
+.fx-in[data-fx="blueprint-draw"] line { stroke-dashoffset: 0; }
+[data-fx="blueprint-draw"] .fx-bpd { fill: none; stroke: #fff9; stroke-dasharray: 2 2; }
+[data-fx="blueprint-draw"] text { fill: #fff; font-size: 8px; font-family: ui-monospace, monospace; text-anchor: middle; opacity: 0; transition: opacity .5s 1.3s; }
+.fx-in[data-fx="blueprint-draw"] text { opacity: 1; }
