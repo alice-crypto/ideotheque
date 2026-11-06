@@ -107,3 +107,8 @@
 /* weld-sparks : un titre soudé */
 [data-fx="weld-sparks"] { display: inline-block; font-weight: 900; padding-bottom: 8px; background: linear-gradient(90deg, #6d7077, var(--fx-weld, #ffb24a) 94%, #fff) no-repeat 0 100% / calc(var(--fx-q, 0) * 100%) 4px; }
 [data-fx="weld-sparks"] canvas { position: absolute; left: 0; top: 0; width: 100%; pointer-events: none; }
+
+/* rivet-frame : une plaque d'acier */
+[data-fx="rivet-frame"] { padding: 18px; background: repeating-linear-gradient(90deg, #ffffff06 0 1px, transparent 1px 3px), linear-gradient(135deg, #5d6470, #7c838e 45%, #565d68); color: #f4f6f8; }
+[data-fx="rivet-frame"] .fx-rvt { position: absolute; width: 9px; height: 9px; margin: -4.5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #e7ebef, #7d848f 60%, #3f454f); box-shadow: 0 1px 2px #0008; transform: scale(2); opacity: 0; transition: transform .22s ease-in calc(var(--fx-i) * 26ms), opacity .08s calc(var(--fx-i) * 26ms); }
+.fx-in[data-fx="rivet-frame"] .fx-rvt { transform: none; opacity: 1; }
