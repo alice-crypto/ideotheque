@@ -15589,6 +15589,15 @@
       U.ensurePositioned(el);
     }
   });
+
+  // Un petit voilier qui traverse la page à mesure qu'on lit
+  FX.register('sailboat-progress', {
+    setup: function (el) {
+      el.setAttribute('aria-hidden', 'true');
+      el.innerHTML = '<div class="fx-sb3"><svg viewBox="0 0 40 40"><path d="M20 3V28L36 28Z"/><path d="M18 8V28L6 28Z"/><path class="h" d="M4 30H36L31 37H9Z"/></svg></div>';
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-q', info.pass.toFixed(3)); el.style.setProperty('--fx-a', (Math.sin(info.pass * 40) * 5).toFixed(1) + 'deg'); }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -215,3 +215,9 @@
 [data-fx="lighthouse-beam"] .fx-lgh-m { position: relative; padding: 12px 12px 0 46%; font-weight: 800; animation: fx-lighthouse-text 5s linear infinite; }
 @keyframes fx-lighthouse-turn { from { transform: translateX(6px) translateY(35px) rotate(-45deg); } 50% { transform: translateX(6px) translateY(35px) rotate(20deg); } to { transform: translateX(6px) translateY(35px) rotate(-45deg); } }
 @keyframes fx-lighthouse-text { 0%, 100% { opacity: .55; } 30% { opacity: 1; } 70% { opacity: .55; } }
+
+/* sailboat-progress : un voilier qui avance */
+[data-fx="sailboat-progress"] { display: block; position: relative; width: 100%; height: var(--fx-h, 70px); overflow: hidden; background: radial-gradient(circle 12px at 12px 26px, transparent 96%, var(--fx-sea, #1f6fb0)) 0 calc(100% - 0px) / 24px 14px repeat-x; }
+[data-fx="sailboat-progress"] .fx-sb3 { position: absolute; left: calc(var(--fx-q, 0) * (100% - 40px)); bottom: 8px; width: 40px; transform: rotate(var(--fx-a, 0deg)); transition: left .15s linear; }
+[data-fx="sailboat-progress"] svg { display: block; width: 100%; fill: #f4f2ea; }
+[data-fx="sailboat-progress"] .h { fill: var(--fx-accent); }

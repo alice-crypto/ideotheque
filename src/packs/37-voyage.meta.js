@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="lighthouse-beam">Pointe de la Mer</div>',
     '<div data-fx="lighthouse-beam" style="width:215px">Pointe de la Mer</div>',
     { a11y: 'Le texte reste réel. En mouvement réduit, le phare et le texte sont fixes.' }),
+  E('sailboat-progress', 'Défilement',
+    'Un voilier traverse la largeur de la page à mesure qu\'on avance dans la lecture.',
+    'Un long récit devient une traversée.',
+    '- `--fx-h`, `--fx-sea`',
+    'Récits de voyage, régates, longs articles.',
+    'Comme seule indication de progression : il reste décoratif.',
+    '<div data-fx="sailboat-progress"></div>',
+    '<div data-fx="sailboat-progress" style="width:215px"></div>',
+    { a11y: 'Décoratif, masqué.' }),
 ];
