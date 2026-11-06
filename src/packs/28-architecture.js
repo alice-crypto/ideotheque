@@ -29,4 +29,25 @@
       });
     }
   });
+
+  // Choisir un matériau et voir la façade changer
+  FX.register('material-swatch', {
+    setup: function (el) {
+      var M = { Béton: 'linear-gradient(#a3a5a7,#8d8f91)', Bois: 'repeating-linear-gradient(92deg,#a06a39 0 8px,#8b5a2d 8px 13px,#b47a44 13px 22px)', Brique: 'repeating-linear-gradient(0deg,#e8dbcb 0 2px,transparent 2px 13px),repeating-linear-gradient(90deg,#b0502d 0 26px,#a34827 26px 28px)', Zinc: 'repeating-linear-gradient(90deg,#6a7680 0 22px,#3f4850 22px 24px)' };
+      var box = U.make('div', 'fx-ms', el), row = U.make('div', 'fx-ms-r', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      Object.keys(M).forEach(function (k, i) {
+        var b = U.make('button', '', row);
+        b.type = 'button'; b.setAttribute('aria-label', k); b.title = k; b.style.background = M[k];
+        b.addEventListener('click', function () {
+          row.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+          var f = U.make('i', '', box);
+          f.style.background = M[k];
+          setTimeout(function () { while (box.children.length > 1) box.firstChild.remove(); }, U.reduced ? 0 : 750);
+          o.textContent = k;
+        });
+        if (!i) b.click();
+      });
+    }
+  });
 })(window.FX);
