@@ -253,4 +253,29 @@
       U.ensurePositioned(el);
     }
   });
+
+  // Une route qui défile en perspective vers l'horizon
+  FX.register('road-dashes', {
+    setup: function (el) {
+      var c = U.make('canvas', '', el), x, W, H;
+      el.setAttribute('aria-hidden', 'true');
+      var size = function () { var r = el.getBoundingClientRect(), d = window.devicePixelRatio || 1; W = r.width; H = r.height; c.width = W * d; c.height = H * d; x = c.getContext('2d'); x.scale(d, d); };
+      size(); U.onResize(size);
+      el._fxDraw = function (t) {
+        var hz = H * .32, sp = U.num(el, 'fxSpeed', 1), g = x.createLinearGradient(0, 0, 0, hz);
+        g.addColorStop(0, '#16213f'); g.addColorStop(1, '#f28a6a');
+        x.fillStyle = g; x.fillRect(0, 0, W, hz);
+        x.fillStyle = '#1c1d22'; x.fillRect(0, hz, W, H - hz);
+        x.fillStyle = '#34363d';
+        x.beginPath(); x.moveTo(W * .47, hz); x.lineTo(W * .53, hz); x.lineTo(W * 1.1, H); x.lineTo(-W * .1, H); x.closePath(); x.fill();
+        x.fillStyle = '#ffe9a8';
+        for (var i = 0; i < 8; i++) {
+          var z = ((i / 8 + t * .35 * sp) % 1), z2 = z + .045, y1 = hz + (H - hz) * z * z, y2 = hz + (H - hz) * z2 * z2, w1 = 1 + z * z * 7, w2 = 1 + z2 * z2 * 7;
+          x.beginPath(); x.moveTo(W / 2 - w1, y1); x.lineTo(W / 2 + w1, y1); x.lineTo(W / 2 + w2, y2); x.lineTo(W / 2 - w2, y2); x.fill();
+        }
+      };
+      el._fxDraw(0);
+    },
+    tick: function (el, dt, t) { if (el._fxDraw && !U.reduced) el._fxDraw(t); }
+  });
 })(window.FX);
