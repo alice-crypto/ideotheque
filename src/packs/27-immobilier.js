@@ -439,4 +439,27 @@
     },
     trigger: function (el) { el._fxSet(!el.classList.contains('fx-on')); }
   });
+
+  // Une liste de déménagement : chaque tâche finie empile un carton
+  FX.register('moving-boxes', {
+    setup: function (el) {
+      var T = (el.dataset.fxItems || 'Prévenir le propriétaire|Transférer le courrier|Résilier la box|Réserver le camion|Faire l\'état des lieux').split('|'), s = U.make('div', 'fx-mb', el), l = U.make('div', 'fx-mb-l', el), o = U.make('output', '', el);
+      s.setAttribute('aria-hidden', 'true');
+      o.setAttribute('aria-live', 'polite');
+      T.forEach(function (t, i) {
+        var r = U.make('label', '', l), c = U.make('input', '', r);
+        c.type = 'checkbox';
+        r.appendChild(document.createTextNode(t));
+        var b = U.make('i', '', s);
+        b.style.setProperty('--fx-x', (i % 2 ? 4 : -4) + 'px');
+      });
+      var go = function () {
+        var n = l.querySelectorAll(':checked').length;
+        Array.prototype.forEach.call(s.children, function (b, i) { b.classList.toggle('fx-on', i < n); });
+        o.textContent = n === T.length ? 'Tout est prêt, bon déménagement !' : n + ' sur ' + T.length;
+      };
+      l.addEventListener('change', go);
+      go();
+    }
+  });
 })(window.FX);
