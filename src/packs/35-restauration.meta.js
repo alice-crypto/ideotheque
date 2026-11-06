@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="menu-diet-filter" data-fx-items="Velouté:12:vgl"></div>',
     '<div data-fx="menu-diet-filter" style="color:var(--ink)"></div>',
     { a11y: 'Boutons `aria-pressed`, compte annoncé, lignes masquées retirées pour les lecteurs d\'écran.' }),
+  E('table-booking', 'Micro-interaction',
+    'On choisit le nombre de couverts, seuls les créneaux possibles restent et la réservation se confirme.',
+    'La table est à vous en trois gestes.',
+    '- `data-fx-items` : « h:m:places » séparés par `|`\n- `data-fx-party` (2) ; événement `fx:booking`',
+    'Restaurants, salles, activités.',
+    'De montrer une disponibilité qui ne vient pas de votre outil de réservation.',
+    '<div data-fx="table-booking" data-fx-items="19:00:8|20:00:2"></div>',
+    '<div data-fx="table-booking" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés, créneaux pleins désactivés, choix annoncé.' }),
 ];

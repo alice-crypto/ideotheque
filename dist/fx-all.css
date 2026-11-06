@@ -8435,6 +8435,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="menu-diet-filter"] .fx-off { max-height: 0; opacity: 0; padding: 0; }
 [data-fx="menu-diet-filter"] output { opacity: .75; }
 
+/* table-booking : réserver une table */
+[data-fx="table-booking"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="table-booking"] .fx-tb { display: flex; justify-content: space-between; align-items: center; font-weight: 800; }
+[data-fx="table-booking"] .fx-tb button { width: 28px; height: 28px; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font-size: 15px; cursor: pointer; }
+[data-fx="table-booking"] .fx-tb-s { display: flex; flex-wrap: wrap; gap: 4px; }
+[data-fx="table-booking"] .fx-tb-s button { padding: 4px 9px; border: 1px solid currentColor; border-radius: 6px; background: none; color: inherit; font: inherit; cursor: pointer; animation: fx-booking-in .3s var(--fx-ease-out) calc(var(--fx-i) * 50ms) backwards; transition: background .2s, color .2s; }
+[data-fx="table-booking"] .fx-tb-s button:disabled { opacity: .3; text-decoration: line-through; cursor: not-allowed; }
+[data-fx="table-booking"] .fx-on { background: var(--fx-accent) !important; color: #fff; border-color: transparent !important; }
+@keyframes fx-booking-in { from { opacity: 0; transform: translateY(6px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

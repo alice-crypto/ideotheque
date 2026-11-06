@@ -14340,6 +14340,32 @@
       go();
     }
   });
+
+  // Réserver une table : combien, et à quelle heure
+  FX.register('table-booking', {
+    setup: function (el) {
+      var S = (el.dataset.fxItems || '19:00:8|19:30:4|20:00:2|20:30:6|21:00:10').split('|').map(function (r) { var p = r.split(':'); return { h: p[0] + ':' + p[1], left: +p[2] }; }), n = U.num(el, 'fxParty', 2);
+      el.innerHTML = '<div class="fx-tb"><button type="button" aria-label="Moins de couverts">−</button><span aria-live="polite"></span><button type="button" aria-label="Plus de couverts">+</button></div><div class="fx-tb-s"></div><output aria-live="polite"></output>';
+      var B = el.querySelectorAll('.fx-tb button'), c = el.querySelector('.fx-tb span'), box = el.querySelector('.fx-tb-s'), o = el.querySelector('output');
+      var show = function () {
+        c.textContent = n + ' couvert' + (n > 1 ? 's' : '');
+        box.innerHTML = '';
+        S.forEach(function (s, i) {
+          var b = U.make('button', '', box);
+          b.type = 'button'; b.textContent = s.h; b.disabled = s.left < n; b.style.setProperty('--fx-i', i);
+          b.addEventListener('click', function () {
+            box.querySelectorAll('button').forEach(function (x) { x.classList.toggle('fx-on', x === b); });
+            o.innerHTML = 'Table pour <b>' + n + '</b> à <b>' + s.h + '</b>';
+            el.dispatchEvent(new CustomEvent('fx:booking', { bubbles: true, detail: { party: n, time: s.h } }));
+          });
+        });
+        o.textContent = 'Choisissez une heure';
+      };
+      B[0].addEventListener('click', function () { n = Math.max(1, n - 1); show(); });
+      B[1].addEventListener('click', function () { n = Math.min(12, n + 1); show(); });
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
