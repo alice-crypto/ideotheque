@@ -6303,6 +6303,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="measure-cup"] input { width: 100%; accent-color: var(--fx-accent); }
 [data-fx="measure-cup"] b { font-size: 18px; }
 
+/* uv-index : l'indice du moment */
+[data-fx="uv-index"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="uv-index"] .fx-uv { position: relative; height: 12px; margin: 12px 0 4px; border-radius: 6px; background: linear-gradient(90deg, #3eae4b 0 25%, #f1d32a 25% 50%, #f28c28 50% 66%, #d82d2d 66% 92%, #8b3fbc 92%); }
+[data-fx="uv-index"] .fx-uv i { position: absolute; left: calc(var(--fx-q) * 100%); top: -7px; width: 26px; height: 26px; margin-left: -13px; border-radius: 50%; background: radial-gradient(circle, #ffe45c 40%, #ffb700 41% 55%, transparent 56%), repeating-conic-gradient(#ffb700 0 15deg, transparent 0 45deg); transition: left .3s var(--fx-ease-spring); }
+[data-fx="uv-index"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; align-items: center; }
+[data-fx="uv-index"] input { width: 100%; accent-color: var(--fx-accent); }
+[data-fx="uv-index"] b { font-size: 15px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

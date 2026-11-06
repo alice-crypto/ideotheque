@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="measure-cup" data-fx-max="30"></div>',
     '<div data-fx="measure-cup" style="color:var(--ink)"></div>',
     { a11y: 'Vrai curseur nommé, volume annoncé.' }),
+  E('uv-index', 'Présentation',
+    'Un soleil glisse sur l\'échelle de l\'indice UV, avec le niveau et le conseil.',
+    'Clair, un conseil plutôt qu\'un chiffre.',
+    '- `data-fx-value` (7)',
+    'Parapharmacie, météo, plages, sport.',
+    'D\'afficher une valeur fixe comme si c\'était l\'indice du jour : branchez une vraie source.',
+    '<div data-fx="uv-index" data-fx-value="7"></div>',
+    '<div data-fx="uv-index" style="color:var(--ink)"></div>',
+    { a11y: 'Niveau et conseil écrits et annoncés, pas seulement colorés.' }),
 ];

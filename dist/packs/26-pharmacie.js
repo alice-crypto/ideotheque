@@ -274,4 +274,21 @@
       go();
     }
   });
+
+  // L'indice UV du moment, avec le conseil qui va avec
+  FX.register('uv-index', {
+    setup: function (el) {
+      var T = [[3, 'Faible', 'Pas de protection particulière.'], [6, 'Modéré', 'Crème et lunettes.'], [8, 'Élevé', 'Crème, chapeau, ombre à midi.'], [11, 'Très élevé', 'Évitez le soleil de 11 h à 15 h.'], [99, 'Extrême', 'Restez à l\'ombre.']];
+      el.innerHTML = '<div class="fx-uv" aria-hidden="true"><i></i></div><label>Indice <input type="range" min="0" max="12"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxValue', 7);
+      var go = function () {
+        var v = +r.value, t = T.filter(function (x) { return v < x[0]; })[0] || T[4];
+        el.style.setProperty('--fx-q', v / 12);
+        o.innerHTML = '<b>' + v + ' · ' + t[1] + '</b><br>' + t[2];
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
