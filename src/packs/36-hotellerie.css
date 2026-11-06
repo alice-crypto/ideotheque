@@ -237,3 +237,14 @@
 [data-fx="stay-bill"] p { margin: 5px 0 0; padding-top: 5px; border-top: 2px solid currentColor; align-items: baseline; font-weight: 700; }
 [data-fx="stay-bill"] strong { font-size: 19px; }
 .fx-in[data-fx="stay-bill"] li, .fx-in[data-fx="stay-bill"] p { opacity: 1; transform: none; }
+
+/* luggage-tag : une étiquette de bagage */
+[data-fx="luggage-tag"] { display: grid; gap: 5px; justify-items: center; width: min(100%, var(--fx-w, 210px)); font-size: 11px; }
+[data-fx="luggage-tag"] .fx-lt { position: relative; height: 96px; width: 100%; }
+[data-fx="luggage-tag"] .fx-lt i { position: absolute; left: 50%; top: 0; width: 2px; height: 20px; background: currentColor; }
+[data-fx="luggage-tag"] .fx-lt-c { position: absolute; left: 50%; top: 18px; width: 150px; margin-left: -75px; display: grid; gap: 1px; padding: 8px 12px; box-sizing: border-box; background: #e5c98e; color: #3a2a12; clip-path: polygon(10% 0, 90% 0, 100% 20%, 100% 100%, 0 100%, 0 20%); transform-origin: 50% 0; text-align: center; }
+[data-fx="luggage-tag"] .fx-go { animation: fx-luggage-swing .7s ease-out; }
+[data-fx="luggage-tag"] b { font-size: 17px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+[data-fx="luggage-tag"] label { display: grid; grid-template-columns: 70px 1fr; gap: 6px; width: 100%; align-items: center; }
+[data-fx="luggage-tag"] input { min-width: 0; padding: 3px; font: inherit; }
+@keyframes fx-luggage-swing { 20% { transform: rotate(6deg); } 50% { transform: rotate(-4deg); } 75% { transform: rotate(2deg); } }
