@@ -328,4 +328,17 @@
       el.style.setProperty('--fx-o', (.55 + q * .35).toFixed(2));
     }
   });
+
+  // Une fiche technique dont les lignes se tracent une à une
+  FX.register('project-sheet', {
+    entrance: true,
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Programme:12 logements|Surface:1 480 m²|Lieu:Bordeaux|Livraison:2027|Maîtrise d\'ouvrage:Fictive').split('|'), dl = U.make('dl', '', el);
+      R.forEach(function (r, i) {
+        var k = r.indexOf(':'), d = U.make('div', '', dl);
+        d.style.setProperty('--fx-i', i);
+        d.innerHTML = '<dt>' + r.slice(0, k) + '</dt><dd>' + r.slice(k + 1) + '</dd>';
+      });
+    }
+  });
 })(window.FX);
