@@ -331,4 +331,17 @@
       show();
     }
   });
+
+  // Une porte de chambre numérotée qui s'ouvre sur son image
+  FX.register('door-reveal', {
+    setup: function (el) {
+      var n = el.dataset.fxNumber || '207';
+      var d = U.make('span', 'fx-dr3', el);
+      d.setAttribute('aria-hidden', 'true');
+      d.innerHTML = '<b>' + n + '</b><i></i>';
+      U.ensurePositioned(el);
+      if (!el.hasAttribute('tabindex') && !/^(A|BUTTON)$/.test(el.tagName)) el.tabIndex = 0;
+      el.addEventListener('click', function () { el.classList.toggle('fx-open'); });
+    }
+  });
 })(window.FX);
