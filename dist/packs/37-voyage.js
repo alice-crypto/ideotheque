@@ -374,4 +374,20 @@
       go();
     }
   });
+
+  // Un billet dont on détache la souche en la tirant
+  FX.register('ticket-tear', {
+    setup: function (el) {
+      var txt = el.dataset.fxText || 'Admission', sub = el.dataset.fxSub || 'Valable une fois';
+      el.innerHTML = '<div class="fx-tt2"><div class="m"><b>' + txt + '</b><small>' + sub + '</small></div><button type="button" class="s">Détacher</button></div><output aria-live="polite"></output>';
+      var st = el.querySelector('.s'), o = el.querySelector('output'), x0 = null, x = 0;
+      var tear = function () { el.classList.add('fx-torn'); st.disabled = true; o.textContent = 'Souche détachée : billet utilisé'; el.dispatchEvent(new CustomEvent('fx:torn', { bubbles: true })); };
+      st.addEventListener('pointerdown', function (e) { x0 = e.clientX; if (e.isTrusted) st.setPointerCapture(e.pointerId); });
+      st.addEventListener('pointermove', function (e) { if (x0 === null) return; x = U.clamp(e.clientX - x0, 0, 90); st.style.transform = 'translateX(' + x + 'px) rotate(' + x * .08 + 'deg)'; });
+      st.addEventListener('pointerup', function () { if (x0 === null) return; x0 = null; if (x > 50) tear(); else { st.style.transform = ''; } x = 0; });
+      st.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tear(); } });
+      el._fxTear = tear;
+    },
+    trigger: function (el) { el.classList.remove('fx-torn'); var s = el.querySelector('.s'); s.disabled = false; s.style.transform = ''; setTimeout(el._fxTear, 80); }
+  });
 })(window.FX);

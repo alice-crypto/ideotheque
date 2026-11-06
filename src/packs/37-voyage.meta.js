@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="baggage-allowance" data-fx-limit="55,40,20"></div>',
     '<div data-fx="baggage-allowance" style="color:var(--ink)"></div>',
     { a11y: 'Champs étiquetés, verdict écrit et annoncé.' }),
+  E('ticket-tear', 'Micro-interaction',
+    'On tire la souche d\'un billet, qui se détache au-delà d\'un seuil, ou d\'un appui au clavier.',
+    'Le petit bruit du papier qu\'on déchire.',
+    '- `data-fx-text`, `data-fx-sub`, `--fx-tick` ; événement `fx:torn`',
+    'Billets, invitations, coupons, jeux.',
+    'Un vrai contrôle de billet : le serveur doit garder la vérité.',
+    '<div data-fx="ticket-tear" data-fx-text="Admission"></div>',
+    '<div data-fx="ticket-tear" style="color:var(--ink)"></div>',
+    { trigger: 'Détacher', a11y: 'Bouton réel, activable au clavier, résultat annoncé.' }),
 ];
