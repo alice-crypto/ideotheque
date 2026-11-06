@@ -148,3 +148,7 @@
 [data-fx="road-cta"] .fx-rd-c { position: absolute; left: 6px; bottom: 9px; width: 18px; height: 6px; border-radius: 4px 6px 1px 1px; background: var(--fx-accent); transition: left .8s var(--fx-ease-out); }
 [data-fx="road-cta"]:hover .fx-rd-c, [data-fx="road-cta"]:focus-visible .fx-rd-c { left: calc(100% - 24px); }
 @keyframes fx-rd { to { background-position-x: -22px; } }
+
+/* road-dashes : une route vers l'horizon */
+[data-fx="road-dashes"] { display: block; width: 100%; height: var(--fx-h, 150px); overflow: hidden; }
+[data-fx="road-dashes"] canvas { display: block; width: 100%; height: 100%; }

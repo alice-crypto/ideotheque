@@ -129,4 +129,13 @@ module.exports = [
     '<a href="#" data-fx="road-cta">Réserver un essai</a>',
     '<a href="#" data-fx="road-cta">Réserver un essai</a>',
     { a11y: 'Vrai lien, et l\'effet se déclenche aussi au focus.' }),
+  E('road-dashes', 'Ambiance',
+    'Une route défile en perspective vers un horizon au soleil couchant.',
+    'Le départ en vacances, l\'envie d\'y aller.',
+    '- `data-fx-speed` (1), `--fx-h`',
+    'Mobilité, voyage, hero de lancement.',
+    'De le placer derrière un texte long : le mouvement attire l\'œil.',
+    '<div data-fx="road-dashes"></div>',
+    '<div data-fx="road-dashes" style="width:215px"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran ; fixe en mouvement réduit.' }),
 ];
