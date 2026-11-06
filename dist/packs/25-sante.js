@@ -452,4 +452,24 @@
       el.innerHTML = '<svg viewBox="0 0 200 84" preserveAspectRatio="none" aria-hidden="true"><defs><clipPath id="' + id + '"><rect x="0" y="0" width="200" height="' + Y(th) + '"/></clipPath></defs><path class="fx-a" clip-path="url(#' + id + ')" d="' + line + 'L200 84L0 84Z"/><line x1="0" x2="200" y1="' + Y(th) + '" y2="' + Y(th) + '"/><path class="fx-l" pathLength="1" d="' + line + '"/></svg><p>Maximum <b>' + String(m).replace('.', ',') + ' °C</b>, seuil ' + String(th).replace('.', ',') + ' °C</p>';
     }
   });
+
+  // Tapoter au rythme de son pouls pour l'estimer
+  FX.register('pulse-tap', {
+    setup: function (el) {
+      var times = [];
+      el.innerHTML = '<button type="button">Tapotez à chaque battement</button><output aria-live="polite">— /min</output><small>Estimation seulement</small>';
+      var b = el.firstChild, o = el.querySelector('output');
+      b.addEventListener('click', function () {
+        var now = performance.now();
+        if (times.length && now - times[times.length - 1] > 2500) times = [];
+        times.push(now);
+        if (times.length > 9) times.shift();
+        b.classList.remove('fx-go'); void b.offsetWidth; b.classList.add('fx-go');
+        if (times.length > 3) {
+          var avg = (times[times.length - 1] - times[0]) / (times.length - 1);
+          o.textContent = Math.round(60000 / avg) + ' /min';
+        } else o.textContent = 'Encore ' + (4 - times.length) + '…';
+      });
+    }
+  });
 })(window.FX);

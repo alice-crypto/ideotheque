@@ -211,3 +211,13 @@
 [data-fx="fever-curve"] .fx-a { fill: var(--fx-hot, #e10600); opacity: 0; transition: opacity .6s 1s; }
 .fx-in[data-fx="fever-curve"] .fx-a { opacity: .55; }
 [data-fx="fever-curve"] p { margin: 5px 0 0; }
+
+/* pulse-tap : mesurer au toucher */
+[data-fx="pulse-tap"] { display: grid; justify-items: center; gap: 6px; font-size: 12px; }
+[data-fx="pulse-tap"] button { position: relative; width: 104px; height: 104px; padding: 8px; border: 0; border-radius: 50%; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; touch-action: manipulation; }
+[data-fx="pulse-tap"] .fx-go { animation: fx-pt .22s var(--fx-ease-out); }
+[data-fx="pulse-tap"] .fx-go::after { content: ''; position: absolute; inset: 0; border: 2px solid var(--fx-accent); border-radius: 50%; animation: fx-pt2 .6s var(--fx-ease-out) forwards; }
+[data-fx="pulse-tap"] output { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+[data-fx="pulse-tap"] small { opacity: .7; }
+@keyframes fx-pt { 40% { transform: scale(.9); } }
+@keyframes fx-pt2 { to { transform: scale(1.5); opacity: 0; } }

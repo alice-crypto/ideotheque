@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="fever-curve" data-fx-data="37.1,38.4,37.3" data-fx-threshold="38"></div>',
     '<div data-fx="fever-curve" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le maximum et le seuil sont écrits en texte.' }),
+  E('pulse-tap', 'Micro-interaction',
+    'On tapote au rythme de son pouls, et une estimation par minute se calcule.',
+    'Tactile et ludique, le geste est la mesure.',
+    'Aucun réglage. Une pause de plus de 2,5 secondes relance la mesure.',
+    'Premiers conseils, musique (tempo), sport.',
+    'De présenter le résultat comme une mesure médicale.',
+    '<div data-fx="pulse-tap"></div>',
+    '<div data-fx="pulse-tap" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai bouton, utilisable au clavier, et le résultat est annoncé.' }),
 ];
