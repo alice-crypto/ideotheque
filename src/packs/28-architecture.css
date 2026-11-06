@@ -107,3 +107,12 @@
 [data-fx="crane-lift"] .b { position: absolute; left: 0; right: 0; top: 4px; height: 5px; background: currentColor; }
 [data-fx="crane-lift"] .h { position: absolute; top: 9px; left: 50%; width: 2px; height: 0; background: currentColor; transform: translateX(70px); transition: transform 1s .45s, height 1s .45s; }
 .fx-in[data-fx="crane-lift"] .h { height: 88px; transform: none; }
+
+/* scale-figure : une hauteur à échelle humaine */
+[data-fx="scale-figure"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 220px)); font-size: 11px; }
+[data-fx="scale-figure"] .fx-sf { position: relative; height: 112px; border: 2px solid currentColor; border-top-width: 6px; }
+[data-fx="scale-figure"] em { position: absolute; right: 16px; top: 0; bottom: 0; border-right: 1px solid currentColor; }
+[data-fx="scale-figure"] i { position: absolute; left: 34%; bottom: 0; width: calc(var(--fx-q) * 40px); height: calc(var(--fx-q) * 100%); background: var(--fx-accent); border-radius: 40% 40% 6px 6px; clip-path: polygon(30% 0, 70% 0, 70% 20%, 100% 25%, 100% 55%, 72% 55%, 72% 100%, 28% 100%, 28% 55%, 0 55%, 0 25%, 30% 20%); transition: width .2s, height .2s; }
+[data-fx="scale-figure"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
+[data-fx="scale-figure"] input { min-width: 0; accent-color: var(--fx-accent); }
+[data-fx="scale-figure"] output b { font-size: 16px; }
