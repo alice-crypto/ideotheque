@@ -222,4 +222,23 @@
       for (var i = 0; i < 3; i++) U.make('i', '', el).style.setProperty('--fx-i', i);
     }
   });
+
+  // Une plaquette dont on fait sortir les comprimés un par un
+  FX.register('blister-pop', {
+    setup: function (el) {
+      var n = U.num(el, 'fxCount', 10), box = U.make('div', 'fx-bp', el), out = U.make('output', '', el), left = n;
+      out.setAttribute('aria-live', 'polite');
+      var say = function () { out.textContent = left + ' restant' + (left > 1 ? 's' : '') + ' sur ' + n; };
+      for (var i = 0; i < n; i++) (function (i) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('aria-label', 'Comprimé ' + (i + 1));
+        U.make('i', '', b);
+        b.addEventListener('click', function () {
+          b.disabled = true; b.classList.add('fx-pop');
+          left--; say();
+        });
+      })(i);
+      say();
+    }
+  });
 })(window.FX);
