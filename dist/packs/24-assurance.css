@@ -55,3 +55,11 @@
 [data-fx="claim-tracker"] li:not(.fx-done):not(.fx-now) { color: color-mix(in srgb, currentColor 65%, transparent); }
 [data-fx="claim-tracker"] span { opacity: .75; text-align: right; }
 @keyframes fx-ct { 50% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--fx-accent) 30%, transparent); } }
+
+/* damage-spots : situer les chocs sur un schéma */
+[data-fx="damage-spots"] { display: grid; gap: 8px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; text-align: center; }
+[data-fx="damage-spots"] .fx-dsp { position: relative; aspect-ratio: 2.3; border: 2px solid currentColor; border-radius: 34% 22% 22% 34% / 50%; overflow: hidden; }
+[data-fx="damage-spots"] button { position: absolute; padding: 0; border: 1px dashed color-mix(in srgb, currentColor 45%, transparent); background: none; color: inherit; cursor: pointer; transition: background .2s; }
+[data-fx="damage-spots"] button:hover { background: color-mix(in srgb, var(--fx-accent) 20%, transparent); }
+[data-fx="damage-spots"] button[aria-pressed="true"] { background: repeating-linear-gradient(45deg, var(--fx-accent) 0 3px, transparent 3px 6px); animation: fx-dsp .3s var(--fx-ease-spring); }
+@keyframes fx-dsp { from { transform: scale(.8); } }

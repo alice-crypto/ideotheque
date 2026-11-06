@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="claim-tracker" data-fx-items="Déclaré:3 mars|Expertise:en cours" data-fx-current="1"></div>',
     '<div data-fx="claim-tracker" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Vraie liste ordonnée, avec `aria-current="step"`.' }),
+  E('damage-spots', 'Micro-interaction',
+    'On touche les zones abîmées d\'une voiture vue de dessus, et le résumé s\'écrit dessous.',
+    'Simple dans un moment pénible, sans vocabulaire de carrossier.',
+    '- `--fx-w` (230px)\n- `--fx-accent` : couleur des zones',
+    'Déclaration de sinistre, état des lieux d\'une location.',
+    'De se passer de photos : le schéma situe, il ne prouve pas.',
+    '<div data-fx="damage-spots"></div>',
+    '<div data-fx="damage-spots" style="color:var(--ink)"></div>',
+    { a11y: 'Chaque zone est un bouton nommé avec `aria-pressed`, et le résumé est annoncé.' }),
 ];
