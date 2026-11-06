@@ -415,4 +415,15 @@
       show();
     }
   });
+
+  // Une surface rendue concrète : un carré à l'échelle et des repères connus
+  FX.register('area-square', {
+    entrance: true,
+    setup: function (el) {
+      var a = U.num(el, 'fxArea', 62), side = Math.sqrt(a), ref = [['places de parking', 12.5], ['terrains de pétanque', 60]], max = U.num(el, 'fxMax', 150);
+      el.style.setProperty('--fx-q', Math.sqrt(a / max));
+      el.innerHTML = '<div class="fx-as"><i></i><u title="Une place de parking"></u></div><p><b>' + a + ' m²</b>, soit un carré de ' + side.toFixed(1).replace('.', ',') + ' m de côté<br>≈ ' + (a / ref[0][1]).toFixed(1).replace('.', ',') + ' ' + ref[0][0] + '</p>';
+      el.style.setProperty('--fx-u', Math.sqrt(12.5 / max));
+    }
+  });
 })(window.FX);
