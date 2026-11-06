@@ -183,4 +183,22 @@
       if (el._fxT > 2.2) { el._fxT = 0; FX.trigger(el); }
     }
   });
+
+  // Une carte bancaire qui suit le curseur et se retourne
+  FX.register('bank-card-flip', {
+    setup: function (el) {
+      el.tabIndex = 0;
+      el.setAttribute('role', 'button');
+      el.setAttribute('aria-pressed', 'false');
+      var flip = function () { var on = el.classList.toggle('fx-back'); el.setAttribute('aria-pressed', on); };
+      el.addEventListener('click', flip);
+      el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--fx-ry', (((e.clientX - r.left) / r.width - .5) * 22).toFixed(1) + 'deg');
+        el.style.setProperty('--fx-rx', ((.5 - (e.clientY - r.top) / r.height) * 18).toFixed(1) + 'deg');
+      });
+      el.addEventListener('pointerleave', function () { el.style.setProperty('--fx-rx', '0deg'); el.style.setProperty('--fx-ry', '0deg'); });
+    }
+  });
 })(window.FX);

@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="transaction-feed"></div>',
     '<div data-fx="transaction-feed" data-fx-demo="true" style="width:215px;color:var(--ink)"></div>',
     { trigger: 'Ajouter', a11y: 'Rôle `log`. Le signe est écrit, pas seulement suggéré par la couleur.' }),
+  E('bank-card-flip', 'Image',
+    'Une carte bancaire s\'oriente vers le curseur, et se retourne au clic pour montrer son dos.',
+    'Objet désirable, on a envie de la tenir.',
+    '- `--fx-w` (240px), `--fx-card` : fond\n- Structure : `.fx-bc` contenant `.fx-f` et `.fx-b`',
+    'Néobanques, offres de cartes.',
+    'Le logo ou le visuel d\'une vraie carte que vous n\'avez pas le droit d\'utiliser.',
+    '<div data-fx="bank-card-flip" aria-label="Carte"><div class="fx-bc"><div class="fx-f">…</div><div class="fx-b">…</div></div></div>',
+    '<div data-fx="bank-card-flip" aria-label="Carte d\'exemple" style="--fx-w:200px;font:13px monospace"><div class="fx-bc"><div class="fx-f">•••• 0002<br>EXEMPLE</div><div class="fx-b">Dos de la carte</div></div></div>',
+    { a11y: 'Rôle `button`, activable au clavier. Donnez-lui un `aria-label`.' }),
 ];
