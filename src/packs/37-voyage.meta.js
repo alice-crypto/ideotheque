@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="trip-stops" data-fx-items="Bordeaux:2|Bilbao:2"></div>',
     '<div data-fx="trip-stops" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés par étape, total annoncé.' }),
+  E('plane-window', 'Ambiance',
+    'Un hublot montre des nuages qui passent, avec un ciel réglé sur l\'heure réelle.',
+    'La tête contre le hublot, déjà ailleurs.',
+    '- `--fx-s` (120px)',
+    'Compagnies, voyages, écrans d\'attente.',
+    'Sur fond très clair sans contour : le cadre se perdrait.',
+    '<div data-fx="plane-window"></div>',
+    '<div data-fx="plane-window"></div>',
+    { a11y: 'Décoratif, masqué. La bibliothèque coupe l\'animation en mouvement réduit.' }),
 ];

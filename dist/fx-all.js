@@ -15533,6 +15533,22 @@
       go();
     }
   });
+
+  // Un hublot d'avion : les nuages passent, le ciel suit l'heure
+  FX.register('plane-window', {
+    setup: function (el) {
+      var box = U.make('div', 'fx-pw2', el), h = new Date().getHours();
+      box.setAttribute('aria-hidden', 'true');
+      el.dataset.fxTime = h < 6 || h >= 21 ? 'night' : h < 9 || h >= 18 ? 'dawn' : 'day';
+      for (var i = 0; i < 12; i++) {
+        var c = U.make('i', '', box), z = i % 3;
+        c.style.setProperty('--fx-y', (42 + z * 18 + U.rand(-4, 8)) + '%');
+        c.style.setProperty('--fx-s', (.6 + z * .5).toFixed(2));
+        c.style.setProperty('--fx-t', (22 - z * 7) + 's');
+        c.style.setProperty('--fx-d', -U.rand(0, 22).toFixed(1) + 's');
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
