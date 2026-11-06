@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->762<!-- /total --> effets.
+La bibliothèque contient <!-- total -->763<!-- /total --> effets.
 
 ## Règles
 
@@ -459,6 +459,7 @@ La bibliothèque contient <!-- total -->762<!-- /total --> effets.
 | `solar-tilt` | Micro-interaction | Un curseur incline un panneau et montre le rendement perdu par rapport à l'angle optimal |
 | `tolerance-gauge` | Micro-interaction | Une mesure glisse sur une zone de tolérance, et le verdict tombe par écrit |
 | `press-stamp` | Micro-interaction | Maintenir un bouton fait descendre une presse, qui marque la pièce à fond de course |
+| `tank-valve` | Micro-interaction | Deux vannes font monter ou descendre le niveau d'une cuve, en continu |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

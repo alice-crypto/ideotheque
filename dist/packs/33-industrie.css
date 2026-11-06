@@ -121,3 +121,13 @@
 [data-fx="press-stamp"] b { color: #0005; font-size: 18px; opacity: 0; transition: opacity .3s; }
 [data-fx="press-stamp"].fx-done b { opacity: 1; }
 [data-fx="press-stamp"] button { padding: 5px 16px; border: 0; border-radius: 99px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; touch-action: none; user-select: none; }
+
+/* tank-valve : une cuve et ses vannes */
+[data-fx="tank-valve"] { display: grid; grid-template-columns: 1fr 86px 1fr; gap: 6px; align-items: center; width: min(100%, var(--fx-w, 240px)); font-size: 10px; }
+[data-fx="tank-valve"] button { padding: 5px; border: 2px solid currentColor; border-radius: 6px; background: none; color: inherit; font: inherit; line-height: 1.2; cursor: pointer; }
+[data-fx="tank-valve"] [aria-pressed="true"] { background: var(--fx-up, #2eaf63); color: #fff; border-color: transparent; }
+[data-fx="tank-valve"] .fx-tv { position: relative; height: 110px; border: 3px solid currentColor; border-radius: 10px 10px 18px 18px; overflow: hidden; }
+[data-fx="tank-valve"] .fx-tv i { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--fx-q, .4) * 100%); background: linear-gradient(#54a7f3, #1f64bb); }
+[data-fx="tank-valve"].fx-a .fx-tv::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 6px; margin-left: -3px; background: repeating-linear-gradient(#7fc2ff 0 5px, #2d82d6 5px 10px); animation: fx-tank-pour .3s linear infinite; z-index: 1; }
+[data-fx="tank-valve"] output { grid-column: 1 / -1; font-size: 13px; font-weight: 700; text-align: center; }
+@keyframes fx-tank-pour { to { background-position-y: 10px; } }

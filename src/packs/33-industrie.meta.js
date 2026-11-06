@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="press-stamp" data-fx-text="OK"></div>',
     '<div data-fx="press-stamp" data-fx-text="OK" style="color:var(--ink)"></div>',
     { trigger: 'Presser', a11y: 'Vrai bouton à maintenir, au clavier aussi. Force annoncée.' }),
+  E('tank-valve', 'Micro-interaction',
+    'Deux vannes font monter ou descendre le niveau d\'une cuve, en continu.',
+    'On pilote pour de vrai, comme dans une salle de commande.',
+    '- `data-fx-level` (40)',
+    'Procédés, pédagogie, jeux éducatifs.',
+    'De croire qu\'un tel composant peut piloter une installation réelle.',
+    '<div data-fx="tank-valve" data-fx-level="40"></div>',
+    '<div data-fx="tank-valve" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons `aria-pressed`, niveau annoncé par paliers.' }),
 ];
