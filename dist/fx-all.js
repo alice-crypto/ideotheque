@@ -10235,6 +10235,26 @@
       go();
     }
   });
+
+  // Depuis la dernière prise, le temps qu'il reste avant la prochaine
+  FX.register('next-dose', {
+    setup: function (el) {
+      var H = U.num(el, 'fxHours', 6), last = null;
+      el.innerHTML = '<svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="35"/><circle class="fx-nd" cx="40" cy="40" r="35" pathLength="1"/></svg><div><b>–</b><span>Pas encore de prise</span></div><button type="button">J\'ai pris ma dose</button>';
+      var b = el.querySelector('b'), s = el.querySelector('span');
+      var go = function () {
+        if (!last) return;
+        var left = last + H * 3600000 - Date.now(), q = U.clamp(left / (H * 3600000), 0, 1);
+        el.style.setProperty('--fx-q', q);
+        if (left <= 0) { b.textContent = 'Maintenant'; s.textContent = 'Dose possible'; return; }
+        b.textContent = Math.floor(left / 3600000) + ' h ' + String(Math.floor(left / 60000) % 60).padStart(2, '0');
+        s.textContent = 'avant la prochaine';
+      };
+      el.querySelector('button').addEventListener('click', function () { last = Date.now(); go(); });
+      setInterval(go, 30000);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

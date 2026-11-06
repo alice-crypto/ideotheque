@@ -6174,6 +6174,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="pill-organizer"] span { position: absolute; left: 0; right: 0; bottom: 3px; color: #fff; font-weight: 700; font-size: 11px; transition: opacity .2s; }
 [data-fx="pill-organizer"] [aria-pressed="true"] span { color: inherit; }
 
+/* next-dose : le temps avant la prochaine prise */
+[data-fx="next-dose"] { position: relative; display: grid; justify-items: center; gap: 8px; width: var(--fx-s, 150px); font-size: 11px; text-align: center; }
+[data-fx="next-dose"] svg { width: 100%; transform: rotate(-90deg); }
+[data-fx="next-dose"] circle { fill: none; stroke: color-mix(in srgb, currentColor 16%, transparent); stroke-width: 6; }
+[data-fx="next-dose"] .fx-nd { stroke: var(--fx-accent); stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--fx-q, 0)); transition: stroke-dashoffset .7s var(--fx-ease-out); }
+[data-fx="next-dose"] > div { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 1; display: grid; place-content: center; padding: 0 14px; }
+[data-fx="next-dose"] b { font-size: 20px; }
+[data-fx="next-dose"] button { padding: 5px 10px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

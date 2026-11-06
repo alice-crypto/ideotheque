@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="pill-organizer"></div>',
     '<div data-fx="pill-organizer" style="color:var(--ink)"></div>',
     { a11y: 'Chaque jour est un bouton nommé, et le compte est annoncé.' }),
+  E('next-dose', 'État',
+    'Un anneau compte le temps restant avant la prochaine prise, après un geste de confirmation.',
+    'On évite d\'y repenser toutes les dix minutes.',
+    '- `data-fx-hours` (6) : intervalle entre deux prises',
+    'Traitements, biberons, soins à intervalle.',
+    'De fixer un intervalle à la place d\'une prescription.',
+    '<div data-fx="next-dose" data-fx-hours="6"></div>',
+    '<div data-fx="next-dose" data-fx-hours="6" style="color:var(--ink)"></div>',
+    { a11y: 'Le temps restant est écrit ; l\'anneau n\'est qu\'une illustration.' }),
 ];

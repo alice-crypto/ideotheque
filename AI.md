@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->576<!-- /total --> effets.
+La bibliothèque contient <!-- total -->577<!-- /total --> effets.
 
 ## Règles
 
@@ -596,6 +596,7 @@ La bibliothèque contient <!-- total -->576<!-- /total --> effets.
 | `due-date-bar` | État | Une barre montre le temps écoulé vers une échéance, et le message devient plus ferme à l'approche |
 | `er-wait` | État | Un temps d'attente s'affiche avec son niveau, l'heure de sa mise à jour et le rappel des urgences vitales |
 | `device-check` | État | Une liste vérifie pas à pas que le navigateur peut tenir une consultation à distance |
+| `next-dose` | État | Un anneau compte le temps restant avant la prochaine prise, après un geste de confirmation |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)
