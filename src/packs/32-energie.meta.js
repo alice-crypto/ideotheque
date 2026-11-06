@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="smart-meter" data-fx-index="18492.3"></div>',
     '<div data-fx="smart-meter"></div>',
     { a11y: 'Valeurs en texte réel. Figé en mouvement réduit.' }),
+  E('self-consumption', 'Présentation',
+    'Deux courbes se croisent, et leur zone commune montre la part de solaire utilisée sur place.',
+    'Lancer la machine à midi devient logique.',
+    '- `data-fx-use` : 24 valeurs de consommation\n- `data-fx-peak` (3)',
+    'Solaire, batteries, pédagogie de l\'énergie.',
+    'De généraliser : chaque maison a sa propre courbe.',
+    '<div data-fx="self-consumption" data-fx-peak="3"></div>',
+    '<div data-fx="self-consumption" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le résultat est écrit, le graphique est décoratif.' }),
 ];

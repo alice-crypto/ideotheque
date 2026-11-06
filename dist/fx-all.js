@@ -13080,6 +13080,19 @@
     },
     tick: function (el, dt) { if (!U.reduced) el._fxStep(dt); }
   });
+
+  // Production solaire contre consommation : la part utilisée sur place
+  FX.register('self-consumption', {
+    entrance: true,
+    setup: function (el) {
+      var H = 24, s = [], c = (el.dataset.fxUse || '.3,.3,.3,.3,.3,.4,.9,1.2,.8,.5,.5,.6,.9,.6,.5,.5,.7,1.2,1.8,2,1.6,1,.6,.4').split(',').map(Number), peak = U.num(el, 'fxPeak', 3);
+      for (var i = 0; i < H; i++) s.push(i > 6 && i < 20 ? Math.pow(Math.sin((i - 6) / 14 * Math.PI), 1.3) * peak : 0);
+      var used = 0, made = 0, Y = function (v) { return 80 - v / peak * 72; }, X = function (i) { return i / (H - 1) * 200; };
+      s.forEach(function (v, i) { used += Math.min(v, c[i]); made += v; });
+      var ln = function (a) { return a.map(function (v, i) { return (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }).join(''); }, over = s.map(function (v, i) { return Math.min(v, c[i]); });
+      el.innerHTML = '<svg viewBox="0 0 200 84" preserveAspectRatio="none" aria-hidden="true"><path class="o" d="' + ln(over) + 'L200 80L0 80Z"/><path class="s" pathLength="1" d="' + ln(s) + '"/><path class="c" pathLength="1" d="' + ln(c) + '"/></svg><p><b>' + Math.round(used / made * 100) + ' %</b> du solaire utilisé sur place. Journée fictive.</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
