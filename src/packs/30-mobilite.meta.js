@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="live-bus" data-fx-items="Mairie|Vous"></div>',
     '<div data-fx="live-bus" style="color:var(--ink)"></div>',
     { trigger: 'Avancer', a11y: 'Liste ordonnée, temps annoncé.' }),
+  E('footsteps', 'Entrée',
+    'Des empreintes s\'impriment une à une vers le contenu.',
+    'Un chemin qui invite à marcher.',
+    '- `data-fx-steps` (10), `data-fx-text`, `--fx-foot`',
+    'Marche, ville, parcours guidés.',
+    'De le répéter plusieurs fois sur une page : la promenade lasserait.',
+    '<div data-fx="footsteps" data-fx-text="À 8 minutes à pied"></div>',
+    '<div data-fx="footsteps" data-fx-text="À 8 minutes à pied" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le texte est réel, les pas sont décoratifs.' }),
 ];

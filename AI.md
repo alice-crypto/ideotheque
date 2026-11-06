@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->692<!-- /total --> effets.
+La bibliothèque contient <!-- total -->693<!-- /total --> effets.
 
 ## Règles
 
@@ -84,6 +84,7 @@ La bibliothèque contient <!-- total -->692<!-- /total --> effets.
 | `brick-lay` | Entrée | Un mur se monte brique après brique, rang par rang |
 | `dimension-lines` | Entrée | Des lignes de cote mesurent réellement l'élément et écrivent sa taille |
 | `tire-track` | Entrée | Une trace de pneu traverse le titre en biais, et le texte apparaît dans son sillage |
+| `footsteps` | Entrée | Des empreintes s'impriment une à une vers le contenu |
 | `text-split` | Texte | Donner du poids à un titre en le faisant apparaître lettre par lettre |
 | `text-scramble` | Texte | Un texte brouillé en signes aléatoires qui se décode lettre par lettre, de gauche à droite |
 | `typewriter` | Texte | Le texte s'écrit lettre par lettre, suivi d'un curseur qui clignote |

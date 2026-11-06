@@ -328,4 +328,19 @@
     },
     trigger: function (el) { el._fxGo(); }
   });
+
+  // Des pas qui avancent vers le contenu
+  FX.register('footsteps', {
+    entrance: true,
+    setup: function (el) {
+      var n = U.num(el, 'fxSteps', 10), box = U.make('div', 'fx-fs', el);
+      box.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) {
+        var f = U.make('i', i % 2 ? 'r' : 'l', box);
+        f.style.left = (i + .5) / n * 100 + '%';
+        f.style.setProperty('--fx-i', i);
+      }
+      if (el.dataset.fxText) U.make('strong', '', el).textContent = el.dataset.fxText;
+    }
+  });
 })(window.FX);
