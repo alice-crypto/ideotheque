@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="cancel-policy" data-fx-date="2027-05-01"></div>',
     '<div data-fx="cancel-policy" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'La condition du moment est écrite. Le schéma est décoratif.' }),
+  E('loyalty-nights', 'Présentation',
+    'Une barre situe les nuits de l\'année face aux paliers de fidélité, et dit ce qui reste.',
+    'Un petit encouragement honnête.',
+    '- `data-fx-items` : « palier:nuits » séparés par `|`\n- `data-fx-nights` (17)',
+    'Fidélité, abonnements, jeux, programmes.',
+    'De pousser à consommer juste pour un palier : présentez aussi les vrais avantages.',
+    '<div data-fx="loyalty-nights" data-fx-nights="17"></div>',
+    '<div data-fx="loyalty-nights" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le texte dit tout : nuits et reste. La barre est décorative.' }),
 ];

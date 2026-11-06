@@ -15050,6 +15050,17 @@
       el.innerHTML = '<div class="fx-cp3" aria-hidden="true"><i class="a" style="flex:' + (span - free) + ' 1 0"></i><i class="b" style="flex:' + (free - half) + ' 1 0"></i><i class="c" style="flex:' + half + ' 1 0"></i><u></u></div><div class="fx-cp3-l" aria-hidden="true"><span>Aujourd\'hui ou avant</span><span>Arrivée</span></div><p>' + st + '</p>';
     }
   });
+
+  // Un programme de fidélité : encore combien de nuits ?
+  FX.register('loyalty-nights', {
+    entrance: true,
+    setup: function (el) {
+      var T = (el.dataset.fxItems || 'Argent:10|Or:25|Platine:50').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1]]; }), n = U.num(el, 'fxNights', 17), max = T[T.length - 1][0] ? T[T.length - 1][1] : 50, next = T.filter(function (t) { return n < t[1]; })[0];
+      el.style.setProperty('--fx-q', Math.min(1, n / max));
+      var h = '<div class="fx-ln" aria-hidden="true"><i></i>' + T.map(function (t) { return '<em class="' + (n >= t[1] ? 'fx-got' : '') + '" style="left:' + t[1] / max * 100 + '%"><b>' + t[0] + '</b></em>'; }).join('') + '</div>';
+      el.innerHTML = h + '<p><b>' + n + ' nuits</b> cette année. ' + (next ? 'Plus que ' + (next[1] - n) + ' nuits pour le niveau ' + next[0] : 'Niveau maximal atteint') + '</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

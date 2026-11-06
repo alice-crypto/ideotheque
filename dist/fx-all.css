@@ -8804,6 +8804,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="cancel-policy"] .fx-cp3-l { display: flex; justify-content: space-between; margin-top: 6px; font-size: 9px; opacity: .7; }
 [data-fx="cancel-policy"] p { margin: 5px 0 0; font-size: 13px; font-weight: 800; }
 
+/* loyalty-nights : encore combien de nuits */
+[data-fx="loyalty-nights"] { width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="loyalty-nights"] .fx-ln { position: relative; height: 8px; margin: 24px 12px 12px 0; background: color-mix(in srgb, currentColor 16%, transparent); }
+[data-fx="loyalty-nights"] .fx-ln > i { display: block; height: 100%; width: 0; background: var(--fx-accent); transition: width 1.2s var(--fx-ease-out); }
+.fx-in[data-fx="loyalty-nights"] .fx-ln > i { width: calc(var(--fx-q) * 100%); }
+[data-fx="loyalty-nights"] em { position: absolute; top: -3px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--fx-bg, #333); border: 2px solid currentColor; box-sizing: border-box; font-style: normal; }
+[data-fx="loyalty-nights"] .fx-got { background: var(--fx-accent); border-color: var(--fx-accent); }
+[data-fx="loyalty-nights"] em b { position: absolute; left: 50%; bottom: 15px; transform: translateX(-50%); font-size: 9px; }
+[data-fx="loyalty-nights"] p { margin: 0; }
+[data-fx="loyalty-nights"] p b { font-size: 15px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
