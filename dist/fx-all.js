@@ -11960,6 +11960,28 @@
       setInterval(draw, 15000);
     }
   });
+
+  // Vélo, bus ou voiture : qui gagne selon la distance et le critère
+  FX.register('mode-compare', {
+    setup: function (el) {
+      var M = [['À pied', 5, 0, 0], ['Vélo', 16, 0, 0], ['Bus', 20, 1.7, 8], ['Voiture', 28, .25, 6]];
+      el.innerHTML = '<label>Distance <b></b><input type="range" min="1" max="20" step="1"></label><ul></ul>';
+      var r = el.querySelector('input'), ul = el.querySelector('ul'), lab = el.querySelector('b'), L = M.map(function (m) { var li = U.make('li', '', ul); li.innerHTML = '<span>' + m[0] + '</span><i></i><em></em>'; return li; });
+      r.value = U.num(el, 'fxKm', 5);
+      var go = function () {
+        var d = +r.value, res = M.map(function (m, i) { return { i: i, t: Math.round(d / m[1] * 60 + m[3]), c: i === 2 ? m[2] : d * m[2] }; }), best = Math.min.apply(null, res.map(function (x) { return x.t; })), max = Math.max.apply(null, res.map(function (x) { return x.t; }));
+        lab.textContent = d + ' km';
+        res.forEach(function (x) {
+          var li = L[x.i];
+          li.style.setProperty('--fx-q', x.t / max);
+          li.classList.toggle('fx-best', x.t === best);
+          li.querySelector('em').textContent = (x.t >= 60 ? Math.floor(x.t / 60) + ' h ' + String(x.t % 60).padStart(2, '0') : x.t + ' min') + (x.c ? ' · ' + x.c.toFixed(2).replace('.', ',') + ' €' : '');
+        });
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

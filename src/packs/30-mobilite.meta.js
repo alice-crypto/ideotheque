@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="next-departures" data-fx-items="12:Gare:2"></div>',
     '<div data-fx="next-departures"></div>',
     { a11y: 'Vraie liste, les temps sont écrits. Pas de lecture automatique des changements.' }),
+  E('mode-compare', 'Micro-interaction',
+    'Selon la distance, des barres comparent le temps de chaque mode et marquent le plus rapide.',
+    'Le vélo gagne plus souvent qu\'on ne le croit.',
+    '- `data-fx-km` (5)',
+    'Mobilité, entreprises, plans de déplacements.',
+    'Des vitesses moyennes présentées comme des trajets réels : ajoutez un vrai calculateur.',
+    '<div data-fx="mode-compare" data-fx-km="5"></div>',
+    '<div data-fx="mode-compare" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, tous les résultats sont écrits.' }),
 ];
