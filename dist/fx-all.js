@@ -13461,6 +13461,17 @@
       go();
     }
   });
+
+  // Le panneau de sécurité : jours sans accident et record
+  FX.register('safety-days', {
+    entrance: true,
+    setup: function (el) {
+      var since = el.dataset.fxSince ? new Date(el.dataset.fxSince) : new Date(Date.now() - 86400000 * 412), days = Math.floor((Date.now() - since) / 86400000), rec = Math.max(days, U.num(el, 'fxRecord', 530));
+      el.innerHTML = '<small>' + (el.dataset.fxTitle || 'Jours sans accident') + '</small><div class="fx-sd">' + String(days).padStart(4, '0').split('').map(function (d, i) { return '<i style="--fx-i:' + i + '">' + d + '</i>'; }).join('') + '</div><small>Record : ' + rec + ' jours</small>';
+      el.setAttribute('aria-label', days + ' jours sans accident, record ' + rec);
+      el.setAttribute('role', 'img');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

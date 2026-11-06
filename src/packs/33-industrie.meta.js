@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="lot-trace"></div>',
     '<div data-fx="lot-trace" style="color:var(--ink)"></div>',
     { a11y: 'Vrai formulaire, liste ordonnée, résultat annoncé.' }),
+  E('safety-days', 'État',
+    'Un panneau affiche le nombre de jours sans accident et le record d\'équipe.',
+    'Une fierté d\'atelier, qu\'on regarde en arrivant.',
+    '- `data-fx-since` : date du dernier incident\n- `data-fx-record` (530), `data-fx-title`, `--fx-safe`',
+    'Usines, chantiers, équipes de garde, projets.',
+    'Une valeur inventée : ce chiffre engage des personnes, il doit être exact.',
+    '<div data-fx="safety-days" data-fx-since="2026-01-05"></div>',
+    '<div data-fx="safety-days"></div>',
+    { trigger: 'Rejouer', a11y: 'Rôle `img`, tout dans `aria-label`.' }),
 ];

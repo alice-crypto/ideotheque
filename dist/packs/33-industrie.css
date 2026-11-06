@@ -79,3 +79,9 @@
 [data-fx="lot-trace"] li:not(:last-child)::after { content: ''; position: absolute; left: 5px; top: 14px; bottom: -8px; width: 1px; background: currentColor; }
 [data-fx="lot-trace"] output { opacity: .75; }
 @keyframes fx-lot-link { from { opacity: 0; transform: translateY(-6px); } }
+
+/* safety-days : le panneau de sécurité */
+[data-fx="safety-days"] { display: inline-grid; gap: 4px; padding: 10px 14px; background: var(--fx-safe, #127a3e); color: #fff; border: 5px solid #fff; outline: 2px solid var(--fx-safe, #127a3e); font-size: 11px; font-weight: 700; text-align: center; }
+[data-fx="safety-days"] .fx-sd { display: flex; gap: 3px; justify-content: center; perspective: 500px; }
+[data-fx="safety-days"] i { display: block; padding: 3px 8px; background: #fff; color: #111; font: 800 28px/1 ui-monospace, monospace; font-style: normal; transform: rotateX(-90deg); transform-origin: top; transition: transform .45s var(--fx-ease-spring) calc(var(--fx-i) * 110ms); }
+.fx-in[data-fx="safety-days"] i { transform: none; }
