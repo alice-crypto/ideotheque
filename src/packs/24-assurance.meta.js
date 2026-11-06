@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="peril-shield" data-fx-items="Incendie,Vol,Tempête" data-fx-on="2"></div>',
     '<div data-fx="peril-shield" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le dessin est décoratif : les cases à cocher et le compte annoncé portent l\'information.' }),
+  E('claim-tracker', 'Présentation',
+    'Une liste d\'étapes montre l\'avancement d\'un dossier, avec l\'étape en cours qui bat.',
+    'On sait où en est son dossier, sans appeler.',
+    '- `data-fx-items` : « étape:date » séparés par `|`\n- `data-fx-current` (2) : rang de l\'étape en cours',
+    'Sinistres, remboursements, démarches, commandes.',
+    'Une date d\'étape estimée présentée comme certaine.',
+    '<div data-fx="claim-tracker" data-fx-items="Déclaré:3 mars|Expertise:en cours" data-fx-current="1"></div>',
+    '<div data-fx="claim-tracker" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Vraie liste ordonnée, avec `aria-current="step"`.' }),
 ];

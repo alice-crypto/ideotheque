@@ -5700,6 +5700,20 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="peril-shield"] input { margin: 0; accent-color: var(--fx-accent); }
 [data-fx="peril-shield"] output { font-weight: 700; }
 
+/* claim-tracker : le suivi d'un dossier */
+[data-fx="claim-tracker"] { width: min(100%, var(--fx-w, 210px)); font-size: 12px; }
+[data-fx="claim-tracker"] ol { margin: 0; padding: 0; list-style: none; }
+[data-fx="claim-tracker"] li { position: relative; display: flex; justify-content: space-between; gap: 8px; padding: 0 0 12px 20px; opacity: 0; transform: translateX(-6px); transition: opacity .4s, transform .4s var(--fx-ease-out); transition-delay: calc(var(--fx-i) * 130ms); }
+.fx-in[data-fx="claim-tracker"] li { opacity: 1; transform: none; }
+[data-fx="claim-tracker"] li::before { content: ''; position: absolute; left: 3px; top: 3px; width: 9px; height: 9px; border: 2px solid currentColor; border-radius: 50%; box-sizing: border-box; }
+[data-fx="claim-tracker"] li:not(:last-child)::after { content: ''; position: absolute; left: 7px; top: 13px; bottom: -1px; width: 1px; background: currentColor; opacity: .4; }
+[data-fx="claim-tracker"] .fx-done::before { background: var(--fx-accent); border-color: var(--fx-accent); }
+[data-fx="claim-tracker"] .fx-done::after { background: var(--fx-accent) !important; opacity: 1 !important; }
+[data-fx="claim-tracker"] .fx-now::before { border-color: var(--fx-accent); animation: fx-ct 1.5s infinite; }
+[data-fx="claim-tracker"] li:not(.fx-done):not(.fx-now) { color: color-mix(in srgb, currentColor 65%, transparent); }
+[data-fx="claim-tracker"] span { opacity: .75; text-align: right; }
+@keyframes fx-ct { 50% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--fx-accent) 30%, transparent); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

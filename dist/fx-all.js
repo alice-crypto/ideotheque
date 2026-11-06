@@ -9260,6 +9260,22 @@
       });
     }
   });
+
+  // Le suivi d'un dossier : ce qui est fait, ce qui est en cours, ce qui reste
+  FX.register('claim-tracker', {
+    entrance: true,
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Déclaré:3 mars|Pièces reçues:5 mars|Expertise:en cours|Indemnisation:à venir').split('|'), cur = U.num(el, 'fxCurrent', 2);
+      var ol = U.make('ol', '', el);
+      el.dataset.fxRendered = '1';
+      rows.forEach(function (r, i) {
+        var p = r.split(':'), li = U.make('li', i < cur ? 'fx-done' : i === cur ? 'fx-now' : '', ol);
+        li.style.setProperty('--fx-i', i);
+        li.innerHTML = '<b>' + p[0] + '</b><span>' + p[1] + '</span>';
+        if (i === cur) li.setAttribute('aria-current', 'step');
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
