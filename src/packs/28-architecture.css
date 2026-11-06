@@ -195,3 +195,13 @@
 [data-fx="skyline-rise"] { display: block; width: 100%; height: var(--fx-h, 150px); overflow: hidden; background: var(--fx-sky, linear-gradient(#1c2a55, #f0926a)); }
 [data-fx="skyline-rise"] .fx-sr { display: flex; align-items: flex-end; gap: 2px; height: 100%; }
 [data-fx="skyline-rise"] i { height: calc(var(--fx-t) * 100%); background: repeating-linear-gradient(0deg, transparent 0 5px, #ffd46b55 5px 7px), #12182b; transform: translateY(calc((1 - var(--fx-q, 1) * (1 + var(--fx-d) * .3)) * 100%)); }
+
+/* roof-pitch : la pente d'un toit */
+[data-fx="roof-pitch"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 210px)); font-size: 11px; }
+[data-fx="roof-pitch"] svg { display: block; width: 100%; max-height: 112px; overflow: visible; }
+[data-fx="roof-pitch"] rect { fill: color-mix(in srgb, currentColor 24%, transparent); }
+[data-fx="roof-pitch"] .fx-rp-w { fill: currentColor; }
+[data-fx="roof-pitch"] .fx-rp-t { fill: var(--fx-accent); }
+[data-fx="roof-pitch"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
+[data-fx="roof-pitch"] input { min-width: 0; accent-color: var(--fx-accent); }
+[data-fx="roof-pitch"] output b { font-size: 16px; }
