@@ -177,4 +177,23 @@
       el.innerHTML = '<div class="fx-ts" aria-hidden="true">' + h + '<u></u></div><p><b>' + Math.round(time) + ' min</b> pour ' + km + ' km, soit ' + Math.max(0, Math.round(time - free)) + ' min de retard</p>';
     }
   });
+
+  // Le profil d'un parcours : suivre la pente du doigt
+  FX.register('elevation-profile', {
+    setup: function (el) {
+      var d = (el.dataset.fxData || '120,160,240,310,290,380,520,480,420,360,300,280').split(',').map(Number), km = U.num(el, 'fxKm', 22), lo = Math.min.apply(null, d) - 30, hi = Math.max.apply(null, d) + 20, up = 0;
+      d.forEach(function (v, i) { if (i && v > d[i - 1]) up += v - d[i - 1]; });
+      var X = function (i) { return i / (d.length - 1) * 200; }, Y = function (v) { return 80 - (v - lo) / (hi - lo) * 74; };
+      var p = d.map(function (v, i) { return (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }).join('');
+      el.innerHTML = '<svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path class="fx-ep-a" d="' + p + 'L200 80L0 80Z"/><path class="fx-ep-l" d="' + p + '"/></svg><i aria-hidden="true"></i><input type="range" min="0" max="' + (d.length - 1) + '" value="3" aria-label="Position sur le parcours"><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output'), seg = km / (d.length - 1);
+      var go = function () {
+        var k = +r.value, n = Math.min(k + 1, d.length - 1), g = n === k ? 0 : (d[n] - d[k]) / (seg * 1000) * 100;
+        el.style.setProperty('--fx-x', k / (d.length - 1)); el.style.setProperty('--fx-y', Y(d[k]) / 80);
+        o.innerHTML = '<b>' + d[k] + ' m</b> au km ' + Math.round(k * seg) + ', pente ' + (g > 0 ? '+' : '') + g.toFixed(1).replace('.', ',') + ' %. D+ total ' + up + ' m';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

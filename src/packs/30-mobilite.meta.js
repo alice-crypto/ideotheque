@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="traffic-strip" data-fx-items="8:60:0|3:15:2"></div>',
     '<div data-fx="traffic-strip" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le résumé est écrit. La bande est décorative.' }),
+  E('elevation-profile', 'Présentation',
+    'Un curseur suit le profil d\'un parcours, et donne l\'altitude et la pente au point choisi.',
+    'Sentir le col avant d\'y mettre les pieds.',
+    '- `data-fx-data` : altitudes séparées par des virgules\n- `data-fx-km` (22)',
+    'Vélo, randonnée, trail.',
+    'Un profil trop lissé : la pente réelle peut être bien plus forte par endroits.',
+    '<div data-fx="elevation-profile" data-fx-km="22" data-fx-data="120,240,190"></div>',
+    '<div data-fx="elevation-profile" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur nommé, altitude et pente annoncées.' }),
 ];
