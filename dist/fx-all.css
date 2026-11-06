@@ -8257,6 +8257,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="veg-basket"].fx-full .fx-vb { background: var(--fx-down, #e10600); }
 [data-fx="veg-basket"] output b { font-size: 15px; }
 
+/* food-miles : la distance d'un aliment */
+[data-fx="food-miles"] { width: min(100%, var(--fx-w, 240px)); font-size: 10px; }
+[data-fx="food-miles"] ul { display: grid; gap: 3px; margin: 0; padding: 0; list-style: none; }
+[data-fx="food-miles"] li { display: grid; grid-template-columns: 70px 1fr 54px; gap: 1px 5px; align-items: center; }
+[data-fx="food-miles"] li i { display: block; height: 9px; width: 0; background: var(--fx-accent); transition: width .9s var(--fx-ease-out) calc(var(--fx-i) * 130ms); }
+.fx-in[data-fx="food-miles"] li i { width: calc(var(--fx-q) * 100%); }
+[data-fx="food-miles"] b { text-align: right; }
+[data-fx="food-miles"] small { grid-column: 1 / -1; opacity: .7; }
+[data-fx="food-miles"] p { margin: 5px 0 0; opacity: .65; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

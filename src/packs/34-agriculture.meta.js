@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="veg-basket" data-fx-max="5"></div>',
     '<div data-fx="veg-basket" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés par produit, total annoncé.' }),
+  E('food-miles', 'Présentation',
+    'Des barres comparent la distance parcourue par un même produit, selon son origine.',
+    'Le lien entre son assiette et une carte.',
+    '- `data-fx-items` : « origine:km:kg CO₂ » séparés par `|`',
+    'Circuits courts, restaurants, labels.',
+    'De réduire l\'écologie à la distance : la culture et le stockage pèsent souvent plus.',
+    '<div data-fx="food-miles" data-fx-items="Ferme voisine:35:0.1"></div>',
+    '<div data-fx="food-miles" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Distances et émissions écrites ; l\'échelle est expliquée.' }),
 ];
