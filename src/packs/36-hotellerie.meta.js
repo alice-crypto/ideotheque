@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="door-hanger"></div>',
     '<div data-fx="door-hanger" data-fx-on="true" style="color:var(--ink)"></div>',
     { trigger: 'Retourner', a11y: 'Rôle `switch`, état annoncé.' }),
+  E('breakfast-tray', 'Micro-interaction',
+    'Des articles se posent sur un plateau, avec le total et l\'heure de service.',
+    'Le luxe tranquille d\'un matin à l\'hôtel.',
+    '- `data-fx-items` : « article:emoji:prix » séparés par `|`',
+    'Hôtels, livraison de repas, room service.',
+    'De confondre avec un vrai bon de commande : envoyez ces données à votre service.',
+    '<div data-fx="breakfast-tray"></div>',
+    '<div data-fx="breakfast-tray" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons `aria-pressed`, liste nommée, total annoncé.' }),
 ];

@@ -14965,6 +14965,29 @@
     },
     trigger: function (el) { el.firstChild.click(); }
   });
+
+  // Composer son plateau de petit-déjeuner en chambre
+  FX.register('breakfast-tray', {
+    setup: function (el) {
+      var I = (el.dataset.fxItems || 'Café:☕:4|Croissant:🥐:3|Jus d\'orange:🧃:5|Œufs:🍳:7|Fruits:🍓:6').split('|').map(function (r) { return r.split(':'); });
+      el.innerHTML = '<div class="fx-bt2" aria-hidden="true"></div><div class="fx-bt2-l"></div><label>Servi à <select><option>7:30</option><option>8:00</option><option selected>8:30</option><option>9:00</option><option>9:30</option></select></label><output aria-live="polite"></output>';
+      var tray = el.querySelector('.fx-bt2'), list = el.querySelector('.fx-bt2-l'), o = el.querySelector('output'), sel = el.querySelector('select');
+      var go = function () {
+        var t = 0, n = [];
+        tray.innerHTML = '';
+        list.querySelectorAll('button').forEach(function (b, i) { if (b.getAttribute('aria-pressed') === 'true') { t += +I[i][2]; n.push(I[i][0]); U.make('i', '', tray).textContent = I[i][1]; } });
+        o.innerHTML = n.length ? '<b>' + t + ' €</b>, servi à ' + sel.value : 'Votre plateau est vide';
+      };
+      I.forEach(function (x) {
+        var b = U.make('button', '', list);
+        b.type = 'button'; b.textContent = x[0]; b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); go(); });
+      });
+      sel.addEventListener('change', go);
+      list.firstChild.click();
+      list.children[1].click();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
