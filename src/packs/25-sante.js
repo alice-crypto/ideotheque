@@ -321,4 +321,19 @@
       say();
     }
   });
+
+  // Un message composé comme un tableau d'ophtalmologue
+  FX.register('eye-chart', {
+    entrance: true,
+    setup: function (el) {
+      var t = el.textContent.trim().toUpperCase(), n = t.replace(/\s/g, ''), i = 0, row = 1, h = '';
+      el.setAttribute('aria-label', el.textContent.trim());
+      while (i < n.length) {
+        var s = n.slice(i, i + row);
+        h += '<span class="fx-ec" style="--fx-z:' + Math.max(.28, 1 - (row - 1) * .19) + ';--fx-i:' + (row - 1) + '" aria-hidden="true">' + s.split('').join(' ') + '</span>';
+        i += row; row++;
+      }
+      el.innerHTML = h;
+    }
+  });
 })(window.FX);
