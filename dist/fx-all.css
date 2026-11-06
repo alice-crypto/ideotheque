@@ -6143,6 +6143,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 @keyframes fx-pt { 40% { transform: scale(.9); } }
 @keyframes fx-pt2 { to { transform: scale(1.5); opacity: 0; } }
 
+/* practitioner-sort : trier une liste en la voyant bouger */
+[data-fx="practitioner-sort"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 235px)); font-size: 12px; }
+[data-fx="practitioner-sort"] .fx-ps-f { display: flex; gap: 4px; }
+[data-fx="practitioner-sort"] button { flex: 1; padding: 4px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; font-size: 11px; cursor: pointer; }
+[data-fx="practitioner-sort"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="practitioner-sort"] ul { margin: 0; padding: 0; list-style: none; }
+[data-fx="practitioner-sort"] li { display: grid; grid-template-columns: 1fr 44px 52px; gap: 4px; padding: 4px 2px; border-top: 1px solid color-mix(in srgb, currentColor 22%, transparent); background: inherit; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

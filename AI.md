@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->573<!-- /total --> effets.
+La bibliothèque contient <!-- total -->574<!-- /total --> effets.
 
 ## Règles
 
@@ -322,6 +322,7 @@ La bibliothèque contient <!-- total -->573<!-- /total --> effets.
 | `blood-compat` | Micro-interaction | On choisit un groupe sanguin, et ceux qui peuvent recevoir ses globules rouges s'allument |
 | `consent-scroll` | Micro-interaction | La case de consentement ne s'active qu'une fois le texte lu jusqu'au bout |
 | `pulse-tap` | Micro-interaction | On tapote au rythme de son pouls, et une estimation par minute se calcule |
+| `practitioner-sort` | Micro-interaction | On trie une liste de praticiens, et les lignes glissent à leur nouvelle place |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

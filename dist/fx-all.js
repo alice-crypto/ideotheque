@@ -10168,6 +10168,30 @@
       });
     }
   });
+
+  // Une liste qu'on trie par distance ou par disponibilité, en voyant les lignes bouger
+  FX.register('practitioner-sort', {
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Dr Aubry:1.2:3|Dr Klein:0.4:12|Dr Mora:2.8:1|Dr Sané:1.9:5').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], km: +p[1], d: +p[2] }; });
+      var f = U.make('div', 'fx-ps-f', el), ul = U.make('ul', '', el);
+      rows.forEach(function (r) { r.li = U.make('li', '', ul); r.li.innerHTML = '<b>' + r.n + '</b><span>' + String(r.km).replace('.', ',') + ' km</span><span>' + (r.d === 1 ? 'demain' : 'sous ' + r.d + ' j') + '</span>'; });
+      var sort = function (k) {
+        var before = rows.map(function (r) { return r.li.getBoundingClientRect().top; });
+        rows.slice().sort(function (a, b) { return a[k] - b[k]; }).forEach(function (r) { ul.appendChild(r.li); });
+        rows.forEach(function (r, i) {
+          var dy = before[i] - r.li.getBoundingClientRect().top;
+          if (!dy || U.reduced) return;
+          r.li.animate([{ transform: 'translateY(' + dy + 'px)' }, { transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.16,1,.3,1)' });
+        });
+      };
+      [['km', 'Le plus proche'], ['d', 'Le plus tôt']].forEach(function (c, i) {
+        var b = U.make('button', '', f);
+        b.type = 'button'; b.textContent = c[1]; b.setAttribute('aria-pressed', i === 0);
+        b.addEventListener('click', function () { f.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); sort(c[0]); });
+      });
+      sort('km');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

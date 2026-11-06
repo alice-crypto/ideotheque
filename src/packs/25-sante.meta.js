@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="pulse-tap"></div>',
     '<div data-fx="pulse-tap" style="color:var(--ink)"></div>',
     { a11y: 'Vrai bouton, utilisable au clavier, et le résultat est annoncé.' }),
+  E('practitioner-sort', 'Micro-interaction',
+    'On trie une liste de praticiens, et les lignes glissent à leur nouvelle place.',
+    'On garde le fil pendant que la liste change.',
+    '- `data-fx-items` : « nom:km:jours » séparés par `|`',
+    'Annuaires, résultats de recherche, tableaux courts.',
+    'Une très longue liste : l\'animation devient confuse. Noms d\'exemple fictifs.',
+    '<div data-fx="practitioner-sort" data-fx-items="Dr Aubry:1.2:3|Dr Klein:0.4:12"></div>',
+    '<div data-fx="practitioner-sort" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons `aria-pressed`, ordre réel du document modifié, pas d\'animation en mouvement réduit.' }),
 ];
