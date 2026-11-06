@@ -173,3 +173,13 @@
 [data-fx="tax-brackets"] .fx-tb-bar { display: flex; height: 24px; }
 [data-fx="tax-brackets"] .fx-tb-bar i { flex: 0 1 0; min-width: 0; overflow: hidden; display: grid; place-items: center; font-style: normal; font-size: 11px; color: #111; background: var(--fx-accent); filter: brightness(calc(1.15 - var(--fx-i) * .2)); transition: flex-grow .3s var(--fx-ease-out); }
 [data-fx="tax-brackets"] p { margin: 0; }
+
+/* cashflow-waterfall : une cascade */
+[data-fx="cashflow-waterfall"] { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; height: var(--fx-h, 160px); font-size: 10px; }
+[data-fx="cashflow-waterfall"] .fx-wf { position: relative; display: flex; flex-direction: column; min-width: 0; }
+[data-fx="cashflow-waterfall"] span { margin-top: auto; text-align: center; overflow: hidden; text-overflow: ellipsis; padding-top: 16px; }
+[data-fx="cashflow-waterfall"] i { position: absolute; left: 0; right: 0; background: var(--fx-pos, #2eaf63); transform: scaleY(0); transform-origin: top; transition: transform .45s var(--fx-ease-out) calc(var(--fx-i) * 130ms); }
+.fx-in[data-fx="cashflow-waterfall"] i { transform: none; }
+[data-fx="cashflow-waterfall"] .fx-neg i { background: var(--fx-neg, #e10600); }
+[data-fx="cashflow-waterfall"] .fx-end i { background: var(--fx-accent); }
+[data-fx="cashflow-waterfall"] b { position: absolute; left: 0; right: 0; top: -13px; text-align: center; font-weight: 600; }
