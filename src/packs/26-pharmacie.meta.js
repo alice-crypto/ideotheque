@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="expiry-check" data-fx-date="2027-06-30"></div>',
     '<div data-fx="expiry-check" style="color:var(--ink)"></div>',
     { a11y: 'Vrai champ date, résultat écrit dans une région `status`.' }),
+  E('ask-pharmacist', 'Navigation',
+    'Une bulle s\'ouvre sur les questions fréquentes, en petites cartes qui arrivent en cascade.',
+    'On a l\'impression qu\'il y a quelqu\'un au comptoir.',
+    '- `data-fx-items` : questions séparées par `|`\n- `data-fx-title` ; événement `fx:ask`',
+    'Pharmacie en ligne, assistance, boutiques.',
+    'De faire croire qu\'un humain répond si c\'est un automate.',
+    '<div data-fx="ask-pharmacist" data-fx-items="Vos horaires ?|Livrez-vous ?"></div>',
+    '<div data-fx="ask-pharmacist" style="color:var(--ink)"></div>',
+    { trigger: 'Ouvrir ou fermer avec la bulle', a11y: '`aria-expanded`, focus dans le panneau, fermeture par Échap.' }),
 ];

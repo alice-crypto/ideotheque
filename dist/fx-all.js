@@ -10543,6 +10543,23 @@
       else { var t = new Date(Date.now() + 86400000 * U.num(el, 'fxDays', 20)); i.value = t.toISOString().slice(0, 10); go(); }
     }
   });
+
+  // Une bulle de contact qui propose les questions fréquentes
+  FX.register('ask-pharmacist', {
+    setup: function (el) {
+      var Q = (el.dataset.fxItems || 'Un médicament est-il en stock ?|Puis-je envoyer mon ordonnance ?|Quels sont vos horaires ?').split('|');
+      el.innerHTML = '<div class="fx-ap" hidden><strong>' + (el.dataset.fxTitle || 'Une question ?') + '</strong></div><button type="button" class="fx-ap-b" aria-expanded="false" aria-label="Poser une question"><i aria-hidden="true"></i></button>';
+      var p = el.firstChild, b = el.lastChild;
+      Q.forEach(function (q, i) {
+        var a = U.make('button', '', p);
+        a.type = 'button'; a.textContent = q; a.style.setProperty('--fx-i', i);
+        a.addEventListener('click', function () { el.dispatchEvent(new CustomEvent('fx:ask', { bubbles: true, detail: { question: q } })); a.classList.add('fx-sent'); });
+      });
+      var set = function (o) { p.hidden = !o; b.setAttribute('aria-expanded', o); el.classList.toggle('fx-open', o); if (o && p.querySelector('button')) p.querySelector('button').focus(); };
+      b.addEventListener('click', function () { set(p.hidden); });
+      el.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !p.hidden) { set(false); b.focus(); } });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
