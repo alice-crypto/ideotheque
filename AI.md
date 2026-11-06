@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->545<!-- /total --> effets.
+La bibliothèque contient <!-- total -->546<!-- /total --> effets.
 
 ## Règles
 
@@ -212,6 +212,7 @@ La bibliothèque contient <!-- total -->545<!-- /total --> effets.
 | `bonus-ladder` | Présentation | Un curseur parcourt les années sans accident, et l'échelle montre le coefficient qui baisse |
 | `renewal-window` | Présentation | Un repère place aujourd'hui sur l'année du contrat, face à la fenêtre de résiliation |
 | `attestation-card` | Présentation | Une carte présente une attestation avec un motif propre au numéro et sa validité réelle |
+| `life-events-rail` | Présentation | Un curseur d'âge parcourt les grands moments de la vie et le besoin qui s'y rattache |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

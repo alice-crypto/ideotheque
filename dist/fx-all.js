@@ -9614,6 +9614,26 @@
       if (el.dataset.fxLabel) { el.setAttribute('role', 'img'); el.setAttribute('aria-label', el.dataset.fxLabel); }
     }
   });
+
+  // Faire glisser l'âge pour voir quel besoin arrive à ce moment de la vie
+  FX.register('life-events-rail', {
+    setup: function (el) {
+      var ev = (el.dataset.fxItems || '20:Premier logement:Assurance habitation|30:Premier enfant:Garantie famille|45:Achat immobilier:Assurance de prêt|65:Retraite:Complément santé').split('|').map(function (r) { var p = r.split(':'); return { a: +p[0], t: p[1], b: p[2] }; });
+      var min = U.num(el, 'fxMin', 18), max = U.num(el, 'fxMax', 75);
+      el.innerHTML = '<div class="fx-le" aria-hidden="true"></div><input type="range" min="' + min + '" max="' + max + '" aria-label="Âge"><p aria-live="polite"></p>';
+      var rail = el.firstChild, r = el.querySelector('input'), p = el.querySelector('p');
+      ev.forEach(function (e) { var i = U.make('i', '', rail); i.style.left = (e.a - min) / (max - min) * 100 + '%'; });
+      r.value = U.num(el, 'fxValue', 30);
+      var go = function () {
+        var a = +r.value, cur = ev[0];
+        ev.forEach(function (e) { if (a >= e.a) cur = e; });
+        Array.prototype.forEach.call(rail.children, function (d, i) { d.classList.toggle('fx-on', ev[i] === cur); d.classList.toggle('fx-past', ev[i].a <= a); });
+        p.innerHTML = '<b>' + a + ' ans</b> · ' + cur.t + '<br><em>' + cur.b + '</em>';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

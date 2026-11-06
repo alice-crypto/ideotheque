@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="umbrella-open"></div>',
     '<div data-fx="umbrella-open" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Décoratif par défaut. Avec le mouvement réduit, le parapluie apparaît ouvert par la bibliothèque.' }),
+  E('life-events-rail', 'Présentation',
+    'Un curseur d\'âge parcourt les grands moments de la vie et le besoin qui s\'y rattache.',
+    'Personnel, on se situe sur sa propre ligne.',
+    '- `data-fx-items` : « âge:événement:besoin » séparés par `|`\n- `data-fx-min` (18), `data-fx-max` (75), `data-fx-value` (30)',
+    'Prévoyance, banque, retraite.',
+    'Des parcours de vie trop normés : tout le monde n\'achète pas à 45 ans.',
+    '<div data-fx="life-events-rail" data-fx-items="20:Études:Santé|30:Enfant:Famille"></div>',
+    '<div data-fx="life-events-rail" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur nommé, résultat annoncé.' }),
 ];
