@@ -11808,6 +11808,25 @@
       U.ensurePositioned(el);
     }
   });
+
+  // Un ordinateur de bord à écrans qu'on fait défiler
+  FX.register('trip-computer', {
+    setup: function (el) {
+      var km = U.num(el, 'fxKm', 312), h = U.num(el, 'fxHours', 3.6), c = U.num(el, 'fxUse', 16.4), left = U.num(el, 'fxLeft', 184);
+      var S = [['Parcouru', km + ' km'], ['Vitesse moyenne', Math.round(km / h) + ' km/h'], ['Consommation', String(c).replace('.', ',') + ' kWh/100'], ['Autonomie', left + ' km']], n = 0;
+      el.innerHTML = '<div class="fx-tc"><small></small><b></b></div><button type="button">Écran suivant</button>';
+      var s = el.querySelector('small'), b = el.querySelector('b'), box = el.querySelector('.fx-tc');
+      box.setAttribute('aria-live', 'polite');
+      el._fxNext = function () {
+        n = (n + 1) % S.length;
+        s.textContent = S[n][0]; b.textContent = S[n][1];
+        box.classList.remove('fx-go'); void box.offsetWidth; box.classList.add('fx-go');
+      };
+      n = -1; el._fxNext();
+      el.querySelector('button').addEventListener('click', el._fxNext);
+    },
+    trigger: function (el) { el._fxNext(); }
+  });
 })(window.FX);
 
 window.FX._boot();

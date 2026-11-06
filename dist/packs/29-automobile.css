@@ -196,3 +196,12 @@
 .fx-in[data-fx="tire-track"] .fx-tk-x { opacity: 1; }
 [data-fx="tire-track"] .fx-tk { position: absolute; left: -10%; right: -10%; top: 16%; height: 68%; transform: translateX(-120%) rotate(-5deg); background: repeating-linear-gradient(115deg, currentColor 0 4px, transparent 4px 9px) 0 0 / 100% 40% no-repeat, repeating-linear-gradient(115deg, currentColor 0 4px, transparent 4px 9px) 0 100% / 100% 40% no-repeat; color: var(--fx-tire, #5b534a); transition: transform .8s var(--fx-ease-out); }
 .fx-in[data-fx="tire-track"] .fx-tk { transform: translateX(120%) rotate(-5deg); }
+
+/* trip-computer : un ordinateur de bord */
+[data-fx="trip-computer"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 200px)); }
+[data-fx="trip-computer"] .fx-tc { width: 100%; box-sizing: border-box; padding: 10px; border-radius: 6px; background: repeating-linear-gradient(0deg, #0001 0 1px, transparent 1px 3px), #9fb86a; color: #172210; font-family: ui-monospace, monospace; box-shadow: inset 0 0 12px #0005; }
+[data-fx="trip-computer"] .fx-go { animation: fx-tc .22s steps(3); }
+[data-fx="trip-computer"] small { display: block; font-size: 10px; }
+[data-fx="trip-computer"] b { font-size: 24px; }
+[data-fx="trip-computer"] button { padding: 4px 12px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font-size: 11px; cursor: pointer; }
+@keyframes fx-tc { from { transform: translateY(5px); opacity: .3; } }

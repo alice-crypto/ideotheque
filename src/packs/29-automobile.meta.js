@@ -174,4 +174,13 @@ module.exports = [
     '<h2 data-fx="tire-track">Hors piste</h2>',
     '<h2 class="demo-title" data-fx="tire-track">Hors piste</h2>',
     { trigger: 'Rejouer', a11y: 'Le texte reste un vrai texte. Mouvement réduit : apparition directe.' }),
+  E('trip-computer', 'Micro-interaction',
+    'Un écran à cristaux liquides fait défiler les informations d\'un trajet.',
+    'Nostalgie du tableau de bord, du détail bien fait.',
+    '- `data-fx-km`, `data-fx-hours`, `data-fx-use`, `data-fx-left`',
+    'Récits de road trip, données de trajet, sites rétro.',
+    'De trop d\'écrans : quatre suffisent.',
+    '<div data-fx="trip-computer" data-fx-km="312"></div>',
+    '<div data-fx="trip-computer" style="color:var(--ink)"></div>',
+    { trigger: 'Écran suivant', a11y: 'Écran annoncé, vrai bouton.' }),
 ];
