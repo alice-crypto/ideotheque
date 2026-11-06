@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->757<!-- /total --> effets.
+La bibliothèque contient <!-- total -->758<!-- /total --> effets.
 
 ## Règles
 
@@ -88,6 +88,7 @@ La bibliothèque contient <!-- total -->757<!-- /total --> effets.
 | `forklift-raise` | Entrée | Un chariot élévateur soulève une palette, dont le chiffre compte en montant |
 | `drone-drop` | Entrée | Un drone dépose le contenu dans la page, puis repart |
 | `plug-connect` | Entrée | Une prise rejoint sa borne, et le texte s'allume en éclairant la page |
+| `cnc-toolpath` | Entrée | Une trajectoire d'outil usine une forme, ligne après ligne, en laissant un trait lumineux |
 | `text-split` | Texte | Donner du poids à un titre en le faisant apparaître lettre par lettre |
 | `text-scramble` | Texte | Un texte brouillé en signes aléatoires qui se décode lettre par lettre, de gauche à droite |
 | `typewriter` | Texte | Le texte s'écrit lettre par lettre, suivi d'un curseur qui clignote |

@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="safety-days" data-fx-since="2026-01-05"></div>',
     '<div data-fx="safety-days"></div>',
     { trigger: 'Rejouer', a11y: 'Rôle `img`, tout dans `aria-label`.' }),
+  E('cnc-toolpath', 'Entrée',
+    'Une trajectoire d\'outil usine une forme, ligne après ligne, en laissant un trait lumineux.',
+    'Précision numérique, avec la chaleur du métal.',
+    '- `data-fx-passes` (14), `data-fx-label`, `--fx-hot`',
+    'Usinage, découpe, fabrication numérique.',
+    'De confondre avec un vrai fichier d\'usinage.',
+    '<div data-fx="cnc-toolpath"></div>',
+    '<div data-fx="cnc-toolpath"></div>',
+    { trigger: 'Rejouer', a11y: 'Décoratif, ou décrit avec `data-fx-label`.' }),
 ];

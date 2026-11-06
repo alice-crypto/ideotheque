@@ -158,4 +158,18 @@
       el.setAttribute('role', 'img');
     }
   });
+
+  // Une trajectoire d'outil qui usine une forme, ligne après ligne
+  FX.register('cnc-toolpath', {
+    entrance: true,
+    setup: function (el) {
+      var n = U.num(el, 'fxPasses', 14), W = 100, H = 70, d = '', r = 32;
+      for (var i = 0; i <= n; i++) {
+        var y = 35 - r + (i / n) * r * 2, half = Math.sqrt(Math.max(0, r * r - Math.pow(y - 35, 2))) * 1.3;
+        d += (i ? 'L' : 'M') + (i % 2 ? 50 + half : 50 - half).toFixed(1) + ' ' + y.toFixed(1) + 'L' + (i % 2 ? 50 - half : 50 + half).toFixed(1) + ' ' + y.toFixed(1);
+      }
+      el.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" aria-hidden="true"><path class="fx-cn-b" d="' + d + '"/><path class="fx-cn-l" pathLength="1" d="' + d + '"/></svg>';
+      if (el.dataset.fxLabel) { el.setAttribute('role', 'img'); el.setAttribute('aria-label', el.dataset.fxLabel); }
+    }
+  });
 })(window.FX);

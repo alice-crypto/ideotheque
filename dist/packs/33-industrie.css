@@ -85,3 +85,11 @@
 [data-fx="safety-days"] .fx-sd { display: flex; gap: 3px; justify-content: center; perspective: 500px; }
 [data-fx="safety-days"] i { display: block; padding: 3px 8px; background: #fff; color: #111; font: 800 28px/1 ui-monospace, monospace; font-style: normal; transform: rotateX(-90deg); transform-origin: top; transition: transform .45s var(--fx-ease-spring) calc(var(--fx-i) * 110ms); }
 .fx-in[data-fx="safety-days"] i { transform: none; }
+
+/* cnc-toolpath : une trajectoire d'outil */
+[data-fx="cnc-toolpath"] { display: block; width: min(100%, var(--fx-w, 220px)); padding: 8px; background: #1a1c20; box-sizing: border-box; }
+[data-fx="cnc-toolpath"] svg { display: block; width: 100%; }
+[data-fx="cnc-toolpath"] path { fill: none; stroke-width: 1.1; stroke-linejoin: round; }
+[data-fx="cnc-toolpath"] .fx-cn-b { stroke: #fff2; }
+[data-fx="cnc-toolpath"] .fx-cn-l { stroke: var(--fx-hot, #ff8a2a); filter: drop-shadow(0 0 1.5px var(--fx-hot, #ff8a2a)); stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 3s linear; }
+.fx-in[data-fx="cnc-toolpath"] .fx-cn-l { stroke-dashoffset: 0; }
