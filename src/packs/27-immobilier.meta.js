@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="closing-costs" data-fx-price="250000"></div>',
     '<div data-fx="closing-costs" style="color:var(--ink)"></div>',
     { a11y: 'Boutons `aria-pressed`, tous les montants écrits et annoncés.' }),
+  E('tape-measure', 'Entrée',
+    'Un mètre ruban sort de son boîtier en comptant la longueur.',
+    'Bricoleur, concret, bien mesuré.',
+    '- `data-fx-value` (4.2), `--fx-tape`',
+    'Rénovation, cuisines sur mesure, chiffres clés.',
+    'De l\'utiliser pour un chiffre sans rapport avec une longueur.',
+    '<div data-fx="tape-measure" data-fx-value="4.2"></div>',
+    '<div data-fx="tape-measure" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Rôle `img`, longueur écrite dans `aria-label`.' }),
 ];

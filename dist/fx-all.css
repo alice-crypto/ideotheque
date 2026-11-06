@@ -6520,6 +6520,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="closing-costs"] b { font-size: 15px; }
 [data-fx="closing-costs"] small { font-size: 10px; opacity: .7; }
 
+/* tape-measure : un mètre ruban */
+[data-fx="tape-measure"] { display: grid; gap: 4px; width: min(100%, var(--fx-w, 225px)); font-size: 18px; font-weight: 800; }
+[data-fx="tape-measure"] .fx-tm { position: relative; height: 44px; display: flex; align-items: center; }
+[data-fx="tape-measure"] .fx-tm-r { position: absolute; left: 22px; height: 18px; width: 0; overflow: hidden; display: flex; gap: 4px; padding-left: 4px; background: var(--fx-tape, #ffd400); transition: width 1.2s var(--fx-ease-out); }
+.fx-in[data-fx="tape-measure"] .fx-tm-r { width: calc(100% - 22px); }
+[data-fx="tape-measure"] i { flex: 0 0 1px; height: 6px; background: #111; }
+[data-fx="tape-measure"] i.fx-b { height: 12px; }
+[data-fx="tape-measure"] .fx-tm-c { position: relative; width: 44px; height: 44px; border-radius: 10px; background: var(--fx-accent); z-index: 1; }
+[data-fx="tape-measure"] .fx-tm-c::after { content: ''; position: absolute; inset: 12px; border-radius: 50%; border: 2px solid #fff; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

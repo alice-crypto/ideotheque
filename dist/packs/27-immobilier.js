@@ -226,4 +226,20 @@
       set(.075);
     }
   });
+
+  // Un mètre ruban qui se déroule et compte en s'ouvrant
+  FX.register('tape-measure', {
+    entrance: true,
+    enter: function (el) {
+      var v = U.num(el, 'fxValue', 4.2), o = el.querySelector('output');
+      U.tween(el, 1200, function (p) { o.textContent = (U.easeOut(p) * v).toFixed(2).replace('.', ',') + ' m'; });
+    },
+    setup: function (el) {
+      var v = U.num(el, 'fxValue', 4.2), t = '';
+      for (var i = 0; i <= 40; i++) t += '<i class="' + (i % 10 ? '' : 'fx-b') + '"></i>';
+      el.innerHTML = '<div class="fx-tm"><div class="fx-tm-r" aria-hidden="true">' + t + '</div><span class="fx-tm-c" aria-hidden="true"></span></div><output>' + String(v.toFixed(2)).replace('.', ',') + ' m</output>';
+      el.setAttribute('aria-label', 'Longueur : ' + v + ' mètres');
+      el.setAttribute('role', 'img');
+    }
+  });
 })(window.FX);
