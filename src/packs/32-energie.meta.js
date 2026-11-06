@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="co2-by-hour"></div>',
     '<div data-fx="co2-by-hour" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le message écrit reprend la valeur actuelle et la meilleure heure.' }),
+  E('plug-connect', 'Entrée',
+    'Une prise rejoint sa borne, et le texte s\'allume en éclairant la page.',
+    'Le courant passe, littéralement.',
+    '- `--fx-glow`, `--fx-w`\n- le texte de l\'élément s\'allume',
+    'Recharge, énergie, activation d\'un service.',
+    'Un long paragraphe : réservez-le à un titre court.',
+    '<div data-fx="plug-connect">Connecté</div>',
+    '<div data-fx="plug-connect" style="color:var(--ink);font-size:20px">Connecté</div>',
+    { trigger: 'Rejouer', a11y: 'Le texte reste lisible. En mouvement réduit, il apparaît allumé.' }),
 ];

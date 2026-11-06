@@ -13176,6 +13176,15 @@
       el.innerHTML = '<div class="fx-c2h" aria-hidden="true">' + h + '</div><p>Maintenant : <b>' + D[now] + ' g/kWh</b>, ' + (D[now] < avg ? 'sous' : 'au-dessus de') + ' la moyenne.<br>Meilleure heure : ' + best + ' h. Données fictives.</p>';
     }
   });
+
+  // Une prise se branche et le texte s'allume
+  FX.register('plug-connect', {
+    entrance: true,
+    setup: function (el) {
+      var t = el.innerHTML;
+      el.innerHTML = '<div class="fx-pc2" aria-hidden="true"><i class="fx-pc2-w"></i><i class="fx-pc2-p"></i><i class="fx-pc2-s"></i></div><div class="fx-pc2-t">' + t + '</div>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
