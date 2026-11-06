@@ -118,4 +118,19 @@
       b.addEventListener('click', function () { var o = !el.classList.contains('fx-on'); el.classList.toggle('fx-on', o); b.setAttribute('aria-pressed', o); b.textContent = o ? cols + ' colonnes' : 'Grille'; });
     }
   });
+
+  // Un papier calque à faire glisser sur une image
+  FX.register('tracing-overlay', {
+    setup: function (el) {
+      var img = el.dataset.fxImage || 'assets/orbit.svg', x = 20, y = 20, st = null;
+      el.innerHTML = '<div class="fx-to" style="background-image:url(' + img + ')"><div class="fx-to-c" tabindex="0" role="application" aria-label="Calque à déplacer avec les flèches"><span>Calque</span></div></div>';
+      var c = el.querySelector('.fx-to-c');
+      var put = function () { c.style.transform = 'translate(' + x + 'px,' + y + 'px)'; };
+      c.addEventListener('pointerdown', function (e) { st = [e.clientX - x, e.clientY - y]; e.target.setPointerCapture && e.isTrusted && e.target.setPointerCapture(e.pointerId); });
+      c.addEventListener('pointermove', function (e) { if (!st) return; x = e.clientX - st[0]; y = e.clientY - st[1]; put(); });
+      c.addEventListener('pointerup', function () { st = null; });
+      c.addEventListener('keydown', function (e) { var k = { ArrowLeft: [-8, 0], ArrowRight: [8, 0], ArrowUp: [0, -8], ArrowDown: [0, 8] }[e.key]; if (k) { x += k[0]; y += k[1]; put(); e.preventDefault(); } });
+      put();
+    }
+  });
 })(window.FX);

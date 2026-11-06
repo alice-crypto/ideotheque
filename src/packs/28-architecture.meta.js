@@ -75,4 +75,13 @@ module.exports = [
     '<section data-fx="modular-grid">…</section>',
     '<div data-fx="modular-grid" style="width:215px;height:130px;color:var(--ink);font-size:13px"><strong style="font-size:20px">Halle</strong><br>Un texte qui suit la grille.</div>',
     { a11y: 'Bouton `aria-pressed`, grille décorative.' }),
+  E('tracing-overlay', 'Image',
+    'Un papier calque se déplace sur une image, avec ses traits d\'esquisse.',
+    'Sur la table à dessin, on pose et on regarde.',
+    '- `data-fx-image`, `--fx-w`',
+    'Présentations de projets, annotations, comparaison.',
+    'De cacher du contenu essentiel sous le calque.',
+    '<div data-fx="tracing-overlay" data-fx-image="plan.jpg"></div>',
+    '<div data-fx="tracing-overlay" data-fx-image="assets/orbit.svg"></div>',
+    { a11y: 'Le calque se déplace aux flèches du clavier.' }),
 ];

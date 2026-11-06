@@ -69,3 +69,10 @@
 [data-fx="modular-grid"] .fx-mg i { background: color-mix(in srgb, var(--fx-accent) 30%, transparent); transform: scaleY(0); transform-origin: top; transition: transform .45s var(--fx-ease-out) calc(var(--fx-i) * 45ms); }
 [data-fx="modular-grid"].fx-on .fx-mg i { transform: none; }
 [data-fx="modular-grid"] .fx-mg-b { position: absolute; right: 4px; bottom: 4px; padding: 2px 8px; border: 1px solid currentColor; border-radius: 4px; background: var(--fx-bg, #fff); color: #111; font-size: 10px; cursor: pointer; }
+
+/* tracing-overlay : un papier calque */
+[data-fx="tracing-overlay"] { width: min(100%, var(--fx-w, 225px)); }
+[data-fx="tracing-overlay"] .fx-to { position: relative; height: 150px; overflow: hidden; background-size: cover; background-position: center; }
+[data-fx="tracing-overlay"] .fx-to-c { position: absolute; left: 0; top: 0; width: 130px; height: 90px; padding: 5px; box-sizing: border-box; background: repeating-linear-gradient(0deg, transparent 0 12px, #3336 12px 13px), rgba(255, 255, 255, .62); backdrop-filter: blur(1.5px); box-shadow: 0 3px 10px #0006; color: #222; font-size: 10px; cursor: grab; touch-action: none; }
+[data-fx="tracing-overlay"] .fx-to-c:active { cursor: grabbing; }
+[data-fx="tracing-overlay"] .fx-to-c:focus-visible { outline: 2px solid var(--fx-accent); }
