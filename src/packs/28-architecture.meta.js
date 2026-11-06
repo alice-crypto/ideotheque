@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="colonnade"></div>',
     '<div data-fx="colonnade" style="width:215px"></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
+  E('brick-lay', 'Entrée',
+    'Un mur se monte brique après brique, rang par rang.',
+    'Le travail bien fait, patient et solide.',
+    '- `data-fx-rows` (7), `data-fx-cols` (8), `data-fx-text`, `--fx-brick`',
+    'Bâtisseurs, artisans, section « nos fondations ».',
+    'Un grand mur à l\'écran : trop de briques coûteraient cher à animer.',
+    '<div data-fx="brick-lay" data-fx-text="Depuis 1964"></div>',
+    '<div data-fx="brick-lay" data-fx-text="Depuis 1964"></div>',
+    { trigger: 'Rejouer', a11y: 'Les briques sont décoratives et le texte reste un vrai texte.' }),
 ];

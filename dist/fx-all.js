@@ -11292,6 +11292,24 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-o', info.pass.toFixed(3)); }
   });
+
+  // Un mur qui se monte brique après brique
+  FX.register('brick-lay', {
+    entrance: true,
+    setup: function (el) {
+      var R = U.num(el, 'fxRows', 7), C = U.num(el, 'fxCols', 8), box = U.make('div', 'fx-bl2', el), t = el.dataset.fxText;
+      box.setAttribute('aria-hidden', 'true');
+      for (var y = 0; y < R; y++) {
+        var row = U.make('div', y % 2 ? 'fx-off' : '', box);
+        for (var x = 0; x < C + (y % 2); x++) {
+          var b = U.make('i', '', row);
+          b.style.setProperty('--fx-i', (R - 1 - y) * 4 + x * .55);
+          b.style.setProperty('--fx-t', U.rand(-3, 3).toFixed(1) + '%');
+        }
+      }
+      if (t) { var s = U.make('strong', '', el); s.textContent = t; }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

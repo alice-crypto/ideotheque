@@ -6776,6 +6776,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="colonnade"] .fx-co { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: calc(var(--fx-o, .5) * 16px); padding: 0 8px; box-sizing: border-box; }
 [data-fx="colonnade"] i { flex: 1; height: calc(40% + var(--fx-d) * 60%); background: linear-gradient(90deg, #6d6256, #c9bda9 30%, #e9dfcc 50%, #a7998a 80%, #5a5145); transform: scaleX(calc(1 - var(--fx-d) * .3 + var(--fx-o, .5) * .2)); }
 
+/* brick-lay : un mur qui se monte */
+[data-fx="brick-lay"] { position: relative; display: block; width: min(100%, var(--fx-w, 220px)); overflow: hidden; }
+[data-fx="brick-lay"] .fx-bl2 { display: grid; gap: 3px; }
+[data-fx="brick-lay"] .fx-bl2 > div { display: flex; gap: 3px; height: 16px; }
+[data-fx="brick-lay"] .fx-off { margin-left: -14px; }
+[data-fx="brick-lay"] i { flex: 1; min-width: 0; background: color-mix(in srgb, var(--fx-brick, #b0502d) calc(100% + var(--fx-t)), #000); opacity: 0; transform: translateY(-50px); transition: transform .4s var(--fx-ease-out) calc(var(--fx-i) * 30ms), opacity .1s calc(var(--fx-i) * 30ms); }
+.fx-in[data-fx="brick-lay"] i { opacity: 1; transform: none; }
+[data-fx="brick-lay"] strong { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 26px; opacity: 0; transition: opacity .6s 1.5s; text-shadow: 0 2px 6px #0009; }
+.fx-in[data-fx="brick-lay"] strong { opacity: 1; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
