@@ -12662,6 +12662,21 @@
       U.make('u', '', box);
     }
   });
+
+  // Un chariot élévateur qui soulève un chiffre
+  FX.register('forklift-raise', {
+    entrance: true,
+    enter: function (el) {
+      var v = U.num(el, 'fxValue', 12400), o = el.querySelector('.fx-fk-v');
+      U.tween(el, 1400, function (p) { o.textContent = Math.round(v * U.easeOut(p)).toLocaleString('fr-FR'); });
+    },
+    setup: function (el) {
+      var v = U.num(el, 'fxValue', 12400);
+      el.setAttribute('aria-label', v + ' ' + (el.dataset.fxUnit || 'colis'));
+      el.setAttribute('role', 'img');
+      el.innerHTML = '<div class="fx-fk" aria-hidden="true"><div class="fx-fk-p"><span class="fx-fk-v">' + v.toLocaleString('fr-FR') + '</span><small>' + (el.dataset.fxUnit || 'colis') + '</small></div><i class="fx-fk-m"></i><i class="fx-fk-c"></i><i class="fx-fk-w"></i></div>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

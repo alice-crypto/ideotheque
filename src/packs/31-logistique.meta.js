@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="conveyor-belt"></div>',
     '<div data-fx="conveyor-belt" style="width:215px"></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
+  E('forklift-raise', 'Entrée',
+    'Un chariot élévateur soulève une palette, dont le chiffre compte en montant.',
+    'Un chiffre qu\'on sent lourd, fièrement porté.',
+    '- `data-fx-value` (12400), `data-fx-unit`\n- `--fx-lift`, `--fx-w`',
+    'Chiffres clés de logistique ou d\'industrie.',
+    'De l\'utiliser plusieurs fois par page : la surprise ne marche qu\'une fois.',
+    '<div data-fx="forklift-raise" data-fx-value="12400"></div>',
+    '<div data-fx="forklift-raise" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Valeur et unité dans `aria-label`.' }),
 ];

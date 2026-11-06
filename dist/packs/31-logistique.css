@@ -138,3 +138,14 @@
 [data-fx="conveyor-belt"] i { position: absolute; bottom: 18px; left: -50px; width: var(--fx-w2); height: var(--fx-h2); background: linear-gradient(90deg, transparent 44%, #e7cfa0 44% 56%, transparent 56%), #b98b4f; animation: fx-conveyor-box var(--fx-sp) linear var(--fx-d) infinite; }
 @keyframes fx-conveyor-belt { to { background-position-x: 16px; } }
 @keyframes fx-conveyor-box { to { left: 105%; } }
+
+/* forklift-raise : un chiffre sur les fourches */
+[data-fx="forklift-raise"] { display: inline-block; width: var(--fx-w, 200px); }
+[data-fx="forklift-raise"] .fx-fk { position: relative; height: 150px; }
+[data-fx="forklift-raise"] .fx-fk-m { position: absolute; left: 124px; bottom: 16px; width: 6px; height: 134px; background: currentColor; }
+[data-fx="forklift-raise"] .fx-fk-c { position: absolute; left: 130px; bottom: 16px; width: 58px; height: 48px; background: var(--fx-lift, #ffba1f); border-radius: 8px 12px 2px 2px; }
+[data-fx="forklift-raise"] .fx-fk-w { position: absolute; left: 136px; bottom: 0; width: 26px; height: 26px; border-radius: 50%; background: #111; box-shadow: 36px 0 0 #111; }
+[data-fx="forklift-raise"] .fx-fk-p { position: absolute; left: 0; bottom: 8px; width: 122px; padding: 6px 0 8px; text-align: center; border-bottom: 5px solid #8a6233; background: #caa36a; color: #2f2108; transition: bottom 1.4s var(--fx-ease-out); }
+.fx-in[data-fx="forklift-raise"] .fx-fk-p { bottom: 88px; }
+[data-fx="forklift-raise"] .fx-fk-v { display: block; font-size: 22px; font-weight: 800; font-variant-numeric: tabular-nums; }
+[data-fx="forklift-raise"] small { font-size: 10px; }
