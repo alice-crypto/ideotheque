@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="steel-glow" data-fx-temp="850"></div>',
     '<div data-fx="steel-glow" style="color:var(--ink)"></div>',
     { a11y: 'Température et couleur écrites, résultat annoncé.' }),
+  E('torque-click', 'Micro-interaction',
+    'Maintenir serre un écrou jusqu\'au clic du couple réglé, et signale tout dépassement.',
+    'Le petit clic que les mains connaissent.',
+    '- `data-fx-target` (60)',
+    'Mécanique, formation, jeux d\'adresse.',
+    'De donner un vrai couple de serrage sans notice : ces valeurs ne sont pas techniques.',
+    '<div data-fx="torque-click" data-fx-target="60"></div>',
+    '<div data-fx="torque-click" style="color:var(--ink)"></div>',
+    { trigger: 'Serrer', a11y: 'Vrai bouton à maintenir, au clavier aussi, résultat annoncé.' }),
 ];

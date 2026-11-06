@@ -430,4 +430,28 @@
       go();
     }
   });
+
+  // Une clé dynamométrique : serrer jusqu'au clic, sans dépasser
+  FX.register('torque-click', {
+    setup: function (el) {
+      var target = U.num(el, 'fxTarget', 60);
+      el.innerHTML = '<div class="fx-tq" aria-hidden="true"><i></i><em></em></div><button type="button">Serrer</button><output aria-live="polite">Réglage : ' + target + ' N·m</output>';
+      var b = el.querySelector('button'), o = el.querySelector('output'), v = 0, hold = false, clicked = false;
+      el.style.setProperty('--fx-t', target / 100);
+      el._fxStep = function (dt) {
+        if (!hold) return;
+        v = Math.min(100, v + dt * 28);
+        el.style.setProperty('--fx-q', v / 100);
+        if (!clicked && v >= target) { clicked = true; el.classList.add('fx-click'); o.textContent = 'Clic : ' + target + ' N·m atteints'; }
+        if (v > target + 8) { el.classList.add('fx-over'); o.textContent = 'Trop serré : ' + Math.round(v) + ' N·m'; }
+      };
+      var on = function () { hold = true; v = 0; clicked = false; el.classList.remove('fx-click', 'fx-over'); }, off = function () { hold = false; };
+      b.addEventListener('pointerdown', on); b.addEventListener('pointerup', off); b.addEventListener('pointerleave', off);
+      b.addEventListener('keydown', function (e) { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); on(); } });
+      b.addEventListener('keyup', off);
+      el._fxOn = on; el._fxOff = off;
+    },
+    tick: function (el, dt) { if (el._fxStep) el._fxStep(dt); },
+    trigger: function (el) { el._fxOn(); setTimeout(el._fxOff, 2300); }
+  });
 })(window.FX);
