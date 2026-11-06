@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->786<!-- /total --> effets.
+La bibliothèque contient <!-- total -->787<!-- /total --> effets.
 
 ## Règles
 
@@ -734,6 +734,7 @@ La bibliothèque contient <!-- total -->786<!-- /total --> effets.
 | `conveyor-belt` | Ambiance | Des colis de tailles différentes passent en boucle sur un tapis roulant |
 | `assembly-line` | Ambiance | Une pièce avance de poste en poste, et se complète à chaque arrêt |
 | `sort-gate` | Ambiance | Des pièces arrivent, bifurquent vers le bon bac et les comptes montent |
+| `flock-gather` | Ambiance | Un troupeau broute dans le pré, et rejoint l'enclos en se serrant d'un clic |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |

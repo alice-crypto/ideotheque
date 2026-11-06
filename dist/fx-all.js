@@ -14067,6 +14067,30 @@
       o.textContent = el.dataset.fxText || v + ' % de la récolte';
     }
   });
+
+  // Un troupeau qui rentre à l'enclos d'un geste
+  FX.register('flock-gather', {
+    setup: function (el) {
+      var n = U.num(el, 'fxCount', 22), box = U.make('div', 'fx-fg', el), b = U.make('button', '', el), S = [];
+      box.setAttribute('aria-hidden', 'true');
+      U.make('em', '', box);
+      for (var i = 0; i < n; i++) { var s = U.make('i', '', box); S.push({ e: s, x: U.rand(5, 92), y: U.rand(10, 86), h: U.rand(0, 6.28) }); }
+      b.type = 'button'; b.textContent = 'Rentrer le troupeau'; b.setAttribute('aria-pressed', 'false');
+      el._fxIn = false;
+      b.addEventListener('click', function () { el._fxIn = !el._fxIn; b.setAttribute('aria-pressed', el._fxIn); b.textContent = el._fxIn ? 'Sortir le troupeau' : 'Rentrer le troupeau'; });
+      el._fxS = S;
+      el._fxDraw = function (dt) {
+        S.forEach(function (s, i) {
+          if (el._fxIn) { var tx = 78 + (i % 5) * 4, ty = 66 + (i % 4) * 7; s.x += (tx - s.x) * dt * 2; s.y += (ty - s.y) * dt * 2; }
+          else { s.h += U.rand(-.5, .5) * dt * 3; s.x = U.clamp(s.x + Math.cos(s.h) * dt * 3, 3, 96); s.y = U.clamp(s.y + Math.sin(s.h) * dt * 3, 8, 90); }
+          s.e.style.left = s.x + '%'; s.e.style.top = s.y + '%';
+        });
+      };
+      el._fxDraw(0);
+    },
+    tick: function (el, dt) { if (!U.reduced) el._fxDraw(dt); else el._fxDraw(0); },
+    trigger: function (el) { el.querySelector('button').click(); }
+  });
 })(window.FX);
 
 window.FX._boot();

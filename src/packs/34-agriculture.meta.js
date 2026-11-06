@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="honeycomb-fill" data-fx-value="64"></div>',
     '<div data-fx="honeycomb-fill" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'La valeur est écrite, le rayon est décoratif.' }),
+  E('flock-gather', 'Ambiance',
+    'Un troupeau broute dans le pré, et rejoint l\'enclos en se serrant d\'un clic.',
+    'Un peu de tendresse et de campagne.',
+    '- `data-fx-count` (22)',
+    'Élevage, produits fermiers, histoire de la ferme.',
+    'Une page dense : le mouvement attire l\'œil.',
+    '<div data-fx="flock-gather" data-fx-count="22"></div>',
+    '<div data-fx="flock-gather" style="color:var(--ink)"></div>',
+    { trigger: 'Rentrer ou sortir', a11y: 'Dessin masqué, bouton réel `aria-pressed`. Fixe en mouvement réduit.' }),
 ];
