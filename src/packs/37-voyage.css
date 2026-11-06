@@ -221,3 +221,15 @@
 [data-fx="sailboat-progress"] .fx-sb3 { position: absolute; left: calc(var(--fx-q, 0) * (100% - 40px)); bottom: 8px; width: 40px; transform: rotate(var(--fx-a, 0deg)); transition: left .15s linear; }
 [data-fx="sailboat-progress"] svg { display: block; width: 100%; fill: #f4f2ea; }
 [data-fx="sailboat-progress"] .h { fill: var(--fx-accent); }
+
+/* poster-parallax : une affiche à plans */
+[data-fx="poster-parallax"] { display: block; width: var(--fx-w, 160px); }
+[data-fx="poster-parallax"] .fx-pp { position: relative; height: 220px; overflow: hidden; background: #f6d9a6; box-shadow: 0 4px 12px #0005; border: 8px solid #f5f0e4; box-sizing: border-box; }
+[data-fx="poster-parallax"] i { position: absolute; transition: transform .25s var(--fx-ease-out); }
+[data-fx="poster-parallax"] .s { left: -20%; right: -20%; top: -10%; height: 70%; background: linear-gradient(#f0894b, #f6d9a6); }
+[data-fx="poster-parallax"] .u { left: 58%; top: 22%; width: 44px; height: 44px; border-radius: 50%; background: #ffd24c; transform: translate(calc(var(--fx-x, 0) * -6px), calc(var(--fx-y, 0) * -6px)); }
+[data-fx="poster-parallax"] .m { left: -14%; right: -14%; }
+[data-fx="poster-parallax"] .m3 { bottom: 26%; height: 40%; background: #3e7fa2; clip-path: polygon(0 60%, 22% 25%, 44% 50%, 68% 8%, 100% 55%, 100% 100%, 0 100%); transform: translate(calc(var(--fx-x, 0) * 8px), calc(var(--fx-y, 0) * 4px)); }
+[data-fx="poster-parallax"] .m2 { bottom: 12%; height: 36%; background: #215d80; clip-path: polygon(0 45%, 30% 10%, 58% 42%, 82% 20%, 100% 40%, 100% 100%, 0 100%); transform: translate(calc(var(--fx-x, 0) * 16px), calc(var(--fx-y, 0) * 7px)); }
+[data-fx="poster-parallax"] .m1 { bottom: -6%; height: 34%; background: #123c58; clip-path: polygon(0 30%, 40% 5%, 75% 30%, 100% 12%, 100% 100%, 0 100%); transform: translate(calc(var(--fx-x, 0) * 26px), calc(var(--fx-y, 0) * 11px)); }
+[data-fx="poster-parallax"] b { position: absolute; left: 0; right: 0; bottom: 8px; text-align: center; color: #f7efdb; font: 800 16px/1 Georgia, serif; letter-spacing: .04em; text-transform: uppercase; }
