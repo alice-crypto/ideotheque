@@ -367,4 +367,31 @@
       window.addEventListener('pointerup', function () { box.classList.remove('fx-press'); });
     }
   });
+
+  // Un cadran d'ascenseur : on choisit un étage, et l'aiguille s'y rend
+  FX.register('elevator-dial', {
+    setup: function (el) {
+      var F = (el.dataset.fxItems || 'Rdc|1|2|3|4|5|Spa').split('|'), cur = 0, box = U.make('div', 'fx-ed2', el), row = U.make('div', 'fx-ed2-b', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      box.setAttribute('aria-hidden', 'true');
+      box.innerHTML = '<i></i>';
+      var n = F.length, rot = function (k) { return -80 + k / (n - 1) * 160; };
+      F.forEach(function (t, i) { var s = U.make('span', '', box), a = rot(i) * Math.PI / 180; s.textContent = t; s.style.left = 50 + Math.sin(a) * 42 + '%'; s.style.top = 88 - Math.cos(a) * 72 + '%'; });
+      var go = function (k) {
+        var steps = Math.abs(k - cur);
+        el.style.setProperty('--fx-t', Math.max(.4, steps * .5) + 's');
+        el.style.setProperty('--fx-a', rot(k) + 'deg');
+        cur = k;
+        row.querySelectorAll('button').forEach(function (b, i) { b.classList.toggle('fx-on', i === k); });
+        o.textContent = 'Étage : ' + F[k];
+        el.dispatchEvent(new CustomEvent('fx:floor', { bubbles: true, detail: { floor: F[k] } }));
+      };
+      F.forEach(function (t, i) {
+        var b = U.make('button', '', row);
+        b.type = 'button'; b.textContent = t; b.setAttribute('aria-label', 'Aller à : ' + t);
+        b.addEventListener('click', function () { go(i); });
+      });
+      go(U.num(el, 'fxFloor', 2));
+    }
+  });
 })(window.FX);
