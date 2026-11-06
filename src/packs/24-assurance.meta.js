@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="family-builder" data-fx-adult="42" data-fx-child="18"></div>',
     '<div data-fx="family-builder" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés, valeurs écrites et total annoncé.' }),
+  E('open-hours-call', 'Micro-interaction',
+    'Un bouton d\'appel indique en direct si la ligne répond, selon l\'heure locale.',
+    'Humain, on n\'appelle pas dans le vide.',
+    '- `data-fx-tel`, `data-fx-label`\n- `data-fx-from` (8), `data-fx-to` (20) : horaires\n- `data-fx-always` : ouvert jour et nuit',
+    'Assistance, service client, cabinets, dépannage.',
+    'Une ligne dont les horaires varient : l\'indication serait fausse.',
+    '<div data-fx="open-hours-call" data-fx-tel="0100000000" data-fx-from="8" data-fx-to="20"></div>',
+    '<div data-fx="open-hours-call" data-fx-always="true"></div>',
+    { a11y: 'Vrai lien `tel:`, et l\'état est écrit en toutes lettres.' }),
 ];

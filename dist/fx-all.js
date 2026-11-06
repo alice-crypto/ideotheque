@@ -9357,6 +9357,22 @@
       go();
     }
   });
+
+  // Un bouton d'appel qui sait si l'on répond en ce moment
+  FX.register('open-hours-call', {
+    setup: function (el) {
+      var tel = el.dataset.fxTel || '0100000000', from = U.num(el, 'fxFrom', 8), to = U.num(el, 'fxTo', 20), always = el.dataset.fxAlways === 'true';
+      el.innerHTML = '<a href="tel:' + tel + '"><i aria-hidden="true"></i><span>' + (el.dataset.fxLabel || 'Appeler un conseiller') + '</span></a><small></small>';
+      var note = el.querySelector('small');
+      var go = function () {
+        var d = new Date(), h = d.getHours() + d.getMinutes() / 60, open = always || (h >= from && h < to);
+        el.classList.toggle('fx-open', open);
+        note.textContent = always ? 'Ouvert jour et nuit' : open ? 'Ouvert jusqu\'à ' + to + ' h' : 'Fermé, ouvre à ' + from + ' h';
+      };
+      go();
+      setInterval(go, 60000);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
