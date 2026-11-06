@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="menu-leaders" data-fx-items="Velouté:12|Tarte:9"></div>',
     '<div data-fx="menu-leaders" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Liste réelle, points masqués, prix lisibles.' }),
+  E('spice-level', 'Micro-interaction',
+    'Une rangée de piments s\'allume selon le niveau, et le mot décrit le goût.',
+    'On prévient, avec le sourire.',
+    '- `data-fx-items`, `data-fx-value` (2)',
+    'Restaurants, sauces, cuisine du monde.',
+    'De traiter ce choix comme un allergène : la mention reste nécessaire.',
+    '<div data-fx="spice-level" data-fx-value="2"></div>',
+    '<div data-fx="spice-level" style="color:var(--ink)"></div>',
+    { a11y: 'Groupe radio complet : flèches, focus géré et mot annoncé.' }),
 ];

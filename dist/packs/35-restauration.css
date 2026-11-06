@@ -127,3 +127,15 @@
 .fx-in[data-fx="menu-leaders"] i { transform: none; }
 [data-fx="menu-leaders"] b { opacity: 0; transition: opacity .3s calc(var(--fx-i) * 170ms + 600ms); }
 .fx-in[data-fx="menu-leaders"] b { opacity: 1; }
+
+/* spice-level : un niveau de piment */
+[data-fx="spice-level"] { display: grid; gap: 4px; justify-items: center; font-size: 13px; font-weight: 800; }
+[data-fx="spice-level"] .fx-sv { display: flex; gap: 2px; }
+[data-fx="spice-level"] button { padding: 2px; border: 0; background: none; color: inherit; cursor: pointer; transition: transform .2s var(--fx-ease-spring); }
+[data-fx="spice-level"] button:hover { transform: rotate(-8deg) scale(1.1); }
+[data-fx="spice-level"] svg { display: block; width: 26px; height: 34px; }
+[data-fx="spice-level"] path { fill: color-mix(in srgb, currentColor 18%, transparent); transition: fill .2s; }
+[data-fx="spice-level"] .t { fill: none; stroke: #3f8f3d; stroke-width: 2; }
+[data-fx="spice-level"] .fx-on path:not(.t) { fill: #d8301f; }
+[data-fx="spice-level"] .fx-on[aria-checked="true"] svg { animation: fx-spice-tremble calc(.4s - var(--fx-q) * .25s) linear infinite alternate; }
+@keyframes fx-spice-tremble { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
