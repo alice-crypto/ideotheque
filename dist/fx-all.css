@@ -6006,13 +6006,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 
 /* triage-flow : des questions qui orientent */
 [data-fx="triage-flow"] { width: min(100%, var(--fx-w, 220px)); font-size: 13px; perspective: 500px; }
-[data-fx="triage-flow"] .fx-tf { display: flex; flex-wrap: wrap; gap: 5px; padding: 12px; border: 1px solid currentColor; border-radius: 10px; animation: fx-tf .35s var(--fx-ease-out); }
+[data-fx="triage-flow"] .fx-tf { display: flex; flex-wrap: wrap; gap: 5px; padding: 12px; border: 1px solid currentColor; border-radius: 10px; animation: fx-triage .35s var(--fx-ease-out); }
 [data-fx="triage-flow"] p { flex: 100%; margin: 0 0 4px; font-weight: 700; }
 [data-fx="triage-flow"] button { flex: 1; padding: 6px; border: 1px solid currentColor; border-radius: 6px; background: none; color: inherit; font: inherit; cursor: pointer; }
 [data-fx="triage-flow"] button:hover { background: color-mix(in srgb, var(--fx-accent) 25%, transparent); }
 [data-fx="triage-flow"] .fx-tf-b { flex: 100%; border: 0; font-size: 11px; text-decoration: underline; }
 [data-fx="triage-flow"] .fx-u { background: var(--fx-down, #e10600); color: #fff; border-color: transparent; }
-@keyframes fx-tf { from { opacity: 0; transform: rotateX(-24deg); } }
+@keyframes fx-triage { from { opacity: 0; transform: rotateX(-24deg); } }
 
 /* care-team : une équipe en pile */
 [data-fx="care-team"] { display: grid; gap: 8px; justify-items: start; font-size: 12px; }
