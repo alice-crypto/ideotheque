@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="reorder-point" data-fx-point="28"></div>',
     '<div data-fx="reorder-point" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, verdict annoncé.' }),
+  E('bom-tree', 'Navigation',
+    'Une nomenclature en arbre se déplie, et les coûts remontent des pièces vers le produit.',
+    'On voit où part le coût d\'un produit.',
+    '- `data-fx-tree` : JSON avec `n`, `c` (enfants) et `v` (coût)',
+    'Industrie, cuisine, budgets hiérarchiques.',
+    'Un arbre très profond : il devient difficile à parcourir au doigt.',
+    '<div data-fx="bom-tree"></div>',
+    '<div data-fx="bom-tree" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons `aria-expanded`, navigation au clavier, branches repliées ignorées.' }),
 ];

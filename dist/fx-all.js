@@ -13690,6 +13690,25 @@
       go();
     }
   });
+
+  // Une nomenclature en arbre : les coûts remontent vers le produit
+  FX.register('bom-tree', {
+    setup: function (el) {
+      var T = el.dataset.fxTree ? JSON.parse(el.dataset.fxTree) : { n: 'Lampe', c: [{ n: 'Tête', c: [{ n: 'Ampoule', v: 4 }, { n: 'Abat-jour', v: 9 }] }, { n: 'Pied', c: [{ n: 'Tube', v: 6 }, { n: 'Socle', v: 7 }] }, { n: 'Câble', v: 3 }] };
+      var cost = function (x) { return x.c ? x.c.reduce(function (t, y) { return t + cost(y); }, 0) : x.v; };
+      var draw = function (x, p, top) {
+        var li = U.make('li', '', p), val = cost(x);
+        if (x.c) {
+          var b = U.make('button', '', li), ul = U.make('ul', '', li);
+          b.type = 'button'; b.setAttribute('aria-expanded', top);
+          b.innerHTML = '<i aria-hidden="true"></i><span>' + x.n + '</span><b>' + val + ' €</b>';
+          b.addEventListener('click', function () { b.setAttribute('aria-expanded', b.getAttribute('aria-expanded') !== 'true'); });
+          x.c.forEach(function (y) { draw(y, ul, false); });
+        } else li.innerHTML = '<div><span>' + x.n + '</span><b>' + val + ' €</b></div>';
+      };
+      draw(T, U.make('ul', 'fx-bt', el), true);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

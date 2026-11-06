@@ -165,3 +165,15 @@
 [data-fx="reorder-point"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
 [data-fx="reorder-point"] output { color: var(--fx-up, #2eaf63); font-size: 13px; font-weight: 700; }
 [data-fx="reorder-point"].fx-out output { color: var(--fx-down, #e10600); }
+
+/* bom-tree : une nomenclature en arbre */
+[data-fx="bom-tree"] { width: min(100%, var(--fx-w, 220px)); font-size: 12px; }
+[data-fx="bom-tree"] ul { margin: 0; padding: 0 0 0 11px; list-style: none; }
+[data-fx="bom-tree"] .fx-bt { padding: 0; }
+[data-fx="bom-tree"] button, [data-fx="bom-tree"] li > div { display: flex; gap: 5px; align-items: center; width: 100%; padding: 2px 0; border: 0; border-bottom: 1px dotted color-mix(in srgb, currentColor 30%, transparent); background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+[data-fx="bom-tree"] button b, [data-fx="bom-tree"] li > div b { margin-left: auto; font-variant-numeric: tabular-nums; }
+[data-fx="bom-tree"] button i { width: 6px; height: 6px; border-right: 2px solid; border-bottom: 2px solid; transform: rotate(-45deg); transition: transform .2s; }
+[data-fx="bom-tree"] [aria-expanded="true"] i { transform: rotate(45deg); }
+[data-fx="bom-tree"] button + ul { display: none; }
+[data-fx="bom-tree"] [aria-expanded="true"] + ul { display: block; animation: fx-bom-open .25s var(--fx-ease-out); }
+@keyframes fx-bom-open { from { opacity: 0; transform: translateY(-4px); } }
