@@ -142,3 +142,13 @@
 [data-fx="pass-or-ticket"].fx-pass .fx-pt i { background: var(--fx-up, #2eaf63); }
 [data-fx="pass-or-ticket"] em { position: absolute; left: calc(var(--fx-s) * 100%); top: -4px; bottom: -4px; width: 2px; background: currentColor; z-index: 1; }
 [data-fx="pass-or-ticket"] output b { font-size: 16px; }
+
+/* network-lines : isoler une ligne */
+[data-fx="network-lines"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 225px)); }
+[data-fx="network-lines"] svg { width: 100%; }
+[data-fx="network-lines"] path { fill: none; stroke-width: 5; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset .7s ease, opacity .3s; }
+[data-fx="network-lines"] path.fx-off { stroke-dashoffset: 1; opacity: .12; }
+[data-fx="network-lines"] circle { fill: #fff; stroke: #111; stroke-width: 2; }
+[data-fx="network-lines"] .fx-nl { display: flex; gap: 5px; }
+[data-fx="network-lines"] button { width: 30px; height: 30px; padding: 0; border: 2px solid var(--fx-c); border-radius: 50%; background: none; color: var(--fx-c); font-weight: 800; cursor: pointer; transition: background .2s, color .2s; }
+[data-fx="network-lines"] [aria-pressed="true"] { background: var(--fx-c); color: #fff; }
