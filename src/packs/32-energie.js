@@ -442,4 +442,23 @@
       el.innerHTML = s + '</svg><p>Vent dominant : <b>' + D[k] + '</b>, ' + V[k] + ' % du temps. Données fictives.</p>';
     }
   });
+
+  // Incliner un panneau pour voir la perte de rendement
+  FX.register('solar-tilt', {
+    setup: function (el) {
+      var best = U.num(el, 'fxBest', 33);
+      el.innerHTML = '<div class="fx-sl" aria-hidden="true"><i class="s"></i><i class="p"></i></div><label>Inclinaison <b></b><input type="range" min="0" max="90"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxAngle', 20);
+      var go = function () {
+        var a = +r.value, q = Math.max(.55, 1 - Math.pow((a - best) / 75, 2));
+        el.style.setProperty('--fx-a', -a + 'deg');
+        el.style.setProperty('--fx-g', q);
+        el.querySelector('label b').textContent = a + '°';
+        o.innerHTML = '<b>' + Math.round(q * 100) + ' %</b> du rendement maximal (optimum à ' + best + '°)';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
