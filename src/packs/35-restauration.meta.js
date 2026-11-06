@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="happy-countdown" data-fx-from="17" data-fx-to="19"></div>',
     '<div data-fx="happy-countdown" data-fx-from="0" data-fx-to="24" style="color:var(--ink)"></div>',
     { a11y: 'Prix et temps restants en texte. Pas d\'annonce à chaque seconde.' }),
+  E('daily-special', 'Présentation',
+    'Le plat du jour s\'écrit selon la vraie date, avec la semaine repliée en dessous.',
+    'On vient exprès le jeudi.',
+    '- `data-fx-items` : « jour:plat » séparés par `|`, de lundi à dimanche',
+    'Restaurants, cantines, boulangeries.',
+    'Une carte non tenue à jour : mieux vaut ne rien afficher.',
+    '<div data-fx="daily-special"></div>',
+    '<div data-fx="daily-special" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le texte reste lu. Bouton `aria-expanded`.' }),
 ];

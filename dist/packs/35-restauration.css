@@ -192,3 +192,14 @@
 [data-fx="happy-countdown"] .fx-hd-t { flex: 100%; font-variant-numeric: tabular-nums; }
 [data-fx="happy-countdown"].fx-on { background: var(--fx-accent); color: #fff; border-color: transparent; animation: fx-happy-beat 1.6s infinite; }
 @keyframes fx-happy-beat { 50% { transform: scale(1.03); } }
+
+/* daily-special : le plat du jour */
+[data-fx="daily-special"] { display: grid; gap: 4px; justify-items: start; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="daily-special"] .fx-ds2 { font: 800 22px/1.15 Georgia, serif; clip-path: inset(0 100% 0 0); transition: clip-path 1.1s ease-out .15s; }
+.fx-in[data-fx="daily-special"] .fx-ds2 { clip-path: inset(-5px 0); }
+[data-fx="daily-special"] button { padding: 0; border: 0; border-bottom: 1px solid currentColor; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="daily-special"] ul { display: grid; gap: 1px; width: 100%; margin: 4px 0 0; padding: 0; list-style: none; animation: fx-daily-open .3s var(--fx-ease-out); }
+[data-fx="daily-special"] ul[hidden] { display: none; }
+[data-fx="daily-special"] li span { display: inline-block; min-width: 56px; opacity: .65; }
+[data-fx="daily-special"] .fx-now { font-weight: 800; color: var(--fx-accent); }
+@keyframes fx-daily-open { from { opacity: 0; transform: translateY(-5px); } }

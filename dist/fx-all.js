@@ -14709,6 +14709,17 @@
       setInterval(go, 1000);
     }
   });
+
+  // Le plat du jour selon le vrai jour de la semaine
+  FX.register('daily-special', {
+    entrance: true,
+    setup: function (el) {
+      var D = (el.dataset.fxItems || 'Lundi:Fermé|Mardi:Bœuf bourguignon|Mercredi:Lasagnes maison|Jeudi:Couscous|Vendredi:Poisson du marché|Samedi:Choucroute|Dimanche:Poulet rôti').split('|').map(function (r) { return r.split(':'); }), k = (new Date().getDay() + 6) % 7;
+      el.innerHTML = '<small>Aujourd\'hui, ' + D[k][0].toLowerCase() + '</small><b class="fx-ds2">' + D[k][1] + '</b><button type="button" aria-expanded="false">Toute la semaine</button><ul hidden>' + D.map(function (d, i) { return '<li class="' + (i === k ? 'fx-now' : '') + '"><span>' + d[0] + '</span> ' + d[1] + '</li>'; }).join('') + '</ul>';
+      var b = el.querySelector('button'), u = el.querySelector('ul');
+      b.addEventListener('click', function () { u.hidden = !u.hidden; b.setAttribute('aria-expanded', !u.hidden); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
