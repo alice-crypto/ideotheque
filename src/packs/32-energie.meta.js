@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="heating-compare" data-fx-items="Gaz:1700:2900"></div>',
     '<div data-fx="heating-compare" style="color:var(--ink)"></div>',
     { a11y: 'Boutons `aria-pressed`, valeurs écrites. Ordre réel du document modifié.' }),
+  E('wind-rose', 'Présentation',
+    'Une rose des vents ouvre ses secteurs selon la fréquence de chaque direction.',
+    'Une vieille carte de marin, toujours aussi parlante.',
+    '- `data-fx-data` : 8 fréquences en %, de N à NO',
+    'Éolien, voile, urbanisme, aviation.',
+    'Une mesure fiable sans données de station réelles.',
+    '<div data-fx="wind-rose" data-fx-data="6,5,4,6,10,24,26,19"></div>',
+    '<div data-fx="wind-rose" style="color:var(--ink);--fx-w:135px"></div>',
+    { trigger: 'Rejouer', a11y: 'La direction dominante est écrite.' }),
 ];

@@ -13277,6 +13277,20 @@
       U.make('small', '', el).textContent = 'Ordres de grandeur fictifs, pour une maison type.';
     }
   });
+
+  // Une rose des vents : la direction dominante se voit tout de suite
+  FX.register('wind-rose', {
+    entrance: true,
+    setup: function (el) {
+      var D = ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'], V = (el.dataset.fxData || '6,5,4,6,10,24,26,19').split(',').map(Number), max = Math.max.apply(null, V), k = V.indexOf(max), s = '<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="50"/><circle cx="60" cy="60" r="25"/>';
+      V.forEach(function (v, i) {
+        var a = (i * 45 - 90 - 18) * Math.PI / 180, b = (i * 45 - 90 + 18) * Math.PI / 180, r = v / max * 48;
+        s += '<path class="' + (i === k ? 'fx-top' : '') + '" style="--fx-i:' + i + '" d="M60 60L' + (60 + r * Math.cos(a)).toFixed(1) + ' ' + (60 + r * Math.sin(a)).toFixed(1) + 'A' + r.toFixed(1) + ' ' + r.toFixed(1) + ' 0 0 1 ' + (60 + r * Math.cos(b)).toFixed(1) + ' ' + (60 + r * Math.sin(b)).toFixed(1) + 'Z"/>';
+      });
+      D.filter(function (_, i) { return i % 2 === 0; }).forEach(function (t, i) { var a = i * 90 * Math.PI / 180 - Math.PI / 2; s += '<text x="' + (60 + 56 * Math.cos(a)) + '" y="' + (62 + 56 * Math.sin(a)) + '">' + t + '</text>'; });
+      el.innerHTML = s + '</svg><p>Vent dominant : <b>' + D[k] + '</b>, ' + V[k] + ' % du temps. Données fictives.</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

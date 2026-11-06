@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->747<!-- /total --> effets.
+La bibliothèque contient <!-- total -->748<!-- /total --> effets.
 
 ## Règles
 
@@ -281,6 +281,7 @@ La bibliothèque contient <!-- total -->747<!-- /total --> effets.
 | `co2-by-hour` | Présentation | Des barres horaires montrent l'intensité carbone de l'électricité, avec l'heure actuelle et la meilleure heure |
 | `reservoir-level` | Présentation | L'eau monte derrière un barrage, avec l'énergie stockée et le seuil de vigilance |
 | `heating-compare` | Présentation | Des modes de chauffage se reclassent selon le coût ou les émissions choisis |
+| `wind-rose` | Présentation | Une rose des vents ouvre ses secteurs selon la fréquence de chaque direction |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |
