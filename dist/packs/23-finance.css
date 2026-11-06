@@ -85,3 +85,10 @@
 [data-fx="bank-card-flip"] .fx-b { transform: rotateY(180deg); }
 [data-fx="bank-card-flip"] .fx-f::before { content: ""; display: block; width: 16%; aspect-ratio: 1.3; border-radius: 4px; background: #d9b65a; margin-bottom: 14%; }
 [data-fx="bank-card-flip"] .fx-b::before { content: ""; display: block; height: 20%; margin: 0 -9% 8%; background: #000; }
+
+/* price-tick-flash : un prix qui bouge */
+[data-fx="price-tick-flash"] { display: inline-block; padding: .05em .3em; font-variant-numeric: tabular-nums; }
+[data-fx="price-tick-flash"].fx-tu { animation: fx-ptu .8s; }
+[data-fx="price-tick-flash"].fx-td { animation: fx-ptd .8s; }
+@keyframes fx-ptu { from { background: var(--fx-up, #2eaf63); color: #fff; } }
+@keyframes fx-ptd { from { background: var(--fx-down, #e10600); color: #fff; } }

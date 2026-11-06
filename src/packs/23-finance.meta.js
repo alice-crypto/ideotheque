@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="bank-card-flip" aria-label="Carte"><div class="fx-bc"><div class="fx-f">…</div><div class="fx-b">…</div></div></div>',
     '<div data-fx="bank-card-flip" aria-label="Carte d\'exemple" style="--fx-w:200px;font:13px monospace"><div class="fx-bc"><div class="fx-f">•••• 0002<br>EXEMPLE</div><div class="fx-b">Dos de la carte</div></div></div>',
     { a11y: 'Rôle `button`, activable au clavier. Donnez-lui un `aria-label`.' }),
+  E('price-tick-flash', 'État',
+    'Une valeur clignote brièvement dans la couleur de son changement, avec une flèche.',
+    'Marché en mouvement, tension.',
+    '- `data-fx-digits` (2), `data-fx-demo="true"`\n- Par code : `el._fxSet(102.4)`',
+    'Cours, enchères, compteurs en direct.',
+    'Des valeurs qui changent plusieurs fois par seconde : le clignotement devient gênant.',
+    '<span data-fx="price-tick-flash">102,40</span>',
+    '<span class="demo-number" data-fx="price-tick-flash" data-fx-demo="true" style="color:var(--ink);font-size:40px">102,40</span>',
+    { trigger: 'Changer', a11y: 'La flèche indique le sens sans dépendre de la couleur.' }),
 ];

@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->510<!-- /total --> effets.
+La bibliothèque contient <!-- total -->511<!-- /total --> effets.
 
 ## Règles
 
@@ -530,6 +530,7 @@ La bibliothèque contient <!-- total -->510<!-- /total --> effets.
 | `prompt-suggestions` | État | Des pastilles arrivent en cascade et proposent des idées ; un clic remplit le champ de l'assistant |
 | `model-switcher` | État | Un petit bouton ouvre une liste de modes ou de modèles, avec une coche sur le choix en cours |
 | `transaction-feed` | État | Les nouvelles opérations arrivent en haut de la liste, avec leur montant signé |
+| `price-tick-flash` | État | Une valeur clignote brièvement dans la couleur de son changement, avec une flèche |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)
