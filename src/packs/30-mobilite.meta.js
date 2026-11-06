@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="battery-radius" data-fx-range="40"></div>',
     '<div data-fx="battery-radius" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, distances écrites et annoncées.' }),
+  E('disruption-banner', 'État',
+    'Une alerte de perturbation prend la couleur et le rôle de sa gravité, et peut être fermée.',
+    'Clair et net, sans dramatiser.',
+    '- `data-fx-level` : `info`, `warn` ou `stop`\n- `data-fx-key` : mémorise la fermeture',
+    'Transports, statuts de service, maintenance.',
+    'De laisser une alerte `stop` se fermer si elle reste vitale pour la suite du parcours.',
+    '<div data-fx="disruption-banner" data-fx-level="warn">Ligne 4 ralentie</div>',
+    '<div data-fx="disruption-banner" data-fx-level="stop">Ligne 4 fermée jusqu\'à 18 h (exemple).</div>',
+    { a11y: 'Rôle `alert` si grave, `status` sinon, bouton de fermeture nommé.' }),
 ];
