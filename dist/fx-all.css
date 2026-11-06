@@ -8082,6 +8082,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="vibration-monitor"] canvas { display: block; width: 100%; height: var(--fx-h, 90px); background: #0d0f12; }
 [data-fx="vibration-monitor"].fx-al output { color: var(--fx-down, #e10600); }
 
+/* reorder-point : le seuil de commande */
+[data-fx="reorder-point"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="reorder-point"] svg { display: block; width: 100%; height: 80px; overflow: visible; }
+[data-fx="reorder-point"] path { fill: none; stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; }
+[data-fx="reorder-point"] line { stroke: var(--fx-accent); stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+[data-fx="reorder-point"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="reorder-point"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="reorder-point"] output { color: var(--fx-up, #2eaf63); font-size: 13px; font-weight: 700; }
+[data-fx="reorder-point"].fx-out output { color: var(--fx-down, #e10600); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

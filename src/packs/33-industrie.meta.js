@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="vibration-monitor" data-fx-threshold="0.7"></div>',
     '<div data-fx="vibration-monitor" style="color:var(--ink)"></div>',
     { trigger: 'Faire vibrer', a11y: 'L\'état est annoncé en mots. Le canvas est figé en mouvement réduit.' }),
+  E('reorder-point', 'Présentation',
+    'Un seuil de commande redessine le stock en dents de scie, et signale les ruptures.',
+    'Une notion de gestion enfin intuitive.',
+    '- `data-fx-point` (28), `data-fx-use` (4), `data-fx-lead` (6)',
+    'Stocks, formation, boutiques, pièces détachées.',
+    'Un calcul réel de stock de sécurité : la demande n\'est pas constante.',
+    '<div data-fx="reorder-point" data-fx-point="28"></div>',
+    '<div data-fx="reorder-point" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, verdict annoncé.' }),
 ];
