@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="frost-alert" data-fx-data="4,2,-1,-3,0,3,5"></div>',
     '<div data-fx="frost-alert" style="color:var(--ink)"></div>',
     { a11y: 'Rôle `alert` s\'il y a un risque. Message écrit.' }),
+  E('degree-days', 'Présentation',
+    'Un cumul de degrés-jours monte en escalier vers le besoin de la culture, avec une date estimée.',
+    'La chaleur transformée en calendrier de récolte.',
+    '- `data-fx-base` (10), `data-fx-need` (2200), `data-fx-data` : relevés par quinzaine',
+    'Agronomie, vignes, vergers.',
+    'D\'en faire une prévision de récolte sûre : d\'autres facteurs comptent.',
+    '<div data-fx="degree-days" data-fx-need="1200"></div>',
+    '<div data-fx="degree-days" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le cumul et la date sont écrits.' }),
 ];
