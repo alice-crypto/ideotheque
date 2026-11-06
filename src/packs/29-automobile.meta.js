@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="headlight-sweep">Voir la nuit autrement</div>',
     '<div data-fx="headlight-sweep">Voir la nuit autrement</div>',
     { a11y: 'Le texte reste dans la page ; bouton `aria-pressed`.' }),
+  E('turntable-top', 'Image',
+    'On fait tourner une voiture sur son plateau, au pointeur ou au clavier, avec de l\'inertie.',
+    'Dans le showroom, on fait le tour.',
+    '- `--fx-s` (160px), `--fx-accent`',
+    'Showrooms, produits vus de dessus.',
+    'Une voiture réelle sans modèle dédié : ce dessin reste une illustration.',
+    '<div data-fx="turntable-top"></div>',
+    '<div data-fx="turntable-top"></div>',
+    { a11y: 'Rôle `slider`, flèches gauche et droite.' }),
 ];

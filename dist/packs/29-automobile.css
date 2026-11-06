@@ -78,3 +78,16 @@
 [data-fx="headlight-sweep"].fx-on .fx-hl-m { background: radial-gradient(ellipse 110px 54px at var(--fx-x, 50%) var(--fx-y, 45%), transparent 55%, #060709 100%); animation: fx-hl .35s steps(4); }
 [data-fx="headlight-sweep"] button { position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%); padding: 3px 10px; border: 1px solid #fff8; border-radius: 99px; background: #0009; color: #fff; font-size: 11px; white-space: nowrap; cursor: pointer; }
 @keyframes fx-hl { 0%, 50% { opacity: .2; } 25%, 75% { opacity: 1; } }
+
+/* turntable-top : un plateau tournant */
+[data-fx="turntable-top"] { display: block; width: var(--fx-s, 160px); aspect-ratio: 1; cursor: grab; touch-action: pan-y; user-select: none; border-radius: 50%; }
+[data-fx="turntable-top"].fx-grab { cursor: grabbing; }
+[data-fx="turntable-top"]:focus-visible { outline: 3px solid var(--fx-accent); outline-offset: 2px; }
+[data-fx="turntable-top"] .fx-tt2 { width: 100%; height: 100%; display: grid; place-items: center; border-radius: 50%; background: repeating-conic-gradient(#fff2 0 2deg, transparent 2deg 15deg), radial-gradient(#3a3d44, #1b1c20); }
+[data-fx="turntable-top"] .fx-tt2-c { position: relative; width: 38%; height: 76%; border-radius: 34% 34% 24% 24% / 20% 20% 14% 14%; background: var(--fx-accent); box-shadow: 0 5px 12px #0009; }
+[data-fx="turntable-top"] u { position: absolute; left: 12%; right: 12%; top: 26%; height: 44%; border-radius: 8px; background: linear-gradient(#28343f 22%, var(--fx-accent) 22% 82%, #28343f 82%); }
+[data-fx="turntable-top"] i { position: absolute; width: 10%; height: 16%; background: #111; border-radius: 2px; }
+[data-fx="turntable-top"] i:nth-child(1) { left: -6%; top: 14%; }
+[data-fx="turntable-top"] i:nth-child(2) { right: -6%; top: 14%; }
+[data-fx="turntable-top"] i:nth-child(3) { left: -6%; bottom: 14%; }
+[data-fx="turntable-top"] i:nth-child(4) { right: -6%; bottom: 14%; }

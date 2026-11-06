@@ -11625,6 +11625,25 @@
       U.ensurePositioned(el);
     }
   });
+
+  // Une voiture vue de dessus qu'on fait tourner sur un plateau
+  FX.register('turntable-top', {
+    setup: function (el) {
+      var a = -18, v = 0, last = null;
+      el.tabIndex = 0;
+      el.setAttribute('role', 'slider'); el.setAttribute('aria-label', 'Rotation du plateau'); el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', 359);
+      el.innerHTML = '<div class="fx-tt2" aria-hidden="true"><div class="fx-tt2-c"><i></i><i></i><i></i><i></i><u></u></div></div>';
+      var p = el.firstChild;
+      var put = function () { p.style.transform = 'rotate(' + a + 'deg)'; el.setAttribute('aria-valuenow', ((Math.round(a) % 360) + 360) % 360); };
+      el.addEventListener('pointerdown', function (e) { last = e.clientX; v = 0; el.classList.add('fx-grab'); });
+      window.addEventListener('pointermove', function (e) { if (last === null) return; v = (e.clientX - last) * .8; a += v; last = e.clientX; put(); });
+      window.addEventListener('pointerup', function () { last = null; el.classList.remove('fx-grab'); });
+      el.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') { a -= 12; put(); e.preventDefault(); } if (e.key === 'ArrowRight') { a += 12; put(); e.preventDefault(); } });
+      el._fxStep = function () { if (last === null && Math.abs(v) > .05) { a += v; v *= .95; put(); } };
+      put();
+    },
+    tick: function (el) { if (el._fxStep) el._fxStep(); }
+  });
 })(window.FX);
 
 window.FX._boot();
