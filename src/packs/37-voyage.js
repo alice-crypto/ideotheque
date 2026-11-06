@@ -167,4 +167,28 @@
       });
     }
   });
+
+  // Un plan pour décaler son sommeil avant un long voyage
+  FX.register('jetlag-plan', {
+    setup: function (el) {
+      var bed = U.num(el, 'fxBed', 23);
+      el.innerHTML = '<label>Décalage <b></b><input type="range" min="-10" max="10"></label><ol></ol><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), ol = el.querySelector('ol'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxHours', 6);
+      var go = function () {
+        var z = +r.value, abs = Math.abs(z), s = z >= 0 ? -1 : 1, n = Math.min(4, abs);
+        el.querySelector('label b').textContent = (z > 0 ? '+' : '') + z + ' h';
+        ol.innerHTML = '';
+        for (var i = n; i >= 1; i--) {
+          var d = U.make('li', '', ol), h = (bed + s * (n - i + 1) + 24) % 24;
+          d.style.setProperty('--fx-i', n - i);
+          d.style.setProperty('--fx-q', h / 24);
+          d.innerHTML = '<span>J−' + i + '</span><i></i><b>' + h + ' h</b>';
+        }
+        o.textContent = n ? 'Heure de coucher, ' + (z > 0 ? 'plus tôt' : 'plus tard') + ' chaque jour' : 'Aucun décalage à préparer';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
