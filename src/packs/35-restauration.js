@@ -118,4 +118,38 @@
       I[0].b.click();
     }
   });
+
+  // Une pizza moitié-moitié : chaque garniture va sur le côté choisi
+  FX.register('pizza-builder', {
+    setup: function (el) {
+      var T = (el.dataset.fxItems || 'Olive:#2c3320|Tomate:#d6341f|Basilic:#3f8f3d|Champignon:#b79779').split('|').map(function (r) { return r.split(':'); }), base = U.num(el, 'fxBase', 9), box = U.make('div', 'fx-pz', el), f = U.make('div', 'fx-pz-s', el), list = U.make('div', 'fx-pz-t', el), o = U.make('output', '', el), side = 0, st = {};
+      box.setAttribute('aria-hidden', 'true');
+      o.setAttribute('aria-live', 'polite');
+      ['Gauche', 'Droite', 'Toute'].forEach(function (s, i) {
+        var b = U.make('button', '', f);
+        b.type = 'button'; b.textContent = s; b.setAttribute('aria-pressed', i === 0);
+        b.addEventListener('click', function () { side = i; f.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); });
+      });
+      T.forEach(function (t) {
+        st[t[0]] = -1;
+        var b = U.make('button', '', list);
+        b.type = 'button'; b.textContent = t[0];
+        t.parts = [];
+        for (var k = 0; k < 12; k++) { var d = U.make('i', '', box), a = U.rand(.3, 2.84), r = U.rand(12, 40), left = k % 2 === 0; d.style.left = (50 + (left ? -1 : 1) * Math.sin(a) * r) + '%'; d.style.top = (50 + Math.cos(a) * r) + '%'; d.style.background = t[1]; d.dataset.l = left ? '1' : ''; t.parts.push(d); }
+        b.addEventListener('click', function () { st[t[0]] = st[t[0]] === side ? -1 : side; draw(); b.classList.toggle('fx-on', st[t[0]] >= 0); });
+      });
+      var draw = function () {
+        var c = 0;
+        T.forEach(function (t) {
+          var s = st[t[0]];
+          if (s >= 0) c += s === 2 ? 2 : 1;
+          t.parts.forEach(function (d) { d.classList.toggle('fx-on', s === 2 || (s === 0 && d.dataset.l) || (s === 1 && !d.dataset.l)); });
+        });
+        o.innerHTML = '<b>' + (base + c).toFixed(2).replace('.', ',') + ' €</b>';
+      };
+      st[T[0][0]] = 2;
+      list.firstChild.classList.add('fx-on');
+      draw();
+    }
+  });
 })(window.FX);
