@@ -139,4 +139,17 @@
       el.classList.toggle('fx-out', v < lo || v > hi);
     }
   });
+
+  // Une nuit en marches d'escalier, avec le temps de chaque stade
+  FX.register('sleep-stages', {
+    entrance: true,
+    setup: function (el) {
+      var S = ['Éveil', 'Léger', 'Profond', 'Paradoxal'], Y = [8, 44, 80, 26];
+      var d = (el.dataset.fxData || '0:10,1:40,2:50,1:25,3:20,1:40,2:30,1:30,3:35,1:40,3:30,0:8').split(',').map(function (r) { return r.split(':').map(Number); });
+      var tot = d.reduce(function (t, r) { return t + r[1]; }, 0), t = 0, p = '', sum = [0, 0, 0, 0];
+      d.forEach(function (r, i) { var x = t / tot * 200, y = Y[r[0]]; p += (i ? 'L' + x.toFixed(1) + ' ' + y : 'M0 ' + y) + 'L' + ((t + r[1]) / tot * 200).toFixed(1) + ' ' + y; t += r[1]; sum[r[0]] += r[1]; });
+      var fm = function (m) { return Math.floor(m / 60) + ' h ' + String(m % 60).padStart(2, '0'); };
+      el.innerHTML = '<svg viewBox="0 0 200 90" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="' + p + '"/></svg><ul>' + S.map(function (n, i) { return '<li><span>' + n + '</span><b>' + fm(sum[i]) + '</b></li>'; }).join('') + '</ul><p>Nuit fictive de ' + fm(tot) + '</p>';
+    }
+  });
 })(window.FX);

@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="lab-range" data-fx-name="Analyse fictive" data-fx-value="5.8" data-fx-lo="4" data-fx-hi="5.6"></div>',
     '<div data-fx="lab-range" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Valeur, plage et statut sont écrits en texte, et le statut n\'est pas donné par la seule couleur.' }),
+  E('sleep-stages', 'Présentation',
+    'Une nuit se dessine en escalier, avec le temps passé dans chaque stade.',
+    'Une histoire de sa nuit, lisible au réveil.',
+    '- `data-fx-data` : « stade:minutes » séparés par des virgules (0 éveil, 1 léger, 2 profond, 3 paradoxal)',
+    'Montres, sommeil, données de capteurs par états.',
+    'Une précision clinique que les capteurs grand public n\'ont pas.',
+    '<div data-fx="sleep-stages" data-fx-data="0:10,1:40,2:50"></div>',
+    '<div data-fx="sleep-stages" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le tracé est décoratif : les durées sont écrites dans une liste.' }),
 ];
