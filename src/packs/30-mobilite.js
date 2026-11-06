@@ -286,4 +286,15 @@
       });
     }
   });
+
+  // Une roue de vélo qui tourne en attendant
+  FX.register('wheel-loader', {
+    setup: function (el) {
+      el.setAttribute('role', 'status');
+      el.setAttribute('aria-label', el.dataset.fxLabel || 'Chargement');
+      var s = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44"/><g class="fx-wl2">';
+      for (var i = 0; i < 16; i++) { var a = i / 16 * 6.283; s += '<line x1="' + (50 + 5 * Math.cos(a)).toFixed(1) + '" y1="' + (50 + 5 * Math.sin(a)).toFixed(1) + '" x2="' + (50 + 42 * Math.cos(a + .5)).toFixed(1) + '" y2="' + (50 + 42 * Math.sin(a + .5)).toFixed(1) + '"/>'; }
+      el.innerHTML = s + '<circle class="fx-wl2-v" cx="50" cy="8" r="3"/></g><circle class="fx-wl2-h" cx="50" cy="50" r="6"/></svg>';
+    }
+  });
 })(window.FX);
