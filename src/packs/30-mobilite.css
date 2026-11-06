@@ -161,3 +161,11 @@
 [data-fx="wheel-loader"] .fx-wl2-h { fill: currentColor; }
 [data-fx="wheel-loader"] .fx-wl2-v { fill: var(--fx-accent); stroke: none; }
 @keyframes fx-wl2 { to { transform: rotate(360deg); } }
+
+/* traffic-light : un feu tricolore */
+[data-fx="traffic-light"] { display: inline-flex; gap: 10px; align-items: center; font-size: 14px; font-weight: 700; }
+[data-fx="traffic-light"] .fx-tl { display: grid; gap: 6px; padding: 7px; border-radius: 10px; background: #15161a; }
+[data-fx="traffic-light"] i { width: 26px; height: 26px; border-radius: 50%; background: #333; transition: background .2s, box-shadow .2s; }
+[data-fx="traffic-light"] i:nth-child(1).fx-on { background: #f03b30; box-shadow: 0 0 14px #f03b30; }
+[data-fx="traffic-light"] i:nth-child(2).fx-on { background: #ffbe2e; box-shadow: 0 0 14px #ffbe2e; }
+[data-fx="traffic-light"] i:nth-child(3).fx-on { background: #2fce6f; box-shadow: 0 0 14px #2fce6f; }
