@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="goal-jar" data-fx-value="640" data-fx-goal="1000"></div>',
     '<div data-fx="goal-jar" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Rôle `meter`, et la valeur est écrite.' }),
+  E('iban-input', 'Micro-interaction',
+    'Un champ groupe l\'IBAN par quatre et vérifie sa clé, sans empêcher la saisie.',
+    'Soigné, on évite une erreur coûteuse.',
+    'Mettez un `<input>` dans l\'élément.',
+    'Virements, inscriptions, facturation.',
+    'De considérer le compte comme existant : seule la clé est contrôlée.',
+    '<label data-fx="iban-input">IBAN <input></label>',
+    '<label data-fx="iban-input" style="width:225px;color:var(--ink);font-size:13px">IBAN <input value="FR76 3000 6000 0112 3456 7890 189"></label>',
+    { a11y: '`aria-invalid` et message annoncé. Le texte reste dans le champ.' }),
 ];

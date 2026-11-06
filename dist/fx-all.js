@@ -8970,6 +8970,36 @@
       for (var i = 0; i < 4; i++) { var c = U.make('em', '', el.firstChild); c.setAttribute('aria-hidden', 'true'); c.style.setProperty('--fx-i', i); c.style.left = U.rand(25, 65) + '%'; }
     }
   });
+
+  // Un champ d'IBAN groupé par quatre, qui vérifie sa clé
+  FX.register('iban-input', {
+    setup: function (el) {
+      var input = el.querySelector('input');
+      if (!input) return;
+      input.setAttribute('inputmode', 'text');
+      input.autocomplete = 'off';
+      var msg = U.make('small', '', el);
+      msg.setAttribute('aria-live', 'polite');
+      var valid = function (v) {
+        if (v.length < 15) return null;
+        var s = (v.slice(4) + v.slice(0, 4)).replace(/[A-Z]/g, function (c) { return c.charCodeAt(0) - 55; }), r = 0;
+        for (var i = 0; i < s.length; i++) r = (r * 10 + +s[i]) % 97;
+        return r === 1;
+      };
+      input.addEventListener('input', function () {
+        var pos = input.value.slice(0, input.selectionStart).replace(/\s/g, '').length;
+        var raw = input.value.replace(/[^0-9a-z]/gi, '').toUpperCase().slice(0, 34);
+        input.value = raw.replace(/(.{4})/g, '$1 ').trim();
+        var c = pos + Math.floor(Math.max(0, pos - 1) / 4);
+        input.setSelectionRange(c, c);
+        var ok = valid(raw);
+        el.classList.toggle('fx-ok', ok === true);
+        el.classList.toggle('fx-ko', ok === false);
+        msg.textContent = ok === true ? 'Format et clé corrects' : ok === false ? 'La clé ne correspond pas : vérifiez le numéro' : '';
+        input.setAttribute('aria-invalid', ok === false);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -5584,6 +5584,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-in[data-fx="goal-jar"] em { animation: fx-jc .7s ease-in calc(var(--fx-i) * 220ms) both; }
 @keyframes fx-jc { 0% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(110px); } }
 
+/* iban-input : un IBAN lisible */
+[data-fx="iban-input"] { display: grid; gap: 4px; }
+[data-fx="iban-input"] input { width: 100%; box-sizing: border-box; padding: .5em .7em; border: 1px solid currentColor; border-radius: 6px; background: none; color: inherit; font: 15px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; transition: border-color .2s, box-shadow .2s; }
+[data-fx="iban-input"].fx-ok input { border-color: var(--fx-up, #2eaf63); box-shadow: 0 0 0 2px var(--fx-up, #2eaf63); }
+[data-fx="iban-input"].fx-ko input { border-color: var(--fx-down, #e10600); box-shadow: 0 0 0 2px var(--fx-down, #e10600); }
+[data-fx="iban-input"] small { min-height: 1.3em; font-size: 12px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
