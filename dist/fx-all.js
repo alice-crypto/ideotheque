@@ -12770,6 +12770,20 @@
       el.innerHTML = '<div class="fx-dd" aria-hidden="true"><i class="fx-dd-l"></i><i class="fx-dd-r"></i><i class="fx-dd-b"></i></div><div class="fx-dd-c">' + t + '</div>';
     }
   });
+
+  // Un champ de suivi qui reconnaît le format du numéro
+  FX.register('tracking-detect', {
+    setup: function (el) {
+      var T = JSON.parse(el.dataset.fxPatterns || '[["Postal national","^[0-9A-Z]{13}$"],["Express international","^[0-9]{10}$"],["Colis Europe","^[A-Z]{2}[0-9]{9}[A-Z]{2}$"]]');
+      el.innerHTML = '<input type="text" spellcheck="false" autocomplete="off" placeholder="Votre numéro de suivi" aria-label="Numéro de suivi"><div class="fx-td" aria-live="polite"></div>';
+      var i = el.querySelector('input'), b = el.querySelector('.fx-td');
+      i.addEventListener('input', function () {
+        var v = i.value.replace(/\s/g, '').toUpperCase(), hit = T.filter(function (t) { return new RegExp(t[1]).test(v); })[0];
+        el.classList.toggle('fx-hit', !!hit);
+        b.textContent = !v ? '' : hit ? hit[0] + ' reconnu' : 'Format encore inconnu';
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

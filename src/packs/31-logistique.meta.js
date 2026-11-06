@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="drone-drop">Livré !</div>',
     '<div data-fx="drone-drop" style="color:var(--ink)">Livré !</div>',
     { trigger: 'Rejouer', a11y: 'Le contenu reste en place. En mouvement réduit, il apparaît sans vol.' }),
+  E('tracking-detect', 'Micro-interaction',
+    'Un champ reconnaît le format d\'un numéro de suivi pendant la saisie.',
+    'Moins de questions, et le bon service tout de suite.',
+    '- `data-fx-patterns` : JSON de paires « nom, motif »',
+    'Suivi de colis, numéros de série, cartes.',
+    'De confondre format reconnu et numéro existant.',
+    '<div data-fx="tracking-detect"></div>',
+    '<div data-fx="tracking-detect" style="color:var(--ink)"></div>',
+    { a11y: 'Champ nommé, reconnaissance annoncée.' }),
 ];
