@@ -15489,6 +15489,24 @@
       el.innerHTML = '<div class="fx-cb4" aria-hidden="true"><span>N</span><span>E</span><span>S</span><span>O</span><i></i></div><p><b>' + B[0] + '</b> est au ' + C + ' de ' + A[0] + '<br>Cap : ' + Math.round(bear) + '°</p>';
     }
   });
+
+  // La porte d'embarquement : le temps restant et les consignes
+  FX.register('gate-countdown', {
+    setup: function (el) {
+      var at = Date.now() + U.num(el, 'fxIn', 12) * 60000, gate = el.dataset.fxGate || 'B12';
+      el.innerHTML = '<div class="fx-gc2"><span>Porte ' + gate + '</span><b role="timer"></b></div><p aria-live="polite"></p>';
+      var t = el.querySelector('b'), p = el.querySelector('p');
+      var go = function () {
+        var left = at - Date.now(), m = Math.max(0, Math.floor(left / 60000)), s = Math.max(0, Math.floor(left / 1000) % 60), L = left <= 0 ? 'closed' : left < 300000 ? 'last' : 'boarding';
+        t.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+        if (el.dataset.fxState !== L) { el.dataset.fxState = L; p.textContent = { boarding: 'Embarquement en cours', last: 'Dernier appel : rejoignez la porte', closed: 'Porte fermée' }[L]; }
+      };
+      go();
+      el._fxIv = setInterval(go, 1000);
+      el._fxSet = function (mi) { at = Date.now() + mi * 60000; go(); };
+    },
+    trigger: function (el) { el._fxSet(4.5); }
+  });
 })(window.FX);
 
 window.FX._boot();

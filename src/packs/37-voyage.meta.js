@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="compass-bearing" data-fx-to="Rome:41.9:12.5"></div>',
     '<div data-fx="compass-bearing" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Direction et cap écrits. La bibliothèque coupe l\'oscillation en mouvement réduit.' }),
+  E('gate-countdown', 'État',
+    'Un compte à rebours d\'embarquement change d\'état, jusqu\'à la fermeture de la porte.',
+    'Ce léger stress quand on mange encore son sandwich.',
+    '- `data-fx-in` (12), `data-fx-gate` (B12)',
+    'Aéroports, trains, inscriptions, événements.',
+    'De remplacer les vrais horaires de l\'aéroport.',
+    '<div data-fx="gate-countdown" data-fx-in="12" data-fx-gate="B12"></div>',
+    '<div data-fx="gate-countdown"></div>',
+    { trigger: 'Dernier appel', a11y: 'Rôle `timer`, état annoncé seulement quand il change.' }),
 ];

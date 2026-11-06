@@ -150,3 +150,12 @@
 [data-fx="compass-bearing"] p { margin: 0; }
 [data-fx="compass-bearing"] b { font-size: 15px; }
 @keyframes fx-bearing-seek { 40% { transform: rotate(calc(var(--fx-a) + 26deg)); } 70% { transform: rotate(calc(var(--fx-a) - 12deg)); } 100% { transform: rotate(var(--fx-a)); } }
+
+/* gate-countdown : une porte d'embarquement */
+[data-fx="gate-countdown"] { display: grid; gap: 4px; width: min(100%, var(--fx-w, 210px)); padding: 10px; border-radius: 10px; background: #15171c; color: #fff; font-size: 12px; box-sizing: border-box; }
+[data-fx="gate-countdown"] .fx-gc2 { display: flex; justify-content: space-between; align-items: baseline; }
+[data-fx="gate-countdown"] b { font: 800 30px/1 ui-monospace, monospace; color: #48d57a; font-variant-numeric: tabular-nums; }
+[data-fx="gate-countdown"] p { margin: 0; font-weight: 700; }
+[data-fx="gate-countdown"][data-fx-state="last"] b { color: #ffb02e; animation: fx-gate-call 1s infinite; }
+[data-fx="gate-countdown"][data-fx-state="closed"] b { color: #ff4d44; }
+@keyframes fx-gate-call { 50% { opacity: .55; } }

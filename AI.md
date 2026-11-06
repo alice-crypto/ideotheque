@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->862<!-- /total --> effets.
+La bibliothèque contient <!-- total -->863<!-- /total --> effets.
 
 ## Règles
 
@@ -882,6 +882,7 @@ La bibliothèque contient <!-- total -->862<!-- /total --> effets.
 | `checkin-ready` | État | Un compte à rebours et une liste préparent l'arrivée, jusqu'au message final |
 | `sunset-bar` | État | L'heure réelle du coucher de soleil est calculée pour un lieu, et le temps restant s'écrit |
 | `rooms-left` | État | Une façade montre les chambres encore libres, avec la date de la donnée et sans fausse urgence |
+| `gate-countdown` | État | Un compte à rebours d'embarquement change d'état, jusqu'à la fermeture de la porte |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)
