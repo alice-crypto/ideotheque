@@ -152,3 +152,14 @@
 /* road-dashes : une route vers l'horizon */
 [data-fx="road-dashes"] { display: block; width: 100%; height: var(--fx-h, 150px); overflow: hidden; }
 [data-fx="road-dashes"] canvas { display: block; width: 100%; height: 100%; }
+
+/* plate-input : une plaque en champ */
+[data-fx="plate-input"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 220px)); font-size: 12px; font-weight: 700; }
+[data-fx="plate-input"] .fx-pl2 { display: flex; align-items: stretch; height: 42px; border: 2px solid #111; border-radius: 6px; overflow: hidden; background: #fff; transition: box-shadow .25s; }
+[data-fx="plate-input"] .fx-pl2-e { flex: 0 0 22px; display: grid; place-items: center; background: #0a3fa8; color: #fff; font-size: 12px; }
+[data-fx="plate-input"] input { flex: 1; min-width: 0; padding: 0; border: 0; background: none; color: #111; font: 800 20px/1 ui-monospace, monospace; text-align: center; text-transform: uppercase; outline: none; }
+[data-fx="plate-input"].fx-ok .fx-pl2 { box-shadow: 0 0 0 3px var(--fx-ok, #2eaf63); }
+[data-fx="plate-input"].fx-ko .fx-pl2 { box-shadow: 0 0 0 3px var(--fx-down, #e10600); animation: fx-pl2 .3s; }
+[data-fx="plate-input"].fx-ok output { color: var(--fx-ok, #2eaf63); }
+[data-fx="plate-input"].fx-ko output { color: var(--fx-down, #e10600); }
+@keyframes fx-pl2 { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
