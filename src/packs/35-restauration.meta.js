@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="floor-tables" data-fx-items="12:18:2:f|38:18:2:o"></div>',
     '<div data-fx="floor-tables" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés avec capacité et état, tables occupées désactivées.' }),
+  E('kitchen-ticket', 'État',
+    'Un bon de cuisine compte le temps écoulé, et ses plats se barrent à l\'envoi.',
+    'Le rythme d\'un service, ses coups de feu.',
+    '- `data-fx-items`, `data-fx-table`, `data-fx-limit` (15), `data-fx-past` (7)',
+    'Restaurants, ateliers, commandes en cours.',
+    'D\'en faire un vrai système de caisse : les données restent dans la page.',
+    '<div data-fx="kitchen-ticket" data-fx-table="12"></div>',
+    '<div data-fx="kitchen-ticket" style="color:var(--ink)"></div>',
+    { a11y: 'Plats en boutons `aria-pressed`, reste annoncé.' }),
 ];

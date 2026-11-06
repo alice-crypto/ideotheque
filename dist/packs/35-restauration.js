@@ -69,4 +69,30 @@
       });
     }
   });
+
+  // Un bon de cuisine : plat à plat, avec son temps écoulé
+  FX.register('kitchen-ticket', {
+    setup: function (el) {
+      var I = (el.dataset.fxItems || '2 Burgers|1 Salade César|1 Frites').split('|'), start = Date.now(), lim = U.num(el, 'fxLimit', 15);
+      el.innerHTML = '<div class="fx-kt"><header><b>Table ' + U.num(el, 'fxTable', 12) + '</b><time></time></header><ul></ul></div><output aria-live="polite"></output>';
+      var ul = el.querySelector('ul'), t = el.querySelector('time'), o = el.querySelector('output');
+      I.forEach(function (x) {
+        var b = U.make('button', '', U.make('li', '', ul));
+        b.type = 'button'; b.textContent = x; b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); count(); });
+      });
+      var count = function () {
+        var left = ul.querySelectorAll('[aria-pressed=false]').length;
+        el.classList.toggle('fx-done', !left);
+        o.textContent = left ? left + ' à envoyer' : 'Bon complet, envoyé en salle';
+      };
+      var tick = function () {
+        var m = (Date.now() - start) / 60000 + U.num(el, 'fxPast', 7);
+        t.textContent = Math.floor(m) + ' min';
+        el.classList.toggle('fx-late', m > lim);
+      };
+      count(); tick();
+      setInterval(tick, 15000);
+    }
+  });
 })(window.FX);
