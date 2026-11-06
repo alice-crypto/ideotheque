@@ -296,4 +296,26 @@
       el.innerHTML = '<div class="fx-fk" aria-hidden="true"><div class="fx-fk-p"><span class="fx-fk-v">' + v.toLocaleString('fr-FR') + '</span><small>' + (el.dataset.fxUnit || 'colis') + '</small></div><i class="fx-fk-m"></i><i class="fx-fk-c"></i><i class="fx-fk-w"></i></div>';
     }
   });
+
+  // Une liste de préparation où l'on compte chaque article prélevé
+  FX.register('pick-counter', {
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Vis M4:3|Boîte S:1|Câble 2 m:2').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], q: +p[1], d: 0 }; }), ul = U.make('ul', '', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      var total = R.reduce(function (t, r) { return t + r.q; }, 0);
+      var show = function () {
+        var d = 0;
+        R.forEach(function (r) { d += r.d; r.t.textContent = r.d + ' / ' + r.q; r.li.classList.toggle('fx-full', r.d === r.q); r.b.disabled = r.d === r.q; });
+        el.style.setProperty('--fx-q', d / total);
+        o.textContent = d === total ? 'Commande complète' : (total - d) + ' article' + (total - d > 1 ? 's' : '') + ' à prendre';
+      };
+      R.forEach(function (r) {
+        r.li = U.make('li', '', ul);
+        r.li.innerHTML = '<span>' + r.n + '</span><b></b><button type="button" aria-label="Prendre un ' + r.n + '">+1</button>';
+        r.t = r.li.querySelector('b'); r.b = r.li.querySelector('button');
+        r.b.addEventListener('click', function () { r.d++; show(); });
+      });
+      show();
+    }
+  });
 })(window.FX);

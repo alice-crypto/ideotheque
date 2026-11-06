@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->714<!-- /total --> effets.
+La bibliothèque contient <!-- total -->715<!-- /total --> effets.
 
 ## Règles
 
@@ -419,6 +419,7 @@ La bibliothèque contient <!-- total -->714<!-- /total --> effets.
 | `customs-fee` | Micro-interaction | Selon la valeur du colis, droits et TVA s'additionnent jusqu'au total à payer |
 | `weight-tier` | Micro-interaction | Un curseur de poids allume le palier de tarif correspondant, et le seuil suivant |
 | `incoterm-bar` | Micro-interaction | Un Incoterm choisi colore chaque étape du transport selon qui paie |
+| `pick-counter` | Micro-interaction | Une liste de préparation compte chaque article prélevé et annonce la commande complète |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

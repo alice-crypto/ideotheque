@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="forklift-raise" data-fx-value="12400"></div>',
     '<div data-fx="forklift-raise" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Valeur et unité dans `aria-label`.' }),
+  E('pick-counter', 'Micro-interaction',
+    'Une liste de préparation compte chaque article prélevé et annonce la commande complète.',
+    'Pas d\'oubli, rythme de travail clair.',
+    '- `data-fx-items` : « article:quantité » séparés par `|`',
+    'Entrepôts, cuisine, check-lists avec quantités.',
+    'De se passer du scan dans un vrai entrepôt : la saisie manuelle garde sa marge d\'erreur.',
+    '<div data-fx="pick-counter" data-fx-items="Vis M4:3|Boîte S:1"></div>',
+    '<div data-fx="pick-counter" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés, désactivés une fois terminés, reste annoncé.' }),
 ];
