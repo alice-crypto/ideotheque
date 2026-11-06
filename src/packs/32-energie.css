@@ -86,3 +86,12 @@
 [data-fx="insulation-loss"] output { grid-column: 1 / -1; }
 [data-fx="insulation-loss"] output b { font-size: 18px; }
 @keyframes fx-insul-heat { 50% { opacity: .65; } }
+
+/* thermostat-dial : un thermostat rond */
+[data-fx="thermostat-dial"] { display: grid; gap: 5px; justify-items: center; width: min(100%, var(--fx-w, 190px)); font-size: 11px; text-align: center; }
+[data-fx="thermostat-dial"] .fx-td2 { position: relative; display: grid; place-items: center; width: var(--fx-s, 116px); aspect-ratio: 1; border-radius: 50%; background: conic-gradient(from 225deg, hsl(var(--fx-h) 80% 50%) calc(var(--fx-q) * 270deg), color-mix(in srgb, currentColor 16%, transparent) 0 270deg, transparent 0); cursor: ns-resize; transition: background .2s; }
+[data-fx="thermostat-dial"] .fx-td2:focus-visible { outline: 3px solid var(--fx-accent); outline-offset: 3px; }
+[data-fx="thermostat-dial"] i { position: absolute; inset: 10px; border-radius: 50%; background: #1b1c20; }
+[data-fx="thermostat-dial"] b { position: relative; color: #fff; font-size: 24px; }
+[data-fx="thermostat-dial"] .fx-td2-b { display: flex; gap: 6px; }
+[data-fx="thermostat-dial"] button { width: 30px; height: 30px; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font-size: 16px; cursor: pointer; }
