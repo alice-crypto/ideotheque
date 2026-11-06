@@ -145,4 +145,18 @@
       });
     }
   });
+
+  // Une carte d'annonce : passer la souris fait défiler les photos
+  FX.register('listing-photos', {
+    setup: function (el) {
+      var A = (el.dataset.fxImages || 'assets/city.svg,assets/bloom.svg,assets/dune.svg,assets/wave.svg').split(','), n = 0;
+      el.innerHTML = '<div class="fx-lp">' + A.map(function (s, i) { return '<img src="' + s + '" alt="Photo ' + (i + 1) + ' sur ' + A.length + '" ' + (i ? 'hidden' : '') + '>'; }).join('') + '<button type="button" aria-label="Photo précédente">‹</button><button type="button" aria-label="Photo suivante">›</button><div aria-hidden="true">' + A.map(function () { return '<i></i>'; }).join('') + '</div></div>';
+      var imgs = el.querySelectorAll('img'), d = el.querySelectorAll('i'), bs = el.querySelectorAll('button'), lp = el.firstChild;
+      var show = function (k) { n = (k + A.length) % A.length; imgs.forEach(function (m, i) { m.hidden = i !== n; }); d.forEach(function (x, i) { x.classList.toggle('fx-on', i === n); }); };
+      bs[0].addEventListener('click', function () { show(n - 1); });
+      bs[1].addEventListener('click', function () { show(n + 1); });
+      lp.addEventListener('pointermove', function (e) { if (e.pointerType !== 'mouse') return; var r = lp.getBoundingClientRect(); show(Math.min(A.length - 1, Math.floor((e.clientX - r.left) / r.width * A.length))); });
+      show(0);
+    }
+  });
 })(window.FX);
