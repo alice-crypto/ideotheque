@@ -5557,6 +5557,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 @keyframes fx-ptu { from { background: var(--fx-up, #2eaf63); color: #fff; } }
 @keyframes fx-ptd { from { background: var(--fx-down, #e10600); color: #fff; } }
 
+/* budget-envelopes : des enveloppes de budget */
+[data-fx="budget-envelopes"] { display: grid; gap: 9px; font-size: .9em; }
+[data-fx="budget-envelopes"] .fx-be { display: grid; grid-template-columns: 1fr auto; gap: 3px; }
+[data-fx="budget-envelopes"] em { font-style: normal; font-weight: 600; }
+[data-fx="budget-envelopes"] i { grid-column: 1 / -1; display: block; height: 8px; background: rgba(128, 128, 128, .28); }
+[data-fx="budget-envelopes"] b { display: block; height: 100%; width: 0; background: var(--fx-accent); transition: width .8s var(--fx-ease-out) calc(var(--fx-i) * 100ms); }
+.fx-in[data-fx="budget-envelopes"] b { width: calc(var(--fx-q) * 100%); }
+[data-fx="budget-envelopes"] .fx-over b { background: repeating-linear-gradient(45deg, var(--fx-over, #e10600) 0 5px, #000 5px 8px); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

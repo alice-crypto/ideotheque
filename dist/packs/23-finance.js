@@ -223,4 +223,19 @@
       if (el._fxT > 1.3) { el._fxT = 0; FX.trigger(el); }
     }
   });
+
+  // Des enveloppes de budget qui se remplissent et signalent le dépassement
+  FX.register('budget-envelopes', {
+    entrance: true,
+    setup: function (el) {
+      (el.dataset.fxItems || 'Courses:320:400|Sorties:180:150|Transports:60:90').split('|').forEach(function (s, i) {
+        var p = s.split(':'), use = +p[1], max = +p[2], over = use > max, r = U.make('div', 'fx-be' + (over ? ' fx-over' : ''), el);
+        r.innerHTML = '<span></span><em></em><i><b></b></i>';
+        r.children[0].textContent = p[0];
+        r.children[1].textContent = over ? 'dépassé de ' + (use - max) + ' €' : 'reste ' + (max - use) + ' €';
+        r.style.setProperty('--fx-q', Math.min(1, use / max));
+        r.style.setProperty('--fx-i', i);
+      });
+    }
+  });
 })(window.FX);

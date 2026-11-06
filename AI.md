@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->511<!-- /total --> effets.
+La bibliothèque contient <!-- total -->512<!-- /total --> effets.
 
 ## Règles
 
@@ -195,6 +195,7 @@ La bibliothèque contient <!-- total -->511<!-- /total --> effets.
 | `loan-calculator` | Présentation | Deux curseurs, montant et durée, donnent en direct la mensualité et le coût du crédit |
 | `savings-curve` | Présentation | Un curseur règle l'épargne mensuelle, et la courbe montre l'écart croissant entre les versements et le capital |
 | `rate-best-row` | Présentation | Dans un tableau de taux, la meilleure valeur de chaque colonne se remplit de couleur |
+| `budget-envelopes` | Présentation | Des enveloppes de budget se remplissent, et un dépassement est hachuré et écrit en toutes lettres |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

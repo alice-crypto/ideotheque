@@ -102,4 +102,13 @@ module.exports = [
     '<span data-fx="price-tick-flash">102,40</span>',
     '<span class="demo-number" data-fx="price-tick-flash" data-fx-demo="true" style="color:var(--ink);font-size:40px">102,40</span>',
     { trigger: 'Changer', a11y: 'La flèche indique le sens sans dépendre de la couleur.' }),
+  E('budget-envelopes', 'Présentation',
+    'Des enveloppes de budget se remplissent, et un dépassement est hachuré et écrit en toutes lettres.',
+    'Clair, sans reproche.',
+    '- `data-fx-items` : « nom:dépensé:budget » séparés par `|`',
+    'Applications de budget, tableaux d\'équipe.',
+    'Plus de 8 enveloppes à la fois.',
+    '<div data-fx="budget-envelopes" data-fx-items="Courses:320:400"></div>',
+    '<div data-fx="budget-envelopes" style="width:215px;color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le reste ou le dépassement est écrit en texte.' }),
 ];
