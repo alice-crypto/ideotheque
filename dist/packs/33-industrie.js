@@ -112,4 +112,21 @@
       el.innerHTML = '<div class="fx-dp" aria-hidden="true">' + h + '<svg viewBox="0 0 100 100" preserveAspectRatio="none"><path pathLength="1" d="' + line + '"/></svg></div><p><b>' + hits.join(', ') + '</b> : 80 % des défauts</p>';
     }
   });
+
+  // Une mesure contre sa tolérance : conforme ou non conforme
+  FX.register('tolerance-gauge', {
+    setup: function (el) {
+      var n = U.num(el, 'fxNominal', 25), t = U.num(el, 'fxTol', .05), v = U.num(el, 'fxValue', 25.03);
+      el.innerHTML = '<div class="fx-tg2" aria-hidden="true"><i></i><em></em></div><label>Mesure (mm)<input type="number" step=".01" value="' + v + '"></label><output aria-live="polite"></output>';
+      var i = el.querySelector('input'), o = el.querySelector('output');
+      var go = function () {
+        var x = +i.value, d = x - n, ok = Math.abs(d) <= t, q = U.clamp(.5 + d / (t * 4), 0, 1);
+        el.style.setProperty('--fx-q', q);
+        el.classList.toggle('fx-bad', !ok);
+        o.innerHTML = '<b>' + (ok ? 'Conforme' : 'Non conforme') + '</b> · écart ' + (d > 0 ? '+' : '') + d.toFixed(2).replace('.', ',') + ' mm, tolérance ±' + String(t).replace('.', ',') + ' mm';
+      };
+      i.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

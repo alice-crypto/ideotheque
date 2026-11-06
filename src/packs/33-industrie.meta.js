@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="defect-pareto" data-fx-items="Rayures:48|Soudure:31"></div>',
     '<div data-fx="defect-pareto" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'La conclusion est écrite, et le graphique est décoratif.' }),
+  E('tolerance-gauge', 'Micro-interaction',
+    'Une mesure glisse sur une zone de tolérance, et le verdict tombe par écrit.',
+    'Le geste du contrôleur, au centième près.',
+    '- `data-fx-nominal` (25), `data-fx-tol` (0.05), `data-fx-value`',
+    'Qualité, métrologie, seuils techniques.',
+    'De remplacer un vrai contrôle : c\'est une présentation de résultat.',
+    '<div data-fx="tolerance-gauge" data-fx-nominal="25" data-fx-tol="0.05"></div>',
+    '<div data-fx="tolerance-gauge" style="color:var(--ink)"></div>',
+    { a11y: 'Champ étiqueté, verdict écrit et annoncé.' }),
 ];
