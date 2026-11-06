@@ -94,3 +94,11 @@
 [data-fx="traffic-strip"] p { margin: 8px 0 0; }
 [data-fx="traffic-strip"] b { font-size: 18px; }
 @keyframes fx-traffic-car { to { left: 100%; } }
+
+/* elevation-profile : un profil de parcours */
+[data-fx="elevation-profile"] { position: relative; display: grid; gap: 4px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="elevation-profile"] svg { display: block; width: 100%; height: 80px; }
+[data-fx="elevation-profile"] .fx-ep-a { fill: color-mix(in srgb, var(--fx-accent) 35%, transparent); }
+[data-fx="elevation-profile"] .fx-ep-l { fill: none; stroke: var(--fx-accent); stroke-width: 2; vector-effect: non-scaling-stroke; }
+[data-fx="elevation-profile"] > i { position: absolute; left: calc(var(--fx-x) * 100%); top: calc(var(--fx-y) * 80px); width: 12px; height: 12px; margin: -6px; border-radius: 50%; background: currentColor; transition: left .2s, top .2s; }
+[data-fx="elevation-profile"] input { width: 100%; accent-color: var(--fx-accent); }
