@@ -12450,6 +12450,29 @@
       go();
     }
   });
+
+  // Combien de cartons sur une palette, couche après couche
+  FX.register('pallet-stack', {
+    setup: function (el) {
+      var L = 120, W = 80, H = 180, cols = 3;
+      el.innerHTML = '<div class="fx-pl3" aria-hidden="true"></div><label>Hauteur d\'un carton <b></b><input type="range" min="15" max="60" step="5"></label><output aria-live="polite"></output>';
+      var box = el.querySelector('.fx-pl3'), r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxHeight', 30);
+      var go = function () {
+        var h = +r.value, rows = Math.floor((H - 15) / h), per = cols * 2, tot = rows * per;
+        box.innerHTML = '';
+        for (var y = 0; y < rows; y++) {
+          var row = U.make('div', '', box);
+          row.style.height = 100 / Math.floor((H - 15) / 15) * h / 15 + '%';
+          for (var x = 0; x < cols; x++) U.make('i', '', row).style.setProperty('--fx-i', y * 2 + x);
+        }
+        el.querySelector('label b').textContent = h + ' cm';
+        o.innerHTML = '<b>' + tot + ' cartons</b> : ' + per + ' par couche, ' + rows + ' couches';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

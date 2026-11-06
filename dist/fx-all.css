@@ -7426,6 +7426,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="volumetric-weight"] .b { height: calc(var(--fx-b) * 28px); background: var(--fx-accent); }
 [data-fx="volumetric-weight"] output b { font-size: 16px; }
 
+/* pallet-stack : une palette de cartons */
+[data-fx="pallet-stack"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 210px)); font-size: 11px; }
+[data-fx="pallet-stack"] .fx-pl3 { display: flex; flex-direction: column-reverse; gap: 1px; height: 112px; width: 70%; margin: 0 auto; padding-bottom: 8px; background: repeating-linear-gradient(90deg, #8a6233 0 18px, transparent 18px 26px) bottom / 100% 6px no-repeat; overflow: hidden; box-sizing: border-box; }
+[data-fx="pallet-stack"] .fx-pl3 > div { display: flex; gap: 1px; flex: none; }
+[data-fx="pallet-stack"] i { flex: 1; background: linear-gradient(90deg, transparent 44%, #e7cfa0 44% 56%, transparent 56%), #b98b4f; animation: fx-pallet-drop .35s var(--fx-ease-out) calc(var(--fx-i) * 20ms) backwards; }
+[data-fx="pallet-stack"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="pallet-stack"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="pallet-stack"] output b { font-size: 15px; }
+@keyframes fx-pallet-drop { from { opacity: 0; transform: translateY(-20px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="volumetric-weight" data-fx-divisor="5000"></div>',
     '<div data-fx="volumetric-weight" style="color:var(--ink)"></div>',
     { a11y: 'Champs étiquetés, résultat annoncé.' }),
+  E('pallet-stack', 'Présentation',
+    'Une palette se remplit de couches de cartons, selon la hauteur de chaque carton.',
+    'Le plaisir d\'une pile bien faite.',
+    '- `data-fx-height` (30)',
+    'Entrepôts, logistique, commande en gros.',
+    'De se passer des règles de poids : ce calcul ne regarde que la hauteur.',
+    '<div data-fx="pallet-stack" data-fx-height="30"></div>',
+    '<div data-fx="pallet-stack" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat annoncé.' }),
 ];
