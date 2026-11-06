@@ -14635,6 +14635,27 @@
       go();
     }
   });
+
+  // Une tasse dont on voit les couches, selon la boisson
+  FX.register('latte-layers', {
+    setup: function (el) {
+      var D = JSON.parse(el.dataset.fxData || '{"Espresso":[["Café",100,"#3d2212"]],"Cappuccino":[["Café",33,"#3d2212"],["Lait chaud",33,"#c9a07a"],["Mousse",34,"#f4e7d5"]],"Latte":[["Café",20,"#3d2212"],["Lait chaud",60,"#d0ac86"],["Mousse",20,"#f4e7d5"]],"Moka":[["Chocolat",20,"#4b2415"],["Café",30,"#3d2212"],["Lait",30,"#b4835b"],["Crème",20,"#fbf3e5"]]}'), K = Object.keys(D);
+      el.innerHTML = '<div class="fx-ll" role="radiogroup" aria-label="Boisson"></div><div class="fx-ll-c" aria-hidden="true"></div><output aria-live="polite"></output>';
+      var f = el.querySelector('.fx-ll'), cup = el.querySelector('.fx-ll-c'), o = el.querySelector('output');
+      var pick = function (k, b) {
+        f.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-checked', x === b); });
+        cup.innerHTML = '';
+        D[k].forEach(function (l, i) { var d = U.make('i', '', cup); d.style.cssText = 'flex:' + l[1] + ' 1 0;background:' + l[2] + ';--fx-i:' + i; d.textContent = l[1] > 25 ? l[0] : ''; });
+        o.textContent = D[k].map(function (l) { return l[0] + ' ' + l[1] + ' %'; }).join(', ');
+      };
+      K.forEach(function (k, i) {
+        var b = U.make('button', '', f);
+        b.type = 'button'; b.setAttribute('role', 'radio'); b.textContent = k;
+        b.addEventListener('click', function () { pick(k, b); });
+        if (i === 1) pick(k, b);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

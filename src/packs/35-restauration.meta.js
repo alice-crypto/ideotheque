@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="brew-ratio"></div>',
     '<div data-fx="brew-ratio" style="color:var(--ink)"></div>',
     { a11y: 'Curseurs étiquetés, dose annoncée.' }),
+  E('latte-layers', 'Présentation',
+    'Une tasse montre ses couches selon la boisson choisie, versées l\'une après l\'autre.',
+    'On comprend enfin la différence entre un latte et un cappuccino.',
+    '- `data-fx-data` : JSON boisson vers couches « nom, %, couleur »',
+    'Cafés, torréfacteurs, cocktails, smoothies.',
+    'Des proportions présentées comme une norme officielle : elles varient selon les maisons.',
+    '<div data-fx="latte-layers"></div>',
+    '<div data-fx="latte-layers" style="color:var(--ink)"></div>',
+    { a11y: 'Groupe radio nommé, composition écrite et annoncée.' }),
 ];

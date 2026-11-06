@@ -8575,6 +8575,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="brew-ratio"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
 [data-fx="brew-ratio"] output b { font-size: 21px; }
 
+/* latte-layers : les couches d'une tasse */
+[data-fx="latte-layers"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 225px)); font-size: 10px; }
+[data-fx="latte-layers"] .fx-ll { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; }
+[data-fx="latte-layers"] button { padding: 2px 7px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="latte-layers"] [aria-checked="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="latte-layers"] .fx-ll-c { display: flex; flex-direction: column-reverse; width: 90px; height: 104px; padding: 3px; border: 2px solid currentColor; border-top: 0; border-radius: 0 0 16px 16px; box-sizing: border-box; overflow: hidden; }
+[data-fx="latte-layers"] .fx-ll-c i { display: grid; place-items: center; font-style: normal; color: #1a100a; font-size: 9px; font-weight: 700; animation: fx-latte-pour .5s var(--fx-ease-out) calc(var(--fx-i) * 200ms) backwards; }
+[data-fx="latte-layers"] .fx-ll-c i:first-child { color: #fff; }
+[data-fx="latte-layers"] output { text-align: center; }
+@keyframes fx-latte-pour { from { flex-grow: .001; opacity: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
