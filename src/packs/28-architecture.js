@@ -133,4 +133,19 @@
       put();
     }
   });
+
+  // Une image qui passe de l'esquisse à la vue finale en descendant
+  FX.register('sketch-render', {
+    setup: function (el) {
+      var img = el.querySelector('img');
+      if (!img) return;
+      var sk = img.cloneNode();
+      sk.setAttribute('alt', ''); sk.setAttribute('aria-hidden', 'true');
+      sk.className = 'fx-skr';
+      el.appendChild(sk);
+      U.ensurePositioned(el);
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-q', U.clamp(info.pass * 1.8 - .25, 0, 1).toFixed(3)); },
+    trigger: function (el) { var on = el.style.getPropertyValue('--fx-q') === '1'; U.tween(el, 900, function (p) { el.style.setProperty('--fx-q', on ? 1 - p : p); }); }
+  });
 })(window.FX);
