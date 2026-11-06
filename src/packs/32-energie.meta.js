@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="wind-rose" data-fx-data="6,5,4,6,10,24,26,19"></div>',
     '<div data-fx="wind-rose" style="color:var(--ink);--fx-w:135px"></div>',
     { trigger: 'Rejouer', a11y: 'La direction dominante est écrite.' }),
+  E('solar-tilt', 'Micro-interaction',
+    'Un curseur incline un panneau et montre le rendement perdu par rapport à l\'angle optimal.',
+    'On voit que le réglage idéal n\'est pas si loin.',
+    '- `data-fx-angle` (20), `data-fx-best` (33)',
+    'Solaire, pédagogie, jardin ou balcon.',
+    'De reprendre ce calcul pour un dimensionnement : l\'orientation compte aussi.',
+    '<div data-fx="solar-tilt" data-fx-angle="20"></div>',
+    '<div data-fx="solar-tilt" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat annoncé.' }),
 ];

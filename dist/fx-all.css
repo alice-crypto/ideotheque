@@ -7915,6 +7915,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="wind-rose"] text { fill: currentColor; font-size: 8px; text-anchor: middle; }
 [data-fx="wind-rose"] p { margin: 0; }
 
+/* solar-tilt : incliner un panneau */
+[data-fx="solar-tilt"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 215px)); font-size: 11px; }
+[data-fx="solar-tilt"] .fx-sl { position: relative; height: 84px; border-bottom: 3px solid currentColor; }
+[data-fx="solar-tilt"] .s { position: absolute; right: 10px; top: 4px; width: 24px; height: 24px; border-radius: 50%; background: #ffc21a; box-shadow: 0 0 calc(var(--fx-g, 1) * 22px) #ffc21a; opacity: var(--fx-g, 1); transition: box-shadow .25s; }
+[data-fx="solar-tilt"] .p { position: absolute; left: 22%; bottom: 0; width: 88px; height: 6px; background: linear-gradient(90deg, #1d3b86, #5f8fe8, #1d3b86); transform-origin: 0 100%; transform: rotate(var(--fx-a, -20deg)); transition: transform .2s var(--fx-ease-out); }
+[data-fx="solar-tilt"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="solar-tilt"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="solar-tilt"] output b { font-size: 17px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
