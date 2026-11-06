@@ -362,4 +362,15 @@
       });
     }
   });
+
+  // Les horaires de la semaine, avec aujourd'hui en tête
+  FX.register('opening-today', {
+    setup: function (el) {
+      var D = (el.dataset.fxItems || 'Lundi:Fermé|Mardi:12-14,19-22|Mercredi:12-14,19-22|Jeudi:12-14,19-22|Vendredi:12-14,19-23|Samedi:19-23|Dimanche:12-15').split('|').map(function (r) { var p = r.split(':'); return [p[0], p[1]]; }), now = new Date(), k = (now.getDay() + 6) % 7, h = now.getHours() + now.getMinutes() / 60, st = 'Fermé maintenant', open = false;
+      var slots = D[k][1] === 'Fermé' ? [] : D[k][1].split(',').map(function (s) { return s.split('-').map(Number); });
+      slots.some(function (s) { if (h >= s[0] && h < s[1]) { open = true; st = 'Ouvert jusqu\'à ' + s[1] + ' h'; return true; } if (h < s[0]) { st = 'Ouvre à ' + s[0] + ' h'; return true; } return false; });
+      el.innerHTML = '<p class="fx-ot"><i aria-hidden="true"></i><b>' + st + '</b></p><ul>' + D.map(function (d, i) { return '<li class="' + (i === k ? 'fx-now' : '') + '"><span>' + d[0] + '</span><span>' + d[1].replace(/-/g, ' h–').replace(/,/g, ' h, ').replace(/(\d)$/, '$1 h') + '</span></li>'; }).join('') + '</ul>';
+      el.classList.toggle('fx-open', open);
+    }
+  });
 })(window.FX);
