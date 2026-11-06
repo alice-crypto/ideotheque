@@ -6985,6 +6985,24 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="service-odometer"] .fx-soon b { color: var(--fx-down, #e10600); font-weight: 800; }
 [data-fx="service-odometer"] .fx-soon em { background: linear-gradient(90deg, var(--fx-down, #e10600) calc(var(--fx-q) * 100%), color-mix(in srgb, currentColor 18%, transparent) 0); }
 
+/* tire-pressure : la pression des pneus */
+[data-fx="tire-pressure"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 220px)); font-size: 12px; text-align: center; }
+[data-fx="tire-pressure"] .fx-tp { position: relative; width: 150px; height: 124px; }
+[data-fx="tire-pressure"] u { position: absolute; left: 50%; top: 0; bottom: 0; width: 56px; margin-left: -28px; border-radius: 22px 22px 14px 14px; background: color-mix(in srgb, currentColor 22%, transparent); }
+[data-fx="tire-pressure"] .fx-tp > div { position: absolute; display: flex; gap: 4px; align-items: center; }
+[data-fx="tire-pressure"] .fx-p0 { left: 0; top: 16px; flex-direction: row; }
+[data-fx="tire-pressure"] .fx-p1 { right: 0; top: 16px; flex-direction: row-reverse; }
+[data-fx="tire-pressure"] .fx-p2 { left: 0; bottom: 16px; flex-direction: row; }
+[data-fx="tire-pressure"] .fx-p3 { right: 0; bottom: 16px; flex-direction: row-reverse; }
+[data-fx="tire-pressure"] .fx-tp > div { --w: 9px; }
+[data-fx="tire-pressure"] i { order: 2; width: var(--w); height: 30px; border-radius: 3px; background: currentColor; }
+[data-fx="tire-pressure"] b { order: 1; min-width: 26px; }
+[data-fx="tire-pressure"] .fx-low { color: var(--fx-down, #e10600); }
+[data-fx="tire-pressure"] .fx-low i { animation: fx-tp 1.2s infinite; }
+[data-fx="tire-pressure"] p { margin: 0; font-weight: 700; }
+[data-fx="tire-pressure"].fx-bad p { color: var(--fx-down, #e10600); }
+@keyframes fx-tp { 50% { opacity: .25; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

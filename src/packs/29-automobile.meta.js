@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="service-odometer" data-fx-km="47200"></div>',
     '<div data-fx="service-odometer" style="color:var(--ink)"></div>',
     { a11y: 'Valeurs écrites en toutes lettres, compteur nommé.' }),
+  E('tire-pressure', 'État',
+    'Les quatre pneus montrent leur pression, et celui qui manque d\'air clignote.',
+    'On regarde une fois, et on sait quoi faire.',
+    '- `data-fx-data` : 4 valeurs en bars, séparées par des virgules\n- `data-fx-low` (2.1)',
+    'Véhicules connectés, entretien, flotte.',
+    'D\'afficher des données fictives comme réelles dans une vraie application.',
+    '<div data-fx="tire-pressure" data-fx-data="2.4,2.4,1.9,2.3"></div>',
+    '<div data-fx="tire-pressure" style="color:var(--ink)"></div>',
+    { a11y: 'Dessin masqué, résumé écrit en toutes lettres.' }),
 ];
