@@ -354,4 +354,25 @@
       go();
     }
   });
+
+  // Les appareils qui consomment en veille, et ce que cela coûte à l'année
+  FX.register('standby-drain', {
+    setup: function (el) {
+      var D = (el.dataset.fxItems || 'Box internet:12|Télévision:5|Console:8|Enceinte:3|Micro-ondes:2').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1]]; }), k = U.num(el, 'fxKwh', .21), ul = U.make('ul', '', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      D.forEach(function (d) {
+        var li = U.make('li', '', ul), b = U.make('button', '', li);
+        b.type = 'button'; b.setAttribute('aria-pressed', 'true');
+        b.innerHTML = '<i></i><span>' + d[0] + '</span><em>' + d[1] + ' W</em>';
+        b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); go(); });
+      });
+      var go = function () {
+        var w = 0;
+        ul.querySelectorAll('button').forEach(function (b, i) { if (b.getAttribute('aria-pressed') === 'true') w += D[i][1]; });
+        var kwh = w * 24 * 365 / 1000;
+        o.innerHTML = '<b>' + Math.round(kwh * k) + ' € par an</b> en veille · ' + Math.round(kwh) + ' kWh';
+      };
+      go();
+    }
+  });
 })(window.FX);
