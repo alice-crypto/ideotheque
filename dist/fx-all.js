@@ -12492,6 +12492,25 @@
       U.make('p', '', el).innerHTML = '<b>' + Math.round(q) + ' %</b> de la surface' + (out ? ', ' + out + ' caisse' + (out > 1 ? 's' : '') + ' en attente' : ', tout tient');
     }
   });
+
+  // Taper un emplacement et le voir s'allumer dans l'entrepôt
+  FX.register('warehouse-slot', {
+    setup: function (el) {
+      var A = U.num(el, 'fxAisles', 4), B = U.num(el, 'fxBays', 8);
+      el.innerHTML = '<input type="text" maxlength="4" value="' + (el.dataset.fxCode || 'B-5') + '" aria-label="Emplacement, par exemple B-5"><div class="fx-wh" aria-hidden="true"></div><output aria-live="polite"></output>';
+      var i = el.querySelector('input'), g = el.querySelector('.fx-wh'), o = el.querySelector('output');
+      g.style.setProperty('--fx-c', B);
+      for (var a = 0; a < A; a++) for (var b = 0; b < B; b++) U.make('i', '', g);
+      var go = function () {
+        var m = i.value.toUpperCase().match(/^([A-Z])-?(\d+)$/), hit = -1;
+        if (m) { var a2 = m[1].charCodeAt(0) - 65, b2 = +m[2] - 1; if (a2 >= 0 && a2 < A && b2 >= 0 && b2 < B) hit = a2 * B + b2; }
+        Array.prototype.forEach.call(g.children, function (c, k) { c.classList.toggle('fx-on', k === hit); });
+        o.textContent = hit >= 0 ? 'Allée ' + m[1] + ', travée ' + m[2] : 'Emplacement inconnu';
+      };
+      i.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

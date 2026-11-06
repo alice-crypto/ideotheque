@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="container-fill" data-fx-items="180x120|120x80"></div>',
     '<div data-fx="container-fill" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le résultat est écrit, le plan est décoratif.' }),
+  E('warehouse-slot', 'Navigation',
+    'On tape un emplacement et il s\'allume sur le plan des allées.',
+    'Le gain de temps qui compte quand on marche toute la journée.',
+    '- `data-fx-aisles` (4), `data-fx-bays` (8), `data-fx-code`',
+    'Entrepôts, bibliothèques, parkings.',
+    'Un entrepôt à la numérotation différente : adaptez le format attendu.',
+    '<div data-fx="warehouse-slot" data-fx-code="B-5"></div>',
+    '<div data-fx="warehouse-slot" style="color:var(--ink)"></div>',
+    { a11y: 'Champ nommé, résultat annoncé en mots.' }),
 ];
