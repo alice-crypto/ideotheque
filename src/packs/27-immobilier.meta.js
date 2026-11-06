@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="rent-split" data-fx-rent="1500" data-fx-items="Aya:18|Léo:12"></div>',
     '<div data-fx="rent-split" style="color:var(--ink)"></div>',
     { a11y: 'Chaque curseur est nommé par la personne et la mesure.' }),
+  E('commute-rings', 'Présentation',
+    'Une zone s\'étend autour d\'une adresse selon le temps choisi, et les lieux atteints s\'allument.',
+    'On pense son quotidien en minutes, pas en kilomètres.',
+    '- `data-fx-items` : « lieu:minutes:angle » séparés par `|`\n- `data-fx-minutes` (20)',
+    'Annonces, recherche d\'emploi, implantation.',
+    'De le présenter comme une carte : les distances sont schématiques.',
+    '<div data-fx="commute-rings" data-fx-items="Gare:9:150"></div>',
+    '<div data-fx="commute-rings" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat écrit et annoncé.' }),
 ];

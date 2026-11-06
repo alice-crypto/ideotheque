@@ -10950,6 +10950,34 @@
       go();
     }
   });
+
+  // Des anneaux de temps de trajet autour d'une adresse
+  FX.register('commute-rings', {
+    setup: function (el) {
+      var P = (el.dataset.fxItems || 'Bureau:18:40|Gare:9:150|École:6:250|Aéroport:42:320').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1], +p[2]]; }), Max = 45;
+      var box = U.make('div', 'fx-cr', el), l = U.make('label', '', el), o = U.make('output', '', el);
+      box.setAttribute('aria-hidden', 'true');
+      [15, 30, 45].forEach(function (m) { var r = U.make('u', '', box); r.style.setProperty('--fx-r', m / Max); r.textContent = m; });
+      U.make('b', '', box);
+      P.forEach(function (p) {
+        var d = U.make('i', '', box), q = p[1] / Max, a = p[2] * Math.PI / 180;
+        d.style.left = 50 + 50 * q * Math.cos(a) + '%'; d.style.top = 50 + 50 * q * Math.sin(a) + '%'; d.textContent = p[0]; p.d = d;
+      });
+      l.innerHTML = 'Moins de <b></b><input type="range" min="5" max="45" step="5">';
+      o.setAttribute('aria-live', 'polite');
+      var r = l.querySelector('input');
+      r.value = U.num(el, 'fxMinutes', 20);
+      var go = function () {
+        var hit = [];
+        P.forEach(function (p) { var on = p[1] <= +r.value; p.d.classList.toggle('fx-on', on); if (on) hit.push(p[0]); });
+        l.querySelector('b').textContent = r.value + ' min';
+        el.style.setProperty('--fx-z', r.value / Max);
+        o.textContent = hit.length ? 'Accessible : ' + hit.join(', ') : 'Rien dans ce temps';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
