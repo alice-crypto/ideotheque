@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="budget-envelopes" data-fx-items="Courses:320:400"></div>',
     '<div data-fx="budget-envelopes" style="width:215px;color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le reste ou le dépassement est écrit en texte.' }),
+  E('bill-splitter', 'Micro-interaction',
+    'Le total se partage entre plusieurs personnes, et les centimes restants sont répartis pour tomber juste.',
+    'Équitable, plus de calcul de tête à table.',
+    '- `data-fx-total` (86.5), `data-fx-people` (3)',
+    'Paiements entre amis, restaurants.',
+    'Des parts qui doivent différer selon ce que chacun a pris.',
+    '<div data-fx="bill-splitter" data-fx-total="86.50"></div>',
+    '<div data-fx="bill-splitter" style="width:215px;color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés et résultat annoncé par `aria-live`.' }),
 ];

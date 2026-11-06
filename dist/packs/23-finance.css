@@ -101,3 +101,12 @@
 [data-fx="budget-envelopes"] b { display: block; height: 100%; width: 0; background: var(--fx-accent); transition: width .8s var(--fx-ease-out) calc(var(--fx-i) * 100ms); }
 .fx-in[data-fx="budget-envelopes"] b { width: calc(var(--fx-q) * 100%); }
 [data-fx="budget-envelopes"] .fx-over b { background: repeating-linear-gradient(45deg, var(--fx-over, #e10600) 0 5px, #000 5px 8px); }
+
+/* bill-splitter : partager l'addition */
+[data-fx="bill-splitter"] { display: grid; gap: 8px; font-size: .9em; }
+[data-fx="bill-splitter"] input { width: 6em; padding: .25em .4em; border: 1px solid currentColor; background: none; color: inherit; font: inherit; }
+[data-fx="bill-splitter"] .fx-bs-c { display: flex; align-items: center; gap: .6em; }
+[data-fx="bill-splitter"] button { width: 1.8em; height: 1.8em; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; cursor: pointer; }
+[data-fx="bill-splitter"] .fx-bs-p { display: flex; flex-wrap: wrap; gap: 4px; }
+[data-fx="bill-splitter"] .fx-bs-p i { padding: .2em .55em; font-style: normal; background: var(--fx-accent); color: #111; font-variant-numeric: tabular-nums; animation: fx-bs .3s var(--fx-ease-spring) calc(var(--fx-i) * 30ms) both; }
+@keyframes fx-bs { from { transform: scale(.5); opacity: 0; } }
