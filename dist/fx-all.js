@@ -10560,6 +10560,22 @@
       el.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !p.hidden) { set(false); b.focus(); } });
     }
   });
+
+  // Un mortier et son pilon qui écrasent en attendant
+  FX.register('mortar-grind', {
+    setup: function (el) {
+      el.setAttribute('role', 'status');
+      el.setAttribute('aria-label', el.dataset.fxLabel || 'Préparation en cours');
+      el.innerHTML = '<svg viewBox="0 0 100 90" aria-hidden="true"><g class="fx-mg-p"><rect x="-4" y="-38" width="8" height="42" rx="4"/></g><path class="fx-mg-b" d="M14 44H86C86 64 72 78 50 78S14 64 14 44Z"/><rect class="fx-mg-b" x="34" y="78" width="32" height="6" rx="2"/></svg>';
+      var g = el.querySelector('svg');
+      for (var i = 0; i < 7; i++) {
+        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', 40 + i * 3.4); c.setAttribute('cy', 44); c.setAttribute('r', 1.5);
+        c.style.setProperty('--fx-i', i); c.style.setProperty('--fx-x', U.rand(-14, 14) + 'px');
+        g.appendChild(c);
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -6361,6 +6361,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="ask-pharmacist"].fx-open .fx-ap-b i { transform: rotate(45deg); }
 @keyframes fx-ap { from { opacity: 0; transform: translateY(10px) scale(.95); } }
 
+/* mortar-grind : un mortier et son pilon */
+[data-fx="mortar-grind"] { display: inline-block; width: var(--fx-s, 120px); }
+[data-fx="mortar-grind"] svg { display: block; width: 100%; overflow: visible; }
+[data-fx="mortar-grind"] .fx-mg-b { fill: currentColor; }
+[data-fx="mortar-grind"] .fx-mg-p rect { fill: var(--fx-accent); transform: rotate(24deg); }
+[data-fx="mortar-grind"] .fx-mg-p { transform: translate(52px, 46px); animation: fx-mg 1.5s ease-in-out infinite; }
+[data-fx="mortar-grind"] circle { fill: var(--fx-accent-2); animation: fx-mg2 1.5s ease-out calc(var(--fx-i) * 60ms) infinite; }
+@keyframes fx-mg { 0%, 100% { transform: translate(38px, 46px); } 25% { transform: translate(50px, 50px); } 50% { transform: translate(62px, 46px); } 75% { transform: translate(50px, 42px); } }
+@keyframes fx-mg2 { 0%, 60%, 100% { transform: none; } 30% { transform: translate(var(--fx-x), -14px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

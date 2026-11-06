@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->595<!-- /total --> effets.
+La bibliothèque contient <!-- total -->596<!-- /total --> effets.
 
 ## Règles
 
@@ -615,6 +615,7 @@ La bibliothèque contient <!-- total -->595<!-- /total --> effets.
 | `rx-ready` | État | Une ordonnance avance de reçue à prête, et l'état final se détache en vert |
 | `capsule-progress` | État | Une gélule se remplit de petits granules jusqu'à la valeur |
 | `pill-tumble` | État | Trois gélules font une culbute à tour de rôle pendant une attente |
+| `mortar-grind` | État | Un pilon tourne dans son mortier et fait sauter quelques grains pendant l'attente |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)

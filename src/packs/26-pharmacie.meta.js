@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="ask-pharmacist" data-fx-items="Vos horaires ?|Livrez-vous ?"></div>',
     '<div data-fx="ask-pharmacist" style="color:var(--ink)"></div>',
     { trigger: 'Ouvrir ou fermer avec la bulle', a11y: '`aria-expanded`, focus dans le panneau, fermeture par Échap.' }),
+  E('mortar-grind', 'État',
+    'Un pilon tourne dans son mortier et fait sauter quelques grains pendant l\'attente.',
+    'Artisanal, la préparation a lieu.',
+    '- `--fx-s` (120px)\n- `data-fx-label`',
+    'Préparatoires, cosmétique naturelle, épiceries.',
+    'Une attente très courte : le geste n\'a pas le temps de se lire.',
+    '<div data-fx="mortar-grind"></div>',
+    '<div data-fx="mortar-grind" style="color:var(--ink)"></div>',
+    { a11y: 'Rôle `status` nommé. La bibliothèque coupe l\'animation en mouvement réduit.' }),
 ];
