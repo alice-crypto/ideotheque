@@ -9051,6 +9051,19 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="plug-adapter"] output b { color: currentColor; font-size: 14px; }
 @keyframes fx-plug-in { from { transform: scale(.3); } }
 
+/* climate-months : quand partir */
+[data-fx="climate-months"] { width: min(100%, var(--fx-w, 235px)); font-size: 10px; }
+[data-fx="climate-months"] .fx-cm2 { display: flex; gap: 2px; align-items: flex-end; height: 84px; padding-bottom: 14px; }
+[data-fx="climate-months"] .fx-cm2 > div { position: relative; flex: 1; display: flex; gap: 1px; align-items: flex-end; height: 100%; }
+[data-fx="climate-months"] i, [data-fx="climate-months"] u { flex: 1; height: 0; transition: height .5s var(--fx-ease-out) calc(var(--fx-i) * 40ms); }
+[data-fx="climate-months"] i { background: #f28c28; }
+[data-fx="climate-months"] u { background: #2d82d6; }
+.fx-in[data-fx="climate-months"] i { height: calc(var(--fx-t) * 100%); }
+.fx-in[data-fx="climate-months"] u { height: calc(var(--fx-r) * 100%); }
+[data-fx="climate-months"] small { position: absolute; left: 0; right: 0; bottom: -14px; text-align: center; font-size: 9px; }
+[data-fx="climate-months"] .fx-best small { font-weight: 800; color: var(--fx-up, #2eaf63); }
+[data-fx="climate-months"] p { margin: 5px 0 0; font-size: 11px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

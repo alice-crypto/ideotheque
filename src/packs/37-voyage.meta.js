@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="plug-adapter" data-fx-home="E,F"></div>',
     '<div data-fx="plug-adapter" style="color:var(--ink)"></div>',
     { a11y: 'Vraie liste nommée, résultat annoncé en mots.' }),
+  E('climate-months', 'Présentation',
+    'Température et pluie, mois par mois, avec les meilleurs mois nommés.',
+    'Choisir ses dates comme quelqu\'un qui connaît le pays.',
+    '- `data-fx-temp`, `data-fx-rain` : 12 valeurs',
+    'Destinations, agences, randonnée.',
+    'De reprendre ces moyennes sans préciser le lieu et leur source.',
+    '<div data-fx="climate-months"></div>',
+    '<div data-fx="climate-months" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le résultat est écrit ; la grille est décorative.' }),
 ];

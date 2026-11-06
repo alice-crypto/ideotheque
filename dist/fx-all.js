@@ -15465,6 +15465,20 @@
       go();
     }
   });
+
+  // Quand partir : température, pluie et meilleurs mois
+  FX.register('climate-months', {
+    entrance: true,
+    setup: function (el) {
+      var T = (el.dataset.fxTemp || '11,12,15,17,20,24,27,27,24,20,15,12').split(',').map(Number), R = (el.dataset.fxRain || '85,70,60,55,40,15,8,12,35,80,95,95').split(',').map(Number), L = 'JFMAMJJASOND', tm = Math.max.apply(null, T), rm = Math.max.apply(null, R), best = [], h = '';
+      T.forEach(function (t, i) {
+        var good = t >= 18 && t <= 27 && R[i] <= 45;
+        if (good) best.push(['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'][i]);
+        h += '<div class="' + (good ? 'fx-best' : '') + '" style="--fx-i:' + i + ';--fx-t:' + t / tm + ';--fx-r:' + R[i] / rm + '"><i></i><u></u><small>' + L[i] + '</small></div>';
+      });
+      el.innerHTML = '<div class="fx-cm2" aria-hidden="true">' + h + '</div><p>Meilleurs mois : <b>' + (best.join(', ') || 'à vous de voir') + '</b>. Données fictives.</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

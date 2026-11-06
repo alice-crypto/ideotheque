@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->860<!-- /total --> effets.
+La bibliothèque contient <!-- total -->861<!-- /total --> effets.
 
 ## Règles
 
@@ -316,6 +316,7 @@ La bibliothèque contient <!-- total -->860<!-- /total --> effets.
 | `flight-arc` | Présentation | Un arc relie deux villes, et donne la vraie distance et une durée de vol estimée |
 | `boarding-pass` | Présentation | Une carte d'embarquement sort d'une fente, avec ses informations de vol |
 | `jetlag-plan` | Présentation | Un décalage horaire donne l'heure de coucher, jour après jour, pour s'y préparer |
+| `climate-months` | Présentation | Température et pluie, mois par mois, avec les meilleurs mois nommés |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |
