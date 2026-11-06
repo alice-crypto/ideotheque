@@ -310,4 +310,22 @@
     },
     trigger: function (el) { el._fxSet((el._fxN + 1) % 3); }
   });
+
+  // Un bus qui approche, arrêt après arrêt
+  FX.register('live-bus', {
+    setup: function (el) {
+      var S = (el.dataset.fxItems || 'Mairie|Marché|Lycée|Vous|Stade').split('|'), me = S.indexOf('Vous'), step = U.num(el, 'fxStep', 2), k = 0, ol = U.make('ol', '', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      S.forEach(function (s, i) { U.make('li', i === me ? 'fx-me' : '', ol).innerHTML = '<i></i><span>' + s + '</span>'; });
+      el._fxGo = function () {
+        Array.prototype.forEach.call(ol.children, function (li, i) { li.classList.toggle('fx-bus', i === k); li.classList.toggle('fx-past', i < k); });
+        var left = me - k;
+        o.textContent = left > 0 ? 'Arrive dans ' + left * step + ' min' : left === 0 ? 'Le bus est là' : 'Bus passé';
+        k = k >= S.length - 1 ? 0 : k + 1;
+      };
+      el._fxGo();
+      setInterval(el._fxGo, U.reduced ? 60000 : U.num(el, 'fxEvery', 2800));
+    },
+    trigger: function (el) { el._fxGo(); }
+  });
 })(window.FX);

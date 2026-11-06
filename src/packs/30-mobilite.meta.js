@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="traffic-light" data-fx-state="2"></div>',
     '<div data-fx="traffic-light" style="color:var(--ink)"></div>',
     { trigger: 'Changer de feu', a11y: 'Le texte est annoncé, et le feu est décoratif.' }),
+  E('live-bus', 'État',
+    'Un point suit le bus d\'arrêt en arrêt, et le temps avant votre arrêt se met à jour.',
+    'On reste au chaud jusqu\'à la bonne minute.',
+    '- `data-fx-items` : arrêts dont `Vous`\n- `data-fx-step` (2), `data-fx-every` (2800)',
+    'Bus, livraisons, navettes.',
+    'Une simulation en production : reliez la position à de vraies données.',
+    '<div data-fx="live-bus" data-fx-items="Mairie|Vous"></div>',
+    '<div data-fx="live-bus" style="color:var(--ink)"></div>',
+    { trigger: 'Avancer', a11y: 'Liste ordonnée, temps annoncé.' }),
 ];
