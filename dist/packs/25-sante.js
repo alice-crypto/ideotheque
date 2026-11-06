@@ -380,4 +380,30 @@
       U.make('small', '', el).textContent = 'Globules rouges seulement. Le médecin décide.';
     }
   });
+
+  // Chercher un service et voir à quel étage il se trouve
+  FX.register('floor-finder', {
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Radiologie:0|Laboratoire:0|Maternité:2|Cardiologie:3|Pédiatrie:1|Consultations:1').split('|').map(function (r) { return r.split(':'); });
+      var top = rows.reduce(function (m, r) { return Math.max(m, +r[1]); }, 0);
+      el.innerHTML = '<div class="fx-ff" aria-hidden="true"></div><div><input type="search" placeholder="Un service…" aria-label="Chercher un service"><ul></ul></div>';
+      var b = el.firstChild, q = el.querySelector('input'), ul = el.querySelector('ul');
+      for (var i = top; i >= 0; i--) U.make('i', '', b).textContent = i === 0 ? 'RDC' : i;
+      var light = function (f) { Array.prototype.forEach.call(b.children, function (x, i) { x.classList.toggle('fx-on', top - i === +f); }); };
+      var show = function () {
+        var v = q.value.toLowerCase(), hit = rows.filter(function (r) { return r[0].toLowerCase().indexOf(v) >= 0; });
+        ul.innerHTML = '';
+        hit.slice(0, 4).forEach(function (r) {
+          var li = U.make('li', '', ul), a = U.make('button', '', li);
+          a.type = 'button'; a.textContent = r[0] + ' · ' + (+r[1] ? 'étage ' + r[1] : 'rez-de-chaussée');
+          a.addEventListener('mouseenter', function () { light(r[1]); });
+          a.addEventListener('focus', function () { light(r[1]); });
+          a.addEventListener('click', function () { light(r[1]); });
+        });
+        light(hit.length ? hit[0][1] : -1);
+      };
+      q.addEventListener('input', show);
+      show();
+    }
+  });
 })(window.FX);

@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="blood-compat"></div>',
     '<div data-fx="blood-compat" style="color:var(--ink)"></div>',
     { a11y: 'Résultat écrit et annoncé, pas seulement coloré.' }),
+  E('floor-finder', 'Navigation',
+    'On cherche un service et son étage s\'allume sur la coupe du bâtiment.',
+    'On trouve sans plan compliqué.',
+    '- `data-fx-items` : « service:étage » séparés par `|`',
+    'Hôpitaux, centres commerciaux, administrations, campus.',
+    'Un grand bâtiment à plusieurs ailes : la coupe ne les distingue pas.',
+    '<div data-fx="floor-finder" data-fx-items="Radiologie:0|Maternité:2"></div>',
+    '<div data-fx="floor-finder" style="color:var(--ink)"></div>',
+    { a11y: 'Champ nommé, et chaque résultat écrit l\'étage en toutes lettres.' }),
 ];
