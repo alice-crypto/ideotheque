@@ -282,4 +282,20 @@
       U.make('small', '', el).textContent = 'Repères moyens, pas une contraception';
     }
   });
+
+  // Une frise de grossesse, semaine après semaine
+  FX.register('pregnancy-week', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-pw" aria-hidden="true"><i></i></div><label>Semaine <input type="range" min="1" max="41"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxWeek', 20);
+      var go = function () {
+        var w = +r.value, tri = w <= 14 ? 1 : w <= 28 ? 2 : 3;
+        el.style.setProperty('--fx-q', w / 41);
+        o.innerHTML = '<b>' + w + 'ᵉ semaine</b> · ' + tri + (tri === 1 ? 'ᵉʳ' : 'ᵉ') + ' trimestre<br>environ ' + Math.max(0, 41 - w) + ' semaines restantes';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
