@@ -7937,6 +7937,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="oee-gauge"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
 [data-fx="oee-gauge"] output { grid-column: 1 / -1; font-size: 12px; font-weight: 700; }
 
+/* assembly-line : une ligne d'assemblage */
+[data-fx="assembly-line"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 240px)); font-size: 10px; }
+[data-fx="assembly-line"] .fx-as2 { position: relative; display: grid; grid-template-columns: repeat(var(--fx-n), 1fr); padding-top: 42px; border-bottom: 4px solid currentColor; }
+[data-fx="assembly-line"] span { padding: 3px 0; text-align: center; opacity: .55; transition: opacity .2s, color .2s; }
+[data-fx="assembly-line"] .fx-now { opacity: 1; color: var(--fx-accent); font-weight: 800; }
+[data-fx="assembly-line"] .fx-as2-p { position: absolute; top: 0; left: calc(var(--fx-k, 0) / var(--fx-n) * 100% + 100% / var(--fx-n) / 2 - 22px); width: 44px; height: 38px; display: flex; flex-wrap: wrap; align-content: flex-end; gap: 1px; transition: left .5s var(--fx-ease-out); }
+[data-fx="assembly-line"] u { width: calc(50% - 1px); height: 17px; background: color-mix(in srgb, currentColor 14%, transparent); transition: background .25s; }
+[data-fx="assembly-line"] u.fx-on { background: var(--fx-accent); }
+[data-fx="assembly-line"] output { font-weight: 700; font-size: 12px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

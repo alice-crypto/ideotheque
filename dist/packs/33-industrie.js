@@ -26,4 +26,26 @@
       go();
     }
   });
+
+  // Une ligne d'assemblage : la pièce se complète à chaque poste
+  FX.register('assembly-line', {
+    setup: function (el) {
+      var S = (el.dataset.fxItems || 'Châssis|Moteur|Capot|Contrôle').split('|'), box = U.make('div', 'fx-as2', el), o = U.make('output', '', el), n = 0, done = U.num(el, 'fxStart', 0);
+      box.style.setProperty('--fx-n', S.length);
+      S.forEach(function (t) { U.make('span', '', box).textContent = t; });
+      var p = U.make('i', 'fx-as2-p', box);
+      for (var i = 0; i < S.length; i++) U.make('u', '', p).style.setProperty('--fx-i', i);
+      el._fxStep = function () {
+        n = (n + 1) % (S.length + 1);
+        if (n === S.length) { done++; }
+        box.style.setProperty('--fx-k', Math.min(n, S.length - 1));
+        p.querySelectorAll('u').forEach(function (u, i) { u.classList.toggle('fx-on', i < n); });
+        Array.prototype.forEach.call(box.querySelectorAll('span'), function (s, i) { s.classList.toggle('fx-now', i === Math.min(n, S.length - 1)); });
+        o.textContent = done + ' pièce' + (done > 1 ? 's' : '') + ' terminée' + (done > 1 ? 's' : '');
+      };
+      el._fxStep();
+      if (!U.reduced) setInterval(el._fxStep, U.num(el, 'fxPace', 1100));
+    },
+    trigger: function (el) { el._fxStep(); }
+  });
 })(window.FX);

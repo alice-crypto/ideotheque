@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->750<!-- /total --> effets.
+La bibliothèque contient <!-- total -->751<!-- /total --> effets.
 
 ## Règles
 
@@ -704,6 +704,7 @@ La bibliothèque contient <!-- total -->750<!-- /total --> effets.
 | `blind-spot` | Ambiance | Une voiture passe dans l'angle mort : la zone se teinte et le témoin s'allume |
 | `ferry-crossing` | Ambiance | Un petit bateau traverse à la position réelle du trajet, et le temps restant s'écrit |
 | `conveyor-belt` | Ambiance | Des colis de tailles différentes passent en boucle sur un tapis roulant |
+| `assembly-line` | Ambiance | Une pièce avance de poste en poste, et se complète à chaque arrêt |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |

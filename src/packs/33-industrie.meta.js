@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="oee-gauge" data-fx-avail="88"></div>',
     '<div data-fx="oee-gauge" style="color:var(--ink);--fx-bg:var(--surface,#16151a)"></div>',
     { a11y: 'Curseurs étiquetés, valeurs écrites et conseil annoncé.' }),
+  E('assembly-line', 'Ambiance',
+    'Une pièce avance de poste en poste, et se complète à chaque arrêt.',
+    'Une usine au travail, ordonnée et continue.',
+    '- `data-fx-items` : quatre postes séparés par `|`\n- `data-fx-pace` (1100)',
+    'Industrie, explications d\'un processus en étapes.',
+    'Plus de quatre postes dans un petit format : la pièce prévoit quatre blocs.',
+    '<div data-fx="assembly-line" data-fx-items="Châssis|Moteur|Capot|Contrôle"></div>',
+    '<div data-fx="assembly-line" style="color:var(--ink)"></div>',
+    { trigger: 'Avancer', a11y: 'Le compte est écrit. En mouvement réduit, l\'avancée se fait au déclenchement.' }),
 ];
