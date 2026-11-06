@@ -35,3 +35,16 @@
 [data-fx="timezone-slider"] label { display: grid; gap: 2px; font-size: 10px; }
 [data-fx="timezone-slider"] input { width: 100%; accent-color: var(--fx-accent); }
 [data-fx="timezone-slider"] output { font-weight: 700; }
+
+/* packing-weight : faire sa valise */
+[data-fx="packing-weight"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="packing-weight"] .fx-pw { display: grid; gap: 1px; }
+[data-fx="packing-weight"] label { display: flex; gap: 5px; align-items: center; cursor: pointer; }
+[data-fx="packing-weight"] small { margin-left: auto; opacity: .65; }
+[data-fx="packing-weight"] input { margin: 0; accent-color: var(--fx-accent); }
+[data-fx="packing-weight"] .fx-pw-b { height: 12px; padding: 1px; border: 2px solid currentColor; border-radius: 4px; }
+[data-fx="packing-weight"] .fx-pw-b i { display: block; height: 100%; width: calc(var(--fx-q) * 100%); background: var(--fx-up, #2eaf63); transition: width .25s; }
+[data-fx="packing-weight"].fx-over .fx-pw-b { animation: fx-pack-over .35s; }
+[data-fx="packing-weight"].fx-over .fx-pw-b i { background: var(--fx-down, #e10600); }
+[data-fx="packing-weight"] output { font-weight: 700; font-size: 12px; }
+@keyframes fx-pack-over { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }

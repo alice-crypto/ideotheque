@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="timezone-slider" data-fx-items="Paris:Europe/Paris|Tokyo:Asia/Tokyo"></div>',
     '<div data-fx="timezone-slider" style="color:var(--ink)"></div>',
     { a11y: 'Curseur nommé, heures écrites, bilan annoncé.' }),
+  E('packing-weight', 'Micro-interaction',
+    'Des objets cochés remplissent une valise, et le poids se compare à la limite.',
+    'Pas de surprise au comptoir de l\'aéroport.',
+    '- `data-fx-items` : « objet:kg » séparés par `|`\n- `data-fx-limit` (8)',
+    'Voyages, randonnée, listes de préparation.',
+    'Une limite fixe : elle dépend de la compagnie et du tarif.',
+    '<div data-fx="packing-weight" data-fx-limit="8"></div>',
+    '<div data-fx="packing-weight" style="color:var(--ink)"></div>',
+    { a11y: 'Vraies cases, poids écrit et annoncé.' }),
 ];
