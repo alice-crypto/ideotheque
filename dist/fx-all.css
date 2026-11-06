@@ -7636,6 +7636,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="axle-load"].fx-bad output { color: var(--fx-down, #e10600); }
 [data-fx="axle-load"].fx-bad i { background: var(--fx-down, #e10600); }
 
+/* dock-schedule : le planning des quais */
+[data-fx="dock-schedule"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="dock-schedule"] .fx-dk { position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 4px 6px; align-items: center; }
+[data-fx="dock-schedule"] .fx-dk > b { font-weight: 600; }
+[data-fx="dock-schedule"] .fx-dk > div { position: relative; height: 20px; background: color-mix(in srgb, currentColor 12%, transparent); }
+[data-fx="dock-schedule"] i { position: absolute; top: 0; bottom: 0; background: var(--fx-accent); box-shadow: inset 0 0 0 1px #0004; animation: fx-dock-in .4s var(--fx-ease-out) calc(var(--fx-i) * 70ms) backwards; transform-origin: left; }
+[data-fx="dock-schedule"] u { position: absolute; top: -3px; bottom: -3px; left: calc(50px + (100% - 50px) * var(--fx-q)); width: 2px; background: currentColor; }
+[data-fx="dock-schedule"] output { font-weight: 700; }
+@keyframes fx-dock-in { from { transform: scaleX(0); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

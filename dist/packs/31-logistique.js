@@ -442,4 +442,26 @@
       go();
     }
   });
+
+  // Le planning des quais de chargement, avec le trait de l'heure actuelle
+  FX.register('dock-schedule', {
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Quai 1:7-9,11-13,15-17|Quai 2:8-12,14-16|Quai 3:9-10,13-18').split('|').map(function (r) { var p = r.split(':'); return [p[0], p[1].split(',').map(function (s) { return s.split('-').map(Number); })]; }), a = U.num(el, 'fxStart', 6), b = U.num(el, 'fxEnd', 20), W = b - a;
+      var box = U.make('div', 'fx-dk', el), o = U.make('output', '', el);
+      box.setAttribute('aria-hidden', 'true');
+      R.forEach(function (r) {
+        U.make('b', '', box).textContent = r[0];
+        var t = U.make('div', '', box);
+        r[1].forEach(function (s, i) { var c = U.make('i', '', t); c.style.cssText = 'left:' + (s[0] - a) / W * 100 + '%;width:' + (s[1] - s[0]) / W * 100 + '%;--fx-i:' + i; });
+      });
+      var now = U.make('u', '', box);
+      var go = function () {
+        var d = new Date(), h = d.getHours() + d.getMinutes() / 60, free = R.filter(function (r) { return !r[1].some(function (s) { return h >= s[0] && h < s[1]; }); }).map(function (r) { return r[0]; });
+        now.style.setProperty('--fx-q', U.clamp((h - a) / W, 0, 1));
+        o.textContent = free.length ? 'Libre maintenant : ' + free.join(', ') : 'Tous les quais sont occupés';
+      };
+      go();
+      setInterval(go, 60000);
+    }
+  });
 })(window.FX);

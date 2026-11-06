@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="axle-load" data-fx-load="8"></div>',
     '<div data-fx="axle-load" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, poids et verdict écrits et annoncés.' }),
+  E('dock-schedule', 'Présentation',
+    'Un planning montre l\'occupation des quais sur la journée et ceux qui sont libres maintenant.',
+    'Le chef de quai sait quoi répondre au chauffeur qui arrive.',
+    '- `data-fx-items` : « quai:début-fin,début-fin » séparés par `|`\n- `data-fx-start` (6), `data-fx-end` (20)',
+    'Entrepôts, salles, ateliers, plannings d\'équipes.',
+    'Un planning très chargé en petit format : les créneaux deviennent illisibles.',
+    '<div data-fx="dock-schedule" data-fx-items="Quai 1:7-9,11-13"></div>',
+    '<div data-fx="dock-schedule" style="color:var(--ink)"></div>',
+    { a11y: 'Le planning est décoratif et le résultat est écrit. Pour un planning complet, fournissez un tableau.' }),
 ];
