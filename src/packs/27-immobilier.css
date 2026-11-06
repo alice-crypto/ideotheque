@@ -1,1 +1,9 @@
 /* Pack 27 — Immobilier */
+
+/* budget-reach : ce qu'on peut acheter */
+[data-fx="budget-reach"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="budget-reach"] label { display: grid; grid-template-columns: 1fr auto; gap: 1px 6px; }
+[data-fx="budget-reach"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="budget-reach"] output { display: block; padding-bottom: 5px; font-size: 12px; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 100% / calc(var(--fx-q) * 100%) 3px; transition: background-size .3s; }
+[data-fx="budget-reach"] output b { display: block; font-size: 22px; }
+[data-fx="budget-reach"] small { font-size: 10px; opacity: .7; }
