@@ -37,3 +37,7 @@
 [data-fx="hydration-glasses"] i { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: var(--fx-water, #2d8cff); transition: height .45s var(--fx-ease-spring); }
 [data-fx="hydration-glasses"] .fx-on i { height: 86%; }
 [data-fx="hydration-glasses"] button:focus-visible { outline: 2px solid var(--fx-accent); }
+
+/* ecg-line : un tracé de moniteur */
+[data-fx="ecg-line"] { display: block; width: 100%; height: var(--fx-h, 90px); color: var(--fx-line, #2eaf63); }
+[data-fx="ecg-line"] canvas { display: block; width: 100%; height: 100%; }

@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="hydration-glasses" data-fx-goal="8"></div>',
     '<div data-fx="hydration-glasses" style="color:var(--ink)"></div>',
     { a11y: 'Chaque verre est un bouton nommé, et le compte est annoncé.' }),
+  E('ecg-line', 'Ambiance',
+    'Un tracé cardiaque défile en effaçant devant lui, au rythme choisi.',
+    'Vivant, clinique, précis.',
+    '- `data-fx-bpm` (72), `data-fx-speed` (70) : pixels par seconde\n- `--fx-h`, `--fx-line`, `data-fx-label`',
+    'Cardiologie, objets connectés, hero santé.',
+    'De faire passer ce tracé pour une mesure réelle : il est généré.',
+    '<div data-fx="ecg-line" data-fx-bpm="72"></div>',
+    '<div data-fx="ecg-line"></div>',
+    { a11y: 'Rôle `img` avec une description. Avec le mouvement réduit, le tracé reste fixe.' }),
 ];

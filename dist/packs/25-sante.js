@@ -90,4 +90,40 @@
       show();
     }
   });
+
+  // Un tracé de moniteur cardiaque qui efface devant lui
+  FX.register('ecg-line', {
+    setup: function (el) {
+      var c = U.make('canvas', '', el), x = c.getContext('2d'), bpm = U.num(el, 'fxBpm', 72), px = 0, last = null, phase = 0, W, H;
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', el.dataset.fxLabel || 'Tracé cardiaque, ' + bpm + ' battements par minute');
+      var size = function () { var r = el.getBoundingClientRect(), d = window.devicePixelRatio || 1; W = r.width; H = r.height; c.width = W * d; c.height = H * d; x = c.getContext('2d'); x.scale(d, d); px = 0; last = null; };
+      var wave = function (p) {
+        if (p < .1) return Math.sin(p / .1 * Math.PI) * .12;
+        if (p < .18) return 0;
+        if (p < .2) return -(p - .18) / .02 * .15;
+        if (p < .23) return -.15 + (p - .2) / .03 * 1.05;
+        if (p < .27) return .9 - (p - .23) / .04 * 1.2;
+        if (p < .3) return -.3 + (p - .27) / .03 * .3;
+        if (p < .55 && p > .38) return Math.sin((p - .38) / .17 * Math.PI) * .22;
+        return 0;
+      };
+      size();
+      U.onResize(size);
+      el._fxDraw = function (dt) {
+        var col = getComputedStyle(el).color, sp = U.num(el, 'fxSpeed', 70);
+        for (var i = 0; i < Math.max(1, sp * dt); i++) {
+          phase = (phase + bpm / 60 / sp) % 1;
+          var y = H / 2 - wave(phase) * H * .42;
+          x.clearRect(px, 0, 14, H);
+          if (last !== null) { x.strokeStyle = col; x.lineWidth = 2; x.beginPath(); x.moveTo(px - 1, last); x.lineTo(px, y); x.stroke(); }
+          last = y;
+          px++;
+          if (px > W) { px = 0; last = null; }
+        }
+      };
+      if (U.reduced) { for (var k = 0; k < 40; k++) el._fxDraw(1 / 6); }
+    },
+    tick: function (el, dt) { if (el._fxDraw && !U.reduced) el._fxDraw(dt); }
+  });
 })(window.FX);
