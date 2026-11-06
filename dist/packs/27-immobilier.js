@@ -39,4 +39,28 @@
       });
     }
   });
+
+  // Faire tourner le soleil autour du logement pour voir ses façades éclairées
+  FX.register('sun-exposure', {
+    setup: function (el) {
+      var F = (el.dataset.fxWindows || 'S,O').split(',');
+      el.innerHTML = '<div class="fx-se2" aria-hidden="true"><em></em><div>' + ['N', 'E', 'S', 'O'].map(function (s) { return '<i data-s="' + s + '">' + s + '</i>'; }).join('') + '</div></div><label>Heure <input type="range" min="6" max="21" step=".5"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxHour', 14);
+      var go = function () {
+        var h = +r.value, az = 90 + (h - 6) / 15 * 180, A = { E: 90, S: 180, O: 270 };
+        el.style.setProperty('--fx-a', az + 'deg');
+        var lit = [];
+        el.querySelectorAll('[data-s]').forEach(function (f) {
+          var s = f.dataset.s, on = A[s] !== undefined && Math.abs(az - A[s]) < 70;
+          f.classList.toggle('fx-on', on);
+          f.classList.toggle('fx-win', F.indexOf(s) >= 0);
+          if (on && F.indexOf(s) >= 0) lit.push(s);
+        });
+        o.textContent = Math.floor(h) + ' h' + (h % 1 ? '30' : '') + ' · ' + (lit.length ? 'Soleil par les fenêtres ' + lit.join(', ') : 'Pas de soleil direct aux fenêtres');
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

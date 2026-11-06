@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="floorplan-rooms" data-fx-items="Séjour:0,0,100,100:28"></div>',
     '<div data-fx="floorplan-rooms" style="color:var(--ink)"></div>',
     { a11y: 'Chaque pièce est un bouton, et le détail est annoncé ; il s\'obtient aussi au focus.' }),
+  E('sun-exposure', 'Micro-interaction',
+    'Un curseur fait tourner le soleil autour d\'un logement, et les façades qu\'il touche s\'éclairent.',
+    'On comprend l\'orientation sans boussole.',
+    '- `data-fx-windows` : façades avec fenêtres (N, E, S, O)\n- `data-fx-hour` (14)',
+    'Annonces, promoteurs, panneaux solaires.',
+    'De prétendre à un calcul réel : ni la saison ni la latitude ne sont prises en compte.',
+    '<div data-fx="sun-exposure" data-fx-windows="S,O"></div>',
+    '<div data-fx="sun-exposure" style="color:var(--ink)"></div>',
+    { a11y: 'Le résultat est écrit et annoncé, le dessin est décoratif.' }),
 ];
