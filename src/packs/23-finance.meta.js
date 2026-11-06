@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="currency-converter" data-fx-rate="1.08"></div>',
     '<div data-fx="currency-converter" style="width:225px;color:var(--ink);font-size:13px"></div>',
     { a11y: 'Champs nommés et bouton d\'échange nommé.' }),
+  E('loan-calculator', 'Présentation',
+    'Deux curseurs, montant et durée, donnent en direct la mensualité et le coût du crédit.',
+    'Clair, on comprend ce que coûte chaque année de plus.',
+    '- `data-fx-rate` (3.4), `data-fx-amount` (120000), `data-fx-years` (20)',
+    'Banques, immobilier, financement.',
+    'De présenter le résultat comme une offre : assurance et frais n\'y sont pas.',
+    '<div data-fx="loan-calculator" data-fx-rate="3.4"></div>',
+    '<div data-fx="loan-calculator" style="width:220px;color:var(--ink);font-size:13px"></div>',
+    { a11y: 'Curseurs natifs et résultat annoncé par `aria-live`.' }),
 ];

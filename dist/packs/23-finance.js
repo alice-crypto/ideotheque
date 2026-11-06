@@ -95,4 +95,24 @@
       calc();
     }
   });
+
+  // Un simulateur de crédit qui répond en direct
+  FX.register('loan-calculator', {
+    setup: function (el) {
+      var rate = U.num(el, 'fxRate', 3.4);
+      el.innerHTML = '<label>Montant <b class="a"></b><input type="range" min="5000" max="300000" step="1000" value="' + U.num(el, 'fxAmount', 120000) + '"></label><label>Durée <b class="y"></b><input type="range" min="1" max="30" value="' + U.num(el, 'fxYears', 20) + '"></label><output aria-live="polite"><strong></strong><small></small></output>';
+      var r = el.querySelectorAll('input'), f = function (n) { return Math.round(n).toLocaleString('fr-FR') + ' €'; };
+      var calc = function () {
+        var P = +r[0].value, n = +r[1].value * 12, i = rate / 1200;
+        var m = i ? P * i / (1 - Math.pow(1 + i, -n)) : P / n;
+        el.querySelector('.a').textContent = f(P);
+        el.querySelector('.y').textContent = r[1].value + ' ans';
+        el.querySelector('strong').textContent = f(m) + ' / mois';
+        el.querySelector('small').textContent = 'Coût du crédit : ' + f(m * n - P) + ' à ' + rate + ' % (simulation)';
+        el.style.setProperty('--fx-q', Math.min(1, (m * n - P) / (m * n)).toFixed(3));
+      };
+      r.forEach(function (x) { x.addEventListener('input', calc); });
+      calc();
+    }
+  });
 })(window.FX);

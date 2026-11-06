@@ -42,3 +42,11 @@
 [data-fx="currency-converter"] button { width: 2.2em; height: 2.2em; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; cursor: pointer; transition: transform .35s var(--fx-ease-spring); }
 [data-fx="currency-converter"] button.fx-flip { transform: rotate(180deg); }
 [data-fx="currency-converter"] small { grid-column: 1 / -1; }
+
+/* loan-calculator : un simulateur de crédit */
+[data-fx="loan-calculator"] { display: grid; gap: 10px; }
+[data-fx="loan-calculator"] label { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; font-size: .85em; }
+[data-fx="loan-calculator"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="loan-calculator"] output { display: grid; gap: 3px; }
+[data-fx="loan-calculator"] strong { font-size: 1.7em; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+[data-fx="loan-calculator"] small::before { content: ""; display: block; height: 5px; margin-bottom: 5px; background: linear-gradient(90deg, var(--fx-accent) calc(var(--fx-q, 0) * 100%), rgba(128, 128, 128, .35) 0); transition: background .2s; }
