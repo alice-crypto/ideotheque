@@ -14935,6 +14935,23 @@
       });
     }
   });
+
+  // Une carte qu'on passe devant le lecteur : voyant vert, porte ouverte
+  FX.register('key-card', {
+    setup: function (el) {
+      var valid = el.dataset.fxValid !== 'false', rm = el.dataset.fxRoom || '412';
+      el.innerHTML = '<div class="fx-kc" aria-hidden="true"><i class="fx-kc-r"><u></u></i><i class="fx-kc-c"><b>' + rm + '</b></i></div><button type="button">Passer la carte</button><output aria-live="polite"></output>';
+      var b = el.querySelector('button'), o = el.querySelector('output');
+      b.addEventListener('click', function () { FX.trigger(el); });
+      el._fxTap = function () {
+        el.classList.remove('fx-tap', 'fx-ok', 'fx-no');
+        void el.offsetWidth;
+        el.classList.add('fx-tap');
+        setTimeout(function () { el.classList.add(valid ? 'fx-ok' : 'fx-no'); o.textContent = valid ? 'Chambre ' + rm + ' : porte ouverte' : 'Carte refusée, voyez la réception'; }, U.reduced ? 0 : 520);
+      };
+    },
+    trigger: function (el) { el._fxTap(); }
+  });
 })(window.FX);
 
 window.FX._boot();

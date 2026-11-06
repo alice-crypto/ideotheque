@@ -8726,6 +8726,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="amenity-grid"] button { padding: 0; border: 0; border-bottom: 1px solid currentColor; background: none; color: inherit; font: inherit; font-weight: 700; cursor: pointer; }
 @keyframes fx-amenity-in { from { opacity: 0; transform: translateY(5px); } }
 
+/* key-card : une carte d'hôtel */
+[data-fx="key-card"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 200px)); font-size: 12px; }
+[data-fx="key-card"] .fx-kc { position: relative; width: 170px; height: 90px; }
+[data-fx="key-card"] .fx-kc-r { position: absolute; right: 12px; top: 8px; width: 46px; height: 74px; border-radius: 6px; background: #1a1c20; }
+[data-fx="key-card"] u { position: absolute; left: 50%; top: 8px; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: #666; transition: background .15s, box-shadow .15s; }
+[data-fx="key-card"].fx-ok u { background: #3ee07a; box-shadow: 0 0 10px #3ee07a; }
+[data-fx="key-card"].fx-no u { background: #f03b30; box-shadow: 0 0 10px #f03b30; }
+[data-fx="key-card"] .fx-kc-c { position: absolute; left: 0; top: 22px; width: 78px; height: 48px; display: grid; place-items: end; padding: 4px 6px; box-sizing: border-box; border-radius: 6px; background: linear-gradient(135deg, var(--fx-accent), var(--fx-accent-2)); color: #fff; font-style: normal; box-shadow: 0 3px 8px #0006; }
+[data-fx="key-card"].fx-tap .fx-kc-c { animation: fx-keycard-tap 1.1s var(--fx-ease-out); }
+[data-fx="key-card"] button { padding: 5px 13px; border: 0; border-radius: 99px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+@keyframes fx-keycard-tap { 45%, 55% { transform: translateX(62px); } 100% { transform: none; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

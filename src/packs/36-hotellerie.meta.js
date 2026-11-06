@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="amenity-grid" data-fx-first="6"></div>',
     '<div data-fx="amenity-grid" style="color:var(--ink)"></div>',
     { a11y: 'Vraie liste, bouton `aria-expanded`.' }),
+  E('key-card', 'Micro-interaction',
+    'Une carte passe devant un lecteur, le voyant s\'allume et la porte s\'ouvre.',
+    'Le petit bruit qui annonce qu\'on est arrivé.',
+    '- `data-fx-room` (412), `data-fx-valid` (`false` pour un refus)',
+    'Hôtels, clés numériques, accès.',
+    'D\'en faire un vrai contrôle d\'accès.',
+    '<div data-fx="key-card" data-fx-room="412"></div>',
+    '<div data-fx="key-card" style="color:var(--ink)"></div>',
+    { trigger: 'Passer la carte', a11y: 'Vrai bouton, résultat annoncé en mots.' }),
 ];
