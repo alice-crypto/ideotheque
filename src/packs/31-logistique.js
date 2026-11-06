@@ -15,4 +15,21 @@
       o.innerHTML = '<b>' + S[cur][0] + '</b> · ' + S[cur][1] + '<br>Étape ' + (cur + 1) + ' sur ' + S.length;
     }
   });
+
+  // Le créneau de livraison sur la journée, et l'heure qu'il est
+  FX.register('delivery-window', {
+    setup: function (el) {
+      var a = U.num(el, 'fxFrom', 14), b = U.num(el, 'fxTo', 16), s = U.num(el, 'fxStart', 7), e = U.num(el, 'fxEnd', 21), W = e - s;
+      el.innerHTML = '<div class="fx-dw" aria-hidden="true"><em style="left:' + (a - s) / W * 100 + '%;width:' + (b - a) / W * 100 + '%"></em><i></i></div><div class="fx-dw-h" aria-hidden="true"><span>' + s + ' h</span><span>' + e + ' h</span></div><output aria-live="polite"></output>';
+      var o = el.querySelector('output'), bar = el.querySelector('.fx-dw i');
+      var go = function () {
+        var d = new Date(), h = d.getHours() + d.getMinutes() / 60;
+        bar.style.left = U.clamp((h - s) / W, 0, 1) * 100 + '%';
+        el.classList.toggle('fx-now', h >= a && h < b);
+        o.innerHTML = h < a ? 'Livraison entre <b>' + a + ' h et ' + b + ' h</b>, dans ' + Math.ceil(a - h) + ' h' : h < b ? '<b>Votre livreur arrive</b>, avant ' + b + ' h' : 'Créneau passé : suivez votre colis';
+      };
+      go();
+      setInterval(go, 60000);
+    }
+  });
 })(window.FX);
