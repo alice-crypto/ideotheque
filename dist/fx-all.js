@@ -14690,6 +14690,25 @@
       el.classList.toggle('fx-open', open);
     }
   });
+
+  // Une offre du soir : le prix réduit, tant que le compte à rebours tourne
+  FX.register('happy-countdown', {
+    setup: function (el) {
+      var a = U.num(el, 'fxFrom', 17), b = U.num(el, 'fxTo', 19), price = U.num(el, 'fxPrice', 6), low = U.num(el, 'fxLow', 4);
+      el.innerHTML = '<b class="fx-hd-p"></b><s></s><span class="fx-hd-t"></span>';
+      var P = el.querySelector('.fx-hd-p'), S = el.querySelector('s'), T = el.querySelector('.fx-hd-t');
+      var go = function () {
+        var d = new Date(), h = d.getHours() + d.getMinutes() / 60 + d.getSeconds() / 3600, on = h >= a && h < b;
+        el.classList.toggle('fx-on', on);
+        P.textContent = (on ? low : price) + ' €';
+        S.textContent = on ? price + ' €' : '';
+        if (on) { var L = (b - h) * 3600; T.textContent = 'Encore ' + Math.floor(L / 3600) + ' h ' + String(Math.floor(L / 60) % 60).padStart(2, '0') + ' min ' + String(Math.floor(L) % 60).padStart(2, '0') + ' s'; }
+        else T.textContent = 'Offre de ' + a + ' h à ' + b + ' h, tous les soirs';
+      };
+      go();
+      setInterval(go, 1000);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="opening-today"></div>',
     '<div data-fx="opening-today" style="color:var(--ink)"></div>',
     { a11y: 'Liste réelle, état écrit en phrase.' }),
+  E('happy-countdown', 'État',
+    'Pendant le créneau d\'offre, le prix baisse et un compte à rebours réel tourne.',
+    'Une petite urgence honnête, liée à un vrai horaire.',
+    '- `data-fx-from` (17), `data-fx-to` (19), `data-fx-price` (6), `data-fx-low` (4)',
+    'Bars, restaurants, offres à horaire fixe.',
+    'Un faux compte à rebours qui repart sans cesse : ce serait de la manipulation.',
+    '<div data-fx="happy-countdown" data-fx-from="17" data-fx-to="19"></div>',
+    '<div data-fx="happy-countdown" data-fx-from="0" data-fx-to="24" style="color:var(--ink)"></div>',
+    { a11y: 'Prix et temps restants en texte. Pas d\'annonce à chaque seconde.' }),
 ];

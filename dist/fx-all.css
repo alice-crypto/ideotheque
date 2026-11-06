@@ -8610,6 +8610,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="opening-today"] .fx-now { background: color-mix(in srgb, var(--fx-accent) 25%, transparent); font-weight: 800; border-radius: 4px; }
 @keyframes fx-open-dot { 50% { box-shadow: 0 0 0 5px rgba(62, 224, 122, .3); } }
 
+/* happy-countdown : une offre du soir */
+[data-fx="happy-countdown"] { display: inline-flex; flex-wrap: wrap; gap: 3px 8px; align-items: baseline; padding: 7px 12px; border-radius: 10px; border: 2px solid currentColor; font-size: 12px; max-width: 210px; }
+[data-fx="happy-countdown"] .fx-hd-p { font-size: 26px; }
+[data-fx="happy-countdown"] s { opacity: .65; }
+[data-fx="happy-countdown"] .fx-hd-t { flex: 100%; font-variant-numeric: tabular-nums; }
+[data-fx="happy-countdown"].fx-on { background: var(--fx-accent); color: #fff; border-color: transparent; animation: fx-happy-beat 1.6s infinite; }
+@keyframes fx-happy-beat { 50% { transform: scale(1.03); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

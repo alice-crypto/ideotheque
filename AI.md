@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->817<!-- /total --> effets.
+La bibliothèque contient <!-- total -->818<!-- /total --> effets.
 
 ## Règles
 
@@ -837,6 +837,7 @@ La bibliothèque contient <!-- total -->817<!-- /total --> effets.
 | `kitchen-ticket` | État | Un bon de cuisine compte le temps écoulé, et ses plats se barrent à l'envoi |
 | `pickup-board` | État | Un écran montre les numéros en préparation et ceux qui sont prêts, qui arrivent en grand |
 | `opening-today` | État | Les horaires de la semaine s'affichent avec aujourd'hui en avant, et l'état d'ouverture en temps réel |
+| `happy-countdown` | État | Pendant le créneau d'offre, le prix baisse et un compte à rebours réel tourne |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)
