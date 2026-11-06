@@ -136,3 +136,17 @@
 [data-fx="climate-months"] small { position: absolute; left: 0; right: 0; bottom: -14px; text-align: center; font-size: 9px; }
 [data-fx="climate-months"] .fx-best small { font-weight: 800; color: var(--fx-up, #2eaf63); }
 [data-fx="climate-months"] p { margin: 5px 0 0; font-size: 11px; }
+
+/* compass-bearing : une boussole vers une ville */
+[data-fx="compass-bearing"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 200px)); font-size: 12px; text-align: center; }
+[data-fx="compass-bearing"] .fx-cb4 { position: relative; width: var(--fx-s, 100px); aspect-ratio: 1; border-radius: 50%; border: 3px solid currentColor; }
+[data-fx="compass-bearing"] span { position: absolute; font-size: 10px; font-weight: 800; transform: translate(-50%, -50%); }
+[data-fx="compass-bearing"] span:nth-child(1) { left: 50%; top: 11%; }
+[data-fx="compass-bearing"] span:nth-child(2) { left: 89%; top: 50%; }
+[data-fx="compass-bearing"] span:nth-child(3) { left: 50%; top: 89%; }
+[data-fx="compass-bearing"] span:nth-child(4) { left: 11%; top: 50%; }
+[data-fx="compass-bearing"] i { position: absolute; left: 50%; top: 50%; width: 8px; height: 62%; margin: -31% 0 0 -4px; background: linear-gradient(var(--fx-accent) 50%, currentColor 50%); clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); transform: rotate(-60deg); }
+.fx-in[data-fx="compass-bearing"] i { animation: fx-bearing-seek 1.8s ease-out forwards; }
+[data-fx="compass-bearing"] p { margin: 0; }
+[data-fx="compass-bearing"] b { font-size: 15px; }
+@keyframes fx-bearing-seek { 40% { transform: rotate(calc(var(--fx-a) + 26deg)); } 70% { transform: rotate(calc(var(--fx-a) - 12deg)); } 100% { transform: rotate(var(--fx-a)); } }
