@@ -8998,6 +8998,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="trip-budget"] ul { display: flex; flex-wrap: wrap; gap: 0 9px; margin: 0; padding: 0; list-style: none; font-size: 10px; }
 [data-fx="trip-budget"] output b { font-size: 19px; }
 
+/* seat-map : un plan de cabine */
+[data-fx="seat-map"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 190px)); font-size: 10px; }
+[data-fx="seat-map"] .fx-sm { display: grid; grid-template-columns: repeat(3, 1fr) 18px repeat(3, 1fr); gap: 2px; width: 100%; padding: 22px 10px 10px; box-sizing: border-box; border: 2px solid currentColor; border-radius: 60% 60% 10px 10px / 16% 16% 2% 2%; max-height: 180px; overflow-y: auto; }
+[data-fx="seat-map"] small { display: grid; place-items: center; opacity: .6; font-size: 8px; }
+[data-fx="seat-map"] button { height: 19px; padding: 0; border: 1px solid currentColor; border-radius: 4px 4px 2px 2px; background: none; color: inherit; font-size: 8px; cursor: pointer; transition: transform .2s var(--fx-ease-spring), background .15s; }
+[data-fx="seat-map"] .fx-plus { border-color: #d4a941; }
+[data-fx="seat-map"] button:disabled { background: color-mix(in srgb, currentColor 22%, transparent); color: transparent; border-color: transparent; cursor: not-allowed; }
+[data-fx="seat-map"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; transform: scale(1.14); }
+[data-fx="seat-map"] output { font-size: 12px; font-weight: 700; text-align: center; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="trip-budget" data-fx-days="10"></div>',
     '<div data-fx="trip-budget" style="color:var(--ink)"></div>',
     { a11y: 'Groupe radio et curseur nommés, totaux écrits.' }),
+  E('seat-map', 'Micro-interaction',
+    'Un plan de cabine laisse choisir ses sièges, jusqu\'au nombre de voyageurs, avec les suppléments.',
+    'Le hublot, c\'est maintenant qu\'il se joue.',
+    '- `data-fx-rows` (8), `data-fx-max` (2)',
+    'Avions, trains, cinémas, salles.',
+    'Un plan fictif en production : les sièges doivent venir de votre système.',
+    '<div data-fx="seat-map" data-fx-max="2"></div>',
+    '<div data-fx="seat-map" style="color:var(--ink)"></div>',
+    { a11y: 'Sièges nommés, occupés désactivés, choix annoncé.' }),
 ];
