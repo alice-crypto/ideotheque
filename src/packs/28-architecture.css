@@ -40,3 +40,12 @@
 [data-fx="project-index"] .fx-pi { max-height: 0; overflow: hidden; transition: max-height .45s var(--fx-ease-out); }
 [data-fx="project-index"] [aria-expanded="true"] + .fx-pi { max-height: 80px; }
 [data-fx="project-index"] img { display: block; width: 100%; height: 80px; object-fit: cover; }
+
+/* scale-bar : une échelle qui reste juste */
+[data-fx="scale-bar"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="scale-bar"] .fx-sb { height: 90px; overflow: hidden; border: 1px solid currentColor; }
+[data-fx="scale-bar"] .fx-sb-p { width: 100%; height: 100%; transform-origin: 50% 50%; background: linear-gradient(currentColor, currentColor) 30% 50% / 40px 20px no-repeat, linear-gradient(currentColor, currentColor) 70% 30% / 18px 34px no-repeat; transition: transform .12s linear; }
+[data-fx="scale-bar"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
+[data-fx="scale-bar"] input { min-width: 0; accent-color: var(--fx-accent); }
+[data-fx="scale-bar"] .fx-sb-m { display: flex; align-items: center; gap: 6px; }
+[data-fx="scale-bar"] .fx-sb-m i { height: 6px; max-width: 80%; border: 1px solid currentColor; background: repeating-linear-gradient(90deg, currentColor 0 25%, transparent 25% 50%); transition: width .15s; }
