@@ -5462,6 +5462,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="line-clamp-expand"].fx-clamped:not(.fx-open) .fx-lc { -webkit-mask: linear-gradient(#000 45%, transparent); mask: linear-gradient(#000 45%, transparent); }
 [data-fx="line-clamp-expand"] button { margin-top: .3em; padding: 0; background: none; border: 0; color: var(--fx-accent); font: inherit; cursor: pointer; }
 
+/* Pack 23 — Banque et finance */
+
+/* ticker-tape : un bandeau de cours */
+[data-fx="ticker-tape"] { display: block; overflow: hidden; white-space: nowrap; font-variant-numeric: tabular-nums; }
+[data-fx="ticker-tape"] .fx-tt { display: inline-flex; gap: 2em; padding-right: 2em; animation: fx-tt var(--fx-t, 16s) linear infinite; }
+[data-fx="ticker-tape"]:hover .fx-tt { animation-play-state: paused; }
+[data-fx="ticker-tape"] i { font-style: normal; }
+[data-fx="ticker-tape"] .fx-up i { color: var(--fx-up, #2eaf63); }
+[data-fx="ticker-tape"] .fx-dn i { color: var(--fx-down, #e10600); }
+@keyframes fx-tt { to { transform: translateX(-50%); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
