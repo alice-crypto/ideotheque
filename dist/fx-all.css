@@ -7026,6 +7026,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="plate-input"].fx-ko output { color: var(--fx-down, #e10600); }
 @keyframes fx-pl2 { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
 
+/* spec-duel : deux modèles côte à côte */
+[data-fx="spec-duel"] { width: min(100%, var(--fx-w, 240px)); font-size: 11px; }
+[data-fx="spec-duel"] table { width: 100%; border-collapse: collapse; }
+[data-fx="spec-duel"] th, [data-fx="spec-duel"] td { padding: 3px 4px; font-weight: 400; text-align: center; }
+[data-fx="spec-duel"] thead th { font-weight: 700; }
+[data-fx="spec-duel"] tbody th { text-align: left; }
+[data-fx="spec-duel"] tbody tr { opacity: 0; transform: translateX(-5px); transition: opacity .35s calc(var(--fx-i) * 90ms), transform .35s calc(var(--fx-i) * 90ms); }
+.fx-in[data-fx="spec-duel"] tbody tr { opacity: 1; transform: none; }
+[data-fx="spec-duel"] .fx-w { background: var(--fx-accent); color: #fff; font-weight: 800; }
+[data-fx="spec-duel"] p { margin: 6px 0 0; font-weight: 700; text-align: center; }
+[data-fx="spec-duel"] .fx-sr { position: absolute; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

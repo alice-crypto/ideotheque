@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="plate-input"></div>',
     '<div data-fx="plate-input" style="color:var(--ink)"></div>',
     { a11y: 'Champ nommé, résultat annoncé en mots.' }),
+  E('spec-duel', 'Présentation',
+    'Un tableau compare deux modèles, et la meilleure valeur de chaque ligne ressort.',
+    'Le match est clair, sans lire tous les chiffres.',
+    '- `data-fx-names`\n- `data-fx-items` : « critère:a:b:+ ou - » séparés par `|` (+ si plus grand est meilleur)',
+    'Comparateurs, offres concurrentes, spécifications.',
+    'De croire au score final : toutes les lignes n\'ont pas le même poids pour tout le monde.',
+    '<div data-fx="spec-duel" data-fx-items="Coffre (L):470:380:+"></div>',
+    '<div data-fx="spec-duel" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Vrai tableau, en-têtes de lignes et de colonnes.' }),
 ];
