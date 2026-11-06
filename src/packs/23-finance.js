@@ -77,4 +77,22 @@
       set(false);
     }
   });
+
+  // Deux champs de montant, reliés par un taux
+  FX.register('currency-converter', {
+    setup: function (el) {
+      var rate = U.num(el, 'fxRate', 1.08), A = el.dataset.fxFrom || 'EUR', B = el.dataset.fxTo || 'USD';
+      el.innerHTML = '<label><span></span><input type="number" min="0" step="any" value="100"></label><button type="button" aria-label="Inverser les devises">⇄</button><label><span></span><output></output></label><small></small>';
+      var la = el.querySelector('label span'), lb = el.querySelectorAll('label span')[1], input = el.querySelector('input'), out = el.querySelector('output'), sw = el.querySelector('button'), note = el.querySelector('small');
+      var calc = function () {
+        la.textContent = A; lb.textContent = B;
+        var v = (parseFloat(input.value) || 0) * rate;
+        out.textContent = v.toLocaleString('fr-FR', { maximumFractionDigits: 2 });
+        note.textContent = '1 ' + A + ' = ' + rate.toFixed(4) + ' ' + B + ' (taux indicatif)';
+      };
+      input.addEventListener('input', calc);
+      sw.addEventListener('click', function () { var t = A; A = B; B = t; rate = 1 / rate; sw.classList.toggle('fx-flip'); calc(); });
+      calc();
+    }
+  });
 })(window.FX);
