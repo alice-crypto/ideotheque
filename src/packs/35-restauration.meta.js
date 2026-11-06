@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="kitchen-ticket" data-fx-table="12"></div>',
     '<div data-fx="kitchen-ticket" style="color:var(--ink)"></div>',
     { a11y: 'Plats en boutons `aria-pressed`, reste annoncé.' }),
+  E('bowl-builder', 'Micro-interaction',
+    'Des ingrédients tombent dans un bol, avec le prix et les calories recalculés.',
+    'Le plaisir de composer, comme au comptoir.',
+    '- `data-fx-items` : « nom:couleur:prix:kcal » séparés par `|`\n- `data-fx-base` (6), `--fx-bowl`',
+    'Restauration rapide, cantines, salades composées.',
+    'Des calories non vérifiées : ces valeurs sont fictives.',
+    '<div data-fx="bowl-builder" data-fx-base="6"></div>',
+    '<div data-fx="bowl-builder" style="color:var(--ink)"></div>',
+    { a11y: 'Ingrédients en boutons `aria-pressed`, total annoncé.' }),
 ];

@@ -14412,6 +14412,29 @@
       setInterval(tick, 15000);
     }
   });
+
+  // Composer son bol : les ingrédients tombent dedans
+  FX.register('bowl-builder', {
+    setup: function (el) {
+      var I = (el.dataset.fxItems || 'Riz:#f3ecd2:1:210|Saumon:#f28c6a:4:180|Avocat:#8bb94e:2:120|Edamame:#5da34a:1.5:70|Carotte:#ef8a2c:.5:25|Maïs:#f2d045:.5:60').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], c: p[1], e: +p[2], k: +p[3] }; }), base = U.num(el, 'fxBase', 6), box = U.make('div', 'fx-bb', el), list = U.make('div', 'fx-bb-l', el), o = U.make('output', '', el);
+      box.setAttribute('aria-hidden', 'true');
+      o.setAttribute('aria-live', 'polite');
+      I.forEach(function (x) {
+        var b = U.make('button', '', list);
+        b.type = 'button'; b.textContent = x.n; b.setAttribute('aria-pressed', 'false');
+        b.style.setProperty('--fx-c', x.c);
+        b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); go(); });
+        x.b = b; x.parts = [];
+        for (var i = 0; i < 8; i++) { var d = U.make('i', '', box), a = U.rand(0, 6.28), r = U.rand(0, 42); d.style.cssText = 'left:' + (50 + Math.cos(a) * r) + '%;top:' + (50 + Math.sin(a) * r * .5) + '%;background:' + x.c + ';--fx-d:' + U.rand(0, 180).toFixed(0) + 'ms'; x.parts.push(d); }
+      });
+      var go = function () {
+        var e = base, k = 0;
+        I.forEach(function (x) { var on = x.b.getAttribute('aria-pressed') === 'true'; if (on) { e += x.e; k += x.k; } x.parts.forEach(function (d) { d.classList.toggle('fx-on', on); }); });
+        o.innerHTML = '<b>' + e.toFixed(2).replace('.', ',') + ' €</b> · ' + k + ' kcal';
+      };
+      I[0].b.click();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

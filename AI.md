@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->803<!-- /total --> effets.
+La bibliothèque contient <!-- total -->804<!-- /total --> effets.
 
 ## Règles
 
@@ -491,6 +491,7 @@ La bibliothèque contient <!-- total -->803<!-- /total --> effets.
 | `menu-diet-filter` | Micro-interaction | Des filtres de régime retirent les plats incompatibles, et le compte s'écrit |
 | `table-booking` | Micro-interaction | On choisit le nombre de couverts, seuls les créneaux possibles restent et la réservation se confirme |
 | `floor-tables` | Micro-interaction | Sur un plan de salle, on choisit une table libre, et sa capacité s'écrit |
+| `bowl-builder` | Micro-interaction | Des ingrédients tombent dans un bol, avec le prix et les calories recalculés |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
