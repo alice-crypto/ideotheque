@@ -8904,6 +8904,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="chandelier-sway"] circle { fill: #fff0bc; filter: drop-shadow(0 0 5px #ffd777); animation: fx-chandelier-glow 2.4s ease-in-out calc(var(--fx-i) * -.6s) infinite alternate; }
 @keyframes fx-chandelier-glow { to { opacity: .7; } }
 
+/* stay-bill : le récapitulatif d'un séjour */
+[data-fx="stay-bill"] { width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="stay-bill"] ul { margin: 0; padding: 0; list-style: none; }
+[data-fx="stay-bill"] li, [data-fx="stay-bill"] p { display: flex; justify-content: space-between; gap: 8px; opacity: 0; transform: translateY(5px); transition: opacity .3s calc(var(--fx-i) * 130ms), transform .3s calc(var(--fx-i) * 130ms); }
+[data-fx="stay-bill"] li { padding: 2px 0; }
+[data-fx="stay-bill"] li b { font-weight: 500; font-variant-numeric: tabular-nums; }
+[data-fx="stay-bill"] p { margin: 5px 0 0; padding-top: 5px; border-top: 2px solid currentColor; align-items: baseline; font-weight: 700; }
+[data-fx="stay-bill"] strong { font-size: 19px; }
+.fx-in[data-fx="stay-bill"] li, .fx-in[data-fx="stay-bill"] p { opacity: 1; transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

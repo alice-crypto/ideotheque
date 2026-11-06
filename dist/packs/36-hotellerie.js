@@ -413,4 +413,13 @@
       el.style.setProperty('--fx-a', el._fxA.toFixed(2) + 'deg');
     }
   });
+
+  // Le récapitulatif d'un séjour, sans frais cachés
+  FX.register('stay-bill', {
+    entrance: true,
+    setup: function (el) {
+      var n = U.num(el, 'fxNights', 3), p = U.num(el, 'fxPrice', 129), g = U.num(el, 'fxGuests', 2), t = U.num(el, 'fxTax', 2.3), O = (el.dataset.fxItems || 'Petit-déjeuner:48|Parking:36').split('|').map(function (r) { var q = r.split(':'); return [q[0], +q[1]]; }), rows = [[n + ' nuits × ' + p + ' €', n * p]].concat(O).concat([['Taxe de séjour', n * g * t]]), tot = rows.reduce(function (a, b) { return a + b[1]; }, 0), f = function (v) { return v.toFixed(2).replace('.', ',') + ' €'; };
+      el.innerHTML = '<ul>' + rows.map(function (r, i) { return '<li style="--fx-i:' + i + '"><span>' + r[0] + '</span><b>' + f(r[1]) + '</b></li>'; }).join('') + '</ul><p style="--fx-i:' + rows.length + '"><span>Total à payer</span><strong>' + f(tot) + '</strong></p>';
+    }
+  });
 })(window.FX);

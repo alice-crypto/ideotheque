@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="chandelier-sway"></div>',
     '<div data-fx="chandelier-sway"></div>',
     { a11y: 'Décoratif, masqué. Immobile en mouvement réduit.' }),
+  E('stay-bill', 'Présentation',
+    'Le détail d\'un séjour s\'ajoute ligne par ligne, puis le total arrive, sans frais cachés.',
+    'Le prix qu\'on voit est le prix qu\'on paie.',
+    '- `data-fx-nights` (3), `data-fx-price` (129), `data-fx-guests` (2), `data-fx-tax` (2.3)\n- `data-fx-items` : « option:montant » séparés par `|`',
+    'Hôtels, locations, tout récapitulatif de commande.',
+    'Une taxe d\'exemple : le montant dépend de la commune et du classement.',
+    '<div data-fx="stay-bill" data-fx-nights="3" data-fx-price="129"></div>',
+    '<div data-fx="stay-bill" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Liste et total écrits.' }),
 ];
