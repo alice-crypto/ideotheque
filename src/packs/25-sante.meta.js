@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="dental-chart"></div>',
     '<div data-fx="dental-chart" style="color:var(--ink)"></div>',
     { a11y: 'Chaque dent est un bouton nommé par son numéro, et la sélection est annoncée.' }),
+  E('eye-chart', 'Entrée',
+    'Un message se compose comme un tableau de lettres et passe du flou au net.',
+    'Clin d\'œil, tout de suite reconnaissable.',
+    '- `--fx-size` (44px)',
+    'Opticiens, ophtalmologie, slogan sur la clarté.',
+    'Un message long : les dernières lignes deviennent illisibles, et ce n\'est pas un test de vue.',
+    '<h2 data-fx="eye-chart">VOIR CLAIR ENFIN</h2>',
+    '<h2 data-fx="eye-chart" style="margin:0;color:var(--ink)">VOIR CLAIR ENFIN</h2>',
+    { trigger: 'Rejouer', a11y: 'Le texte complet est dans `aria-label`.' }),
 ];

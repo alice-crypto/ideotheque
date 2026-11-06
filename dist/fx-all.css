@@ -6071,6 +6071,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="dental-chart"] button:hover { background: color-mix(in srgb, var(--fx-accent) 30%, transparent); }
 [data-fx="dental-chart"] button[aria-pressed="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; transform: rotate(var(--fx-r)) scale(1.18); }
 
+/* eye-chart : un message en tableau d'ophtalmologue */
+[data-fx="eye-chart"] { display: grid; justify-items: center; gap: .15em; font-size: var(--fx-size, 44px); font-weight: 800; font-family: Georgia, serif; line-height: 1; }
+[data-fx="eye-chart"] .fx-ec { font-size: calc(var(--fx-z) * 1em); white-space: nowrap; opacity: 0; filter: blur(8px); transition: opacity .6s, filter .9s var(--fx-ease-out); transition-delay: calc(var(--fx-i) * 170ms); }
+.fx-in[data-fx="eye-chart"] .fx-ec { opacity: 1; filter: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
