@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="train-crowding" data-fx-data="90,70,35"></div>',
     '<div data-fx="train-crowding" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le schéma a une description complète dans `aria-label`.' }),
+  E('platform-guide', 'Micro-interaction',
+    'On choisit sa sortie, et la voiture où monter s\'allume, avec une flèche.',
+    'L\'astuce d\'un habitué, offerte à tout le monde.',
+    '- `data-fx-items` : « sortie:voiture » séparés par `|`\n- `data-fx-cars` (6)',
+    'Métro, trains, grands parkings.',
+    'Un quai dont la position change selon le train : l\'indication deviendrait fausse.',
+    '<div data-fx="platform-guide" data-fx-items="Hôpital:1"></div>',
+    '<div data-fx="platform-guide" style="color:var(--ink)"></div>',
+    { a11y: 'Vraie liste nommée, résultat annoncé.' }),
 ];

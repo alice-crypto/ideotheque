@@ -123,3 +123,12 @@
 .fx-in[data-fx="train-crowding"] .fx-tc2 i { opacity: .55; transform: none; }
 [data-fx="train-crowding"] .fx-best { background: color-mix(in srgb, var(--fx-up, #2eaf63) 25%, transparent); border-color: var(--fx-up, #2eaf63); }
 [data-fx="train-crowding"] p { margin: 20px 0 0; }
+
+/* platform-guide : où se placer sur le quai */
+[data-fx="platform-guide"] { display: grid; gap: 14px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="platform-guide"] select { padding: 5px; font: inherit; }
+[data-fx="platform-guide"] .fx-pg { display: flex; gap: 2px; }
+[data-fx="platform-guide"] i { position: relative; flex: 1; padding: 8px 0; border: 1px solid currentColor; border-radius: 4px; text-align: center; font-style: normal; transition: background .25s, color .25s; }
+[data-fx="platform-guide"] i.fx-on { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="platform-guide"] i.fx-on::before { content: '▼'; position: absolute; left: 0; right: 0; top: -13px; color: var(--fx-accent); font-size: 10px; animation: fx-pg .8s ease-in-out infinite alternate; }
+@keyframes fx-pg { to { transform: translateY(-3px); } }
