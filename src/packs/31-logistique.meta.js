@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="pick-counter" data-fx-items="Vis M4:3|Boîte S:1"></div>',
     '<div data-fx="pick-counter" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés, désactivés une fois terminés, reste annoncé.' }),
+  E('eta-range', 'Présentation',
+    'Une heure d\'arrivée s\'affiche avec sa marge, en un dégradé autour du moment probable.',
+    'Honnête : la précision qu\'on a, pas celle qu\'on prétend.',
+    '- `data-fx-minutes` (45), `data-fx-margin` (15)',
+    'Livraison, techniciens, trajets, chantiers.',
+    'Une marge trop étroite : mieux vaut tenir une promesse large.',
+    '<div data-fx="eta-range" data-fx-minutes="45" data-fx-margin="15"></div>',
+    '<div data-fx="eta-range" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Tout est écrit dans le paragraphe.' }),
 ];

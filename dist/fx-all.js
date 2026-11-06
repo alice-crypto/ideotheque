@@ -12699,6 +12699,16 @@
       show();
     }
   });
+
+  // Une heure d'arrivée avec sa vraie marge d'incertitude
+  FX.register('eta-range', {
+    entrance: true,
+    setup: function (el) {
+      var c = U.num(el, 'fxMinutes', 45), m = U.num(el, 'fxMargin', 15), now = Date.now(), f = function (mm) { return new Date(now + mm * 60000).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }); }, tot = (c + m) * 1.15;
+      el.style.setProperty('--fx-a', (c - m) / tot); el.style.setProperty('--fx-b', (c + m) / tot); el.style.setProperty('--fx-c', c / tot);
+      el.innerHTML = '<div class="fx-er" aria-hidden="true"><em></em><i></i></div><p>Arrivée vers <b>' + f(c) + '</b><br>Entre ' + f(c - m) + ' et ' + f(c + m) + '</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
