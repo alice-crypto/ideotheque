@@ -180,7 +180,7 @@
 [data-fx="parking-sensor"] { display: grid; gap: 5px; justify-items: center; width: min(100%, var(--fx-w, 200px)); font-size: 12px; font-weight: 700; }
 [data-fx="parking-sensor"] svg { width: 100%; }
 [data-fx="parking-sensor"] path { fill: none; stroke: color-mix(in srgb, currentColor 18%, transparent); stroke-width: 7; stroke-linecap: round; transition: stroke .15s; }
-[data-fx="parking-sensor"] path.fx-on { stroke: var(--fx-ok, #2eaf63); animation: fx-ps var(--fx-b, 1s) infinite; }
+[data-fx="parking-sensor"] path.fx-on { stroke: var(--fx-ok, #2eaf63); animation: fx-parking var(--fx-b, 1s) infinite; }
 [data-fx="parking-sensor"][data-fx-level="2"] { --fx-b: .5s; }
 [data-fx="parking-sensor"][data-fx-level="2"] path.fx-on { stroke: var(--fx-warn, #e8930c); }
 [data-fx="parking-sensor"][data-fx-level="3"] { --fx-b: .2s; }
@@ -188,7 +188,7 @@
 [data-fx="parking-sensor"] rect { fill: currentColor; }
 [data-fx="parking-sensor"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; width: 100%; font-weight: 400; }
 [data-fx="parking-sensor"] input { min-width: 0; accent-color: var(--fx-accent); }
-@keyframes fx-ps { 50% { opacity: .35; } }
+@keyframes fx-parking { 50% { opacity: .35; } }
 
 /* tire-track : une trace de pneu */
 [data-fx="tire-track"] { display: inline-block; font-weight: 900; overflow: hidden; padding: 6px 4px; }
