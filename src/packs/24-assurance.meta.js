@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="damage-spots"></div>',
     '<div data-fx="damage-spots" style="color:var(--ink)"></div>',
     { a11y: 'Chaque zone est un bouton nommé avec `aria-pressed`, et le résumé est annoncé.' }),
+  E('document-checklist', 'Micro-interaction',
+    'Une liste de pièces se coche, une barre avance et le message dit ce qui manque.',
+    'On voit la fin de la démarche.',
+    '- `data-fx-items` : pièces séparées par `|`\n- `--fx-ok` : couleur du dossier complet',
+    'Sinistres, inscriptions, demandes de prêt, démarches.',
+    'Une liste longue : il vaut mieux la grouper par étape.',
+    '<div data-fx="document-checklist" data-fx-items="Constat|Photos"></div>',
+    '<div data-fx="document-checklist" style="color:var(--ink)"></div>',
+    { a11y: 'Vraies cases à cocher, et ce qui manque est annoncé.' }),
 ];

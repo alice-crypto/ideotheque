@@ -126,4 +126,26 @@
       say();
     }
   });
+
+  // Les pièces d'un dossier, avec ce qui manque encore
+  FX.register('document-checklist', {
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Constat amiable|Photos des dégâts|Facture du garage|Pièce d\'identité').split('|');
+      el.innerHTML = '<div class="fx-dc-b"><i></i></div><output aria-live="polite"></output>';
+      var out = el.querySelector('output');
+      var go = function () {
+        var all = el.querySelectorAll('input'), n = el.querySelectorAll('input:checked').length, left = all.length - n;
+        el.style.setProperty('--fx-q', n / all.length);
+        el.classList.toggle('fx-full', !left);
+        out.textContent = left ? 'Il manque ' + left + (left > 1 ? ' pièces' : ' pièce') : 'Dossier complet';
+      };
+      rows.forEach(function (r) {
+        var l = U.make('label', '', el), c = U.make('input', '', l);
+        c.type = 'checkbox';
+        U.make('span', '', l).textContent = r;
+        c.addEventListener('change', go);
+      });
+      go();
+    }
+  });
 })(window.FX);
