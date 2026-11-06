@@ -7278,6 +7278,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="network-lines"] button { width: 30px; height: 30px; padding: 0; border: 2px solid var(--fx-c); border-radius: 50%; background: none; color: var(--fx-c); font-weight: 800; cursor: pointer; transition: background .2s, color .2s; }
 [data-fx="network-lines"] [aria-pressed="true"] { background: var(--fx-c); color: #fff; }
 
+/* wheel-loader : une roue qui tourne */
+[data-fx="wheel-loader"] { display: inline-block; width: var(--fx-s, 90px); }
+[data-fx="wheel-loader"] circle { fill: none; stroke: currentColor; stroke-width: 5; }
+[data-fx="wheel-loader"] line { stroke: currentColor; stroke-width: .7; }
+[data-fx="wheel-loader"] .fx-wl2 { transform-origin: 50px 50px; animation: fx-wl2 1.4s cubic-bezier(.45, .05, .55, .95) infinite; }
+[data-fx="wheel-loader"] .fx-wl2-h { fill: currentColor; }
+[data-fx="wheel-loader"] .fx-wl2-v { fill: var(--fx-accent); stroke: none; }
+@keyframes fx-wl2 { to { transform: rotate(360deg); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

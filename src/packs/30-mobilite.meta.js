@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="network-lines"></div>',
     '<div data-fx="network-lines" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés par ligne avec `aria-pressed`.' }),
+  E('wheel-loader', 'État',
+    'Une roue de vélo à rayons tourne pendant une attente.',
+    'Mécanique simple, le cycle qui tourne.',
+    '- `--fx-s` (90px), `data-fx-label`',
+    'Vélos, mobilité douce.',
+    'Un chargement sans fin : donnez aussi un message après quelques secondes.',
+    '<div data-fx="wheel-loader"></div>',
+    '<div data-fx="wheel-loader" style="color:var(--ink)"></div>',
+    { a11y: 'Rôle `status` nommé. La bibliothèque coupe l\'animation en mouvement réduit.' }),
 ];
