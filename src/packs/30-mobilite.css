@@ -180,3 +180,14 @@
 [data-fx="live-bus"] .fx-bus i { background: var(--fx-accent); border-color: var(--fx-accent); transform: scale(1.5); }
 [data-fx="live-bus"] .fx-me { font-weight: 800; color: var(--fx-accent); }
 [data-fx="live-bus"] output { max-width: 80px; font-weight: 700; }
+
+/* footsteps : des pas qui avancent */
+[data-fx="footsteps"] { display: grid; gap: 8px; width: min(100%, var(--fx-w, 225px)); font-size: 14px; }
+[data-fx="footsteps"] .fx-fs { position: relative; height: 44px; }
+[data-fx="footsteps"] i { position: absolute; width: 10px; height: 18px; border-radius: 45% 45% 50% 50%; background: var(--fx-foot, currentColor); transform: rotate(90deg) scale(.5); opacity: 0; transition: opacity .25s calc(var(--fx-i) * 150ms), transform .25s var(--fx-ease-spring) calc(var(--fx-i) * 150ms); }
+[data-fx="footsteps"] i::before { content: ''; position: absolute; left: 1px; right: 1px; top: -7px; height: 5px; border-radius: 50%; background: inherit; }
+[data-fx="footsteps"] .l { top: 2px; }
+[data-fx="footsteps"] .r { bottom: 2px; }
+.fx-in[data-fx="footsteps"] i { opacity: .8; transform: rotate(90deg); }
+[data-fx="footsteps"] strong { opacity: 0; transition: opacity .4s 1.6s; }
+.fx-in[data-fx="footsteps"] strong { opacity: 1; }
