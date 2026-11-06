@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->608<!-- /total --> effets.
+La bibliothèque contient <!-- total -->609<!-- /total --> effets.
 
 ## Règles
 
@@ -346,6 +346,7 @@ La bibliothèque contient <!-- total -->608<!-- /total --> effets.
 | `floorplan-rooms` | Micro-interaction | Un plan montre le nom et la surface de la pièce survolée, sur le total du logement |
 | `sun-exposure` | Micro-interaction | Un curseur fait tourner le soleil autour d'un logement, et les façades qu'il touche s'éclairent |
 | `price-per-m2` | Micro-interaction | Le prix au mètre carré se recalcule et se situe par rapport à celui du quartier |
+| `search-alert` | Micro-interaction | Un bouton enregistre une recherche, la cloche sonne et les critères sont rappelés |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

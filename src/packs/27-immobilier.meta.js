@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="listing-photos" data-fx-images="a.jpg,b.jpg"></div>',
     '<div data-fx="listing-photos"></div>',
     { a11y: 'Vrais boutons nommés, `alt` indiquant la position ; donnez de vrais textes alternatifs.' }),
+  E('search-alert', 'Micro-interaction',
+    'Un bouton enregistre une recherche, la cloche sonne et les critères sont rappelés.',
+    'Le site travaille pour vous pendant que vous dormez.',
+    '- `data-fx-criteria`, `data-fx-key` ; événement `fx:alert`',
+    'Annonces, emploi, prix de billets.',
+    'De confirmer une alerte sans vrai envoi derrière : branchez l\'événement à un service.',
+    '<div data-fx="search-alert" data-fx-criteria="T3, Lyon"></div>',
+    '<div data-fx="search-alert" style="color:var(--ink)"></div>',
+    { a11y: 'Bouton `aria-pressed`, message annoncé.' }),
 ];

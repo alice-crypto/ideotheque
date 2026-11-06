@@ -10785,6 +10785,30 @@
       show(0);
     }
   });
+
+  // Enregistrer une recherche pour recevoir les nouvelles annonces
+  FX.register('search-alert', {
+    setup: function (el) {
+      var c = el.dataset.fxCriteria || 'T3, Lyon, moins de 300 000 €', key = el.dataset.fxKey, on = false;
+      if (key) try { on = localStorage.getItem(key) === '1'; } catch (err) {}
+      el.innerHTML = '<button type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4Z"/><path d="M10 21h4"/></svg><span></span></button><small aria-live="polite"></small>';
+      var b = el.firstChild, sp = el.querySelector('span'), s = el.querySelector('small');
+      var show = function (anim) {
+        b.setAttribute('aria-pressed', on);
+        el.classList.toggle('fx-on', on);
+        sp.textContent = on ? 'Alerte active' : 'Créer une alerte';
+        s.textContent = on ? 'Nous vous préviendrons pour : ' + c : c;
+        if (anim) { b.classList.remove('fx-go'); void b.offsetWidth; b.classList.add('fx-go'); }
+      };
+      b.addEventListener('click', function () {
+        on = !on;
+        if (key) try { localStorage.setItem(key, on ? '1' : '0'); } catch (err) {}
+        show(on);
+        el.dispatchEvent(new CustomEvent('fx:alert', { bubbles: true, detail: { on: on, criteria: c } }));
+      });
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
