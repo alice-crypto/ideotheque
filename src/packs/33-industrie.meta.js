@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="cnc-toolpath"></div>',
     '<div data-fx="cnc-toolpath"></div>',
     { trigger: 'Rejouer', a11y: 'Décoratif, ou décrit avec `data-fx-label`.' }),
+  E('print-layers', 'État',
+    'Une pièce se construit couche après couche, avec le temps restant.',
+    'Le plaisir de voir l\'objet naître.',
+    '- `data-fx-layers` (22), `data-fx-hours` (6), `data-fx-value` (13)',
+    'Impression 3D, prototypage, progression d\'une fabrication.',
+    'Un temps estimé présenté comme précis : il dépend de la pièce.',
+    '<div data-fx="print-layers" data-fx-value="13"></div>',
+    '<div data-fx="print-layers" style="color:var(--ink)"></div>',
+    { trigger: 'Relancer', a11y: 'Curseur nommé, avancement annoncé.' }),
 ];

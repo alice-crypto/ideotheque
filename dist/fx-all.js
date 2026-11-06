@@ -13486,6 +13486,27 @@
       if (el.dataset.fxLabel) { el.setAttribute('role', 'img'); el.setAttribute('aria-label', el.dataset.fxLabel); }
     }
   });
+
+  // Une pièce qui s'imprime couche après couche
+  FX.register('print-layers', {
+    setup: function (el) {
+      var N = U.num(el, 'fxLayers', 22), H = U.num(el, 'fxHours', 6);
+      el.innerHTML = '<div class="fx-pl4" aria-hidden="true"><u></u></div><label>Avancement <input type="range" min="0" max="' + N + '"></label><output aria-live="polite"></output>';
+      var box = el.querySelector('.fx-pl4'), r = el.querySelector('input'), o = el.querySelector('output'), head = box.firstChild;
+      for (var i = 0; i < N; i++) { var w = Math.sin(i / (N - 1) * Math.PI * .85 + .25); var l = U.make('i', '', box); l.style.width = 30 + w * 65 + '%'; }
+      r.value = U.num(el, 'fxValue', 13);
+      var go = function () {
+        var v = +r.value, L = box.querySelectorAll('i');
+        L.forEach(function (x, k) { x.classList.toggle('fx-on', k < v); });
+        box.style.setProperty('--fx-q', v / N);
+        var h = (N - v) / N * H;
+        o.innerHTML = '<b>' + Math.round(v / N * 100) + ' %</b> · ' + (h >= 1 ? Math.floor(h) + ' h ' : '') + String(Math.round(h % 1 * 60)).padStart(2, '0') + ' min restantes';
+      };
+      r.addEventListener('input', go);
+      go();
+    },
+    trigger: function (el) { var r = el.querySelector('input'); r.value = 0; U.tween(el, 1600, function (p) { r.value = Math.round(p * r.max); r.dispatchEvent(new Event('input')); }); }
+  });
 })(window.FX);
 
 window.FX._boot();

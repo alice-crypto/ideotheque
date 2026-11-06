@@ -8020,6 +8020,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="cnc-toolpath"] .fx-cn-l { stroke: var(--fx-hot, #ff8a2a); filter: drop-shadow(0 0 1.5px var(--fx-hot, #ff8a2a)); stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 3s linear; }
 .fx-in[data-fx="cnc-toolpath"] .fx-cn-l { stroke-dashoffset: 0; }
 
+/* print-layers : une impression 3D */
+[data-fx="print-layers"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 210px)); font-size: 11px; }
+[data-fx="print-layers"] .fx-pl4 { position: relative; display: flex; flex-direction: column-reverse; align-items: center; height: 92px; padding-top: 6px; border-bottom: 4px solid currentColor; }
+[data-fx="print-layers"] i { display: block; flex: 1; opacity: .08; background: var(--fx-accent); transition: opacity .15s; }
+[data-fx="print-layers"] i.fx-on { opacity: 1; }
+[data-fx="print-layers"] u { position: absolute; left: 0; right: 0; bottom: calc(var(--fx-q, 0) * 100%); border-top: 3px solid currentColor; opacity: .5; transition: bottom .15s linear; }
+[data-fx="print-layers"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
+[data-fx="print-layers"] input { min-width: 0; accent-color: var(--fx-accent); }
+[data-fx="print-layers"] output b { font-size: 15px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
