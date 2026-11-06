@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="insulation-loss" data-fx-bill="1800"></div>',
     '<div data-fx="insulation-loss" style="color:var(--ink)"></div>',
     { a11y: 'Vraies cases, résultat annoncé en texte.' }),
+  E('thermostat-dial', 'Micro-interaction',
+    'Un cadran règle la température et traduit chaque degré en écart de dépense.',
+    'L\'objet connu, avec une conséquence visible.',
+    '- `data-fx-value` (20), `data-fx-ref` (19), `--fx-s`',
+    'Thermostats, énergie, conseils d\'économie.',
+    'De confondre avec une vraie commande : ce composant ne pilote rien sans votre code.',
+    '<div data-fx="thermostat-dial" data-fx-value="20"></div>',
+    '<div data-fx="thermostat-dial" style="color:var(--ink)"></div>',
+    { a11y: 'Rôle `slider`, flèches du clavier et boutons +/−.' }),
 ];

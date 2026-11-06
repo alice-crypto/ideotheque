@@ -12990,6 +12990,28 @@
       go();
     }
   });
+
+  // Un thermostat rond : chaque degré se voit sur la facture
+  FX.register('thermostat-dial', {
+    setup: function (el) {
+      var min = 15, max = 25, ref = U.num(el, 'fxRef', 19), step = 7;
+      el.innerHTML = '<div class="fx-td2" role="slider" tabindex="0" aria-label="Température de consigne" aria-valuemin="' + min + '" aria-valuemax="' + max + '"><i></i><b></b></div><div class="fx-td2-b"><button type="button" aria-label="Baisser">−</button><button type="button" aria-label="Monter">+</button></div><output aria-live="polite"></output>';
+      var d = el.querySelector('.fx-td2'), b = el.querySelector('b'), o = el.querySelector('output'), v = U.num(el, 'fxValue', 20);
+      var set = function (x) {
+        v = U.clamp(x, min, max);
+        var q = (v - min) / (max - min), diff = (v - ref) * step;
+        el.style.setProperty('--fx-q', q);
+        el.style.setProperty('--fx-h', 210 - q * 210);
+        b.textContent = v + ' °C';
+        d.setAttribute('aria-valuenow', v);
+        o.textContent = diff === 0 ? 'Référence' : (diff > 0 ? '+' : '−') + Math.abs(diff) + ' % sur la dépense de chauffage (ordre de grandeur)';
+      };
+      el.querySelectorAll('button').forEach(function (x, i) { x.addEventListener('click', function () { set(v + (i ? 1 : -1)); }); });
+      d.addEventListener('keydown', function (e) { var k = { ArrowUp: 1, ArrowRight: 1, ArrowDown: -1, ArrowLeft: -1 }[e.key]; if (k) { e.preventDefault(); set(v + k); } });
+      d.addEventListener('wheel', function (e) { e.preventDefault(); set(v + (e.deltaY < 0 ? 1 : -1)); }, { passive: false });
+      set(v);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
