@@ -301,4 +301,23 @@
       });
     }
   });
+
+  // Un cadenas se ferme quand la connexion est sécurisée
+  FX.register('secure-lock', {
+    entrance: true,
+    setup: function (el) {
+      el.setAttribute('role', 'status');
+      el.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="s" d="M7 11V8a5 5 0 0 1 10 0v3"/><rect x="4.5" y="11" width="15" height="10" rx="2"/></svg><span></span>';
+      el._fxM = el.lastChild;
+      el._fxM.textContent = el.dataset.fxWait || 'Vérification…';
+    },
+    reset: function (el) { clearTimeout(el._fxTo); el.classList.remove('fx-shut'); el._fxM.textContent = el.dataset.fxWait || 'Vérification…'; },
+    enter: function (el) {
+      el._fxTo = setTimeout(function () {
+        el.classList.add('fx-shut');
+        el._fxM.textContent = el.dataset.fxDone || 'Paiement chiffré';
+        el.dispatchEvent(new CustomEvent('fx:secure', { bubbles: true }));
+      }, U.num(el, 'fxWait2', 1200));
+    }
+  });
 })(window.FX);
