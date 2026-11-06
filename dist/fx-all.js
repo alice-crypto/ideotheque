@@ -14788,6 +14788,29 @@
       show();
     }
   });
+
+  // Des valeurs nutritionnelles qui s'adaptent à la portion
+  FX.register('nutri-panel', {
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Énergie:450:kcal:2000|Matières grasses:18:g:70|Sucres:9:g:90|Protéines:22:g:50|Sel:1.2:g:6').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], v: +p[1], u: p[2], d: +p[3] }; });
+      el.innerHTML = '<label>Portion <b></b><input type="range" min="50" max="400" step="10"></label><ul></ul><small>Valeurs fictives pour 100 g. Part des repères quotidiens pour un adulte.</small>';
+      var r = el.querySelector('input'), ul = el.querySelector('ul');
+      R.forEach(function (x) { x.li = U.make('li', '', ul); x.li.innerHTML = '<span>' + x.n + '</span><i></i><b></b>'; });
+      r.value = U.num(el, 'fxPortion', 150);
+      var go = function () {
+        var p = r.value / 100;
+        el.querySelector('label b').textContent = r.value + ' g';
+        R.forEach(function (x) {
+          var v = x.v * p, q = v / x.d;
+          x.li.style.setProperty('--fx-q', Math.min(1, q));
+          x.li.classList.toggle('fx-hi', q > .5);
+          x.li.querySelector('b').textContent = (v >= 100 ? Math.round(v) : v.toFixed(1).replace('.', ',')) + ' ' + x.u;
+        });
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

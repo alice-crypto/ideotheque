@@ -8663,6 +8663,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="fork-rating"] em { position: absolute; left: 0; top: 0; height: 100%; overflow: hidden; transition: width .25s var(--fx-ease-out); }
 [data-fx="fork-rating"] em svg { fill: var(--fx-accent); }
 
+/* nutri-panel : des valeurs selon la portion */
+[data-fx="nutri-panel"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 230px)); font-size: 10px; }
+[data-fx="nutri-panel"] label { display: grid; grid-template-columns: 1fr auto; font-size: 11px; }
+[data-fx="nutri-panel"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="nutri-panel"] ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+[data-fx="nutri-panel"] li { display: grid; grid-template-columns: 76px 1fr 50px; gap: 4px; align-items: center; }
+[data-fx="nutri-panel"] li i { display: block; height: 7px; background: linear-gradient(90deg, var(--fx-up, #2eaf63) calc(var(--fx-q) * 100%), color-mix(in srgb, currentColor 14%, transparent) 0); transition: background .2s; }
+[data-fx="nutri-panel"] .fx-hi i { background: linear-gradient(90deg, var(--fx-warn, #e8930c) calc(var(--fx-q) * 100%), color-mix(in srgb, currentColor 14%, transparent) 0); }
+[data-fx="nutri-panel"] li b { text-align: right; }
+[data-fx="nutri-panel"] small { font-size: 9px; opacity: .7; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

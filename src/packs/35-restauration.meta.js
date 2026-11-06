@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="fork-rating" data-fx-value="3.5"></div>',
     '<div data-fx="fork-rating" style="color:var(--ink)"></div>',
     { a11y: 'Rôle `slider` avec les flèches, ou `img` en lecture seule. Note écrite.' }),
+  E('nutri-panel', 'Présentation',
+    'Un curseur de portion recalcule les valeurs nutritionnelles et leur part des repères quotidiens.',
+    'Ce que l\'on mange vraiment, pas 100 g théoriques.',
+    '- `data-fx-items` : « nutriment:valeur:unité:repère » séparés par `|`\n- `data-fx-portion` (150)',
+    'Fiches de produits, restauration, nutrition.',
+    'De remplacer l\'étiquetage légal, ou de reprendre ces valeurs fictives.',
+    '<div data-fx="nutri-panel" data-fx-portion="150"></div>',
+    '<div data-fx="nutri-panel" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, valeurs écrites.' }),
 ];
