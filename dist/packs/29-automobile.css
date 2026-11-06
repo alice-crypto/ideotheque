@@ -111,3 +111,14 @@
 [data-fx="resale-curve"] input { min-width: 0; accent-color: var(--fx-accent); }
 [data-fx="resale-curve"] output b { font-size: 17px; }
 [data-fx="resale-curve"] small { font-size: 10px; opacity: .7; }
+
+/* service-odometer : l'entretien selon le compteur */
+[data-fx="service-odometer"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="service-odometer"] .fx-so { display: flex; gap: 1px; justify-content: center; }
+[data-fx="service-odometer"] .fx-so i { padding: 2px 5px; background: #111; color: #fff; font: 700 17px ui-monospace, monospace; box-shadow: inset 0 6px 6px -5px #fff5, inset 0 -6px 6px -5px #000; }
+[data-fx="service-odometer"] ul { display: grid; gap: 3px; margin: 0; padding: 0; list-style: none; }
+[data-fx="service-odometer"] li { display: grid; grid-template-columns: 56px 1fr 58px; gap: 5px; align-items: center; }
+[data-fx="service-odometer"] em { display: block; height: 6px; background: linear-gradient(90deg, var(--fx-accent) calc(var(--fx-q) * 100%), color-mix(in srgb, currentColor 18%, transparent) 0); }
+[data-fx="service-odometer"] b { text-align: right; font-weight: 600; }
+[data-fx="service-odometer"] .fx-soon b { color: var(--fx-down, #e10600); font-weight: 800; }
+[data-fx="service-odometer"] .fx-soon em { background: linear-gradient(90deg, var(--fx-down, #e10600) calc(var(--fx-q) * 100%), color-mix(in srgb, currentColor 18%, transparent) 0); }

@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="resale-curve" data-fx-price="28000"></div>',
     '<div data-fx="resale-curve" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, valeur écrite et annoncée.' }),
+  E('service-odometer', 'Présentation',
+    'Un compteur et des barres classent les opérations d\'entretien par urgence.',
+    'Le garage vous prévient avant la panne.',
+    '- `data-fx-km` (47200)\n- `data-fx-items` : « opération:intervalle en km » séparés par `|`',
+    'Garages, constructeurs, maintenance de machines.',
+    'Des intervalles génériques présentés comme ceux du véhicule.',
+    '<div data-fx="service-odometer" data-fx-km="47200"></div>',
+    '<div data-fx="service-odometer" style="color:var(--ink)"></div>',
+    { a11y: 'Valeurs écrites en toutes lettres, compteur nommé.' }),
 ];

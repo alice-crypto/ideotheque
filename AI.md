@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->660<!-- /total --> effets.
+La bibliothèque contient <!-- total -->661<!-- /total --> effets.
 
 ## Règles
 
@@ -251,6 +251,7 @@ La bibliothèque contient <!-- total -->660<!-- /total --> effets.
 | `project-sheet` | Présentation | Une fiche technique trace ses filets et révèle ses informations ligne par ligne |
 | `fuel-vs-electric` | Présentation | Un curseur de kilométrage compare le coût annuel d'énergie, essence et électrique |
 | `resale-curve` | Présentation | Un curseur d'âge place le véhicule sur sa courbe de décote |
+| `service-odometer` | Présentation | Un compteur et des barres classent les opérations d'entretien par urgence |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |
