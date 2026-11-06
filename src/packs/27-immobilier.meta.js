@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="map-price-pins" data-fx-items="24:30:285 k€:T3"></div>',
     '<div data-fx="map-price-pins" style="color:var(--ink)"></div>',
     { a11y: 'Bulles en vrais boutons, et le détail est annoncé.' }),
+  E('listing-photos', 'Image',
+    'Passer la souris sur la carte fait défiler les photos, des flèches font de même au doigt.',
+    'On feuillette sans ouvrir vingt onglets.',
+    '- `data-fx-images` : images séparées par des virgules',
+    'Annonces, location de vacances, boutiques.',
+    'Des images lourdes chargées d\'un coup sur chaque carte d\'une longue liste.',
+    '<div data-fx="listing-photos" data-fx-images="a.jpg,b.jpg"></div>',
+    '<div data-fx="listing-photos"></div>',
+    { a11y: 'Vrais boutons nommés, `alt` indiquant la position ; donnez de vrais textes alternatifs.' }),
 ];
