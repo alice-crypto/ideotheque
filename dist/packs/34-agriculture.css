@@ -111,3 +111,11 @@
 [data-fx="soil-layers"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
 [data-fx="soil-layers"] output { align-self: start; }
 [data-fx="soil-layers"] output b { font-size: 15px; }
+
+/* ph-meter : le pH du sol */
+[data-fx="ph-meter"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="ph-meter"] .fx-ph { position: relative; height: 22px; border-radius: 3px; background: linear-gradient(90deg, #d8301f, #f28c28, #f2d21f, #6bc048, #1f8fbf, #4a3bb3); }
+[data-fx="ph-meter"] i { position: absolute; left: calc(var(--fx-q) * 100%); top: -4px; bottom: -4px; width: 4px; margin-left: -2px; border-radius: 2px; background: #fff; box-shadow: 0 0 0 1px #000; transition: left .15s; }
+[data-fx="ph-meter"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
+[data-fx="ph-meter"] input { min-width: 0; accent-color: var(--fx-accent); }
+[data-fx="ph-meter"] b { font-size: 15px; }

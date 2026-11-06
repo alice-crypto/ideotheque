@@ -14032,6 +14032,23 @@
       go();
     }
   });
+
+  // Un pH de sol : la couleur et les plantes qui s'y plaisent
+  FX.register('ph-meter', {
+    setup: function (el) {
+      var C = (el.dataset.fxItems || 'Myrtille:4.5:5.5|Pomme de terre:5:6|Tomate:6:6.8|Carotte:6:7|Chou:6.5:7.5|Lavande:6.5:8').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1], +p[2]]; });
+      el.innerHTML = '<div class="fx-ph" aria-hidden="true"><i></i></div><label>pH <input type="range" min="4" max="9" step=".1"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxValue', 6.4);
+      var go = function () {
+        var v = +r.value, ok = C.filter(function (c) { return v >= c[1] && v <= c[2]; }).map(function (c) { return c[0]; }), w = v < 6 ? 'Sol acide' : v > 7.5 ? 'Sol basique' : 'Sol neutre';
+        el.style.setProperty('--fx-q', (v - 4) / 5);
+        o.innerHTML = '<b>' + String(v.toFixed(1)).replace('.', ',') + ' · ' + w + '</b><br>' + (ok.length ? ok.join(', ') : 'Peu de cultures de cet exemple');
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

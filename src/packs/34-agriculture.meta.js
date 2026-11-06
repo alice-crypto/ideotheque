@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="soil-layers" data-fx-depth="30"></div>',
     '<div data-fx="soil-layers" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, couche annoncée.' }),
+  E('ph-meter', 'Micro-interaction',
+    'Un curseur de pH glisse sur une bandelette et liste les cultures adaptées.',
+    'Le petit test du jardinier, sans la pipette.',
+    '- `data-fx-items` : « culture:pH min:pH max » séparés par `|`\n- `data-fx-value` (6.4)',
+    'Jardinage, agronomie, aquariophilie.',
+    'D\'y voir un diagnostic : un vrai sol demande une vraie analyse.',
+    '<div data-fx="ph-meter" data-fx-value="6.4"></div>',
+    '<div data-fx="ph-meter" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat annoncé en mots.' }),
 ];
