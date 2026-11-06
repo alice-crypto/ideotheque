@@ -48,3 +48,14 @@
 [data-fx="zone-fare"] button { position: absolute; left: 50%; top: 50%; width: calc(var(--fx-z) * 100%); height: calc(var(--fx-z) * 100%); padding: 0 0 calc(var(--fx-z) * 100% - 15px) 0; transform: translate(-50%, -50%); border: 1px solid currentColor; border-radius: 50%; background: color-mix(in srgb, currentColor 6%, #0000); color: inherit; font-size: 10px; cursor: pointer; transition: background .2s, color .2s; display: grid; place-items: start center; box-sizing: border-box; padding: 2px 0 0; }
 [data-fx="zone-fare"] button[aria-pressed="true"] { background: color-mix(in srgb, var(--fx-accent) calc(var(--fx-z) * 40% + 25%), transparent); font-weight: 800; }
 [data-fx="zone-fare"] output b { font-size: 18px; }
+
+/* transit-ticket : un billet qui s'écoule */
+[data-fx="transit-ticket"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="transit-ticket"] .fx-tk2 { position: relative; display: grid; gap: 3px; width: 100%; padding: 14px 14px 18px; box-sizing: border-box; border-radius: 12px; background: var(--fx-tick, #27303b); color: #fff; overflow: hidden; mask: radial-gradient(circle 8px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 8px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat; }
+[data-fx="transit-ticket"] strong { font-size: 16px; }
+[data-fx="transit-ticket"] .fx-tk2 i { position: absolute; left: 0; bottom: 0; height: 6px; width: 100%; background: repeating-linear-gradient(90deg, var(--fx-accent) 0 10px, var(--fx-accent-2) 10px 20px); transition: width .4s; }
+[data-fx="transit-ticket"].fx-live .fx-tk2 i { animation: fx-tk2 1s linear infinite; }
+[data-fx="transit-ticket"].fx-off .fx-tk2 { filter: grayscale(1); opacity: .6; }
+[data-fx="transit-ticket"] button { padding: 5px 16px; border: 0; border-radius: 99px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+[data-fx="transit-ticket"] button:disabled { opacity: .6; cursor: default; }
+@keyframes fx-tk2 { to { background-position-x: 20px; } }
