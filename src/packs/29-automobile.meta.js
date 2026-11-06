@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="tire-pressure" data-fx-data="2.4,2.4,1.9,2.3"></div>',
     '<div data-fx="tire-pressure" style="color:var(--ink)"></div>',
     { a11y: 'Dessin masqué, résumé écrit en toutes lettres.' }),
+  E('road-cta', 'Micro-interaction',
+    'Un bouton montre une route qui défile, et une petite voiture qui rejoint le bout.',
+    'Une invitation à prendre le volant.',
+    '- `--fx-accent`',
+    'Essais, réservations, parcours d\'achat.',
+    'Plusieurs boutons identiques à l\'écran : l\'effet n\'aurait plus d\'intérêt.',
+    '<a href="#" data-fx="road-cta">Réserver un essai</a>',
+    '<a href="#" data-fx="road-cta">Réserver un essai</a>',
+    { a11y: 'Vrai lien, et l\'effet se déclenche aussi au focus.' }),
 ];

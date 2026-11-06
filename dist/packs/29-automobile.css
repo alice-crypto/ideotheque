@@ -140,3 +140,11 @@
 [data-fx="tire-pressure"] p { margin: 0; font-weight: 700; }
 [data-fx="tire-pressure"].fx-bad p { color: var(--fx-down, #e10600); }
 @keyframes fx-tp { 50% { opacity: .25; } }
+
+/* road-cta : un bouton sur la route */
+[data-fx="road-cta"] { display: inline-block; padding: 12px 22px 18px; background: #24272c; color: #fff; font-weight: 700; text-decoration: none; overflow: hidden; border-radius: 6px; }
+[data-fx="road-cta"] .fx-rd { position: absolute; left: 0; right: 0; bottom: 6px; height: 2px; background: repeating-linear-gradient(90deg, #fff 0 12px, transparent 12px 22px); background-size: 22px 2px; }
+[data-fx="road-cta"]:hover .fx-rd, [data-fx="road-cta"]:focus-visible .fx-rd { animation: fx-rd .35s linear infinite; }
+[data-fx="road-cta"] .fx-rd-c { position: absolute; left: 6px; bottom: 9px; width: 18px; height: 6px; border-radius: 4px 6px 1px 1px; background: var(--fx-accent); transition: left .8s var(--fx-ease-out); }
+[data-fx="road-cta"]:hover .fx-rd-c, [data-fx="road-cta"]:focus-visible .fx-rd-c { left: calc(100% - 24px); }
+@keyframes fx-rd { to { background-position-x: -22px; } }
