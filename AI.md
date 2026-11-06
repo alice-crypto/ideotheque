@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->520<!-- /total --> effets.
+La bibliothèque contient <!-- total -->521<!-- /total --> effets.
 
 ## Règles
 
@@ -274,6 +274,7 @@ La bibliothèque contient <!-- total -->520<!-- /total --> effets.
 | `currency-converter` | Micro-interaction | Deux montants reliés par un taux, qu'on peut inverser d'un clic |
 | `bill-splitter` | Micro-interaction | Le total se partage entre plusieurs personnes, et les centimes restants sont répartis pour tomber juste |
 | `iban-input` | Micro-interaction | Un champ groupe l'IBAN par quatre et vérifie sa clé, sans empêcher la saisie |
+| `trend-arrow` | Micro-interaction | Une flèche pivote jusqu'à un angle qui dit la force de la variation |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

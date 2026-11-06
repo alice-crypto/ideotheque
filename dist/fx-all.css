@@ -5623,6 +5623,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="order-book"] .fx-ask i { background: var(--fx-down, #e10600); }
 [data-fx="order-book"] .fx-bid i { background: var(--fx-up, #2eaf63); }
 
+/* trend-arrow : une flèche parlante */
+[data-fx="trend-arrow"] { display: inline-flex; align-items: center; gap: .3em; font-variant-numeric: tabular-nums; font-weight: 600; }
+[data-fx="trend-arrow"] i { display: inline-block; font-style: normal; transition: transform .7s var(--fx-ease-spring) .15s; }
+.fx-in[data-fx="trend-arrow"] i { transform: rotate(var(--fx-a)); }
+[data-fx="trend-arrow"].fx-up { color: var(--fx-up, #2eaf63); }
+[data-fx="trend-arrow"].fx-dn { color: var(--fx-down, #e10600); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="order-book" data-fx-mid="100"></div>',
     '<div data-fx="order-book" style="width:200px;color:var(--ink)"></div>',
     { a11y: 'Résumé dans `aria-label`. Avec `prefers-reduced-motion: reduce`, les volumes restent fixes.' }),
+  E('trend-arrow', 'Micro-interaction',
+    'Une flèche pivote jusqu\'à un angle qui dit la force de la variation.',
+    'On lit la tendance avant le chiffre.',
+    '- `data-fx-value` (8.4), `data-fx-max` (20)',
+    'Indicateurs, lignes de tableau.',
+    'Une lecture précise : gardez le chiffre, qui est écrit à côté.',
+    '<span data-fx="trend-arrow" data-fx-value="8.4"></span>',
+    '<div class="demo-row" style="font-size:22px"><span data-fx="trend-arrow" data-fx-value="12"></span><span data-fx="trend-arrow" data-fx-value="-6.5"></span></div>',
+    { trigger: 'Rejouer', a11y: 'Le signe et la valeur sont écrits en texte.' }),
 ];

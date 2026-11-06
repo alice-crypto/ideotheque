@@ -399,4 +399,15 @@
       el._fxDraw();
     }
   });
+
+  // Une flèche dont l'angle dit la force de la variation
+  FX.register('trend-arrow', {
+    entrance: true,
+    setup: function (el) {
+      var v = U.num(el, 'fxValue', 8.4), max = U.num(el, 'fxMax', 20);
+      el.style.setProperty('--fx-a', (-U.clamp(v / max, -1, 1) * 60).toFixed(1) + 'deg');
+      el.classList.add(v >= 0 ? 'fx-up' : 'fx-dn');
+      el.innerHTML = '<i aria-hidden="true">→</i><span>' + (v > 0 ? '+' : '') + String(v).replace('.', ',') + ' %</span>';
+    }
+  });
 })(window.FX);
