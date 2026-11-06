@@ -307,4 +307,28 @@
     },
     trigger: function (el) { el.querySelector('button').click(); }
   });
+
+  // Un réveil demandé à la réception, avec le temps de sommeil qu'il reste
+  FX.register('wakeup-call', {
+    setup: function (el) {
+      el.innerHTML = '<label>Réveil à <input type="time" value="' + (el.dataset.fxTime || '07:30') + '"></label><button type="button" aria-pressed="false">Programmer</button><output aria-live="polite"></output>';
+      var i = el.querySelector('input'), b = el.querySelector('button'), o = el.querySelector('output');
+      var calc = function () {
+        var p = i.value.split(':'), now = new Date(), t = new Date(now);
+        t.setHours(+p[0], +p[1], 0, 0);
+        if (t <= now) t = new Date(+t + 86400000);
+        var m = Math.round((t - now) / 60000);
+        return Math.floor(m / 60) + ' h ' + String(m % 60).padStart(2, '0');
+      };
+      var show = function () {
+        var on = b.getAttribute('aria-pressed') === 'true';
+        el.classList.toggle('fx-on', on);
+        b.textContent = on ? 'Annuler' : 'Programmer';
+        o.textContent = on ? 'Réveil à ' + i.value + ', dans ' + calc() : 'Vous pourriez dormir ' + calc();
+      };
+      b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); show(); });
+      i.addEventListener('input', show);
+      show();
+    }
+  });
 })(window.FX);
