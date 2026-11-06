@@ -8793,6 +8793,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="checkin-ready"].fx-done output { color: var(--fx-up, #2eaf63); font-weight: 800; opacity: 1; animation: fx-checkin-yes .4s var(--fx-ease-spring); }
 @keyframes fx-checkin-yes { from { transform: scale(.9); } }
 
+/* cancel-policy : les conditions d'annulation */
+[data-fx="cancel-policy"] { width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="cancel-policy"] .fx-cp3 { position: relative; display: flex; gap: 1px; height: 14px; }
+[data-fx="cancel-policy"] .a { background: var(--fx-up, #2eaf63); }
+[data-fx="cancel-policy"] .b { background: var(--fx-warn, #e8930c); }
+[data-fx="cancel-policy"] .c { background: var(--fx-down, #e10600); }
+[data-fx="cancel-policy"] u { position: absolute; top: -5px; bottom: -5px; left: 0; width: 3px; margin-left: -1.5px; background: currentColor; transition: left 1.1s var(--fx-ease-out); }
+.fx-in[data-fx="cancel-policy"] u { left: calc(var(--fx-q) * 100%); }
+[data-fx="cancel-policy"] .fx-cp3-l { display: flex; justify-content: space-between; margin-top: 6px; font-size: 9px; opacity: .7; }
+[data-fx="cancel-policy"] p { margin: 5px 0 0; font-size: 13px; font-weight: 800; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

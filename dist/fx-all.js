@@ -15040,6 +15040,16 @@
       setInterval(go, 60000);
     }
   });
+
+  // Les conditions d'annulation sur une ligne de temps, avec aujourd'hui dessus
+  FX.register('cancel-policy', {
+    entrance: true,
+    setup: function (el) {
+      var arrive = el.dataset.fxDate ? new Date(el.dataset.fxDate) : new Date(Date.now() + 86400000 * 20), free = U.num(el, 'fxFree', 7), half = U.num(el, 'fxHalf', 2), span = U.num(el, 'fxSpan', 30), now = Date.now(), days = Math.ceil((arrive - now) / 86400000), f = function (n) { return new Date(+arrive - n * 86400000).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }); }, q = 1 - U.clamp(days, 0, span) / span, st = days > free ? 'Annulation gratuite jusqu\'au ' + f(free) : days > half ? 'Remboursé à 50 % jusqu\'au ' + f(half) : 'Sans remboursement';
+      el.style.setProperty('--fx-q', q);
+      el.innerHTML = '<div class="fx-cp3" aria-hidden="true"><i class="a" style="flex:' + (span - free) + ' 1 0"></i><i class="b" style="flex:' + (free - half) + ' 1 0"></i><i class="c" style="flex:' + half + ' 1 0"></i><u></u></div><div class="fx-cp3-l" aria-hidden="true"><span>Aujourd\'hui ou avant</span><span>Arrivée</span></div><p>' + st + '</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

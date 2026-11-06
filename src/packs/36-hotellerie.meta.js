@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="checkin-ready" data-fx-date="2027-05-01"></div>',
     '<div data-fx="checkin-ready" style="color:var(--ink)"></div>',
     { a11y: 'Vraies cases, compte en texte, reste annoncé.' }),
+  E('cancel-policy', 'Présentation',
+    'Une ligne de temps montre les conditions d\'annulation, et situe aujourd\'hui dessus.',
+    'Une clause qu\'on comprend enfin, sans l\'avoir lue trois fois.',
+    '- `data-fx-date`, `data-fx-free` (7), `data-fx-half` (2), `data-fx-span` (30)',
+    'Hôtels, billets, formations, abonnements.',
+    'De simplifier à l\'excès : les conditions réelles doivent rester consultables.',
+    '<div data-fx="cancel-policy" data-fx-date="2027-05-01"></div>',
+    '<div data-fx="cancel-policy" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'La condition du moment est écrite. Le schéma est décoratif.' }),
 ];
