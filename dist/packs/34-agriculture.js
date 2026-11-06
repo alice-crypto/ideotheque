@@ -115,4 +115,24 @@
       U.ensurePositioned(el);
     }
   });
+
+  // Du grain à la plante : faire avancer les jours
+  FX.register('sprout-stages', {
+    setup: function (el) {
+      var S = (el.dataset.fxItems || '0:Graine|7:Germination|14:Plantule|30:Croissance|60:Fleur|80:Récolte').split('|').map(function (r) { var p = r.split(':'); return [+p[0], p[1]]; });
+      el.innerHTML = '<svg viewBox="0 0 80 100" aria-hidden="true"><rect x="0" y="74" width="80" height="26"/><ellipse class="seed" cx="40" cy="80" rx="5" ry="3.5"/><path class="st" d="M40 78V74"/><path class="l l1" d="M40 58C30 56 26 50 26 46C34 46 40 52 40 58Z"/><path class="l l2" d="M40 46C50 44 54 38 54 34C46 34 40 40 40 46Z"/><circle class="fl" cx="40" cy="16" r="9"/></svg><label>Jour <b></b><input type="range" min="0" max="' + S[S.length - 1][0] + '"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output'), st = el.querySelector('.st');
+      r.value = U.num(el, 'fxDay', 18);
+      var go = function () {
+        var d = +r.value, k = 0, q = d / S[S.length - 1][0];
+        S.forEach(function (s, i) { if (d >= s[0]) k = i; });
+        st.setAttribute('d', 'M40 78V' + (74 - q * 56).toFixed(1));
+        el.dataset.fxK = k;
+        el.querySelector('label b').textContent = d;
+        o.textContent = S[k][1];
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

@@ -57,4 +57,13 @@ module.exports = [
     '<h2 data-fx="tractor-plow">De la ferme</h2>',
     '<h2 data-fx="tractor-plow" style="margin:0;color:var(--ink);font-size:32px">De la ferme</h2>',
     { trigger: 'Rejouer', a11y: 'Le texte reste lu une fois. En mouvement réduit, il apparaît sans animation.' }),
+  E('sprout-stages', 'Micro-interaction',
+    'Un curseur de jours fait pousser une plante, de la graine à la récolte.',
+    'Accélérer le temps pour comprendre ce qui prend des semaines.',
+    '- `data-fx-items` : « jour:étape » séparés par `|`\n- `data-fx-day` (18), `--fx-flower`',
+    'Semences, jardinage, pédagogie.',
+    'Des durées réelles sans préciser l\'espèce : elles varient beaucoup.',
+    '<div data-fx="sprout-stages" data-fx-day="18"></div>',
+    '<div data-fx="sprout-stages" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, étape annoncée.' }),
 ];
