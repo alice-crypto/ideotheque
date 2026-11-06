@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->531<!-- /total --> effets.
+La bibliothèque contient <!-- total -->532<!-- /total --> effets.
 
 ## Règles
 
@@ -206,6 +206,7 @@ La bibliothèque contient <!-- total -->531<!-- /total --> effets.
 | `coverage-matrix` | Présentation | Un tableau de garanties éclaire la formule choisie sur toute sa colonne |
 | `peril-shield` | Présentation | Un bouclier s'allume secteur par secteur selon les risques cochés |
 | `claim-tracker` | Présentation | Une liste d'étapes montre l'avancement d'un dossier, avec l'étape en cours qui bat |
+| `reimbursement-split` | Présentation | Une barre découpe une dépense entre la base, la complémentaire et le reste à payer |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

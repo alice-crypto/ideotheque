@@ -9320,6 +9320,16 @@
       go();
     }
   });
+
+  // Une dépense partagée entre la base, la complémentaire et ce qu'il reste à payer
+  FX.register('reimbursement-split', {
+    entrance: true,
+    setup: function (el) {
+      var cost = U.num(el, 'fxCost', 60), a = Math.min(cost, U.num(el, 'fxBase', 21)), b = Math.min(cost - a, U.num(el, 'fxTop', 24)), c = cost - a - b;
+      var parts = [['Base', a, 'a'], ['Complémentaire', b, 'b'], ['Reste à payer', c, 'c']];
+      el.innerHTML = '<p>Dépense : <b>' + cost + ' €</b></p><div class="fx-rs">' + parts.map(function (p, i) { return '<i class="' + p[2] + '" style="--fx-q:' + p[1] / cost + ';--fx-i:' + i + '"></i>'; }).join('') + '</div><ul>' + parts.map(function (p) { return '<li class="' + p[2] + '"><span>' + p[0] + '</span><b>' + p[1] + ' €</b></li>'; }).join('') + '</ul>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

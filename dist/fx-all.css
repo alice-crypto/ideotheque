@@ -5733,6 +5733,20 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="document-checklist"].fx-full .fx-dc-b i { background: var(--fx-ok, #2eaf63); }
 [data-fx="document-checklist"].fx-full output { color: var(--fx-ok, #2eaf63); }
 
+/* reimbursement-split : qui paie quoi */
+[data-fx="reimbursement-split"] { width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="reimbursement-split"] p { margin: 0 0 6px; }
+[data-fx="reimbursement-split"] .fx-rs { display: flex; height: 16px; gap: 2px; }
+[data-fx="reimbursement-split"] .fx-rs i { flex: 0 0 0; min-width: 0; transition: flex-basis .7s var(--fx-ease-out) calc(var(--fx-i) * 240ms); }
+.fx-in[data-fx="reimbursement-split"] .fx-rs i { flex-basis: calc(var(--fx-q) * (100% - 4px)); }
+[data-fx="reimbursement-split"] .a { --c: var(--fx-accent); }
+[data-fx="reimbursement-split"] .b { --c: var(--fx-accent-2); }
+[data-fx="reimbursement-split"] .c { --c: currentColor; }
+[data-fx="reimbursement-split"] .fx-rs .a, [data-fx="reimbursement-split"] .fx-rs .b, [data-fx="reimbursement-split"] .fx-rs .c { background: var(--c); }
+[data-fx="reimbursement-split"] ul { margin: 8px 0 0; padding: 0; list-style: none; }
+[data-fx="reimbursement-split"] li { display: flex; justify-content: space-between; gap: 8px; padding: 1px 0 1px 12px; position: relative; }
+[data-fx="reimbursement-split"] li::before { content: ''; position: absolute; left: 0; top: 6px; width: 7px; height: 7px; background: var(--c); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

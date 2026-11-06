@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="document-checklist" data-fx-items="Constat|Photos"></div>',
     '<div data-fx="document-checklist" style="color:var(--ink)"></div>',
     { a11y: 'Vraies cases à cocher, et ce qui manque est annoncé.' }),
+  E('reimbursement-split', 'Présentation',
+    'Une barre découpe une dépense entre la base, la complémentaire et le reste à payer.',
+    'Enfin compréhensible, un décompte qui se lit.',
+    '- `data-fx-cost` (60) : dépense\n- `data-fx-base` (21), `data-fx-top` (24) : montants remboursés',
+    'Mutuelles, notes de frais, partage de coûts.',
+    'De donner un vrai remboursement sans le calcul de l\'organisme.',
+    '<div data-fx="reimbursement-split" data-fx-cost="60" data-fx-base="21" data-fx-top="24"></div>',
+    '<div data-fx="reimbursement-split" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Tous les montants sont écrits dans une liste : la barre les illustre.' }),
 ];
