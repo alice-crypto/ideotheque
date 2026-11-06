@@ -390,4 +390,16 @@
     },
     trigger: function (el) { el.classList.remove('fx-torn'); var s = el.querySelector('.s'); s.disabled = false; s.style.transform = ''; setTimeout(el._fxTear, 80); }
   });
+
+  // La fenêtre d'un train, avec le paysage qui file
+  FX.register('train-window', {
+    setup: function (el) {
+      var box = U.make('div', 'fx-tw2', el), h = new Date().getHours();
+      box.setAttribute('aria-hidden', 'true');
+      el.dataset.fxTime = h < 6 || h >= 21 ? 'night' : 'day';
+      U.make('u', 'fx-tw2-h', box);
+      for (var i = 0; i < 10; i++) { var t = U.make('i', 'fx-tw2-t', box); t.style.setProperty('--fx-d', -i * 1.6 + 's'); t.style.setProperty('--fx-s', U.rand(.6, 1.1).toFixed(2)); }
+      for (i = 0; i < 2; i++) U.make('b', '', box).style.setProperty('--fx-d', -i * .55 + 's');
+    }
+  });
 })(window.FX);

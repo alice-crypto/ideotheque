@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="ticket-tear" data-fx-text="Admission"></div>',
     '<div data-fx="ticket-tear" style="color:var(--ink)"></div>',
     { trigger: 'Détacher', a11y: 'Bouton réel, activable au clavier, résultat annoncé.' }),
+  E('train-window', 'Ambiance',
+    'Une fenêtre de train montre le paysage qui file sur trois vitesses.',
+    'Un carnet ouvert, le front contre la vitre.',
+    '- `--fx-w`\n- l\'heure locale règle jour ou nuit',
+    'Trains, voyages lents, écrans d\'attente.',
+    'Le passage rapide des poteaux en grand format, peu confortable pour certains.',
+    '<div data-fx="train-window"></div>',
+    '<div data-fx="train-window"></div>',
+    { a11y: 'Décoratif, masqué. La bibliothèque coupe le mouvement en mouvement réduit.' }),
 ];
