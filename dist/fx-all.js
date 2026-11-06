@@ -9658,6 +9658,21 @@
       });
     }
   });
+
+  // Ce dont le foyer aurait besoin face à ce qu'il a : l'écart se voit
+  FX.register('gap-coverage', {
+    entrance: true,
+    setup: function (el) {
+      var need = U.num(el, 'fxNeed', 2400), rows = (el.dataset.fxItems || 'Pension:900|Épargne:400').split('|').map(function (r) { return r.split(':'); });
+      var got = rows.reduce(function (t, r) { return t + +r[1]; }, 0), gap = Math.max(0, need - got), top = Math.max(need, got);
+      var col = function (t, a) { return '<div><b>' + t + '</b><span>' + a + '</span></div>'; };
+      var h = '<div class="fx-gc" aria-hidden="true"><div class="fx-gc-n" style="--fx-q:' + need / top + '"></div><div class="fx-gc-h">';
+      rows.forEach(function (r, i) { h += '<i style="--fx-q:' + r[1] / top + ';--fx-i:' + i + '"></i>'; });
+      if (gap) h += '<i class="fx-g" style="--fx-q:' + gap / top + ';--fx-i:' + rows.length + '"></i>';
+      h += '</div></div>' + col('Besoin', need.toLocaleString('fr-FR') + ' € / mois') + rows.map(function (r) { return col(r[0], (+r[1]).toLocaleString('fr-FR') + ' €'); }).join('') + col('À couvrir', gap.toLocaleString('fr-FR') + ' €');
+      el.innerHTML = h;
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

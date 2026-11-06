@@ -210,4 +210,13 @@ module.exports = [
     '<form data-fx="quote-resume"><input name="ville"></form>',
     '<form data-fx="quote-resume" data-fx-key="fx-demo-quote" style="color:var(--ink)"><input name="ville" placeholder="Votre ville" aria-label="Ville" style="padding:6px"><input name="km" placeholder="Km par an" aria-label="Km par an" style="padding:6px"></form>',
     { a11y: 'Les messages sont dans une région `status`. Les champs sensibles ne doivent pas être enregistrés.' }),
+  E('gap-coverage', 'Présentation',
+    'Deux colonnes comparent un besoin aux ressources, et l\'écart à couvrir apparaît hachuré.',
+    'Sobre, on regarde le chiffre sans dramatiser.',
+    '- `data-fx-need` (2400)\n- `data-fx-items` : « ressource:montant » séparés par `|`',
+    'Prévoyance, retraite, budget de projet.',
+    'De faire peur pour vendre : c\'est un outil de lucidité, pas une alarme.',
+    '<div data-fx="gap-coverage" data-fx-need="2400" data-fx-items="Pension:900"></div>',
+    '<div data-fx="gap-coverage" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Tous les montants sont écrits, les colonnes sont décoratives.' }),
 ];
