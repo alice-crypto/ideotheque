@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="generic-compare" data-fx-brand="12.4" data-fx-generic="7.9"></div>',
     '<div data-fx="generic-compare" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Tous les montants sont écrits.' }),
+  E('on-duty-list', 'Présentation',
+    'Une liste met en tête ce qui est ouvert maintenant, selon l\'heure locale.',
+    'La réponse à la question qu\'on se pose à 23 h.',
+    '- `data-fx-items` : « nom:ouverture:fermeture » séparés par `|`',
+    'Pharmacies, commerces, urgences, services de garde.',
+    'Des horaires de garde figés : ils changent chaque semaine, reliez-les à leur source.',
+    '<div data-fx="on-duty-list" data-fx-items="Pharmacie du Port:8:20"></div>',
+    '<div data-fx="on-duty-list" style="color:var(--ink)"></div>',
+    { a11y: 'L\'état est écrit en mots, pas seulement par la couleur.' }),
 ];

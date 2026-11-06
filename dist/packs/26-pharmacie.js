@@ -120,4 +120,20 @@
       el.innerHTML = '<div><span>' + (el.dataset.fxNameA || 'Marque') + '</span><i style="--fx-q:1"></i><b>' + f(a) + '</b></div><div class="fx-g"><span>' + (el.dataset.fxNameB || 'Générique') + '</span><i style="--fx-q:' + b / a + '"></i><b>' + f(b) + '</b></div><p>Soit <strong>' + f((a - b) * n) + '</strong> d\'écart pour ' + n + ' boîtes par an</p>';
     }
   });
+
+  // Qui est ouvert maintenant, en tête de liste
+  FX.register('on-duty-list', {
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Pharmacie du Port:8:20|Pharmacie de la Gare:0:24|Pharmacie des Tilleuls:9:19|Garde de nuit:20:8').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], a: +p[1], b: +p[2] }; });
+      var ul = U.make('ul', '', el), note = U.make('small', '', el);
+      var h = new Date().getHours() + new Date().getMinutes() / 60;
+      rows.forEach(function (r) { r.open = r.a < r.b ? h >= r.a && h < r.b : h >= r.a || h < r.b; });
+      rows.sort(function (x, y) { return y.open - x.open; }).forEach(function (r, i) {
+        var li = U.make('li', r.open ? 'fx-open' : '', ul);
+        li.style.setProperty('--fx-i', i);
+        li.innerHTML = '<i aria-hidden="true"></i><b>' + r.n + '</b><span>' + (r.open ? 'Ouvert' : 'Fermé') + ' · ' + r.a + ' h–' + r.b + ' h</span>';
+      });
+      note.textContent = 'Exemple fictif';
+    }
+  });
 })(window.FX);
