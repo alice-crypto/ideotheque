@@ -13165,6 +13165,17 @@
       go();
     }
   });
+
+  // L'intensité carbone de l'électricité, heure par heure
+  FX.register('co2-by-hour', {
+    entrance: true,
+    setup: function (el) {
+      var D = (el.dataset.fxData || '58,52,48,46,46,52,70,92,108,96,72,58,50,48,52,62,84,118,132,124,102,86,74,64').split(',').map(Number), max = Math.max.apply(null, D), now = new Date().getHours(), best = D.indexOf(Math.min.apply(null, D)), avg = D.reduce(function (a, b) { return a + b; }, 0) / D.length;
+      var h = '';
+      D.forEach(function (v, i) { h += '<i class="' + (i === now ? 'fx-now' : '') + (i === best ? ' fx-best' : '') + '" style="--fx-q:' + v / max + ';--fx-c:' + (120 - (v / max) * 120) + ';--fx-i:' + i + '"></i>'; });
+      el.innerHTML = '<div class="fx-c2h" aria-hidden="true">' + h + '</div><p>Maintenant : <b>' + D[now] + ' g/kWh</b>, ' + (D[now] < avg ? 'sous' : 'au-dessus de') + ' la moyenne.<br>Meilleure heure : ' + best + ' h. Données fictives.</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

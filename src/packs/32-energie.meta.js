@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="cheapest-window" data-fx-hours="4"></div>',
     '<div data-fx="cheapest-window" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, résultat écrit et annoncé.' }),
+  E('co2-by-hour', 'Présentation',
+    'Des barres horaires montrent l\'intensité carbone de l\'électricité, avec l\'heure actuelle et la meilleure heure.',
+    'Un petit geste d\'horaire, un vrai effet possible.',
+    '- `data-fx-data` : 24 valeurs en g/kWh',
+    'Énergie, écologie, recharge intelligente.',
+    'De montrer ces données comme réelles : l\'intensité dépend du pays et de l\'heure.',
+    '<div data-fx="co2-by-hour"></div>',
+    '<div data-fx="co2-by-hour" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le message écrit reprend la valeur actuelle et la meilleure heure.' }),
 ];

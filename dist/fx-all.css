@@ -7829,6 +7829,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="cheapest-window"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
 [data-fx="cheapest-window"] output b { font-size: 16px; }
 
+/* co2-by-hour : l'intensité par heure */
+[data-fx="co2-by-hour"] { width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="co2-by-hour"] .fx-c2h { display: flex; align-items: flex-end; gap: 1px; height: 66px; }
+[data-fx="co2-by-hour"] i { position: relative; flex: 1; height: 0; background: hsl(var(--fx-c) 70% 45%); transition: height .5s var(--fx-ease-out) calc(var(--fx-i) * 22ms); }
+.fx-in[data-fx="co2-by-hour"] i { height: calc(var(--fx-q) * 100%); }
+[data-fx="co2-by-hour"] i.fx-now { outline: 2px solid currentColor; outline-offset: 1px; z-index: 1; }
+[data-fx="co2-by-hour"] p { margin: 6px 0 0; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
