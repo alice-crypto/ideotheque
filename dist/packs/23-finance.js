@@ -369,4 +369,34 @@
       el.firstChild.textContent = v.toLocaleString('fr-FR', { minimumFractionDigits: 6, maximumFractionDigits: 6 }) + ' €';
     }
   });
+
+  // Un carnet d'ordres et sa profondeur
+  FX.register('order-book', {
+    setup: function (el) {
+      var mid = U.num(el, 'fxMid', 100), step = U.num(el, 'fxStep', .5), n = U.num(el, 'fxLevels', 4);
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', 'Carnet d\'ordres autour de ' + mid + ' (données d\'exemple)');
+      el._fxR = [];
+      ['fx-ask', 'fx-bid'].forEach(function (c) {
+        for (var k = 0; k < n; k++) {
+          var lvl = c === 'fx-ask' ? n - k : k + 1, r = U.make('div', 'fx-ob ' + c, el), p = c === 'fx-ask' ? mid + lvl * step : mid - lvl * step;
+          r.setAttribute('aria-hidden', 'true');
+          r.innerHTML = '<i></i><span>' + p.toFixed(2).replace('.', ',') + '</span><b></b>';
+          el._fxR.push({ r: r, v: U.rand(10, 100) });
+        }
+      });
+      el._fxDraw = function () { el._fxR.forEach(function (o) { o.r.style.setProperty('--fx-v', o.v.toFixed(0) + '%'); o.r.lastChild.textContent = o.v.toFixed(0); }); };
+      el._fxDraw();
+      el._fxT = 0;
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxT += dt;
+      if (el._fxT < .6) return;
+      el._fxT = 0;
+      var o = el._fxR[Math.floor(Math.random() * el._fxR.length)];
+      o.v = U.clamp(o.v + U.rand(-30, 30), 5, 100);
+      el._fxDraw();
+    }
+  });
 })(window.FX);

@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="interest-accrual" data-fx-capital="10000" data-fx-rate="3"></div>',
     '<div data-fx="interest-accrual" style="color:var(--ink)"></div>',
     { a11y: 'Rôle `timer`, qui n\'est pas annoncé en continu.' }),
+  E('order-book', 'Présentation',
+    'Les ordres d\'achat et de vente s\'affichent de part et d\'autre du prix, avec une barre de profondeur.',
+    'Technique, on voit le marché respirer.',
+    '- `data-fx-mid` (100), `data-fx-step` (.5), `data-fx-levels` (4)',
+    'Démonstrations de plateformes d\'échange.',
+    'Des volumes aléatoires présentés comme réels : remplacez `_fxR` par vos données.',
+    '<div data-fx="order-book" data-fx-mid="100"></div>',
+    '<div data-fx="order-book" style="width:200px;color:var(--ink)"></div>',
+    { a11y: 'Résumé dans `aria-label`. Avec `prefers-reduced-motion: reduce`, les volumes restent fixes.' }),
 ];
