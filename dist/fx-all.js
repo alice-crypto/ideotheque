@@ -9894,6 +9894,25 @@
       show();
     }
   });
+
+  // Une équipe en pile de pastilles qui s'écarte pour se présenter
+  FX.register('care-team', {
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Camille Roy:Médecin traitant|Sam Lefort:Infirmier·e|Noa Petit:Kinésithérapeute|Inès Faure:Diététicienne').split('|');
+      var ul = U.make('ul', '', el), note = U.make('output', '', el);
+      note.setAttribute('aria-live', 'polite');
+      note.textContent = rows.length + ' personnes vous suivent';
+      rows.forEach(function (r, i) {
+        var p = r.split(':'), h = 0, li = U.make('li', '', ul), b = U.make('button', '', li);
+        for (var k = 0; k < p[0].length; k++) h = (h * 17 + p[0].charCodeAt(k)) % 360;
+        b.type = 'button'; b.style.setProperty('--fx-h', h); b.style.setProperty('--fx-i', i);
+        b.textContent = p[0].split(' ').map(function (s) { return s[0]; }).join('');
+        b.setAttribute('aria-label', p[0] + ', ' + p[1]);
+        var say = function () { note.innerHTML = '<b>' + p[0] + '</b> · ' + p[1]; };
+        b.addEventListener('mouseenter', say); b.addEventListener('focus', say); b.addEventListener('click', say);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

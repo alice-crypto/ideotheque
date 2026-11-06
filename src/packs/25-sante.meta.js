@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="triage-flow"></div>',
     '<div data-fx="triage-flow" style="color:var(--ink)"></div>',
     { a11y: 'Vrais boutons, et chaque nouvelle question est annoncée.' }),
+  E('care-team', 'Présentation',
+    'Une pile d\'initiales s\'écarte, et chaque personne dit son nom et son rôle.',
+    'Une équipe humaine, sans photos de banque d\'images.',
+    '- `data-fx-items` : « nom:rôle » séparés par `|`\n- `--fx-s` (42px), `--fx-ring`',
+    'Cabinets, équipes de projet, membres d\'un groupe.',
+    'Les vrais patients ou soignants sans leur accord.',
+    '<div data-fx="care-team" data-fx-items="Camille Roy:Médecin"></div>',
+    '<div data-fx="care-team" style="color:var(--ink);--fx-ring:var(--ink)"></div>',
+    { a11y: 'Chaque pastille est un bouton nommé avec le rôle ; aucune information ne passe par le seul survol.' }),
 ];

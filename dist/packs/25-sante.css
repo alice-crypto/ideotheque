@@ -92,3 +92,11 @@
 [data-fx="triage-flow"] .fx-tf-b { flex: 100%; border: 0; font-size: 11px; text-decoration: underline; }
 [data-fx="triage-flow"] .fx-u { background: var(--fx-down, #e10600); color: #fff; border-color: transparent; }
 @keyframes fx-tf { from { opacity: 0; transform: rotateX(-24deg); } }
+
+/* care-team : une équipe en pile */
+[data-fx="care-team"] { display: grid; gap: 8px; justify-items: start; font-size: 12px; }
+[data-fx="care-team"] ul { display: flex; margin: 0; padding: 0; list-style: none; }
+[data-fx="care-team"] li + li { margin-left: -7px; transition: margin .3s var(--fx-ease-out); }
+[data-fx="care-team"]:hover li + li, [data-fx="care-team"]:focus-within li + li { margin-left: 4px; }
+[data-fx="care-team"] button { width: var(--fx-s, 42px); height: var(--fx-s, 42px); padding: 0; border: 2px solid var(--fx-ring, #fff); border-radius: 50%; background: hsl(var(--fx-h) 55% 42%); color: #fff; font-weight: 700; cursor: pointer; transition: transform .25s var(--fx-ease-spring); }
+[data-fx="care-team"] button:hover, [data-fx="care-team"] button:focus-visible { transform: translateY(-5px); }
