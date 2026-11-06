@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="mode-compare" data-fx-km="5"></div>',
     '<div data-fx="mode-compare" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, tous les résultats sont écrits.' }),
+  E('co2-per-mode', 'Présentation',
+    'Une distance donne les émissions de chaque moyen de transport, avec des barres comparées.',
+    'Un chiffre qui fait réfléchir, sans sermon.',
+    '- `data-fx-items` : « mode:grammes par km » séparés par `|`\n- `data-fx-km` (500)',
+    'Voyages, entreprises, transports.',
+    'De reprendre ces valeurs sans source : elles sont illustratives.',
+    '<div data-fx="co2-per-mode" data-fx-km="500"></div>',
+    '<div data-fx="co2-per-mode" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, kilogrammes écrits ligne par ligne.' }),
 ];

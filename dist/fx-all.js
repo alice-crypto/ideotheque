@@ -11982,6 +11982,29 @@
       go();
     }
   });
+
+  // Les émissions d'un trajet selon le moyen de transport
+  FX.register('co2-per-mode', {
+    setup: function (el) {
+      var F = (el.dataset.fxItems || 'Train:3|Vélo:0|Bus:100|Voiture seule:190|Avion:230').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1]]; });
+      el.innerHTML = '<label>Trajet <b></b><input type="range" min="10" max="1000" step="10"></label><ul></ul><small>Ordres de grandeur en g de CO₂ par km : à remplacer par une source officielle.</small>';
+      var r = el.querySelector('input'), ul = el.querySelector('ul'), lab = el.querySelector('label b');
+      var L = F.map(function (f) { var li = U.make('li', '', ul); li.innerHTML = '<span>' + f[0] + '</span><i></i><b></b>'; return li; });
+      r.value = U.num(el, 'fxKm', 500);
+      var top = Math.max.apply(null, F.map(function (f) { return f[1]; }));
+      var go = function () {
+        var d = +r.value;
+        lab.textContent = d + ' km';
+        F.forEach(function (f, i) {
+          var kg = f[1] * d / 1000;
+          L[i].style.setProperty('--fx-q', f[1] / top * (d / 1000 + .15));
+          L[i].querySelector('b').textContent = (kg < 10 ? kg.toFixed(1).replace('.', ',') : Math.round(kg)) + ' kg';
+        });
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
