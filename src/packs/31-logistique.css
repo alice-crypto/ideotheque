@@ -159,3 +159,12 @@
 [data-fx="pick-counter"] button { padding: 3px 0; border: 1px solid currentColor; border-radius: 5px; background: none; color: inherit; font: inherit; cursor: pointer; }
 [data-fx="pick-counter"] button:disabled { opacity: .3; }
 [data-fx="pick-counter"] output { padding-bottom: 4px; font-weight: 700; background: linear-gradient(var(--fx-ok, #2eaf63), var(--fx-ok, #2eaf63)) no-repeat 0 100% / calc(var(--fx-q) * 100%) 3px; transition: background-size .3s; }
+
+/* eta-range : une heure et sa marge */
+[data-fx="eta-range"] { width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="eta-range"] .fx-er { position: relative; height: 20px; background: color-mix(in srgb, currentColor 10%, transparent); }
+[data-fx="eta-range"] em { position: absolute; top: 0; bottom: 0; left: calc(var(--fx-c) * 100%); right: calc((1 - var(--fx-c)) * 100%); background: linear-gradient(90deg, transparent, var(--fx-accent), transparent); transition: left .9s var(--fx-ease-out), right .9s var(--fx-ease-out); }
+.fx-in[data-fx="eta-range"] em { left: calc(var(--fx-a) * 100%); right: calc((1 - var(--fx-b)) * 100%); }
+[data-fx="eta-range"] i { position: absolute; top: -3px; bottom: -3px; left: calc(var(--fx-c) * 100%); width: 2px; background: currentColor; }
+[data-fx="eta-range"] p { margin: 7px 0 0; }
+[data-fx="eta-range"] b { font-size: 20px; }
