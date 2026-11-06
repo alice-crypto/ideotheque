@@ -19,3 +19,12 @@
 [data-fx="table-booking"] .fx-tb-s button:disabled { opacity: .3; text-decoration: line-through; cursor: not-allowed; }
 [data-fx="table-booking"] .fx-on { background: var(--fx-accent) !important; color: #fff; border-color: transparent !important; }
 @keyframes fx-booking-in { from { opacity: 0; transform: translateY(6px); } }
+
+/* floor-tables : un plan de salle */
+[data-fx="floor-tables"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="floor-tables"] .fx-ft { position: relative; height: 128px; border: 2px solid currentColor; background: repeating-linear-gradient(90deg, #0001 0 22px, transparent 22px 44px); }
+[data-fx="floor-tables"] button { position: absolute; width: 36px; height: 36px; padding: 0; border: 3px solid currentColor; border-radius: 50%; background: var(--fx-table, #e7dcc7); color: #2b241a; font-weight: 800; cursor: pointer; transition: transform .25s var(--fx-ease-spring), background .2s; }
+[data-fx="floor-tables"] .s4 { width: 44px; border-radius: 6px; }
+[data-fx="floor-tables"] .s6 { width: 56px; border-radius: 6px; }
+[data-fx="floor-tables"] button:disabled { opacity: .35; cursor: not-allowed; background: #777; }
+[data-fx="floor-tables"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; transform: scale(1.15); }
