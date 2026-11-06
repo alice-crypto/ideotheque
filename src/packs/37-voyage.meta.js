@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="jetlag-plan" data-fx-hours="6"></div>',
     '<div data-fx="jetlag-plan" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, liste ordonnée, message annoncé.' }),
+  E('plug-adapter', 'Micro-interaction',
+    'Le pays choisi affiche sa prise et sa tension, et indique s\'il faut un adaptateur.',
+    'Une question de plus réglée avant de faire sa valise.',
+    '- `data-fx-data` : JSON pays vers type et tension\n- `data-fx-home` (`E,F`) : types de prises de départ',
+    'Voyages, boutiques d\'adaptateurs, conseils.',
+    'Une vérification de sécurité : certains pays utilisent plusieurs types.',
+    '<div data-fx="plug-adapter" data-fx-home="E,F"></div>',
+    '<div data-fx="plug-adapter" style="color:var(--ink)"></div>',
+    { a11y: 'Vraie liste nommée, résultat annoncé en mots.' }),
 ];

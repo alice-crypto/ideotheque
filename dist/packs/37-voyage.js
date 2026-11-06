@@ -191,4 +191,22 @@
       go();
     }
   });
+
+  // Faut-il un adaptateur ? La prise et la tension du pays choisi
+  FX.register('plug-adapter', {
+    setup: function (el) {
+      var C = JSON.parse(el.dataset.fxData || '{"France":["E",230],"Allemagne":["F",230],"Royaume-Uni":["G",230],"États-Unis":["A/B",120],"Japon":["A/B",100],"Australie":["I",230],"Suisse":["J",230]}'), home = el.dataset.fxHome || 'E,F', H = home.split(','), P = { E: [[.33, .5], [.67, .5]], F: [[.33, .5], [.67, .5]], G: [[.5, .25], [.25, .7], [.75, .7]], 'A/B': [[.38, .4], [.62, .4]], I: [[.33, .4], [.67, .4], [.5, .75]], J: [[.28, .55], [.5, .35], [.72, .55]] };
+      el.innerHTML = '<select aria-label="Pays de destination">' + Object.keys(C).map(function (k) { return '<option>' + k + '</option>'; }).join('') + '</select><div class="fx-pa" aria-hidden="true"></div><output aria-live="polite"></output>';
+      var s = el.querySelector('select'), b = el.querySelector('.fx-pa'), o = el.querySelector('output');
+      s.selectedIndex = 2;
+      var go = function () {
+        var c = C[s.value], need = H.indexOf(c[0]) < 0;
+        b.innerHTML = (P[c[0]] || P.E).map(function (p) { return '<i class="' + (c[0] === 'A/B' || c[0] === 'I' || (c[0] === 'G' && p[1] > .5) ? 'fx-bar' : '') + '" style="left:' + p[0] * 100 + '%;top:' + p[1] * 100 + '%"></i>'; }).join('');
+        el.classList.toggle('fx-need', need);
+        o.innerHTML = '<b>Prise ' + c[0] + ', ' + c[1] + ' V</b><br>' + (need ? 'Adaptateur nécessaire' : 'Pas d\'adaptateur') + (c[1] < 200 ? ', vérifiez aussi vos appareils' : '');
+      };
+      s.addEventListener('change', go);
+      go();
+    }
+  });
 })(window.FX);
