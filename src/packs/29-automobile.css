@@ -11,3 +11,11 @@
 [data-fx="car-colorizer"] button { width: 26px; height: 26px; padding: 0; border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px #0007; cursor: pointer; transition: transform .2s var(--fx-ease-spring); }
 [data-fx="car-colorizer"] [aria-pressed="true"] { box-shadow: 0 0 0 2px var(--fx-accent); transform: scale(1.14); }
 [data-fx="car-colorizer"] output b { font-size: 17px; }
+
+/* wheel-roll : une voiture qui avance */
+[data-fx="wheel-roll"] { position: relative; display: block; width: 100%; height: var(--fx-h, 66px); border-bottom: 2px solid currentColor; overflow: hidden; }
+[data-fx="wheel-roll"] .fx-wr { position: absolute; left: 0; bottom: 8px; width: 110px; height: 36px; border-radius: 34px 44px 8px 8px / 26px 34px 8px 8px; background: var(--fx-accent); transform: translateX(var(--fx-x, 0)); }
+[data-fx="wheel-roll"] .fx-wr::before { content: ''; position: absolute; left: 26px; right: 26px; top: -16px; height: 24px; border-radius: 24px 30px 0 0; background: inherit; }
+[data-fx="wheel-roll"] i { position: absolute; bottom: -8px; width: 26px; height: 26px; border-radius: 50%; background: repeating-conic-gradient(#ddd 0 30deg, #111 30deg 90deg); box-shadow: inset 0 0 0 5px #111; transform: rotate(var(--fx-a, 0deg)); }
+[data-fx="wheel-roll"] i:first-child { left: 14px; }
+[data-fx="wheel-roll"] i:last-child { right: 14px; }
