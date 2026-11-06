@@ -13709,6 +13709,20 @@
       draw(T, U.make('ul', 'fx-bt', el), true);
     }
   });
+
+  // Des certifications sous forme de sceaux, avec leur vraie validité
+  FX.register('cert-badges', {
+    entrance: true,
+    setup: function (el) {
+      var C = (el.dataset.fxItems || 'Norme A:2028-06-30|Norme B:2027-02-01|Norme C:2026-01-15').split('|').map(function (r) { var p = r.split(':'); return [p[0], new Date(p[1])]; }), now = Date.now();
+      C.forEach(function (c, i) {
+        var left = (c[1] - now) / 86400000, d = U.make('div', left < 0 ? 'fx-exp' : left < 90 ? 'fx-soon' : '', el);
+        d.style.setProperty('--fx-i', i);
+        d.innerHTML = '<i aria-hidden="true"></i><b>' + c[0] + '</b><small>' + (left < 0 ? 'Expirée' : 'Valide jusqu\'au ' + c[1].toLocaleDateString('fr-FR')) + '</small>';
+      });
+      U.make('p', '', el).textContent = 'Noms fictifs : affichez vos vraies certifications.';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

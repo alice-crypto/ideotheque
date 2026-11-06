@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->768<!-- /total --> effets.
+La bibliothèque contient <!-- total -->769<!-- /total --> effets.
 
 ## Règles
 
@@ -289,6 +289,7 @@ La bibliothèque contient <!-- total -->768<!-- /total --> effets.
 | `piston-cycle` | Présentation | Un piston monte et descend avec sa bielle, et chaque temps du moteur est nommé |
 | `defect-pareto` | Présentation | Un diagramme de Pareto trie les causes et désigne celles qui font 80 % des défauts |
 | `reorder-point` | Présentation | Un seuil de commande redessine le stock en dents de scie, et signale les ruptures |
+| `cert-badges` | Présentation | Des sceaux de certification se tamponnent avec leur vraie date de validité |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="bom-tree"></div>',
     '<div data-fx="bom-tree" style="color:var(--ink)"></div>',
     { a11y: 'Boutons `aria-expanded`, navigation au clavier, branches repliées ignorées.' }),
+  E('cert-badges', 'Présentation',
+    'Des sceaux de certification se tamponnent avec leur vraie date de validité.',
+    'La preuve, datée, sans fanfaronnade.',
+    '- `data-fx-items` : « nom:date » séparés par `|`',
+    'Sites industriels, labels, conformité.',
+    'D\'utiliser un sceau officiel sans autorisation : ce dessin reste générique.',
+    '<div data-fx="cert-badges" data-fx-items="Norme A:2028-06-30"></div>',
+    '<div data-fx="cert-badges" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Nom et validité écrits, sans dépendre de la couleur.' }),
 ];
