@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="device-check"></div>',
     '<div data-fx="device-check" style="color:var(--ink)"></div>',
     { trigger: 'Relancer', a11y: 'Résultats écrits en mots, conclusion annoncée.' }),
+  E('vaccine-calendar', 'Présentation',
+    'Des repères par âge se situent selon une date de naissance, et le prochain ressort.',
+    'Organisé, le prochain rendez-vous ne passe pas à la trappe.',
+    '- `data-fx-items` : « libellé:mois » séparés par `|`\n- `data-fx-born` : date de naissance',
+    'Carnet de santé, entretien d\'un véhicule, échéances par âge.',
+    'Un calendrier médical inventé : reliez-le au calendrier officiel.',
+    '<div data-fx="vaccine-calendar" data-fx-born="2026-01-15"></div>',
+    '<div data-fx="vaccine-calendar" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Liste ordonnée, statuts écrits, repère suivant marqué par `aria-current`.' }),
 ];
