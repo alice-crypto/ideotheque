@@ -6752,6 +6752,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="construction-phases"] input { width: 100%; accent-color: var(--fx-accent); }
 [data-fx="construction-phases"] output b { font-size: 15px; }
 
+/* crane-lift : une grue dépose le contenu */
+[data-fx="crane-lift"] { position: relative; display: block; width: min(100%, var(--fx-w, 220px)); padding-top: 104px; font-weight: 800; text-align: center; overflow: hidden; }
+[data-fx="crane-lift"] .fx-cl-l { position: relative; z-index: 1; padding: 10px; background: var(--fx-load, #ffd400); color: #111; transform: translate(70px, -96px); transition: transform 1s cubic-bezier(.3, 0, .2, 1) .45s; }
+.fx-in[data-fx="crane-lift"] .fx-cl-l { transform: none; }
+[data-fx="crane-lift"] .fx-cl-c { position: absolute; left: 0; top: 0; right: 0; height: 100px; }
+[data-fx="crane-lift"] .m { position: absolute; left: 12px; top: 0; bottom: 0; width: 6px; background: repeating-linear-gradient(45deg, currentColor 0 2px, transparent 2px 5px); }
+[data-fx="crane-lift"] .b { position: absolute; left: 0; right: 0; top: 4px; height: 5px; background: currentColor; }
+[data-fx="crane-lift"] .h { position: absolute; top: 9px; left: 50%; width: 2px; height: 0; background: currentColor; transform: translateX(70px); transition: transform 1s .45s, height 1s .45s; }
+.fx-in[data-fx="crane-lift"] .h { height: 88px; transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

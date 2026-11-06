@@ -11257,6 +11257,15 @@
       go();
     }
   });
+
+  // Une grue dépose le contenu à sa place
+  FX.register('crane-lift', {
+    entrance: true,
+    setup: function (el) {
+      var t = el.innerHTML;
+      el.innerHTML = '<div class="fx-cl-c" aria-hidden="true"><i class="m"></i><i class="b"></i><i class="h"></i></div><div class="fx-cl-l">' + t + '</div>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

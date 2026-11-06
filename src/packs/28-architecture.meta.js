@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="construction-phases" data-fx-phase="1"></div>',
     '<div data-fx="construction-phases" style="color:var(--ink)"></div>',
     { a11y: 'Curseur nommé, phase et date annoncées.' }),
+  E('crane-lift', 'Entrée',
+    'Une grue fait glisser un bloc de contenu et le dépose à sa place.',
+    'Chantier, gros œuvre, chiffre qu\'on pose avec fierté.',
+    '- `--fx-load`, `--fx-w`\n- le contenu de l\'élément est la charge',
+    'BTP, promoteurs, chiffre clé d\'un chantier.',
+    'Un contenu long : la charge doit rester courte.',
+    '<div data-fx="crane-lift">120 logements</div>',
+    '<div data-fx="crane-lift" style="color:var(--ink)">120 logements</div>',
+    { trigger: 'Rejouer', a11y: 'Le contenu reste lu tel quel ; le dessin est décoratif.' }),
 ];
