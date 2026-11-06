@@ -130,3 +130,11 @@
 [data-fx="incoterm-bar"] .fx-ib-l { display: flex; gap: 10px; }
 [data-fx="incoterm-bar"] .fx-ib-l span::before { content: ''; display: inline-block; width: 9px; height: 9px; margin-right: 3px; }
 [data-fx="incoterm-bar"] small { opacity: .7; }
+
+/* conveyor-belt : un tapis roulant */
+[data-fx="conveyor-belt"] { display: block; width: 100%; }
+[data-fx="conveyor-belt"] .fx-cb2 { position: relative; height: 66px; overflow: hidden; }
+[data-fx="conveyor-belt"] u { position: absolute; left: 0; right: 0; bottom: 0; height: 18px; background: repeating-linear-gradient(90deg, #4b4f58 0 8px, #2c2f36 8px 16px); animation: fx-conveyor-belt 1s linear infinite; border-radius: 9px; }
+[data-fx="conveyor-belt"] i { position: absolute; bottom: 18px; left: -50px; width: var(--fx-w2); height: var(--fx-h2); background: linear-gradient(90deg, transparent 44%, #e7cfa0 44% 56%, transparent 56%), #b98b4f; animation: fx-conveyor-box var(--fx-sp) linear var(--fx-d) infinite; }
+@keyframes fx-conveyor-belt { to { background-position-x: 16px; } }
+@keyframes fx-conveyor-box { to { left: 105%; } }
