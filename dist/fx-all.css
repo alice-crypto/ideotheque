@@ -7228,6 +7228,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="elevation-profile"] > i { position: absolute; left: calc(var(--fx-x) * 100%); top: calc(var(--fx-y) * 80px); width: 12px; height: 12px; margin: -6px; border-radius: 50%; background: currentColor; transition: left .2s, top .2s; }
 [data-fx="elevation-profile"] input { width: 100%; accent-color: var(--fx-accent); }
 
+/* step-free-route : un itinéraire sans marche */
+[data-fx="step-free-route"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 215px)); font-size: 12px; }
+[data-fx="step-free-route"] svg { width: 100%; max-height: 110px; }
+[data-fx="step-free-route"] .fx-sfr-w { fill: color-mix(in srgb, currentColor 18%, transparent); }
+[data-fx="step-free-route"] .fx-sfr-p { fill: none; stroke: var(--fx-accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; animation: fx-sfr .7s ease-out both; }
+[data-fx="step-free-route"].fx-on .fx-sfr-p { stroke: var(--fx-up, #2eaf63); }
+[data-fx="step-free-route"] circle { fill: currentColor; }
+[data-fx="step-free-route"] label { display: flex; gap: 6px; align-items: center; font-weight: 700; cursor: pointer; }
+[data-fx="step-free-route"] output { font-size: 13px; }
+@keyframes fx-sfr { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

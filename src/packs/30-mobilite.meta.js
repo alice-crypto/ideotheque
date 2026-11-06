@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="elevation-profile" data-fx-km="22" data-fx-data="120,240,190"></div>',
     '<div data-fx="elevation-profile" style="color:var(--ink)"></div>',
     { a11y: 'Curseur nommé, altitude et pente annoncées.' }),
+  E('step-free-route', 'Micro-interaction',
+    'Une option redessine l\'itinéraire pour éviter les marches, en annonçant la différence.',
+    'Une évidence : penser à ceux que les escaliers arrêtent.',
+    'Aucun réglage. Adaptez les chemins de l\'exemple à votre plan.',
+    'Transports, gares, centres commerciaux, hôpitaux.',
+    'De présenter un parcours comme accessible sans l\'avoir vérifié sur place.',
+    '<div data-fx="step-free-route"></div>',
+    '<div data-fx="step-free-route" style="color:var(--ink)"></div>',
+    { trigger: 'Basculer', a11y: 'Interrupteur natif, résultat annoncé en mots.' }),
 ];

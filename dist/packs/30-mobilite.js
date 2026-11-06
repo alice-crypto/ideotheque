@@ -196,4 +196,23 @@
       go();
     }
   });
+
+  // Un plan d'itinéraire qui évite les escaliers à la demande
+  FX.register('step-free-route', {
+    setup: function (el) {
+      var A = { d: 'M12 74H60V24H126', t: '8 min, 2 escaliers' }, B = { d: 'M12 74H96V50H126V24', t: '11 min, ascenseur et rampe' };
+      el.innerHTML = '<svg viewBox="0 0 140 90" aria-hidden="true"><path class="fx-sfr-w" d="M58 66H70V24H58ZM92 50H104V58H92Z"/><path class="fx-sfr-p" pathLength="1"/><circle cx="12" cy="74" r="4"/><circle cx="126" cy="24" r="4"/></svg><label><input type="checkbox" role="switch"> Sans marche</label><output aria-live="polite"></output>';
+      var c = el.querySelector('input'), p = el.querySelector('.fx-sfr-p'), o = el.querySelector('output');
+      var go = function () {
+        var r = c.checked ? B : A;
+        p.setAttribute('d', r.d);
+        p.style.animation = 'none'; void p.getBoundingClientRect(); p.style.animation = '';
+        el.classList.toggle('fx-on', c.checked);
+        o.textContent = r.t;
+      };
+      c.addEventListener('change', go);
+      go();
+    },
+    trigger: function (el) { el.querySelector('input').click(); }
+  });
 })(window.FX);
