@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="bowl-builder" data-fx-base="6"></div>',
     '<div data-fx="bowl-builder" style="color:var(--ink)"></div>',
     { a11y: 'Ingrédients en boutons `aria-pressed`, total annoncé.' }),
+  E('pizza-builder', 'Micro-interaction',
+    'Les garnitures se placent sur la moitié choisie, et le prix se met à jour.',
+    'La dispute familiale enfin réglée.',
+    '- `data-fx-items` : « garniture:couleur » séparés par `|`\n- `data-fx-base` (9)',
+    'Pizzerias, restauration rapide, personnalisation.',
+    'De reprendre ce calcul si votre carte facture autrement.',
+    '<div data-fx="pizza-builder" data-fx-base="9"></div>',
+    '<div data-fx="pizza-builder" style="color:var(--ink)"></div>',
+    { a11y: 'Vrais boutons, prix annoncé. Le détail de la pizza dépend de l\'état des boutons.' }),
 ];
