@@ -165,3 +165,11 @@
 .fx-in[data-fx="trend-arrow"] i { transform: rotate(var(--fx-a)); }
 [data-fx="trend-arrow"].fx-up { color: var(--fx-up, #2eaf63); }
 [data-fx="trend-arrow"].fx-dn { color: var(--fx-down, #e10600); }
+
+/* tax-brackets : les tranches d'imposition */
+[data-fx="tax-brackets"] { display: grid; gap: 8px; font-size: .85em; }
+[data-fx="tax-brackets"] label { display: grid; grid-template-columns: 1fr auto; gap: 2px; }
+[data-fx="tax-brackets"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="tax-brackets"] .fx-tb-bar { display: flex; height: 24px; }
+[data-fx="tax-brackets"] .fx-tb-bar i { flex: 0 1 0; min-width: 0; overflow: hidden; display: grid; place-items: center; font-style: normal; font-size: 11px; color: #111; background: var(--fx-accent); filter: brightness(calc(1.15 - var(--fx-i) * .2)); transition: flex-grow .3s var(--fx-ease-out); }
+[data-fx="tax-brackets"] p { margin: 0; }
