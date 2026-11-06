@@ -357,4 +357,21 @@
     scroll: function (el, info) { el.style.setProperty('--fx-q', U.clamp(info.enter * 1.3, 0, 1).toFixed(3)); },
     trigger: function (el) { U.tween(el, 1400, function (p) { el.style.setProperty('--fx-q', U.easeOut(p)); }); }
   });
+
+  // Régler la pente d'un toit et lire sa hauteur
+  FX.register('roof-pitch', {
+    setup: function (el) {
+      var W = U.num(el, 'fxWidth', 8);
+      el.innerHTML = '<svg viewBox="0 0 120 92" aria-hidden="true"><path class="fx-rp-t"/><rect x="24" y="52" width="72" height="38"/><rect class="fx-rp-w" x="52" y="62" width="16" height="28"/></svg><label>Angle <input type="range" min="10" max="55"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output'), t = el.querySelector('.fx-rp-t');
+      r.value = U.num(el, 'fxAngle', 35);
+      var go = function () {
+        var a = +r.value * Math.PI / 180, h = Math.tan(a) * W / 2, py = Math.tan(a) * 44;
+        t.setAttribute('d', 'M14 54 60 ' + (52 - py).toFixed(1) + ' 106 54Z');
+        o.innerHTML = '<b>' + r.value + '°</b> · ' + Math.round(Math.tan(a) * 100) + ' % · faîtage à ' + h.toFixed(1).replace('.', ',') + ' m';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
