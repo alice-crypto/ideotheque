@@ -158,4 +158,31 @@
       el.innerHTML = '<p>Dépense : <b>' + cost + ' €</b></p><div class="fx-rs">' + parts.map(function (p, i) { return '<i class="' + p[2] + '" style="--fx-q:' + p[1] / cost + ';--fx-i:' + i + '"></i>'; }).join('') + '</div><ul>' + parts.map(function (p) { return '<li class="' + p[2] + '"><span>' + p[0] + '</span><b>' + p[1] + ' €</b></li>'; }).join('') + '</ul>';
     }
   });
+
+  // Composer le foyer et voir la cotisation : le troisième enfant est offert
+  FX.register('family-builder', {
+    setup: function (el) {
+      var A = U.num(el, 'fxAdult', 42), C = U.num(el, 'fxChild', 18), n = { a: 1, c: 0 };
+      el.innerHTML = '<div class="fx-fb" aria-hidden="true"></div>' +
+        '<div class="fx-fb-r"><span>Adultes</span><button type="button" data-k="a" data-d="-1" aria-label="Retirer un adulte">−</button><b data-v="a"></b><button type="button" data-k="a" data-d="1" aria-label="Ajouter un adulte">+</button></div>' +
+        '<div class="fx-fb-r"><span>Enfants</span><button type="button" data-k="c" data-d="-1" aria-label="Retirer un enfant">−</button><b data-v="c"></b><button type="button" data-k="c" data-d="1" aria-label="Ajouter un enfant">+</button></div><output aria-live="polite"></output>';
+      var row = el.firstChild;
+      var go = function () {
+        el.querySelector('[data-v=a]').textContent = n.a;
+        el.querySelector('[data-v=c]').textContent = n.c;
+        el.querySelector('output').innerHTML = '<b>' + (n.a * A + Math.min(n.c, 2) * C) + ' €</b> par mois';
+        while (row.children.length > n.a + n.c) row.lastChild.remove();
+        for (var i = row.children.length; i < n.a + n.c; i++) U.make('i', '', row);
+        Array.prototype.forEach.call(row.children, function (p, i) { p.className = i < n.a ? 'fx-big' : ''; });
+      };
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('button');
+        if (!b) return;
+        var k = b.dataset.k, lo = k === 'a' ? 1 : 0, hi = k === 'a' ? 2 : 6;
+        n[k] = U.clamp(n[k] + +b.dataset.d, lo, hi);
+        go();
+      });
+      go();
+    }
+  });
 })(window.FX);
