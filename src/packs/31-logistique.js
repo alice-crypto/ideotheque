@@ -328,4 +328,17 @@
       el.innerHTML = '<div class="fx-er" aria-hidden="true"><em></em><i></i></div><p>Arrivée vers <b>' + f(c) + '</b><br>Entre ' + f(c - m) + ' et ' + f(c + m) + '</p>';
     }
   });
+
+  // Un relevé de température : la chaîne du froid a-t-elle tenu ?
+  FX.register('cold-chain', {
+    entrance: true,
+    setup: function (el) {
+      var d = (el.dataset.fxData || '3.1,3.4,3.8,4.2,5.9,7.1,5.4,4.0,3.6,3.2,3.5,3.3').split(',').map(Number), lo = U.num(el, 'fxLow', 2), hi = U.num(el, 'fxHigh', 6), step = U.num(el, 'fxStep', 30), a = Math.min.apply(null, d.concat(lo)) - 1, b = Math.max.apply(null, d.concat(hi)) + 1;
+      var Y = function (v) { return 80 - (v - a) / (b - a) * 76; }, out = d.filter(function (v) { return v < lo || v > hi; }).length;
+      var p = d.map(function (v, i) { return (i ? 'L' : 'M') + (i / (d.length - 1) * 200).toFixed(1) + ' ' + Y(v).toFixed(1); }).join('');
+      el.innerHTML = '<svg viewBox="0 0 200 84" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="' + Y(hi) + '" width="200" height="' + (Y(lo) - Y(hi)) + '"/><path pathLength="1" d="' + p + '"/>' + d.map(function (v, i) { return v < lo || v > hi ? '<circle cx="' + (i / (d.length - 1) * 200) + '" cy="' + Y(v) + '" r="3"/>' : ''; }).join('') + '</svg><p></p>';
+      el.classList.toggle('fx-bad', out > 0);
+      el.querySelector('p').textContent = out ? 'Hors plage pendant environ ' + out * step + ' min' : 'Plage respectée sur tout le trajet';
+    }
+  });
 })(window.FX);
