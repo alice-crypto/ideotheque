@@ -73,4 +73,23 @@
       go();
     }
   });
+
+  // Le coût d'énergie sur l'année : essence contre électrique
+  FX.register('fuel-vs-electric', {
+    setup: function (el) {
+      var L = U.num(el, 'fxLitre', 1.85), C = U.num(el, 'fxCons', 6.5), K = U.num(el, 'fxKwh', .21), E = U.num(el, 'fxElec', 17);
+      el.innerHTML = '<label>Km par an <b></b><input type="range" min="5000" max="40000" step="1000"></label><div class="fx-fe"><span>Essence</span><i class="a"></i><em data-a></em><span>Électrique</span><i class="b"></i><em data-b></em></div><output aria-live="polite"></output><small>Tarifs d\'exemple modifiables.</small>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxKm', 15000);
+      var go = function () {
+        var km = +r.value, a = km / 100 * C * L, b = km / 100 * E * K, m = function (v) { return Math.round(v).toLocaleString('fr-FR') + ' €'; };
+        el.querySelector('label b').textContent = km.toLocaleString('fr-FR');
+        el.querySelector('[data-a]').textContent = m(a); el.querySelector('[data-b]').textContent = m(b);
+        el.style.setProperty('--fx-a', Math.min(1, a / 3000)); el.style.setProperty('--fx-b', Math.min(1, b / 3000));
+        o.innerHTML = '<b>' + m(a - b) + '</b> d\'écart par an';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
