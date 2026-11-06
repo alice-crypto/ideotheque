@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="capsule-progress" data-fx-value="68"></div>',
     '<div data-fx="capsule-progress" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Rôle `progressbar` avec sa valeur, écrite aussi en toutes lettres.' }),
+  E('pill-tumble', 'État',
+    'Trois gélules font une culbute à tour de rôle pendant une attente.',
+    'Léger, l\'attente a un clin d\'œil de métier.',
+    '- `--fx-pill`, `--fx-accent`\n- `data-fx-label`',
+    'Chargement dans une boutique santé.',
+    'Une attente liée à une mauvaise nouvelle possible, comme un résultat médical.',
+    '<div data-fx="pill-tumble"></div>',
+    '<div data-fx="pill-tumble"></div>',
+    { a11y: 'Rôle `status` nommé. La bibliothèque coupe l\'animation en mouvement réduit.' }),
 ];
