@@ -6380,6 +6380,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="ingredient-lookup"] .fx-q .fx-hit { opacity: 1; background: var(--fx-mark, #ffd400); color: #111; }
 [data-fx="ingredient-lookup"] output { font-weight: 700; font-size: 12px; }
 
+/* pickup-code : un code de retrait */
+[data-fx="pickup-code"] { display: grid; justify-items: center; gap: 6px; text-align: center; font-size: 12px; perspective: 500px; }
+[data-fx="pickup-code"] .fx-pc { display: flex; gap: 5px; }
+[data-fx="pickup-code"] i { display: block; padding: 5px 9px; border-radius: 7px; background: var(--fx-accent); color: #fff; font-style: normal; font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums; animation: fx-pc .5s var(--fx-ease-out) calc(var(--fx-i) * 90ms) backwards; }
+[data-fx="pickup-code"] button { padding: 3px 12px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="pickup-code"] small { opacity: .8; }
+@keyframes fx-pc { from { transform: rotateX(-90deg); opacity: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

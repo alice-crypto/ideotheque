@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="ingredient-lookup">Aqua, Glycerin, Parfum</div>',
     '<div data-fx="ingredient-lookup" style="color:var(--ink)">Aqua, Glycerin, Cetearyl Alcohol, Shea Butter, Tocopherol, Parfum, Citric Acid, Sodium Benzoate</div>',
     { a11y: 'Champ nommé, résultat annoncé en mots.' }),
+  E('pickup-code', 'État',
+    'Un code de retrait s\'affiche en grand, avec sa date limite et un bouton pour le copier.',
+    'Facile à montrer au comptoir.',
+    '- `data-fx-code` (4821), `data-fx-days` (3)',
+    'Retrait en magasin, consignes, billets.',
+    'Un code qui donne seul accès à un médicament sans autre vérification.',
+    '<div data-fx="pickup-code" data-fx-code="4821"></div>',
+    '<div data-fx="pickup-code" style="color:var(--ink)"></div>',
+    { a11y: 'Code lu chiffre par chiffre grâce à `aria-label`, et le bouton est un vrai bouton.' }),
 ];

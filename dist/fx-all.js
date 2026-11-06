@@ -10594,6 +10594,21 @@
       });
     }
   });
+
+  // Un code de retrait qui reste facile à montrer, avec sa date limite
+  FX.register('pickup-code', {
+    setup: function (el) {
+      var c = el.dataset.fxCode || '4821', days = U.num(el, 'fxDays', 3), end = new Date(Date.now() + days * 86400000), h = '';
+      c.split('').forEach(function (d, i) { h += '<i style="--fx-i:' + i + '">' + d + '</i>'; });
+      el.innerHTML = '<small>Votre code de retrait</small><div class="fx-pc" aria-label="Code ' + c.split('').join(' ') + '">' + h + '</div><button type="button">Copier</button><small>À retirer avant le ' + end.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + '</small>';
+      var b = el.querySelector('button');
+      b.addEventListener('click', function () {
+        if (navigator.clipboard) navigator.clipboard.writeText(c).catch(function () {});
+        b.textContent = 'Copié';
+        setTimeout(function () { b.textContent = 'Copier'; }, 1400);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
