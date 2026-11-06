@@ -143,4 +143,16 @@
       set(0);
     }
   });
+
+  // Des phares qui s'allument et balaient le texte dans le noir
+  FX.register('headlight-sweep', {
+    setup: function (el) {
+      var t = el.innerHTML;
+      el.innerHTML = '<div class="fx-hl-t">' + t + '</div><div class="fx-hl-m" aria-hidden="true"></div><button type="button" aria-pressed="false">Allumer les phares</button>';
+      var b = el.querySelector('button');
+      b.addEventListener('click', function () { var o = !el.classList.contains('fx-on'); el.classList.toggle('fx-on', o); b.setAttribute('aria-pressed', o); b.textContent = o ? 'Éteindre les phares' : 'Allumer les phares'; });
+      el.addEventListener('pointermove', function (e) { var r = el.getBoundingClientRect(); el.style.setProperty('--fx-x', (e.clientX - r.left) + 'px'); el.style.setProperty('--fx-y', (e.clientY - r.top) + 'px'); });
+      U.ensurePositioned(el);
+    }
+  });
 })(window.FX);
