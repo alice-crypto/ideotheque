@@ -11310,6 +11310,16 @@
       if (t) { var s = U.make('strong', '', el); s.textContent = t; }
     }
   });
+
+  // Des arches emboîtées qu'on traverse en descendant la page
+  FX.register('arch-tunnel', {
+    setup: function (el) {
+      var n = U.num(el, 'fxCount', 7), box = U.make('div', 'fx-at', el);
+      box.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) { var a = U.make('i', '', box); a.style.setProperty('--fx-i', i / (n - 1)); a.style.zIndex = i; }
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-z', (info.pass * .9).toFixed(3)); }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -6786,6 +6786,12 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="brick-lay"] strong { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 26px; opacity: 0; transition: opacity .6s 1.5s; text-shadow: 0 2px 6px #0009; }
 .fx-in[data-fx="brick-lay"] strong { opacity: 1; }
 
+/* arch-tunnel : des arches à traverser */
+[data-fx="arch-tunnel"] { display: block; width: 100%; height: var(--fx-h, 170px); overflow: hidden; background: var(--fx-end, #ffe9b8); }
+[data-fx="arch-tunnel"] .fx-at { position: relative; height: 100%; transform: scale(calc(1 + var(--fx-z, 0))); transform-origin: 50% 62%; transition: transform .1s linear; }
+[data-fx="arch-tunnel"] i { position: absolute; left: 50%; bottom: 0; width: calc((1 - var(--fx-i) * .8) * 100%); height: calc((1 - var(--fx-i) * .78) * 100%); background: color-mix(in srgb, var(--fx-arch, #b5532e) calc(100% - var(--fx-i) * 60%), #2a1208); transform: translateX(-50%); border-radius: 999px 999px 0 0; }
+[data-fx="arch-tunnel"] i:last-child { background: var(--fx-end, #ffe9b8); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

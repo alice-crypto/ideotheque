@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="brick-lay" data-fx-text="Depuis 1964"></div>',
     '<div data-fx="brick-lay" data-fx-text="Depuis 1964"></div>',
     { trigger: 'Rejouer', a11y: 'Les briques sont décoratives et le texte reste un vrai texte.' }),
+  E('arch-tunnel', 'Défilement',
+    'Des arches emboîtées grandissent au fil du défilement, comme si l\'on avançait.',
+    'Avancer dans un cloître vers la lumière.',
+    '- `data-fx-count` (7), `--fx-h`, `--fx-arch`, `--fx-end`',
+    'Musées, hôtels, ouverture de page.',
+    'De poser un texte dessus sans vérifier le contraste, qui change avec les arches.',
+    '<div data-fx="arch-tunnel"></div>',
+    '<div data-fx="arch-tunnel" style="width:215px"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
 ];
