@@ -95,3 +95,13 @@
 [data-fx="thermostat-dial"] b { position: relative; color: #fff; font-size: 24px; }
 [data-fx="thermostat-dial"] .fx-td2-b { display: flex; gap: 6px; }
 [data-fx="thermostat-dial"] button { width: 30px; height: 30px; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font-size: 16px; cursor: pointer; }
+
+/* appliance-meter : un compteur et ses appareils */
+[data-fx="appliance-meter"] { display: grid; grid-template-columns: 76px 1fr; gap: 5px 8px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="appliance-meter"] .fx-am { align-self: center; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(#d9dde2 55%, #6b7078 56%); display: grid; place-items: center; overflow: hidden; }
+[data-fx="appliance-meter"] .fx-am i { width: 86%; height: 86%; border-radius: 50%; background: conic-gradient(#222 0 16deg, transparent 0), repeating-conic-gradient(#aab0b8 0 2deg, #e4e7ea 2deg 10deg); transform: rotate(var(--fx-a, 0deg)); }
+[data-fx="appliance-meter"] .fx-am-c { display: grid; gap: 1px; }
+[data-fx="appliance-meter"] label { display: flex; gap: 4px; align-items: center; cursor: pointer; }
+[data-fx="appliance-meter"] input { margin: 0; accent-color: var(--fx-accent); }
+[data-fx="appliance-meter"] output { grid-column: 1 / -1; }
+[data-fx="appliance-meter"] output b { font-size: 17px; }
