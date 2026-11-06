@@ -6245,6 +6245,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="rx-ready"].fx-ready output { background: var(--fx-ok, #2eaf63); color: #fff; animation: fx-rx .5s var(--fx-ease-spring); }
 @keyframes fx-rx { from { transform: scale(.85); } }
 
+/* led-cross : une croix en points lumineux */
+[data-fx="led-cross"] { display: inline-block; width: var(--fx-s, 150px); }
+[data-fx="led-cross"] .fx-lc { display: grid; grid-template-columns: repeat(15, 1fr); gap: 2px; }
+[data-fx="led-cross"] i { aspect-ratio: 1; border-radius: 50%; background: var(--fx-led, #2bff74); box-shadow: 0 0 5px var(--fx-led, #2bff74); opacity: .4; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="rx-ready" data-fx-step="1"></div>',
     '<div data-fx="rx-ready" data-fx-step="1" style="color:var(--ink)"></div>',
     { trigger: 'Avancer', a11y: 'Liste ordonnée, et chaque état est annoncé.' }),
+  E('led-cross', 'Ambiance',
+    'Une croix en points lumineux enchaîne ses animations comme une enseigne.',
+    'Reconnu de loin, un peu nocturne.',
+    '- `--fx-s` (150px), `--fx-led`\n- `data-fx-label`',
+    'Pharmacies, parapharmacie, tout signe lumineux.',
+    'Le clignotement rapide en fond : réservez-le à une zone petite et isolée.',
+    '<div data-fx="led-cross"></div>',
+    '<div data-fx="led-cross"></div>',
+    { a11y: 'Rôle `img`. Avec le mouvement réduit, la croix reste allumée et fixe.' }),
 ];

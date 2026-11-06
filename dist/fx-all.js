@@ -10352,6 +10352,29 @@
     },
     trigger: function (el) { el._fxN = (el._fxN + 1) % 3; el._fxSet(el._fxN); }
   });
+
+  // Une croix de pharmacie en points lumineux, avec ses animations d'enseigne
+  FX.register('led-cross', {
+    setup: function (el) {
+      var N = 15, a = 5, b = 10, cells = [], box = U.make('div', 'fx-lc', el);
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', el.dataset.fxLabel || 'Croix lumineuse');
+      for (var y = 0; y < N; y++) for (var x = 0; x < N; x++) {
+        var i = U.make('i', '', box), on = (x >= a && x < b) || (y >= a && y < b);
+        if (on) cells.push({ el: i, d: Math.hypot(x - 7, y - 7), a: Math.atan2(y - 7, x - 7) }); else i.style.visibility = 'hidden';
+      }
+      el._fxCells = cells;
+      if (U.reduced) cells.forEach(function (c) { c.el.style.opacity = 1; });
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      var mode = Math.floor(t / 4) % 3;
+      el._fxCells.forEach(function (c) {
+        var v = mode === 0 ? .5 + .5 * Math.sin(c.d * .9 - t * 4) : mode === 1 ? .5 + .5 * Math.sin(c.a * 2 + t * 3) : (Math.sin(t * 5) > 0 ? 1 : .15);
+        c.el.style.opacity = (.15 + v * .85).toFixed(2);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
