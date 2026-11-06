@@ -9764,6 +9764,28 @@
       go();
     }
   });
+
+  // Des verres à remplir d'un geste, jusqu'à l'objectif du jour
+  FX.register('hydration-glasses', {
+    setup: function (el) {
+      var goal = U.num(el, 'fxGoal', 8), key = el.dataset.fxKey, day = new Date().toDateString(), n = 0;
+      if (key) try { var o = JSON.parse(localStorage.getItem(key)); if (o && o.d === day) n = o.n; } catch (err) {}
+      var row = U.make('div', 'fx-hg', el), out = U.make('output', '', el);
+      out.setAttribute('aria-live', 'polite');
+      var show = function () {
+        Array.prototype.forEach.call(row.children, function (b, i) { b.classList.toggle('fx-on', i < n); b.setAttribute('aria-pressed', i < n); });
+        out.textContent = n >= goal ? 'Objectif atteint' : n + ' verres sur ' + goal;
+        if (key) try { localStorage.setItem(key, JSON.stringify({ d: day, n: n })); } catch (err) {}
+      };
+      for (var i = 0; i < goal; i++) (function (i) {
+        var b = U.make('button', '', row);
+        b.type = 'button'; b.setAttribute('aria-label', 'Verre ' + (i + 1));
+        U.make('i', '', b);
+        b.addEventListener('click', function () { n = n === i + 1 ? i : i + 1; show(); });
+      })(i);
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

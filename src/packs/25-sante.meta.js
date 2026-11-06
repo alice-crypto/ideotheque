@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="pain-scale" data-fx-value="3"></div>',
     '<div data-fx="pain-scale" style="color:var(--ink)"></div>',
     { a11y: 'Vrai curseur, niveau et mot annoncés ; le visage est décoratif.' }),
+  E('hydration-glasses', 'Micro-interaction',
+    'Des verres se remplissent d\'un geste jusqu\'à l\'objectif du jour.',
+    'Petit plaisir quotidien, on revient cocher.',
+    '- `data-fx-goal` (8), `data-fx-key` : mémorise la journée\n- `--fx-water`',
+    'Santé, bien-être, habitudes.',
+    'De présenter 8 verres comme une prescription : l\'objectif reste un exemple.',
+    '<div data-fx="hydration-glasses" data-fx-goal="8"></div>',
+    '<div data-fx="hydration-glasses" style="color:var(--ink)"></div>',
+    { a11y: 'Chaque verre est un bouton nommé, et le compte est annoncé.' }),
 ];

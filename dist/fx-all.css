@@ -5951,6 +5951,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="pain-scale"] input { width: 100%; accent-color: var(--fx-accent); }
 [data-fx="pain-scale"] b { font-size: 20px; }
 
+/* hydration-glasses : des verres à remplir */
+[data-fx="hydration-glasses"] { display: grid; gap: 6px; font-size: 13px; }
+[data-fx="hydration-glasses"] .fx-hg { display: flex; flex-wrap: wrap; gap: 4px; max-width: 200px; }
+[data-fx="hydration-glasses"] button { position: relative; width: 24px; height: 34px; padding: 0; border: 0; background: color-mix(in srgb, currentColor 22%, transparent); clip-path: polygon(0 0, 100% 0, 84% 100%, 16% 100%); cursor: pointer; overflow: hidden; }
+[data-fx="hydration-glasses"] i { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: var(--fx-water, #2d8cff); transition: height .45s var(--fx-ease-spring); }
+[data-fx="hydration-glasses"] .fx-on i { height: 86%; }
+[data-fx="hydration-glasses"] button:focus-visible { outline: 2px solid var(--fx-accent); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
