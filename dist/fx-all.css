@@ -8707,6 +8707,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="guest-steppers"] .fx-gs2 button:disabled { opacity: .25; cursor: not-allowed; }
 @keyframes fx-guest-open { from { opacity: 0; transform: translateY(-5px); } }
 
+/* price-calendar : un mois de prix */
+[data-fx="price-calendar"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 235px)); font-size: 10px; }
+[data-fx="price-calendar"] .fx-pc3 { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+[data-fx="price-calendar"] button { display: grid; padding: 1px 0; border: 0; background: hsl(var(--fx-h) 65% 32%); color: #fff; font: inherit; font-weight: 700; cursor: pointer; transition: transform .15s; }
+[data-fx="price-calendar"] button:hover { transform: scale(1.12); z-index: 1; }
+[data-fx="price-calendar"] small { font-size: 8px; font-weight: 400; opacity: .8; }
+[data-fx="price-calendar"] .fx-best { outline: 2px solid #fff; outline-offset: -2px; }
+[data-fx="price-calendar"] output { font-size: 12px; font-weight: 700; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

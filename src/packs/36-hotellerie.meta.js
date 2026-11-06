@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="guest-steppers"></div>',
     '<div data-fx="guest-steppers" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés, désactivés aux limites, valeurs annoncées.' }),
+  E('price-calendar', 'Présentation',
+    'Un mois de prix se colore du moins cher au plus cher, avec le meilleur jour entouré.',
+    'Décaler d\'un jour, et s\'offrir un dîner en plus.',
+    '- `data-fx-seed` (11) : génère les prix d\'exemple',
+    'Hôtels, trains, avions, locations.',
+    'Des prix inventés : reliez-les à vos vraies disponibilités.',
+    '<div data-fx="price-calendar" data-fx-seed="11"></div>',
+    '<div data-fx="price-calendar" style="color:var(--ink)"></div>',
+    { a11y: 'Chaque jour est un bouton nommé avec son prix, sans dépendre de la couleur.' }),
 ];

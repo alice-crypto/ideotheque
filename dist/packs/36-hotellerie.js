@@ -80,4 +80,26 @@
       show();
     }
   });
+
+  // Un mois de prix : du moins cher au plus cher, d'un coup d'œil
+  FX.register('price-calendar', {
+    setup: function (el) {
+      var seed = U.num(el, 'fxSeed', 11), R = function () { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }, start = new Date(), box = U.make('div', 'fx-pc3', el), o = U.make('output', '', el), A = [];
+      o.setAttribute('aria-live', 'polite');
+      for (var i = 0; i < 28; i++) {
+        var d = new Date(+start + i * 86400000), we = d.getDay() === 5 || d.getDay() === 6, p = Math.round(79 + R() * 70 + (we ? 45 : 0));
+        A.push({ d: d, p: p });
+      }
+      var lo = Math.min.apply(null, A.map(function (x) { return x.p; })), hi = Math.max.apply(null, A.map(function (x) { return x.p; }));
+      A.forEach(function (x) {
+        var c = U.make('button', x.p === lo ? 'fx-best' : '', box);
+        c.type = 'button';
+        c.style.setProperty('--fx-h', 130 - (x.p - lo) / (hi - lo) * 130);
+        c.innerHTML = '<small>' + x.d.getDate() + '</small>' + x.p;
+        c.setAttribute('aria-label', x.d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + ', ' + x.p + ' euros');
+        c.addEventListener('click', function () { o.textContent = x.d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }) + ' : ' + x.p + ' €'; });
+      });
+      o.textContent = 'Le moins cher : ' + lo + ' €. Prix fictifs.';
+    }
+  });
 })(window.FX);
