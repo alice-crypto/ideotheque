@@ -111,4 +111,13 @@ module.exports = [
     '<section data-fx="rivet-frame">…</section>',
     '<div data-fx="rivet-frame" style="width:190px;height:110px;display:grid;place-items:center;font-size:20px;font-weight:800">Acier S355</div>',
     { trigger: 'Rejouer', a11y: 'Les rivets sont décoratifs. Vérifiez le contraste du texte sur le métal.' }),
+  E('press-stamp', 'Micro-interaction',
+    'Maintenir un bouton fait descendre une presse, qui marque la pièce à fond de course.',
+    'On ressent le poids de la machine.',
+    '- `data-fx-force` (120), `data-fx-text` (CE)',
+    'Fabrication, jeux, confirmation d\'une action importante.',
+    'De reprendre un vrai marquage réglementé : le texte d\'exemple n\'a aucune valeur.',
+    '<div data-fx="press-stamp" data-fx-text="OK"></div>',
+    '<div data-fx="press-stamp" data-fx-text="OK" style="color:var(--ink)"></div>',
+    { trigger: 'Presser', a11y: 'Vrai bouton à maintenir, au clavier aussi. Force annoncée.' }),
 ];

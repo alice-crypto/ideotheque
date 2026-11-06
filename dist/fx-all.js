@@ -13558,6 +13558,28 @@
       U.onResize(build);
     }
   });
+
+  // Maintenir pour descendre la presse et marquer la pièce
+  FX.register('press-stamp', {
+    setup: function (el) {
+      var F = U.num(el, 'fxForce', 120), T = el.dataset.fxText || 'CE';
+      el.innerHTML = '<div class="fx-ps2" aria-hidden="true"><i></i><div><b>' + T + '</b></div></div><button type="button">Maintenir</button><output aria-live="polite"></output>';
+      var b = el.querySelector('button'), o = el.querySelector('output'), q = 0, hold = false;
+      el._fxTick = function (dt) {
+        q = U.clamp(q + (hold ? dt * .9 : -dt * .8), 0, 1);
+        el.style.setProperty('--fx-q', q);
+        if (q >= 1 && !el.classList.contains('fx-done')) { el.classList.add('fx-done'); o.textContent = 'Pièce marquée'; }
+        else if (q < 1 && hold) o.textContent = Math.round(q * F) + ' tonnes';
+      };
+      var on = function () { hold = true; el.classList.remove('fx-done'); }, off = function () { hold = false; };
+      b.addEventListener('pointerdown', on); b.addEventListener('pointerup', off); b.addEventListener('pointerleave', off);
+      b.addEventListener('keydown', function (e) { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); on(); } });
+      b.addEventListener('keyup', off);
+      el._fxOn = on; el._fxOff = off;
+    },
+    tick: function (el, dt) { el._fxTick(dt); },
+    trigger: function (el) { el._fxOn(); setTimeout(el._fxOff, 1300); }
+  });
 })(window.FX);
 
 window.FX._boot();
