@@ -273,4 +273,37 @@
       show();
     }
   });
+
+  // Une zone de signature : la validation s'ouvre quand le tracé est assez long
+  FX.register('signature-pad', {
+    setup: function (el) {
+      var c = U.make('canvas', '', el), row = U.make('div', 'fx-sg-r', el), clr = U.make('button', '', row), ok = U.make('button', 'fx-sg-ok', row), len = 0, last = null, x;
+      c.setAttribute('aria-label', 'Zone de signature, dessinez avec le pointeur');
+      clr.type = ok.type = 'button'; clr.textContent = 'Effacer'; ok.textContent = el.dataset.fxLabel || 'Signer'; ok.disabled = true;
+      var size = function () {
+        var r = c.getBoundingClientRect(), d = window.devicePixelRatio || 1;
+        c.width = r.width * d; c.height = r.height * d;
+        x = c.getContext('2d'); x.scale(d, d); x.lineWidth = 2; x.lineCap = 'round'; x.strokeStyle = getComputedStyle(el).color;
+        len = 0; ok.disabled = true;
+      };
+      var at = function (e) { var r = c.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+      c.addEventListener('pointerdown', function (e) { if (!x) size(); c.setPointerCapture && e.isTrusted && c.setPointerCapture(e.pointerId); last = at(e); });
+      c.addEventListener('pointermove', function (e) {
+        if (!last) return;
+        var p = at(e);
+        x.beginPath(); x.moveTo(last[0], last[1]); x.lineTo(p[0], p[1]); x.stroke();
+        len += Math.hypot(p[0] - last[0], p[1] - last[1]);
+        last = p;
+        ok.disabled = len < U.num(el, 'fxMin', 40);
+      });
+      ['pointerup', 'pointercancel'].forEach(function (t) { c.addEventListener(t, function () { last = null; }); });
+      clr.addEventListener('click', size);
+      ok.addEventListener('click', function () {
+        el.classList.add('fx-signed');
+        el.dispatchEvent(new CustomEvent('fx:signed', { bubbles: true, detail: { image: c.toDataURL() } }));
+      });
+      U.onResize(function () { if (!len) size(); });
+      size();
+    }
+  });
 })(window.FX);

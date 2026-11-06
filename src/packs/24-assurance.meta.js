@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="plan-quiz" data-fx-plans="Tiers,Confort"></div>',
     '<div data-fx="plan-quiz" style="color:var(--ink)"></div>',
     { a11y: 'Vrais boutons, et la conclusion est dans une région `status`.' }),
+  E('signature-pad', 'Micro-interaction',
+    'On signe au doigt ou à la souris, et la validation s\'ouvre quand le tracé est assez long.',
+    'Le geste du stylo, avec son poids.',
+    '- `data-fx-min` (40) : longueur minimale du tracé, en pixels\n- `data-fx-label`, `--fx-h`\n- événement `fx:signed` avec l\'image dans `detail.image`',
+    'Contrats, reçus de livraison, formulaires.',
+    'De croire qu\'un dessin vaut signature électronique qualifiée : le cadre légal reste à prévoir.',
+    '<div data-fx="signature-pad"></div>',
+    '<div data-fx="signature-pad" style="color:var(--ink)"></div>',
+    { a11y: 'Le tracé demande un pointeur : proposez toujours une autre façon de signer, au clavier.' }),
 ];

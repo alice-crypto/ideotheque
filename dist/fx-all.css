@@ -5800,6 +5800,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="plan-quiz"] .fx-pq-p { height: 3px; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 0 / calc(var(--fx-q, 0) * 100%) 100%, color-mix(in srgb, currentColor 16%, transparent); transition: background-size .3s; }
 @keyframes fx-pq { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
 
+/* signature-pad : une zone de signature */
+[data-fx="signature-pad"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="signature-pad"] canvas { display: block; width: 100%; height: var(--fx-h, 90px); border: 1px solid currentColor; border-radius: 6px; background: linear-gradient(transparent 72%, currentColor 72% calc(72% + 1px), transparent 0) no-repeat; background-size: 86% 100%; background-position: center; cursor: crosshair; touch-action: none; }
+[data-fx="signature-pad"] .fx-sg-r { display: flex; justify-content: space-between; }
+[data-fx="signature-pad"] button { padding: 4px 10px; border: 1px solid currentColor; border-radius: 6px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="signature-pad"] .fx-sg-ok { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="signature-pad"] button:disabled { opacity: .4; cursor: not-allowed; }
+[data-fx="signature-pad"].fx-signed canvas { border-color: var(--fx-ok, #2eaf63); box-shadow: 0 0 0 3px color-mix(in srgb, var(--fx-ok, #2eaf63) 30%, transparent); transition: box-shadow .3s; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
