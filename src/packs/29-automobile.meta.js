@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="range-conditions" data-fx-range="420"></div>',
     '<div data-fx="range-conditions" style="color:var(--ink)"></div>',
     { a11y: 'Curseurs étiquetés, résultat annoncé.' }),
+  E('charge-time', 'Micro-interaction',
+    'Le type de borne et le niveau visé donnent le temps de recharge, ralenti après 80 %.',
+    'On comprend qu\'une recharge ne se pense pas comme un plein.',
+    '- `data-fx-battery` (60) : capacité en kWh',
+    'Constructeurs, bornes, maison connectée.',
+    'Des chiffres précis : la courbe réelle dépend du véhicule et de la température.',
+    '<div data-fx="charge-time" data-fx-battery="60"></div>',
+    '<div data-fx="charge-time" style="color:var(--ink)"></div>',
+    { a11y: 'Groupe radio nommé, curseur nommé, résultat annoncé.' }),
 ];
