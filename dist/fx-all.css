@@ -6438,6 +6438,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 .fx-in[data-fx="energy-label"] b { opacity: 1; }
 [data-fx="energy-label"] .fx-on span { outline: 2px solid var(--fx-c); outline-offset: 1px; }
 
+/* walk-score : le quartier à pied */
+[data-fx="walk-score"] { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="walk-score"] .fx-ws-s { width: 54px; height: 54px; display: grid; place-content: center; border-radius: 50%; border: 3px solid var(--fx-accent); text-align: center; line-height: 1; }
+[data-fx="walk-score"] .fx-ws-s b { font-size: 20px; }
+[data-fx="walk-score"] ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+[data-fx="walk-score"] li { display: grid; grid-template-columns: 66px 1fr 36px; gap: 4px; align-items: center; }
+[data-fx="walk-score"] li i { height: 6px; width: 0; background: var(--fx-accent); border-radius: 3px; transition: width .7s var(--fx-ease-out) calc(var(--fx-i) * 90ms); }
+.fx-in[data-fx="walk-score"] li i { width: calc(var(--fx-q) * 100%); }
+[data-fx="walk-score"] li b { text-align: right; font-weight: 600; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

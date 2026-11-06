@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="energy-label" data-fx-value="210"></div>',
     '<div data-fx="energy-label" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Rôle `img`, avec la classe et la valeur écrites dans `aria-label`.' }),
+  E('walk-score', 'Présentation',
+    'Un score de quartier s\'accompagne des temps de marche vers l\'essentiel.',
+    'On imagine sa vie quotidienne là-bas.',
+    '- `data-fx-items` : « lieu:minutes » séparés par `|`',
+    'Annonces, hôtels, promoteurs.',
+    'De cacher le calcul : ce score maison n\'est pas une norme, et il est mieux de l\'expliquer.',
+    '<div data-fx="walk-score" data-fx-items="École:6|Métro:9"></div>',
+    '<div data-fx="walk-score" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Liste avec les durées écrites.' }),
 ];

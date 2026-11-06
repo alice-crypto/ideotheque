@@ -76,4 +76,16 @@
       el.innerHTML = h;
     }
   });
+
+  // Le quartier résumé : à combien de minutes à pied se trouve l'essentiel
+  FX.register('walk-score', {
+    entrance: true,
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'École:6|Boulangerie:3|Métro:9|Parc:12|Médecin:15').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1]]; }), max = 20;
+      var score = Math.round(rows.reduce(function (t, r) { return t + Math.max(0, 1 - r[1] / max); }, 0) / rows.length * 100);
+      var h = '<div class="fx-ws-s"><b>' + score + '</b><small>/100</small></div><ul>';
+      rows.sort(function (a, b) { return a[1] - b[1]; }).forEach(function (r, i) { h += '<li style="--fx-q:' + (1 - r[1] / max) + ';--fx-i:' + i + '"><span>' + r[0] + '</span><i></i><b>' + r[1] + ' min</b></li>'; });
+      el.innerHTML = h + '</ul>';
+    }
+  });
 })(window.FX);
