@@ -10219,6 +10219,22 @@
       go();
     }
   });
+
+  // Un pilulier de la semaine dont on ouvre les couvercles
+  FX.register('pill-organizer', {
+    setup: function (el) {
+      var L = ['L', 'M', 'M', 'J', 'V', 'S', 'D'], N = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'], today = (new Date().getDay() + 6) % 7, row = U.make('div', 'fx-po', el), out = U.make('output', '', el);
+      out.setAttribute('aria-live', 'polite');
+      var go = function () { out.textContent = row.querySelectorAll('[aria-pressed=true]').length + ' jours pris cette semaine'; };
+      L.forEach(function (d, i) {
+        var b = U.make('button', i === today ? 'fx-now' : '', row);
+        b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', N[i] + (i === today ? ", aujourd'hui" : ''));
+        b.innerHTML = '<u aria-hidden="true"></u><i aria-hidden="true"></i><span>' + d + '</span>';
+        b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); go(); });
+      });
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

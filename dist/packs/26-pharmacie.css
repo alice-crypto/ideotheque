@@ -8,3 +8,15 @@
 [data-fx="dose-grid"] input:checked { background: var(--fx-accent); border-color: var(--fx-accent); transform: scale(1.12); }
 [data-fx="dose-grid"] input:focus-visible { outline: 2px solid var(--fx-accent); outline-offset: 2px; }
 [data-fx="dose-grid"] output { font-weight: 700; }
+
+/* pill-organizer : un pilulier de la semaine */
+[data-fx="pill-organizer"] { display: grid; gap: 8px; justify-items: center; font-size: 12px; }
+[data-fx="pill-organizer"] .fx-po { display: flex; gap: 3px; perspective: 400px; }
+[data-fx="pill-organizer"] button { position: relative; width: 30px; height: 46px; padding: 0; border: 1px solid currentColor; border-radius: 6px; background: color-mix(in srgb, currentColor 8%, transparent); color: inherit; cursor: pointer; }
+[data-fx="pill-organizer"] .fx-now { box-shadow: 0 0 0 2px var(--fx-accent); }
+[data-fx="pill-organizer"] u { position: absolute; left: 7px; top: 16px; width: 14px; height: 8px; border-radius: 4px; background: var(--fx-accent); transition: opacity .3s .15s, transform .3s .15s; }
+[data-fx="pill-organizer"] [aria-pressed="true"] u { opacity: 0; transform: translateY(-8px); }
+[data-fx="pill-organizer"] i { position: absolute; inset: -1px; border-radius: 6px; background: var(--fx-lid, #6c7a89); transform-origin: 50% 0; transition: transform .45s var(--fx-ease-spring); backface-visibility: hidden; }
+[data-fx="pill-organizer"] [aria-pressed="true"] i { transform: rotateX(120deg); }
+[data-fx="pill-organizer"] span { position: absolute; left: 0; right: 0; bottom: 3px; color: #fff; font-weight: 700; font-size: 11px; transition: opacity .2s; }
+[data-fx="pill-organizer"] [aria-pressed="true"] span { color: inherit; }

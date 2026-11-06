@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="dose-grid" data-fx-days="Lun,Mar"></div>',
     '<div data-fx="dose-grid" style="color:var(--ink)"></div>',
     { a11y: 'Vraies cases nommées par moment et par jour.' }),
+  E('pill-organizer', 'Micro-interaction',
+    'Un pilulier montre la semaine, on ouvre les couvercles et la pilule du jour disparaît.',
+    'Le geste du quotidien, à l\'écran.',
+    '- `--fx-lid` : couleur des couvercles\n- `--fx-accent` : pilule et repère du jour',
+    'Suivi de traitement, routines hebdomadaires.',
+    'D\'en faire un dispositif médical : c\'est un aide-mémoire.',
+    '<div data-fx="pill-organizer"></div>',
+    '<div data-fx="pill-organizer" style="color:var(--ink)"></div>',
+    { a11y: 'Chaque jour est un bouton nommé, et le compte est annoncé.' }),
 ];
