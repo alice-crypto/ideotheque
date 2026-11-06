@@ -9236,6 +9236,30 @@
       pick(U.num(el, 'fxPick', 1));
     }
   });
+
+  // Un bouclier dont chaque secteur est un risque couvert
+  FX.register('peril-shield', {
+    entrance: true,
+    setup: function (el) {
+      var items = (el.dataset.fxItems || 'Incendie,Vol,Dégât des eaux,Tempête,Bris de glace,Catastrophe').split(','), n = items.length, id = 'fxps' + Math.floor(U.rand(1e4, 1e5));
+      var s = '<svg viewBox="0 0 100 116" aria-hidden="true"><defs><clipPath id="' + id + '"><path d="M50 2 94 16V56C94 84 74 104 50 114 26 104 6 84 6 56V16Z"/></clipPath></defs><g clip-path="url(#' + id + ')">';
+      for (var i = 0; i < n; i++) {
+        var a = (i / n) * 6.283 - 1.571, b = ((i + 1) / n) * 6.283 - 1.571;
+        s += '<path d="M50 58L' + (50 + 110 * Math.cos(a)).toFixed(1) + ' ' + (58 + 110 * Math.sin(a)).toFixed(1) + 'L' + (50 + 110 * Math.cos(b)).toFixed(1) + ' ' + (58 + 110 * Math.sin(b)).toFixed(1) + 'Z" style="--fx-i:' + i + '"/>';
+      }
+      s += '</g><path class="fx-o" d="M50 2 94 16V56C94 84 74 104 50 114 26 104 6 84 6 56V16Z"/></svg><div class="fx-pl"></div><output aria-live="polite"></output>';
+      el.innerHTML = s;
+      var segs = el.querySelectorAll('svg g path'), list = el.querySelector('.fx-pl'), out = el.querySelector('output');
+      items.forEach(function (t, i) {
+        var l = U.make('label', '', list), c = U.make('input', '', l);
+        c.type = 'checkbox'; c.checked = i < (U.num(el, 'fxOn', 4));
+        l.appendChild(document.createTextNode(t));
+        var up = function () { segs[i].classList.toggle('fx-on', c.checked); out.textContent = list.querySelectorAll(':checked').length + ' risques sur ' + n; };
+        c.addEventListener('change', up);
+        up();
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

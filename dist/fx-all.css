@@ -5690,6 +5690,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="coverage-matrix"] i { font-style: normal; font-weight: 700; }
 [data-fx="coverage-matrix"] .fx-sr { position: absolute; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; }
 
+/* peril-shield : un bouclier de garanties */
+[data-fx="peril-shield"] { display: grid; grid-template-columns: var(--fx-s, 84px) 1fr; gap: 2px 10px; align-items: center; width: min(100%, 240px); font-size: 11px; }
+[data-fx="peril-shield"] svg { display: block; width: 100%; grid-row: span 2; }
+[data-fx="peril-shield"] svg g path { fill: color-mix(in srgb, currentColor 10%, transparent); stroke: var(--fx-bg, #0004); stroke-width: 1; transition: fill .4s; }
+.fx-in[data-fx="peril-shield"] svg g path.fx-on { fill: var(--fx-accent); transition-delay: calc(var(--fx-i) * 90ms); }
+[data-fx="peril-shield"] .fx-o { fill: none; stroke: currentColor; stroke-width: 3; }
+[data-fx="peril-shield"] label { display: flex; gap: 4px; align-items: center; }
+[data-fx="peril-shield"] input { margin: 0; accent-color: var(--fx-accent); }
+[data-fx="peril-shield"] output { font-weight: 700; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

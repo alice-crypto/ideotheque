@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="coverage-matrix" data-fx-plans="Tiers,Confort" data-fx-items="Vol:0,1"></div>',
     '<div data-fx="coverage-matrix" style="color:var(--ink)"></div>',
     { a11y: 'Vrai tableau avec en-têtes, boutons `aria-pressed`, et chaque marque est nommée.' }),
+  E('peril-shield', 'Présentation',
+    'Un bouclier s\'allume secteur par secteur selon les risques cochés.',
+    'Rassurant, la protection se voit d\'un coup d\'œil.',
+    '- `data-fx-items` : risques séparés par des virgules\n- `data-fx-on` (4) : risques cochés au départ\n- `--fx-s` (84px) : taille du bouclier',
+    'Assurance habitation, antivirus, garanties d\'un produit.',
+    'De laisser croire à une protection totale : les exclusions doivent rester visibles ailleurs.',
+    '<div data-fx="peril-shield" data-fx-items="Incendie,Vol,Tempête" data-fx-on="2"></div>',
+    '<div data-fx="peril-shield" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le dessin est décoratif : les cases à cocher et le compte annoncé portent l\'information.' }),
 ];
