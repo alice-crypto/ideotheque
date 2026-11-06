@@ -6915,6 +6915,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="fuel-vs-electric"] output b { font-size: 18px; }
 [data-fx="fuel-vs-electric"] small { font-size: 10px; opacity: .7; }
 
+/* rev-meter : un compte-tours */
+[data-fx="rev-meter"] { display: grid; justify-items: center; gap: 4px; width: var(--fx-w, 170px); font-size: 13px; }
+[data-fx="rev-meter"] svg { width: 100%; overflow: visible; }
+[data-fx="rev-meter"] path { fill: none; stroke-width: 7; }
+[data-fx="rev-meter"] .fx-rv-b { stroke: color-mix(in srgb, currentColor 25%, transparent); }
+[data-fx="rev-meter"] .fx-rv-r { stroke: var(--fx-down, #e10600); }
+[data-fx="rev-meter"] .fx-rv-n { stroke: var(--fx-accent); stroke-width: 3; stroke-linecap: round; transform-origin: 60px 70px; transform: rotate(var(--fx-a, -75deg)); }
+[data-fx="rev-meter"] output { font-weight: 800; font-variant-numeric: tabular-nums; }
+[data-fx="rev-meter"].fx-red output { color: var(--fx-down, #e10600); }
+[data-fx="rev-meter"] button { padding: 6px 14px; border: 0; border-radius: 99px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; touch-action: none; user-select: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

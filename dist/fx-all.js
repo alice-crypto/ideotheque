@@ -11562,6 +11562,31 @@
       go();
     }
   });
+
+  // Un compte-tours qu'on fait monter en maintenant le bouton
+  FX.register('rev-meter', {
+    setup: function (el) {
+      el.innerHTML = '<svg viewBox="0 0 120 80" aria-hidden="true"><path class="fx-rv-b" pathLength="1" d="M12 70A52 52 0 0 1 108 70"/><path class="fx-rv-r" pathLength="1" d="M92 26A52 52 0 0 1 108 70"/><line class="fx-rv-n" x1="60" y1="70" x2="60" y2="24"/></svg><output></output><button type="button">Accélérer</button>';
+      var b = el.querySelector('button'), o = el.querySelector('output');
+      el._fxR = 800; el._fxHold = false;
+      b.addEventListener('pointerdown', function () { el._fxHold = true; });
+      ['pointerup', 'pointerleave', 'blur'].forEach(function (t) { b.addEventListener(t, function () { el._fxHold = false; }); });
+      b.addEventListener('keydown', function (e) { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); el._fxHold = true; } });
+      b.addEventListener('keyup', function () { el._fxHold = false; });
+      el._fxO = o;
+    },
+    tick: function (el, dt) {
+      var top = U.num(el, 'fxMax', 8000), r = el._fxR;
+      r += el._fxHold ? 4200 * dt : -2600 * dt;
+      r = U.clamp(r, 800, top);
+      if (r >= top * .985) r -= U.rand(150, 500);
+      el._fxR = r;
+      el.style.setProperty('--fx-a', ((r / top) * 150 - 75).toFixed(1) + 'deg');
+      el._fxO.textContent = Math.round(r / 50) * 50 + ' tr/min';
+      el.classList.toggle('fx-red', r > top * .8);
+    },
+    trigger: function (el) { el._fxR = 7600; }
+  });
 })(window.FX);
 
 window.FX._boot();

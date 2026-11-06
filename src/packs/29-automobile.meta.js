@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="fuel-vs-electric" data-fx-km="15000"></div>',
     '<div data-fx="fuel-vs-electric" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, montants écrits et annoncés.' }),
+  E('rev-meter', 'Micro-interaction',
+    'Maintenir le bouton fait monter l\'aiguille jusqu\'à la zone rouge, où le rupteur coupe.',
+    'Le plaisir du moteur, sans le bruit.',
+    '- `data-fx-max` (8000)',
+    'Voitures sportives, jeux, sites de passion.',
+    'Un site à l\'image responsable : le message serait malvenu.',
+    '<div data-fx="rev-meter" data-fx-max="8000"></div>',
+    '<div data-fx="rev-meter" style="color:var(--ink)"></div>',
+    { trigger: 'Faire monter', a11y: 'Vrai bouton, actionnable en maintenant Espace ou Entrée.' }),
 ];

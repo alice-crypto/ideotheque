@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->654<!-- /total --> effets.
+La bibliothèque contient <!-- total -->655<!-- /total --> effets.
 
 ## Règles
 
@@ -377,6 +377,7 @@ La bibliothèque contient <!-- total -->654<!-- /total --> effets.
 | `car-colorizer` | Micro-interaction | Des pastilles repeignent la voiture, et le prix suit la peinture choisie |
 | `range-conditions` | Micro-interaction | Température et vitesse font varier l'autonomie réelle d'un véhicule électrique |
 | `charge-time` | Micro-interaction | Le type de borne et le niveau visé donnent le temps de recharge, ralenti après 80 % |
+| `rev-meter` | Micro-interaction | Maintenir le bouton fait monter l'aiguille jusqu'à la zone rouge, où le rupteur coupe |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
