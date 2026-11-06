@@ -286,4 +286,15 @@
       U.make('small', '', el).textContent = 'Prévisions fictives';
     }
   });
+
+  // Des degrés qui s'accumulent jusqu'à la récolte
+  FX.register('degree-days', {
+    entrance: true,
+    setup: function (el) {
+      var base = U.num(el, 'fxBase', 10), need = U.num(el, 'fxNeed', 2200), D = (el.dataset.fxData || '14,17,20,23,24,26,27,26,24,20').split(',').map(Number), per = 15, tot = 0, h = '';
+      D.forEach(function (t, i) { var g = Math.max(0, t - base) * per; tot += g; h += '<i style="--fx-q:' + Math.min(1, tot / need) + ';--fx-i:' + i + '"></i>'; });
+      var last = Math.max(1, D[D.length - 1] - base), left = Math.max(0, need - tot), d = new Date(Date.now() + left / last * 86400000);
+      el.innerHTML = '<div class="fx-dd2" aria-hidden="true">' + h + '</div><p><b>' + Math.round(tot) + '</b> degrés-jours sur ' + need + '<br>' + (left ? 'Récolte estimée vers le ' + d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }) : 'Maturité atteinte') + '</p>';
+    }
+  });
 })(window.FX);
