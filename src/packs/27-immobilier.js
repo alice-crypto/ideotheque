@@ -263,4 +263,23 @@
       el.innerHTML = '<div class="fx-ku"><span class="fx-ku-m">' + msg + '</span><div class="fx-ku-d" aria-hidden="true"><i class="fx-ku-h"></i><svg class="fx-ku-k" viewBox="0 0 60 20"><circle cx="9" cy="10" r="7"/><circle cx="9" cy="10" r="3"/><path d="M16 10H56V15H52V12H47V15H43V12H16Z"/></svg></div></div>';
     }
   });
+
+  // Une façade dont les fenêtres s'allument selon l'heure du jour
+  FX.register('facade-windows', {
+    setup: function (el) {
+      var c = U.num(el, 'fxCols', 8), r = U.num(el, 'fxRows', 6), g = U.make('div', 'fx-fw', el);
+      g.style.setProperty('--fx-c', c);
+      el.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < c * r; i++) U.make('i', '', g);
+      var h = new Date().getHours(), p = h >= 22 || h < 6 ? .15 : h >= 18 ? .65 : .25;
+      el._fxW = g.children; el._fxP = U.num(el, 'fxDensity', p); el._fxNext = 0;
+      Array.prototype.forEach.call(g.children, function (w) { w.classList.toggle('fx-on', Math.random() < el._fxP); });
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced || t < el._fxNext) return;
+      el._fxNext = t + U.rand(.25, .8);
+      var w = el._fxW[Math.floor(Math.random() * el._fxW.length)];
+      w.classList.toggle('fx-on', Math.random() < el._fxP);
+    }
+  });
 })(window.FX);
