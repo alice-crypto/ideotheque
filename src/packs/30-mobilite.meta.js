@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="transit-ticket" data-fx-minutes="90"></div>',
     '<div data-fx="transit-ticket" style="color:var(--ink)"></div>',
     { trigger: 'Activer', a11y: 'Vrai bouton, validité écrite.' }),
+  E('ride-timer', 'État',
+    'Un compteur affiche le temps de trajet et son coût, en direct.',
+    'Clair, on sait ce que chaque minute coûte.',
+    '- `data-fx-unlock` (1), `data-fx-rate` (0.2)',
+    'Vélos, trottinettes, parkings, locations courtes.',
+    'Un chrono côté navigateur pour une vraie facture : le serveur doit faire foi.',
+    '<div data-fx="ride-timer" data-fx-rate="0.2"></div>',
+    '<div data-fx="ride-timer" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai bouton ; temps et prix écrits.' }),
 ];

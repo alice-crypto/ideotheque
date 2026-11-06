@@ -12045,6 +12045,26 @@
     },
     trigger: function (el) { el.querySelector('button').click(); }
   });
+
+  // Un trajet en cours : le temps et le montant avancent ensemble
+  FX.register('ride-timer', {
+    setup: function (el) {
+      var unlock = U.num(el, 'fxUnlock', 1), rate = U.num(el, 'fxRate', .2), start = 0, stop = 0, iv;
+      el.innerHTML = '<div class="fx-rdt"><b class="t">0:00</b><b class="p"></b></div><button type="button">Démarrer</button>';
+      var t = el.querySelector('.t'), p = el.querySelector('.p'), b = el.querySelector('button');
+      var show = function () {
+        var s = Math.floor(((stop || Date.now()) - start) / 1000) * (start ? 1 : 0), m = Math.ceil(s / 60);
+        t.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+        p.textContent = (start ? (unlock + m * rate) : 0).toFixed(2).replace('.', ',') + ' €';
+      };
+      b.addEventListener('click', function () {
+        if (!start || stop) { start = Date.now(); stop = 0; iv = setInterval(show, 1000); b.textContent = 'Terminer'; el.classList.add('fx-go'); }
+        else { stop = Date.now(); clearInterval(iv); b.textContent = 'Nouveau trajet'; el.classList.remove('fx-go'); }
+        show();
+      });
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

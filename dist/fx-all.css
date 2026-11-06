@@ -7185,6 +7185,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="transit-ticket"] button:disabled { opacity: .6; cursor: default; }
 @keyframes fx-tk2 { to { background-position-x: 20px; } }
 
+/* ride-timer : un trajet en cours */
+[data-fx="ride-timer"] { display: grid; gap: 8px; justify-items: center; font-size: 12px; }
+[data-fx="ride-timer"] .fx-rdt { display: flex; gap: 14px; align-items: baseline; font-variant-numeric: tabular-nums; }
+[data-fx="ride-timer"] .t { font-size: 34px; }
+[data-fx="ride-timer"] .p { font-size: 18px; }
+[data-fx="ride-timer"].fx-go .t { color: var(--fx-up, #2eaf63); }
+[data-fx="ride-timer"] button { padding: 7px 16px; border: 0; border-radius: 99px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+[data-fx="ride-timer"].fx-go button { background: var(--fx-down, #e10600); animation: fx-rt .7s; }
+@keyframes fx-rt { from { transform: scale(.9); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
