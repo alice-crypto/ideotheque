@@ -1,0 +1,11 @@
+/* Pack 35 — Restauration */
+
+/* menu-diet-filter : une carte selon son régime */
+[data-fx="menu-diet-filter"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 235px)); font-size: 12px; }
+[data-fx="menu-diet-filter"] .fx-mf { display: flex; flex-wrap: wrap; gap: 3px; }
+[data-fx="menu-diet-filter"] button { padding: 2px 8px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; font-size: 10px; cursor: pointer; }
+[data-fx="menu-diet-filter"] [aria-pressed="true"] { background: var(--fx-up, #2eaf63); color: #fff; border-color: transparent; }
+[data-fx="menu-diet-filter"] ul { margin: 0; padding: 0; list-style: none; }
+[data-fx="menu-diet-filter"] li { display: flex; justify-content: space-between; gap: 8px; max-height: 24px; padding: 2px 0; overflow: hidden; transition: max-height .3s, opacity .25s, padding .3s; }
+[data-fx="menu-diet-filter"] .fx-off { max-height: 0; opacity: 0; padding: 0; }
+[data-fx="menu-diet-filter"] output { opacity: .75; }

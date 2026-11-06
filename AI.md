@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->799<!-- /total --> effets.
+La bibliothèque contient <!-- total -->800<!-- /total --> effets.
 
 ## Règles
 
@@ -488,6 +488,7 @@ La bibliothèque contient <!-- total -->799<!-- /total --> effets.
 | `seed-packet` | Micro-interaction | Un sachet de graines se retourne pour montrer ses conseils de culture |
 | `npk-triangle` | Micro-interaction | Trois curseurs placent un engrais dans un triangle, et donnent son effet dominant |
 | `tree-rings` | Micro-interaction | Un curseur d'âge ajoute des cernes à un tronc, et signale les années sèches |
+| `menu-diet-filter` | Micro-interaction | Des filtres de régime retirent les plats incompatibles, et le compte s'écrit |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
