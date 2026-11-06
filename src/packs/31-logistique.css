@@ -217,3 +217,10 @@
 [data-fx="drone-drop"] .fx-dd-r { right: 0; }
 @keyframes fx-drone-path { 0% { transform: translateY(-40px); } 40%, 60% { transform: translateY(22px); } 100% { transform: translateY(-50px); } }
 @keyframes fx-drone-prop { to { transform: scaleX(.3); } }
+
+/* tracking-detect : reconnaître le format */
+[data-fx="tracking-detect"] { display: grid; gap: 4px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="tracking-detect"] input { padding: 7px; font: 700 13px ui-monospace, monospace; }
+[data-fx="tracking-detect"] .fx-td { min-height: 22px; }
+[data-fx="tracking-detect"].fx-hit .fx-td { display: inline-block; justify-self: start; padding: 2px 9px; border-radius: 99px; background: var(--fx-ok, #2eaf63); color: #fff; font-weight: 700; animation: fx-tracking-pop .3s var(--fx-ease-spring); }
+@keyframes fx-tracking-pop { from { transform: translateY(-5px) scale(.9); } }
