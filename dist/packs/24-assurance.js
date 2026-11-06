@@ -399,4 +399,26 @@
       el.style.setProperty('--fx-rot', U.rand(-1, 1) + 'deg');
     }
   });
+
+  // Un mot technique souligné qui donne sa définition au clic
+  FX.register('glossary-tip', {
+    setup: function (el) {
+      var open = null, close = function () { if (open) { open.setAttribute('aria-expanded', 'false'); open = null; } };
+      el.querySelectorAll('[data-def]').forEach(function (w) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.textContent = w.textContent; b.setAttribute('aria-expanded', 'false');
+        var d = document.createElement('span');
+        d.className = 'fx-gt'; d.setAttribute('role', 'note'); d.textContent = w.dataset.def;
+        w.textContent = ''; w.appendChild(b); w.appendChild(d);
+        b.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var was = open === b;
+          close();
+          if (!was) { b.setAttribute('aria-expanded', 'true'); open = b; }
+        });
+      });
+      document.addEventListener('click', close);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    }
+  });
 })(window.FX);

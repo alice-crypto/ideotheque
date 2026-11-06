@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="attestation-card" data-fx-number="FICTIF-0042" data-fx-until="2027-12-31"></div>',
     '<div data-fx="attestation-card" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le motif est décoratif : numéro et validité sont écrits.' }),
+  E('glossary-tip', 'Micro-interaction',
+    'Les mots techniques d\'un texte s\'ouvrent sur leur définition, un à la fois.',
+    'On apprend sans quitter sa lecture.',
+    '- `data-def` sur chaque mot : sa définition\n- `--fx-w` (180px), `--fx-tip`',
+    'Contrats, finance, santé, droit, documentation.',
+    'Une définition cachée indispensable : les notions clés doivent rester écrites.',
+    '<p data-fx="glossary-tip">La <span data-def="Ce qui reste à votre charge.">franchise</span> s\'applique.</p>',
+    '<p data-fx="glossary-tip" style="margin:0 0 70px;width:215px;color:var(--ink);font-size:14px">La <span data-def="Somme qui reste à votre charge après un sinistre.">franchise</span> s\'applique après le <span data-def="Délai avant que la garantie ne commence.">délai de carence</span>.</p>',
+    { a11y: 'Vrais boutons avec `aria-expanded`, fermeture par Échap.' }),
 ];
