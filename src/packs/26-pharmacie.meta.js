@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="pill-tumble"></div>',
     '<div data-fx="pill-tumble"></div>',
     { a11y: 'Rôle `status` nommé. La bibliothèque coupe l\'animation en mouvement réduit.' }),
+  E('blister-pop', 'Micro-interaction',
+    'Une plaquette laisse sortir ses comprimés un par un, et le compte descend.',
+    'Le plaisir du papier bulle.',
+    '- `data-fx-count` (10), `--fx-pill`',
+    'Illustration de marque, suivi de boîte, compte à rebours ludique.',
+    'Un public jeune : ne rendez pas la prise de médicaments ludique pour les enfants.',
+    '<div data-fx="blister-pop" data-fx-count="10"></div>',
+    '<div data-fx="blister-pop"></div>',
+    { a11y: 'Boutons nommés, désactivés après usage, et compte annoncé.' }),
 ];
