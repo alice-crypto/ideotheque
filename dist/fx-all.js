@@ -13539,6 +13539,25 @@
     tick: function (el, dt) { if (el._fxDraw && !U.reduced) el._fxDraw(dt); },
     trigger: function (el) { el._fxQ = 0; }
   });
+
+  // Une plaque d'acier dont les rivets se posent un à un
+  FX.register('rivet-frame', {
+    entrance: true,
+    setup: function (el) {
+      var build = function () {
+        el.querySelectorAll('.fx-rvt').forEach(function (r) { r.remove(); });
+        var r = el.getBoundingClientRect(), gap = U.num(el, 'fxGap', 34), nx = Math.max(2, Math.round(r.width / gap)), ny = Math.max(2, Math.round(r.height / gap)), k = 0;
+        var add = function (x, y) { var i = U.make('i', 'fx-rvt', el); i.setAttribute('aria-hidden', 'true'); i.style.cssText = 'left:' + x + '%;top:' + y + '%;--fx-i:' + k++; };
+        for (var a = 0; a <= nx; a++) add(a / nx * 96 + 2, 4);
+        for (var b = 1; b <= ny; b++) add(98, b / ny * 92 + 4);
+        for (var c = nx - 1; c >= 0; c--) add(c / nx * 96 + 2, 96);
+        for (var d = ny - 1; d >= 1; d--) add(2, d / ny * 92 + 4);
+      };
+      U.ensurePositioned(el);
+      build();
+      U.onResize(build);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

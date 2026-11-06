@@ -102,4 +102,13 @@ module.exports = [
     '<h2 data-fx="weld-sparks">Fabriqué ici</h2>',
     '<h2 class="demo-title" data-fx="weld-sparks">Fabriqué ici</h2>',
     { trigger: 'Rejouer', a11y: 'Le titre reste un vrai texte, et le canvas est masqué. En mouvement réduit, le trait apparaît seul.' }),
+  E('rivet-frame', 'Entrée',
+    'Les rivets se posent un à un autour d\'une plaque d\'acier brossé.',
+    'Solide, construit pour durer.',
+    '- `data-fx-gap` (34) : écart entre rivets',
+    'Industrie, chiffres clés, blocs de spécifications.',
+    'Une petite étiquette : il faut de la place pour que les rivets respirent.',
+    '<section data-fx="rivet-frame">…</section>',
+    '<div data-fx="rivet-frame" style="width:190px;height:110px;display:grid;place-items:center;font-size:20px;font-weight:800">Acier S355</div>',
+    { trigger: 'Rejouer', a11y: 'Les rivets sont décoratifs. Vérifiez le contraste du texte sur le métal.' }),
 ];
