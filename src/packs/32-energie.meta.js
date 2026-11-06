@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="outage-check" data-fx-data=\'{"69003":"vers 18 h 30"}\'></div>',
     '<div data-fx="outage-check" style="color:var(--ink)"></div>',
     { a11y: 'Vrai formulaire, résultat annoncé.' }),
+  E('burner-flame', 'Micro-interaction',
+    'Un curseur règle une rangée de flammes bleues, et leur puissance en kilowatts.',
+    'La chaleur s\'allume à l\'écran.',
+    '- `data-fx-power` (24), `data-fx-value` (55)',
+    'Chaudières, cuisine, hôtellerie.',
+    'De l\'utiliser pour piloter un vrai appareil sans sécurité.',
+    '<div data-fx="burner-flame" data-fx-power="24"></div>',
+    '<div data-fx="burner-flame" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, puissance annoncée. La bibliothèque coupe la danse en mouvement réduit.' }),
 ];
