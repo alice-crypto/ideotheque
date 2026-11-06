@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="seat-map" data-fx-max="2"></div>',
     '<div data-fx="seat-map" style="color:var(--ink)"></div>',
     { a11y: 'Sièges nommés, occupés désactivés, choix annoncé.' }),
+  E('postcard-flip', 'Micro-interaction',
+    'Une carte postale se retourne, avec son image, son message et son timbre.',
+    'Ça existe encore, et ça fait toujours plaisir.',
+    '- `data-fx-image`, `data-fx-place`, `data-fx-text`',
+    'Destinations, invitations, messages ludiques.',
+    'Un long message : le dos d\'une carte reste petit.',
+    '<div data-fx="postcard-flip" data-fx-place="Lisbonne"></div>',
+    '<div data-fx="postcard-flip" data-fx-place="Bons baisers"></div>',
+    { trigger: 'Retourner', a11y: 'Vrai bouton `aria-pressed`, image décorative, texte réel.' }),
 ];

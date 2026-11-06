@@ -9008,6 +9008,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="seat-map"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; transform: scale(1.14); }
 [data-fx="seat-map"] output { font-size: 12px; font-weight: 700; text-align: center; }
 
+/* postcard-flip : une carte postale */
+[data-fx="postcard-flip"] button { display: block; width: var(--fx-w, 220px); padding: 0; border: 0; background: none; cursor: pointer; perspective: 800px; font: inherit; color: #2a2a22; }
+[data-fx="postcard-flip"] .fx-pf2 { position: relative; display: block; height: 140px; transform-style: preserve-3d; transition: transform .7s var(--fx-ease-out); }
+[data-fx="postcard-flip"] [aria-pressed="true"] .fx-pf2 { transform: rotateY(180deg); }
+[data-fx="postcard-flip"] .f, [data-fx="postcard-flip"] .k { position: absolute; inset: 0; backface-visibility: hidden; display: block; overflow: hidden; box-shadow: 0 3px 8px #0006; background: #fbf6e8; }
+[data-fx="postcard-flip"] .f img { width: 100%; height: 100%; object-fit: cover; display: block; }
+[data-fx="postcard-flip"] .f b { position: absolute; left: 8px; bottom: 6px; color: #fff; font: italic 800 20px Georgia, serif; text-shadow: 0 2px 4px #0009; }
+[data-fx="postcard-flip"] .k { transform: rotateY(180deg); background-image: linear-gradient(90deg, transparent 58%, #0003 58% calc(58% + 1px), transparent 0); }
+[data-fx="postcard-flip"] em { position: absolute; left: 8px; top: 9px; width: 52%; font: italic 12px/1.35 'Segoe Print', 'Comic Sans MS', cursive; text-align: left; }
+[data-fx="postcard-flip"] small { display: block; margin-top: 5px; font-size: 9px; opacity: .7; }
+[data-fx="postcard-flip"] .k i { position: absolute; right: 8px; top: 8px; width: 38px; height: 46px; background: var(--fx-accent); box-shadow: 0 0 0 2px #fbf6e8; clip-path: polygon(0 4%, 6% 0, 12% 4%, 18% 0, 24% 4%, 30% 0, 36% 4%, 42% 0, 48% 4%, 54% 0, 60% 4%, 66% 0, 72% 4%, 78% 0, 84% 4%, 90% 0, 96% 4%, 100% 0, 100% 100%, 0 100%); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
