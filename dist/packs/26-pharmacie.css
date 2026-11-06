@@ -157,3 +157,16 @@
 [data-fx="uv-index"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; align-items: center; }
 [data-fx="uv-index"] input { width: 100%; accent-color: var(--fx-accent); }
 [data-fx="uv-index"] b { font-size: 15px; }
+
+/* pollen-months : un calendrier des pollens */
+[data-fx="pollen-months"] { width: min(100%, var(--fx-w, 240px)); font-size: 10px; }
+[data-fx="pollen-months"] .fx-pm { display: grid; grid-template-columns: 54px repeat(12, 1fr); gap: 2px; align-items: center; }
+[data-fx="pollen-months"] b { text-align: center; font-weight: 400; }
+[data-fx="pollen-months"] b.fx-now { font-weight: 800; color: var(--fx-accent); }
+[data-fx="pollen-months"] i { height: 15px; opacity: 0; transition: opacity .35s calc(var(--fx-i) * 35ms); background: var(--fx-pollen, #e6a800); }
+.fx-in[data-fx="pollen-months"] i { opacity: .12; }
+.fx-in[data-fx="pollen-months"] .l1 { opacity: .4; }
+.fx-in[data-fx="pollen-months"] .l2 { opacity: .7; }
+.fx-in[data-fx="pollen-months"] .l3 { opacity: 1; }
+[data-fx="pollen-months"] i.fx-now { outline: 1px solid currentColor; }
+[data-fx="pollen-months"] p { margin: 6px 0 0; font-size: 12px; font-weight: 700; }

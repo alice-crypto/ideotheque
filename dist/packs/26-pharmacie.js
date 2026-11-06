@@ -291,4 +291,20 @@
       go();
     }
   });
+
+  // Un calendrier des pollens, avec le mois en cours en évidence
+  FX.register('pollen-months', {
+    entrance: true,
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Bouleau:0,1,3,3,1,0,0,0,0,0,0,0|Graminées:0,0,0,1,3,3,2,1,0,0,0,0|Ambroisie:0,0,0,0,0,0,1,3,3,1,0,0').split('|').map(function (r) { var p = r.split(':'); return [p[0], p[1].split(',').map(Number)]; }), now = new Date().getMonth(), L = 'JFMAMJJASOND', h = '<span></span>';
+      L.split('').forEach(function (m, i) { h += '<b class="' + (i === now ? 'fx-now' : '') + '">' + m + '</b>'; });
+      rows.forEach(function (r, y) {
+        h += '<span>' + r[0] + '</span>';
+        r[1].forEach(function (v, i) { h += '<i class="l' + v + (i === now ? ' fx-now' : '') + '" style="--fx-i:' + (i + y * 2) + '"></i>'; });
+      });
+      el.innerHTML = '<div class="fx-pm" aria-hidden="true">' + h + '</div>';
+      var cur = rows.filter(function (r) { return r[1][now] >= 2; }).map(function (r) { return r[0]; });
+      U.make('p', '', el).textContent = cur.length ? 'Ce mois-ci, surtout : ' + cur.join(', ') : 'Ce mois-ci : peu de pollens dans cet exemple';
+    }
+  });
 })(window.FX);

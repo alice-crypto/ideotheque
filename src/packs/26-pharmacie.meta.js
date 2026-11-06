@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="uv-index" data-fx-value="7"></div>',
     '<div data-fx="uv-index" style="color:var(--ink)"></div>',
     { a11y: 'Niveau et conseil écrits et annoncés, pas seulement colorés.' }),
+  E('pollen-months', 'Présentation',
+    'Un calendrier montre les périodes de pollens, et le mois en cours se repère.',
+    'Anticipation, on sait quand commencer son traitement.',
+    '- `data-fx-items` : « plante:12 valeurs de 0 à 3 » séparés par `|`\n- `--fx-pollen`',
+    'Allergies, saisons agricoles, fruits et légumes de saison.',
+    'Un calendrier national pour une réalité locale : les périodes varient.',
+    '<div data-fx="pollen-months" data-fx-items="Bouleau:0,1,3,3,1,0,0,0,0,0,0,0"></div>',
+    '<div data-fx="pollen-months" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le message écrit reprend ce qui compte ce mois-ci ; la grille détaillée est décorative. Fournissez un tableau équivalent si elle est indispensable.' }),
 ];
