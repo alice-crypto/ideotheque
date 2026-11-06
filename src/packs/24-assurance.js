@@ -104,4 +104,26 @@
       });
     }
   });
+
+  // Un schéma de voiture sur lequel on situe les chocs
+  FX.register('damage-spots', {
+    setup: function (el) {
+      var zones = [['Avant', 14, 34, 22, 32], ['Capot', 36, 34, 18, 32], ['Toit', 54, 34, 20, 32], ['Coffre', 74, 34, 14, 32], ['Côté gauche', 14, 14, 74, 18], ['Côté droit', 14, 68, 74, 18]], picked = [];
+      var box = U.make('div', 'fx-dsp', el), out = U.make('output', '', el);
+      out.setAttribute('aria-live', 'polite');
+      var say = function () { out.textContent = picked.length ? 'Touché : ' + picked.join(', ') : 'Touchez les zones abîmées'; };
+      zones.forEach(function (z) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', z[0]); b.title = z[0];
+        b.style.cssText = 'left:' + z[1] + '%;top:' + z[2] + '%;width:' + z[3] + '%;height:' + z[4] + '%';
+        b.addEventListener('click', function () {
+          var on = picked.indexOf(z[0]) < 0;
+          if (on) picked.push(z[0]); else picked.splice(picked.indexOf(z[0]), 1);
+          b.setAttribute('aria-pressed', on);
+          say();
+        });
+      });
+      say();
+    }
+  });
 })(window.FX);
