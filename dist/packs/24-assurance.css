@@ -168,3 +168,11 @@
 [data-fx="covered-list"] .fx-y svg { stroke: var(--fx-up, #2eaf63); }
 [data-fx="covered-list"] .fx-n svg { stroke: var(--fx-down, #e10600); }
 [data-fx="covered-list"] .fx-sr { position: absolute; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; }
+
+/* payment-frequency : payer au mois ou à l'année */
+[data-fx="payment-frequency"] { display: grid; gap: 8px; width: min(100%, var(--fx-w, 235px)); font-size: 12px; }
+[data-fx="payment-frequency"] .fx-pf { display: flex; border: 1px solid currentColor; border-radius: 8px; overflow: hidden; }
+[data-fx="payment-frequency"] button { flex: 1; padding: 6px 2px; border: 0; background: none; color: inherit; font: inherit; font-size: 11px; cursor: pointer; transition: background .2s, color .2s; }
+[data-fx="payment-frequency"] button[aria-checked="true"] { background: var(--fx-accent); color: #fff; }
+[data-fx="payment-frequency"] output b { font-size: 20px; }
+[data-fx="payment-frequency"] .fx-pf-b { height: 6px; order: 3; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 0 / calc(var(--fx-q, 1) * 100%) 100%, color-mix(in srgb, currentColor 16%, transparent); transition: background-size .4s var(--fx-ease-out); }

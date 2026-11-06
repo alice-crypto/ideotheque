@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="covered-list" data-fx-yes="Vol|Incendie" data-fx-no="Usure"></div>',
     '<div data-fx="covered-list" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le sens est donné par le titre et un texte caché, pas seulement par la couleur.' }),
+  E('payment-frequency', 'Micro-interaction',
+    'Un choix de fréquence montre le prix par échéance, le total et l\'économie réelle.',
+    'Le coût caché du fractionnement apparaît.',
+    '- `data-fx-year` (480) : cotisation annuelle',
+    'Assurance, abonnements, frais de scolarité.',
+    'D\'utiliser ces majorations d\'exemple sans les remplacer par celles du contrat.',
+    '<div data-fx="payment-frequency" data-fx-year="480"></div>',
+    '<div data-fx="payment-frequency" style="color:var(--ink)"></div>',
+    { a11y: 'Groupe de boutons radio nommé, et le montant est annoncé.' }),
 ];

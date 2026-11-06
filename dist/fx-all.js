@@ -9521,6 +9521,30 @@
       ul('Non couvert', no, 'fx-n', 'Non couvert');
     }
   });
+
+  // Payer au mois ou à l'année : ce que ça change vraiment sur l'année
+  FX.register('payment-frequency', {
+    setup: function (el) {
+      var y = U.num(el, 'fxYear', 480), modes = [['Annuel', 1, 0], ['Semestriel', 2, .02], ['Mensuel', 12, .05]];
+      var f = U.make('div', 'fx-pf', el), out = U.make('output', '', el);
+      f.setAttribute('role', 'radiogroup'); f.setAttribute('aria-label', 'Fréquence de paiement');
+      out.setAttribute('aria-live', 'polite');
+      var worst = y * (1 + modes[2][2]);
+      var pick = function (m, b) {
+        f.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-checked', x === b); });
+        var tot = y * (1 + m[2]), one = tot / m[1], save = worst - tot;
+        el.style.setProperty('--fx-q', tot / worst);
+        out.innerHTML = '<b>' + (Math.round(one * 100) / 100).toLocaleString('fr-FR') + ' €</b> × ' + m[1] + '<br>Total ' + Math.round(tot) + ' €' + (save > 0 ? ', soit ' + Math.round(save) + ' € d\'économie' : '');
+      };
+      modes.forEach(function (m, i) {
+        var b = U.make('button', '', f);
+        b.type = 'button'; b.setAttribute('role', 'radio'); b.textContent = m[0];
+        b.addEventListener('click', function () { pick(m, b); });
+        if (i === 2) pick(m, b);
+      });
+      U.make('div', 'fx-pf-b', el);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
