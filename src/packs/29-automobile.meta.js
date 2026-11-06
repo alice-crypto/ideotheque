@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="lease-monthly" data-fx-price="32000"></div>',
     '<div data-fx="lease-monthly" style="color:var(--ink)"></div>',
     { a11y: 'Groupe radio nommé, curseurs étiquetés, résultat annoncé.' }),
+  E('resale-curve', 'Présentation',
+    'Un curseur d\'âge place le véhicule sur sa courbe de décote.',
+    'On anticipe la revente, sans mauvaise surprise.',
+    '- `data-fx-price` (28000), `data-fx-year` (4)',
+    'Occasion, reprise, matériel d\'entreprise.',
+    'De la donner comme une cote : la vraie dépend du marché et de l\'état.',
+    '<div data-fx="resale-curve" data-fx-price="28000"></div>',
+    '<div data-fx="resale-curve" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, valeur écrite et annoncée.' }),
 ];

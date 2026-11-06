@@ -196,4 +196,23 @@
       go();
     }
   });
+
+  // La valeur d'un véhicule au fil des années, avec un repère
+  FX.register('resale-curve', {
+    setup: function (el) {
+      var P = U.num(el, 'fxPrice', 28000), Y = 12, pts = [];
+      for (var i = 0; i <= Y; i++) pts.push(P * Math.pow(.84, i));
+      var p = pts.map(function (v, i) { return (i ? 'L' : 'M') + (i / Y * 200).toFixed(1) + ' ' + (92 - v / P * 86).toFixed(1); }).join('');
+      el.innerHTML = '<svg viewBox="0 0 200 96" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="' + p + '"/></svg><span class="fx-rv2" aria-hidden="true"></span><label>Âge <input type="range" min="0" max="' + Y + '"></label><output aria-live="polite"></output><small>Décote fictive de 16 % par an.</small>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxYear', 4);
+      var go = function () {
+        var y = +r.value, v = pts[y];
+        el.style.setProperty('--fx-x', y / Y); el.style.setProperty('--fx-y', 1 - v / P * .9);
+        o.innerHTML = '<b>' + (Math.round(v / 100) * 100).toLocaleString('fr-FR') + ' €</b> à ' + y + ' an' + (y > 1 ? 's' : '') + ', soit ' + Math.round(v / P * 100) + ' % de sa valeur';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

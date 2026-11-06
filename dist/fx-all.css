@@ -6964,6 +6964,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="lease-monthly"] output b { font-size: 22px; }
 [data-fx="lease-monthly"] small { font-size: 10px; opacity: .7; }
 
+/* resale-curve : la décote */
+[data-fx="resale-curve"] { position: relative; display: grid; gap: 4px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="resale-curve"] svg { display: block; width: 100%; height: 74px; overflow: visible; }
+[data-fx="resale-curve"] path { fill: none; stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; }
+[data-fx="resale-curve"] .fx-rv2 { position: absolute; left: calc(var(--fx-x) * 100%); top: calc(var(--fx-y) * 74px); width: 12px; height: 12px; margin: -6px; border-radius: 50%; background: var(--fx-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--fx-accent) 30%, transparent); transition: left .2s, top .2s; }
+[data-fx="resale-curve"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
+[data-fx="resale-curve"] input { min-width: 0; accent-color: var(--fx-accent); }
+[data-fx="resale-curve"] output b { font-size: 17px; }
+[data-fx="resale-curve"] small { font-size: 10px; opacity: .7; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
