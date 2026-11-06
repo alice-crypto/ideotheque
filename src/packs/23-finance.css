@@ -59,3 +59,11 @@
 [data-fx="savings-curve"] label { display: grid; grid-template-columns: 1fr auto; gap: 2px; }
 [data-fx="savings-curve"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
 [data-fx="savings-curve"] p { margin: 0; }
+
+/* rate-best-row : la meilleure offre */
+[data-fx="rate-best-row"] { border-collapse: collapse; font-variant-numeric: tabular-nums; }
+[data-fx="rate-best-row"] th,
+[data-fx="rate-best-row"] td { padding: .4em .7em; border-bottom: 1px solid rgba(128, 128, 128, .35); text-align: right; }
+[data-fx="rate-best-row"] :is(th, td):first-child { text-align: left; }
+[data-fx="rate-best-row"] .fx-best { font-weight: 700; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 0 / 0 100%; transition: background-size .6s var(--fx-ease-out) calc(var(--fx-i) * 120ms); }
+.fx-in[data-fx="rate-best-row"] .fx-best { background-size: 100% 100%; color: var(--fx-best-ink, #111); }
