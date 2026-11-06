@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="eta-range" data-fx-minutes="45" data-fx-margin="15"></div>',
     '<div data-fx="eta-range" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Tout est écrit dans le paragraphe.' }),
+  E('cold-chain', 'Présentation',
+    'Une courbe de température montre si le trajet est resté dans la plage permise.',
+    'Le contrôle qualité rendu visible.',
+    '- `data-fx-data`, `data-fx-low` (2), `data-fx-high` (6), `data-fx-step` (30)',
+    'Transport frigorifique, pharmacie, serveurs, serres.',
+    'Des valeurs réglementaires par défaut : les plages dépendent du produit.',
+    '<div data-fx="cold-chain" data-fx-data="3.1,7.1,3.5" data-fx-low="2" data-fx-high="6"></div>',
+    '<div data-fx="cold-chain" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le verdict est écrit en toutes lettres.' }),
 ];

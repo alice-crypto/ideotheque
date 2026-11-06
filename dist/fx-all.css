@@ -7553,6 +7553,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="eta-range"] p { margin: 7px 0 0; }
 [data-fx="eta-range"] b { font-size: 20px; }
 
+/* cold-chain : la chaîne du froid */
+[data-fx="cold-chain"] { width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="cold-chain"] svg { display: block; width: 100%; height: 84px; overflow: visible; }
+[data-fx="cold-chain"] rect { fill: color-mix(in srgb, var(--fx-up, #2eaf63) 28%, transparent); }
+[data-fx="cold-chain"] path { fill: none; stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s ease-out; }
+.fx-in[data-fx="cold-chain"] path { stroke-dashoffset: 0; }
+[data-fx="cold-chain"] circle { fill: var(--fx-down, #e10600); opacity: 0; transition: opacity .3s 1.3s; }
+.fx-in[data-fx="cold-chain"] circle { opacity: 1; }
+[data-fx="cold-chain"] p { margin: 5px 0 0; font-weight: 700; }
+[data-fx="cold-chain"].fx-bad p { color: var(--fx-down, #e10600); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
