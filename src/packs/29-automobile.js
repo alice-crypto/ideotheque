@@ -401,4 +401,22 @@
       go();
     }
   });
+
+  // Une télécommande : la voiture répond en faisant clignoter ses feux
+  FX.register('key-fob', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-kf-c" aria-hidden="true"><i></i><i></i></div><div class="fx-kf"><button type="button" data-a="lock">Verrouiller</button><button type="button" data-a="open">Ouvrir</button></div><output aria-live="polite">Voiture verrouillée</output>';
+      var c = el.firstChild, o = el.querySelector('output');
+      el.classList.add('fx-locked');
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('button');
+        if (!b) return;
+        var lock = b.dataset.a === 'lock';
+        el.classList.toggle('fx-locked', lock);
+        c.classList.remove('fx-one', 'fx-two'); void c.offsetWidth;
+        c.classList.add(lock ? 'fx-one' : 'fx-two');
+        o.textContent = lock ? 'Voiture verrouillée' : 'Voiture ouverte';
+      });
+    }
+  });
 })(window.FX);
