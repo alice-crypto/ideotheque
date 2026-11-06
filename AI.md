@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->867<!-- /total --> effets.
+La bibliothèque contient <!-- total -->868<!-- /total --> effets.
 
 ## Règles
 
@@ -804,6 +804,7 @@ La bibliothèque contient <!-- total -->867<!-- /total --> effets.
 | `steam-rise` | Ambiance | De la vapeur monte en volutes au-dessus d'un plat, d'une tasse ou d'un titre |
 | `pool-card` | Ambiance | Une carte de piscine donne température et horaires, et fait des ondes au toucher |
 | `plane-window` | Ambiance | Un hublot montre des nuages qui passent, avec un ciel réglé sur l'heure réelle |
+| `lighthouse-beam` | Ambiance | Un faisceau balaie la nuit, et le texte s'éclaire à son passage |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |

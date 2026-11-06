@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="phrase-card"></div>',
     '<div data-fx="phrase-card" style="color:var(--ink)"></div>',
     { a11y: 'Boutons réels, bouton d\'écoute nommé, carte `aria-pressed`.' }),
+  E('lighthouse-beam', 'Ambiance',
+    'Un faisceau balaie la nuit, et le texte s\'éclaire à son passage.',
+    'Une côte bretonne un soir de vent.',
+    '- `--fx-h`\n- le texte de l\'élément reste lisible',
+    'Tourisme maritime, côte, restaurants du port.',
+    'Le texte à lire longuement : son opacité varie.',
+    '<div data-fx="lighthouse-beam">Pointe de la Mer</div>',
+    '<div data-fx="lighthouse-beam" style="width:215px">Pointe de la Mer</div>',
+    { a11y: 'Le texte reste réel. En mouvement réduit, le phare et le texte sont fixes.' }),
 ];

@@ -205,3 +205,13 @@
 [data-fx="phrase-card"] .a small { display: block; font-size: 11px; font-weight: 400; opacity: .9; }
 [data-fx="phrase-card"] .fx-ph2-b { display: flex; justify-content: space-between; }
 [data-fx="phrase-card"] .fx-ph2-b button { padding: 3px 10px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+
+/* lighthouse-beam : un phare dans la nuit */
+[data-fx="lighthouse-beam"] { display: block; width: 100%; height: var(--fx-h, 150px); overflow: hidden; background: linear-gradient(#0c1436, #233064); color: #fff; }
+[data-fx="lighthouse-beam"] .fx-lgh { position: absolute; inset: 0; }
+[data-fx="lighthouse-beam"] .fx-lgh-t { position: absolute; left: 20%; bottom: 14%; width: 14px; height: 44px; background: repeating-linear-gradient(#f4f4f0 0 10px, #c9352a 10px 20px); clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%); }
+[data-fx="lighthouse-beam"] .fx-lgh-b { position: absolute; left: 22%; bottom: 44%; width: 320px; height: 70px; margin-top: -35px; background: linear-gradient(90deg, #fff2bfcc, transparent); clip-path: polygon(0 50%, 100% 0, 100% 100%); transform-origin: 0 50%; transform: translateX(6px) translateY(35px); animation: fx-lighthouse-turn 5s linear infinite; }
+[data-fx="lighthouse-beam"] .fx-lgh-sea { position: absolute; left: 0; right: 0; bottom: 0; height: 15%; background: #09102b; }
+[data-fx="lighthouse-beam"] .fx-lgh-m { position: relative; padding: 12px 12px 0 46%; font-weight: 800; animation: fx-lighthouse-text 5s linear infinite; }
+@keyframes fx-lighthouse-turn { from { transform: translateX(6px) translateY(35px) rotate(-45deg); } 50% { transform: translateX(6px) translateY(35px) rotate(20deg); } to { transform: translateX(6px) translateY(35px) rotate(-45deg); } }
+@keyframes fx-lighthouse-text { 0%, 100% { opacity: .55; } 30% { opacity: 1; } 70% { opacity: .55; } }

@@ -15580,6 +15580,15 @@
       show();
     }
   });
+
+  // Un phare dont le faisceau balaie la nuit
+  FX.register('lighthouse-beam', {
+    setup: function (el) {
+      var t = el.innerHTML;
+      el.innerHTML = '<div class="fx-lgh" aria-hidden="true"><i class="fx-lgh-b"></i><i class="fx-lgh-t"></i><i class="fx-lgh-sea"></i></div><div class="fx-lgh-m">' + t + '</div>';
+      U.ensurePositioned(el);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
