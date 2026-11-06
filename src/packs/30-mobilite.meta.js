@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="platform-guide" data-fx-items="Hôpital:1"></div>',
     '<div data-fx="platform-guide" style="color:var(--ink)"></div>',
     { a11y: 'Vraie liste nommée, résultat annoncé.' }),
+  E('pass-or-ticket', 'Micro-interaction',
+    'Un curseur montre si les tickets ou l\'abonnement sont les plus avantageux, avec le seuil.',
+    'Un calcul qu\'on repoussait, fait en deux secondes.',
+    '- `data-fx-ticket` (2.1), `data-fx-pass` (42), `data-fx-trips` (16)',
+    'Transports, salles de sport, cartes de fidélité.',
+    'Des tarifs d\'exemple : remplacez-les par les vôtres.',
+    '<div data-fx="pass-or-ticket" data-fx-ticket="2.1" data-fx-pass="42"></div>',
+    '<div data-fx="pass-or-ticket" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, conclusion annoncée.' }),
 ];

@@ -132,3 +132,13 @@
 [data-fx="platform-guide"] i.fx-on { background: var(--fx-accent); color: #fff; border-color: transparent; }
 [data-fx="platform-guide"] i.fx-on::before { content: '▼'; position: absolute; left: 0; right: 0; top: -13px; color: var(--fx-accent); font-size: 10px; animation: fx-pg .8s ease-in-out infinite alternate; }
 @keyframes fx-pg { to { transform: translateY(-3px); } }
+
+/* pass-or-ticket : abonnement ou tickets */
+[data-fx="pass-or-ticket"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="pass-or-ticket"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="pass-or-ticket"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="pass-or-ticket"] .fx-pt { position: relative; height: 10px; background: color-mix(in srgb, currentColor 16%, transparent); }
+[data-fx="pass-or-ticket"] .fx-pt i { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--fx-q) * 100%); background: var(--fx-warn, #e8930c); transition: width .15s, background .25s; }
+[data-fx="pass-or-ticket"].fx-pass .fx-pt i { background: var(--fx-up, #2eaf63); }
+[data-fx="pass-or-ticket"] em { position: absolute; left: calc(var(--fx-s) * 100%); top: -4px; bottom: -4px; width: 2px; background: currentColor; z-index: 1; }
+[data-fx="pass-or-ticket"] output b { font-size: 16px; }
