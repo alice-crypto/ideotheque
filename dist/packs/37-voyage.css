@@ -1,0 +1,12 @@
+/* Pack 37 — Voyage */
+
+/* flight-arc : un arc de vol */
+[data-fx="flight-arc"] { width: min(100%, var(--fx-w, 235px)); font-size: 12px; }
+[data-fx="flight-arc"] svg { display: block; width: 100%; overflow: visible; }
+[data-fx="flight-arc"] .fx-fa-l { fill: none; stroke: var(--fx-accent); stroke-width: 1.6; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.8s ease-in-out; }
+.fx-in[data-fx="flight-arc"] .fx-fa-l { stroke-dashoffset: 0; }
+[data-fx="flight-arc"] circle { fill: currentColor; }
+[data-fx="flight-arc"] .fx-fa-p { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; offset-path: path('M18 72Q100 -22 182 72'); offset-distance: 0%; transition: offset-distance 1.8s ease-in-out; }
+.fx-in[data-fx="flight-arc"] .fx-fa-p { offset-distance: 100%; }
+[data-fx="flight-arc"] .fx-fa2 { display: flex; justify-content: space-between; margin-top: 2px; }
+[data-fx="flight-arc"] p { margin: 4px 0 0; text-align: center; font-size: 11px; }
