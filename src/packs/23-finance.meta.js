@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="candlestick-draw" data-fx-data="20,26,18,24|24,28,22,23"></div>',
     '<div data-fx="candlestick-draw" style="width:215px"></div>',
     { trigger: 'Rejouer', a11y: 'Le graphique est résumé dans `aria-label`.' }),
+  E('balance-mask', 'Micro-interaction',
+    'Un bouton masque le solde derrière des points, et le choix peut être retenu.',
+    'Discret, on consulte ses comptes dans le métro.',
+    '- `data-fx-key` : clé d\'enregistrement du choix',
+    'Soldes, salaires, portefeuilles.',
+    'De croire que c\'est une sécurité : la valeur reste dans la page.',
+    '<span data-fx="balance-mask">2 480,50 €</span>',
+    '<span class="demo-number" data-fx="balance-mask" style="color:var(--ink);font-size:38px">2 480,50 €</span>',
+    { a11y: 'Le bouton est nommé et expose `aria-pressed`.' }),
 ];

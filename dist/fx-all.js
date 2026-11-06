@@ -8732,6 +8732,30 @@
       el.setAttribute('aria-label', 'Cours de ' + d[0][0] + ' à ' + d[d.length - 1][3] + ' sur ' + d.length + ' périodes');
     }
   });
+
+  // Un solde qu'on masque d'un geste, pour la discrétion
+  FX.register('balance-mask', {
+    setup: function (el) {
+      var v = el.textContent.trim(), key = el.dataset.fxKey, hidden = false;
+      el.textContent = '';
+      var out = U.make('span', 'fx-bm-v', el), b = U.make('button', 'fx-bm-b', el);
+      b.type = 'button';
+      var show = function () {
+        out.textContent = hidden ? '••••••' : v;
+        el.classList.toggle('fx-hid', hidden);
+        b.setAttribute('aria-pressed', hidden);
+        b.setAttribute('aria-label', hidden ? 'Afficher le montant' : 'Masquer le montant');
+        b.textContent = hidden ? '○' : '●';
+      };
+      if (key) try { hidden = localStorage.getItem(key) === '1'; } catch (err) {}
+      show();
+      b.addEventListener('click', function () {
+        hidden = !hidden;
+        if (key) try { localStorage.setItem(key, hidden ? '1' : '0'); } catch (err) {}
+        show();
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -19,3 +19,10 @@
 [data-fx="candlestick-draw"] rect { fill: currentColor; }
 [data-fx="candlestick-draw"] g { transform-box: fill-box; transform-origin: center; transform: scaleY(0); transition: transform .45s var(--fx-ease-out) calc(var(--fx-i) * 70ms); }
 .fx-in[data-fx="candlestick-draw"] g { transform: none; }
+
+/* balance-mask : un solde discret */
+[data-fx="balance-mask"] { display: inline-flex; align-items: center; gap: .4em; font-variant-numeric: tabular-nums; }
+[data-fx="balance-mask"] .fx-bm-v { animation: fx-bm .3s var(--fx-ease-out); }
+[data-fx="balance-mask"] .fx-bm-b { width: 1.6em; height: 1.6em; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font-size: .5em; cursor: pointer; }
+[data-fx="balance-mask"].fx-hid .fx-bm-v { letter-spacing: .08em; }
+@keyframes fx-bm { from { filter: blur(6px); } }
