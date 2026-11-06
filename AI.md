@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->822<!-- /total --> effets.
+La bibliothèque contient <!-- total -->823<!-- /total --> effets.
 
 ## Règles
 
@@ -504,6 +504,7 @@ La bibliothèque contient <!-- total -->822<!-- /total --> effets.
 | `spice-level` | Micro-interaction | Une rangée de piments s'allume selon le niveau, et le mot décrit le goût |
 | `brew-ratio` | Micro-interaction | Le volume d'eau et l'intensité donnent la dose exacte de café moulu |
 | `dough-rise` | Micro-interaction | La température de la pièce change le temps de levée d'une pâte, qui gonfle à l'écran |
+| `fork-rating` | Micro-interaction | Une note s'affiche ou se donne en fourchettes, avec des demi-valeurs |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

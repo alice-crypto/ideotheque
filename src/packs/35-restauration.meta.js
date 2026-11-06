@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="neon-open" data-fx-from="11" data-fx-to="23"></div>',
     '<div data-fx="neon-open" data-fx-from="0" data-fx-to="24"></div>',
     { a11y: 'Le mot est un vrai texte ; la bibliothèque coupe le clignotement en mouvement réduit.' }),
+  E('fork-rating', 'Micro-interaction',
+    'Une note s\'affiche ou se donne en fourchettes, avec des demi-valeurs.',
+    'Un clin d\'œil aux guides, sans copier personne.',
+    '- `data-fx-value` (3.5), `data-fx-out-of` (5), `data-fx-readonly`',
+    'Restaurants, avis, cuisine.',
+    'De confondre avec une distinction officielle : aucun guide n\'est imité.',
+    '<div data-fx="fork-rating" data-fx-value="3.5"></div>',
+    '<div data-fx="fork-rating" style="color:var(--ink)"></div>',
+    { a11y: 'Rôle `slider` avec les flèches, ou `img` en lecture seule. Note écrite.' }),
 ];
