@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="burner-flame" data-fx-power="24"></div>',
     '<div data-fx="burner-flame" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, puissance annoncée. La bibliothèque coupe la danse en mouvement réduit.' }),
+  E('cheapest-window', 'Présentation',
+    'Selon la durée demandée, les heures consécutives les moins chères s\'allument dans la journée.',
+    'Le calcul ingrat, fait à notre place.',
+    '- `data-fx-data` : 24 prix séparés par des virgules\n- `data-fx-hours` (4)',
+    'Recharge, machines, tout tarif dynamique.',
+    'Des prix d\'exemple : branchez les vrais tarifs du jour.',
+    '<div data-fx="cheapest-window" data-fx-hours="4"></div>',
+    '<div data-fx="cheapest-window" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat écrit et annoncé.' }),
 ];

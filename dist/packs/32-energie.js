@@ -296,4 +296,24 @@
       go();
     }
   });
+
+  // Trouver les heures les moins chères pour lancer une longue tâche
+  FX.register('cheapest-window', {
+    setup: function (el) {
+      var P = (el.dataset.fxData || '18,16,14,13,12,13,17,24,29,31,27,24,22,21,22,24,28,34,38,36,31,27,23,20').split(',').map(Number), n = P.length, max = Math.max.apply(null, P);
+      el.innerHTML = '<div class="fx-cw" aria-hidden="true"></div><label>Durée <b></b><input type="range" min="1" max="8"></label><output aria-live="polite"></output>';
+      var box = el.querySelector('.fx-cw'), r = el.querySelector('input'), o = el.querySelector('output');
+      P.forEach(function (v) { U.make('i', '', box).style.height = v / max * 100 + '%'; });
+      r.value = U.num(el, 'fxHours', 4);
+      var go = function () {
+        var d = +r.value, best = 0, cost = Infinity;
+        for (var s = 0; s + d <= n; s++) { var t = 0; for (var k = s; k < s + d; k++) t += P[k]; if (t < cost) { cost = t; best = s; } }
+        Array.prototype.forEach.call(box.children, function (b, i) { b.classList.toggle('fx-on', i >= best && i < best + d); });
+        el.querySelector('label b').textContent = d + ' h';
+        o.innerHTML = 'Lancez à <b>' + best + ' h</b>, finie à ' + (best + d) + ' h. Moyenne de ' + Math.round(cost / d) + ' cts/kWh';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

@@ -7820,6 +7820,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="burner-flame"] input { min-width: 0; accent-color: var(--fx-accent); }
 @keyframes fx-burner-dance { from { transform: scale(1, 1) skewX(2deg); } to { transform: scale(.92, 1.06) skewX(-2deg); } }
 
+/* cheapest-window : les heures les moins chères */
+[data-fx="cheapest-window"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="cheapest-window"] .fx-cw { display: flex; align-items: flex-end; gap: 1px; height: 62px; }
+[data-fx="cheapest-window"] i { flex: 1; background: color-mix(in srgb, currentColor 28%, transparent); transition: background .2s; }
+[data-fx="cheapest-window"] i.fx-on { background: var(--fx-up, #2eaf63); }
+[data-fx="cheapest-window"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="cheapest-window"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="cheapest-window"] output b { font-size: 16px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
