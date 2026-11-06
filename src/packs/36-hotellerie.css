@@ -174,3 +174,11 @@
 .fx-in[data-fx="review-bars"] li i { background-size: calc(var(--fx-q) * 100%) 100%, auto; }
 [data-fx="review-bars"] em { font-style: normal; font-weight: 700; text-align: right; }
 [data-fx="review-bars"] p { margin: 0; font-size: 11px; }
+
+/* bed-merge : deux lits ou un seul */
+[data-fx="bed-merge"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 200px)); font-size: 12px; }
+[data-fx="bed-merge"] .fx-bm2 { display: flex; justify-content: center; gap: 22px; width: 100%; height: 86px; padding: 6px; box-sizing: border-box; background: color-mix(in srgb, currentColor 8%, transparent); transition: gap .5s var(--fx-ease-spring); }
+[data-fx="bed-merge"].fx-on .fx-bm2 { gap: 0; }
+[data-fx="bed-merge"] i { position: relative; width: 58px; height: 100%; background: linear-gradient(#fff 22%, var(--fx-accent) 22%); box-shadow: inset 0 0 0 1px #0003; }
+[data-fx="bed-merge"] i::before { content: ''; position: absolute; left: 7px; right: 7px; top: 4px; height: 11px; border-radius: 4px; background: #e7e2d7; }
+[data-fx="bed-merge"] button { padding: 4px 12px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
