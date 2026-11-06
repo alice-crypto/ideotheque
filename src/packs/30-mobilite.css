@@ -80,3 +80,17 @@
 [data-fx="carpool-split"] .fx-pop { animation: fx-cs3 .35s var(--fx-ease-spring); }
 [data-fx="carpool-split"] output b { font-size: 20px; }
 @keyframes fx-cs3 { from { transform: translateY(-10px); } }
+
+/* traffic-strip : un itinéraire en bande */
+[data-fx="traffic-strip"] { width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="traffic-strip"] .fx-ts { position: relative; display: flex; gap: 2px; height: 12px; }
+[data-fx="traffic-strip"] i { transform: scaleX(0); transform-origin: left; transition: transform .4s var(--fx-ease-out) calc(var(--fx-i) * 120ms); }
+.fx-in[data-fx="traffic-strip"] i { transform: none; }
+[data-fx="traffic-strip"] .l0 { background: var(--fx-up, #2eaf63); }
+[data-fx="traffic-strip"] .l1 { background: var(--fx-warn, #e8930c); }
+[data-fx="traffic-strip"] .l2 { background: var(--fx-down, #e10600); }
+[data-fx="traffic-strip"] u { position: absolute; top: -3px; left: 0; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: #fff; border: 3px solid #1d6fe0; box-sizing: border-box; }
+.fx-in[data-fx="traffic-strip"] u { animation: fx-traffic-car 6s linear .8s infinite; }
+[data-fx="traffic-strip"] p { margin: 8px 0 0; }
+[data-fx="traffic-strip"] b { font-size: 18px; }
+@keyframes fx-traffic-car { to { left: 100%; } }
