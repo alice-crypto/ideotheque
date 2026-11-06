@@ -148,4 +148,23 @@
     },
     trigger: function (el) { el.firstChild.click(); }
   });
+
+  // Un voyage jour par jour, avec le point sur la carte qui avance
+  FX.register('itinerary-days', {
+    setup: function (el) {
+      var D = (el.dataset.fxItems || 'Arrivée à Porto:Quartier de la Ribeira|Vallée du Douro:Vignobles en terrasses|Coimbra:La vieille université|Lisbonne:Tram et belvédères').split('|').map(function (r) { return r.split(':'); });
+      el.innerHTML = '<div class="fx-id" aria-hidden="true"><i></i></div><div class="fx-id-l"></div>';
+      var rail = el.firstChild, list = el.lastChild, dot = rail.firstChild, n = D.length;
+      for (var k = 0; k < n; k++) U.make('u', '', rail).style.top = k / (n - 1) * 100 + '%';
+      D.forEach(function (d, i) {
+        var b = U.make('button', '', list), p = U.make('p', '', list);
+        b.type = 'button'; b.setAttribute('aria-expanded', i === 0); b.innerHTML = '<small>Jour ' + (i + 1) + '</small>' + d[0];
+        p.textContent = d[1];
+        b.addEventListener('click', function () {
+          list.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-expanded', x === b); });
+          dot.style.top = i / (n - 1) * 100 + '%';
+        });
+      });
+    }
+  });
 })(window.FX);

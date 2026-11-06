@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="postcard-flip" data-fx-place="Lisbonne"></div>',
     '<div data-fx="postcard-flip" data-fx-place="Bons baisers"></div>',
     { trigger: 'Retourner', a11y: 'Vrai bouton `aria-pressed`, image décorative, texte réel.' }),
+  E('itinerary-days', 'Navigation',
+    'Un programme s\'ouvre jour par jour, et un point glisse jusqu\'au jour choisi.',
+    'On se projette déjà dans le voyage.',
+    '- `data-fx-items` : « lieu:description » séparés par `|`',
+    'Agences, récits, séminaires, plans de cours.',
+    'Un programme de plus de sept jours : il deviendrait difficile à parcourir.',
+    '<div data-fx="itinerary-days" data-fx-items="Porto:Ribeira|Lisbonne:Tram"></div>',
+    '<div data-fx="itinerary-days" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons `aria-expanded`, rail décoratif.' }),
 ];
