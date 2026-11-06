@@ -451,4 +451,28 @@
       go();
     }
   });
+
+  // Compter les cernes d'un arbre, avec ses années sèches
+  FX.register('tree-rings', {
+    setup: function (el) {
+      var max = U.num(el, 'fxMax', 60), seed = U.num(el, 'fxSeed', 5), R = function () { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }, W = [];
+      for (var i = 0; i < max; i++) W.push(R() < .14 ? .35 : .6 + R() * .7);
+      var y0 = new Date().getFullYear();
+      el.innerHTML = '<svg viewBox="-60 -60 120 120" aria-hidden="true"></svg><label>Âge <input type="range" min="3" max="' + max + '"></label><output aria-live="polite"></output>';
+      var s = el.querySelector('svg'), r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxAge', 30);
+      var go = function () {
+        var a = +r.value, t = 0, H = '', dry = [], tot = W.slice(0, a).reduce(function (x, y) { return x + y; }, 0), sc = 56 / tot;
+        for (var i = 0; i < a; i++) {
+          t += W[i] * sc;
+          H = '<circle r="' + t.toFixed(2) + '" class="' + (W[i] < .4 ? 'fx-d' : '') + '" style="stroke-width:' + Math.max(.4, W[i] * sc * .5) + '"/>' + H;
+          if (W[i] < .4) dry.push(y0 - a + i + 1);
+        }
+        s.innerHTML = H;
+        o.innerHTML = '<b>' + a + ' cernes</b><br>' + (dry.length ? 'Années sèches : ' + dry.slice(0, 4).join(', ') : 'Pas d\'année sèche') + ' (fictif)';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
