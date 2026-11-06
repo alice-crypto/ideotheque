@@ -10453,6 +10453,23 @@
       });
     }
   });
+
+  // Un gobelet gradué dont on règle le niveau
+  FX.register('measure-cup', {
+    setup: function (el) {
+      var max = U.num(el, 'fxMax', 30), step = U.num(el, 'fxStep', 5), t = '';
+      for (var v = step; v <= max; v += step) t += '<span style="bottom:' + v / max * 92 + '%">' + v + '</span>';
+      el.innerHTML = '<div class="fx-mc" aria-hidden="true"><i></i>' + t + '</div><div><label>Volume en ml<input type="range" min="0" max="' + max + '" step="' + step + '"></label><output aria-live="polite"></output></div>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxValue', 15);
+      var go = function () {
+        el.style.setProperty('--fx-q', r.value / max);
+        o.innerHTML = '<b>' + r.value + ' ml</b> soit ' + String(Math.round(r.value / 5 * 10) / 10).replace('.', ',') + ' c. à café';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="dropper-count" data-fx-max="12"></div>',
     '<div data-fx="dropper-count" style="color:var(--ink)"></div>',
     { a11y: 'Vrai bouton, compte annoncé.' }),
+  E('measure-cup', 'Micro-interaction',
+    'Un curseur règle le niveau d\'un gobelet gradué et convertit le volume.',
+    'Concret, on voit ce que représentent 15 ml.',
+    '- `data-fx-max` (30), `data-fx-step` (5), `data-fx-value` (15)',
+    'Sirops, cuisine, cosmétique, jardinage.',
+    'De dire la dose à prendre : l\'outil mesure, il ne prescrit pas.',
+    '<div data-fx="measure-cup" data-fx-max="30"></div>',
+    '<div data-fx="measure-cup" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai curseur nommé, volume annoncé.' }),
 ];
