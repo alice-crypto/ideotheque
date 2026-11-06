@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="blood-level" data-fx-items="O−:2|A+:9"></div>',
     '<div data-fx="blood-level" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Niveau et jours sont écrits sous chaque goutte.' }),
+  E('blood-compat', 'Micro-interaction',
+    'On choisit un groupe sanguin, et ceux qui peuvent recevoir ses globules rouges s\'allument.',
+    'Pédagogique, une règle complexe devient simple.',
+    '- `--fx-blood`, `--fx-w`',
+    'Don de sang, pédagogie, toute table de compatibilité.',
+    'D\'en faire un outil médical : le plasma suit d\'autres règles, et le médecin décide toujours.',
+    '<div data-fx="blood-compat"></div>',
+    '<div data-fx="blood-compat" style="color:var(--ink)"></div>',
+    { a11y: 'Résultat écrit et annoncé, pas seulement coloré.' }),
 ];

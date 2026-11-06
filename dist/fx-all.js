@@ -10046,6 +10046,36 @@
       U.make('p', '', el).textContent = 'Valeurs fictives';
     }
   });
+
+  // Choisir un groupe sanguin et voir à qui il peut donner ses globules rouges
+  FX.register('blood-compat', {
+    setup: function (el) {
+      var G = ['O−', 'O+', 'B−', 'B+', 'A−', 'A+', 'AB−', 'AB+'];
+      var can = function (d, r) {
+        var dl = d.replace(/[+−]/, ''), rl = r.replace(/[+−]/, '');
+        var abo = dl === 'O' || dl === rl || rl === 'AB';
+        return abo && (d.slice(-1) === '−' || r.slice(-1) === '+');
+      };
+      var box = U.make('div', 'fx-bc', el), out = U.make('output', '', el);
+      out.setAttribute('aria-live', 'polite');
+      out.textContent = 'Choisissez votre groupe';
+      G.forEach(function (g) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.textContent = g; b.dataset.g = g;
+        b.addEventListener('click', function () {
+          var n = [];
+          box.querySelectorAll('button').forEach(function (x) {
+            var c = can(g, x.dataset.g);
+            x.classList.toggle('fx-can', c); x.classList.toggle('fx-me', x === b);
+            x.setAttribute('aria-pressed', x === b);
+            if (c) n.push(x.dataset.g);
+          });
+          out.textContent = g + ' peut donner à : ' + n.join(', ');
+        });
+      });
+      U.make('small', '', el).textContent = 'Globules rouges seulement. Le médecin décide.';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
