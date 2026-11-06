@@ -349,4 +349,31 @@
     tick: function (el, dt, t) { if (el._fxDraw && !U.reduced) el._fxDraw(t, dt); },
     trigger: function (el) { el._fxBoost(); }
   });
+
+  // Le stock en dents de scie : le seuil de commande fait tout
+  FX.register('reorder-point', {
+    setup: function (el) {
+      el.innerHTML = '<svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><line x1="0" x2="200"/><path/></svg><label>Seuil de commande <b></b><input type="range" min="0" max="60"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), P = el.querySelector('path'), L = el.querySelector('line'), o = el.querySelector('output'), U2 = U.num(el, 'fxUse', 4), lead = U.num(el, 'fxLead', 6), top = 100;
+      r.value = U.num(el, 'fxPoint', 28);
+      var go = function () {
+        var th = +r.value, s = top, wait = -1, zero = 0, d = 'M0 ' + (80 - s * .78);
+        for (var i = 1; i <= 60; i++) {
+          s = Math.max(0, s - U2);
+          if (s === 0) zero++;
+          if (wait === 0) { s = Math.min(100, s + 70); wait = -1; }
+          else if (wait > 0) wait--;
+          else if (s <= th) wait = lead;
+          d += 'L' + (i / 60 * 200).toFixed(1) + ' ' + (80 - s * .78).toFixed(1);
+        }
+        P.setAttribute('d', d);
+        L.setAttribute('y1', 80 - th * .78); L.setAttribute('y2', 80 - th * .78);
+        el.querySelector('label b').textContent = th;
+        el.classList.toggle('fx-out', zero > 0);
+        o.textContent = zero ? 'Rupture sur ' + zero + ' jours' : 'Pas de rupture avec ce seuil';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
