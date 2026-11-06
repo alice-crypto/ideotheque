@@ -320,4 +320,23 @@
       }, U.num(el, 'fxWait2', 1200));
     }
   });
+
+  // Un reçu sort de l'imprimante, par petits à-coups
+  FX.register('receipt-print', {
+    entrance: true,
+    setup: function (el) {
+      var w = document.createElement('div');
+      w.className = 'fx-rp';
+      while (el.firstChild) w.appendChild(el.firstChild);
+      el.appendChild(w);
+      el._fxW = w;
+    },
+    reset: function (el) { el.style.setProperty('--fx-y', '-100%'); },
+    enter: function (el) {
+      U.tween(el, U.num(el, 'fxDuration', 1500), function (p) {
+        var steps = 12, q = Math.floor(p * steps) / steps;
+        el.style.setProperty('--fx-y', ((q - 1) * 100).toFixed(1) + '%');
+      }, function () { el.style.setProperty('--fx-y', '0%'); });
+    }
+  });
 })(window.FX);
