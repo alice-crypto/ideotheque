@@ -339,4 +339,27 @@
       });
     }
   });
+
+  // Un tableau d'allergènes qu'on peut filtrer d'un geste
+  FX.register('allergen-matrix', {
+    setup: function (el) {
+      var A = (el.dataset.fxAllergens || 'Gluten,Lait,Œuf,Fruits à coque').split(','), R = (el.dataset.fxItems || 'Velouté:0,1,0,0|Quiche:1,1,1,0|Salade:0,0,0,1|Tarte:1,1,1,1').split('|').map(function (r) { var p = r.split(':'); return [p[0], p[1].split(',')]; });
+      var h = '<thead><tr><th><span class="fx-sr">Plat</span></th>' + A.map(function (a, i) { return '<th scope="col"><button type="button" data-i="' + i + '" aria-pressed="false">' + a + '</button></th>'; }).join('') + '</tr></thead><tbody>';
+      R.forEach(function (r) {
+        h += '<tr><th scope="row">' + r[0] + '</th>' + r[1].map(function (v) { return '<td>' + (v === '1' ? '<i aria-label="contient">●</i>' : '<span class="fx-sr">non</span>') + '</td>'; }).join('') + '</tr>';
+      });
+      el.innerHTML = '<table>' + h + '</tbody></table><small>Exemple fictif. Demandez toujours confirmation en cuisine.</small>';
+      var pick = -1;
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('button');
+        if (!b) return;
+        pick = pick === +b.dataset.i ? -1 : +b.dataset.i;
+        el.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', +x.dataset.i === pick); });
+        el.querySelectorAll('tbody tr').forEach(function (tr, y) {
+          Array.prototype.forEach.call(tr.cells, function (c, i) { c.classList.toggle('fx-col', i === pick + 1); });
+          tr.classList.toggle('fx-has', pick >= 0 && R[y][1][pick] === '1');
+        });
+      });
+    }
+  });
 })(window.FX);

@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="latte-layers"></div>',
     '<div data-fx="latte-layers" style="color:var(--ink)"></div>',
     { a11y: 'Groupe radio nommé, composition écrite et annoncée.' }),
+  E('allergen-matrix', 'Présentation',
+    'Un tableau d\'allergènes éclaire une colonne au choix, et les plats concernés se détachent.',
+    'Rassurant pour qui mange avec prudence.',
+    '- `data-fx-allergens`, `data-fx-items` : « plat:0,1,… » séparés par `|`',
+    'Restaurants, cantines, traiteurs.',
+    'Toute information non vérifiée : une erreur peut avoir de graves conséquences.',
+    '<div data-fx="allergen-matrix" data-fx-allergens="Gluten,Lait"></div>',
+    '<div data-fx="allergen-matrix" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai tableau, marques nommées, boutons `aria-pressed`.' }),
 ];
