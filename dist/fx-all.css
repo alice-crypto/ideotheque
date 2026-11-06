@@ -6860,6 +6860,20 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="roof-pitch"] input { min-width: 0; accent-color: var(--fx-accent); }
 [data-fx="roof-pitch"] output b { font-size: 16px; }
 
+/* Pack 29 — Automobile */
+
+/* car-colorizer : repeindre la voiture */
+[data-fx="car-colorizer"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="car-colorizer"] svg { display: block; width: 100%; }
+[data-fx="car-colorizer"] .fx-cc-b { fill: var(--fx-paint, #ddd); stroke: #0005; transition: fill .5s; }
+[data-fx="car-colorizer"] .fx-cc-g { fill: #1c2732; }
+[data-fx="car-colorizer"] circle { fill: #111; }
+[data-fx="car-colorizer"] .fx-cc-h { fill: #b9bec4; }
+[data-fx="car-colorizer"] .fx-cc-s { display: flex; gap: 6px; }
+[data-fx="car-colorizer"] button { width: 26px; height: 26px; padding: 0; border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px #0007; cursor: pointer; transition: transform .2s var(--fx-ease-spring); }
+[data-fx="car-colorizer"] [aria-pressed="true"] { box-shadow: 0 0 0 2px var(--fx-accent); transform: scale(1.14); }
+[data-fx="car-colorizer"] output b { font-size: 17px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
