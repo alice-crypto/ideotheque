@@ -6830,6 +6830,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="concrete-grain"] .fx-cg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 [data-fx="concrete-grain"] > i { position: absolute; width: 7px; height: 7px; margin: -3px; border-radius: 50%; background: #0005; box-shadow: inset 1px 1px 2px #000a; z-index: -1; }
 
+/* window-light : une lumière sur le mur */
+[data-fx="window-light"] { position: relative; display: block; width: 100%; height: var(--fx-h, 150px); overflow: hidden; background: var(--fx-wall, #5b5247); }
+[data-fx="window-light"] .fx-wl { position: absolute; top: 8%; left: var(--fx-x, 20%); width: 62%; height: 84%; display: grid; grid-template-columns: 1fr 1fr; gap: 7%; transform: skewX(-18deg); opacity: var(--fx-o, .8); filter: blur(4px); }
+[data-fx="window-light"] i { background: var(--fx-sun, #ffe2ad); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

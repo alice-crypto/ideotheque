@@ -192,4 +192,13 @@ module.exports = [
     '<section data-fx="concrete-grain">…</section>',
     '<div data-fx="concrete-grain" style="width:215px;height:130px;display:grid;place-items:center;font-size:22px;font-weight:800">Béton</div>',
     { a11y: 'Décor seul. Le contenu reste au-dessus et lisible.' }),
+  E('window-light', 'Ambiance',
+    'Une lumière de fenêtre glisse lentement sur un mur.',
+    'Une fin d\'après-midi tranquille.',
+    '- `data-fx-pace` (12), `--fx-wall`, `--fx-sun`, `--fx-h`',
+    'Hôtels, architecture, fond de citation.',
+    'De la mettre derrière un texte long : le contraste varierait trop.',
+    '<div data-fx="window-light"></div>',
+    '<div data-fx="window-light" style="width:215px"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran ; fixe en mouvement réduit.' }),
 ];

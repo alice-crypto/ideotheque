@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->645<!-- /total --> effets.
+La bibliothèque contient <!-- total -->646<!-- /total --> effets.
 
 ## Règles
 
@@ -612,6 +612,7 @@ La bibliothèque contient <!-- total -->645<!-- /total --> effets.
 | `led-cross` | Ambiance | Une croix en points lumineux enchaîne ses animations comme une enseigne |
 | `facade-windows` | Ambiance | Une façade montre des fenêtres qui s'allument et s'éteignent selon l'heure locale |
 | `concrete-grain` | Ambiance | Un fond de béton brut est généré sans image, avec ses joints et ses trous de coffrage |
+| `window-light` | Ambiance | Une lumière de fenêtre glisse lentement sur un mur |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |

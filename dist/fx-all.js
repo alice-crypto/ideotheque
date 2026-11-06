@@ -11405,6 +11405,21 @@
       for (var i = 0; i < c; i++) { var h = U.make('i', '', el); h.setAttribute('aria-hidden', 'true'); h.style.left = (8 + i * (84 / Math.max(1, c - 1))) + '%'; h.style.top = i % 2 ? '84%' : '14%'; }
     }
   });
+
+  // La lumière d'une fenêtre qui glisse lentement sur le mur
+  FX.register('window-light', {
+    setup: function (el) {
+      el.setAttribute('aria-hidden', 'true');
+      el.innerHTML = '<div class="fx-wl"><i></i><i></i><i></i><i></i></div>';
+      if (U.reduced) el.style.setProperty('--fx-x', '20%');
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      var q = (Math.sin(t / U.num(el, 'fxPace', 12)) + 1) / 2;
+      el.style.setProperty('--fx-x', (q * 60 - 10).toFixed(2) + '%');
+      el.style.setProperty('--fx-o', (.55 + q * .35).toFixed(2));
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
