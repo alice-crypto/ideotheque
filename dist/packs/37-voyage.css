@@ -10,3 +10,15 @@
 .fx-in[data-fx="flight-arc"] .fx-fa-p { offset-distance: 100%; }
 [data-fx="flight-arc"] .fx-fa2 { display: flex; justify-content: space-between; margin-top: 2px; }
 [data-fx="flight-arc"] p { margin: 4px 0 0; text-align: center; font-size: 11px; }
+
+/* boarding-pass : une carte d'embarquement */
+[data-fx="boarding-pass"] { display: grid; gap: 4px; width: min(100%, var(--fx-w, 235px)); font-size: 10px; overflow: hidden; padding-top: 2px; }
+[data-fx="boarding-pass"] .fx-bp { padding: 10px 12px; border-radius: 12px; background: var(--fx-pass, #f7f4ec); color: #1e1e22; transform: translateY(-105%); transition: transform .9s var(--fx-ease-out); mask: radial-gradient(circle 8px at 0 56%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 8px at 100% 56%, transparent 98%, #000) right / 51% 100% no-repeat; }
+.fx-in[data-fx="boarding-pass"] .fx-bp { transform: none; }
+[data-fx="boarding-pass"] header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 2px dashed #0003; }
+[data-fx="boarding-pass"] header b { font-size: 25px; font-weight: 900; }
+[data-fx="boarding-pass"] header i { font-style: normal; font-size: 18px; color: var(--fx-accent); }
+[data-fx="boarding-pass"] dl { display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px; margin: 9px 0 0; }
+[data-fx="boarding-pass"] dd { margin: 0; font-size: 14px; font-weight: 800; }
+[data-fx="boarding-pass"] dt { opacity: .6; }
+[data-fx="boarding-pass"] small { opacity: .7; }
