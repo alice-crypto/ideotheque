@@ -12339,6 +12339,24 @@
       });
     }
   });
+
+  // Une grille horaire dont le prochain passage ressort
+  FX.register('timetable-grid', {
+    setup: function (el) {
+      var R = (el.dataset.fxItems || '6:15,45|7:05,20,35,50|8:05,20,35,50|9:15,45|12:15,45|17:05,20,35,50|18:05,35|21:15').split('|').map(function (r) { var p = r.split(':'); return [+p[0], p[1].split(',')]; }), d = new Date(), now = d.getHours() * 60 + d.getMinutes(), next = false, h = '';
+      R.forEach(function (r) {
+        h += '<tr><th scope="row">' + r[0] + ' h</th><td>';
+        r[1].forEach(function (m) {
+          var t = r[0] * 60 + +m, isN = !next && t >= now;
+          if (isN) next = [r[0], m];
+          h += '<span class="' + (t < now ? 'fx-gone' : isN ? 'fx-next' : '') + '">' + m + '</span>';
+        });
+        h += '</td></tr>';
+      });
+      el.innerHTML = '<table>' + h + '</table><p></p>';
+      el.querySelector('p').textContent = next ? 'Prochain : ' + next[0] + ' h ' + next[1] : 'Plus de passage aujourd\'hui';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

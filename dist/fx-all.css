@@ -7358,6 +7358,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="disruption-banner"][hidden] { display: none; }
 @keyframes fx-db { from { opacity: 0; transform: translateY(-10px); } }
 
+/* timetable-grid : une grille horaire */
+[data-fx="timetable-grid"] { width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="timetable-grid"] table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+[data-fx="timetable-grid"] th { width: 34px; font-weight: 800; text-align: left; }
+[data-fx="timetable-grid"] td, [data-fx="timetable-grid"] th { padding: 1px 2px; }
+[data-fx="timetable-grid"] tr + tr > * { border-top: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
+[data-fx="timetable-grid"] td span { display: inline-block; padding: 0 4px; }
+[data-fx="timetable-grid"] .fx-gone { opacity: .35; }
+[data-fx="timetable-grid"] .fx-next { background: var(--fx-accent); color: #fff; border-radius: 4px; font-weight: 800; animation: fx-tg 1.5s infinite; }
+[data-fx="timetable-grid"] p { margin: 5px 0 0; font-weight: 700; }
+@keyframes fx-tg { 50% { transform: scale(1.1); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

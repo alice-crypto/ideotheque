@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="disruption-banner" data-fx-level="warn">Ligne 4 ralentie</div>',
     '<div data-fx="disruption-banner" data-fx-level="stop">Ligne 4 fermée jusqu\'à 18 h (exemple).</div>',
     { a11y: 'Rôle `alert` si grave, `status` sinon, bouton de fermeture nommé.' }),
+  E('timetable-grid', 'Présentation',
+    'Une grille horaire estompe les passages finis et fait ressortir le prochain.',
+    'On trouve tout de suite, là où l\'œil fatigue sur une vraie fiche.',
+    '- `data-fx-items` : « heure:minutes,minutes » séparés par `|`',
+    'Bus, navettes, séances, créneaux.',
+    'De gérer des jours fériés avec cet outil : prévoyez une grille par calendrier.',
+    '<div data-fx="timetable-grid" data-fx-items="7:05,20|8:05"></div>',
+    '<div data-fx="timetable-grid" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai tableau, le prochain passage est aussi écrit en phrase.' }),
 ];
