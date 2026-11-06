@@ -63,4 +63,17 @@
       go();
     }
   });
+
+  // Une étiquette énergie dont la flèche vient se placer sur sa classe
+  FX.register('energy-label', {
+    entrance: true,
+    setup: function (el) {
+      var L = ['A', 'B', 'C', 'D', 'E', 'F', 'G'], lim = [70, 110, 180, 250, 330, 420, 1e9], v = U.num(el, 'fxValue', 210), k = lim.findIndex(function (m) { return v < m; }), col = ['#00853f', '#3fa34d', '#a4c639', '#f2d21f', '#f0a91a', '#e8681e', '#d3172a'];
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', 'Classe énergie ' + L[k] + ', ' + v + ' kWh par mètre carré et par an');
+      var h = '';
+      L.forEach(function (c, i) { h += '<div class="' + (i === k ? 'fx-on' : '') + '" style="--fx-c:' + col[i] + ';--fx-w:' + (30 + i * 11) + '%;--fx-i:' + i + '"><span>' + c + '</span>' + (i === k ? '<b>' + v + '</b>' : '') + '</div>'; });
+      el.innerHTML = h;
+    }
+  });
 })(window.FX);
