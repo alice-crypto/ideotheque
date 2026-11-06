@@ -219,4 +219,32 @@
       go();
     }
   });
+
+  // Estimer la valeur de ses biens, pièce par pièce
+  FX.register('room-inventory', {
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Salon:4000|Cuisine:3000|Chambres:5000').split('|'), cap = U.num(el, 'fxCap', 10000);
+      rows.forEach(function (r) {
+        var p = r.split(':'), l = U.make('label', '', el);
+        U.make('span', '', l).textContent = p[0];
+        var i = U.make('input', '', l);
+        i.type = 'range'; i.min = 0; i.max = 12000; i.step = 500; i.value = p[1];
+        U.make('b', '', l);
+      });
+      var bar = U.make('div', 'fx-ri', el), out = U.make('output', '', el);
+      U.make('i', '', bar);
+      U.make('em', '', bar).setAttribute('title', 'Capital assuré');
+      out.setAttribute('aria-live', 'polite');
+      var go = function () {
+        var t = 0;
+        el.querySelectorAll('label').forEach(function (l) { var v = +l.querySelector('input').value; t += v; l.querySelector('b').textContent = (v / 1000).toLocaleString('fr-FR') + ' k€'; });
+        var top = Math.max(t, cap) * 1.1;
+        bar.style.setProperty('--fx-a', t / top); bar.style.setProperty('--fx-b', cap / top);
+        el.classList.toggle('fx-under', t > cap);
+        out.textContent = t > cap ? 'Sous-assuré de ' + (t - cap).toLocaleString('fr-FR') + ' €' : 'Capital suffisant : ' + cap.toLocaleString('fr-FR') + ' €';
+      };
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

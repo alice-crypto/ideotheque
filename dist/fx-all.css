@@ -5777,6 +5777,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="bonus-ladder"] .fx-on { background: var(--fx-accent) !important; transform: scaleY(1.08); }
 [data-fx="bonus-ladder"] output b { font-size: 18px; }
 
+/* room-inventory : la valeur de ses biens */
+[data-fx="room-inventory"] { display: grid; gap: 3px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="room-inventory"] label { display: grid; grid-template-columns: 56px 1fr 42px; gap: 4px; align-items: center; }
+[data-fx="room-inventory"] label b { text-align: right; font-variant-numeric: tabular-nums; }
+[data-fx="room-inventory"] input { width: 100%; min-width: 0; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="room-inventory"] .fx-ri { position: relative; height: 14px; margin-top: 6px; background: color-mix(in srgb, currentColor 14%, transparent); }
+[data-fx="room-inventory"] .fx-ri i { display: block; height: 100%; width: calc(var(--fx-a) * 100%); background: var(--fx-ok, #2eaf63); transition: width .25s, background .25s; }
+[data-fx="room-inventory"] .fx-ri em { position: absolute; top: -3px; bottom: -3px; left: calc(var(--fx-b) * 100%); width: 2px; background: currentColor; transition: left .25s; }
+[data-fx="room-inventory"].fx-under .fx-ri i { background: var(--fx-down, #e10600); }
+[data-fx="room-inventory"] output { font-weight: 700; font-size: 12px; margin-top: 4px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

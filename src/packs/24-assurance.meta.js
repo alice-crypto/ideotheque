@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="bonus-ladder" data-fx-value="5"></div>',
     '<div data-fx="bonus-ladder" style="color:var(--ink)"></div>',
     { a11y: 'Vrai curseur, résultat écrit et annoncé.' }),
+  E('room-inventory', 'Micro-interaction',
+    'On estime ses biens pièce par pièce, et la barre se compare au capital assuré.',
+    'Prise de conscience sans jargon.',
+    '- `data-fx-items` : « pièce:valeur » séparés par `|`\n- `data-fx-cap` (10000) : capital assuré',
+    'Assurance habitation, valeur d\'un parc, budgets par poste.',
+    'D\'afficher un conseil d\'assurance sans préciser que l\'estimation reste indicative.',
+    '<div data-fx="room-inventory" data-fx-cap="10000" data-fx-items="Salon:4000|Cuisine:3000"></div>',
+    '<div data-fx="room-inventory" style="color:var(--ink)"></div>',
+    { a11y: 'Curseurs nommés par leur pièce, écart écrit et annoncé.' }),
 ];
