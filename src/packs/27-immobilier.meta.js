@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="commute-rings" data-fx-items="Gare:9:150"></div>',
     '<div data-fx="commute-rings" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, résultat écrit et annoncé.' }),
+  E('floor-view', 'Micro-interaction',
+    'Choisir un étage déplace la vue par la fenêtre, et le prix suit.',
+    'On monte vraiment dans l\'immeuble.',
+    '- `data-fx-price`, `data-fx-step`, `data-fx-floors`, `data-fx-floor`',
+    'Promoteurs, hôtels, bureaux.',
+    'De faire passer ce dessin pour la vraie vue du logement.',
+    '<div data-fx="floor-view" data-fx-floors="8"></div>',
+    '<div data-fx="floor-view" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, étage et prix annoncés.' }),
 ];

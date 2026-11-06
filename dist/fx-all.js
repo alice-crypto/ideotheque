@@ -10978,6 +10978,23 @@
       go();
     }
   });
+
+  // Choisir son étage : la vue change et le prix aussi
+  FX.register('floor-view', {
+    setup: function (el) {
+      var base = U.num(el, 'fxPrice', 240000), add = U.num(el, 'fxStep', 4000), F = U.num(el, 'fxFloors', 8);
+      el.innerHTML = '<div class="fx-fv" aria-hidden="true"><i></i><i></i><i></i><b></b></div><label>Étage <input type="range" min="0" max="' + F + '"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxFloor', 3);
+      var go = function () {
+        var f = +r.value, q = f / F;
+        el.style.setProperty('--fx-q', q);
+        o.innerHTML = '<b>' + (f ? f + (f === 1 ? 'ᵉʳ' : 'ᵉ') + ' étage' : 'Rez-de-chaussée') + '</b> · ' + (base + add * f).toLocaleString('fr-FR') + ' € (fictif)';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
