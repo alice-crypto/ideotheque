@@ -32,3 +32,17 @@
 [data-fx="peak-clock"] span:nth-of-type(3) { left: 50%; bottom: 2px; transform: translateX(-50%); }
 [data-fx="peak-clock"] span:nth-of-type(4) { left: 3px; top: 50%; transform: translateY(-50%); }
 [data-fx="peak-clock"].fx-now-off output { color: var(--fx-off, #2d9c7f); }
+
+/* grid-mix : la composition de l'électricité */
+[data-fx="grid-mix"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="grid-mix"] .fx-gm { display: flex; height: 20px; gap: 1px; }
+[data-fx="grid-mix"] .fx-gm i { flex: 1 1 0; min-width: 2px; transition: flex-grow 1.6s linear; background: var(--c); }
+[data-fx="grid-mix"] .c0 { --c: #e8c232; }
+[data-fx="grid-mix"] .c1 { --c: #2d82d6; }
+[data-fx="grid-mix"] .c2 { --c: #42c1a4; }
+[data-fx="grid-mix"] .c3 { --c: #ff9d2e; }
+[data-fx="grid-mix"] .c4 { --c: #8c8f96; }
+[data-fx="grid-mix"] ul { display: flex; flex-wrap: wrap; gap: 1px 9px; margin: 0; padding: 0; list-style: none; }
+[data-fx="grid-mix"] li::before { content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 4px; background: var(--c); }
+[data-fx="grid-mix"] p { margin: 0; }
+[data-fx="grid-mix"] b { font-size: 18px; }

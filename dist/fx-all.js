@@ -12910,6 +12910,23 @@
       setInterval(go, 60000);
     }
   });
+
+  // La composition de l'électricité en ce moment, qui varie doucement
+  FX.register('grid-mix', {
+    setup: function (el) {
+      var M = (el.dataset.fxItems || 'Nucléaire:62:1|Hydraulique:12:1|Éolien:9:1|Solaire:6:1|Gaz:11:0').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], v: +p[1], g: +p[2] }; }), bar = U.make('div', 'fx-gm', el), ul = U.make('ul', '', el), o = U.make('p', '', el);
+      bar.setAttribute('aria-hidden', 'true');
+      M.forEach(function (m, i) { m.b = U.make('i', 'c' + i, bar); m.l = U.make('li', 'c' + i, ul); });
+      el._fxShow = function () {
+        var t = M.reduce(function (s, m) { return s + m.v; }, 0), g = 0;
+        M.forEach(function (m) { var q = m.v / t * 100; m.b.style.flexGrow = q; m.l.textContent = m.n + ' ' + Math.round(q) + ' %'; if (m.g) g += q; });
+        o.innerHTML = '<b>' + Math.round(g) + ' %</b> décarboné. Données fictives.';
+      };
+      el._fxM = M;
+      el._fxShow();
+      if (!U.reduced) setInterval(function () { M.forEach(function (m) { m.v = Math.max(1, m.v + U.rand(-1.2, 1.2)); }); el._fxShow(); }, 1800);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

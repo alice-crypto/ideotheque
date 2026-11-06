@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="peak-clock" data-fx-off="0-6,14-16"></div>',
     '<div data-fx="peak-clock" style="color:var(--ink)"></div>',
     { a11y: 'L\'état est écrit en phrase, le cadran est décoratif.' }),
+  E('grid-mix', 'Présentation',
+    'Une barre montre la composition de l\'électricité, qui varie doucement dans le temps.',
+    'Un réseau vivant, qu\'on regarde respirer.',
+    '- `data-fx-items` : « source:part:1 si décarboné » séparés par `|`',
+    'Énergie, tableaux de bord, tout mélange en direct.',
+    'De faire passer ces chiffres pour réels : branchez les vraies données du réseau.',
+    '<div data-fx="grid-mix" data-fx-items="Nucléaire:62:1|Gaz:11:0"></div>',
+    '<div data-fx="grid-mix" style="color:var(--ink)"></div>',
+    { a11y: 'Parts écrites dans une liste. La barre est décorative.' }),
 ];
