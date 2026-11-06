@@ -26,4 +26,23 @@
       calc();
     }
   });
+
+  // Une franchise à régler : ce qu'on paie en cas de sinistre contre chaque mois
+  FX.register('deductible-slider', {
+    setup: function (el) {
+      var min = U.num(el, 'fxMin', 0), max = U.num(el, 'fxMax', 1000), top = U.num(el, 'fxTop', 48), low = U.num(el, 'fxLow', 26);
+      el.innerHTML = '<label>Franchise <input type="range" min="' + min + '" max="' + max + '" step="50"></label><div class="fx-ds"><span><b class="a"></b>en cas de sinistre</span><span><b class="c"></b>par mois</span></div>';
+      var r = el.querySelector('input'), a = el.querySelector('.a'), c = el.querySelector('.c');
+      r.value = U.num(el, 'fxValue', 300);
+      var go = function () {
+        var q = (r.value - min) / (max - min);
+        a.textContent = (+r.value).toLocaleString('fr-FR') + ' €';
+        c.textContent = Math.round(top - (top - low) * Math.sqrt(q)) + ' €';
+        el.style.setProperty('--fx-q', q);
+        r.setAttribute('aria-valuetext', a.textContent + ' de franchise, ' + c.textContent + ' par mois');
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

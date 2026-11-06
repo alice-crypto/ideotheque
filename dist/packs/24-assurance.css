@@ -9,3 +9,13 @@
 [data-fx="premium-builder"] b { font-size: 24px; }
 [data-fx="premium-builder"] .fx-go b { display: inline-block; animation: fx-pb .35s var(--fx-ease-spring); }
 @keyframes fx-pb { from { transform: scale(.85); } }
+
+/* deductible-slider : le réglage de la franchise */
+[data-fx="deductible-slider"] { display: grid; gap: 10px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="deductible-slider"] label { display: grid; gap: 4px; }
+[data-fx="deductible-slider"] input { width: 100%; accent-color: var(--fx-accent); }
+[data-fx="deductible-slider"] .fx-ds { display: flex; gap: 8px; }
+[data-fx="deductible-slider"] .fx-ds span { display: grid; gap: 2px; padding: 6px 8px; border: 1px solid currentColor; border-radius: 6px; }
+[data-fx="deductible-slider"] .fx-ds span:first-child { flex: calc(1 + var(--fx-q, 0)) 1 0; }
+[data-fx="deductible-slider"] .fx-ds span:last-child { flex: calc(2 - var(--fx-q, 0)) 1 0; background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="deductible-slider"] b { font-size: 19px; font-variant-numeric: tabular-nums; }
