@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="wind-turbine" data-fx-wind="10"></div>',
     '<div data-fx="wind-turbine" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, résultat annoncé. Mouvement réduit : pales fixes.' }),
+  E('heat-pump-flow', 'Présentation',
+    'Selon la température, un flux de chaleur s\'épaissit à la sortie d\'une pompe à chaleur.',
+    'On voit d\'où vient le gain, sans calcul.',
+    '- `data-fx-temp` (7)',
+    'Chauffagistes, fournisseurs, aides à la rénovation.',
+    'De prendre ce modèle pour une vraie courbe de machine.',
+    '<div data-fx="heat-pump-flow" data-fx-temp="7"></div>',
+    '<div data-fx="heat-pump-flow" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, coefficient annoncé.' }),
 ];

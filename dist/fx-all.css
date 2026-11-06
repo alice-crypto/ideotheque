@@ -7704,6 +7704,20 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="wind-turbine"] output { align-self: start; }
 [data-fx="wind-turbine"] output b { font-size: 15px; }
 
+/* heat-pump-flow : la chaleur produite */
+[data-fx="heat-pump-flow"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="heat-pump-flow"] .fx-hp { display: grid; grid-template-columns: 1fr 36px 1fr; gap: 4px; align-items: center; }
+[data-fx="heat-pump-flow"] .pm { height: 50px; border-radius: 6px; background: #484d57; }
+[data-fx="heat-pump-flow"] .in, [data-fx="heat-pump-flow"] .out { display: grid; gap: 3px; align-items: center; }
+[data-fx="heat-pump-flow"] .fx-hp i { display: block; background: linear-gradient(90deg, var(--a) 30%, var(--b) 30% 60%, var(--a) 60%); background-size: 26px 100%; animation: fx-heat-flow .8s linear infinite; }
+[data-fx="heat-pump-flow"] .in i { --a: #2d82d6; --b: #62a9ea; height: 8px; }
+[data-fx="heat-pump-flow"] .out i { --a: #ef5b2c; --b: #ff9b6a; height: calc(4px + var(--fx-q) * 26px); transition: height .25s; }
+[data-fx="heat-pump-flow"] .fx-hp b { font-size: 14px; }
+[data-fx="heat-pump-flow"] .out b { text-align: right; }
+[data-fx="heat-pump-flow"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="heat-pump-flow"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+@keyframes fx-heat-flow { to { background-position-x: 26px; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -101,4 +101,22 @@
       el.style.setProperty('--fx-a', el._fxA + 'deg');
     }
   });
+
+  // Une pompe à chaleur : 1 kWh d'électricité, combien de chaleur ?
+  FX.register('heat-pump-flow', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-hp" aria-hidden="true"><div class="in"><b>1 kWh</b><i></i></div><div class="pm"></div><div class="out"><i></i><b data-o></b></div></div><label>Dehors <b data-t></b><input type="range" min="-15" max="15"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxTemp', 7);
+      var go = function () {
+        var t = +r.value, cop = U.clamp(3.3 + t * .09, 1.3, 5);
+        el.querySelector('[data-t]').textContent = t + ' °C';
+        el.querySelector('[data-o]').textContent = cop.toFixed(1).replace('.', ',') + ' kWh';
+        el.style.setProperty('--fx-q', cop / 5);
+        o.textContent = 'COP de ' + cop.toFixed(1).replace('.', ',') + ' à cette température (modèle fictif)';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
