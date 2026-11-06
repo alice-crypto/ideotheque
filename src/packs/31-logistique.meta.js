@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="box-finder" data-fx-items="S:25,20,10|M:35,30,20"></div>',
     '<div data-fx="box-finder" style="color:var(--ink)"></div>',
     { a11y: 'Champs étiquetés, résultat annoncé.' }),
+  E('volumetric-weight', 'Micro-interaction',
+    'Dimensions et poids donnent le poids facturé, le plus élevé entre le réel et le volume.',
+    'Une facture d\'expédition enfin comprise.',
+    '- `data-fx-divisor` (5000) : diviseur du transporteur',
+    'Expédition, fret, boutiques.',
+    'D\'utiliser le diviseur par défaut sans vérifier celui de votre transporteur.',
+    '<div data-fx="volumetric-weight" data-fx-divisor="5000"></div>',
+    '<div data-fx="volumetric-weight" style="color:var(--ink)"></div>',
+    { a11y: 'Champs étiquetés, résultat annoncé.' }),
 ];

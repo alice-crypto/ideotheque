@@ -29,3 +29,15 @@
 [data-fx="box-finder"] .fx-bf i { flex: calc(var(--fx-s) * 2) 1 0; height: calc(var(--fx-s) * 100%); display: grid; place-items: center; background: linear-gradient(90deg, transparent 45%, #e7cfa0 45% 55%, transparent 55%), #b98b4f; color: #2f2108; font-weight: 800; font-style: normal; opacity: .5; transition: transform .3s var(--fx-ease-spring), opacity .2s; }
 [data-fx="box-finder"] .fx-bf .fx-on { opacity: 1; transform: translateY(-5px); box-shadow: 0 6px 10px #0005; }
 [data-fx="box-finder"] output b { font-size: 16px; }
+
+/* volumetric-weight : le poids facturé */
+[data-fx="volumetric-weight"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="volumetric-weight"] label { display: grid; gap: 2px; }
+[data-fx="volumetric-weight"] span { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+[data-fx="volumetric-weight"] input { width: 100%; box-sizing: border-box; padding: 3px; font: inherit; }
+[data-fx="volumetric-weight"] .fx-vw { display: flex; gap: 12px; align-items: flex-end; height: 44px; }
+[data-fx="volumetric-weight"] .fx-vw > div { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; gap: 1px; text-align: center; }
+[data-fx="volumetric-weight"] i { display: block; transition: height .25s; }
+[data-fx="volumetric-weight"] .a { height: calc(var(--fx-a) * 28px); background: color-mix(in srgb, currentColor 45%, transparent); }
+[data-fx="volumetric-weight"] .b { height: calc(var(--fx-b) * 28px); background: var(--fx-accent); }
+[data-fx="volumetric-weight"] output b { font-size: 16px; }
