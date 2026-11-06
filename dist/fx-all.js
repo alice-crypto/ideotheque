@@ -12968,6 +12968,28 @@
       go();
     }
   });
+
+  // Une maison qui perd sa chaleur : isoler, poste après poste
+  FX.register('insulation-loss', {
+    setup: function (el) {
+      var P = (el.dataset.fxItems || 'Toit:30|Murs:25|Fenêtres:15|Sol:10').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], v: +p[1] }; }), bill = U.num(el, 'fxBill', 1800);
+      el.innerHTML = '<div class="fx-il" aria-hidden="true"><i class="r"></i><i class="w"></i><i class="f"></i><i class="s"></i></div><div class="fx-il-c"></div><output aria-live="polite"></output>';
+      var c = el.querySelector('.fx-il-c'), o = el.querySelector('output'), parts = el.querySelectorAll('.fx-il i');
+      P.forEach(function (p, i) {
+        var l = U.make('label', '', c), k = U.make('input', '', l);
+        k.type = 'checkbox';
+        l.appendChild(document.createTextNode(p.n + ' (−' + p.v + ' %)'));
+        p.c = k; p.part = parts[i];
+      });
+      var go = function () {
+        var g = 0;
+        P.forEach(function (p) { if (p.c.checked) g += p.v; p.part.classList.toggle('fx-ok', p.c.checked); });
+        o.innerHTML = '<b>' + (g ? '−' : '') + g + ' %</b> de pertes, ' + Math.round(bill * g / 100).toLocaleString('fr-FR') + ' € par an (estimation)';
+      };
+      c.addEventListener('change', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

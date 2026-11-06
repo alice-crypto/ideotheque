@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="heat-pump-flow" data-fx-temp="7"></div>',
     '<div data-fx="heat-pump-flow" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, coefficient annoncé.' }),
+  E('insulation-loss', 'Micro-interaction',
+    'Cocher les postes isolés fait passer la maison du rouge au bleu et chiffre l\'économie.',
+    'La thermographie à portée de main.',
+    '- `data-fx-items` : « poste:% de pertes » séparés par `|`\n- `data-fx-bill` (1800)',
+    'Rénovation énergétique, aides, artisans.',
+    'De reprendre ces parts sans diagnostic réel : chaque maison est différente.',
+    '<div data-fx="insulation-loss" data-fx-bill="1800"></div>',
+    '<div data-fx="insulation-loss" style="color:var(--ink)"></div>',
+    { a11y: 'Vraies cases, résultat annoncé en texte.' }),
 ];
