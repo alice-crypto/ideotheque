@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->628<!-- /total --> effets.
+La bibliothèque contient <!-- total -->629<!-- /total --> effets.
 
 ## Règles
 
@@ -362,6 +362,7 @@ La bibliothèque contient <!-- total -->628<!-- /total --> effets.
 | `rooms-range` | Micro-interaction | Deux clics sur des pastilles définissent une plage continue, soudée en une barre |
 | `moving-boxes` | Micro-interaction | Chaque tâche cochée fait tomber un carton sur la pile du déménagement |
 | `material-swatch` | Micro-interaction | Des échantillons changent le matériau de la façade dans un balayage |
+| `scale-bar` | Micro-interaction | Un plan zoome et sa barre d'échelle reste juste, en changeant de valeur par paliers lisibles |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

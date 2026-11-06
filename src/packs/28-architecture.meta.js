@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="project-index" data-fx-items="Halle:2026:Lille:halle.jpg"></div>',
     '<div data-fx="project-index" style="color:var(--ink)"></div>',
     { a11y: 'Boutons `aria-expanded`, parcourables au clavier.' }),
+  E('scale-bar', 'Micro-interaction',
+    'Un plan zoome et sa barre d\'échelle reste juste, en changeant de valeur par paliers lisibles.',
+    'Un détail de professionnel, précis.',
+    '- `data-fx-px-per-m` (6), `data-fx-zoom` (2)',
+    'Plans, cartes, images techniques.',
+    'D\'oublier de remplacer le dessin d\'exemple par votre plan à la bonne échelle.',
+    '<div data-fx="scale-bar" data-fx-px-per-m="6"></div>',
+    '<div data-fx="scale-bar" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, la valeur de l\'échelle reste écrite.' }),
 ];
