@@ -183,4 +183,26 @@
       show();
     }
   });
+
+  // Louer ou acheter : deux courbes et l'année où elles se croisent
+  FX.register('rent-vs-buy', {
+    setup: function (el) {
+      el.innerHTML = '<svg viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path class="r" pathLength="1"/><path class="b" pathLength="1"/><line y1="0" y2="100"/></svg><label>Loyer mensuel <b></b><input type="range" min="400" max="2500" step="50"></label><output aria-live="polite"></output><small>Modèle fictif : frais d\'achat et valeur du bien simplifiés.</small>';
+      var i = el.querySelector('input'), P = U.num(el, 'fxPrice', 250000), F = P * .08, C = P * .012, Y = 25, o = el.querySelector('output');
+      i.value = U.num(el, 'fxRent', 950);
+      var go = function () {
+        var rent = [], buy = [], cross = null;
+        for (var y = 0; y <= Y; y++) { rent.push(+i.value * 12 * y); buy.push(F + C * y); if (cross === null && rent[y] > buy[y]) cross = y; }
+        var top = Math.max(rent[Y], buy[Y]), p = function (a) { return a.map(function (v, k) { return (k ? 'L' : 'M') + (k / Y * 200).toFixed(1) + ' ' + (100 - v / top * 96).toFixed(1); }).join(''); };
+        el.querySelector('.r').setAttribute('d', p(rent));
+        el.querySelector('.b').setAttribute('d', p(buy));
+        el.querySelector('b').textContent = (+i.value).toLocaleString('fr-FR') + ' €';
+        var ln = el.querySelector('line');
+        ln.setAttribute('x1', (cross || 0) / Y * 200); ln.setAttribute('x2', (cross || 0) / Y * 200);
+        o.innerHTML = cross === null ? 'Pas de bascule sur 25 ans' : 'Acheter devient avantageux après <b>' + cross + ' ans</b>';
+      };
+      i.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
