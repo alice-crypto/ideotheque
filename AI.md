@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->557<!-- /total --> effets.
+La bibliothèque contient <!-- total -->558<!-- /total --> effets.
 
 ## Règles
 
@@ -577,6 +577,7 @@ La bibliothèque contient <!-- total -->557<!-- /total --> effets.
 | `price-tick-flash` | État | Une valeur clignote brièvement dans la couleur de son changement, avec une flèche |
 | `secure-lock` | État | Un cadenas ouvert se ferme et le message passe à « chiffré » |
 | `due-date-bar` | État | Une barre montre le temps écoulé vers une échéance, et le message devient plus ferme à l'approche |
+| `er-wait` | État | Un temps d'attente s'affiche avec son niveau, l'heure de sa mise à jour et le rappel des urgences vitales |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)

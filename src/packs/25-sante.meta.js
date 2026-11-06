@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="steps-week-goal" data-fx-goal="8000" data-fx-data="6400,8200,10400"></div>',
     '<div data-fx="steps-week-goal" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le bilan est écrit, et chaque barre porte sa valeur en `title`.' }),
+  E('er-wait', 'État',
+    'Un temps d\'attente s\'affiche avec son niveau, l\'heure de sa mise à jour et le rappel des urgences vitales.',
+    'Honnête, on choisit en connaissance de cause.',
+    '- `data-fx-minutes` (45)\n- `--fx-ok`, `--fx-warn`, `--fx-down`',
+    'Centres de soins, guichets, services publics.',
+    'Un chiffre non relié à une vraie source : il pourrait pousser à ne pas venir.',
+    '<div data-fx="er-wait" data-fx-minutes="45"></div>',
+    '<div data-fx="er-wait" style="color:var(--ink)"></div>',
+    { a11y: 'Le niveau est écrit en mots, et le numéro d\'urgence reste visible.' }),
 ];

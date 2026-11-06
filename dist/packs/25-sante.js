@@ -163,4 +163,13 @@
       el.innerHTML = h + '</div><p>' + hits + ' jours sur ' + d.length + ' au-dessus de ' + goal.toLocaleString('fr-FR') + ' pas</p>';
     }
   });
+
+  // Un temps d'attente clair, avec l'heure de sa mise à jour
+  FX.register('er-wait', {
+    setup: function (el) {
+      var m = U.num(el, 'fxMinutes', 45), lvl = m < 30 ? 0 : m < 90 ? 1 : 2, names = ['Attente faible', 'Attente moyenne', 'Attente longue'], d = new Date();
+      el.dataset.fxLevel = lvl;
+      el.innerHTML = '<div class="fx-ew" aria-hidden="true"><i></i><i></i><i></i></div><strong>' + (m >= 60 ? Math.floor(m / 60) + ' h ' + String(m % 60).padStart(2, '0') : m + ' min') + '</strong><span>' + names[lvl] + '</span><small>Estimation mise à jour à ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + '</small><small class="fx-ew-u">En cas d\'urgence vitale, appelez le 15 ou le 112.</small>';
+    }
+  });
 })(window.FX);
