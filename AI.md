@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->853<!-- /total --> effets.
+La bibliothèque contient <!-- total -->854<!-- /total --> effets.
 
 ## Règles
 
@@ -91,6 +91,7 @@ La bibliothèque contient <!-- total -->853<!-- /total --> effets.
 | `cnc-toolpath` | Entrée | Une trajectoire d'outil usine une forme, ligne après ligne, en laissant un trait lumineux |
 | `rivet-frame` | Entrée | Les rivets se posent un à un autour d'une plaque d'acier brossé |
 | `orchard-grow` | Entrée | Des rangées d'arbres sortent de terre en vague, avec leur total écrit |
+| `passport-stamps` | Entrée | Une page de passeport reçoit ses tampons un à un, légèrement de travers |
 | `text-split` | Texte | Donner du poids à un titre en le faisant apparaître lettre par lettre |
 | `text-scramble` | Texte | Un texte brouillé en signes aléatoires qui se décode lettre par lettre, de gauche à droite |
 | `typewriter` | Texte | Le texte s'écrit lettre par lettre, suivi d'un curseur qui clignote |

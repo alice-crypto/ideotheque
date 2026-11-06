@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="packing-weight" data-fx-limit="8"></div>',
     '<div data-fx="packing-weight" style="color:var(--ink)"></div>',
     { a11y: 'Vraies cases, poids écrit et annoncé.' }),
+  E('passport-stamps', 'Entrée',
+    'Une page de passeport reçoit ses tampons un à un, légèrement de travers.',
+    'Le plaisir simple de collectionner les ailleurs.',
+    '- `data-fx-items` : « lieu:année » séparés par `|`\n- `data-fx-seed` (7), `--fx-page`',
+    'Récits de voyage, fidélité, défis à étapes.',
+    'De reproduire un vrai tampon officiel : ce dessin reste générique.',
+    '<div data-fx="passport-stamps" data-fx-items="Lisbonne:2024|Kyoto:2025"></div>',
+    '<div data-fx="passport-stamps"></div>',
+    { trigger: 'Rejouer', a11y: 'Liste des lieux dans `aria-label`, et chaque nom reste un vrai texte.' }),
 ];

@@ -15327,6 +15327,25 @@
       go();
     }
   });
+
+  // Une page de passeport qui reçoit ses tampons un à un
+  FX.register('passport-stamps', {
+    entrance: true,
+    setup: function (el) {
+      var S = (el.dataset.fxItems || 'Lisbonne:2024|Kyoto:2025|Dakar:2025|Lima:2026|Oslo:2026|Hanoï:2027').split('|').map(function (r) { return r.split(':'); }), seed = U.num(el, 'fxSeed', 7), R = function () { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }, C = 2;
+      S.forEach(function (s, i) {
+        var d = U.make('div', i % 3 === 1 ? 'fx-round' : '', el);
+        d.style.left = (i % 3) * 33 + R() * 4 + '%';
+        d.style.top = Math.floor(i / 3) * 50 + R() * 6 + '%';
+        d.style.setProperty('--fx-r', (R() * 26 - 13).toFixed(1) + 'deg');
+        d.style.setProperty('--fx-i', i);
+        d.style.setProperty('--fx-c', ['#c6341f', '#1d4fa2', '#1f7a4d', '#7a2aa0'][i % 4]);
+        d.innerHTML = '<b>' + s[0] + '</b><small>' + s[1] + '</small>';
+      });
+      el.setAttribute('aria-label', S.length + ' tampons : ' + S.map(function (s) { return s[0]; }).join(', '));
+      el.setAttribute('role', 'group');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

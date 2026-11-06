@@ -48,3 +48,10 @@
 [data-fx="packing-weight"].fx-over .fx-pw-b i { background: var(--fx-down, #e10600); }
 [data-fx="packing-weight"] output { font-weight: 700; font-size: 12px; }
 @keyframes fx-pack-over { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
+
+/* passport-stamps : les tampons d'un passeport */
+[data-fx="passport-stamps"] { position: relative; display: block; width: min(100%, var(--fx-w, 240px)); height: 150px; background: linear-gradient(transparent 49.5%, #0001 49.5% 50.5%, transparent 50.5%), var(--fx-page, #f3ecd9); box-shadow: 0 2px 6px #0004; overflow: hidden; }
+[data-fx="passport-stamps"] > div { position: absolute; width: 33%; display: grid; justify-items: center; padding: 5px 3px; border: 2px solid var(--fx-c); border-radius: 5px; color: var(--fx-c); font-size: 10px; text-transform: uppercase; box-sizing: border-box; opacity: 0; transform: rotate(var(--fx-r)) scale(1.8); transition: opacity .1s calc(var(--fx-i) * 200ms), transform .2s ease-in calc(var(--fx-i) * 200ms); filter: url(#none); mix-blend-mode: multiply; }
+.fx-in[data-fx="passport-stamps"] > div { opacity: .85; transform: rotate(var(--fx-r)); }
+[data-fx="passport-stamps"] .fx-round { aspect-ratio: 1; align-content: center; border-radius: 50%; border-style: double; border-width: 4px; }
+[data-fx="passport-stamps"] small { font-size: 9px; }
