@@ -409,4 +409,25 @@
       U.make('p', '', el).textContent = 'Noms fictifs : affichez vos vraies certifications.';
     }
   });
+
+  // La couleur de l'acier selon sa température
+  FX.register('steel-glow', {
+    setup: function (el) {
+      var T = [[400, '#3a3a3e', 'Pas de couleur visible'], [600, '#54201a', 'Rouge sombre'], [750, '#b52a16', 'Rouge cerise'], [900, '#ee5a18', 'Orange'], [1100, '#ffb030', 'Jaune'], [1300, '#fff0b8', 'Blanc jaune']];
+      el.innerHTML = '<div class="fx-sg2" aria-hidden="true"></div><label>Température <b></b><input type="range" min="400" max="1300" step="10"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxTemp', 850);
+      var mix = function (a, b, q) { var p = function (h, i) { return parseInt(h.slice(i, i + 2), 16); }, f = function (i) { return Math.round(p(a, i) + (p(b, i) - p(a, i)) * q); }; return 'rgb(' + f(1) + ',' + f(3) + ',' + f(5) + ')'; };
+      var go = function () {
+        var v = +r.value, k = 0;
+        while (k < T.length - 2 && v > T[k + 1][0]) k++;
+        var q = (v - T[k][0]) / (T[k + 1][0] - T[k][0]);
+        el.style.setProperty('--fx-c', mix(T[k][1], T[k + 1][1], U.clamp(q, 0, 1)));
+        el.querySelector('label b').textContent = v + ' °C';
+        o.textContent = T[q > .5 ? k + 1 : k][2];
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
