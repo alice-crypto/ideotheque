@@ -137,4 +137,17 @@
     },
     trigger: function (el) { el._fxTap(); }
   });
+
+  // Une accroche-porte qui se retourne : ne pas déranger, ou faire la chambre
+  FX.register('door-hanger', {
+    setup: function (el) {
+      var A = (el.dataset.fxItems || 'Ne pas déranger|Faire la chambre').split('|');
+      el.innerHTML = '<button type="button" role="switch" aria-checked="false" aria-label="' + A[0] + '"><span class="fx-dh"><span class="a">' + A[0] + '</span><span class="b">' + A[1] + '</span></span></button><output aria-live="polite"></output>';
+      var b = el.firstChild, o = el.querySelector('output');
+      var set = function (on) { b.setAttribute('aria-checked', on); o.textContent = 'État : ' + (on ? A[0] : A[1]); el.dispatchEvent(new CustomEvent('fx:hanger', { bubbles: true, detail: { dnd: on } })); };
+      b.addEventListener('click', function () { set(b.getAttribute('aria-checked') !== 'true'); });
+      set(el.dataset.fxOn === 'true');
+    },
+    trigger: function (el) { el.firstChild.click(); }
+  });
 })(window.FX);
