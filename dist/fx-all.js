@@ -10437,6 +10437,22 @@
       say();
     }
   });
+
+  // Un compte-gouttes : chaque geste fait tomber une goutte
+  FX.register('dropper-count', {
+    setup: function (el) {
+      var max = U.num(el, 'fxMax', 12), n = 0;
+      el.innerHTML = '<div class="fx-dr" aria-hidden="true"><u></u><div><i></i></div></div><button type="button">Une goutte</button><output aria-live="polite">0 goutte</output>';
+      var b = el.querySelector('button'), o = el.querySelector('output'), drop = el.querySelector('u');
+      b.addEventListener('click', function () {
+        n++;
+        drop.classList.remove('fx-go'); void drop.offsetWidth; drop.classList.add('fx-go');
+        el.style.setProperty('--fx-q', n / max);
+        o.textContent = n + (n > 1 ? ' gouttes' : ' goutte');
+        if (n >= max) { b.disabled = true; o.textContent = n + ' gouttes : maximum de la démonstration'; }
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

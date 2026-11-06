@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="blister-pop" data-fx-count="10"></div>',
     '<div data-fx="blister-pop"></div>',
     { a11y: 'Boutons nommés, désactivés après usage, et compte annoncé.' }),
+  E('dropper-count', 'Micro-interaction',
+    'Chaque geste fait tomber une goutte, et le verre se remplit.',
+    'Précis, presque apothicaire.',
+    '- `data-fx-max` (12), `--fx-drop`',
+    'Huiles, sirops, cosmétiques, cuisine.',
+    'De donner une posologie : le maximum est un paramètre d\'affichage.',
+    '<div data-fx="dropper-count" data-fx-max="12"></div>',
+    '<div data-fx="dropper-count" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai bouton, compte annoncé.' }),
 ];
