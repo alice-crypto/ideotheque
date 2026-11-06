@@ -1,0 +1,13 @@
+/* Pack 30 — Mobilité */
+
+/* metro-line : une ligne de métro */
+[data-fx="metro-line"] { display: grid; gap: 8px; width: min(100%, var(--fx-w, 240px)); font-size: 10px; }
+[data-fx="metro-line"] .fx-ml { display: flex; margin: 0; padding: 0; list-style: none; }
+[data-fx="metro-line"] li { position: relative; flex: 1; }
+[data-fx="metro-line"] li::before { content: ''; position: absolute; left: -50%; right: 50%; top: 7px; height: 4px; background: color-mix(in srgb, var(--fx-line, #e4322b) 30%, transparent); transition: background .25s; }
+[data-fx="metro-line"] li:first-child::before { display: none; }
+[data-fx="metro-line"] li.fx-on + li.fx-on::before { background: var(--fx-line, #e4322b); }
+[data-fx="metro-line"] button { position: relative; display: grid; justify-items: center; gap: 4px; width: 100%; padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="metro-line"] i { width: 12px; height: 12px; border: 3px solid var(--fx-line, #e4322b); border-radius: 50%; background: #fff; transition: transform .2s var(--fx-ease-spring); box-sizing: content-box; }
+[data-fx="metro-line"] .fx-to i { background: var(--fx-line, #e4322b); transform: scale(1.25); }
+[data-fx="metro-line"] output { font-size: 12px; }
