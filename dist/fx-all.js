@@ -13185,6 +13185,24 @@
       el.innerHTML = '<div class="fx-pc2" aria-hidden="true"><i class="fx-pc2-w"></i><i class="fx-pc2-p"></i><i class="fx-pc2-s"></i></div><div class="fx-pc2-t">' + t + '</div>';
     }
   });
+
+  // Une ampoule LED contre une ampoule classique : coût à l'année
+  FX.register('bulb-compare', {
+    setup: function (el) {
+      var K = U.num(el, 'fxKwh', .21), A = U.num(el, 'fxOld', 60), B = U.num(el, 'fxLed', 8);
+      el.innerHTML = '<div class="fx-bc3" aria-hidden="true"><div><i class="o"></i><small>' + A + ' W</small></div><div><i class="l"></i><small>' + B + ' W</small></div></div><label>Heures par jour <b></b><input type="range" min="1" max="16"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxHours', 4);
+      var go = function () {
+        var h = +r.value, y = h * 365, a = A / 1000 * y * K, b = B / 1000 * y * K;
+        el.querySelector('label b').textContent = h + ' h';
+        el.style.setProperty('--fx-q', h / 16);
+        o.innerHTML = '<b>' + (a - b).toFixed(2).replace('.', ',') + ' €</b> d\'écart par an et par lampe';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

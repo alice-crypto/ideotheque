@@ -7848,6 +7848,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="plug-connect"] .fx-pc2-t { opacity: .18; transition: opacity .15s .95s, text-shadow .4s .95s; }
 .fx-in[data-fx="plug-connect"] .fx-pc2-t { opacity: 1; text-shadow: 0 0 14px var(--fx-glow, #ffd400); }
 
+/* bulb-compare : deux ampoules */
+[data-fx="bulb-compare"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 215px)); font-size: 11px; }
+[data-fx="bulb-compare"] .fx-bc3 { display: flex; justify-content: space-around; padding: 6px 0; }
+[data-fx="bulb-compare"] .fx-bc3 > div { display: grid; justify-items: center; gap: 6px; }
+[data-fx="bulb-compare"] i { position: relative; width: 36px; height: 36px; border-radius: 50%; transition: box-shadow .25s; }
+[data-fx="bulb-compare"] i::after { content: ''; position: absolute; left: 11px; bottom: -8px; width: 14px; height: 10px; background: #5a5e65; border-radius: 0 0 3px 3px; }
+[data-fx="bulb-compare"] .o { background: #ffc34d; box-shadow: 0 0 calc(var(--fx-q) * 26px + 6px) #ffa61a; }
+[data-fx="bulb-compare"] .l { background: #fffbe7; box-shadow: 0 0 calc(var(--fx-q) * 24px + 6px) #fff4b8; }
+[data-fx="bulb-compare"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="bulb-compare"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="bulb-compare"] output b { font-size: 17px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="plug-connect">Connecté</div>',
     '<div data-fx="plug-connect" style="color:var(--ink);font-size:20px">Connecté</div>',
     { trigger: 'Rejouer', a11y: 'Le texte reste lisible. En mouvement réduit, il apparaît allumé.' }),
+  E('bulb-compare', 'Micro-interaction',
+    'Deux ampoules brillent et l\'écart de coût annuel se calcule selon l\'usage.',
+    'Un petit changement, une somme concrète.',
+    '- `data-fx-old` (60), `data-fx-led` (8), `data-fx-hours` (4), `data-fx-kwh`',
+    'Éclairage, économie d\'énergie, fiches produit.',
+    'De comparer sans tenir compte du prix d\'achat et de la durée de vie.',
+    '<div data-fx="bulb-compare" data-fx-old="60" data-fx-led="8"></div>',
+    '<div data-fx="bulb-compare" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat annoncé.' }),
 ];
