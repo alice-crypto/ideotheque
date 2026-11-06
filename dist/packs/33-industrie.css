@@ -187,3 +187,10 @@
 [data-fx="cert-badges"] .fx-exp i { background: #7d8088; }
 [data-fx="cert-badges"] .fx-exp b { text-decoration: line-through; }
 [data-fx="cert-badges"] p { flex: 100%; margin: 0; opacity: .6; }
+
+/* steel-glow : la couleur de l'acier */
+[data-fx="steel-glow"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 220px)); font-size: 12px; }
+[data-fx="steel-glow"] .fx-sg2 { height: 40px; border-radius: 3px; background: linear-gradient(transparent 70%, #0005), var(--fx-c); box-shadow: 0 0 18px var(--fx-c), inset 0 3px 3px #fff3; }
+[data-fx="steel-glow"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="steel-glow"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="steel-glow"] output { font-size: 15px; font-weight: 800; }

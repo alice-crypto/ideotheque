@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="cert-badges" data-fx-items="Norme A:2028-06-30"></div>',
     '<div data-fx="cert-badges" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Nom et validité écrits, sans dépendre de la couleur.' }),
+  E('steel-glow', 'Micro-interaction',
+    'Un curseur chauffe une barre d\'acier, qui change de couleur et prend le nom de cette couleur.',
+    'Le regard du forgeron.',
+    '- `data-fx-temp` (850)',
+    'Forges, métallurgie, pédagogie.',
+    'De vous fier à l\'écran pour une vraie mesure : les correspondances sont indicatives.',
+    '<div data-fx="steel-glow" data-fx-temp="850"></div>',
+    '<div data-fx="steel-glow" style="color:var(--ink)"></div>',
+    { a11y: 'Température et couleur écrites, résultat annoncé.' }),
 ];
