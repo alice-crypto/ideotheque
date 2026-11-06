@@ -10032,6 +10032,20 @@
       el.innerHTML = h;
     }
   });
+
+  // Des gouttes qui montrent les réserves de sang par groupe
+  FX.register('blood-level', {
+    entrance: true,
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'O−:2|O+:5|A+:9|B−:3').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1]]; }), safe = U.num(el, 'fxSafe', 7);
+      rows.forEach(function (r, i) {
+        var id = 'fxbl' + i + Math.floor(U.rand(1e4, 1e5)), q = Math.min(1, r[1] / (safe * 1.4)), d = U.make('div', '', el);
+        d.style.setProperty('--fx-i', i);
+        d.innerHTML = '<svg viewBox="0 0 40 52" aria-hidden="true"><defs><clipPath id="' + id + '"><path d="M20 2C20 2 3 22 3 33a17 17 0 0 0 34 0C37 22 20 2 20 2Z"/></clipPath></defs><g clip-path="url(#' + id + ')"><rect x="0" y="' + 52 * (1 - q) + '" width="40" height="52"/></g><path d="M20 2C20 2 3 22 3 33a17 17 0 0 0 34 0C37 22 20 2 20 2Z"/></svg><b>' + r[0] + '</b><small>' + (r[1] < safe / 2 ? 'Urgent' : r[1] < safe ? 'Bas' : 'Correct') + ', ' + r[1] + ' j</small>';
+      });
+      U.make('p', '', el).textContent = 'Valeurs fictives';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -156,4 +156,13 @@ module.exports = [
     '<h2 data-fx="eye-chart">VOIR CLAIR ENFIN</h2>',
     '<h2 data-fx="eye-chart" style="margin:0;color:var(--ink)">VOIR CLAIR ENFIN</h2>',
     { trigger: 'Rejouer', a11y: 'Le texte complet est dans `aria-label`.' }),
+  E('blood-level', 'Présentation',
+    'Des gouttes se remplissent selon les réserves de chaque groupe sanguin.',
+    'Appel clair à agir : on voit où ça manque.',
+    '- `data-fx-items` : « groupe:jours » séparés par `|`\n- `data-fx-safe` (7), `--fx-blood`',
+    'Dons de sang, collectes, stocks critiques.',
+    'Des chiffres non actualisés : ils mobilisent des gens pour rien.',
+    '<div data-fx="blood-level" data-fx-items="O−:2|A+:9"></div>',
+    '<div data-fx="blood-level" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Niveau et jours sont écrits sous chaque goutte.' }),
 ];
