@@ -215,4 +215,19 @@
       go();
     }
   });
+
+  // Ce qui arrive bientôt à l'entretien, selon le compteur
+  FX.register('service-odometer', {
+    setup: function (el) {
+      var km = U.num(el, 'fxKm', 47200), O = (el.dataset.fxItems || 'Vidange:20000|Pneus:40000|Freins:60000|Courroie:120000').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], e: +p[1] }; });
+      el.innerHTML = '<div class="fx-so" aria-label="' + km + ' kilomètres">' + String(km).padStart(6, '0').split('').map(function (d) { return '<i>' + d + '</i>'; }).join('') + '</div><ul></ul>';
+      var ul = el.querySelector('ul');
+      O.forEach(function (o) { o.left = o.e - km % o.e; o.q = 1 - o.left / o.e; });
+      O.sort(function (a, b) { return a.left - b.left; }).forEach(function (o, i) {
+        var li = U.make('li', o.left < 5000 ? 'fx-soon' : '', ul);
+        li.style.setProperty('--fx-q', o.q); li.style.setProperty('--fx-i', i);
+        li.innerHTML = '<span>' + o.n + '</span><em></em><b>' + o.left.toLocaleString('fr-FR') + ' km</b>';
+      });
+    }
+  });
 })(window.FX);
