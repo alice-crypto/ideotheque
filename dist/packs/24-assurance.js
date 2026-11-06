@@ -329,4 +329,24 @@
       });
     }
   });
+
+  // Ce qui est couvert et ce qui ne l'est pas, sur le même plan
+  FX.register('covered-list', {
+    entrance: true,
+    setup: function (el) {
+      var yes = (el.dataset.fxYes || 'Incendie|Dégât des eaux|Vol').split('|'), no = (el.dataset.fxNo || 'Usure|Défaut d\'entretien').split('|'), n = 0;
+      var ul = function (title, a, c, word) {
+        var d = U.make('div', c, el);
+        U.make('b', '', d).textContent = title;
+        var u = U.make('ul', '', d);
+        a.forEach(function (t) {
+          var li = U.make('li', '', u);
+          li.style.setProperty('--fx-i', n++);
+          li.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path pathLength="1" d="' + (c === 'fx-y' ? 'M3 8.5 7 12 13 4' : 'M4 4 12 12M12 4 4 12') + '"/></svg><span><span class="fx-sr">' + word + ' : </span>' + t + '</span>';
+        });
+      };
+      ul('Couvert', yes, 'fx-y', 'Couvert');
+      ul('Non couvert', no, 'fx-n', 'Non couvert');
+    }
+  });
 })(window.FX);

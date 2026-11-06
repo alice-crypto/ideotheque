@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->539<!-- /total --> effets.
+La bibliothèque contient <!-- total -->540<!-- /total --> effets.
 
 ## Règles
 
@@ -73,6 +73,7 @@ La bibliothèque contient <!-- total -->539<!-- /total --> effets.
 | `slice-column-text` | Entrée | Le mot arrive en tranches verticales, qui montent ou descendent pour se recaler |
 | `pop-confetti-title` | Entrée | Un titre gonfle à son arrivée et lance quelques éclats colorés autour de lui |
 | `receipt-print` | Entrée | Un reçu sort de la fente par petits à-coups, avec son bord dentelé |
+| `covered-list` | Entrée | Deux colonnes montrent ce qui est couvert et ce qui ne l'est pas, avec le même poids |
 | `text-split` | Texte | Donner du poids à un titre en le faisant apparaître lettre par lettre |
 | `text-scramble` | Texte | Un texte brouillé en signes aléatoires qui se décode lettre par lettre, de gauche à droite |
 | `typewriter` | Texte | Le texte s'écrit lettre par lettre, suivi d'un curseur qui clignote |

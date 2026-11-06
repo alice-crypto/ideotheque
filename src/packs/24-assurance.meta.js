@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="callback-slots" data-fx-from="9" data-fx-to="19"></div>',
     '<div data-fx="callback-slots" style="color:var(--ink)"></div>',
     { a11y: 'Vrais boutons avec `aria-pressed`, et le choix est annoncé.' }),
+  E('covered-list', 'Entrée',
+    'Deux colonnes montrent ce qui est couvert et ce qui ne l\'est pas, avec le même poids.',
+    'Honnête, rien de caché en petits caractères.',
+    '- `data-fx-yes`, `data-fx-no` : éléments séparés par `|`\n- `--fx-up`, `--fx-down` : couleurs',
+    'Fiches produit d\'assurance, offres d\'abonnement, garanties.',
+    'De réduire les exclusions pour vendre : l\'intérêt de l\'effet est leur égale visibilité.',
+    '<div data-fx="covered-list" data-fx-yes="Vol|Incendie" data-fx-no="Usure"></div>',
+    '<div data-fx="covered-list" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le sens est donné par le titre et un texte caché, pas seulement par la couleur.' }),
 ];
