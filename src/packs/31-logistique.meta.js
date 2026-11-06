@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="return-flow" data-fx-items="Motif|Étiquette|Dépôt"></div>',
     '<div data-fx="return-flow" style="color:var(--ink)"></div>',
     { a11y: 'Liste ordonnée, boutons nommés, état annoncé.' }),
+  E('locker-grid', 'Micro-interaction',
+    'Le bon code ouvre le bon casier, et un mauvais code fait trembler la consigne.',
+    'L\'objet réel est là, sa porte s\'ouvre.',
+    '- `data-fx-code`, `data-fx-locker` (7), `data-fx-count` (12)',
+    'Consignes, retraits, jeux d\'énigme.',
+    'Une vraie sécurité : un code dans la page est lisible par tous.',
+    '<div data-fx="locker-grid" data-fx-code="4821" data-fx-locker="7"></div>',
+    '<div data-fx="locker-grid" style="color:var(--ink)"></div>',
+    { a11y: 'Champ nommé, résultat annoncé en mots.' }),
 ];

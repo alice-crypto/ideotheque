@@ -12744,6 +12744,23 @@
       show();
     }
   });
+
+  // Une consigne : le bon code ouvre le bon casier
+  FX.register('locker-grid', {
+    setup: function (el) {
+      var C = el.dataset.fxCode || '4821', K = U.num(el, 'fxLocker', 7), n = U.num(el, 'fxCount', 12);
+      el.innerHTML = '<div class="fx-lg" aria-hidden="true"></div><div class="fx-lg-f"><input inputmode="numeric" maxlength="4" placeholder="Code" aria-label="Code de retrait"><button type="button">Ouvrir</button></div><output aria-live="polite">Code de démonstration : ' + C + '</output>';
+      var g = el.querySelector('.fx-lg'), o = el.querySelector('output'), i = el.querySelector('input');
+      for (var k = 1; k <= n; k++) U.make('i', '', g).textContent = k;
+      el.querySelector('button').addEventListener('click', function () {
+        var ok = i.value === C;
+        Array.prototype.forEach.call(g.children, function (x, j) { x.classList.toggle('fx-open', ok && j + 1 === K); });
+        el.classList.toggle('fx-no', !ok);
+        o.textContent = ok ? 'Casier ' + K + ' ouvert' : 'Code incorrect';
+        if (!ok) { g.classList.remove('fx-shake'); void g.offsetWidth; g.classList.add('fx-shake'); }
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
