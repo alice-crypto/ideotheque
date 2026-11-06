@@ -15237,6 +15237,21 @@
       el.innerHTML = '<ul>' + rows.map(function (r, i) { return '<li style="--fx-i:' + i + '"><span>' + r[0] + '</span><b>' + f(r[1]) + '</b></li>'; }).join('') + '</ul><p style="--fx-i:' + rows.length + '"><span>Total à payer</span><strong>' + f(tot) + '</strong></p>';
     }
   });
+
+  // Une étiquette de bagage qui se balance et prend votre nom
+  FX.register('luggage-tag', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-lt" aria-hidden="true"><i></i><div class="fx-lt-c"><small>Bagage de</small><b></b><small data-to></small></div></div><label>Votre nom <input type="text" maxlength="18" value="' + (el.dataset.fxName || 'Camille') + '"></label><label>Destination <input class="d" type="text" maxlength="14" value="' + (el.dataset.fxTo || 'Porto') + '"></label>';
+      var n = el.querySelector('input'), d = el.querySelector('.d'), b = el.querySelector('b'), t = el.querySelector('[data-to]'), c = el.querySelector('.fx-lt-c');
+      var go = function () {
+        b.textContent = n.value || '—';
+        t.textContent = 'Vers ' + (d.value || '—');
+        c.classList.remove('fx-go'); void c.offsetWidth; c.classList.add('fx-go');
+      };
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

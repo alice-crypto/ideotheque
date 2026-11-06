@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="stay-bill" data-fx-nights="3" data-fx-price="129"></div>',
     '<div data-fx="stay-bill" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Liste et total écrits.' }),
+  E('luggage-tag', 'Micro-interaction',
+    'Une étiquette de bagage se remplit à la saisie, et se balance à chaque lettre.',
+    'Déjà un peu ailleurs, ses valises prêtes.',
+    '- `data-fx-name`, `data-fx-to`',
+    'Voyages, hôtels, cartes de bienvenue.',
+    'De demander une vraie adresse : ce formulaire n\'envoie rien.',
+    '<div data-fx="luggage-tag" data-fx-name="Camille" data-fx-to="Porto"></div>',
+    '<div data-fx="luggage-tag" style="color:var(--ink)"></div>',
+    { a11y: 'Champs étiquetés. L\'étiquette reprend leur contenu de façon décorative.' }),
 ];
