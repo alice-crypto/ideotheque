@@ -10731,6 +10731,27 @@
       go();
     }
   });
+
+  // Une photo panoramique qu'on fait tourner, avec sa boussole
+  FX.register('panorama-drag', {
+    setup: function (el) {
+      var img = el.dataset.fxImage || 'assets/city.svg', x = 0, v = 0, down = false, last = 0, W = U.num(el, 'fxWidth', 900);
+      el.tabIndex = 0;
+      el.setAttribute('role', 'slider'); el.setAttribute('aria-label', el.dataset.fxLabel || 'Vue panoramique'); el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', 359);
+      el.innerHTML = '<div class="fx-pn"></div><span class="fx-pn-c" aria-hidden="true"><i></i></span>';
+      var p = el.firstChild;
+      p.style.backgroundImage = 'url(' + img + ')';
+      p.style.backgroundSize = W + 'px 100%';
+      var put = function () { var c = ((x % W) + W) % W, d = Math.round(c / W * 360) % 360; p.style.backgroundPositionX = -c + 'px'; el.style.setProperty('--fx-a', d + 'deg'); el.setAttribute('aria-valuenow', d); };
+      el.addEventListener('pointerdown', function (e) { down = true; last = e.clientX; v = 0; el.classList.add('fx-grab'); });
+      window.addEventListener('pointermove', function (e) { if (!down) return; v = last - e.clientX; x += v; last = e.clientX; put(); });
+      window.addEventListener('pointerup', function () { down = false; el.classList.remove('fx-grab'); });
+      el.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') { x -= 25; put(); e.preventDefault(); } if (e.key === 'ArrowRight') { x += 25; put(); e.preventDefault(); } });
+      el._fxStep = function () { if (!down && Math.abs(v) > .1) { x += v; v *= .94; put(); } };
+      put();
+    },
+    tick: function (el) { if (el._fxStep) el._fxStep(); }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="price-per-m2" data-fx-price="285000" data-fx-area="62" data-fx-ref="4300"></div>',
     '<div data-fx="price-per-m2" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, résultat écrit et annoncé.' }),
+  E('panorama-drag', 'Image',
+    'Une image se fait glisser en boucle avec une inertie, et une boussole suit le regard.',
+    'On est dans la pièce, on tourne la tête.',
+    '- `data-fx-image`, `data-fx-width` (900) : largeur de boucle\n- `data-fx-label`, `--fx-h`',
+    'Visites virtuelles, hôtels, musées.',
+    'Une image sans raccord : la boucle montrerait la coupure.',
+    '<div data-fx="panorama-drag" data-fx-image="salon.jpg"></div>',
+    '<div data-fx="panorama-drag" data-fx-image="assets/city.svg" style="width:220px"></div>',
+    { a11y: 'Rôle `slider`, flèches gauche et droite.' }),
 ];
