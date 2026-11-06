@@ -11644,6 +11644,28 @@
     },
     tick: function (el) { if (el._fxStep) el._fxStep(); }
   });
+
+  // Un loyer de location selon la durée, les kilomètres et l'apport
+  FX.register('lease-monthly', {
+    setup: function (el) {
+      var P = U.num(el, 'fxPrice', 32000);
+      el.innerHTML = '<div class="fx-lm" role="radiogroup" aria-label="Durée"></div><label>Km par an <b data-k></b><input data-r="k" type="range" min="5000" max="30000" step="5000" value="15000"></label><label>Apport <b data-a></b><input data-r="a" type="range" min="0" max="8000" step="500" value="2000"></label><output aria-live="polite"></output><small>Estimation fictive, hors assurance.</small>';
+      var box = el.querySelector('.fx-lm'), K = el.querySelector('[data-r=k]'), A = el.querySelector('[data-r=a]'), o = el.querySelector('output'), M = 36;
+      var go = function () {
+        var km = +K.value, ap = +A.value, residual = P * Math.max(.2, .72 - M / 120 - km / 150000), loyer = (P - residual - ap) / M + P * .0028;
+        el.querySelector('[data-k]').textContent = km.toLocaleString('fr-FR');
+        el.querySelector('[data-a]').textContent = ap.toLocaleString('fr-FR') + ' €';
+        o.innerHTML = '<b>' + Math.round(loyer) + ' €</b> par mois sur ' + M + ' mois';
+      };
+      [24, 36, 48, 60].forEach(function (m) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('role', 'radio'); b.textContent = m; b.setAttribute('aria-label', m + ' mois'); b.setAttribute('aria-checked', m === 36);
+        b.addEventListener('click', function () { box.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-checked', x === b); }); M = m; go(); });
+      });
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

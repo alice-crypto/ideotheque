@@ -6954,6 +6954,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="turntable-top"] i:nth-child(3) { left: -6%; bottom: 14%; }
 [data-fx="turntable-top"] i:nth-child(4) { right: -6%; bottom: 14%; }
 
+/* lease-monthly : un loyer de location */
+[data-fx="lease-monthly"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="lease-monthly"] .fx-lm { display: flex; border: 1px solid currentColor; border-radius: 6px; overflow: hidden; }
+[data-fx="lease-monthly"] button { flex: 1; padding: 4px 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; transition: background .2s, color .2s; }
+[data-fx="lease-monthly"] [aria-checked="true"] { background: var(--fx-accent); color: #fff; }
+[data-fx="lease-monthly"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="lease-monthly"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="lease-monthly"] output b { font-size: 22px; }
+[data-fx="lease-monthly"] small { font-size: 10px; opacity: .7; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

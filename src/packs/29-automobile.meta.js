@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="turntable-top"></div>',
     '<div data-fx="turntable-top"></div>',
     { a11y: 'Rôle `slider`, flèches gauche et droite.' }),
+  E('lease-monthly', 'Micro-interaction',
+    'Durée, kilométrage et apport donnent le loyer mensuel estimé.',
+    'On compose son contrat au lieu de le deviner.',
+    '- `data-fx-price` (32000)',
+    'Location longue durée, abonnements, matériel en leasing.',
+    'Une offre commerciale sans mention légale : ce calcul n\'en est pas une.',
+    '<div data-fx="lease-monthly" data-fx-price="32000"></div>',
+    '<div data-fx="lease-monthly" style="color:var(--ink)"></div>',
+    { a11y: 'Groupe radio nommé, curseurs étiquetés, résultat annoncé.' }),
 ];
