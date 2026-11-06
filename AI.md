@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->833<!-- /total --> effets.
+La bibliothèque contient <!-- total -->834<!-- /total --> effets.
 
 ## Règles
 
@@ -659,6 +659,7 @@ La bibliothèque contient <!-- total -->833<!-- /total --> effets.
 | `tracing-overlay` | Image | Un papier calque se déplace sur une image, avec ses traits d'esquisse |
 | `sketch-render` | Image | Une image passe d'une esquisse contrastée à sa vue finale au fil du défilement |
 | `turntable-top` | Image | On fait tourner une voiture sur son plateau, au pointeur ou au clavier, avec de l'inertie |
+| `day-night-room` | Image | Un curseur d'heure fait passer la chambre du jour à la nuit, et allume la lampe |
 | `burger-morph` | Navigation | Les trois barres du bouton de menu se transforment en croix quand le menu est ouvert |
 | `menu-reveal` | Navigation | Un menu plein écran s'ouvre en cercle depuis le bouton, puis ses liens arrivent en cascade |
 | `smart-header` | Navigation | L'en-tête se cache quand on descend dans la page et réapparaît dès qu'on remonte |

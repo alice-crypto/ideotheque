@@ -15003,6 +15003,24 @@
     },
     trigger: function (el) { el.firstChild.click(); }
   });
+
+  // Une chambre dont la lumière suit l'heure
+  FX.register('day-night-room', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-dn" aria-hidden="true"><i class="w"><u></u></i><i class="b"></i><i class="l"></i></div><label>Heure <b></b><input type="range" min="0" max="23"></label>';
+      var r = el.querySelector('input');
+      r.value = U.num(el, 'fxHour', 20);
+      var go = function () {
+        var h = +r.value, day = Math.sin((h - 6) / 12 * Math.PI), q = U.clamp(day, 0, 1), night = 1 - q;
+        el.style.setProperty('--fx-d', q.toFixed(2));
+        el.style.setProperty('--fx-n', night.toFixed(2));
+        el.style.setProperty('--fx-s', ((h - 6) / 12 * 100) + '%');
+        el.querySelector('label b').textContent = h + ' h';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

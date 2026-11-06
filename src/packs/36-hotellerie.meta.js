@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="concierge-bell" data-fx-items="Essayez le marché."></div>',
     '<div data-fx="concierge-bell" style="color:var(--ink)"></div>',
     { trigger: 'Sonner', a11y: 'Bouton nommé, conseil annoncé.' }),
+  E('day-night-room', 'Image',
+    'Un curseur d\'heure fait passer la chambre du jour à la nuit, et allume la lampe.',
+    'On imagine déjà la lumière du soir.',
+    '- `data-fx-hour` (20)',
+    'Hôtels, immobilier, luminaires.',
+    'De faire passer ce dessin pour une photo de la vraie chambre.',
+    '<div data-fx="day-night-room" data-fx-hour="20"></div>',
+    '<div data-fx="day-night-room" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, décor masqué.' }),
 ];

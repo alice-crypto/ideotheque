@@ -94,3 +94,14 @@
 [data-fx="concierge-bell"] output { min-height: 3em; animation: none; }
 @keyframes fx-bell-wobble { 20% { transform: rotate(10deg); } 45% { transform: rotate(-8deg); } 70% { transform: rotate(4deg); } }
 @keyframes fx-bell-wave { from { transform: scale(.5); opacity: 1; } to { transform: scale(1.8); opacity: 0; } }
+
+/* day-night-room : une chambre et ses heures */
+[data-fx="day-night-room"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="day-night-room"] .fx-dn { position: relative; height: 120px; overflow: hidden; background: linear-gradient(color-mix(in srgb, #efe6d6 calc(var(--fx-d) * 100%), #2b2533) 76%, color-mix(in srgb, #bb9468 calc(var(--fx-d) * 100%), #3c2b28) 76%); }
+[data-fx="day-night-room"] .w { position: absolute; left: 12%; top: 10%; width: 34%; height: 50%; border: 3px solid #fff8; overflow: hidden; background: linear-gradient(color-mix(in srgb, #86cbf3 calc(var(--fx-d) * 100%), #0d1636), color-mix(in srgb, #cfeaf9 calc(var(--fx-d) * 100%), #26305a)); }
+[data-fx="day-night-room"] .w u { position: absolute; left: var(--fx-s); top: 30%; width: 16px; height: 16px; border-radius: 50%; background: #ffd65e; box-shadow: 0 0 10px #ffd65e; opacity: var(--fx-d); }
+[data-fx="day-night-room"] .b { position: absolute; left: 52%; right: 8%; bottom: 10%; height: 26%; background: color-mix(in srgb, #fff calc(var(--fx-d) * 80% + 20%), #111); border-radius: 6px 6px 0 0; box-shadow: inset 0 8px 0 var(--fx-accent); }
+[data-fx="day-night-room"] .l { position: absolute; right: 10%; top: 26%; width: 20px; height: 16px; background: #ffd46b; clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%); box-shadow: 0 0 calc(var(--fx-n) * 34px) calc(var(--fx-n) * 10px) #ffd46b; opacity: calc(.4 + var(--fx-n) * .6); }
+[data-fx="day-night-room"] label { display: grid; grid-template-columns: auto 1fr auto; gap: 6px; }
+[data-fx="day-night-room"] label b { order: 3; }
+[data-fx="day-night-room"] input { min-width: 0; accent-color: var(--fx-accent); }
