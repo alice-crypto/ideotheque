@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="npk-triangle" data-fx-n="10" data-fx-p="5" data-fx-k="15"></div>',
     '<div data-fx="npk-triangle" style="color:var(--ink)"></div>',
     { a11y: 'Curseurs étiquetés, résultat annoncé.' }),
+  E('tree-rings', 'Micro-interaction',
+    'Un curseur d\'âge ajoute des cernes à un tronc, et signale les années sèches.',
+    'Le temps écrit dans le bois, lisible d\'un coup d\'œil.',
+    '- `data-fx-age` (30), `data-fx-max` (60), `data-fx-seed` (5)',
+    'Forêts, musées, climat, bilans historiques.',
+    'De présenter ces années comme une vraie chronologie : elles sont générées.',
+    '<div data-fx="tree-rings" data-fx-age="30"></div>',
+    '<div data-fx="tree-rings" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat annoncé.' }),
 ];
