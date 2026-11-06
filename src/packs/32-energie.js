@@ -192,4 +192,23 @@
       el.style.setProperty('--fx-a', el._fxA + 'deg');
     }
   });
+
+  // Les flux de la maison : du soleil vers la batterie, le réseau et les pièces
+  FX.register('energy-flow', {
+    setup: function (el) {
+      el.innerHTML = '<svg viewBox="0 0 200 110" aria-hidden="true"><path id="a" d="M40 24H100V55"/><path id="b" d="M100 55H160V24"/><path id="c" d="M100 55H40V90"/><path id="d" d="M100 55H160V90"/><circle cx="100" cy="55" r="6"/></svg><span class="s">Soleil</span><span class="h">Maison</span><span class="g">Réseau</span><span class="b2">Batterie</span><label>Heure <input type="range" min="0" max="23"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output'), g = function (s) { return el.querySelector('#' + s); };
+      r.value = U.num(el, 'fxHour', 13);
+      var go = function () {
+        var h = +r.value, sun = h > 7 && h < 19 ? Math.sin((h - 7) / 12 * Math.PI) * 4 : 0, use = h >= 18 && h <= 22 ? 2.2 : .7, net = sun - use;
+        g('a').setAttribute('class', sun > 0 ? 'fx-on' : '');
+        g('b').setAttribute('class', 'fx-on');
+        g('c').setAttribute('class', net > 1.5 ? 'fx-on fx-back' : net < -.6 ? 'fx-on' : '');
+        g('d').setAttribute('class', net > 0 ? 'fx-on' : net < 0 ? 'fx-on fx-back' : '');
+        o.textContent = h + ' h : ' + sun.toFixed(1).replace('.', ',') + ' kW produits, ' + use.toFixed(1).replace('.', ',') + ' kW consommés. ' + (net > 0 ? 'La batterie charge.' : 'La batterie alimente.');
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
