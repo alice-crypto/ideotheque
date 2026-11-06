@@ -173,4 +173,33 @@
     },
     trigger: function (el) { el.querySelector('button').click(); }
   });
+
+  // Une flotte sur un plan : ceux qui roulent, ceux qui sont arrêtés
+  FX.register('fleet-dots', {
+    setup: function (el) {
+      var n = U.num(el, 'fxCount', 14), box = U.make('div', 'fx-fd', el), o = U.make('output', '', el), V = [];
+      box.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) V.push({ el: U.make('i', '', box), x: U.rand(0, 100), y: U.rand(0, 100), a: U.rand(0, 6.28), stop: Math.random() < .25 });
+      el._fxV = V; el._fxO = o; el._fxT = 0;
+      var show = function () { var s = V.filter(function (v) { return v.stop; }).length; o.textContent = (V.length - s) + ' en route, ' + s + ' à l\'arrêt'; };
+      el._fxShow = show;
+      V.forEach(function (v) { v.el.classList.toggle('fx-stop', v.stop); v.el.style.left = v.x + '%'; v.el.style.top = v.y + '%'; });
+      show();
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      el._fxV.forEach(function (v) {
+        if (v.stop) return;
+        v.x += Math.cos(v.a) * dt * 7; v.y += Math.sin(v.a) * dt * 7;
+        if (v.x < 0 || v.x > 100) v.a = Math.PI - v.a;
+        if (v.y < 0 || v.y > 100) v.a = -v.a;
+        v.el.style.left = v.x + '%'; v.el.style.top = v.y + '%';
+      });
+      if (t - el._fxT > 3) {
+        el._fxT = t;
+        var w = el._fxV[Math.floor(Math.random() * el._fxV.length)];
+        w.stop = !w.stop; w.el.classList.toggle('fx-stop', w.stop); el._fxShow();
+      }
+    }
+  });
 })(window.FX);
