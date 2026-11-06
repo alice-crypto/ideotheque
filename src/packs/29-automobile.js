@@ -230,4 +230,18 @@
       });
     }
   });
+
+  // La pression des quatre pneus, vue de dessus
+  FX.register('tire-pressure', {
+    setup: function (el) {
+      var V = (el.dataset.fxData || '2.4,2.4,1.9,2.3').split(',').map(Number), N = ['Avant gauche', 'Avant droit', 'Arrière gauche', 'Arrière droit'], lo = U.num(el, 'fxLow', 2.1), h = '', bad = [];
+      V.forEach(function (v, i) {
+        var low = v < lo;
+        if (low) bad.push(N[i]);
+        h += '<div class="fx-p' + i + (low ? ' fx-low' : '') + '"><i></i><b>' + String(v.toFixed(1)).replace('.', ',') + '</b></div>';
+      });
+      el.innerHTML = '<div class="fx-tp" aria-hidden="true"><u></u>' + h + '</div><p>' + (bad.length ? 'À regonfler : ' + bad.join(', ') : 'Pression correcte partout') + '</p>';
+      el.classList.toggle('fx-bad', bad.length > 0);
+    }
+  });
 })(window.FX);
