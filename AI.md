@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->571<!-- /total --> effets.
+La bibliothèque contient <!-- total -->572<!-- /total --> effets.
 
 ## Règles
 
@@ -223,6 +223,7 @@ La bibliothèque contient <!-- total -->571<!-- /total --> effets.
 | `cycle-ring` | Présentation | Un anneau découpé en phases situe le jour du cycle |
 | `blood-level` | Présentation | Des gouttes se remplissent selon les réserves de chaque groupe sanguin |
 | `record-fold` | Présentation | Un historique se range par année : la plus récente est ouverte, les autres se déplient |
+| `fever-curve` | Présentation | Une courbe se trace, et la partie au-dessus du seuil se remplit d'une couleur chaude |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

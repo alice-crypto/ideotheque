@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="consent-scroll"><div>Texte…</div><label><input type="checkbox"> J\'accepte</label></div>',
     '<div data-fx="consent-scroll" style="color:var(--ink)"><div>Exemple de texte à lire. Cet acte comporte des bénéfices et des risques. Vous pouvez poser vos questions et changer d\'avis à tout moment. Ce texte est fictif, il illustre seulement l\'effet et ne remplace pas un vrai document.</div><label><input type="checkbox"> J\'ai lu et j\'accepte</label></div>',
     { a11y: 'La zone se fait défiler au clavier, et l\'ouverture de la case est annoncée.' }),
+  E('fever-curve', 'Présentation',
+    'Une courbe se trace, et la partie au-dessus du seuil se remplit d\'une couleur chaude.',
+    'On voit le pic sans lire chaque relevé.',
+    '- `data-fx-data` : valeurs séparées par des virgules\n- `data-fx-threshold` (38), `--fx-hot`',
+    'Température, tout indicateur avec seuil.',
+    'D\'en déduire un avis médical : le seuil reste un paramètre d\'affichage.',
+    '<div data-fx="fever-curve" data-fx-data="37.1,38.4,37.3" data-fx-threshold="38"></div>',
+    '<div data-fx="fever-curve" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le maximum et le seuil sont écrits en texte.' }),
 ];

@@ -10137,6 +10137,17 @@
       go();
     }
   });
+
+  // Une courbe de température avec la zone au-dessus du seuil
+  FX.register('fever-curve', {
+    entrance: true,
+    setup: function (el) {
+      var d = (el.dataset.fxData || '37.1,37.6,38.4,38.9,38.5,37.9,37.3').split(',').map(Number), th = U.num(el, 'fxThreshold', 38), lo = Math.min.apply(null, d.concat(th)) - .3, hi = Math.max.apply(null, d.concat(th)) + .3;
+      var X = function (i) { return i / (d.length - 1) * 200; }, Y = function (v) { return 80 - (v - lo) / (hi - lo) * 76; };
+      var line = d.map(function (v, i) { return (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }).join(''), id = 'fxfc' + Math.floor(U.rand(1e4, 1e5)), m = Math.max.apply(null, d);
+      el.innerHTML = '<svg viewBox="0 0 200 84" preserveAspectRatio="none" aria-hidden="true"><defs><clipPath id="' + id + '"><rect x="0" y="0" width="200" height="' + Y(th) + '"/></clipPath></defs><path class="fx-a" clip-path="url(#' + id + ')" d="' + line + 'L200 84L0 84Z"/><line x1="0" x2="200" y1="' + Y(th) + '" y2="' + Y(th) + '"/><path class="fx-l" pathLength="1" d="' + line + '"/></svg><p>Maximum <b>' + String(m).replace('.', ',') + ' °C</b>, seuil ' + String(th).replace('.', ',') + ' °C</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

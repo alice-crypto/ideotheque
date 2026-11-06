@@ -201,3 +201,13 @@
 [data-fx="consent-scroll"].fx-read input { animation: fx-cs .5s var(--fx-ease-spring); accent-color: var(--fx-accent); }
 [data-fx="consent-scroll"] small { font-size: 10px; opacity: .75; }
 @keyframes fx-cs { from { transform: scale(1.7); } }
+
+/* fever-curve : une courbe de température */
+[data-fx="fever-curve"] { width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="fever-curve"] svg { display: block; width: 100%; height: 86px; overflow: visible; }
+[data-fx="fever-curve"] .fx-l { fill: none; stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.2s ease-in-out; }
+.fx-in[data-fx="fever-curve"] .fx-l { stroke-dashoffset: 0; }
+[data-fx="fever-curve"] line { stroke: currentColor; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; opacity: .6; }
+[data-fx="fever-curve"] .fx-a { fill: var(--fx-hot, #e10600); opacity: 0; transition: opacity .6s 1s; }
+.fx-in[data-fx="fever-curve"] .fx-a { opacity: .55; }
+[data-fx="fever-curve"] p { margin: 5px 0 0; }
