@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="floor-finder" data-fx-items="Radiologie:0|Maternité:2"></div>',
     '<div data-fx="floor-finder" style="color:var(--ink)"></div>',
     { a11y: 'Champ nommé, et chaque résultat écrit l\'étage en toutes lettres.' }),
+  E('record-fold', 'Présentation',
+    'Un historique se range par année : la plus récente est ouverte, les autres se déplient.',
+    'Ordonné, on retrouve une date sans tout parcourir.',
+    '- `data-fx-items` : « année:acte » séparés par `|`',
+    'Historique de soins, factures, entretiens, archives.',
+    'Une année contenant plus de six actes : la hauteur maximale couperait la liste.',
+    '<div data-fx="record-fold" data-fx-items="2027:Bilan|2026:Vaccin"></div>',
+    '<div data-fx="record-fold" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons avec `aria-expanded` et `aria-controls`. Une année repliée n\'est pas lue.' }),
 ];

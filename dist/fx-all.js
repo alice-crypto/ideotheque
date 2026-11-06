@@ -10102,6 +10102,21 @@
       show();
     }
   });
+
+  // Un historique rangé par année, dont seule la plus récente est ouverte
+  FX.register('record-fold', {
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || '2027:Bilan annuel|2027:Radio du genou|2026:Vaccin|2026:Dentiste|2026:Bilan annuel|2025:Ophtalmologue').split('|'), Y = {};
+      rows.forEach(function (r) { var p = r.split(':'); (Y[p[0]] = Y[p[0]] || []).push(p[1]); });
+      Object.keys(Y).sort().reverse().forEach(function (y, i) {
+        var b = U.make('button', '', el), ul = U.make('ul', '', el), id = 'fxrf' + Math.floor(U.rand(1e5, 1e6));
+        b.type = 'button'; ul.id = id; b.setAttribute('aria-controls', id); b.setAttribute('aria-expanded', i === 0);
+        b.innerHTML = '<b>' + y + '</b><span>' + Y[y].length + (Y[y].length > 1 ? ' actes' : ' acte') + '</span><i aria-hidden="true"></i>';
+        Y[y].forEach(function (t) { U.make('li', '', ul).textContent = t; });
+        b.addEventListener('click', function () { b.setAttribute('aria-expanded', b.getAttribute('aria-expanded') !== 'true'); });
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
