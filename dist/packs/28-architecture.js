@@ -299,4 +299,18 @@
       U.onResize(go);
     }
   });
+
+  // Un fond de béton brut, généré sans image
+  FX.register('concrete-grain', {
+    setup: function (el) {
+      var id = 'fxcg' + Math.floor(U.rand(1e4, 1e5)), seed = Math.floor(U.rand(1, 90));
+      var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      s.setAttribute('class', 'fx-cg'); s.setAttribute('aria-hidden', 'true');
+      s.innerHTML = '<filter id="' + id + '"><feTurbulence type="fractalNoise" baseFrequency="' + U.num(el, 'fxScale', .85) + '" numOctaves="3" seed="' + seed + '"/><feColorMatrix values="0 0 0 0 .1 0 0 0 0 .1 0 0 0 0 .1 0 0 0 .55 -.1"/></filter><rect width="100%" height="100%" filter="url(#' + id + ')"/>';
+      el.insertBefore(s, el.firstChild);
+      U.ensurePositioned(el);
+      var c = U.num(el, 'fxHoles', 6);
+      for (var i = 0; i < c; i++) { var h = U.make('i', '', el); h.setAttribute('aria-hidden', 'true'); h.style.left = (8 + i * (84 / Math.max(1, c - 1))) + '%'; h.style.top = i % 2 ? '84%' : '14%'; }
+    }
+  });
 })(window.FX);

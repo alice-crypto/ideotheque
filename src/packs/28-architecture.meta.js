@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="dimension-lines">Contenu</div>',
     '<div class="demo-box" data-fx="dimension-lines" style="width:150px;height:90px;color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Les cotes sont décoratives et masquées aux lecteurs d\'écran.' }),
+  E('concrete-grain', 'Ambiance',
+    'Un fond de béton brut est généré sans image, avec ses joints et ses trous de coffrage.',
+    'Brutaliste, matière honnête et un peu froide.',
+    '- `data-fx-scale` (0.85), `data-fx-holes` (6), `--fx-concrete`',
+    'Architecture, galeries, hero à forte personnalité.',
+    'De lire du petit texte dessus sans vérifier le contraste.',
+    '<section data-fx="concrete-grain">…</section>',
+    '<div data-fx="concrete-grain" style="width:215px;height:130px;display:grid;place-items:center;font-size:22px;font-weight:800">Béton</div>',
+    { a11y: 'Décor seul. Le contenu reste au-dessus et lisible.' }),
 ];
