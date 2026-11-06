@@ -8058,6 +8058,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="tank-valve"] output { grid-column: 1 / -1; font-size: 13px; font-weight: 700; text-align: center; }
 @keyframes fx-tank-pour { to { background-position-y: 10px; } }
 
+/* sort-gate : une trieuse */
+[data-fx="sort-gate"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="sort-gate"] .fx-sg { position: relative; height: 84px; overflow: hidden; background: linear-gradient(transparent 44%, #4b4f58 44% 48%, transparent 48%), color-mix(in srgb, currentColor 8%, transparent); }
+[data-fx="sort-gate"] i { position: absolute; left: 50%; top: -14px; width: 14px; height: 14px; margin-left: -7px; border-radius: 3px; animation: fx-sort-drop 1.1s ease-in forwards; }
+[data-fx="sort-gate"] .fx-sg-b { display: flex; gap: 3px; }
+[data-fx="sort-gate"] .fx-sg-b > div { flex: 1; padding: 3px; border: 1px solid currentColor; border-top-width: 3px; text-align: center; }
+[data-fx="sort-gate"] em { font-style: normal; font-weight: 800; }
+@keyframes fx-sort-drop { 40% { top: 26px; left: 50%; } 100% { top: 88px; left: var(--fx-x); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

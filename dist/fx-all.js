@@ -13600,6 +13600,23 @@
     },
     tick: function (el, dt) { if (el._fxStep) el._fxStep(dt); }
   });
+
+  // Une trieuse : chaque pièce part vers le bon bac
+  FX.register('sort-gate', {
+    setup: function (el) {
+      var T = (el.dataset.fxItems || 'Rouge:#e4432c|Bleu:#2d82d6|Jaune:#e8b71f').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], c: p[1], k: 0 }; }), box = U.make('div', 'fx-sg', el), bins = U.make('div', 'fx-sg-b', el);
+      T.forEach(function (t) { t.d = U.make('div', '', bins); t.d.innerHTML = '<b style="color:' + t.c + '">●</b> ' + t.n + ' <em>0</em>'; });
+      el._fxGo = function () {
+        var t = T[Math.floor(Math.random() * T.length)], i = T.indexOf(t), p = U.make('i', '', box);
+        p.style.background = t.c;
+        p.style.setProperty('--fx-x', ((i + .5) / T.length * 100) + '%');
+        setTimeout(function () { p.remove(); t.k++; t.d.querySelector('em').textContent = t.k; }, U.reduced ? 0 : 1100);
+      };
+      el._fxGo();
+      if (!U.reduced) setInterval(el._fxGo, U.num(el, 'fxEvery', 700));
+    },
+    trigger: function (el) { el._fxGo(); }
+  });
 })(window.FX);
 
 window.FX._boot();

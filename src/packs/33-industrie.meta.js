@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="tank-valve" data-fx-level="40"></div>',
     '<div data-fx="tank-valve" style="color:var(--ink)"></div>',
     { a11y: 'Boutons `aria-pressed`, niveau annoncé par paliers.' }),
+  E('sort-gate', 'Ambiance',
+    'Des pièces arrivent, bifurquent vers le bon bac et les comptes montent.',
+    'Satisfaisant comme une machine de tri bien réglée.',
+    '- `data-fx-items` : « nom:couleur » séparés par `|`\n- `data-fx-every` (700)',
+    'Logistique, recyclage, pédagogie.',
+    'De le présenter comme de vraies données : les pièces sont aléatoires.',
+    '<div data-fx="sort-gate" data-fx-items="Rouge:#e4432c|Bleu:#2d82d6"></div>',
+    '<div data-fx="sort-gate" style="color:var(--ink)"></div>',
+    { trigger: 'Une pièce', a11y: 'Les comptes sont écrits. La pastille colorée est doublée par le nom.' }),
 ];
