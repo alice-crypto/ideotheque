@@ -421,4 +421,24 @@
       });
     }
   });
+
+  // La case de consentement s'ouvre quand on a lu le texte jusqu'au bout
+  FX.register('consent-scroll', {
+    setup: function (el) {
+      var txt = el.firstElementChild, lab = el.querySelector('label'), box = lab.querySelector('input');
+      box.disabled = true; box.checked = false;
+      var bar = U.make('div', 'fx-cs-b', el), note = U.make('small', '', el);
+      note.textContent = 'Lisez jusqu\'au bout pour continuer';
+      note.setAttribute('aria-live', 'polite');
+      el.insertBefore(bar, lab);
+      txt.tabIndex = 0;
+      var go = function () {
+        var m = txt.scrollHeight - txt.clientHeight, q = m > 0 ? txt.scrollTop / m : 1;
+        el.style.setProperty('--fx-q', q);
+        if (q > .97 && box.disabled) { box.disabled = false; el.classList.add('fx-read'); note.textContent = 'Vous pouvez maintenant donner votre accord'; }
+      };
+      txt.addEventListener('scroll', go, { passive: true });
+      go();
+    }
+  });
 })(window.FX);

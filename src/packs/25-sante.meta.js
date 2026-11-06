@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="record-fold" data-fx-items="2027:Bilan|2026:Vaccin"></div>',
     '<div data-fx="record-fold" style="color:var(--ink)"></div>',
     { a11y: 'Boutons avec `aria-expanded` et `aria-controls`. Une année repliée n\'est pas lue.' }),
+  E('consent-scroll', 'Micro-interaction',
+    'La case de consentement ne s\'active qu\'une fois le texte lu jusqu\'au bout.',
+    'Le consentement prend du poids.',
+    '- premier enfant : le texte à faire défiler ; un `label` avec sa case\n- `--fx-h` (70px)',
+    'Consentements, conditions importantes, chartes.',
+    'De croire que le défilement prouve la compréhension, ou d\'enfermer un texte court.',
+    '<div data-fx="consent-scroll"><div>Texte…</div><label><input type="checkbox"> J\'accepte</label></div>',
+    '<div data-fx="consent-scroll" style="color:var(--ink)"><div>Exemple de texte à lire. Cet acte comporte des bénéfices et des risques. Vous pouvez poser vos questions et changer d\'avis à tout moment. Ce texte est fictif, il illustre seulement l\'effet et ne remplace pas un vrai document.</div><label><input type="checkbox"> J\'ai lu et j\'accepte</label></div>',
+    { a11y: 'La zone se fait défiler au clavier, et l\'ouverture de la case est annoncée.' }),
 ];
