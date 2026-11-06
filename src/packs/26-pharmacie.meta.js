@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="pickup-code" data-fx-code="4821"></div>',
     '<div data-fx="pickup-code" style="color:var(--ink)"></div>',
     { a11y: 'Code lu chiffre par chiffre grâce à `aria-label`, et le bouton est un vrai bouton.' }),
+  E('herb-sprout', 'Entrée',
+    'Une tige pousse de bas en haut, et ses feuilles s\'ouvrent une à une.',
+    'Naturel et doux, la plante prend son temps.',
+    '- `data-fx-leaves` (6), `--fx-s` (110px), `--fx-leaf`',
+    'Phytothérapie, cosmétique naturelle, jardinage.',
+    'De suggérer une efficacité par l\'image : le naturel ne prouve rien.',
+    '<div data-fx="herb-sprout" data-fx-leaves="6"></div>',
+    '<div data-fx="herb-sprout"></div>',
+    { trigger: 'Rejouer', a11y: 'Illustration décorative, masquée aux lecteurs d\'écran.' }),
 ];

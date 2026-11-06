@@ -6388,6 +6388,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="pickup-code"] small { opacity: .8; }
 @keyframes fx-pc { from { transform: rotateX(-90deg); opacity: 0; } }
 
+/* herb-sprout : une tige qui pousse */
+[data-fx="herb-sprout"] { display: inline-block; width: var(--fx-s, 110px); }
+[data-fx="herb-sprout"] svg { display: block; width: 100%; overflow: visible; }
+[data-fx="herb-sprout"] .fx-hs-t { fill: none; stroke: var(--fx-leaf, #3f9b57); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.3s ease-out; }
+.fx-in[data-fx="herb-sprout"] .fx-hs-t { stroke-dashoffset: 0; }
+[data-fx="herb-sprout"] .fx-hs-l { fill: var(--fx-leaf, #3f9b57); transform: scale(0); transition: transform .55s var(--fx-ease-spring) calc(var(--fx-i) * 190ms + 200ms); }
+.fx-in[data-fx="herb-sprout"] .fx-hs-l { transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

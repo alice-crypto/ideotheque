@@ -10609,6 +10609,19 @@
       });
     }
   });
+
+  // Une tige qui pousse et dont les feuilles s'ouvrent une à une
+  FX.register('herb-sprout', {
+    entrance: true,
+    setup: function (el) {
+      var n = U.num(el, 'fxLeaves', 6), s = '<svg viewBox="0 0 100 150" aria-hidden="true"><path class="fx-hs-t" pathLength="1" d="M50 148C46 110 56 70 50 12"/>';
+      for (var i = 0; i < n; i++) {
+        var q = (i + 1) / (n + 1), y = 148 - q * 136, x = 50 + Math.sin(q * 3) * 3, side = i % 2 ? 1 : -1, size = 1.15 - q * .55;
+        s += '<g transform="translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + (side * size).toFixed(2) + ' ' + size.toFixed(2) + ') rotate(-28)"><path class="fx-hs-l" style="--fx-i:' + i + '" d="M0 0C10 -14 28 -14 38 0C28 12 10 12 0 0Z"/></g>';
+      }
+      el.innerHTML = s + '</svg>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
