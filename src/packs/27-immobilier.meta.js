@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="blueprint-draw"></div>',
     '<div data-fx="blueprint-draw"></div>',
     { trigger: 'Rejouer', a11y: 'Décoratif par défaut, ou décrit avec `data-fx-label`.' }),
+  E('key-unlock', 'Entrée',
+    'Une clé entre dans une serrure, tourne, et la porte s\'ouvre sur un message.',
+    'Le moment où l\'on devient chez soi.',
+    '- le texte de l\'élément : le message\n- `--fx-door`, `--fx-key`, `--fx-w`',
+    'Fin d\'un parcours d\'achat, déverrouillage, création de compte.',
+    'De l\'utiliser plusieurs fois sur un parcours : ce moment doit rester rare.',
+    '<div data-fx="key-unlock">Bienvenue chez vous</div>',
+    '<div data-fx="key-unlock" style="color:var(--ink)">Bienvenue chez vous</div>',
+    { trigger: 'Rejouer', a11y: 'Le message reste dans le texte. Avec le mouvement réduit, la porte s\'affiche ouverte.' }),
 ];

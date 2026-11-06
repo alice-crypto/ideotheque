@@ -6539,6 +6539,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="blueprint-draw"] text { fill: #fff; font-size: 8px; font-family: ui-monospace, monospace; text-anchor: middle; opacity: 0; transition: opacity .5s 1.3s; }
 .fx-in[data-fx="blueprint-draw"] text { opacity: 1; }
 
+/* key-unlock : la clé et la porte */
+[data-fx="key-unlock"] { display: block; width: var(--fx-w, 170px); }
+[data-fx="key-unlock"] .fx-ku { position: relative; aspect-ratio: 1.15; perspective: 600px; display: grid; place-items: center; border: 3px solid currentColor; overflow: hidden; }
+[data-fx="key-unlock"] .fx-ku-m { font-weight: 800; text-align: center; padding: 10px; }
+[data-fx="key-unlock"] .fx-ku-d { position: absolute; inset: 0; background: var(--fx-door, #7a4a22); transform-origin: 0 50%; transition: transform .9s var(--fx-ease-out) 1.25s; }
+.fx-in[data-fx="key-unlock"] .fx-ku-d { transform: rotateY(-78deg); }
+[data-fx="key-unlock"] .fx-ku-h { position: absolute; right: 18px; top: 50%; width: 12px; height: 18px; margin-top: -9px; border-radius: 6px; background: #111; }
+[data-fx="key-unlock"] .fx-ku-k { position: absolute; right: 22px; top: 50%; width: 60px; height: 20px; margin-top: -10px; fill: var(--fx-key, #ffd400); fill-rule: evenodd; transform: translateX(-50px); opacity: 0; transition: transform .5s var(--fx-ease-out) .1s, opacity .2s; }
+.fx-in[data-fx="key-unlock"] .fx-ku-k { transform: rotateX(180deg); opacity: 1; transition: transform .5s ease-in-out .7s, opacity .2s; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

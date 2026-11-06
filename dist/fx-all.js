@@ -10880,6 +10880,15 @@
       if (el.dataset.fxLabel) { el.setAttribute('role', 'img'); el.setAttribute('aria-label', el.dataset.fxLabel); }
     }
   });
+
+  // Une clé qui tourne dans la serrure, et la porte qui s'ouvre
+  FX.register('key-unlock', {
+    entrance: true,
+    setup: function (el) {
+      var msg = el.textContent.trim() || 'Bienvenue chez vous';
+      el.innerHTML = '<div class="fx-ku"><span class="fx-ku-m">' + msg + '</span><div class="fx-ku-d" aria-hidden="true"><i class="fx-ku-h"></i><svg class="fx-ku-k" viewBox="0 0 60 20"><circle cx="9" cy="10" r="7"/><circle cx="9" cy="10" r="3"/><path d="M16 10H56V15H52V12H47V15H43V12H16Z"/></svg></div></div>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
