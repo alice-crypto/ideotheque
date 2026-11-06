@@ -7894,6 +7894,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="aid-estimate"] small { font-size: 10px; opacity: .7; }
 @keyframes fx-aid-pop { from { transform: scale(.85); } }
 
+/* heating-compare : comparer des chauffages */
+[data-fx="heating-compare"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 240px)); font-size: 11px; }
+[data-fx="heating-compare"] .fx-hc { display: flex; gap: 3px; }
+[data-fx="heating-compare"] button { flex: 1; padding: 3px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="heating-compare"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="heating-compare"] ul { display: grid; gap: 3px; margin: 0; padding: 0; list-style: none; }
+[data-fx="heating-compare"] li { display: grid; grid-template-columns: 84px 1fr 60px; gap: 4px; align-items: center; }
+[data-fx="heating-compare"] li i { display: block; height: 10px; background: var(--fx-accent); transform-origin: left; transform: scaleX(var(--fx-q)); transition: transform .4s var(--fx-ease-out); }
+[data-fx="heating-compare"] li b { text-align: right; font-weight: 600; }
+[data-fx="heating-compare"] small { font-size: 10px; opacity: .7; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

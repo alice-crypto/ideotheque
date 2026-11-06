@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="aid-estimate"></div>',
     '<div data-fx="aid-estimate" style="color:var(--ink)"></div>',
     { a11y: 'Vraie liste et vraies cases, résultat annoncé.' }),
+  E('heating-compare', 'Présentation',
+    'Des modes de chauffage se reclassent selon le coût ou les émissions choisis.',
+    'La réponse change selon la question.',
+    '- `data-fx-items` : « mode:coût:CO₂ » séparés par `|`',
+    'Rénovation, énergie, comparateurs.',
+    'D\'oublier l\'investissement de départ : ce tableau n\'en parle pas.',
+    '<div data-fx="heating-compare" data-fx-items="Gaz:1700:2900"></div>',
+    '<div data-fx="heating-compare" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons `aria-pressed`, valeurs écrites. Ordre réel du document modifié.' }),
 ];

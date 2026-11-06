@@ -408,4 +408,24 @@
       go();
     }
   });
+
+  // Comparer des chauffages par coût ou par CO₂
+  FX.register('heating-compare', {
+    setup: function (el) {
+      var M = (el.dataset.fxItems || 'Gaz:1700:2900|Fioul:2300:4200|Pompe à chaleur:1050:500|Granulés:1200:400|Radiateurs:2100:900').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], c: +p[1], e: +p[2] }; }), f = U.make('div', 'fx-hc', el), ul = U.make('ul', '', el);
+      M.forEach(function (m) { m.li = U.make('li', '', ul); m.li.innerHTML = '<span>' + m.n + '</span><i></i><b></b>'; });
+      var sort = function (k, u) {
+        var top = Math.max.apply(null, M.map(function (m) { return m[k]; })), before = M.map(function (m) { return m.li.getBoundingClientRect().top; });
+        M.slice().sort(function (a, b) { return a[k] - b[k]; }).forEach(function (m) { ul.appendChild(m.li); m.li.style.setProperty('--fx-q', m[k] / top); m.li.querySelector('b').textContent = m[k].toLocaleString('fr-FR') + ' ' + u; });
+        M.forEach(function (m, i) { var dy = before[i] - m.li.getBoundingClientRect().top; if (dy && !U.reduced) m.li.animate([{ transform: 'translateY(' + dy + 'px)' }, { transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.16,1,.3,1)' }); });
+      };
+      [['c', '€/an', 'Coût'], ['e', 'kg CO₂', 'Émissions']].forEach(function (x, i) {
+        var b = U.make('button', '', f);
+        b.type = 'button'; b.textContent = x[2]; b.setAttribute('aria-pressed', !i);
+        b.addEventListener('click', function () { f.querySelectorAll('button').forEach(function (y) { y.setAttribute('aria-pressed', y === b); }); sort(x[0], x[1]); });
+      });
+      sort('c', '€/an');
+      U.make('small', '', el).textContent = 'Ordres de grandeur fictifs, pour une maison type.';
+    }
+  });
 })(window.FX);
