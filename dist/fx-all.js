@@ -13093,6 +13093,24 @@
       el.innerHTML = '<svg viewBox="0 0 200 84" preserveAspectRatio="none" aria-hidden="true"><path class="o" d="' + ln(over) + 'L200 80L0 80Z"/><path class="s" pathLength="1" d="' + ln(s) + '"/><path class="c" pathLength="1" d="' + ln(c) + '"/></svg><p><b>' + Math.round(used / made * 100) + ' %</b> du solaire utilisé sur place. Journée fictive.</p>';
     }
   });
+
+  // Option base ou heures creuses : qui gagne selon ses habitudes
+  FX.register('tariff-choice', {
+    setup: function (el) {
+      var Y = U.num(el, 'fxYear', 5000), B = U.num(el, 'fxBase', .2), H = U.num(el, 'fxHigh', .22), L = U.num(el, 'fxLow', .17), S = U.num(el, 'fxExtra', 20);
+      el.innerHTML = '<label>Part en heures creuses <b></b><input type="range" min="0" max="80"></label><div class="fx-tc3" aria-hidden="true"><i class="a"></i><i class="b"></i></div><output aria-live="polite"></output><small>Tarifs d\'exemple, à remplacer.</small>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxShare', 35);
+      var go = function () {
+        var q = r.value / 100, a = Y * B, b = Y * (q * L + (1 - q) * H) + S, top = Math.max(a, b);
+        el.querySelector('label b').textContent = r.value + ' %';
+        el.style.setProperty('--fx-a', a / top); el.style.setProperty('--fx-b', b / top);
+        o.innerHTML = b < a ? '<b>Heures creuses</b> : ' + Math.round(a - b) + ' € de moins par an' : '<b>Option base</b> : ' + Math.round(b - a) + ' € de moins par an';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

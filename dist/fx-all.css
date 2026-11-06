@@ -7790,6 +7790,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="self-consumption"] p { margin: 5px 0 0; }
 [data-fx="self-consumption"] b { font-size: 18px; }
 
+/* tariff-choice : base ou heures creuses */
+[data-fx="tariff-choice"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="tariff-choice"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="tariff-choice"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="tariff-choice"] .fx-tc3 { display: grid; gap: 3px; }
+[data-fx="tariff-choice"] .fx-tc3 i { display: block; height: 14px; transform-origin: left; transition: transform .2s; }
+[data-fx="tariff-choice"] .a { background: color-mix(in srgb, currentColor 40%, transparent); transform: scaleX(var(--fx-a)); }
+[data-fx="tariff-choice"] .b { background: var(--fx-accent); transform: scaleX(var(--fx-b)); }
+[data-fx="tariff-choice"] output b { font-size: 15px; }
+[data-fx="tariff-choice"] small { font-size: 10px; opacity: .7; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

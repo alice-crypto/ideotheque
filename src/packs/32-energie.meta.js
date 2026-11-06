@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="self-consumption" data-fx-peak="3"></div>',
     '<div data-fx="self-consumption" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le résultat est écrit, le graphique est décoratif.' }),
+  E('tariff-choice', 'Micro-interaction',
+    'Selon la part de consommation en heures creuses, l\'option la plus avantageuse s\'affiche.',
+    'On sait enfin si l\'option vaut le coup chez soi.',
+    '- `data-fx-year`, `data-fx-base`, `data-fx-high`, `data-fx-low`, `data-fx-extra`, `data-fx-share`',
+    'Fournisseurs d\'énergie, comparateurs.',
+    'Une offre réelle sans ses vrais tarifs et ses conditions.',
+    '<div data-fx="tariff-choice" data-fx-share="35"></div>',
+    '<div data-fx="tariff-choice" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, conclusion annoncée.' }),
 ];
