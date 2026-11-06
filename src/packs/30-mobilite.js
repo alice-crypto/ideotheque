@@ -231,4 +231,21 @@
       o.innerHTML = 'Plus de place en <b>voiture ' + (k + 1) + '</b>';
     }
   });
+
+  // Où se placer sur le quai selon la sortie voulue
+  FX.register('platform-guide', {
+    setup: function (el) {
+      var E = (el.dataset.fxItems || 'Hôpital:1|Centre-ville:4|Correspondance B:6').split('|').map(function (r) { return r.split(':'); }), N = U.num(el, 'fxCars', 6);
+      el.innerHTML = '<select aria-label="Votre sortie">' + E.map(function (e, i) { return '<option value="' + i + '">' + e[0] + '</option>'; }).join('') + '</select><div class="fx-pg" aria-hidden="true"></div><output aria-live="polite"></output>';
+      var s = el.querySelector('select'), box = el.querySelector('.fx-pg'), o = el.querySelector('output');
+      for (var i = 0; i < N; i++) U.make('i', '', box).textContent = i + 1;
+      var go = function () {
+        var c = +E[s.value][1];
+        Array.prototype.forEach.call(box.children, function (x, i) { x.classList.toggle('fx-on', i + 1 === c); });
+        o.innerHTML = 'Montez en <b>voiture ' + c + '</b> pour sortir au plus près';
+      };
+      s.addEventListener('change', go);
+      go();
+    }
+  });
 })(window.FX);
