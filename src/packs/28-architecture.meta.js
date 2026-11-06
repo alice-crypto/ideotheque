@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="skyline-rise" data-fx-seed="7"></div>',
     '<div data-fx="skyline-rise" style="width:215px"></div>',
     { trigger: 'Rejouer', a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
+  E('roof-pitch', 'Micro-interaction',
+    'Un curseur règle la pente d\'un toit et donne le pourcentage et la hauteur du faîtage.',
+    'L\'outil du couvreur, simple et juste.',
+    '- `data-fx-width` (8) : largeur en mètres\n- `data-fx-angle` (35)',
+    'Couvreurs, charpentes, panneaux solaires.',
+    'De se passer des règles locales d\'urbanisme, qui fixent souvent la pente.',
+    '<div data-fx="roof-pitch" data-fx-width="8"></div>',
+    '<div data-fx="roof-pitch" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, valeurs écrites et annoncées.' }),
 ];
