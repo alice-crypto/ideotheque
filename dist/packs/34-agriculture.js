@@ -329,4 +329,29 @@
     },
     tick: function (el, dt, t) { if (!U.reduced) el._fxDraw(t); }
   });
+
+  // Des oiseaux posés qui s'envolent quand on approche
+  FX.register('crow-scatter', {
+    setup: function (el) {
+      var n = U.num(el, 'fxCount', 9), box = U.make('div', 'fx-cw2', el), B = [];
+      box.setAttribute('aria-hidden', 'true');
+      U.make('em', '', box);
+      for (var i = 0; i < n; i++) {
+        var o = U.make('i', '', box);
+        o.style.left = (i + .5) / n * 100 + '%';
+        o.style.setProperty('--fx-x', U.rand(-90, 90) + 'px');
+        o.style.setProperty('--fx-y', U.rand(-140, -70) + 'px');
+        o.style.setProperty('--fx-d', U.rand(0, 140).toFixed(0) + 'ms');
+        B.push(o);
+      }
+      var fly = function () {
+        el.classList.add('fx-fly');
+        clearTimeout(el._fxTo);
+        el._fxTo = setTimeout(function () { el.classList.remove('fx-fly'); }, U.num(el, 'fxBack', 2400));
+      };
+      box.addEventListener('pointerenter', fly);
+      el._fxFly = fly;
+    },
+    trigger: function (el) { el._fxFly(); }
+  });
 })(window.FX);

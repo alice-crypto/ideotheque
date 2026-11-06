@@ -8335,6 +8335,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="wheat-field"] { display: block; width: 100%; height: var(--fx-h, 150px); background: linear-gradient(#8fc7ee, #fbe9c0 75%); overflow: hidden; }
 [data-fx="wheat-field"] canvas { display: block; width: 100%; height: 100%; }
 
+/* crow-scatter : des oiseaux qui s'envolent */
+[data-fx="crow-scatter"] { display: block; width: min(100%, var(--fx-w, 220px)); }
+[data-fx="crow-scatter"] .fx-cw2 { position: relative; height: 100px; overflow: hidden; }
+[data-fx="crow-scatter"] em { position: absolute; left: 0; right: 0; bottom: 8px; height: 3px; background: currentColor; }
+[data-fx="crow-scatter"] i { position: absolute; bottom: 11px; width: 13px; height: 10px; margin-left: -6px; background: currentColor; border-radius: 60% 60% 30% 30%; transition: transform .8s cubic-bezier(.2, .8, .2, 1) var(--fx-d), opacity .3s; }
+[data-fx="crow-scatter"] i::before { content: ''; position: absolute; left: -5px; top: 1px; width: 7px; height: 5px; background: currentColor; clip-path: polygon(100% 0, 0 50%, 100% 100%); }
+.fx-fly[data-fx="crow-scatter"] i { transform: translate(var(--fx-x), var(--fx-y)) scale(.8); animation: fx-crow-flap .18s linear infinite alternate; }
+@keyframes fx-crow-flap { to { clip-path: inset(30% 0 0 0); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

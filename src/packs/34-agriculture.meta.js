@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="wheat-field"></div>',
     '<div data-fx="wheat-field" style="width:215px"></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran. Fixe en mouvement réduit.' }),
+  E('crow-scatter', 'Micro-interaction',
+    'Des oiseaux posés sur un fil s\'envolent à l\'approche du pointeur, puis reviennent.',
+    'Un petit détail qui récompense la curiosité.',
+    '- `data-fx-count` (9), `data-fx-back` (2400)',
+    'Champs, nature, marges de page.',
+    'De cacher du contenu dans cet effet purement décoratif.',
+    '<div data-fx="crow-scatter"></div>',
+    '<div data-fx="crow-scatter" style="color:var(--ink)"></div>',
+    { trigger: 'Faire envoler', a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
 ];
