@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->725<!-- /total --> effets.
+La bibliothèque contient <!-- total -->726<!-- /total --> effets.
 
 ## Règles
 
@@ -272,6 +272,7 @@ La bibliothèque contient <!-- total -->725<!-- /total --> effets.
 | `eta-range` | Présentation | Une heure d'arrivée s'affiche avec sa marge, en un dégradé autour du moment probable |
 | `cold-chain` | Présentation | Une courbe de température montre si le trajet est resté dans la plage permise |
 | `dock-schedule` | Présentation | Un planning montre l'occupation des quais sur la journée et ceux qui sont libres maintenant |
+| `bill-slices` | Présentation | Une barre découpe la facture en postes, et chacun s'explique au clic |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="solar-roof" data-fx-count="8"></div>',
     '<div data-fx="solar-roof" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, résultat annoncé.' }),
+  E('bill-slices', 'Présentation',
+    'Une barre découpe la facture en postes, et chacun s\'explique au clic.',
+    'Enfin comprendre où part l\'argent.',
+    '- `data-fx-items` : « poste:montant:explication » séparés par `|`',
+    'Énergie, télécoms, impôts, tout budget.',
+    'Des parts d\'exemple comme parts réelles : affichez la vraie facture.',
+    '<div data-fx="bill-slices" data-fx-items="Énergie:42:Consommation|Taxes:24:Taxes"></div>',
+    '<div data-fx="bill-slices" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Chaque part est un bouton nommé avec son pourcentage, détail annoncé.' }),
 ];

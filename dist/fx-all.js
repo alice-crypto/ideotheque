@@ -12870,6 +12870,23 @@
       go();
     }
   });
+
+  // Une facture découpée : ce que l'on paie vraiment
+  FX.register('bill-slices', {
+    entrance: true,
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Énergie:42:Ce que vous consommez|Réseau:28:Le transport jusqu\'à chez vous|Taxes:24:Taxes et contributions|Abonnement:6:Part fixe').split('|').map(function (r) { return r.split(':'); }), tot = R.reduce(function (t, r) { return t + +r[1]; }, 0);
+      var bar = U.make('div', 'fx-bl3', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      R.forEach(function (r, i) {
+        var b = U.make('button', '', bar);
+        b.type = 'button'; b.style.flex = r[1] + ' 1 0'; b.style.setProperty('--fx-i', i); b.setAttribute('aria-label', r[0] + ', ' + Math.round(r[1] / tot * 100) + ' %');
+        b.textContent = Math.round(r[1] / tot * 100) >= 15 ? Math.round(r[1] / tot * 100) + ' %' : '';
+        b.addEventListener('click', function () { bar.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); o.innerHTML = '<b>' + r[0] + ' : ' + r[1] + ' €</b><br>' + r[2]; });
+        if (!i) b.click();
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
