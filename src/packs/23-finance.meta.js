@@ -75,4 +75,13 @@ module.exports = [
     '<table data-fx="rate-best-row" data-fx-best="min,max">…</table>',
     '<table data-fx="rate-best-row" data-fx-best="min,max" style="color:var(--ink);font-size:13px"><thead><tr><th>Offre</th><th>Taux</th><th>Bonus</th></tr></thead><tbody><tr><td>A</td><td>3,4</td><td>20</td></tr><tr><td>B</td><td>3,1</td><td>10</td></tr><tr><td>C</td><td>3,6</td><td>40</td></tr></tbody></table>',
     { trigger: 'Rejouer', a11y: 'La cellule retenue est annoncée comme la meilleure valeur.' }),
+  E('transaction-feed', 'État',
+    'Les nouvelles opérations arrivent en haut de la liste, avec leur montant signé.',
+    'Le compte est vivant, on voit passer chaque mouvement.',
+    '- `data-fx-max` (4), `data-fx-demo="true"`\n- Par code : `el._fxAdd(\'Nom\', -12.5)`',
+    'Banques, caisses, portefeuilles.',
+    'Une démonstration qui se ferait passer pour de vraies données.',
+    '<div data-fx="transaction-feed"></div>',
+    '<div data-fx="transaction-feed" data-fx-demo="true" style="width:215px;color:var(--ink)"></div>',
+    { trigger: 'Ajouter', a11y: 'Rôle `log`. Le signe est écrit, pas seulement suggéré par la couleur.' }),
 ];

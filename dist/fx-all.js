@@ -8854,6 +8854,34 @@
       }
     }
   });
+
+  // Des opérations arrivent en haut de la liste
+  FX.register('transaction-feed', {
+    setup: function (el) {
+      el.setAttribute('role', 'log');
+      el.setAttribute('aria-live', 'polite');
+      el._fxAdd = function (name, amount) {
+        var r = document.createElement('div');
+        r.className = 'fx-tf ' + (amount >= 0 ? 'fx-in-m' : 'fx-out-m');
+        r.innerHTML = '<span></span><b></b>';
+        r.firstChild.textContent = name;
+        r.lastChild.textContent = (amount >= 0 ? '+' : '−') + Math.abs(amount).toLocaleString('fr-FR', { minimumFractionDigits: 2 }) + ' €';
+        el.insertBefore(r, el.firstChild);
+        while (el.children.length > U.num(el, 'fxMax', 4)) el.lastChild.remove();
+      };
+      var seq = [['Café Rivage', -4.2], ['Salaire', 2150], ['Librairie', -18.9], ['Remboursement', 32], ['Boulangerie', -6.4]];
+      el._fxI = 0;
+      el._fxSeq = seq;
+      seq.slice(0, 3).forEach(function (s) { el._fxAdd(s[0], s[1]); });
+      el._fxT = 0;
+    },
+    trigger: function (el) { var s = el._fxSeq[el._fxI++ % el._fxSeq.length]; el._fxAdd(s[0], s[1]); },
+    tick: function (el, dt) {
+      if (el.dataset.fxDemo !== 'true' || U.reduced) return;
+      el._fxT += dt;
+      if (el._fxT > 2.2) { el._fxT = 0; FX.trigger(el); }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
