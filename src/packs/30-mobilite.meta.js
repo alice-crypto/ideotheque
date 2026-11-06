@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="timetable-grid" data-fx-items="7:05,20|8:05"></div>',
     '<div data-fx="timetable-grid" style="color:var(--ink)"></div>',
     { a11y: 'Vrai tableau, le prochain passage est aussi écrit en phrase.' }),
+  E('transfer-check', 'Micro-interaction',
+    'Le temps de correspondance se compare à la marche à prévoir, et le risque s\'écrit.',
+    'On n\'a plus à courir sur le quai sans savoir pourquoi.',
+    '- `data-fx-walk` (7), `data-fx-minutes` (10)',
+    'Trains, avions, itinéraires à étapes.',
+    'De garantir la correspondance : un retard reste toujours possible.',
+    '<div data-fx="transfer-check" data-fx-walk="7" data-fx-minutes="10"></div>',
+    '<div data-fx="transfer-check" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, verdict écrit et annoncé.' }),
 ];

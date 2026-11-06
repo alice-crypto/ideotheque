@@ -438,4 +438,24 @@
       el.querySelector('p').textContent = next ? 'Prochain : ' + next[0] + ' h ' + next[1] : 'Plus de passage aujourd\'hui';
     }
   });
+
+  // Aura-t-on le temps de changer de train ?
+  FX.register('transfer-check', {
+    setup: function (el) {
+      var walk = U.num(el, 'fxWalk', 7);
+      el.innerHTML = '<label>Correspondance <b></b><input type="range" min="2" max="40"></label><div class="fx-tr2" aria-hidden="true"><i></i><em></em></div><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxMinutes', 10);
+      el.style.setProperty('--fx-w2', walk / 40);
+      var go = function () {
+        var m = +r.value, gap = m - walk, l = gap < 1 ? 'bad' : gap < 5 ? 'mid' : 'ok';
+        el.dataset.fxLevel = l;
+        el.querySelector('label b').textContent = m + ' min';
+        el.style.setProperty('--fx-q', m / 40);
+        o.textContent = l === 'bad' ? 'Risqué : marche de ' + walk + ' min' : l === 'mid' ? 'Serré, mais faisable : ' + gap + ' min de marge' : 'Large : ' + gap + ' min de marge';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
