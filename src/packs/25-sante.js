@@ -126,4 +126,17 @@
     },
     tick: function (el, dt) { if (el._fxDraw && !U.reduced) el._fxDraw(dt); }
   });
+
+  // Un résultat d'analyse placé sur sa plage de référence
+  FX.register('lab-range', {
+    entrance: true,
+    setup: function (el) {
+      var v = U.num(el, 'fxValue', 5.8), lo = U.num(el, 'fxLo', 4), hi = U.num(el, 'fxHi', 5.6), u = el.dataset.fxUnit || 'mmol/L', name = el.dataset.fxName || 'Analyse fictive';
+      var span = hi - lo, a = lo - span * .6, b = hi + span * .6, q = U.clamp((v - a) / (b - a), 0, 1);
+      var st = v < lo ? 'Sous la plage' : v > hi ? 'Au-dessus de la plage' : 'Dans la plage';
+      var f = function (n) { return String(n).replace('.', ','); };
+      el.innerHTML = '<div class="fx-lr-h"><b>' + name + '</b><strong>' + f(v) + ' ' + u + '</strong></div><div class="fx-lr" aria-hidden="true"><em style="left:' + (lo - a) / (b - a) * 100 + '%;width:' + span / (b - a) * 100 + '%"></em><i style="--fx-q:' + q + '"></i></div><div class="fx-lr-f"><span>Référence ' + f(lo) + ' – ' + f(hi) + '</span><span class="fx-st">' + st + '</span></div>';
+      el.classList.toggle('fx-out', v < lo || v > hi);
+    }
+  });
 })(window.FX);
