@@ -139,3 +139,13 @@
 [data-fx="spice-level"] .fx-on path:not(.t) { fill: #d8301f; }
 [data-fx="spice-level"] .fx-on[aria-checked="true"] svg { animation: fx-spice-tremble calc(.4s - var(--fx-q) * .25s) linear infinite alternate; }
 @keyframes fx-spice-tremble { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+
+/* brew-ratio : le dosage du café */
+[data-fx="brew-ratio"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 220px)); font-size: 11px; }
+[data-fx="brew-ratio"] .fx-br2 { display: flex; gap: 10px; align-items: flex-end; justify-content: center; height: 60px; }
+[data-fx="brew-ratio"] .fx-br2 i { display: block; width: 46px; transition: height .25s; border-radius: 3px 3px 0 0; }
+[data-fx="brew-ratio"] .w { height: calc(var(--fx-a) * 100%); background: #6fb7ef; }
+[data-fx="brew-ratio"] .c { height: calc(var(--fx-b) * 100%); background: #5a3414; }
+[data-fx="brew-ratio"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="brew-ratio"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="brew-ratio"] output b { font-size: 21px; }
