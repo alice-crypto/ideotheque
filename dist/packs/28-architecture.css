@@ -49,3 +49,10 @@
 [data-fx="scale-bar"] input { min-width: 0; accent-color: var(--fx-accent); }
 [data-fx="scale-bar"] .fx-sb-m { display: flex; align-items: center; gap: 6px; }
 [data-fx="scale-bar"] .fx-sb-m i { height: 6px; max-width: 80%; border: 1px solid currentColor; background: repeating-linear-gradient(90deg, currentColor 0 25%, transparent 25% 50%); transition: width .15s; }
+
+/* hatch-reveal : un titre sorti d'un plan */
+[data-fx="hatch-reveal"] { position: relative; display: inline-block; font-weight: 900; line-height: 1.05; }
+[data-fx="hatch-reveal"] span { display: block; }
+[data-fx="hatch-reveal"] .fx-hr-a { background: repeating-linear-gradient(135deg, currentColor 0 2px, transparent 2px 6px); -webkit-background-clip: text; background-clip: text; color: transparent; }
+[data-fx="hatch-reveal"] .fx-hr-b { position: absolute; inset: 0; clip-path: inset(0 100% 0 0); transition: clip-path 1.3s var(--fx-ease-out) .25s; }
+.fx-in[data-fx="hatch-reveal"] .fx-hr-b { clip-path: inset(0 0 0 0); }

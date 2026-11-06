@@ -86,4 +86,14 @@
       go();
     }
   });
+
+  // Un titre qui se remplit, depuis une hachure de plan
+  FX.register('hatch-reveal', {
+    entrance: true,
+    setup: function (el) {
+      var t = el.textContent;
+      el.setAttribute('aria-label', t);
+      el.innerHTML = '<span class="fx-hr-a" aria-hidden="true">' + t + '</span><span class="fx-hr-b" aria-hidden="true">' + t + '</span>';
+    }
+  });
 })(window.FX);

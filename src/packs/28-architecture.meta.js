@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="scale-bar" data-fx-px-per-m="6"></div>',
     '<div data-fx="scale-bar" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, la valeur de l\'échelle reste écrite.' }),
+  E('hatch-reveal', 'Texte',
+    'Un titre apparaît en hachures de plan, puis une encre pleine le recouvre.',
+    'Le geste du dessinateur sur son calque.',
+    'Aucun réglage : la couleur du texte fait la hachure.',
+    'Architecture, ingénierie, titres d\'affiche.',
+    'Un petit texte : les hachures le rendent illisible.',
+    '<h2 data-fx="hatch-reveal">Projets</h2>',
+    '<h2 class="demo-title" data-fx="hatch-reveal">Projets</h2>',
+    { trigger: 'Rejouer', a11y: 'Le texte est dans `aria-label`, et les deux copies sont masquées.' }),
 ];
