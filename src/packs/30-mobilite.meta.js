@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="wheel-loader"></div>',
     '<div data-fx="wheel-loader" style="color:var(--ink)"></div>',
     { a11y: 'Rôle `status` nommé. La bibliothèque coupe l\'animation en mouvement réduit.' }),
+  E('traffic-light', 'État',
+    'Un feu tricolore indique un état, écrit en toutes lettres à côté.',
+    'Universel : tout le monde sait le lire.',
+    '- `data-fx-items` : trois mots séparés par `|`\n- `data-fx-state` (0, 1 ou 2)',
+    'Statuts, pré-départ, disponibilité d\'un service.',
+    'De se limiter à la couleur : le texte reste indispensable.',
+    '<div data-fx="traffic-light" data-fx-state="2"></div>',
+    '<div data-fx="traffic-light" style="color:var(--ink)"></div>',
+    { trigger: 'Changer de feu', a11y: 'Le texte est annoncé, et le feu est décoratif.' }),
 ];

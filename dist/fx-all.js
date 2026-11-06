@@ -12216,6 +12216,19 @@
       el.innerHTML = s + '<circle class="fx-wl2-v" cx="50" cy="8" r="3"/></g><circle class="fx-wl2-h" cx="50" cy="50" r="6"/></svg>';
     }
   });
+
+  // Un feu tricolore qui donne l'état de quelque chose
+  FX.register('traffic-light', {
+    setup: function (el) {
+      var W = (el.dataset.fxItems || 'Attendez|Préparez-vous|C\'est parti').split('|');
+      el.innerHTML = '<div class="fx-tl" aria-hidden="true"><i></i><i></i><i></i></div><output aria-live="polite"></output>';
+      var o = el.querySelector('output'), L = el.querySelectorAll('i');
+      el._fxSet = function (n) { L.forEach(function (x, i) { x.classList.toggle('fx-on', i === n); }); o.textContent = W[n]; el._fxN = n; };
+      el._fxSet(U.num(el, 'fxState', 0));
+      new MutationObserver(function () { el._fxSet(U.num(el, 'fxState', 0)); }).observe(el, { attributes: true, attributeFilter: ['data-fx-state'] });
+    },
+    trigger: function (el) { el._fxSet((el._fxN + 1) % 3); }
+  });
 })(window.FX);
 
 window.FX._boot();
