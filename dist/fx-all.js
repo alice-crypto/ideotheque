@@ -9848,6 +9848,17 @@
       el.innerHTML = '<svg viewBox="0 0 200 90" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="' + p + '"/></svg><ul>' + S.map(function (n, i) { return '<li><span>' + n + '</span><b>' + fm(sum[i]) + '</b></li>'; }).join('') + '</ul><p>Nuit fictive de ' + fm(tot) + '</p>';
     }
   });
+
+  // Une semaine de pas, face à la ligne de l'objectif
+  FX.register('steps-week-goal', {
+    entrance: true,
+    setup: function (el) {
+      var d = (el.dataset.fxData || '6400,8200,10400,5300,9100,12800,7600').split(',').map(Number), goal = U.num(el, 'fxGoal', 8000), max = Math.max.apply(null, d.concat(goal)), L = 'LMMJVSD', hits = d.filter(function (v) { return v >= goal; }).length;
+      var h = '<div class="fx-sw" style="--fx-g:' + goal / max + '"><em aria-hidden="true"></em>';
+      d.forEach(function (v, i) { h += '<span class="' + (v >= goal ? 'fx-ok' : '') + '" title="' + v + ' pas" style="--fx-q:' + v / max + ';--fx-i:' + i + '"><i></i><small>' + L[i % 7] + '</small></span>'; });
+      el.innerHTML = h + '</div><p>' + hits + ' jours sur ' + d.length + ' au-dessus de ' + goal.toLocaleString('fr-FR') + ' pas</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

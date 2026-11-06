@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="sleep-stages" data-fx-data="0:10,1:40,2:50"></div>',
     '<div data-fx="sleep-stages" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le tracé est décoratif : les durées sont écrites dans une liste.' }),
+  E('steps-week-goal', 'Présentation',
+    'Une semaine de barres se compare à une ligne d\'objectif, et le bilan s\'écrit.',
+    'Une semaine racontée en un coup d\'œil.',
+    '- `data-fx-data` : valeurs séparées par des virgules\n- `data-fx-goal` (8000)',
+    'Activité, habitudes, objectifs quotidiens.',
+    'De culpabiliser : le bilan compte les réussites, pas les échecs.',
+    '<div data-fx="steps-week-goal" data-fx-goal="8000" data-fx-data="6400,8200,10400"></div>',
+    '<div data-fx="steps-week-goal" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le bilan est écrit, et chaque barre porte sa valeur en `title`.' }),
 ];
