@@ -173,4 +173,19 @@
       list.children[1].click();
     }
   });
+
+  // Une sonnette de réception : on sonne, et le conseil arrive
+  FX.register('concierge-bell', {
+    setup: function (el) {
+      var T = (el.dataset.fxItems || 'Essayez le petit marché du dimanche, à 10 minutes à pied.|Le musée est gratuit le premier mardi du mois.|Prenez le bac pour la plus belle vue au coucher du soleil.').split('|'), n = -1;
+      el.innerHTML = '<button type="button" aria-label="Sonner à la réception"><svg viewBox="0 0 80 60" aria-hidden="true"><path class="b" d="M12 46C12 26 24 14 40 14S68 26 68 46Z"/><rect x="6" y="46" width="68" height="6" rx="3"/><circle cx="40" cy="10" r="4"/></svg></button><output aria-live="polite">Une question ? Sonnez.</output>';
+      var b = el.firstChild, o = el.querySelector('output');
+      b.addEventListener('click', function () {
+        n = (n + 1) % T.length;
+        b.classList.remove('fx-go'); void b.offsetWidth; b.classList.add('fx-go');
+        o.textContent = T[n];
+      });
+    },
+    trigger: function (el) { el.firstChild.click(); }
+  });
 })(window.FX);
