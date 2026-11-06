@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="walk-score" data-fx-items="École:6|Métro:9"></div>',
     '<div data-fx="walk-score" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Liste avec les durées écrites.' }),
+  E('price-per-m2', 'Micro-interaction',
+    'Le prix au mètre carré se recalcule et se situe par rapport à celui du quartier.',
+    'On sait si l\'annonce est raisonnable.',
+    '- `data-fx-price`, `data-fx-area`, `data-fx-ref` : prix au m² du quartier',
+    'Annonces, estimateurs, comparaison de terrains.',
+    'De remplacer une estimation d\'agence : l\'état du bien et l\'étage comptent aussi.',
+    '<div data-fx="price-per-m2" data-fx-price="285000" data-fx-area="62" data-fx-ref="4300"></div>',
+    '<div data-fx="price-per-m2" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat écrit et annoncé.' }),
 ];

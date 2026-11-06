@@ -49,3 +49,12 @@
 [data-fx="walk-score"] li i { height: 6px; width: 0; background: var(--fx-accent); border-radius: 3px; transition: width .7s var(--fx-ease-out) calc(var(--fx-i) * 90ms); }
 .fx-in[data-fx="walk-score"] li i { width: calc(var(--fx-q) * 100%); }
 [data-fx="walk-score"] li b { text-align: right; font-weight: 600; }
+
+/* price-per-m2 : le prix au mètre carré */
+[data-fx="price-per-m2"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="price-per-m2"] label { display: grid; grid-template-columns: 1fr auto; gap: 2px; }
+[data-fx="price-per-m2"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="price-per-m2"] .fx-m2 { position: relative; height: 8px; border-radius: 4px; background: linear-gradient(90deg, var(--fx-up, #2eaf63), var(--fx-warn, #e8930c), var(--fx-down, #e10600)); }
+[data-fx="price-per-m2"] em { position: absolute; left: 50%; top: -4px; bottom: -4px; width: 2px; background: currentColor; }
+[data-fx="price-per-m2"] i { position: absolute; top: -4px; left: calc(var(--fx-q) * 100%); width: 16px; height: 16px; margin-left: -8px; border: 3px solid currentColor; border-radius: 50%; box-sizing: border-box; background: var(--fx-bg, #fff); transition: left .25s var(--fx-ease-spring); }
+[data-fx="price-per-m2"] output b { font-size: 18px; }
