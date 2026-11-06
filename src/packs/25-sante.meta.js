@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="er-wait" data-fx-minutes="45"></div>',
     '<div data-fx="er-wait" style="color:var(--ink)"></div>',
     { a11y: 'Le niveau est écrit en mots, et le numéro d\'urgence reste visible.' }),
+  E('triage-flow', 'Micro-interaction',
+    'Des questions oui ou non orientent vers le bon interlocuteur, avec un retour possible.',
+    'Calme et net, une question à la fois.',
+    '- `data-fx-tree` : arbre JSON avec `q`, `y`, `n`, `r` (réponse), `u` (urgent)',
+    'Orientation médicale, assistance, dépannage.',
+    'Tout arbre santé non validé par des soignants : celui d\'exemple est illustratif.',
+    '<div data-fx="triage-flow"></div>',
+    '<div data-fx="triage-flow" style="color:var(--ink)"></div>',
+    { a11y: 'Vrais boutons, et chaque nouvelle question est annoncée.' }),
 ];

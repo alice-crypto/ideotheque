@@ -9868,6 +9868,32 @@
       el.innerHTML = '<div class="fx-ew" aria-hidden="true"><i></i><i></i><i></i></div><strong>' + (m >= 60 ? Math.floor(m / 60) + ' h ' + String(m % 60).padStart(2, '0') : m + ' min') + '</strong><span>' + names[lvl] + '</span><small>Estimation mise à jour à ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + '</small><small class="fx-ew-u">En cas d\'urgence vitale, appelez le 15 ou le 112.</small>';
     }
   });
+
+  // Des questions oui ou non qui orientent vers le bon interlocuteur
+  FX.register('triage-flow', {
+    setup: function (el) {
+      var T = el.dataset.fxTree ? JSON.parse(el.dataset.fxTree) : { q: 'Danger immédiat ?', y: { r: 'Appelez le 15 ou le 112.', u: 1 }, n: { q: 'Le problème est apparu aujourd\'hui ?', y: { r: 'Contactez votre médecin aujourd\'hui.' }, n: { r: 'Prenez rendez-vous cette semaine.' } } };
+      var hist = [], cur = T;
+      var box = U.make('div', 'fx-tf', el);
+      box.setAttribute('aria-live', 'polite');
+      var show = function () {
+        box.innerHTML = '';
+        box.className = 'fx-tf' + (cur.u ? ' fx-u' : '');
+        U.make('p', '', box).textContent = cur.q || cur.r;
+        if (cur.q) ['y', 'n'].forEach(function (k) {
+          var b = U.make('button', '', box);
+          b.type = 'button'; b.textContent = k === 'y' ? 'Oui' : 'Non';
+          b.addEventListener('click', function () { hist.push(cur); cur = cur[k]; show(); });
+        });
+        if (hist.length) {
+          var bk = U.make('button', 'fx-tf-b', box);
+          bk.type = 'button'; bk.textContent = 'Revenir';
+          bk.addEventListener('click', function () { cur = hist.pop(); show(); });
+        }
+      };
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
