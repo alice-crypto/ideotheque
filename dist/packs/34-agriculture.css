@@ -188,3 +188,16 @@
 [data-fx="chalk-board"] span span { opacity: 0; filter: blur(2px); transition: opacity .12s, filter .3s; transition-delay: calc(var(--fx-i) * var(--fx-pace)); text-shadow: 0 0 1px #fff8; }
 .fx-in[data-fx="chalk-board"] span span, .fx-in[data-fx="chalk-board"] h4 span { opacity: 1; filter: none; }
 [data-fx="chalk-board"] h4 span { opacity: 0; transition: opacity .12s; transition-delay: calc(var(--fx-i) * var(--fx-pace)); }
+
+/* compost-ratio : le bon mélange */
+[data-fx="compost-ratio"] { display: grid; grid-template-columns: 74px 1fr; gap: 4px 10px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; align-items: center; }
+[data-fx="compost-ratio"] .fx-cm { display: flex; flex-direction: column-reverse; align-items: center; gap: 1px; height: 110px; padding: 4px; border: 3px solid currentColor; border-top: 0; overflow: hidden; box-sizing: border-box; }
+[data-fx="compost-ratio"] .fx-cm i { display: block; flex: none; height: 9px; border-radius: 2px; animation: fx-compost-drop .3s var(--fx-ease-out); }
+[data-fx="compost-ratio"] .v { background: #5aa35c; }
+[data-fx="compost-ratio"] .w { background: #8a6233; }
+[data-fx="compost-ratio"] .fx-cm-c { display: grid; gap: 3px; }
+[data-fx="compost-ratio"] button { padding: 4px; border: 1px solid currentColor; border-radius: 5px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="compost-ratio"] output { grid-column: 1 / -1; color: var(--fx-warn, #e8930c); }
+[data-fx="compost-ratio"].fx-ok output { color: var(--fx-up, #2eaf63); }
+[data-fx="compost-ratio"] output b { font-size: 14px; color: currentColor; }
+@keyframes fx-compost-drop { from { transform: translateY(-30px); opacity: 0; } }

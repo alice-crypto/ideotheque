@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="chalk-board" data-fx-title="Du jour" data-fx-items="Pommes:2,80 €"></div>',
     '<div data-fx="chalk-board" data-fx-title="Du jour"></div>',
     { trigger: 'Rejouer', a11y: 'Chaque ligne porte un `aria-label` complet.' }),
+  E('compost-ratio', 'Micro-interaction',
+    'On ajoute vert et brun dans un composteur, et l\'équilibre du mélange s\'écrit.',
+    'Une règle simple qui évite le compost qui sent mauvais.',
+    'Aucun réglage dans l\'attribut.',
+    'Jardinage, collectivités, écoles.',
+    'Des règles trop strictes : les proportions restent des repères.',
+    '<div data-fx="compost-ratio"></div>',
+    '<div data-fx="compost-ratio" style="color:var(--ink)"></div>',
+    { a11y: 'Vrais boutons, équilibre annoncé.' }),
 ];
