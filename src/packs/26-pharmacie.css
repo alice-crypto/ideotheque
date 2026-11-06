@@ -49,3 +49,12 @@
 [data-fx="side-effect-scale"] .fx-on { background: var(--fx-accent); transform: scale(1.2); }
 [data-fx="side-effect-scale"] output { font-weight: 700; font-size: 12px; }
 [data-fx="side-effect-scale"] small { font-size: 10px; opacity: .6; }
+
+/* interaction-check : ce que dit la table */
+[data-fx="interaction-check"] { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="interaction-check"] label { display: grid; gap: 2px; }
+[data-fx="interaction-check"] select { width: 100%; padding: 4px; font: inherit; }
+[data-fx="interaction-check"] output { grid-column: 1 / -1; padding: 8px; border-radius: 7px; background: color-mix(in srgb, currentColor 14%, transparent); font-size: 12px; font-weight: 700; transition: background .25s, color .25s; }
+[data-fx="interaction-check"][data-fx-level="ok"] output { background: color-mix(in srgb, var(--fx-up, #2eaf63) 28%, transparent); }
+[data-fx="interaction-check"][data-fx-level="caution"] output { background: var(--fx-warn, #e8930c); color: #111; }
+[data-fx="interaction-check"][data-fx-level="avoid"] output { background: var(--fx-down, #e10600); color: #fff; }
