@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->579<!-- /total --> effets.
+La bibliothèque contient <!-- total -->580<!-- /total --> effets.
 
 ## Règles
 
@@ -327,6 +327,7 @@ La bibliothèque contient <!-- total -->579<!-- /total --> effets.
 | `practitioner-sort` | Micro-interaction | On trie une liste de praticiens, et les lignes glissent à leur nouvelle place |
 | `dose-grid` | Micro-interaction | Une grille matin, midi et soir se coche, et le compte des prises s'écrit |
 | `pill-organizer` | Micro-interaction | Un pilulier montre la semaine, on ouvre les couvercles et la pilule du jour disparaît |
+| `interaction-check` | Micro-interaction | On choisit deux éléments, et la table donne leur niveau de compatibilité |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

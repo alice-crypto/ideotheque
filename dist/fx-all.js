@@ -10288,6 +10288,25 @@
       U.make('small', '', el).textContent = 'Valeurs fictives';
     }
   });
+
+  // Deux éléments à choisir, et ce que dit la table à leur sujet
+  FX.register('interaction-check', {
+    setup: function (el) {
+      var names = (el.dataset.fxNames || 'Produit A,Produit B,Produit C').split(','), tab = JSON.parse(el.dataset.fxTable || '{"Produit A+Produit B":"caution","Produit B+Produit C":"avoid"}');
+      var opt = names.map(function (n) { return '<option>' + n + '</option>'; }).join('');
+      el.innerHTML = '<label>Premier<select>' + opt + '</select></label><label>Second<select>' + opt + '</select></label><output role="status"></output>';
+      var s = el.querySelectorAll('select'), o = el.querySelector('output');
+      s[1].selectedIndex = 1;
+      var T = { ok: 'Rien de signalé dans cette table', caution: 'Précaution : demandez conseil', avoid: 'À éviter : demandez conseil' };
+      var go = function () {
+        var a = s[0].value, b = s[1].value, r = a === b ? 'same' : tab[a + '+' + b] || tab[b + '+' + a] || 'ok';
+        el.dataset.fxLevel = r;
+        o.textContent = r === 'same' ? 'Choisissez deux éléments différents' : T[r];
+      };
+      el.addEventListener('change', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

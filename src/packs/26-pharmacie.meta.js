@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="side-effect-scale" data-fx-items="Maux de tête:10"></div>',
     '<div data-fx="side-effect-scale" style="color:var(--ink)"></div>',
     { a11y: 'Phrase annoncée à chaque choix, et les points sont décoratifs.' }),
+  E('interaction-check', 'Micro-interaction',
+    'On choisit deux éléments, et la table donne leur niveau de compatibilité.',
+    'Un filet de sécurité qui renvoie vers un humain.',
+    '- `data-fx-names` : éléments séparés par des virgules\n- `data-fx-table` : JSON « A+B » vers `caution` ou `avoid`',
+    'Compatibilités produit, composants, pièces détachées.',
+    'Toute donnée médicale non validée : la table d\'exemple est fictive et « rien de signalé » ne veut pas dire sans risque.',
+    '<div data-fx="interaction-check" data-fx-names="A,B" data-fx-table=\'{"A+B":"caution"}\'></div>',
+    '<div data-fx="interaction-check" style="color:var(--ink)"></div>',
+    { a11y: 'Vraies listes étiquetées, résultat dans une région `status`, niveau écrit en mots.' }),
 ];
