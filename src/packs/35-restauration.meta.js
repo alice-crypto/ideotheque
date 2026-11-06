@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="table-booking" data-fx-items="19:00:8|20:00:2"></div>',
     '<div data-fx="table-booking" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés, créneaux pleins désactivés, choix annoncé.' }),
+  E('floor-tables', 'Micro-interaction',
+    'Sur un plan de salle, on choisit une table libre, et sa capacité s\'écrit.',
+    'On se voit déjà assis près de la fenêtre.',
+    '- `data-fx-items` : « x:y:places:état (f ou o) » séparés par `|`',
+    'Restaurants, cinémas, coworkings.',
+    'Un plan non tenu à jour : le choix promis doit rester disponible.',
+    '<div data-fx="floor-tables" data-fx-items="12:18:2:f|38:18:2:o"></div>',
+    '<div data-fx="floor-tables" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés avec capacité et état, tables occupées désactivées.' }),
 ];

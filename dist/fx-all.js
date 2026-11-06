@@ -14366,6 +14366,26 @@
       show();
     }
   });
+
+  // Un plan de salle pour choisir sa table
+  FX.register('floor-tables', {
+    setup: function (el) {
+      var T = (el.dataset.fxItems || '12:18:2:o|38:18:2:f|66:18:4:f|12:62:4:f|40:62:6:o|72:64:2:f').split('|').map(function (r) { var p = r.split(':'); return { x: +p[0], y: +p[1], s: +p[2], st: p[3] }; }), box = U.make('div', 'fx-ft', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      o.textContent = 'Touchez une table libre';
+      T.forEach(function (t, i) {
+        var b = U.make('button', 's' + t.s, box);
+        b.type = 'button'; b.textContent = t.s;
+        b.style.left = t.x + '%'; b.style.top = t.y + '%';
+        b.setAttribute('aria-label', 'Table ' + (i + 1) + ', ' + t.s + ' places, ' + (t.st === 'o' ? 'occupée' : 'libre'));
+        if (t.st === 'o') b.disabled = true;
+        b.addEventListener('click', function () {
+          box.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+          o.innerHTML = '<b>Table ' + (i + 1) + '</b>, ' + t.s + ' places';
+        });
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
