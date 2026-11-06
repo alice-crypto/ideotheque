@@ -32,4 +32,23 @@
       setInterval(go, 60000);
     }
   });
+
+  // Trouver le carton le plus petit qui contient l'objet
+  FX.register('box-finder', {
+    setup: function (el) {
+      var B = (el.dataset.fxItems || 'S:25,20,10|M:35,30,20|L:50,40,30|XL:70,50,40').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], d: p[1].split(',').map(Number) }; });
+      el.innerHTML = '<div class="fx-bf-i">' + ['Longueur', 'Largeur', 'Hauteur'].map(function (t, i) { return '<label>' + t + '<input type="number" min="1" max="200" value="' + [30, 22, 12][i] + '"></label>'; }).join('') + '</div><div class="fx-bf" aria-hidden="true"></div><output aria-live="polite"></output>';
+      var I = el.querySelectorAll('input'), box = el.querySelector('.fx-bf'), o = el.querySelector('output');
+      B.forEach(function (b, i) { var x = U.make('i', '', box); x.textContent = b.n; x.style.setProperty('--fx-s', .55 + i * .15); });
+      var sort = function (a) { return a.slice().sort(function (x, y) { return y - x; }); };
+      var go = function () {
+        var d = sort(Array.prototype.map.call(I, function (i) { return +i.value || 0; })), fit = -1;
+        B.some(function (b, i) { var s = sort(b.d); if (d.every(function (v, k) { return v <= s[k]; })) { fit = i; return true; } return false; });
+        Array.prototype.forEach.call(box.children, function (x, i) { x.classList.toggle('fx-on', i === fit); });
+        o.innerHTML = fit < 0 ? 'Trop grand pour nos cartons' : 'Carton <b>' + B[fit].n + '</b> : ' + B[fit].d.join(' × ') + ' cm';
+      };
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

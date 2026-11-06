@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="delivery-window" data-fx-from="14" data-fx-to="16"></div>',
     '<div data-fx="delivery-window" style="color:var(--ink)"></div>',
     { a11y: 'Tout est écrit dans une phrase annoncée.' }),
+  E('box-finder', 'Micro-interaction',
+    'Trois dimensions trouvent le plus petit carton qui contient l\'objet, dans n\'importe quel sens.',
+    'On évite de payer pour transporter de l\'air.',
+    '- `data-fx-items` : « nom:L,l,H » séparés par `|`',
+    'Expédition, déménagement, emballage.',
+    'D\'oublier la marge de calage : prévoyez quelques centimètres.',
+    '<div data-fx="box-finder" data-fx-items="S:25,20,10|M:35,30,20"></div>',
+    '<div data-fx="box-finder" style="color:var(--ink)"></div>',
+    { a11y: 'Champs étiquetés, résultat annoncé.' }),
 ];

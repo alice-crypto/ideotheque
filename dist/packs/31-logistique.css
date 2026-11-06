@@ -19,3 +19,13 @@
 [data-fx="delivery-window"] .fx-dw-h { display: flex; justify-content: space-between; font-size: 10px; opacity: .7; }
 [data-fx="delivery-window"] b { font-size: 14px; }
 @keyframes fx-delivery-now { 50% { opacity: .55; } }
+
+/* box-finder : le bon carton */
+[data-fx="box-finder"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="box-finder"] .fx-bf-i { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+[data-fx="box-finder"] label { display: grid; gap: 2px; }
+[data-fx="box-finder"] input { width: 100%; box-sizing: border-box; padding: 3px; font: inherit; }
+[data-fx="box-finder"] .fx-bf { display: flex; gap: 4px; align-items: flex-end; height: 62px; }
+[data-fx="box-finder"] .fx-bf i { flex: calc(var(--fx-s) * 2) 1 0; height: calc(var(--fx-s) * 100%); display: grid; place-items: center; background: linear-gradient(90deg, transparent 45%, #e7cfa0 45% 55%, transparent 55%), #b98b4f; color: #2f2108; font-weight: 800; font-style: normal; opacity: .5; transition: transform .3s var(--fx-ease-spring), opacity .2s; }
+[data-fx="box-finder"] .fx-bf .fx-on { opacity: 1; transform: translateY(-5px); box-shadow: 0 6px 10px #0005; }
+[data-fx="box-finder"] output b { font-size: 16px; }
