@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="greenhouse-vent" data-fx-temp="30"></div>',
     '<div data-fx="greenhouse-vent" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, ouverture annoncée.' }),
+  E('seed-packet', 'Micro-interaction',
+    'Un sachet de graines se retourne pour montrer ses conseils de culture.',
+    'Le petit trésor qu\'on garde dans une boîte.',
+    '- `data-fx-name`, `data-fx-items` : « sujet:conseil » séparés par `|`',
+    'Jardineries, sites de graines, potagers.',
+    'Des conseils d\'exemple sur un vrai produit.',
+    '<div data-fx="seed-packet" data-fx-name="Radis rose"></div>',
+    '<div data-fx="seed-packet" data-fx-name="Radis rose"></div>',
+    { trigger: 'Retourner', a11y: 'Vrai bouton `aria-pressed`, texte lu sur les deux faces.' }),
 ];

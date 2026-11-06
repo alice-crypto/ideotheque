@@ -14242,6 +14242,17 @@
       go();
     }
   });
+
+  // Un sachet de graines qui se retourne pour montrer ses conseils
+  FX.register('seed-packet', {
+    setup: function (el) {
+      var n = el.dataset.fxName || 'Radis rose', I = (el.dataset.fxItems || 'Semis:mars à août|Profondeur:1 cm|Récolte:4 semaines').split('|').map(function (r) { return r.split(':'); });
+      el.innerHTML = '<button type="button" aria-pressed="false" aria-label="Voir les conseils de ' + n + '"><span class="fx-sp-c"><span class="fx-sp-f"><i></i><b>' + n + '</b></span><span class="fx-sp-b">' + I.map(function (x) { return '<em><u>' + x[0] + '</u>' + x[1] + '</em>'; }).join('') + '</span></span></button>';
+      var b = el.firstChild;
+      b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); });
+    },
+    trigger: function (el) { el.firstChild.click(); }
+  });
 })(window.FX);
 
 window.FX._boot();
