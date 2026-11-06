@@ -105,4 +105,17 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-a', (info.pass * U.num(el, 'fxTurn', 360)).toFixed(1) + 'deg'); }
   });
+
+  // Afficher la grille modulaire derrière une mise en page
+  FX.register('modular-grid', {
+    setup: function (el) {
+      var cols = U.num(el, 'fxCols', 6), g = U.make('div', 'fx-mg', el), b = U.make('button', 'fx-mg-b', el);
+      g.setAttribute('aria-hidden', 'true');
+      g.style.setProperty('--fx-c', cols);
+      for (var i = 0; i < cols; i++) U.make('i', '', g).style.setProperty('--fx-i', i);
+      U.ensurePositioned(el);
+      b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.textContent = 'Grille';
+      b.addEventListener('click', function () { var o = !el.classList.contains('fx-on'); el.classList.toggle('fx-on', o); b.setAttribute('aria-pressed', o); b.textContent = o ? cols + ' colonnes' : 'Grille'; });
+    }
+  });
 })(window.FX);

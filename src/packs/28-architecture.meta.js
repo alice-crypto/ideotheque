@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="north-arrow"></div>',
     '<div data-fx="north-arrow" style="color:var(--ink)"></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
+  E('modular-grid', 'Micro-interaction',
+    'Un bouton fait descendre la grille modulaire par-dessus une mise en page.',
+    'On montre les coulisses, et ça inspire confiance.',
+    '- `data-fx-cols` (6)\n- `--fx-accent`',
+    'Portfolios, studios, systèmes de design.',
+    'Une grille que la page ne suit pas : la démonstration tournerait à son désavantage.',
+    '<section data-fx="modular-grid">…</section>',
+    '<div data-fx="modular-grid" style="width:215px;height:130px;color:var(--ink);font-size:13px"><strong style="font-size:20px">Halle</strong><br>Un texte qui suit la grille.</div>',
+    { a11y: 'Bouton `aria-pressed`, grille décorative.' }),
 ];
