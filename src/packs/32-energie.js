@@ -163,4 +163,33 @@
       set(v);
     }
   });
+
+  // Allumer des appareils et regarder tourner le compteur
+  FX.register('appliance-meter', {
+    setup: function (el) {
+      var A = (el.dataset.fxItems || 'Four:2400|Lave-linge:2000|Télé:100|Frigo:150|Bouilloire:2200').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1]]; }), price = U.num(el, 'fxKwh', .21), a = 0;
+      el.innerHTML = '<div class="fx-am" aria-hidden="true"><i></i></div><div class="fx-am-c"></div><output aria-live="polite"></output>';
+      var c = el.querySelector('.fx-am-c'), o = el.querySelector('output');
+      A.forEach(function (x) {
+        var l = U.make('label', '', c), k = U.make('input', '', l);
+        k.type = 'checkbox'; k.value = x[1];
+        l.appendChild(document.createTextNode(x[0]));
+      });
+      var go = function () {
+        var w = 0;
+        c.querySelectorAll(':checked').forEach(function (k) { w += +k.value; });
+        el._fxW = w;
+        o.innerHTML = '<b>' + w.toLocaleString('fr-FR') + ' W</b> · ' + (w / 1000 * price).toFixed(2).replace('.', ',') + ' € par heure';
+      };
+      c.addEventListener('change', go);
+      el._fxA = 0;
+      c.querySelectorAll('input')[3].checked = true;
+      go();
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxA = (el._fxA + el._fxW * dt * .15) % 360;
+      el.style.setProperty('--fx-a', el._fxA + 'deg');
+    }
+  });
 })(window.FX);
