@@ -38,3 +38,14 @@
 [data-fx="refill-date"] strong { font-size: 26px; line-height: 1.1; }
 [data-fx="refill-date"].fx-low strong { color: var(--fx-down, #e10600); }
 [data-fx="refill-date"].fx-low .fx-rd i { background: var(--fx-down, #e10600); }
+
+/* side-effect-scale : un risque en personnes */
+[data-fx="side-effect-scale"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="side-effect-scale"] .fx-se-b { display: flex; flex-wrap: wrap; gap: 3px; }
+[data-fx="side-effect-scale"] button { padding: 2px 7px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="side-effect-scale"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="side-effect-scale"] .fx-se { display: grid; grid-template-columns: repeat(20, 1fr); gap: 3px; }
+[data-fx="side-effect-scale"] i { aspect-ratio: 1; border-radius: 50%; background: color-mix(in srgb, currentColor 22%, transparent); transition: background .25s calc(var(--fx-i) * 12ms), transform .25s calc(var(--fx-i) * 12ms); }
+[data-fx="side-effect-scale"] .fx-on { background: var(--fx-accent); transform: scale(1.2); }
+[data-fx="side-effect-scale"] output { font-weight: 700; font-size: 12px; }
+[data-fx="side-effect-scale"] small { font-size: 10px; opacity: .6; }

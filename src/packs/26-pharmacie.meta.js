@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="refill-date" data-fx-left="18" data-fx-per-day="2"></div>',
     '<div data-fx="refill-date" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Tout est écrit en clair, la jauge illustre.' }),
+  E('side-effect-scale', 'Présentation',
+    'Cent points montrent combien de personnes sont concernées par chaque effet.',
+    'Le risque devient concret, sans pourcentage abstrait.',
+    '- `data-fx-items` : « effet:nombre sur 100 » séparés par `|`',
+    'Notices, pédagogie du risque, statistiques.',
+    'Une fréquence sous 1 % : les points ne peuvent pas la montrer.',
+    '<div data-fx="side-effect-scale" data-fx-items="Maux de tête:10"></div>',
+    '<div data-fx="side-effect-scale" style="color:var(--ink)"></div>',
+    { a11y: 'Phrase annoncée à chaque choix, et les points sont décoratifs.' }),
 ];
