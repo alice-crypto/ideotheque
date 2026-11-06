@@ -204,3 +204,16 @@
 [data-fx="locker-grid"] button { padding: 4px 10px; border: 0; border-radius: 5px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
 [data-fx="locker-grid"].fx-no output { color: var(--fx-down, #e10600); font-weight: 700; }
 @keyframes fx-locker-shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+/* drone-drop : un drone dépose le contenu */
+[data-fx="drone-drop"] { position: relative; display: block; width: min(100%, var(--fx-w, 215px)); padding-top: 70px; overflow: hidden; text-align: center; font-weight: 800; }
+[data-fx="drone-drop"] .fx-dd-c { padding: 12px; background: #caa36a; color: #2f2108; transform: translateY(-74px); transition: transform 1s var(--fx-ease-out) .2s; }
+.fx-in[data-fx="drone-drop"] .fx-dd-c { transform: none; }
+[data-fx="drone-drop"] .fx-dd { position: absolute; left: 50%; top: 0; width: 70px; height: 20px; margin-left: -35px; transform: translateY(-40px); z-index: 1; }
+.fx-in[data-fx="drone-drop"] .fx-dd { animation: fx-drone-path 2.2s var(--fx-ease-out) forwards; }
+[data-fx="drone-drop"] .fx-dd-b { position: absolute; left: 22px; top: 7px; width: 26px; height: 10px; border-radius: 5px; background: currentColor; }
+[data-fx="drone-drop"] .fx-dd-l, [data-fx="drone-drop"] .fx-dd-r { position: absolute; top: 1px; width: 26px; height: 3px; border-radius: 2px; background: currentColor; animation: fx-drone-prop .12s linear infinite alternate; }
+[data-fx="drone-drop"] .fx-dd-l { left: 0; }
+[data-fx="drone-drop"] .fx-dd-r { right: 0; }
+@keyframes fx-drone-path { 0% { transform: translateY(-40px); } 40%, 60% { transform: translateY(22px); } 100% { transform: translateY(-50px); } }
+@keyframes fx-drone-prop { to { transform: scaleX(.3); } }
