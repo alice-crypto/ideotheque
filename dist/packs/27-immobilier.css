@@ -243,3 +243,13 @@
 [data-fx="staging-toggle"] .r { left: 20%; bottom: 2%; width: 56%; height: 7%; background: color-mix(in srgb, var(--fx-accent-2) 70%, transparent); border-radius: 50%; transition-delay: .05s; }
 [data-fx="staging-toggle"] button { padding: 4px 10px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
 [data-fx="staging-toggle"] small { opacity: .7; font-size: 10px; }
+
+/* moving-boxes : une pile de cartons */
+[data-fx="moving-boxes"] { display: grid; grid-template-columns: 52px 1fr; gap: 4px 10px; align-items: end; width: min(100%, var(--fx-w, 240px)); font-size: 11px; }
+[data-fx="moving-boxes"] .fx-mb { display: flex; flex-direction: column-reverse; align-items: center; height: 118px; overflow: hidden; border-bottom: 2px solid currentColor; }
+[data-fx="moving-boxes"] .fx-mb i { width: 42px; height: 22px; flex: none; margin-top: 1px; background: linear-gradient(90deg, transparent 44%, #e8cf9f 44% 56%, transparent 56%), #bf8f53; box-shadow: inset 0 0 0 1px #0003; opacity: 0; transform: translate(var(--fx-x), -120px); transition: transform .45s var(--fx-ease-spring), opacity .1s; }
+[data-fx="moving-boxes"] .fx-mb i.fx-on { opacity: 1; transform: translateX(var(--fx-x)); }
+[data-fx="moving-boxes"] .fx-mb-l { display: grid; gap: 3px; }
+[data-fx="moving-boxes"] label { display: flex; gap: 5px; align-items: flex-start; cursor: pointer; }
+[data-fx="moving-boxes"] input { margin: 0; accent-color: var(--fx-accent); }
+[data-fx="moving-boxes"] output { grid-column: 1 / -1; font-weight: 700; font-size: 12px; }

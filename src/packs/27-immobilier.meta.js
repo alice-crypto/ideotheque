@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="staging-toggle"></div>',
     '<div data-fx="staging-toggle" data-fx-on="true" style="color:var(--ink)"></div>',
     { trigger: 'Basculer', a11y: 'Bouton `aria-pressed`, mention de simulation écrite.' }),
+  E('moving-boxes', 'Micro-interaction',
+    'Chaque tâche cochée fait tomber un carton sur la pile du déménagement.',
+    'Le stress se transforme en petite pile rassurante.',
+    '- `data-fx-items` : tâches séparées par `|`',
+    'Déménagement, listes de préparation, onboarding.',
+    'Une liste de plus de six tâches : la pile dépasserait la zone.',
+    '<div data-fx="moving-boxes" data-fx-items="Prévenir|Réserver"></div>',
+    '<div data-fx="moving-boxes" style="color:var(--ink)"></div>',
+    { a11y: 'Vraies cases, compte annoncé, pile décorative.' }),
 ];
