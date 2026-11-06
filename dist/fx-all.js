@@ -11282,6 +11282,16 @@
       go();
     }
   });
+
+  // Une rangée de colonnes dont on traverse le rythme en descendant
+  FX.register('colonnade', {
+    setup: function (el) {
+      var n = U.num(el, 'fxCols', 9), box = U.make('div', 'fx-co', el);
+      box.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) { var c = U.make('i', '', box), d = Math.abs(i - (n - 1) / 2) / ((n - 1) / 2); c.style.setProperty('--fx-d', d.toFixed(3)); }
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-o', info.pass.toFixed(3)); }
+  });
 })(window.FX);
 
 window.FX._boot();

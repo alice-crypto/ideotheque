@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="scale-figure" data-fx-height="5.2"></div>',
     '<div data-fx="scale-figure" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, résultat écrit et annoncé.' }),
+  E('colonnade', 'Défilement',
+    'Une rangée de colonnes en perspective s\'ouvre et se resserre au fil du défilement.',
+    'Marcher sous un portique, avec du calme et du rythme.',
+    '- `data-fx-cols` (9), `--fx-h`, `--fx-sky`',
+    'Musées, institutions, hôtels, hero d\'agence.',
+    'Un site très technique : l\'évocation classique y paraîtrait hors sujet.',
+    '<div data-fx="colonnade"></div>',
+    '<div data-fx="colonnade" style="width:215px"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
 ];
