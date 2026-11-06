@@ -67,3 +67,10 @@
 [data-fx="rate-best-row"] :is(th, td):first-child { text-align: left; }
 [data-fx="rate-best-row"] .fx-best { font-weight: 700; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 0 / 0 100%; transition: background-size .6s var(--fx-ease-out) calc(var(--fx-i) * 120ms); }
 .fx-in[data-fx="rate-best-row"] .fx-best { background-size: 100% 100%; color: var(--fx-best-ink, #111); }
+
+/* transaction-feed : les opérations du compte */
+[data-fx="transaction-feed"] { display: grid; font-size: .9em; }
+[data-fx="transaction-feed"] .fx-tf { display: flex; justify-content: space-between; gap: 1em; padding: .4em 0; border-bottom: 1px solid rgba(128, 128, 128, .3); animation: fx-tf .4s var(--fx-ease-out); }
+[data-fx="transaction-feed"] b { font-variant-numeric: tabular-nums; }
+[data-fx="transaction-feed"] .fx-in-m b { color: var(--fx-credit, #2eaf63); }
+@keyframes fx-tf { from { opacity: 0; transform: translateY(-8px); } }
