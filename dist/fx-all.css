@@ -6926,6 +6926,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="rev-meter"].fx-red output { color: var(--fx-down, #e10600); }
 [data-fx="rev-meter"] button { padding: 6px 14px; border: 0; border-radius: 99px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; touch-action: none; user-select: none; }
 
+/* gear-selector : un sélecteur de vitesse */
+[data-fx="gear-selector"] { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; }
+[data-fx="gear-selector"] .fx-gs { position: relative; display: grid; width: 52px; padding: 4px; border-radius: 12px; background: #17181c; color: #cfd2d6; }
+[data-fx="gear-selector"] .fx-gs > i { position: absolute; left: 4px; right: 4px; top: 4px; height: calc((100% - 8px) / var(--fx-n)); border-radius: 8px; background: var(--fx-accent); transform: translateY(calc(var(--fx-k, 0) * 100%)); transition: transform .28s var(--fx-ease-spring); }
+[data-fx="gear-selector"] button { position: relative; height: 32px; padding: 0; border: 0; background: none; color: inherit; font: inherit; font-size: 15px; cursor: pointer; }
+[data-fx="gear-selector"] button[aria-checked="true"] { color: #fff; }
+[data-fx="gear-selector"] button:focus-visible { outline: 2px solid #fff; outline-offset: -2px; border-radius: 8px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

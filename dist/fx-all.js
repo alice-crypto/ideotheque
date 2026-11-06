@@ -11587,6 +11587,32 @@
     },
     trigger: function (el) { el._fxR = 7600; }
   });
+
+  // Un sélecteur P R N D qui fonctionne comme un groupe de boutons radio
+  FX.register('gear-selector', {
+    setup: function (el) {
+      var G = (el.dataset.fxItems || 'P:Parking|R:Marche arrière|N:Point mort|D:Marche avant').split('|').map(function (r) { return r.split(':'); }), n = 0;
+      var box = U.make('div', 'fx-gs', el), o = U.make('output', '', el);
+      box.setAttribute('role', 'radiogroup'); box.setAttribute('aria-label', 'Rapport');
+      U.make('i', '', box).setAttribute('aria-hidden', 'true');
+      o.setAttribute('aria-live', 'polite');
+      box.style.setProperty('--fx-n', G.length);
+      var set = function (k, f) {
+        n = (k + G.length) % G.length;
+        box.style.setProperty('--fx-k', n);
+        box.querySelectorAll('button').forEach(function (b, i) { b.setAttribute('aria-checked', i === n); b.tabIndex = i === n ? 0 : -1; if (i === n && f) b.focus(); });
+        o.textContent = G[n][1];
+        el.dispatchEvent(new CustomEvent('fx:gear', { bubbles: true, detail: { gear: G[n][0] } }));
+      };
+      G.forEach(function (g, i) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('role', 'radio'); b.textContent = g[0]; b.setAttribute('aria-label', g[1]);
+        b.addEventListener('click', function () { set(i); });
+      });
+      box.addEventListener('keydown', function (e) { var d = { ArrowUp: -1, ArrowLeft: -1, ArrowDown: 1, ArrowRight: 1 }[e.key]; if (d) { e.preventDefault(); set(n + d, true); } });
+      set(0);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

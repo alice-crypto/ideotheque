@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="rev-meter" data-fx-max="8000"></div>',
     '<div data-fx="rev-meter" style="color:var(--ink)"></div>',
     { trigger: 'Faire monter', a11y: 'Vrai bouton, actionnable en maintenant Espace ou Entrée.' }),
+  E('gear-selector', 'Micro-interaction',
+    'Un levier P R N D sert de contrôle à plusieurs états, avec un petit claquement.',
+    'La sensation d\'une vraie commande, dans un site.',
+    '- `data-fx-items` : « lettre:nom » séparés par `|`\n- événement `fx:gear`',
+    'Sites automobiles, modes d\'une application.',
+    'Des états sans rapport : le levier n\'a de sens que pour des modes bien distincts.',
+    '<div data-fx="gear-selector"></div>',
+    '<div data-fx="gear-selector" style="color:var(--ink)"></div>',
+    { a11y: 'Groupe radio complet : flèches, focus géré, et état annoncé.' }),
 ];
