@@ -41,3 +41,13 @@
 /* ecg-line : un tracé de moniteur */
 [data-fx="ecg-line"] { display: block; width: 100%; height: var(--fx-h, 90px); color: var(--fx-line, #2eaf63); }
 [data-fx="ecg-line"] canvas { display: block; width: 100%; height: 100%; }
+
+/* lab-range : un résultat sur sa plage */
+[data-fx="lab-range"] { width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="lab-range"] .fx-lr-h, [data-fx="lab-range"] .fx-lr-f { display: flex; justify-content: space-between; gap: 8px; }
+[data-fx="lab-range"] strong { font-size: 15px; }
+[data-fx="lab-range"] .fx-lr { position: relative; height: 10px; margin: 6px 0; border-radius: 5px; background: color-mix(in srgb, currentColor 16%, transparent); }
+[data-fx="lab-range"] em { position: absolute; top: 0; bottom: 0; background: var(--fx-ok, #2eaf63); border-radius: 3px; }
+[data-fx="lab-range"] i { position: absolute; left: 0; top: -4px; width: 4px; height: 18px; margin-left: -2px; border-radius: 2px; background: currentColor; transition: left 1s var(--fx-ease-out) .15s; }
+.fx-in[data-fx="lab-range"] i { left: calc(var(--fx-q) * 100%); }
+[data-fx="lab-range"].fx-out .fx-st { color: var(--fx-warn, #e8930c); font-weight: 700; }
