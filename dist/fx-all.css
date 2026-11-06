@@ -6815,6 +6815,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="leader-labels"] li { opacity: 0; transition: opacity .4s calc(var(--fx-i) * 200ms + 400ms); }
 .fx-in[data-fx="leader-labels"] li { opacity: 1; }
 
+/* dimension-lines : des cotes qui mesurent vraiment */
+[data-fx="dimension-lines"] { margin: 0 0 24px 26px; }
+[data-fx="dimension-lines"] .fx-dl { position: absolute; display: grid; place-items: center; font: 10px ui-monospace, monospace; color: currentColor; }
+[data-fx="dimension-lines"] .fx-dl::before { content: ''; position: absolute; background: currentColor; transition: transform .7s var(--fx-ease-out); }
+[data-fx="dimension-lines"] .fx-dl-w { left: 0; right: 0; bottom: -20px; height: 16px; }
+[data-fx="dimension-lines"] .fx-dl-w::before { left: 0; right: 0; top: 2px; height: 1px; transform: scaleX(0); }
+[data-fx="dimension-lines"] .fx-dl-h { top: 0; bottom: 0; left: -26px; width: 22px; writing-mode: vertical-rl; transform: rotate(180deg); }
+[data-fx="dimension-lines"] .fx-dl-h::before { top: 0; bottom: 0; left: 2px; width: 1px; transform: scaleY(0); }
+.fx-in[data-fx="dimension-lines"] .fx-dl::before { transform: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

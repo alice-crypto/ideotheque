@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="leader-labels" data-fx-image="facade.jpg" data-fx-items="30:25:Toiture"></div>',
     '<div data-fx="leader-labels" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le texte des étiquettes reste une vraie liste.' }),
+  E('dimension-lines', 'Entrée',
+    'Des lignes de cote mesurent réellement l\'élément et écrivent sa taille.',
+    'Précision d\'atelier, et petite surprise quand on redimensionne.',
+    '- `data-fx-scale` : conversion depuis les pixels\n- `data-fx-unit` (px)',
+    'Sites techniques, systèmes de design, pages d\'ingénierie.',
+    'De prétendre à une vraie mesure de l\'objet si l\'échelle n\'est pas renseignée.',
+    '<div data-fx="dimension-lines">Contenu</div>',
+    '<div class="demo-box" data-fx="dimension-lines" style="width:150px;height:90px;color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Les cotes sont décoratives et masquées aux lecteurs d\'écran.' }),
 ];

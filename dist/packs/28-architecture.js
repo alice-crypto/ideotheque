@@ -282,4 +282,21 @@
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
     }
   });
+
+  // Des lignes de cote qui mesurent vraiment l'élément
+  FX.register('dimension-lines', {
+    entrance: true,
+    setup: function (el) {
+      var W = U.make('span', 'fx-dl fx-dl-w', el), H = U.make('span', 'fx-dl fx-dl-h', el);
+      W.setAttribute('aria-hidden', 'true'); H.setAttribute('aria-hidden', 'true');
+      U.ensurePositioned(el);
+      var f = U.num(el, 'fxScale', 0), u = el.dataset.fxUnit || 'px';
+      var go = function () {
+        var r = el.getBoundingClientRect(), v = function (n) { return f ? (n * f).toFixed(1).replace('.', ',') + ' ' + u : Math.round(n) + ' ' + u; };
+        W.textContent = v(r.width); H.textContent = v(r.height);
+      };
+      go();
+      U.onResize(go);
+    }
+  });
 })(window.FX);
