@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="flock-gather" data-fx-count="22"></div>',
     '<div data-fx="flock-gather" style="color:var(--ink)"></div>',
     { trigger: 'Rentrer ou sortir', a11y: 'Dessin masqué, bouton réel `aria-pressed`. Fixe en mouvement réduit.' }),
+  E('orchard-grow', 'Entrée',
+    'Des rangées d\'arbres sortent de terre en vague, avec leur total écrit.',
+    'Un geste de long terme, qu\'on voit d\'un seul coup.',
+    '- `data-fx-cols` (8), `data-fx-rows` (4), `data-fx-value`, `data-fx-text`, `--fx-leaf`',
+    'Reforestation, vergers, compensation, bilans RSE.',
+    'D\'afficher un chiffre de plantation non vérifié : ce sujet est très surveillé.',
+    '<div data-fx="orchard-grow" data-fx-text="32 arbres plantés"></div>',
+    '<div data-fx="orchard-grow" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le texte porte l\'information.' }),
 ];
