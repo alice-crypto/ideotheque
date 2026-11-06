@@ -69,4 +69,21 @@
       el.querySelector('button').setAttribute('aria-expanded', 'true');
     }
   });
+
+  // Une barre d'échelle qui reste juste quand on zoome
+  FX.register('scale-bar', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-sb"><div class="fx-sb-p"></div></div><label>Zoom <input type="range" min="1" max="8" step=".1"></label><div class="fx-sb-m"><i></i><b></b></div>';
+      var r = el.querySelector('input'), p = el.querySelector('.fx-sb-p'), bar = el.querySelector('.fx-sb-m i'), b = el.querySelector('.fx-sb-m b'), base = U.num(el, 'fxPxPerM', 6), S = [1, 2, 5, 10, 20, 50, 100];
+      r.value = U.num(el, 'fxZoom', 2);
+      var go = function () {
+        var z = +r.value, ppm = base * z, m = S.filter(function (s) { return s * ppm >= 40; })[0] || 100;
+        p.style.transform = 'scale(' + z + ')';
+        bar.style.width = m * ppm + 'px';
+        b.textContent = m + ' m';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
