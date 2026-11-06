@@ -248,3 +248,13 @@
 [data-fx="npk-triangle"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
 [data-fx="npk-triangle"] output { grid-column: 1 / -1; font-size: 12px; }
 [data-fx="npk-triangle"] output b { font-size: 15px; }
+
+/* tree-rings : compter les cernes */
+[data-fx="tree-rings"] { display: grid; grid-template-columns: 100px 1fr; gap: 3px 10px; align-items: center; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="tree-rings"] svg { grid-row: span 2; width: 100%; border-radius: 50%; background: #caa16a; box-shadow: 0 0 0 4px #5b3d22; }
+[data-fx="tree-rings"] circle { fill: none; stroke: #8a5f35; }
+[data-fx="tree-rings"] circle.fx-d { stroke: #3c2412; }
+[data-fx="tree-rings"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; align-self: end; }
+[data-fx="tree-rings"] input { min-width: 0; accent-color: var(--fx-accent); }
+[data-fx="tree-rings"] output { align-self: start; }
+[data-fx="tree-rings"] output b { font-size: 16px; }
