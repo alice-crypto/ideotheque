@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="tax-brackets" data-fx-brackets="0:10000:0|10000:30000:11"></div>',
     '<div data-fx="tax-brackets" style="width:220px;color:var(--ink)"></div>',
     { a11y: 'Curseur natif, et résultat écrit et annoncé.' }),
+  E('cashflow-waterfall', 'Présentation',
+    'Un graphique en cascade montre les entrées et les sorties, jusqu\'au solde final.',
+    'On suit l\'argent d\'un bout à l\'autre.',
+    '- `data-fx-items` : « nom:montant » séparés par `|`\n- `--fx-h`, `--fx-pos`, `--fx-neg`',
+    'Rapports, bilans, trésorerie.',
+    'Plus de 8 étapes : les libellés se coupent.',
+    '<div data-fx="cashflow-waterfall" data-fx-items="Ouverture:40|Ventes:65|Loyer:-12"></div>',
+    '<div data-fx="cashflow-waterfall" style="width:225px;color:var(--ink);margin-top:14px"></div>',
+    { trigger: 'Rejouer', a11y: 'Toutes les valeurs sont dans `aria-label`. Le signe est écrit au-dessus de chaque marche.' }),
 ];

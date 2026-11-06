@@ -9132,6 +9132,26 @@
       draw();
     }
   });
+
+  // Un graphique en cascade, de l'ouverture au solde final
+  FX.register('cashflow-waterfall', {
+    entrance: true,
+    setup: function (el) {
+      var it = (el.dataset.fxItems || 'Début:40|Ventes:65|Salaires:-38|Loyer:-12|Divers:-9').split('|').map(function (s) { var p = s.split(':'); return { n: p[0], v: +p[1] }; });
+      var c = 0, min = 0, max = 0, rows = [];
+      it.forEach(function (o) { var a = c; c += o.v; rows.push({ n: o.n, a: a, b: c, v: o.v }); min = Math.min(min, c); max = Math.max(max, c, a); });
+      rows.push({ n: 'Solde', a: 0, b: c, v: c, end: true });
+      var S = max - min || 1, Y = function (v) { return (max - v) / S * 84 + 2; };
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', rows.map(function (r) { return r.n + ' ' + r.v; }).join(', '));
+      rows.forEach(function (r, i) {
+        var d = U.make('div', 'fx-wf' + (r.end ? ' fx-end' : r.v < 0 ? ' fx-neg' : ''), el);
+        d.setAttribute('aria-hidden', 'true');
+        d.style.setProperty('--fx-i', i);
+        d.innerHTML = '<i style="top:' + Math.min(Y(r.a), Y(r.b)) + '%;height:' + Math.max(1, Math.abs(Y(r.a) - Y(r.b))) + '%"><b>' + (r.v > 0 && !r.end ? '+' : '') + r.v + '</b></i><span>' + r.n + '</span>';
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
