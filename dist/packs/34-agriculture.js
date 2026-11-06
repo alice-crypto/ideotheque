@@ -297,4 +297,36 @@
       el.innerHTML = '<div class="fx-dd2" aria-hidden="true">' + h + '</div><p><b>' + Math.round(tot) + '</b> degrés-jours sur ' + need + '<br>' + (left ? 'Récolte estimée vers le ' + d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }) : 'Maturité atteinte') + '</p>';
     }
   });
+
+  // Un champ de blé qui ondule au vent et s'écarte sous le pointeur
+  FX.register('wheat-field', {
+    setup: function (el) {
+      var c = U.make('canvas', '', el), x, W, H, S = [], mx = -999;
+      el.setAttribute('aria-hidden', 'true');
+      var size = function () {
+        var r = el.getBoundingClientRect(), d = window.devicePixelRatio || 1;
+        W = r.width; H = r.height; c.width = W * d; c.height = H * d;
+        x = c.getContext('2d'); x.scale(d, d); S = [];
+        for (var i = 0; i < Math.round(W / 2.4); i++) S.push({ x: U.rand(0, W), h: U.rand(H * .5, H * .9), t: U.rand(0, 6) });
+        S.sort(function (a, b) { return a.h - b.h; });
+      };
+      size(); U.onResize(size);
+      el.addEventListener('pointermove', function (e) { mx = e.clientX - el.getBoundingClientRect().left; });
+      el.addEventListener('pointerleave', function () { mx = -999; });
+      el._fxDraw = function (t) {
+        x.clearRect(0, 0, W, H);
+        S.forEach(function (s) {
+          var l = Math.sin(s.x * .03 + t * 1.6 + s.t * .1) * 9, dx = s.x - mx;
+          if (Math.abs(dx) < 34) l += (dx > 0 ? 1 : -1) * (34 - Math.abs(dx)) * .55;
+          var top = H - s.h, c1 = s.x + l * .4;
+          x.strokeStyle = '#c2a03f'; x.lineWidth = 1.1;
+          x.beginPath(); x.moveTo(s.x, H); x.quadraticCurveTo(c1, top + s.h * .4, s.x + l, top); x.stroke();
+          x.fillStyle = '#e5c66a';
+          x.beginPath(); x.ellipse(s.x + l, top - 3, 1.8, 5, l * .03, 0, 6.3); x.fill();
+        });
+      };
+      el._fxDraw(0);
+    },
+    tick: function (el, dt, t) { if (!U.reduced) el._fxDraw(t); }
+  });
 })(window.FX);

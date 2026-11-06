@@ -8331,6 +8331,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="degree-days"] p { margin: 6px 0 0; }
 [data-fx="degree-days"] b { font-size: 18px; }
 
+/* wheat-field : un champ de blé */
+[data-fx="wheat-field"] { display: block; width: 100%; height: var(--fx-h, 150px); background: linear-gradient(#8fc7ee, #fbe9c0 75%); overflow: hidden; }
+[data-fx="wheat-field"] canvas { display: block; width: 100%; height: 100%; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

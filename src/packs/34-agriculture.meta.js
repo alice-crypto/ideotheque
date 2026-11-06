@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="degree-days" data-fx-need="1200"></div>',
     '<div data-fx="degree-days" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le cumul et la date sont écrits.' }),
+  E('wheat-field', 'Ambiance',
+    'Un champ de blé ondule au vent et s\'écarte sous le pointeur.',
+    'L\'été, le vent chaud, le temps long.',
+    '- `--fx-h` (150px)',
+    'Agriculture, boulangerie, bières, hero nature.',
+    'Une grande surface sur mobile : le dessin de nombreuses tiges reste coûteux.',
+    '<div data-fx="wheat-field"></div>',
+    '<div data-fx="wheat-field" style="width:215px"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran. Fixe en mouvement réduit.' }),
 ];
