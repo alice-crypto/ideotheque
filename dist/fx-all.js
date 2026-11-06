@@ -15658,6 +15658,24 @@
       for (i = 0; i < 2; i++) U.make('b', '', box).style.setProperty('--fx-d', -i * .55 + 's');
     }
   });
+
+  // Des villes sur une même bande de jour et de nuit
+  FX.register('world-clock', {
+    setup: function (el) {
+      var Z = (el.dataset.fxItems || 'Paris:Europe/Paris|Montréal:America/Montreal|Dakar:Africa/Dakar|Tokyo:Asia/Tokyo').split('|').map(function (r) { return r.split(':'); }), ul = U.make('ul', '', el);
+      Z.forEach(function (z) { z.li = U.make('li', '', ul); z.li.innerHTML = '<span>' + z[0] + '</span><time></time><i aria-hidden="true"><u></u></i>'; });
+      var go = function () {
+        var now = new Date();
+        Z.forEach(function (z) {
+          var p = now.toLocaleTimeString('fr-FR', { timeZone: z[1], hour: '2-digit', minute: '2-digit' }), a = p.split(':');
+          z.li.querySelector('time').textContent = p;
+          z.li.style.setProperty('--fx-q', (+a[0] + a[1] / 60) / 24);
+        });
+      };
+      go();
+      setInterval(go, 30000);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

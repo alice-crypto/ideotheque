@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="train-window"></div>',
     '<div data-fx="train-window"></div>',
     { a11y: 'Décoratif, masqué. La bibliothèque coupe le mouvement en mouvement réduit.' }),
+  E('world-clock', 'État',
+    'Plusieurs villes affichent leur heure réelle, sur une bande de jour et de nuit.',
+    'Le monde entier sur une même ligne.',
+    '- `data-fx-items` : « ville:fuseau IANA » séparés par `|`',
+    'Équipes à distance, agences, conférences.',
+    'De prendre la bande pour la vraie durée du jour : elle ne tient pas compte de la saison.',
+    '<div data-fx="world-clock" data-fx-items="Paris:Europe/Paris|Tokyo:Asia/Tokyo"></div>',
+    '<div data-fx="world-clock" style="color:var(--ink)"></div>',
+    { a11y: 'Heures écrites en texte, bandes décoratives.' }),
 ];

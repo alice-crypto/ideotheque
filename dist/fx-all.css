@@ -9192,6 +9192,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 @keyframes fx-train-trees { to { left: -30%; } }
 @keyframes fx-train-pole { to { left: -10%; } }
 
+/* world-clock : des villes et leur heure */
+[data-fx="world-clock"] { width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="world-clock"] ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+[data-fx="world-clock"] li { display: grid; grid-template-columns: 1fr auto; gap: 1px 8px; }
+[data-fx="world-clock"] time { font-weight: 800; font-variant-numeric: tabular-nums; }
+[data-fx="world-clock"] li i { grid-column: 1 / -1; position: relative; height: 7px; border-radius: 4px; background: linear-gradient(90deg, #16224d 0 22%, #f5a56f 28%, #8fd2f6 40% 66%, #f2823f 76%, #16224d 84%); }
+[data-fx="world-clock"] li u { position: absolute; left: calc(var(--fx-q) * 100%); top: -2px; bottom: -2px; width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 0 1px #000; transition: left 1s; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
