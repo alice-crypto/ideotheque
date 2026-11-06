@@ -179,3 +179,16 @@
 .fx-in[data-fx="cold-chain"] circle { opacity: 1; }
 [data-fx="cold-chain"] p { margin: 5px 0 0; font-weight: 700; }
 [data-fx="cold-chain"].fx-bad p { color: var(--fx-down, #e10600); }
+
+/* return-flow : un retour en trois gestes */
+[data-fx="return-flow"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="return-flow"] ol { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+[data-fx="return-flow"] li { display: grid; grid-template-columns: 22px 1fr auto; gap: 6px; align-items: center; opacity: .45; transition: opacity .25s; }
+[data-fx="return-flow"] .fx-cur, [data-fx="return-flow"] .fx-done { opacity: 1; }
+[data-fx="return-flow"] i { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; border: 1px solid currentColor; font-style: normal; font-size: 11px; font-weight: 800; }
+[data-fx="return-flow"] .fx-done i { background: var(--fx-ok, #2eaf63); border-color: transparent; color: transparent; position: relative; }
+[data-fx="return-flow"] .fx-done i::after { content: '✓'; position: absolute; color: #fff; font-size: 13px; }
+[data-fx="return-flow"] button { padding: 2px 9px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="return-flow"] .fx-cur button { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="return-flow"] .fx-done button { visibility: hidden; }
+[data-fx="return-flow"].fx-end output { color: var(--fx-ok, #2eaf63); font-weight: 700; }

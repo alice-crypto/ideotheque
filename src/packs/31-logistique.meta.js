@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="cold-chain" data-fx-data="3.1,7.1,3.5" data-fx-low="2" data-fx-high="6"></div>',
     '<div data-fx="cold-chain" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le verdict est écrit en toutes lettres.' }),
+  E('return-flow', 'Micro-interaction',
+    'Trois étapes guident un retour de colis, chacune débloquant la suivante.',
+    'Un retour sans le sentiment d\'une corvée.',
+    '- `data-fx-items` : étapes séparées par `|`',
+    'Boutiques, service après-vente, démarches simples.',
+    'De promettre un délai de remboursement sans le connaître.',
+    '<div data-fx="return-flow" data-fx-items="Motif|Étiquette|Dépôt"></div>',
+    '<div data-fx="return-flow" style="color:var(--ink)"></div>',
+    { a11y: 'Liste ordonnée, boutons nommés, état annoncé.' }),
 ];

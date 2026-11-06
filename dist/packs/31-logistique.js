@@ -341,4 +341,26 @@
       el.querySelector('p').textContent = out ? 'Hors plage pendant environ ' + out * step + ' min' : 'Plage respectée sur tout le trajet';
     }
   });
+
+  // Un retour de colis en trois gestes, l'un après l'autre
+  FX.register('return-flow', {
+    setup: function (el) {
+      var S = (el.dataset.fxItems || 'Choisir le motif|Imprimer l\'étiquette|Déposer le colis').split('|'), n = 0, ol = U.make('ol', '', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      var show = function () {
+        Array.prototype.forEach.call(ol.children, function (li, i) {
+          li.className = i < n ? 'fx-done' : i === n ? 'fx-cur' : '';
+          li.querySelector('button').disabled = i !== n;
+        });
+        o.textContent = n >= S.length ? 'Retour enregistré, remboursement sous peu' : 'Étape ' + (n + 1) + ' sur ' + S.length;
+        el.classList.toggle('fx-end', n >= S.length);
+      };
+      S.forEach(function (t, i) {
+        var li = U.make('li', '', ol);
+        li.innerHTML = '<i aria-hidden="true">' + (i + 1) + '</i><span>' + t + '</span><button type="button" aria-label="Terminer : ' + t + '">OK</button>';
+        li.querySelector('button').addEventListener('click', function () { n++; show(); });
+      });
+      show();
+    }
+  });
 })(window.FX);
