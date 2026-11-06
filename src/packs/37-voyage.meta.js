@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="climate-months"></div>',
     '<div data-fx="climate-months" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le résultat est écrit ; la grille est décorative.' }),
+  E('compass-bearing', 'Présentation',
+    'Une boussole cherche puis trouve le vrai cap vers une autre ville.',
+    'Un fil invisible entre ici et là-bas.',
+    '- `data-fx-from`, `data-fx-to` : « ville:latitude:longitude »\n- `--fx-s` (100px)',
+    'Villes jumelées, voyages, récits.',
+    'De la prendre pour une boussole réelle : elle n\'utilise pas les capteurs du téléphone.',
+    '<div data-fx="compass-bearing" data-fx-to="Rome:41.9:12.5"></div>',
+    '<div data-fx="compass-bearing" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Direction et cap écrits. La bibliothèque coupe l\'oscillation en mouvement réduit.' }),
 ];

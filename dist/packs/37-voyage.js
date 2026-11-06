@@ -223,4 +223,14 @@
       el.innerHTML = '<div class="fx-cm2" aria-hidden="true">' + h + '</div><p>Meilleurs mois : <b>' + (best.join(', ') || 'à vous de voir') + '</b>. Données fictives.</p>';
     }
   });
+
+  // Une boussole qui pointe vers une autre ville, avec le vrai cap
+  FX.register('compass-bearing', {
+    entrance: true,
+    setup: function (el) {
+      var A = (el.dataset.fxFrom || 'Paris:48.86:2.35').split(':'), B = (el.dataset.fxTo || 'Rome:41.9:12.5').split(':'), r = Math.PI / 180, la1 = A[1] * r, la2 = B[1] * r, dl = (B[2] - A[2]) * r, y = Math.sin(dl) * Math.cos(la2), x = Math.cos(la1) * Math.sin(la2) - Math.sin(la1) * Math.cos(la2) * Math.cos(dl), bear = (Math.atan2(y, x) / r + 360) % 360, C = ['nord', 'nord-est', 'est', 'sud-est', 'sud', 'sud-ouest', 'ouest', 'nord-ouest'][Math.round(bear / 45) % 8];
+      el.style.setProperty('--fx-a', bear + 'deg');
+      el.innerHTML = '<div class="fx-cb4" aria-hidden="true"><span>N</span><span>E</span><span>S</span><span>O</span><i></i></div><p><b>' + B[0] + '</b> est au ' + C + ' de ' + A[0] + '<br>Cap : ' + Math.round(bear) + '°</p>';
+    }
+  });
 })(window.FX);
