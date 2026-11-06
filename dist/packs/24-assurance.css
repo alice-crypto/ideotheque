@@ -1,0 +1,11 @@
+/* Pack 24 — Assurance */
+
+/* premium-builder : une cotisation à composer */
+[data-fx="premium-builder"] { display: grid; gap: 10px; width: min(100%, var(--fx-w, 230px)); font-size: 13px; }
+[data-fx="premium-builder"] .fx-pb-l { display: grid; gap: 4px; }
+[data-fx="premium-builder"] label { display: flex; align-items: center; gap: 6px; padding: 4px 6px; border-radius: 6px; cursor: pointer; transition: background .2s; }
+[data-fx="premium-builder"] label:has(input:checked) { background: color-mix(in srgb, var(--fx-accent) 20%, transparent); }
+[data-fx="premium-builder"] em { margin-left: auto; font-style: normal; opacity: .7; }
+[data-fx="premium-builder"] b { font-size: 24px; }
+[data-fx="premium-builder"] .fx-go b { display: inline-block; animation: fx-pb .35s var(--fx-ease-spring); }
+@keyframes fx-pb { from { transform: scale(.85); } }
