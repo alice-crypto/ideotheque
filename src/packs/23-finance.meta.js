@@ -192,4 +192,13 @@ module.exports = [
     '<span data-fx="trend-arrow" data-fx-value="8.4"></span>',
     '<div class="demo-row" style="font-size:22px"><span data-fx="trend-arrow" data-fx-value="12"></span><span data-fx="trend-arrow" data-fx-value="-6.5"></span></div>',
     { trigger: 'Rejouer', a11y: 'Le signe et la valeur sont écrits en texte.' }),
+  E('tax-brackets', 'Présentation',
+    'Un curseur de revenu montre la part qui tombe dans chaque tranche et l\'impôt moyen.',
+    'Enfin compris : seule la part supérieure est taxée plus fort.',
+    '- `data-fx-brackets` : « de:à:taux » séparés par `|`\n- `data-fx-income` (42000)',
+    'Paie, fiscalité, pédagogie.',
+    'De présenter le barème d\'exemple comme le vrai : fournissez le barème officiel.',
+    '<div data-fx="tax-brackets" data-fx-brackets="0:10000:0|10000:30000:11"></div>',
+    '<div data-fx="tax-brackets" style="width:220px;color:var(--ink)"></div>',
+    { a11y: 'Curseur natif, et résultat écrit et annoncé.' }),
 ];

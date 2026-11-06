@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->521<!-- /total --> effets.
+La bibliothèque contient <!-- total -->522<!-- /total --> effets.
 
 ## Règles
 
@@ -201,6 +201,7 @@ La bibliothèque contient <!-- total -->521<!-- /total --> effets.
 | `coin-stacks` | Présentation | Des piles de pièces grandissent, une pièce à la fois, pour comparer des valeurs |
 | `interest-accrual` | Présentation | Un montant grandit à la seconde près, jusqu'au millionième, pour rendre concret l'effet d'un taux |
 | `order-book` | Présentation | Les ordres d'achat et de vente s'affichent de part et d'autre du prix, avec une barre de profondeur |
+| `tax-brackets` | Présentation | Un curseur de revenu montre la part qui tombe dans chaque tranche et l'impôt moyen |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

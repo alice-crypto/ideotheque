@@ -9109,6 +9109,29 @@
       el.innerHTML = '<i aria-hidden="true">→</i><span>' + (v > 0 ? '+' : '') + String(v).replace('.', ',') + ' %</span>';
     }
   });
+
+  // Un revenu qui se répartit entre les tranches d'imposition
+  FX.register('tax-brackets', {
+    setup: function (el) {
+      var br = (el.dataset.fxBrackets || '0:10000:0|10000:30000:11|30000:80000:30|80000:999999:41').split('|').map(function (s) { return s.split(':').map(Number); });
+      el.innerHTML = '<label>Revenu annuel <b></b><input type="range" min="0" max="150000" step="500" value="' + U.num(el, 'fxIncome', 42000) + '"></label><div class="fx-tb-bar" aria-hidden="true"></div><p aria-live="polite"></p>';
+      var input = el.querySelector('input'), bar = el.querySelector('.fx-tb-bar');
+      br.forEach(function (b, i) { U.make('i', '', bar).style.setProperty('--fx-i', i); });
+      var draw = function () {
+        var v = +input.value, tax = 0;
+        br.forEach(function (b, i) {
+          var part = Math.max(0, Math.min(v, b[1]) - b[0]);
+          tax += part * b[2] / 100;
+          bar.children[i].style.flexGrow = part;
+          bar.children[i].textContent = part > v * .12 ? b[2] + ' %' : '';
+        });
+        el.querySelector('label b').textContent = v.toLocaleString('fr-FR') + ' €';
+        el.querySelector('p').textContent = 'Impôt estimé : ' + Math.round(tax).toLocaleString('fr-FR') + ' €, soit ' + (v ? (tax / v * 100).toFixed(1).replace('.', ',') : 0) + ' % en moyenne (barème d\'exemple).';
+      };
+      input.addEventListener('input', draw);
+      draw();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
