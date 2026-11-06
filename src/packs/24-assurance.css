@@ -199,3 +199,12 @@
 [data-fx="attestation-card"].fx-exp b { color: var(--fx-down, #e10600); }
 [data-fx="attestation-card"].fx-exp::after { animation: none; background: none; }
 @keyframes fx-ac { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+
+/* glossary-tip : la définition d'un mot */
+[data-fx="glossary-tip"] { line-height: 1.5; }
+[data-fx="glossary-tip"] [data-def] { position: relative; }
+[data-fx="glossary-tip"] button { white-space: nowrap; padding: 0; border: 0; border-bottom: 1px dotted currentColor; background: none; color: inherit; font: inherit; cursor: help; }
+[data-fx="glossary-tip"] button[aria-expanded="true"] { color: var(--fx-accent); border-bottom-style: solid; }
+[data-fx="glossary-tip"] .fx-gt { position: absolute; left: 0; top: 100%; z-index: 5; display: none; width: var(--fx-w, 180px); margin-top: 4px; padding: 7px 9px; border-radius: 7px; background: var(--fx-tip, #111); color: #fff; font-size: 12px; line-height: 1.35; transform-origin: 10px 0; }
+[data-fx="glossary-tip"] button[aria-expanded="true"] + .fx-gt { display: block; animation: fx-gt .25s var(--fx-ease-spring); }
+@keyframes fx-gt { from { opacity: 0; transform: scale(.85); } }
