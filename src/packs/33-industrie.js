@@ -493,4 +493,31 @@
       go();
     }
   });
+
+  // Un bras robotisé qui cherche à atteindre le pointeur
+  FX.register('robot-arm', {
+    setup: function (el) {
+      el.setAttribute('aria-hidden', 'true');
+      var A = 62, B = 52, cx = 90, cy = 120;
+      el.innerHTML = '<svg viewBox="0 0 180 130"><rect x="70" y="118" width="40" height="10" rx="2"/><line class="u"/><line class="v"/><circle class="j1" r="7"/><circle class="j2" r="5"/><path class="g"/></svg>';
+      var s = el.querySelector('svg'), lu = el.querySelector('.u'), lv = el.querySelector('.v'), j1 = el.querySelector('.j1'), j2 = el.querySelector('.j2'), g = el.querySelector('.g'), tx = 140, ty = 40, x = tx, y = ty;
+      j1.setAttribute('cx', cx); j1.setAttribute('cy', cy);
+      el._fxPlace = function (px, py) { tx = px; ty = py; };
+      s.addEventListener('pointermove', function (e) { var r = s.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width * 180; ty = (e.clientY - r.top) / r.height * 130; });
+      el._fxStep = function () {
+        x += (tx - x) * .12; y += (ty - y) * .12;
+        var dx = x - cx, dy = y - cy, d = U.clamp(Math.hypot(dx, dy), Math.abs(A - B) + 2, A + B - 2), base = Math.atan2(dy, dx), a = Math.acos((A * A + d * d - B * B) / (2 * A * d)), t = base - a, ex = cx + A * Math.cos(t), ey = cy + A * Math.sin(t), fx = cx + d * Math.cos(base), fy = cy + d * Math.sin(base);
+        lu.setAttribute('x1', cx); lu.setAttribute('y1', cy); lu.setAttribute('x2', ex); lu.setAttribute('y2', ey);
+        lv.setAttribute('x1', ex); lv.setAttribute('y1', ey); lv.setAttribute('x2', fx); lv.setAttribute('y2', fy);
+        j2.setAttribute('cx', ex); j2.setAttribute('cy', ey);
+        g.setAttribute('d', 'M' + (fx - 6) + ' ' + (fy + 8) + 'L' + fx + ' ' + fy + 'L' + (fx + 6) + ' ' + (fy + 8));
+      };
+      el._fxStep();
+    },
+    tick: function (el, dt, t) {
+      if (U.reduced) return;
+      if (!el.matches(':hover')) el._fxPlace(90 + Math.sin(t * .9) * 60, 54 + Math.cos(t * 1.3) * 26);
+      el._fxStep();
+    }
+  });
 })(window.FX);
