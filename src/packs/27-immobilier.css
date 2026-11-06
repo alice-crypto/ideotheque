@@ -7,3 +7,10 @@
 [data-fx="budget-reach"] output { display: block; padding-bottom: 5px; font-size: 12px; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 100% / calc(var(--fx-q) * 100%) 3px; transition: background-size .3s; }
 [data-fx="budget-reach"] output b { display: block; font-size: 22px; }
 [data-fx="budget-reach"] small { font-size: 10px; opacity: .7; }
+
+/* floorplan-rooms : un plan à explorer */
+[data-fx="floorplan-rooms"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="floorplan-rooms"] .fx-fp { position: relative; aspect-ratio: 1.45; border: 3px solid currentColor; }
+[data-fx="floorplan-rooms"] button { position: absolute; padding: 0; border: 1.5px solid currentColor; background: none; color: inherit; font: inherit; cursor: pointer; transition: background .25s, color .25s; }
+[data-fx="floorplan-rooms"] button:hover, [data-fx="floorplan-rooms"] button:focus-visible { background: var(--fx-accent); color: #fff; outline: none; }
+[data-fx="floorplan-rooms"] output { font-size: 12px; }
