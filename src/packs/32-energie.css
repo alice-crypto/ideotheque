@@ -256,3 +256,13 @@
 [data-fx="heating-compare"] li i { display: block; height: 10px; background: var(--fx-accent); transform-origin: left; transform: scaleX(var(--fx-q)); transition: transform .4s var(--fx-ease-out); }
 [data-fx="heating-compare"] li b { text-align: right; font-weight: 600; }
 [data-fx="heating-compare"] small { font-size: 10px; opacity: .7; }
+
+/* wind-rose : une rose des vents */
+[data-fx="wind-rose"] { display: grid; gap: 4px; justify-items: center; width: min(100%, var(--fx-w, 180px)); font-size: 11px; text-align: center; }
+[data-fx="wind-rose"] svg { width: 100%; overflow: visible; }
+[data-fx="wind-rose"] circle { fill: none; stroke: color-mix(in srgb, currentColor 25%, transparent); }
+[data-fx="wind-rose"] path { fill: var(--fx-accent-2); transform-origin: 60px 60px; transform: scale(0); transition: transform .55s var(--fx-ease-spring) calc(var(--fx-i) * 70ms); }
+.fx-in[data-fx="wind-rose"] path { transform: none; }
+[data-fx="wind-rose"] .fx-top { fill: var(--fx-accent); }
+[data-fx="wind-rose"] text { fill: currentColor; font-size: 8px; text-anchor: middle; }
+[data-fx="wind-rose"] p { margin: 0; }
