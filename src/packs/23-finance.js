@@ -201,4 +201,26 @@
       el.addEventListener('pointerleave', function () { el.style.setProperty('--fx-rx', '0deg'); el.style.setProperty('--fx-ry', '0deg'); });
     }
   });
+
+  // Une valeur clignote brièvement selon le sens de son changement
+  FX.register('price-tick-flash', {
+    setup: function (el) {
+      el._fxV = parseFloat(el.textContent.replace(',', '.')) || 0;
+      el._fxSet = function (v) {
+        var up = v >= el._fxV;
+        el._fxV = v;
+        el.textContent = v.toFixed(U.num(el, 'fxDigits', 2)).replace('.', ',') + (up ? ' ▲' : ' ▼');
+        el.classList.remove('fx-tu', 'fx-td');
+        void el.offsetWidth;
+        el.classList.add(up ? 'fx-tu' : 'fx-td');
+      };
+      el._fxT = 0;
+    },
+    trigger: function (el) { el._fxSet(el._fxV + U.rand(-1.5, 1.6)); },
+    tick: function (el, dt) {
+      if (el.dataset.fxDemo !== 'true' || U.reduced) return;
+      el._fxT += dt;
+      if (el._fxT > 1.3) { el._fxT = 0; FX.trigger(el); }
+    }
+  });
 })(window.FX);
