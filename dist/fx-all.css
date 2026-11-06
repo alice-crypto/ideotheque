@@ -6428,6 +6428,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="sun-exposure"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; width: 100%; }
 [data-fx="sun-exposure"] input { accent-color: var(--fx-accent); min-width: 0; }
 
+/* energy-label : une étiquette énergie */
+[data-fx="energy-label"] { display: grid; gap: 2px; width: min(100%, var(--fx-width, 215px)); font-size: 11px; font-weight: 800; }
+[data-fx="energy-label"] > div { position: relative; }
+[data-fx="energy-label"] span { display: block; width: 0; padding: 2px 0 2px 7px; box-sizing: border-box; overflow: hidden; color: #fff; background: var(--fx-c); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%); transition: width .6s var(--fx-ease-out) calc(var(--fx-i) * 60ms); }
+.fx-in[data-fx="energy-label"] span { width: var(--fx-w); }
+[data-fx="energy-label"] b { position: absolute; right: 0; top: 0; bottom: 0; padding: 0 8px; display: flex; align-items: center; background: currentColor; clip-path: polygon(8px 0, 100% 0, 100% 100%, 8px 100%, 0 50%); opacity: 0; transition: opacity .3s 1s; }
+[data-fx="energy-label"] b { color: var(--fx-b, #111); background: var(--fx-tag, #fff); }
+.fx-in[data-fx="energy-label"] b { opacity: 1; }
+[data-fx="energy-label"] .fx-on span { outline: 2px solid var(--fx-c); outline-offset: 1px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

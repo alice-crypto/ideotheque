@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="sun-exposure" data-fx-windows="S,O"></div>',
     '<div data-fx="sun-exposure" style="color:var(--ink)"></div>',
     { a11y: 'Le résultat est écrit et annoncé, le dessin est décoratif.' }),
+  E('energy-label', 'Présentation',
+    'Une étiquette énergie déroule ses classes, et la valeur du logement vient se placer sur la sienne.',
+    'Familier, on reconnaît l\'étiquette d\'un coup d\'œil.',
+    '- `data-fx-value` (210) : kWh par m² et par an\n- `--fx-tag`, `--fx-b`',
+    'Annonces, électroménager, rapports énergétiques.',
+    'De prendre ces seuils pour la réglementation : le calcul officiel tient aussi compte du climat et du CO₂.',
+    '<div data-fx="energy-label" data-fx-value="210"></div>',
+    '<div data-fx="energy-label" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Rôle `img`, avec la classe et la valeur écrites dans `aria-label`.' }),
 ];
