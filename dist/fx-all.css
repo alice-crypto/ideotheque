@@ -7239,6 +7239,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="step-free-route"] output { font-size: 13px; }
 @keyframes fx-sfr { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 
+/* train-crowding : l'affluence par voiture */
+[data-fx="train-crowding"] { width: min(100%, var(--fx-w, 240px)); font-size: 12px; }
+[data-fx="train-crowding"] .fx-tc2 { display: flex; gap: 2px; }
+[data-fx="train-crowding"] .fx-tc2 > div { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; align-content: end; min-height: 56px; padding: 3px; border: 1px solid currentColor; border-radius: 4px; position: relative; }
+[data-fx="train-crowding"] .fx-tc2 > div::after { content: attr(data-n); position: absolute; left: 0; right: 0; bottom: -15px; text-align: center; font-size: 10px; opacity: .75; }
+[data-fx="train-crowding"] .fx-tc2 i { height: 13px; border-radius: 5px 5px 2px 2px; background: currentColor; opacity: 0; transform: translateY(8px); transition: opacity .3s calc(var(--fx-i) * 40ms), transform .3s calc(var(--fx-i) * 40ms); }
+.fx-in[data-fx="train-crowding"] .fx-tc2 i { opacity: .55; transform: none; }
+[data-fx="train-crowding"] .fx-best { background: color-mix(in srgb, var(--fx-up, #2eaf63) 25%, transparent); border-color: var(--fx-up, #2eaf63); }
+[data-fx="train-crowding"] p { margin: 20px 0 0; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

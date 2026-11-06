@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="step-free-route"></div>',
     '<div data-fx="step-free-route" style="color:var(--ink)"></div>',
     { trigger: 'Basculer', a11y: 'Interrupteur natif, résultat annoncé en mots.' }),
+  E('train-crowding', 'Présentation',
+    'Chaque voiture d\'un train se remplit selon l\'affluence, et la plus calme est indiquée.',
+    'Trois pas de plus sur le quai, et une place assise.',
+    '- `data-fx-data` : occupation en % par voiture, séparée par des virgules',
+    'Trains, métros, salles à plusieurs zones.',
+    'Des données non actualisées : c\'est frustrant de se déplacer pour rien.',
+    '<div data-fx="train-crowding" data-fx-data="90,70,35"></div>',
+    '<div data-fx="train-crowding" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le schéma a une description complète dans `aria-label`.' }),
 ];

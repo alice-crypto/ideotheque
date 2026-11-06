@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->685<!-- /total --> effets.
+La bibliothèque contient <!-- total -->686<!-- /total --> effets.
 
 ## Règles
 
@@ -259,6 +259,7 @@ La bibliothèque contient <!-- total -->685<!-- /total --> effets.
 | `transit-ticket` | Présentation | Un billet s'active, et sa validité s'écoule avec des bandes qui défilent |
 | `traffic-strip` | Présentation | Une bande d'itinéraire montre le trafic par tronçon, avec le retard calculé |
 | `elevation-profile` | Présentation | Un curseur suit le profil d'un parcours, et donne l'altitude et la pente au point choisi |
+| `train-crowding` | Présentation | Chaque voiture d'un train se remplit selon l'affluence, et la plus calme est indiquée |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

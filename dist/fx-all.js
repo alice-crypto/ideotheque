@@ -12134,6 +12134,22 @@
     },
     trigger: function (el) { el.querySelector('input').click(); }
   });
+
+  // Un train dont chaque voiture montre son affluence
+  FX.register('train-crowding', {
+    entrance: true,
+    setup: function (el) {
+      var C = (el.dataset.fxData || '90,70,35,55,20,60').split(',').map(Number), min = Math.min.apply(null, C), k = C.indexOf(min), box = U.make('div', 'fx-tc2', el), o = U.make('p', '', el), W = function (v) { return v > 75 ? 'pleine' : v > 45 ? 'chargée' : 'calme'; };
+      box.setAttribute('role', 'img');
+      box.setAttribute('aria-label', C.map(function (v, i) { return 'voiture ' + (i + 1) + ' ' + W(v); }).join(', '));
+      C.forEach(function (v, i) {
+        var d = U.make('div', i === k ? 'fx-best' : '', box), f = Math.round(v / 100 * 6);
+        for (var n = 0; n < f; n++) U.make('i', '', d).style.setProperty('--fx-i', i * 2 + n);
+        d.dataset.n = i + 1;
+      });
+      o.innerHTML = 'Plus de place en <b>voiture ' + (k + 1) + '</b>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
