@@ -15159,6 +15159,29 @@
       el.addEventListener('click', function () { el.classList.toggle('fx-open'); });
     }
   });
+
+  // Choisir son oreiller : on le presse pour sentir sa fermeté
+  FX.register('pillow-menu', {
+    setup: function (el) {
+      var P = (el.dataset.fxItems || 'Plumes:.72:Très moelleux|Mémoire de forme:.3:Tient la nuque|Latex:.15:Ferme et frais|Sarrasin:.05:Ferme à l\'ancienne').split('|').map(function (r) { return r.split(':'); });
+      el.innerHTML = '<div class="fx-pm2" aria-hidden="true"><i></i></div><div class="fx-pm2-l" role="radiogroup" aria-label="Oreiller"></div><output aria-live="polite"></output>';
+      var box = el.querySelector('.fx-pm2'), l = el.querySelector('.fx-pm2-l'), o = el.querySelector('output');
+      var pick = function (p, b) {
+        l.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-checked', x === b); });
+        el.style.setProperty('--fx-q', p[1]);
+        o.textContent = p[2];
+        box.classList.remove('fx-go'); void box.offsetWidth; box.classList.add('fx-go');
+      };
+      P.forEach(function (p, i) {
+        var b = U.make('button', '', l);
+        b.type = 'button'; b.setAttribute('role', 'radio'); b.textContent = p[0];
+        b.addEventListener('click', function () { pick(p, b); });
+        if (i === 1) pick(p, b);
+      });
+      box.addEventListener('pointerdown', function () { box.classList.add('fx-press'); });
+      window.addEventListener('pointerup', function () { box.classList.remove('fx-press'); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

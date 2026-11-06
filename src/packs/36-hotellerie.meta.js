@@ -183,4 +183,13 @@ module.exports = [
     '<a href="#" data-fx="door-reveal"><img src="chambre.jpg" alt="Chambre 207"></a>',
     '<div data-fx="door-reveal"><img src="assets/bloom.svg" alt="Une illustration de fleur"></div>',
     { a11y: 'Image et son texte conservés. Porte masquée, ouverture au focus et au clic.' }),
+  E('pillow-menu', 'Micro-interaction',
+    'On choisit un oreiller, qui s\'écrase à l\'écran selon sa fermeté.',
+    'Un luxe discret, qu\'on sent presque au bout du doigt.',
+    '- `data-fx-items` : « nom:écrasement de 0 à 1:description » séparés par `|`',
+    'Hôtels, literie, cosmétique pour les textures.',
+    'Une fiche produit fiable : la fermeté reste illustrative.',
+    '<div data-fx="pillow-menu"></div>',
+    '<div data-fx="pillow-menu" style="color:var(--ink)"></div>',
+    { a11y: 'Groupe radio nommé, description annoncée.' }),
 ];
