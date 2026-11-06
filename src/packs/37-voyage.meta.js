@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="boarding-pass" data-fx-from="CDG" data-fx-to="LIS"></div>',
     '<div data-fx="boarding-pass"></div>',
     { trigger: 'Rejouer', a11y: 'Vraie liste de définitions. La flèche décorative est masquée.' }),
+  E('timezone-slider', 'Micro-interaction',
+    'Un curseur déplace l\'heure, et donne celle des autres villes avec leur vrai fuseau.',
+    'Trouver enfin la réunion où personne ne dort.',
+    '- `data-fx-items` : « ville:fuseau IANA » séparés par `|`',
+    'Voyages, équipes à distance, conférences.',
+    'D\'oublier les jours fériés locaux : seuls les fuseaux sont gérés.',
+    '<div data-fx="timezone-slider" data-fx-items="Paris:Europe/Paris|Tokyo:Asia/Tokyo"></div>',
+    '<div data-fx="timezone-slider" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur nommé, heures écrites, bilan annoncé.' }),
 ];

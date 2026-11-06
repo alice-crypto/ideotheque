@@ -20,4 +20,31 @@
       el.innerHTML = '<div class="fx-bp"><header><b>' + (d.fxFrom || 'CDG') + '</b><i aria-hidden="true">→</i><b>' + (d.fxTo || 'LIS') + '</b></header><dl><div><dt>Vol</dt><dd>' + (d.fxFlight || 'FX 042') + '</dd></div><div><dt>Porte</dt><dd>' + (d.fxGate || 'B12') + '</dd></div><div><dt>Siège</dt><dd>' + (d.fxSeat || '14C') + '</dd></div><div><dt>Embarquement</dt><dd>' + f(at) + '</dd></div></dl></div><small>Exemple fictif. Fermeture dans ' + min + ' min.</small>';
     }
   });
+
+  // Faire glisser une heure et lire celle des autres villes
+  FX.register('timezone-slider', {
+    setup: function (el) {
+      var Z = (el.dataset.fxItems || 'Paris:Europe/Paris|New York:America/New_York|Tokyo:Asia/Tokyo|Sydney:Australia/Sydney').split('|').map(function (r) { return r.split(':'); }), box = U.make('ul', '', el), lab = U.make('label', '', el), o = U.make('output', '', el);
+      lab.innerHTML = 'Faire glisser l\'heure<input type="range" min="0" max="47" aria-label="Heure de la première ville">';
+      o.setAttribute('aria-live', 'polite');
+      Z.forEach(function (z) { z.li = U.make('li', '', box); z.li.innerHTML = '<span>' + z[0] + '</span><b></b><i aria-hidden="true"></i>'; });
+      var r = lab.querySelector('input');
+      var base = new Date(); base.setHours(0, 0, 0, 0);
+      var off0 = new Date(base.toLocaleString('en-US', { timeZone: Z[0][1] })) - new Date(base.toLocaleString('en-US'));
+      r.value = new Date().getHours() * 2;
+      var go = function () {
+        var t = new Date(+base + r.value * 1800000 - off0), work = 0;
+        Z.forEach(function (z) {
+          var h = +t.toLocaleString('en-GB', { timeZone: z[1], hour: '2-digit', hour12: false }) % 24, s = t.toLocaleTimeString('fr-FR', { timeZone: z[1], hour: '2-digit', minute: '2-digit' }), isW = h >= 9 && h < 18;
+          z.li.querySelector('b').textContent = s;
+          z.li.classList.toggle('fx-w', isW);
+          z.li.classList.toggle('fx-n', h < 7 || h >= 22);
+          if (isW) work++;
+        });
+        o.textContent = work === Z.length ? 'Tout le monde est au bureau' : work + ' ville' + (work > 1 ? 's' : '') + ' sur ' + Z.length + ' aux heures de bureau';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
