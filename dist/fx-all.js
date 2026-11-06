@@ -12511,6 +12511,24 @@
       go();
     }
   });
+
+  // Un code-barres généré qu'un laser vient lire
+  FX.register('barcode-scan', {
+    setup: function (el) {
+      var c = el.dataset.fxCode || 'FICTIF-48210', h = 13, bars = '';
+      for (var k = 0; k < c.length; k++) h = (h * 33 + c.charCodeAt(k)) >>> 0;
+      for (var i = 0; i < 46; i++) { h = (h * 1664525 + 1013904223) >>> 0; bars += '<i style="flex:' + (1 + (h >> 13) % 3) + ' 1 0"></i>'; }
+      el.innerHTML = '<div class="fx-bc2" role="img" aria-label="Code-barres ' + c + '">' + bars + '<u aria-hidden="true"></u></div><small>' + c + '</small><button type="button">Scanner</button><output aria-live="polite"></output>';
+      el.querySelector('button').addEventListener('click', function () { FX.trigger(el); });
+    },
+    trigger: function (el) {
+      var o = el.querySelector('output'), u = el.querySelector('u');
+      el.classList.remove('fx-ok');
+      o.textContent = 'Lecture…';
+      u.classList.remove('fx-go'); void u.offsetWidth; u.classList.add('fx-go');
+      setTimeout(function () { el.classList.add('fx-ok'); o.textContent = 'Lu : ' + (el.dataset.fxCode || 'FICTIF-48210'); }, U.reduced ? 0 : 950);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

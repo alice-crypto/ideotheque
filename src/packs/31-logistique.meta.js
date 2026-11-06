@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="warehouse-slot" data-fx-code="B-5"></div>',
     '<div data-fx="warehouse-slot" style="color:var(--ink)"></div>',
     { a11y: 'Champ nommé, résultat annoncé en mots.' }),
+  E('barcode-scan', 'Micro-interaction',
+    'Un laser balaie un code-barres, et la lecture se confirme en vert.',
+    'Le bip satisfaisant de la caisse.',
+    '- `data-fx-code` : texte du code',
+    'Logistique, magasin, tickets.',
+    'De croire ce code-barres lisible : le motif est un décor, pas un vrai code.',
+    '<div data-fx="barcode-scan" data-fx-code="FICTIF-48210"></div>',
+    '<div data-fx="barcode-scan" style="color:var(--ink)"></div>',
+    { trigger: 'Scanner', a11y: 'Bouton réel, code écrit, résultat annoncé.' }),
 ];
