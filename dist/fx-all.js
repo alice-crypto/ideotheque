@@ -9593,6 +9593,27 @@
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
     }
   });
+
+  // Un parapluie s'ouvre et écarte la pluie
+  FX.register('umbrella-open', {
+    entrance: true,
+    setup: function (el) {
+      var s = '<svg viewBox="0 0 120 120" aria-hidden="true"><g class="fx-u-c">';
+      var n = 5, w = 100 / n;
+      s += '<path d="M10 60A50 50 0 0 1 110 60';
+      for (var i = n - 1; i >= 0; i--) s += 'A' + w / 2 + ' ' + w / 3 + ' 0 0 0 ' + (10 + i * w) + ' 60';
+      s += 'Z"/></g><path class="fx-u-h" d="M60 60V102A7 7 0 0 1 46 102"/></svg>';
+      el.innerHTML = s;
+      for (i = 0; i < 16; i++) {
+        var d = U.make('i', '', el), x = U.rand(2, 98);
+        d.style.setProperty('--fx-x', x + '%');
+        d.style.setProperty('--fx-out', (x < 50 ? -1 : 1) * (Math.max(0, 48 - Math.abs(x - 50)) * .9) + 'px');
+        d.style.setProperty('--fx-d', U.rand(0, 1.2).toFixed(2) + 's');
+        d.setAttribute('aria-hidden', 'true');
+      }
+      if (el.dataset.fxLabel) { el.setAttribute('role', 'img'); el.setAttribute('aria-label', el.dataset.fxLabel); }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

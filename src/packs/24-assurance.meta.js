@@ -183,4 +183,13 @@ module.exports = [
     '<p data-fx="glossary-tip">La <span data-def="Ce qui reste à votre charge.">franchise</span> s\'applique.</p>',
     '<p data-fx="glossary-tip" style="margin:0 0 70px;width:215px;color:var(--ink);font-size:14px">La <span data-def="Somme qui reste à votre charge après un sinistre.">franchise</span> s\'applique après le <span data-def="Délai avant que la garantie ne commence.">délai de carence</span>.</p>',
     { a11y: 'Vrais boutons avec `aria-expanded`, fermeture par Échap.' }),
+  E('umbrella-open', 'Entrée',
+    'Un parapluie s\'ouvre d\'un ressort et les gouttes de pluie s\'écartent de lui.',
+    'Protection simple et un peu de tendresse.',
+    '- `--fx-s` (150px), `--fx-rain`\n- `data-fx-label` : description si l\'image a un sens',
+    'Assurance, météo, hero de marque rassurante.',
+    'Une image déjà vue partout si la marque veut se distinguer.',
+    '<div data-fx="umbrella-open"></div>',
+    '<div data-fx="umbrella-open" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Décoratif par défaut. Avec le mouvement réduit, le parapluie apparaît ouvert par la bibliothèque.' }),
 ];

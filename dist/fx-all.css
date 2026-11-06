@@ -5867,6 +5867,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="glossary-tip"] button[aria-expanded="true"] + .fx-gt { display: block; animation: fx-gt .25s var(--fx-ease-spring); }
 @keyframes fx-gt { from { opacity: 0; transform: scale(.85); } }
 
+/* umbrella-open : un parapluie écarte la pluie */
+[data-fx="umbrella-open"] { position: relative; display: block; width: var(--fx-s, 150px); aspect-ratio: 1; overflow: hidden; }
+[data-fx="umbrella-open"] svg { position: absolute; inset: 0; }
+[data-fx="umbrella-open"] .fx-u-c { fill: var(--fx-accent); transform-origin: 60px 60px; transform: scaleX(.12) scaleY(.7); transition: transform .8s var(--fx-ease-spring) .15s; }
+.fx-in[data-fx="umbrella-open"] .fx-u-c { transform: none; }
+[data-fx="umbrella-open"] .fx-u-h { fill: none; stroke: currentColor; stroke-width: 3.5; stroke-linecap: round; }
+[data-fx="umbrella-open"] i { position: absolute; top: -12%; left: var(--fx-x); width: 2px; height: 9%; border-radius: 2px; background: var(--fx-rain, #5aa7ff); animation: fx-u-f 1.2s linear var(--fx-d) infinite; }
+.fx-in[data-fx="umbrella-open"] i { animation-name: fx-u-s; }
+@keyframes fx-u-f { to { transform: translateY(1250%); } }
+@keyframes fx-u-s { 24% { transform: none; } 34% { transform: translate(var(--fx-out), 280%); } 100% { transform: translate(var(--fx-out), 1250%); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
