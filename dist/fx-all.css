@@ -8153,6 +8153,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="takt-time"] output b { font-size: 18px; }
 @keyframes fx-takt-run { to { left: calc(100% - 22px); } }
 
+/* robot-arm : un bras robotisé */
+[data-fx="robot-arm"] { display: block; width: min(100%, var(--fx-w, 220px)); touch-action: pan-y; }
+[data-fx="robot-arm"] svg { display: block; width: 100%; overflow: visible; }
+[data-fx="robot-arm"] rect { fill: currentColor; }
+[data-fx="robot-arm"] line { stroke: var(--fx-arm, #ffb300); stroke-width: 11; stroke-linecap: round; }
+[data-fx="robot-arm"] .v { stroke-width: 8; }
+[data-fx="robot-arm"] circle { fill: #1c1d21; stroke: var(--fx-arm, #ffb300); stroke-width: 3; }
+[data-fx="robot-arm"] .g { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

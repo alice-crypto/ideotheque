@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="takt-time" data-fx-demand="600"></div>',
     '<div data-fx="takt-time" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, rythme écrit et annoncé. La bibliothèque coupe l\'animation en mouvement réduit.' }),
+  E('robot-arm', 'Micro-interaction',
+    'Un bras à deux segments cherche à atteindre le pointeur, grâce à un vrai calcul d\'angles.',
+    'Précis et un peu vivant, comme un animal de métal.',
+    '- `--fx-arm`, `--fx-w`',
+    'Automatisation, robotique, hero technique.',
+    'De cacher une information derrière : le bras n\'est pas une commande.',
+    '<div data-fx="robot-arm"></div>',
+    '<div data-fx="robot-arm" style="color:var(--ink)"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran. Fixe en mouvement réduit.' }),
 ];

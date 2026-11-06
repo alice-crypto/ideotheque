@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->773<!-- /total --> effets.
+La bibliothèque contient <!-- total -->774<!-- /total --> effets.
 
 ## Règles
 
@@ -466,6 +466,7 @@ La bibliothèque contient <!-- total -->773<!-- /total --> effets.
 | `steel-glow` | Micro-interaction | Un curseur chauffe une barre d'acier, qui change de couleur et prend le nom de cette couleur |
 | `torque-click` | Micro-interaction | Maintenir serre un écrou jusqu'au clic du couple réglé, et signale tout dépassement |
 | `takt-time` | Micro-interaction | Le rythme de la ligne se calcule et se voit : un bloc bat la cadence |
+| `robot-arm` | Micro-interaction | Un bras à deux segments cherche à atteindre le pointeur, grâce à un vrai calcul d'angles |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
