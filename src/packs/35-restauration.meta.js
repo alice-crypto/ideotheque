@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="allergen-matrix" data-fx-allergens="Gluten,Lait"></div>',
     '<div data-fx="allergen-matrix" style="color:var(--ink)"></div>',
     { a11y: 'Vrai tableau, marques nommées, boutons `aria-pressed`.' }),
+  E('opening-today', 'État',
+    'Les horaires de la semaine s\'affichent avec aujourd\'hui en avant, et l\'état d\'ouverture en temps réel.',
+    'La réponse à la seule question qu\'on se pose.',
+    '- `data-fx-items` : « jour:plages » séparés par `|`, de lundi à dimanche',
+    'Restaurants, commerces, cabinets, musées.',
+    'D\'oublier les jours fériés et les fermetures annuelles : prévenez-les à part.',
+    '<div data-fx="opening-today"></div>',
+    '<div data-fx="opening-today" style="color:var(--ink)"></div>',
+    { a11y: 'Liste réelle, état écrit en phrase.' }),
 ];
