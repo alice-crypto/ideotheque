@@ -100,3 +100,15 @@
 [data-fx="recipe-scale"] b { font-variant-numeric: tabular-nums; }
 [data-fx="recipe-scale"] b.fx-go { animation: fx-recipe-pop .3s var(--fx-ease-spring); }
 @keyframes fx-recipe-pop { 40% { transform: scale(1.2); color: var(--fx-accent); } }
+
+/* wine-pairing : le vin qui convient */
+[data-fx="wine-pairing"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="wine-pairing"] select { padding: 5px; font: inherit; }
+[data-fx="wine-pairing"] .fx-wp { display: grid; grid-template-columns: 56px 1fr; gap: 10px; align-items: center; }
+[data-fx="wine-pairing"] .fx-wp-g { position: relative; height: 84px; clip-path: polygon(14% 0, 86% 0, 94% 44%, 66% 62%, 54% 66%, 54% 92%, 80% 100%, 20% 100%, 46% 92%, 46% 66%, 34% 62%, 6% 44%); background: linear-gradient(transparent 22%, var(--w, #e8d47a) 22% 64%, #eee 64%); transition: --w .3s; }
+[data-fx="wine-pairing"] [data-t="Rouge"] { --w: #6d0f1f; }
+[data-fx="wine-pairing"] [data-t="Rosé"] { --w: #ec8c9a; }
+[data-fx="wine-pairing"] output { display: block; font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+[data-fx="wine-pairing"] ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+[data-fx="wine-pairing"] li { display: grid; grid-template-columns: 44px 1fr; gap: 5px; align-items: center; }
+[data-fx="wine-pairing"] i { height: 6px; background: linear-gradient(90deg, var(--fx-accent) calc(var(--fx-q) * 100%), color-mix(in srgb, currentColor 15%, transparent) 0); transition: background .25s; }

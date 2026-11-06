@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="recipe-scale" data-fx-serves="4"></div>',
     '<div data-fx="recipe-scale" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés, nombre de parts annoncé.' }),
+  E('wine-pairing', 'Micro-interaction',
+    'Un plat choisi propose un type de vin, avec son verre et son profil de goût.',
+    'Le conseil du caviste, à portée de main.',
+    '- `data-fx-data` : JSON plat vers type de vin et trois valeurs',
+    'Cavistes, restaurants, recettes.',
+    'De mettre en avant l\'alcool auprès de mineurs, et ajoutez les mentions légales requises.',
+    '<div data-fx="wine-pairing"></div>',
+    '<div data-fx="wine-pairing" style="color:var(--ink)"></div>',
+    { a11y: 'Vraie liste, vin annoncé.' }),
 ];

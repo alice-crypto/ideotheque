@@ -14548,6 +14548,24 @@
       go();
     }
   });
+
+  // Un plat choisi, le vin qui lui va, et son profil
+  FX.register('wine-pairing', {
+    setup: function (el) {
+      var D = JSON.parse(el.dataset.fxData || '{"Poisson grillé":["Blanc sec",[80,20,15]],"Bœuf en sauce":["Rouge charpenté",[25,75,80]],"Fromage de chèvre":["Blanc vif",[90,15,10]],"Fraises":["Rosé doux",[50,35,25]]}'), K = ['Acidité', 'Corps', 'Tanins'];
+      el.innerHTML = '<select aria-label="Votre plat">' + Object.keys(D).map(function (k) { return '<option>' + k + '</option>'; }).join('') + '</select><div class="fx-wp"><div class="fx-wp-g" aria-hidden="true"></div><div><output aria-live="polite"></output><ul></ul></div></div>';
+      var s = el.querySelector('select'), o = el.querySelector('output'), ul = el.querySelector('ul'), g = el.querySelector('.fx-wp-g');
+      K.forEach(function (k) { var li = U.make('li', '', ul); li.innerHTML = '<span>' + k + '</span><i></i>'; });
+      var go = function () {
+        var d = D[s.value];
+        o.textContent = d[0];
+        g.dataset.t = d[0].split(' ')[0];
+        Array.prototype.forEach.call(ul.children, function (li, i) { li.style.setProperty('--fx-q', d[1][i] / 100); });
+      };
+      s.addEventListener('change', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
