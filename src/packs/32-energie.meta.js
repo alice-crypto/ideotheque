@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="energy-flow" data-fx-hour="13"></div>',
     '<div data-fx="energy-flow" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, bilan écrit et annoncé.' }),
+  E('smart-meter', 'État',
+    'Un compteur communicant affiche son index qui monte et sa puissance qui varie.',
+    'La maison consomme, là, en ce moment.',
+    '- `data-fx-index`, `data-fx-power`, `data-fx-speed` (40) : accélère la démonstration',
+    'Énergie, eau, consommation en direct.',
+    'D\'afficher cette simulation en production : remplacez-la par le vrai relevé.',
+    '<div data-fx="smart-meter" data-fx-index="18492.3"></div>',
+    '<div data-fx="smart-meter"></div>',
+    { a11y: 'Valeurs en texte réel. Figé en mouvement réduit.' }),
 ];
