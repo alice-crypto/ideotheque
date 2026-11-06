@@ -7195,6 +7195,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="ride-timer"].fx-go button { background: var(--fx-down, #e10600); animation: fx-rt .7s; }
 @keyframes fx-rt { from { transform: scale(.9); } }
 
+/* carpool-split : partager la voiture */
+[data-fx="carpool-split"] { display: grid; gap: 8px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="carpool-split"] .fx-cs3 { display: flex; gap: 8px; justify-content: center; padding: 12px 8px; border-radius: 26px 34px 10px 10px; background: color-mix(in srgb, currentColor 12%, transparent); }
+[data-fx="carpool-split"] button { width: 32px; height: 40px; padding: 0; border: 0; border-radius: 16px 16px 6px 6px; background: color-mix(in srgb, currentColor 16%, transparent); cursor: pointer; display: grid; place-items: center; }
+[data-fx="carpool-split"] i { width: 14px; height: 14px; border-radius: 50%; background: currentColor; opacity: .25; transition: opacity .2s; }
+[data-fx="carpool-split"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; }
+[data-fx="carpool-split"] [aria-pressed="true"] i { background: #fff; opacity: 1; }
+[data-fx="carpool-split"] .fx-pop { animation: fx-cs3 .35s var(--fx-ease-spring); }
+[data-fx="carpool-split"] output b { font-size: 20px; }
+@keyframes fx-cs3 { from { transform: translateY(-10px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

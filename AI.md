@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->681<!-- /total --> effets.
+La bibliothèque contient <!-- total -->682<!-- /total --> effets.
 
 ## Règles
 
@@ -396,6 +396,7 @@ La bibliothèque contient <!-- total -->681<!-- /total --> effets.
 | `key-fob` | Micro-interaction | Deux boutons verrouillent la voiture, qui répond en faisant clignoter ses feux |
 | `mode-compare` | Micro-interaction | Selon la distance, des barres comparent le temps de chaque mode et marquent le plus rapide |
 | `zone-fare` | Micro-interaction | Des zones en anneaux s'allument et donnent le tarif du trajet |
+| `carpool-split` | Micro-interaction | Chaque passager installé dans la voiture fait baisser le prix par personne |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

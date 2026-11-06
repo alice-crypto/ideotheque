@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="ride-timer" data-fx-rate="0.2"></div>',
     '<div data-fx="ride-timer" style="color:var(--ink)"></div>',
     { a11y: 'Vrai bouton ; temps et prix écrits.' }),
+  E('carpool-split', 'Micro-interaction',
+    'Chaque passager installé dans la voiture fait baisser le prix par personne.',
+    'Convivial, le trajet devient une affaire d\'équipe.',
+    '- `data-fx-cost` (48), `data-fx-seats` (4)',
+    'Covoiturage, voyages de groupe, partage de frais.',
+    'De confondre avec une vraie tarification de plateforme, qui ajoute des frais.',
+    '<div data-fx="carpool-split" data-fx-cost="48"></div>',
+    '<div data-fx="carpool-split" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés et `aria-pressed`, résultat annoncé.' }),
 ];

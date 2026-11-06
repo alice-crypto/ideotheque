@@ -12065,6 +12065,26 @@
       show();
     }
   });
+
+  // Combien coûte un trajet quand on le partage en voiture
+  FX.register('carpool-split', {
+    setup: function (el) {
+      var cost = U.num(el, 'fxCost', 48), seats = U.num(el, 'fxSeats', 4), box = U.make('div', 'fx-cs3', el), o = U.make('output', '', el), n = 1;
+      o.setAttribute('aria-live', 'polite');
+      box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Nombre de personnes');
+      for (var i = 1; i <= seats; i++) (function (i) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('aria-label', i + ' personne' + (i > 1 ? 's' : ''));
+        U.make('i', '', b);
+        b.addEventListener('click', function () { n = i; show(); });
+      })(i);
+      var show = function () {
+        box.querySelectorAll('button').forEach(function (b, i) { b.setAttribute('aria-pressed', i < n); b.classList.toggle('fx-pop', i === n - 1); });
+        o.innerHTML = '<b>' + (cost / n).toFixed(2).replace('.', ',') + ' €</b> par personne' + (n > 1 ? ', soit ' + Math.round(cost - cost / n) + ' € de moins' : '');
+      };
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
