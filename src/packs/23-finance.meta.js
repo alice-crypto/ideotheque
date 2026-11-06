@@ -138,4 +138,13 @@ module.exports = [
     '<label data-fx="iban-input">IBAN <input></label>',
     '<label data-fx="iban-input" style="width:225px;color:var(--ink);font-size:13px">IBAN <input value="FR76 3000 6000 0112 3456 7890 189"></label>',
     { a11y: '`aria-invalid` et message annoncé. Le texte reste dans le champ.' }),
+  E('secure-lock', 'État',
+    'Un cadenas ouvert se ferme et le message passe à « chiffré ».',
+    'Rassurant, juste avant de payer.',
+    '- `data-fx-wait`, `data-fx-done` : textes\n- `data-fx-wait2` (1200) : durée',
+    'Pages de paiement, connexions.',
+    'D\'afficher ce message sans vraie protection : branchez-le sur une véritable vérification.',
+    '<span data-fx="secure-lock"></span>',
+    '<span data-fx="secure-lock" style="color:var(--ink);font-size:17px"></span>',
+    { trigger: 'Rejouer', a11y: 'Rôle `status`, le message est écrit.' }),
 ];

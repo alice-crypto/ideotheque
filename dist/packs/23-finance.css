@@ -126,3 +126,11 @@
 [data-fx="iban-input"].fx-ok input { border-color: var(--fx-up, #2eaf63); box-shadow: 0 0 0 2px var(--fx-up, #2eaf63); }
 [data-fx="iban-input"].fx-ko input { border-color: var(--fx-down, #e10600); box-shadow: 0 0 0 2px var(--fx-down, #e10600); }
 [data-fx="iban-input"] small { min-height: 1.3em; font-size: 12px; }
+
+/* secure-lock : un cadenas qui se ferme */
+[data-fx="secure-lock"] { display: inline-flex; align-items: center; gap: .5em; }
+[data-fx="secure-lock"] svg { width: 1.6em; height: 1.6em; overflow: visible; }
+[data-fx="secure-lock"] rect { fill: currentColor; }
+[data-fx="secure-lock"] .s { fill: none; stroke: currentColor; stroke-width: 2.2; transform: translateY(-3.5px); transition: transform .35s var(--fx-ease-spring); }
+[data-fx="secure-lock"].fx-shut .s { transform: none; }
+[data-fx="secure-lock"].fx-shut rect { fill: var(--fx-lock, var(--fx-accent)); transition: fill .3s; }
