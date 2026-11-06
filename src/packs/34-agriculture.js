@@ -354,4 +354,15 @@
     },
     trigger: function (el) { el._fxFly(); }
   });
+
+  // Une ardoise de marché qui s'écrit à la craie
+  FX.register('chalk-board', {
+    entrance: true,
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Pommes:2,80 €|Carottes:1,90 €|Miel:9,50 €').split('|').map(function (r) { var k = r.lastIndexOf(':'); return [r.slice(0, k), r.slice(k + 1)]; }), box = U.make('div', 'fx-cb3', el), n = 0, wrap = function (t) { return t.split('').map(function (c) { return '<span style="--fx-i:' + n++ + '">' + (c === ' ' ? '&nbsp;' : c) + '</span>'; }).join(''); };
+      if (el.dataset.fxTitle) { var T = U.make('h4', '', box); T.innerHTML = wrap(el.dataset.fxTitle); }
+      R.forEach(function (r) { var d = U.make('div', 'fx-cb3-r', box); d.innerHTML = '<span>' + wrap(r[0]) + '</span><span>' + wrap(r[1]) + '</span>'; d.setAttribute('aria-label', r[0] + ', ' + r[1]); });
+      el.style.setProperty('--fx-pace', U.num(el, 'fxPace', 34) + 'ms');
+    }
+  });
 })(window.FX);
