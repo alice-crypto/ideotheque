@@ -5788,6 +5788,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="room-inventory"].fx-under .fx-ri i { background: var(--fx-down, #e10600); }
 [data-fx="room-inventory"] output { font-weight: 700; font-size: 12px; margin-top: 4px; }
 
+/* plan-quiz : quelques questions, une formule */
+[data-fx="plan-quiz"] { display: grid; gap: 8px; width: min(100%, var(--fx-w, 220px)); font-size: 13px; }
+[data-fx="plan-quiz"] .fx-pq { display: grid; gap: 4px; animation: fx-pq .3s var(--fx-ease-out); }
+[data-fx="plan-quiz"] p { margin: 0 0 4px; font-weight: 700; }
+[data-fx="plan-quiz"] p b { color: var(--fx-accent); font-size: 18px; }
+[data-fx="plan-quiz"] button { padding: 6px 8px; border: 1px solid currentColor; border-radius: 6px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; opacity: 0; animation: fx-pq .3s var(--fx-ease-out) forwards; }
+[data-fx="plan-quiz"] button:nth-of-type(2) { animation-delay: 60ms; }
+[data-fx="plan-quiz"] button:nth-of-type(3) { animation-delay: 120ms; }
+[data-fx="plan-quiz"] button:hover { background: color-mix(in srgb, var(--fx-accent) 22%, transparent); }
+[data-fx="plan-quiz"] .fx-pq-p { height: 3px; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 0 / calc(var(--fx-q, 0) * 100%) 100%, color-mix(in srgb, currentColor 16%, transparent); transition: background-size .3s; }
+@keyframes fx-pq { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

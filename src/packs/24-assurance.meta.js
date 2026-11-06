@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="room-inventory" data-fx-cap="10000" data-fx-items="Salon:4000|Cuisine:3000"></div>',
     '<div data-fx="room-inventory" style="color:var(--ink)"></div>',
     { a11y: 'Curseurs nommés par leur pièce, écart écrit et annoncé.' }),
+  E('plan-quiz', 'Micro-interaction',
+    'Quelques questions, une à la fois, mènent à la formule conseillée.',
+    'Comme un échange au guichet, en plus court.',
+    '- `data-fx-questions` : « question:réponse=points,… » séparés par `|`\n- `data-fx-plans` : formules de la moins à la plus complète',
+    'Choix d\'une formule, d\'un forfait, d\'un produit.',
+    'De présenter ce résultat comme un conseil personnalisé réglementé.',
+    '<div data-fx="plan-quiz" data-fx-plans="Tiers,Confort"></div>',
+    '<div data-fx="plan-quiz" style="color:var(--ink)"></div>',
+    { a11y: 'Vrais boutons, et la conclusion est dans une région `status`.' }),
 ];
