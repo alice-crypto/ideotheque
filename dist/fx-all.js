@@ -12602,6 +12602,25 @@
       go();
     }
   });
+
+  // Une grille de tarifs où le palier du poids choisi s'allume
+  FX.register('weight-tier', {
+    setup: function (el) {
+      var T = (el.dataset.fxItems || '1:4.95|2:6.5|5:9.2|10:13.4|20:19.9').split('|').map(function (r) { var p = r.split(':'); return [+p[0], +p[1]]; });
+      el.innerHTML = '<label>Poids <b></b><input type="range" min="0.5" max="' + T[T.length - 1][0] + '" step="0.5"></label><ol></ol><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), ol = el.querySelector('ol'), o = el.querySelector('output'), prev = 0;
+      T.forEach(function (t) { var li = U.make('li', '', ol); li.innerHTML = '<span>' + prev + ' à ' + t[0] + ' kg</span><b>' + t[1].toFixed(2).replace('.', ',') + ' €</b>'; prev = t[0]; });
+      r.value = U.num(el, 'fxKg', 3);
+      var go = function () {
+        var w = +r.value, k = T.findIndex(function (t) { return w <= t[0]; });
+        el.querySelector('label b').textContent = String(w).replace('.', ',') + ' kg';
+        Array.prototype.forEach.call(ol.children, function (li, i) { li.classList.toggle('fx-on', i === k); });
+        o.textContent = T[k + 1] ? 'Le palier suivant commence après ' + T[k][0] + ' kg' : 'Dernier palier';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

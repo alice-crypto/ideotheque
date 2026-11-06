@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="customs-fee" data-fx-duty="6" data-fx-vat="20"></div>',
     '<div data-fx="customs-fee" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, montants écrits.' }),
+  E('weight-tier', 'Micro-interaction',
+    'Un curseur de poids allume le palier de tarif correspondant, et le seuil suivant.',
+    'On voit ce que coûtent 200 grammes de trop.',
+    '- `data-fx-items` : « poids max:prix » séparés par `|`\n- `data-fx-kg` (3)',
+    'Expédition, abonnements à paliers, impôts.',
+    'Des tarifs d\'exemple : remplacez-les par les vôtres.',
+    '<div data-fx="weight-tier" data-fx-items="1:4.95|2:6.5"></div>',
+    '<div data-fx="weight-tier" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, paliers écrits dans une liste.' }),
 ];

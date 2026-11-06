@@ -7493,6 +7493,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="customs-fee"].fx-free li:first-child { opacity: .4; text-decoration: line-through; }
 [data-fx="customs-fee"] small { font-size: 10px; opacity: .7; }
 
+/* weight-tier : le tarif selon le poids */
+[data-fx="weight-tier"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 220px)); font-size: 11px; }
+[data-fx="weight-tier"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="weight-tier"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="weight-tier"] ol { display: grid; gap: 1px; margin: 0; padding: 0; list-style: none; }
+[data-fx="weight-tier"] li { display: flex; justify-content: space-between; padding: 2px 6px; border-radius: 4px; transition: background .2s, color .2s, transform .2s; }
+[data-fx="weight-tier"] .fx-on { background: var(--fx-accent); color: #fff; transform: scale(1.03); font-weight: 800; }
+[data-fx="weight-tier"] output { opacity: .85; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
