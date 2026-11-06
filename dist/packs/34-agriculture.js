@@ -430,4 +430,25 @@
       U.make('small', 'fx-so2-n', el).textContent = 'Prévisions fictives. Règle : 12 °C ou plus, 2 mm de pluie au plus.';
     }
   });
+
+  // Azote, phosphore, potassium : où se situe l'engrais
+  FX.register('npk-triangle', {
+    setup: function (el) {
+      var V = [U.num(el, 'fxN', 10), U.num(el, 'fxP', 5), U.num(el, 'fxK', 15)], N = ['N azote', 'P phosphore', 'K potassium'], h = '';
+      N.forEach(function (n, i) { h += '<label>' + n + ' <b data-o="' + i + '"></b><input data-i="' + i + '" type="range" min="0" max="30" value="' + V[i] + '"></label>'; });
+      el.innerHTML = '<svg viewBox="0 0 120 108" aria-hidden="true"><path d="M60 6 114 100H6Z"/><circle r="6"/><text x="60" y="4">N</text><text x="2" y="108">P</text><text x="118" y="108">K</text></svg><div class="fx-np">' + h + '</div><output aria-live="polite"></output>';
+      var c = el.querySelector('circle'), o = el.querySelector('output');
+      var go = function () {
+        V = Array.prototype.map.call(el.querySelectorAll('input'), function (i) { return +i.value; });
+        var t = V[0] + V[1] + V[2] || 1, a = V[0] / t, b = V[1] / t, k = V[2] / t;
+        c.setAttribute('cx', a * 60 + b * 6 + k * 114);
+        c.setAttribute('cy', a * 6 + b * 100 + k * 100);
+        V.forEach(function (v, i) { el.querySelector('[data-o="' + i + '"]').textContent = v; });
+        var top = V.indexOf(Math.max.apply(null, V));
+        o.innerHTML = '<b>' + V.join('-') + '</b> · ' + ['pousse des feuilles', 'racines et floraison', 'fruits et résistance'][top];
+      };
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

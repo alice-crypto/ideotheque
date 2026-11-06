@@ -236,3 +236,15 @@
 [data-fx="sow-window"] p b { font-size: 14px; }
 [data-fx="sow-window"] .fx-so2-n { font-size: 9px; opacity: .65; }
 @keyframes fx-sow-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* npk-triangle : trois éléments dans un triangle */
+[data-fx="npk-triangle"] { display: grid; grid-template-columns: 86px 1fr; gap: 3px 8px; align-items: center; width: min(100%, var(--fx-w, 235px)); font-size: 9px; }
+[data-fx="npk-triangle"] svg { width: 100%; overflow: visible; }
+[data-fx="npk-triangle"] path { fill: color-mix(in srgb, var(--fx-up, #2eaf63) 25%, transparent); stroke: currentColor; }
+[data-fx="npk-triangle"] circle { fill: var(--fx-accent); transition: cx .2s, cy .2s; stroke: #fff; stroke-width: 2; }
+[data-fx="npk-triangle"] text { fill: currentColor; font-size: 9px; font-weight: 800; text-anchor: middle; }
+[data-fx="npk-triangle"] .fx-np { display: grid; gap: 1px; }
+[data-fx="npk-triangle"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="npk-triangle"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="npk-triangle"] output { grid-column: 1 / -1; font-size: 12px; }
+[data-fx="npk-triangle"] output b { font-size: 15px; }

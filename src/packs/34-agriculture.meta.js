@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="sow-window" data-fx-data="15:0|9:6"></div>',
     '<div data-fx="sow-window" style="color:var(--ink)"></div>',
     { a11y: 'Jours favorables écrits en phrase, règle indiquée.' }),
+  E('npk-triangle', 'Micro-interaction',
+    'Trois curseurs placent un engrais dans un triangle, et donnent son effet dominant.',
+    'Une étiquette obscure qui devient lisible.',
+    '- `data-fx-n` (10), `data-fx-p` (5), `data-fx-k` (15)',
+    'Engrais, jardinage, tout mélange à trois composantes.',
+    'De donner un dosage réel : l\'effet dépend aussi du sol et de la plante.',
+    '<div data-fx="npk-triangle" data-fx-n="10" data-fx-p="5" data-fx-k="15"></div>',
+    '<div data-fx="npk-triangle" style="color:var(--ink)"></div>',
+    { a11y: 'Curseurs étiquetés, résultat annoncé.' }),
 ];
