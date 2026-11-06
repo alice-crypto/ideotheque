@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="food-miles" data-fx-items="Ferme voisine:35:0.1"></div>',
     '<div data-fx="food-miles" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Distances et émissions écrites ; l\'échelle est expliquée.' }),
+  E('soil-layers', 'Présentation',
+    'Un curseur descend dans une coupe de sol, et chaque couche se décrit.',
+    'Regarder sous ses pieds pour la première fois.',
+    '- `data-fx-items` : « couche:cm:couleur:texte » séparés par `|`\n- `data-fx-depth` (30)',
+    'Agronomie, jardinage, musées, pédagogie.',
+    'Un profil générique présenté comme celui d\'un lieu précis.',
+    '<div data-fx="soil-layers" data-fx-depth="30"></div>',
+    '<div data-fx="soil-layers" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, couche annoncée.' }),
 ];

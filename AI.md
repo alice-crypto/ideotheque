@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->783<!-- /total --> effets.
+La bibliothèque contient <!-- total -->784<!-- /total --> effets.
 
 ## Règles
 
@@ -295,6 +295,7 @@ La bibliothèque contient <!-- total -->783<!-- /total --> effets.
 | `crop-calendar` | Présentation | Un calendrier montre semis et récoltes par culture, et dit ce qu'on fait ce mois-ci |
 | `rain-gauge` | Présentation | Un pluviomètre se remplit du cumul de la semaine, à côté de la normale |
 | `food-miles` | Présentation | Des barres comparent la distance parcourue par un même produit, selon son origine |
+| `soil-layers` | Présentation | Un curseur descend dans une coupe de sol, et chaque couche se décrit |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

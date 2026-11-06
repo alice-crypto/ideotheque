@@ -8267,6 +8267,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="food-miles"] small { grid-column: 1 / -1; opacity: .7; }
 [data-fx="food-miles"] p { margin: 5px 0 0; opacity: .65; }
 
+/* soil-layers : les couches du sol */
+[data-fx="soil-layers"] { display: grid; grid-template-columns: 60px 1fr; gap: 3px 10px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; align-items: center; }
+[data-fx="soil-layers"] .fx-sl2 { position: relative; grid-row: span 2; display: flex; flex-direction: column; height: 120px; }
+[data-fx="soil-layers"] .fx-sl2 u { position: absolute; left: -3px; right: -3px; top: calc(var(--fx-q) * 100%); height: 2px; background: var(--fx-accent); box-shadow: 0 0 4px var(--fx-accent); transition: top .15s; z-index: 1; }
+[data-fx="soil-layers"] label { display: grid; grid-template-columns: 1fr auto; align-self: end; }
+[data-fx="soil-layers"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="soil-layers"] output { align-self: start; }
+[data-fx="soil-layers"] output b { font-size: 15px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
