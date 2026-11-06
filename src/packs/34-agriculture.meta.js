@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="crop-calendar" data-fx-items="Tomate:3-5:7-9"></div>',
     '<div data-fx="crop-calendar" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'La phrase du mois est écrite, et la grille est décorative.' }),
+  E('field-rotation', 'Micro-interaction',
+    'Un curseur d\'années fait tourner les cultures de parcelle en parcelle.',
+    'La ferme, vue du ciel, au fil du temps.',
+    '- `data-fx-items` : « culture:couleur » séparés par `|`',
+    'Agriculture, coopératives, pédagogie.',
+    'D\'y voir un conseil agronomique : la rotation réelle dépend de la terre.',
+    '<div data-fx="field-rotation" data-fx-items="Blé:#d6b34a|Trèfle:#5aa35c"></div>',
+    '<div data-fx="field-rotation" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, rotation écrite et annoncée.' }),
 ];
