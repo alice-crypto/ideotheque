@@ -5678,6 +5678,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="deductible-slider"] .fx-ds span:last-child { flex: calc(2 - var(--fx-q, 0)) 1 0; background: var(--fx-accent); color: #fff; border-color: transparent; }
 [data-fx="deductible-slider"] b { font-size: 19px; font-variant-numeric: tabular-nums; }
 
+/* coverage-matrix : un tableau de garanties */
+[data-fx="coverage-matrix"] { width: min(100%, var(--fx-w, 240px)); font-size: 12px; }
+[data-fx="coverage-matrix"] table { width: 100%; border-collapse: collapse; }
+[data-fx="coverage-matrix"] th, [data-fx="coverage-matrix"] td { padding: 4px; text-align: center; font-weight: 400; transition: background .25s, opacity .25s; }
+[data-fx="coverage-matrix"] tbody th { text-align: left; }
+[data-fx="coverage-matrix"] tbody tr + tr > * { border-top: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
+[data-fx="coverage-matrix"] button { padding: 2px; border: 0; background: none; color: inherit; font: inherit; font-size: 11px; font-weight: 700; cursor: pointer; }
+[data-fx="coverage-matrix"] td:not(.fx-on) { opacity: .5; }
+[data-fx="coverage-matrix"] .fx-on { background: color-mix(in srgb, var(--fx-accent) 22%, transparent); }
+[data-fx="coverage-matrix"] i { font-style: normal; font-weight: 700; }
+[data-fx="coverage-matrix"] .fx-sr { position: absolute; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

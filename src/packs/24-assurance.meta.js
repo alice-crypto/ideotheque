@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="deductible-slider" data-fx-top="48" data-fx-low="26"></div>',
     '<div data-fx="deductible-slider" style="color:var(--ink)"></div>',
     { a11y: '`aria-valuetext` donne les deux montants à la fois.' }),
+  E('coverage-matrix', 'Présentation',
+    'Un tableau de garanties éclaire la formule choisie sur toute sa colonne.',
+    'Comparaison nette, sans lecture ligne à ligne.',
+    '- `data-fx-plans` : formules séparées par des virgules\n- `data-fx-items` : « garantie:1,0,1 » séparés par `|`\n- `data-fx-pick` (1) : formule éclairée au départ',
+    'Comparaison de formules, d\'offres, d\'abonnements.',
+    'Plus de quatre formules sur mobile : le tableau devient illisible.',
+    '<div data-fx="coverage-matrix" data-fx-plans="Tiers,Confort" data-fx-items="Vol:0,1"></div>',
+    '<div data-fx="coverage-matrix" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai tableau avec en-têtes, boutons `aria-pressed`, et chaque marque est nommée.' }),
 ];
