@@ -51,4 +51,26 @@
       go();
     }
   });
+
+  // Combien de temps pour recharger, selon la borne
+  FX.register('charge-time', {
+    setup: function (el) {
+      var kwh = U.num(el, 'fxBattery', 60), P = [['Prise', 2.3], ['Wallbox', 7.4], ['Rapide', 50], ['Ultra', 150]];
+      el.innerHTML = '<div class="fx-ct-p" role="radiogroup" aria-label="Type de borne"></div><label><span>De <b data-a></b> à <b data-b></b></span><input type="range" min="10" max="100" step="5" value="80" aria-label="Niveau visé"></label><div class="fx-ct" aria-hidden="true"><i></i></div><output aria-live="polite"></output>';
+      var box = el.querySelector('.fx-ct-p'), r = el.querySelector('input'), o = el.querySelector('output'), kw = 7.4, from = 20;
+      var go = function () {
+        var to = Math.max(from, +r.value), fast = Math.max(0, Math.min(to, 80) - from) / 100 * kwh, slow = Math.max(0, to - 80) / 100 * kwh, h = fast / kw + slow / (kw > 11 ? kw * .4 : kw);
+        el.querySelector('[data-a]').textContent = from + ' %'; el.querySelector('[data-b]').textContent = to + ' %';
+        el.style.setProperty('--fx-q', to / 100);
+        o.innerHTML = '<b>' + (h >= 1 ? Math.floor(h) + ' h ' : '') + String(Math.round(h % 1 * 60)).padStart(2, '0') + ' min</b> sur ' + kw + ' kW';
+      };
+      P.forEach(function (p, i) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('role', 'radio'); b.textContent = p[0]; b.setAttribute('aria-checked', i === 1);
+        b.addEventListener('click', function () { box.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-checked', x === b); }); kw = p[1]; go(); });
+      });
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
