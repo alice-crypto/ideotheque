@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="area-square" data-fx-area="62"></div>',
     '<div data-fx="area-square" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Tout est écrit en texte, le carré illustre.' }),
+  E('staging-toggle', 'Image',
+    'Une pièce vide se meuble d\'un geste, chaque meuble tombant à sa place.',
+    'On se projette tout de suite dans l\'espace.',
+    '- `data-fx-on` : meublé au départ\n- `--fx-wall`, `--fx-floor`',
+    'Annonces, décoration, agencement.',
+    'De cacher qu\'il s\'agit d\'une simulation : le texte doit rester visible.',
+    '<div data-fx="staging-toggle"></div>',
+    '<div data-fx="staging-toggle" data-fx-on="true" style="color:var(--ink)"></div>',
+    { trigger: 'Basculer', a11y: 'Bouton `aria-pressed`, mention de simulation écrite.' }),
 ];

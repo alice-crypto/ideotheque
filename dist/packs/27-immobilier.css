@@ -229,3 +229,17 @@
 [data-fx="area-square"] u { position: absolute; left: 0; bottom: 0; width: calc(var(--fx-u) * 100%); height: calc(var(--fx-u) * 100%); border: 1px solid #fff; background: #0005; box-sizing: border-box; }
 [data-fx="area-square"] p { margin: 0; }
 [data-fx="area-square"] b { font-size: 20px; }
+
+/* staging-toggle : une pièce qui se meuble */
+[data-fx="staging-toggle"] { display: grid; gap: 5px; justify-items: start; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="staging-toggle"] .fx-st { position: relative; width: 100%; height: 106px; overflow: hidden; background: linear-gradient(var(--fx-wall, #e9e2d6) 72%, var(--fx-floor, #b08a5f) 72%); }
+[data-fx="staging-toggle"] i { position: absolute; opacity: 0; transform: translateY(-34px); transition: transform .5s var(--fx-ease-spring), opacity .25s; }
+[data-fx="staging-toggle"].fx-on i { opacity: 1; transform: none; }
+[data-fx="staging-toggle"] .s { left: 14%; bottom: 14%; width: 46%; height: 30%; border-radius: 8px 8px 3px 3px; background: var(--fx-accent); transition-delay: 0s; }
+[data-fx="staging-toggle"] .t { left: 42%; bottom: 7%; width: 24%; height: 7%; background: #5a3b21; transition-delay: .1s; }
+[data-fx="staging-toggle"] .l { right: 13%; bottom: 14%; width: 3px; height: 54%; background: #222; transition-delay: .2s; }
+[data-fx="staging-toggle"] .l::before { content: ''; position: absolute; left: -11px; top: -13px; width: 25px; height: 16px; background: #ffd46b; clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%); }
+[data-fx="staging-toggle"] .p { left: 26%; top: 14%; width: 24%; height: 26%; background: #2d4f6d; border: 3px solid #fff; transition-delay: .3s; }
+[data-fx="staging-toggle"] .r { left: 20%; bottom: 2%; width: 56%; height: 7%; background: color-mix(in srgb, var(--fx-accent-2) 70%, transparent); border-radius: 50%; transition-delay: .05s; }
+[data-fx="staging-toggle"] button { padding: 4px 10px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="staging-toggle"] small { opacity: .7; font-size: 10px; }
