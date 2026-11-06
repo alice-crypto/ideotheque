@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="zone-fare" data-fx-prices="1.9,2.8,3.9"></div>',
     '<div data-fx="zone-fare" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés, zones et prix annoncés.' }),
+  E('transit-ticket', 'Présentation',
+    'Un billet s\'active, et sa validité s\'écoule avec des bandes qui défilent.',
+    'Un vrai billet, vivant, qu\'on présente sans inquiétude.',
+    '- `data-fx-minutes` (90), `data-fx-title`, `--fx-tick`',
+    'Transports, stationnement, tickets d\'événement.',
+    'De croire que ces bandes sont un contrôle de fraude : une vraie vérification reste nécessaire.',
+    '<div data-fx="transit-ticket" data-fx-minutes="90"></div>',
+    '<div data-fx="transit-ticket" style="color:var(--ink)"></div>',
+    { trigger: 'Activer', a11y: 'Vrai bouton, validité écrite.' }),
 ];
