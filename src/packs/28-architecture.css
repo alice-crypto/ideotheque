@@ -116,3 +116,8 @@
 [data-fx="scale-figure"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
 [data-fx="scale-figure"] input { min-width: 0; accent-color: var(--fx-accent); }
 [data-fx="scale-figure"] output b { font-size: 16px; }
+
+/* colonnade : un rythme de colonnes */
+[data-fx="colonnade"] { display: block; width: 100%; height: var(--fx-h, 150px); overflow: hidden; background: var(--fx-sky, linear-gradient(#f4dfb8, #f9f1dc)); }
+[data-fx="colonnade"] .fx-co { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: calc(var(--fx-o, .5) * 16px); padding: 0 8px; box-sizing: border-box; }
+[data-fx="colonnade"] i { flex: 1; height: calc(40% + var(--fx-d) * 60%); background: linear-gradient(90deg, #6d6256, #c9bda9 30%, #e9dfcc 50%, #a7998a 80%, #5a5145); transform: scaleX(calc(1 - var(--fx-d) * .3 + var(--fx-o, .5) * .2)); }
