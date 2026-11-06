@@ -28,3 +28,14 @@
 [data-fx="floor-tables"] .s6 { width: 56px; border-radius: 6px; }
 [data-fx="floor-tables"] button:disabled { opacity: .35; cursor: not-allowed; background: #777; }
 [data-fx="floor-tables"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; transform: scale(1.15); }
+
+/* kitchen-ticket : un bon de cuisine */
+[data-fx="kitchen-ticket"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 200px)); font-size: 12px; }
+[data-fx="kitchen-ticket"] .fx-kt { padding: 8px 10px 16px; background: #fbf7e8; color: #252115; font-family: ui-monospace, monospace; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7px), 93% 100%, 86% calc(100% - 7px), 79% 100%, 72% calc(100% - 7px), 65% 100%, 58% calc(100% - 7px), 51% 100%, 44% calc(100% - 7px), 37% 100%, 30% calc(100% - 7px), 23% 100%, 16% calc(100% - 7px), 9% 100%, 0 calc(100% - 7px)); }
+[data-fx="kitchen-ticket"] header { display: flex; justify-content: space-between; padding-bottom: 4px; border-bottom: 1px dashed currentColor; }
+[data-fx="kitchen-ticket"].fx-late time { color: #c81a12; font-weight: 800; animation: fx-kitchen-late 1s infinite; }
+[data-fx="kitchen-ticket"] ul { margin: 5px 0 0; padding: 0; list-style: none; }
+[data-fx="kitchen-ticket"] button { padding: 2px 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; text-align: left; background-image: linear-gradient(currentColor, currentColor); background-position: 0 55%; background-size: 0 2px; background-repeat: no-repeat; transition: background-size .3s; }
+[data-fx="kitchen-ticket"] [aria-pressed="true"] { background-size: 100% 2px; opacity: .55; }
+[data-fx="kitchen-ticket"].fx-done output { color: var(--fx-up, #2eaf63); font-weight: 700; }
+@keyframes fx-kitchen-late { 50% { opacity: .45; } }
