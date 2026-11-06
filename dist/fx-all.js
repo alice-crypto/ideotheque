@@ -10389,6 +10389,26 @@
       i.addEventListener('change', function () { c.classList.remove('fx-go'); void c.offsetWidth; c.classList.add('fx-go'); });
     }
   });
+
+  // Une gélule qui se remplit de granules au fil du chargement
+  FX.register('capsule-progress', {
+    entrance: true,
+    setup: function (el) {
+      var v = U.num(el, 'fxValue', 68), N = 120, box = U.make('div', 'fx-cg', el);
+      el.setAttribute('role', 'progressbar');
+      el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', 100); el.setAttribute('aria-valuenow', v);
+      el.setAttribute('aria-label', el.dataset.fxLabel || 'Progression');
+      for (var i = 0; i < N; i++) {
+        var g = U.make('i', '', box), q = i / N;
+        g.style.left = q * 92 + 1 + '%';
+        g.style.top = U.rand(14, 76) + '%';
+        g.style.setProperty('--fx-s', U.rand(5, 9) + 'px');
+        g.style.setProperty('--fx-i', i);
+        if (q * 100 > v) g.classList.add('fx-off');
+      }
+      U.make('b', '', el).textContent = v + ' %';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

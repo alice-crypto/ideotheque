@@ -102,4 +102,13 @@ module.exports = [
     '<label data-fx="capsule-switch"><input type="checkbox"> Rappels</label>',
     '<label data-fx="capsule-switch" style="color:var(--ink);font-size:14px"><input type="checkbox"> Rappels activés</label>',
     { a11y: 'Vraie case avec rôle `switch`, focus visible.' }),
+  E('capsule-progress', 'État',
+    'Une gélule se remplit de petits granules jusqu\'à la valeur.',
+    'Petit plaisir de voir l\'objet se composer.',
+    '- `data-fx-value` (68), `data-fx-label`',
+    'Boutiques de compléments, progression d\'un programme.',
+    'Une progression qui recule : les granules sont pensés pour se remplir.',
+    '<div data-fx="capsule-progress" data-fx-value="68"></div>',
+    '<div data-fx="capsule-progress" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Rôle `progressbar` avec sa valeur, écrite aussi en toutes lettres.' }),
 ];

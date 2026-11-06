@@ -106,3 +106,9 @@
 [data-fx="capsule-switch"] .fx-go { animation: fx-cp .4s var(--fx-ease-spring); }
 [data-fx="capsule-switch"] input:focus-visible + .fx-cp { outline: 2px solid var(--fx-accent); outline-offset: 2px; }
 @keyframes fx-cp { 40% { transform: scale(1.1, .9); } }
+
+/* capsule-progress : une gélule qui se remplit */
+[data-fx="capsule-progress"] { display: flex; gap: 10px; align-items: center; width: min(100%, var(--fx-w, 225px)); font-size: 14px; }
+[data-fx="capsule-progress"] .fx-cg { position: relative; flex: 1; height: 42px; border: 2px solid currentColor; border-radius: 21px; overflow: hidden; }
+[data-fx="capsule-progress"] i { position: absolute; width: var(--fx-s); height: var(--fx-s); border-radius: 50%; background: var(--fx-accent); opacity: 0; transform: translateY(-40px); transition: transform .5s var(--fx-ease-spring) calc(var(--fx-i) * 9ms), opacity .2s calc(var(--fx-i) * 9ms); }
+.fx-in[data-fx="capsule-progress"] i:not(.fx-off) { opacity: 1; transform: none; }
