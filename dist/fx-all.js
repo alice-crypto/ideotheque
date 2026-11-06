@@ -14618,6 +14618,23 @@
       set(v);
     }
   });
+
+  // Le dosage du café, selon le volume et l'intensité
+  FX.register('brew-ratio', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-br2" aria-hidden="true"><i class="w"></i><i class="c"></i></div><label>Eau <b data-w></b><input data-k="w" type="range" min="100" max="1000" step="20" value="300"></label><label>Intensité <b data-r></b><input data-k="r" type="range" min="12" max="20" value="16"></label><output aria-live="polite"></output>';
+      var W = el.querySelector('[data-k=w]'), R = el.querySelector('[data-k=r]'), o = el.querySelector('output');
+      var go = function () {
+        var w = +W.value, r = +R.value, c = w / r;
+        el.querySelector('[data-w]').textContent = w + ' ml';
+        el.querySelector('[data-r]').textContent = '1:' + r + (r <= 14 ? ' (corsé)' : r >= 18 ? ' (léger)' : ' (équilibré)');
+        el.style.setProperty('--fx-a', w / 1000); el.style.setProperty('--fx-b', c / 80);
+        o.innerHTML = '<b>' + Math.round(c) + ' g</b> de café moulu';
+      };
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="spice-level" data-fx-value="2"></div>',
     '<div data-fx="spice-level" style="color:var(--ink)"></div>',
     { a11y: 'Groupe radio complet : flèches, focus géré et mot annoncé.' }),
+  E('brew-ratio', 'Micro-interaction',
+    'Le volume d\'eau et l\'intensité donnent la dose exacte de café moulu.',
+    'Le bon geste du matin, sans balance imprécise.',
+    'Aucun réglage dans l\'attribut : les curseurs portent les valeurs de départ.',
+    'Torréfacteurs, thé, cuisine, dosage.',
+    'D\'y voir une recette universelle : la mouture et l\'eau comptent autant.',
+    '<div data-fx="brew-ratio"></div>',
+    '<div data-fx="brew-ratio" style="color:var(--ink)"></div>',
+    { a11y: 'Curseurs étiquetés, dose annoncée.' }),
 ];
