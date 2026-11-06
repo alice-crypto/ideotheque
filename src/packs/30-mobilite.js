@@ -404,4 +404,20 @@
       go();
     }
   });
+
+  // Une alerte de perturbation, selon sa gravité
+  FX.register('disruption-banner', {
+    setup: function (el) {
+      var lvl = el.dataset.fxLevel || 'warn', key = el.dataset.fxKey, text = el.textContent.trim(), N = { info: 'Information', warn: 'Perturbation', stop: 'Trafic interrompu' };
+      el.textContent = '';
+      el.setAttribute('role', lvl === 'stop' ? 'alert' : 'status');
+      el.innerHTML = '<i aria-hidden="true"></i><div><b>' + N[lvl] + '</b><span>' + text + '</span></div><button type="button" aria-label="Fermer">×</button>';
+      if (key) try { if (localStorage.getItem(key)) el.hidden = true; } catch (err) {}
+      el.querySelector('button').addEventListener('click', function () {
+        el.classList.add('fx-out');
+        setTimeout(function () { el.hidden = true; }, U.reduced ? 0 : 350);
+        if (key) try { localStorage.setItem(key, '1'); } catch (err) {}
+      });
+    }
+  });
 })(window.FX);
