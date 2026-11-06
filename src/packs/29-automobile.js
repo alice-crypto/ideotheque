@@ -295,4 +295,19 @@
       });
     }
   });
+
+  // Deux modèles côte à côte : le meilleur de chaque ligne ressort
+  FX.register('spec-duel', {
+    entrance: true,
+    setup: function (el) {
+      var N = (el.dataset.fxNames || 'Modèle A,Modèle B').split(','), R = (el.dataset.fxItems || 'Autonomie (km):420:510:+|0 à 100 km/h (s):7.8:6.4:-|Coffre (L):470:380:+|Prix (k€):34:41:-').split('|').map(function (r) { return r.split(':'); }), score = [0, 0];
+      var h = '<thead><tr><th><span class="fx-sr">Caractéristique</span></th><th>' + N[0] + '</th><th>' + N[1] + '</th></tr></thead><tbody>';
+      R.forEach(function (r, i) {
+        var a = +r[1], b = +r[2], w = a === b ? -1 : ((a > b) === (r[3] === '+') ? 0 : 1);
+        if (w >= 0) score[w]++;
+        h += '<tr style="--fx-i:' + i + '"><th scope="row">' + r[0] + '</th><td class="' + (w === 0 ? 'fx-w' : '') + '">' + r[1].replace('.', ',') + '</td><td class="' + (w === 1 ? 'fx-w' : '') + '">' + r[2].replace('.', ',') + '</td></tr>';
+      });
+      el.innerHTML = '<table>' + h + '</tbody></table><p>' + N[0] + ' ' + score[0] + ' · ' + N[1] + ' ' + score[1] + '</p>';
+    }
+  });
 })(window.FX);
