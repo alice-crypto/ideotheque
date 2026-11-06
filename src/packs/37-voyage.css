@@ -102,3 +102,14 @@
 [data-fx="itinerary-days"] small { display: block; font-size: 9px; font-weight: 400; opacity: .65; }
 [data-fx="itinerary-days"] p { max-height: 0; overflow: hidden; margin: 0; opacity: 0; font-size: 11px; visibility: hidden; transition: max-height .35s var(--fx-ease-out), opacity .25s, visibility .35s; }
 [data-fx="itinerary-days"] [aria-expanded="true"] + p { max-height: 60px; opacity: 1; visibility: visible; margin-bottom: 3px; }
+
+/* jetlag-plan : décaler son sommeil */
+[data-fx="jetlag-plan"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="jetlag-plan"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="jetlag-plan"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="jetlag-plan"] ol { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+[data-fx="jetlag-plan"] li { display: grid; grid-template-columns: 30px 1fr 30px; gap: 5px; align-items: center; animation: fx-jetlag-in .3s var(--fx-ease-out) calc(var(--fx-i) * 70ms) backwards; }
+[data-fx="jetlag-plan"] li i { position: relative; height: 7px; background: linear-gradient(90deg, #1a2548 0 28%, #ffe1a0 40% 75%, #1a2548 90%); }
+[data-fx="jetlag-plan"] li i::after { content: ''; position: absolute; left: calc(var(--fx-q) * 100%); top: -2px; bottom: -2px; width: 3px; background: var(--fx-accent); }
+[data-fx="jetlag-plan"] li b { text-align: right; }
+@keyframes fx-jetlag-in { from { opacity: 0; transform: translateX(-6px); } }
