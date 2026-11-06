@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 /*
  * Construit la bibliothèque à partir de src/ :
- *   dist/fx.css, dist/fx.js   — le moteur et tous les packs, en deux fichiers
+ *   dist/fx.css, dist/fx.js   — le moteur et les 500 premiers effets (packs 00 à 22)
+ *   dist/packs/<pack>.*       — chaque pack suivant, à charger selon ses besoins
+ *   dist/fx-all.css, fx-all.js — toute la bibliothèque, utilisée par le catalogue
  *   dist/catalog.js           — les données du catalogue (index.html)
  *   effects/<nom>.md          — une fiche par effet
  *   AI.md, README.md          — tableaux régénérés entre leurs balises <!-- … -->
- *   plugin/                   — le plugin Claude : manifeste, catalogue et fiches du skill
- * Usage : node scripts/build.js
+ *   plugin/                   — le plugin Claude, seulement avec --plugin (voir plus bas)
+ * Usage : node scripts/build.js [--plugin]
  */
 'use strict';
 const fs = require('fs');
@@ -41,17 +43,27 @@ const metaFiles = files.filter((f) => f.endsWith('.meta.js'));
 
 // --- dist/fx.css et dist/fx.js ----------------------------------------------
 
-const css = [read(path.join(SRC, 'core.css'))]
-  .concat(cssFiles.map((f) => read(path.join(PACKS, f))))
-  .concat(read(path.join(SRC, 'core.end.css')))
-  .join('\n');
-write(path.join(ROOT, 'dist/fx.css'), css);
+// Les packs 00 à 22 forment fx.css et fx.js : leur poids reste stable pour les sites déjà en ligne
+const CORE_LAST = 22;
+const isCore = (f) => parseInt(f, 10) <= CORE_LAST;
+const coreCss = read(path.join(SRC, 'core.css'));
+const endCss = read(path.join(SRC, 'core.end.css'));
+const coreJs = read(path.join(SRC, 'core.js'));
+const BOOT = 'window.FX._boot();\n';
+const joinCss = (list) => [coreCss].concat(list.map((f) => read(path.join(PACKS, f)))).concat(endCss).join('\n');
+const joinJs = (list) => [coreJs].concat(list.map((f) => read(path.join(PACKS, f)))).concat(BOOT).join('\n');
 
-const js = [read(path.join(SRC, 'core.js'))]
-  .concat(jsFiles.map((f) => read(path.join(PACKS, f))))
-  .concat('window.FX._boot();\n')
-  .join('\n');
-write(path.join(ROOT, 'dist/fx.js'), js);
+const css = joinCss(cssFiles.filter(isCore));
+write(path.join(ROOT, 'dist/fx.css'), css);
+write(path.join(ROOT, 'dist/fx.js'), joinJs(jsFiles.filter(isCore)));
+
+const cssAll = joinCss(cssFiles);
+const js = joinJs(jsFiles);
+write(path.join(ROOT, 'dist/fx-all.css'), cssAll);
+write(path.join(ROOT, 'dist/fx-all.js'), js);
+
+cssFiles.filter((f) => !isCore(f)).forEach((f) => write(path.join(ROOT, 'dist/packs', f), read(path.join(PACKS, f))));
+jsFiles.filter((f) => !isCore(f)).forEach((f) => write(path.join(ROOT, 'dist/packs', f), read(path.join(PACKS, f))));
 
 // --- Métadonnées -------------------------------------------------------------
 
@@ -142,28 +154,32 @@ replaceBetween('README.md', 'effets',
 // --- Plugin Claude (plugin/) ------------------------------------------------------
 // Le skill embarque une copie du catalogue et des fiches : il marche sans accès au dépôt
 
-const pkg = JSON.parse(read(path.join(ROOT, 'package.json')));
-write(path.join(ROOT, 'plugin', '.claude-plugin', 'plugin.json'), JSON.stringify({
-  name: 'ideotheque',
-  version: pkg.version,
-  description: effects.length + ' named visual effects (animations, page transitions, text, scroll and AI-state effects) that Claude applies by name. Free and MIT.',
-  author: { name: 'alice-crypto', url: 'https://github.com/alice-crypto' },
-  homepage: 'https://alice-crypto.github.io/ideotheque/',
-  repository: 'https://github.com/alice-crypto/ideotheque',
-  license: pkg.license,
-  keywords: pkg.keywords
-}, null, 2) + '\n');
+// Figé par défaut : le plugin reste à sa version publiée et n'entre pas en nouvelle soumission.
+// Pour le mettre à jour volontairement : node scripts/build.js --plugin
+if (process.argv.includes('--plugin')) {
+  const pkg = JSON.parse(read(path.join(ROOT, 'package.json')));
+  write(path.join(ROOT, 'plugin', '.claude-plugin', 'plugin.json'), JSON.stringify({
+    name: 'ideotheque',
+    version: pkg.version,
+    description: effects.length + ' named visual effects (animations, page transitions, text, scroll and AI-state effects) that Claude applies by name. Free and MIT.',
+    author: { name: 'alice-crypto', url: 'https://github.com/alice-crypto' },
+    homepage: 'https://alice-crypto.github.io/ideotheque/',
+    repository: 'https://github.com/alice-crypto/ideotheque',
+    license: pkg.license,
+    keywords: pkg.keywords
+  }, null, 2) + '\n');
 
-const SKILL = path.join(ROOT, 'plugin', 'skills', 'ideotheque');
-write(path.join(SKILL, 'catalogue.md'), read(path.join(ROOT, 'AI.md')));
-const skillFx = path.join(SKILL, 'effects');
-fs.mkdirSync(skillFx, { recursive: true });
-fs.readdirSync(skillFx).forEach((f) => { if (!fs.existsSync(path.join(docDir, f))) fs.unlinkSync(path.join(skillFx, f)); });
-fs.readdirSync(docDir).forEach((f) => write(path.join(skillFx, f), read(path.join(docDir, f))));
+  const SKILL = path.join(ROOT, 'plugin', 'skills', 'ideotheque');
+  write(path.join(SKILL, 'catalogue.md'), read(path.join(ROOT, 'AI.md')));
+  const skillFx = path.join(SKILL, 'effects');
+  fs.mkdirSync(skillFx, { recursive: true });
+  fs.readdirSync(skillFx).forEach((f) => { if (!fs.existsSync(path.join(docDir, f))) fs.unlinkSync(path.join(skillFx, f)); });
+  fs.readdirSync(docDir).forEach((f) => write(path.join(skillFx, f), read(path.join(docDir, f))));
+}
 
 // --- Rapport ---------------------------------------------------------------------
 
-console.log('fx.css : ' + (css.length / 1024).toFixed(1) + ' Ko · fx.js : ' + (js.length / 1024).toFixed(1) + ' Ko');
+console.log('fx.css : ' + (css.length / 1024).toFixed(1) + ' Ko · fx-all.js : ' + (js.length / 1024).toFixed(1) + ' Ko');
 console.log(effects.length + ' effets · ' + byCat.map((g) => g.cat + ' ' + g.list.length).join(' · '));
 if (problems.length) {
   console.log('\n' + problems.length + ' problème(s) :\n- ' + problems.join('\n- '));

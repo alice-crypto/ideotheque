@@ -17,6 +17,13 @@ scripts/build.js         assemble dist/, génère effects/*.md, le catalogue, AI
 
 Ne modifiez jamais `dist/`, `effects/` ni les tableaux entre balises `<!-- … -->` à la main : tout est régénéré par `npm run build`.
 
+## Fichiers construits
+
+- `dist/fx.css` et `dist/fx.js` contiennent le moteur et les 500 premiers effets (packs 00 à 22). Leur poids ne grandit plus.
+- `dist/packs/` contient chaque pack suivant : à charger après `fx.js`, avec `defer`, selon les effets utilisés.
+- `dist/fx-all.css` et `dist/fx-all.js` contiennent toute la bibliothèque. Le catalogue les utilise.
+- `plugin/` est figé à sa version publiée : `npm run build` n'y touche plus. Pour le mettre à jour volontairement, lancez `node scripts/build.js --plugin` et changez la version, ce qui ouvre une nouvelle soumission.
+
 ## Proposer un effet
 
 1. **Vérifiez qu'il n'existe pas déjà.** Cherchez dans le catalogue (`npm start`) et dans `AI.md`.
