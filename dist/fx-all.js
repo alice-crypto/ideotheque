@@ -12784,6 +12784,24 @@
       });
     }
   });
+
+  // Choisir un jour de livraison : celui où le livreur passe déjà
+  FX.register('eco-delivery-day', {
+    setup: function (el) {
+      var eco = U.num(el, 'fxEco', 3), box = U.make('div', 'fx-ed', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      o.textContent = 'Choisissez un jour';
+      for (var i = 1; i <= 5; i++) (function (i) {
+        var d = new Date(Date.now() + i * 86400000), b = U.make('button', i === eco ? 'fx-eco' : '', box);
+        b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+        b.innerHTML = '<small>' + d.toLocaleDateString('fr-FR', { weekday: 'short' }) + '</small><b>' + d.getDate() + '</b>' + (i === eco ? '<i aria-label="Livraison regroupée">●</i>' : '');
+        b.addEventListener('click', function () {
+          box.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+          o.textContent = i === eco ? 'Jour regroupé : le livreur passe déjà chez vos voisins' : 'Livraison du ' + d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+        });
+      })(i);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

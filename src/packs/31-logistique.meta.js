@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="tracking-detect"></div>',
     '<div data-fx="tracking-detect" style="color:var(--ink)"></div>',
     { a11y: 'Champ nommé, reconnaissance annoncée.' }),
+  E('eco-delivery-day', 'Micro-interaction',
+    'Parmi les jours de livraison, celui où le livreur passe déjà est mis en avant.',
+    'Un petit geste facile, sans leçon.',
+    '- `data-fx-eco` (3) : rang du jour regroupé',
+    'Boutiques, livraison, courses.',
+    'D\'afficher un gain écologique sans chiffre fiable.',
+    '<div data-fx="eco-delivery-day" data-fx-eco="3"></div>',
+    '<div data-fx="eco-delivery-day" style="color:var(--ink)"></div>',
+    { a11y: 'Vrais boutons, jour regroupé annoncé par le message.' }),
 ];

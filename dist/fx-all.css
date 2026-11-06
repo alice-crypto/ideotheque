@@ -7609,6 +7609,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="tracking-detect"].fx-hit .fx-td { display: inline-block; justify-self: start; padding: 2px 9px; border-radius: 99px; background: var(--fx-ok, #2eaf63); color: #fff; font-weight: 700; animation: fx-tracking-pop .3s var(--fx-ease-spring); }
 @keyframes fx-tracking-pop { from { transform: translateY(-5px) scale(.9); } }
 
+/* eco-delivery-day : un jour de livraison regroupé */
+[data-fx="eco-delivery-day"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 235px)); font-size: 12px; }
+[data-fx="eco-delivery-day"] .fx-ed { display: flex; gap: 4px; }
+[data-fx="eco-delivery-day"] button { position: relative; flex: 1; display: grid; padding: 5px 0 8px; border: 1px solid currentColor; border-radius: 8px; background: none; color: inherit; font: inherit; cursor: pointer; transition: background .2s, color .2s; }
+[data-fx="eco-delivery-day"] b { font-size: 16px; }
+[data-fx="eco-delivery-day"] small { font-size: 10px; }
+[data-fx="eco-delivery-day"] i { position: absolute; left: 0; right: 0; bottom: -4px; color: var(--fx-up, #2eaf63); font-style: normal; font-size: 12px; line-height: 1; animation: fx-eco-day 1.8s ease-in-out infinite; }
+[data-fx="eco-delivery-day"] .fx-eco { border-color: var(--fx-up, #2eaf63); border-width: 2px; }
+[data-fx="eco-delivery-day"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; }
+@keyframes fx-eco-day { 50% { transform: translateY(-2px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
