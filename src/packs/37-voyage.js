@@ -47,4 +47,28 @@
       go();
     }
   });
+
+  // Faire sa valise : le poids monte, la limite approche
+  FX.register('packing-weight', {
+    setup: function (el) {
+      var I = (el.dataset.fxItems || 'Vêtements:4.2|Chaussures:1.1|Trousse:0.8|Ordinateur:1.5|Appareil photo:0.9|Livres:1.4|Veste:1').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1]]; }), lim = U.num(el, 'fxLimit', 8), box = U.make('div', 'fx-pw', el), bar = U.make('div', 'fx-pw-b', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      U.make('i', '', bar);
+      I.forEach(function (x, k) {
+        var l = U.make('label', '', box), c = U.make('input', '', l);
+        c.type = 'checkbox'; c.value = x[1]; c.checked = k < 3;
+        l.appendChild(document.createTextNode(x[0]));
+        U.make('small', '', l).textContent = String(x[1]).replace('.', ',') + ' kg';
+      });
+      var go = function () {
+        var t = 0;
+        box.querySelectorAll(':checked').forEach(function (c) { t += +c.value; });
+        el.style.setProperty('--fx-q', Math.min(1, t / lim));
+        el.classList.toggle('fx-over', t > lim);
+        o.textContent = t.toFixed(1).replace('.', ',') + ' kg sur ' + lim + ' kg' + (t > lim ? ' : ' + (t - lim).toFixed(1).replace('.', ',') + ' kg de trop' : '');
+      };
+      box.addEventListener('change', go);
+      go();
+    }
+  });
 })(window.FX);
