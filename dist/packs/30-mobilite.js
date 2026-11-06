@@ -268,4 +268,22 @@
       go();
     }
   });
+
+  // Un plan de réseau où l'on isole une ou plusieurs lignes
+  FX.register('network-lines', {
+    setup: function (el) {
+      var L = [['A', '#e4322b', 'M8 60H60L100 20H152'], ['B', '#1d6fe0', 'M8 20H50L100 70H152'], ['C', '#2eaf63', 'M80 4V86']];
+      el.innerHTML = '<svg viewBox="0 0 160 90" aria-hidden="true">' + L.map(function (l, i) { return '<path data-i="' + i + '" pathLength="1" d="' + l[2] + '" stroke="' + l[1] + '"/>'; }).join('') + '<circle cx="80" cy="40" r="4"/></svg><div class="fx-nl"></div>';
+      var f = el.querySelector('.fx-nl'), P = el.querySelectorAll('path'), on = [true, true, true];
+      L.forEach(function (l, i) {
+        var b = U.make('button', '', f);
+        b.type = 'button'; b.textContent = l[0]; b.style.setProperty('--fx-c', l[1]); b.setAttribute('aria-label', 'Ligne ' + l[0]); b.setAttribute('aria-pressed', 'true');
+        b.addEventListener('click', function () {
+          on[i] = !on[i];
+          b.setAttribute('aria-pressed', on[i]);
+          P[i].classList.toggle('fx-off', !on[i]);
+        });
+      });
+    }
+  });
 })(window.FX);

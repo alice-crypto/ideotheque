@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="pass-or-ticket" data-fx-ticket="2.1" data-fx-pass="42"></div>',
     '<div data-fx="pass-or-ticket" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, conclusion annoncée.' }),
+  E('network-lines', 'Navigation',
+    'Des pastilles de ligne allument ou éteignent les tracés sur le plan du réseau.',
+    'Le plan compliqué devient simple, ligne par ligne.',
+    'Aucun réglage dans l\'attribut : adaptez les tracés à votre réseau.',
+    'Transports, réseaux de distribution, parcours multiples.',
+    'De se fier à la seule couleur : gardez le nom ou la lettre de chaque ligne.',
+    '<div data-fx="network-lines"></div>',
+    '<div data-fx="network-lines" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés par ligne avec `aria-pressed`.' }),
 ];
