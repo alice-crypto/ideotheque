@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="thermostat-dial" data-fx-value="20"></div>',
     '<div data-fx="thermostat-dial" style="color:var(--ink)"></div>',
     { a11y: 'Rôle `slider`, flèches du clavier et boutons +/−.' }),
+  E('appliance-meter', 'Micro-interaction',
+    'Allumer des appareils accélère le disque du compteur et chiffre le coût à l\'heure.',
+    'On entend presque tourner le compteur.',
+    '- `data-fx-items` : « appareil:watts » séparés par `|`\n- `data-fx-kwh` (0.21)',
+    'Économies d\'énergie, écoles, fournisseurs.',
+    'Des puissances d\'exemple présentées comme celles de vos appareils.',
+    '<div data-fx="appliance-meter" data-fx-items="Four:2400|Télé:100"></div>',
+    '<div data-fx="appliance-meter" style="color:var(--ink)"></div>',
+    { a11y: 'Vraies cases, puissance et coût annoncés. Disque fixe en mouvement réduit.' }),
 ];
