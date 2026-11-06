@@ -174,4 +174,20 @@
       el.innerHTML = '<div class="fx-cl-c" aria-hidden="true"><i class="m"></i><i class="b"></i><i class="h"></i></div><div class="fx-cl-l">' + t + '</div>';
     }
   });
+
+  // Une silhouette à côté d'une hauteur pour la rendre concrète
+  FX.register('scale-figure', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-sf" aria-hidden="true"><em></em><i></i></div><label>Hauteur <input type="range" min="2.2" max="12" step=".1"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxHeight', 5.2);
+      var go = function () {
+        var h = +r.value;
+        el.style.setProperty('--fx-q', 1.75 / h);
+        o.innerHTML = '<b>' + String(h.toFixed(1)).replace('.', ',') + ' m</b>, soit ' + String((h / 1.75).toFixed(1)).replace('.', ',') + ' personnes debout l\'une sur l\'autre';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
