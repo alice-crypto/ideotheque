@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="print-layers" data-fx-value="13"></div>',
     '<div data-fx="print-layers" style="color:var(--ink)"></div>',
     { trigger: 'Relancer', a11y: 'Curseur nommé, avancement annoncé.' }),
+  E('weld-sparks', 'Texte',
+    'Un point de soudure court sous le titre, en projetant des étincelles.',
+    'Le chaud de l\'atelier, l\'envie de fabriquer.',
+    '- `--fx-weld`',
+    'Métallurgie, ateliers, titres d\'affiche industrielle.',
+    'De le répéter : ce geste doit rester rare pour garder son impact.',
+    '<h2 data-fx="weld-sparks">Fabriqué ici</h2>',
+    '<h2 class="demo-title" data-fx="weld-sparks">Fabriqué ici</h2>',
+    { trigger: 'Rejouer', a11y: 'Le titre reste un vrai texte, et le canvas est masqué. En mouvement réduit, le trait apparaît seul.' }),
 ];

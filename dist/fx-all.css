@@ -8030,6 +8030,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="print-layers"] input { min-width: 0; accent-color: var(--fx-accent); }
 [data-fx="print-layers"] output b { font-size: 15px; }
 
+/* weld-sparks : un titre soudé */
+[data-fx="weld-sparks"] { display: inline-block; font-weight: 900; padding-bottom: 8px; background: linear-gradient(90deg, #6d7077, var(--fx-weld, #ffb24a) 94%, #fff) no-repeat 0 100% / calc(var(--fx-q, 0) * 100%) 4px; }
+[data-fx="weld-sparks"] canvas { position: absolute; left: 0; top: 0; width: 100%; pointer-events: none; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -13507,6 +13507,38 @@
     },
     trigger: function (el) { var r = el.querySelector('input'); r.value = 0; U.tween(el, 1600, function (p) { r.value = Math.round(p * r.max); r.dispatchEvent(new Event('input')); }); }
   });
+
+  // Un titre soudé : un point lumineux avance et projette des étincelles
+  FX.register('weld-sparks', {
+    entrance: true,
+    setup: function (el) {
+      var c = U.make('canvas', '', el), x = c.getContext('2d'), P = [];
+      c.setAttribute('aria-hidden', 'true');
+      U.ensurePositioned(el);
+      var size = function () { var r = el.getBoundingClientRect(), d = window.devicePixelRatio || 1; c.width = r.width * d; c.height = (r.height + 50) * d; c.style.height = (r.height + 50) + 'px'; x = c.getContext('2d'); x.scale(d, d); el._fxW = r.width; el._fxH = r.height; };
+      size(); U.onResize(size);
+      el._fxP = P;
+      el._fxDraw = function (dt) {
+        x.clearRect(0, 0, el._fxW, el._fxH + 50);
+        if (el._fxQ < 1) {
+          el._fxQ = Math.min(1, el._fxQ + dt / 1.5);
+          el.style.setProperty('--fx-q', el._fxQ);
+          for (var i = 0; i < 5; i++) P.push({ x: el._fxQ * el._fxW, y: el._fxH - 2, vx: U.rand(-110, 110), vy: U.rand(-140, 20), l: U.rand(.2, .7) });
+        }
+        for (var k = P.length - 1; k >= 0; k--) {
+          var p = P[k];
+          p.l -= dt; p.vy += 420 * dt; p.x += p.vx * dt; p.y += p.vy * dt;
+          if (p.l <= 0) { P.splice(k, 1); continue; }
+          x.strokeStyle = 'rgba(255,' + Math.round(150 + p.l * 150) + ',80,' + Math.min(1, p.l * 2) + ')';
+          x.beginPath(); x.moveTo(p.x, p.y); x.lineTo(p.x - p.vx * .025, p.y - p.vy * .025); x.stroke();
+        }
+      };
+      el._fxQ = 1;
+    },
+    enter: function (el) { if (U.reduced) { el.style.setProperty('--fx-q', 1); return; } el._fxQ = 0; },
+    tick: function (el, dt) { if (el._fxDraw && !U.reduced) el._fxDraw(dt); },
+    trigger: function (el) { el._fxQ = 0; }
+  });
 })(window.FX);
 
 window.FX._boot();
