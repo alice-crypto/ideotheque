@@ -6565,6 +6565,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="sold-sign"].fx-sold .fx-ss-p { background: var(--fx-sold, #e10600); color: #fff; }
 @keyframes fx-ss { 15% { transform: rotate(10deg); } 35% { transform: rotate(-7deg); } 55% { transform: rotate(4deg); } 75% { transform: rotate(-2deg); } }
 
+/* rent-split : partager le loyer */
+[data-fx="rent-split"] { display: grid; gap: 4px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="rent-split"] label { display: grid; grid-template-columns: 34px 1fr 30px 40px; gap: 4px; align-items: center; }
+[data-fx="rent-split"] input { width: 100%; min-width: 0; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="rent-split"] em { font-style: normal; opacity: .7; text-align: right; }
+[data-fx="rent-split"] b { text-align: right; font-size: 13px; font-variant-numeric: tabular-nums; }
+[data-fx="rent-split"] small { font-size: 10px; opacity: .7; margin-top: 3px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

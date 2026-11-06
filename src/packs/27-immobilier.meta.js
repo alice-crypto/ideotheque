@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="sold-sign" data-fx-step="2"></div>',
     '<div data-fx="sold-sign" style="color:var(--ink)"></div>',
     { trigger: 'Changer d\'état', a11y: 'L\'état est écrit dans une région annoncée.' }),
+  E('rent-split', 'Micro-interaction',
+    'Le loyer se répartit selon la taille des chambres, avec une part commune à égalité.',
+    'Juste et transparent, les discussions tombent d\'elles-mêmes.',
+    '- `data-fx-rent` (1500), `data-fx-common` (40)\n- `data-fx-items` : « nom:m² » séparés par `|`',
+    'Colocation, partage de bureaux, dépenses.',
+    'D\'y voir une règle unique : d\'autres critères comptent, comme la lumière.',
+    '<div data-fx="rent-split" data-fx-rent="1500" data-fx-items="Aya:18|Léo:12"></div>',
+    '<div data-fx="rent-split" style="color:var(--ink)"></div>',
+    { a11y: 'Chaque curseur est nommé par la personne et la mesure.' }),
 ];

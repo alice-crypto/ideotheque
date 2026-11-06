@@ -10928,6 +10928,28 @@
     },
     trigger: function (el) { el._fxSet((el._fxN() + 1) % el._fxLen); }
   });
+
+  // Partager le loyer selon la taille des chambres
+  FX.register('rent-split', {
+    setup: function (el) {
+      var rent = U.num(el, 'fxRent', 1500), commonQ = U.num(el, 'fxCommon', 40) / 100, P = (el.dataset.fxItems || 'Aya:18|Léo:12|Sami:9').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], s: +p[1] }; });
+      P.forEach(function (p) {
+        var l = U.make('label', '', el);
+        l.innerHTML = '<span>' + p.n + '</span><input type="range" min="6" max="30" value="' + p.s + '" aria-label="Chambre de ' + p.n + ', en mètres carrés"><em></em><b></b>';
+        p.i = l.querySelector('input'); p.b = l.querySelector('b'); p.e = l.querySelector('em');
+      });
+      var go = function () {
+        var tot = P.reduce(function (t, p) { return t + +p.i.value; }, 0);
+        P.forEach(function (p) {
+          var v = rent * commonQ / P.length + rent * (1 - commonQ) * p.i.value / tot;
+          p.b.textContent = Math.round(v) + ' €'; p.e.textContent = p.i.value + ' m²';
+        });
+      };
+      el.addEventListener('input', go);
+      U.make('small', '', el).textContent = 'Loyer de ' + rent + ' €, ' + Math.round(commonQ * 100) + ' % partagés à égalité';
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
