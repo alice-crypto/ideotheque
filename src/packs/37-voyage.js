@@ -137,4 +137,15 @@
       o.textContent = 'Choisissez ' + max + ' sièges';
     }
   });
+
+  // Une carte postale qu'on retourne pour lire le message
+  FX.register('postcard-flip', {
+    setup: function (el) {
+      var d = el.dataset, img = d.fxImage || 'assets/dune.svg';
+      el.innerHTML = '<button type="button" aria-pressed="false" aria-label="Retourner la carte postale"><span class="fx-pf2"><span class="f"><img alt="" src="' + img + '"><b>' + (d.fxPlace || 'Bons baisers') + '</b></span><span class="k"><em>' + (d.fxText || 'Il fait beau, la mer est chaude. On pense à vous.') + '<small>' + new Date().toLocaleDateString('fr-FR') + '</small></em><i></i></span></span></button>';
+      var b = el.firstChild;
+      b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); });
+    },
+    trigger: function (el) { el.firstChild.click(); }
+  });
 })(window.FX);
