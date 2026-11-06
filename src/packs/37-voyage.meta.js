@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="suitcase-open"><p>Crème solaire, passeport…</p></div>',
     '<div data-fx="suitcase-open" style="color:var(--ink)"><p style="margin:0">Crème solaire, passeport, bonne humeur.</p></div>',
     { trigger: 'Ouvrir', a11y: 'Bouton `aria-expanded`, contenu `hidden` tant que la valise est fermée.' }),
+  E('phrase-card', 'Micro-interaction',
+    'Une carte retourne une expression sur sa traduction, sa prononciation, et peut la lire à voix haute.',
+    'Se débrouiller en terrasse, sourire aux lèvres.',
+    '- `data-fx-items` : « français:traduction:prononciation:langue » séparés par `|`',
+    'Guides, écoles de langue, voyages.',
+    'De croire la synthèse vocale parfaite : elle dépend de l\'appareil.',
+    '<div data-fx="phrase-card"></div>',
+    '<div data-fx="phrase-card" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons réels, bouton d\'écoute nommé, carte `aria-pressed`.' }),
 ];

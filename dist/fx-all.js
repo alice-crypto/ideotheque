@@ -15565,6 +15565,21 @@
     },
     trigger: function (el) { el.firstChild.click(); }
   });
+
+  // Une carte d'expression : on la retourne, et on l'écoute
+  FX.register('phrase-card', {
+    setup: function (el) {
+      var P = (el.dataset.fxItems || 'Bonjour:Olá:o-LA:pt-PT|Merci:Obrigado:o-bri-GA-dou:pt-PT|L\'addition, s\'il vous plaît:A conta, por favor:a CON-ta por fa-VOR:pt-PT').split('|').map(function (r) { return r.split(':'); }), n = 0;
+      el.innerHTML = '<button type="button" class="fx-ph2-c" aria-pressed="false"><span class="q"></span><span class="a"></span></button><div class="fx-ph2-b"><button type="button" class="s" aria-label="Écouter">🔊</button><button type="button" class="n">Suivante</button></div>';
+      var c = el.querySelector('.fx-ph2-c'), q = el.querySelector('.q'), a = el.querySelector('.a'), S = el.querySelector('.s'), N = el.querySelector('.n');
+      var show = function () { var p = P[n]; c.setAttribute('aria-pressed', 'false'); q.textContent = p[0]; a.innerHTML = '<b>' + p[1] + '</b><small>' + p[2] + '</small>'; };
+      c.addEventListener('click', function () { c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') !== 'true'); });
+      N.addEventListener('click', function () { n = (n + 1) % P.length; show(); });
+      if (!window.speechSynthesis) S.hidden = true;
+      S.addEventListener('click', function () { var u = new SpeechSynthesisUtterance(P[n][1]); u.lang = P[n][3]; speechSynthesis.cancel(); speechSynthesis.speak(u); });
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
