@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="led-cross"></div>',
     '<div data-fx="led-cross"></div>',
     { a11y: 'Rôle `img`. Avec le mouvement réduit, la croix reste allumée et fixe.' }),
+  E('capsule-switch', 'Micro-interaction',
+    'Un interrupteur prend la forme d\'une gélule dont la moitié colorée glisse.',
+    'Petit clin d\'œil de marque, sans sacrifier l\'usage.',
+    '- `--fx-off`, `--fx-accent`',
+    'Parapharmacie, réglages d\'une application santé.',
+    'Les contextes sérieux où l\'humour de l\'objet gênerait.',
+    '<label data-fx="capsule-switch"><input type="checkbox"> Rappels</label>',
+    '<label data-fx="capsule-switch" style="color:var(--ink);font-size:14px"><input type="checkbox"> Rappels activés</label>',
+    { a11y: 'Vraie case avec rôle `switch`, focus visible.' }),
 ];
