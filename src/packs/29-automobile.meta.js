@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="charge-time" data-fx-battery="60"></div>',
     '<div data-fx="charge-time" style="color:var(--ink)"></div>',
     { a11y: 'Groupe radio nommé, curseur nommé, résultat annoncé.' }),
+  E('fuel-vs-electric', 'Présentation',
+    'Un curseur de kilométrage compare le coût annuel d\'énergie, essence et électrique.',
+    'Un argument chiffré, pas un slogan.',
+    '- `data-fx-km`, `data-fx-litre`, `data-fx-cons`, `data-fx-kwh`, `data-fx-elec`',
+    'Constructeurs, comparateurs, flottes.',
+    'D\'oublier que l\'énergie n\'est pas tout : entretien, achat et assurance comptent aussi.',
+    '<div data-fx="fuel-vs-electric" data-fx-km="15000"></div>',
+    '<div data-fx="fuel-vs-electric" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, montants écrits et annoncés.' }),
 ];
