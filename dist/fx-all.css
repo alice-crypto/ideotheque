@@ -7994,6 +7994,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="tolerance-gauge"] output b { font-size: 16px; color: var(--fx-up, #2eaf63); }
 [data-fx="tolerance-gauge"].fx-bad output b { color: var(--fx-down, #e10600); }
 
+/* lot-trace : le chemin d'un lot */
+[data-fx="lot-trace"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="lot-trace"] form { display: flex; gap: 4px; }
+[data-fx="lot-trace"] input { flex: 1; min-width: 0; padding: 4px; font: inherit; }
+[data-fx="lot-trace"] button { padding: 4px 10px; border: 0; border-radius: 5px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+[data-fx="lot-trace"] ol { display: grid; margin: 0; padding: 0; list-style: none; }
+[data-fx="lot-trace"] li { position: relative; padding: 3px 0 3px 15px; animation: fx-lot-link .35s var(--fx-ease-out) calc(var(--fx-i) * 90ms) backwards; }
+[data-fx="lot-trace"] li::before { content: ''; position: absolute; left: 2px; top: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--fx-accent); }
+[data-fx="lot-trace"] li:not(:last-child)::after { content: ''; position: absolute; left: 5px; top: 14px; bottom: -8px; width: 1px; background: currentColor; }
+[data-fx="lot-trace"] output { opacity: .75; }
+@keyframes fx-lot-link { from { opacity: 0; transform: translateY(-6px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

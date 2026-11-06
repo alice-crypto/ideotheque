@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="tolerance-gauge" data-fx-nominal="25" data-fx-tol="0.05"></div>',
     '<div data-fx="tolerance-gauge" style="color:var(--ink)"></div>',
     { a11y: 'Champ étiqueté, verdict écrit et annoncé.' }),
+  E('lot-trace', 'Navigation',
+    'Un numéro de lot déroule toute la chaîne, de la matière à l\'expédition.',
+    'La confiance d\'une origine qu\'on peut vérifier.',
+    '- `data-fx-data` : JSON lot vers liste d\'étapes',
+    'Traçabilité, alimentation, luxe, pièces critiques.',
+    'De la présenter comme une preuve sans système vérifiable derrière.',
+    '<div data-fx="lot-trace"></div>',
+    '<div data-fx="lot-trace" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai formulaire, liste ordonnée, résultat annoncé.' }),
 ];

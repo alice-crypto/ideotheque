@@ -129,4 +129,22 @@
       go();
     }
   });
+
+  // Retrouver le chemin d'un lot, à partir de son numéro
+  FX.register('lot-trace', {
+    setup: function (el) {
+      var D = JSON.parse(el.dataset.fxData || '{"L-2048":["Bois du Jura, 3 mars","Découpe, atelier 2, 5 mars","Assemblage, 9 mars","Contrôle, lot conforme, 10 mars","Expédié à Lyon, 12 mars"]}');
+      el.innerHTML = '<form><input placeholder="Numéro de lot" aria-label="Numéro de lot" value="L-2048"><button>Tracer</button></form><ol></ol><output aria-live="polite"></output>';
+      var i = el.querySelector('input'), ol = el.querySelector('ol'), o = el.querySelector('output');
+      var go = function () {
+        var c = D[i.value.trim().toUpperCase()];
+        ol.innerHTML = '';
+        if (!c) { o.textContent = 'Lot inconnu'; return; }
+        c.forEach(function (t, k) { var li = U.make('li', '', ol); li.textContent = t; li.style.setProperty('--fx-i', k); });
+        o.textContent = c.length + ' étapes retrouvées (exemple fictif)';
+      };
+      el.querySelector('form').addEventListener('submit', function (e) { e.preventDefault(); go(); });
+      go();
+    }
+  });
 })(window.FX);
