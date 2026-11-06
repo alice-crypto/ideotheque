@@ -426,4 +426,17 @@
       el.style.setProperty('--fx-u', Math.sqrt(12.5 / max));
     }
   });
+
+  // Une pièce vide qui se meuble d'un geste
+  FX.register('staging-toggle', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-st" aria-hidden="true"><i class="s"></i><i class="t"></i><i class="l"></i><i class="p"></i><i class="r"></i></div><button type="button" aria-pressed="false"></button><small>Ameublement simulé</small>';
+      var b = el.querySelector('button');
+      var set = function (on) { el.classList.toggle('fx-on', on); b.setAttribute('aria-pressed', on); b.textContent = on ? 'Voir la pièce vide' : 'Voir meublé'; };
+      b.addEventListener('click', function () { set(!el.classList.contains('fx-on')); });
+      el._fxSet = set;
+      set(el.dataset.fxOn === 'true');
+    },
+    trigger: function (el) { el._fxSet(!el.classList.contains('fx-on')); }
+  });
 })(window.FX);
