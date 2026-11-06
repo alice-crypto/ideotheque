@@ -14749,6 +14749,22 @@
       for (var i = 0; i < 6; i++) U.make('u', '', b).style.setProperty('--fx-i', i);
     }
   });
+
+  // Une enseigne néon qui dit la vérité : ouvert ou fermé
+  FX.register('neon-open', {
+    setup: function (el) {
+      var a = U.num(el, 'fxFrom', 11), b = U.num(el, 'fxTo', 23);
+      el.innerHTML = '<span class="fx-no2"></span>';
+      var s = el.firstChild;
+      var go = function () {
+        var h = new Date().getHours(), on = a < b ? h >= a && h < b : h >= a || h < b;
+        el.classList.toggle('fx-on', on);
+        s.textContent = on ? (el.dataset.fxOpen || 'Ouvert') : (el.dataset.fxClosed || 'Fermé');
+      };
+      go();
+      setInterval(go, 60000);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

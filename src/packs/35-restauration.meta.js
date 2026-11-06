@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="chop-loader"></div>',
     '<div data-fx="chop-loader"></div>',
     { a11y: 'Rôle `status` nommé. La bibliothèque coupe l\'animation en mouvement réduit.' }),
+  E('neon-open', 'État',
+    'Une enseigne néon s\'allume en grésillant, et dit vraiment si l\'établissement est ouvert.',
+    'Un néon de bar dans une rue humide.',
+    '- `data-fx-from` (11), `data-fx-to` (23), `data-fx-open`, `data-fx-closed`, `--fx-neon`',
+    'Bars, restaurants, soirées.',
+    'Un clignotement répété sur une grande surface : gardez un petit format, le texte reste stable.',
+    '<div data-fx="neon-open" data-fx-from="11" data-fx-to="23"></div>',
+    '<div data-fx="neon-open" data-fx-from="0" data-fx-to="24"></div>',
+    { a11y: 'Le mot est un vrai texte ; la bibliothèque coupe le clignotement en mouvement réduit.' }),
 ];
