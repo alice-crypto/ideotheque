@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="search-alert" data-fx-criteria="T3, Lyon"></div>',
     '<div data-fx="search-alert" style="color:var(--ink)"></div>',
     { a11y: 'Bouton `aria-pressed`, message annoncé.' }),
+  E('rent-vs-buy', 'Présentation',
+    'Deux courbes de coût montrent à partir de quelle année acheter devient avantageux.',
+    'Une vieille dispute de famille enfin tranchée, à peu près.',
+    '- `data-fx-price` (250000), `data-fx-rent` (950)',
+    'Médias, banques, comparaison d\'une location et d\'un achat de matériel.',
+    'De trancher une vraie décision avec ce modèle simplifié, sans intérêts ni revente.',
+    '<div data-fx="rent-vs-buy" data-fx-price="250000" data-fx-rent="950"></div>',
+    '<div data-fx="rent-vs-buy" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, conclusion écrite et annoncée.' }),
 ];

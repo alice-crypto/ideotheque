@@ -6495,6 +6495,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="search-alert"] small { opacity: .8; }
 @keyframes fx-al { 20% { transform: rotate(22deg); } 40% { transform: rotate(-18deg); } 60% { transform: rotate(12deg); } 80% { transform: rotate(-6deg); } }
 
+/* rent-vs-buy : louer ou acheter */
+[data-fx="rent-vs-buy"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="rent-vs-buy"] svg { display: block; width: 100%; height: 76px; overflow: visible; }
+[data-fx="rent-vs-buy"] path { fill: none; stroke-width: 2; vector-effect: non-scaling-stroke; }
+[data-fx="rent-vs-buy"] .r { stroke: var(--fx-accent); }
+[data-fx="rent-vs-buy"] .b { stroke: var(--fx-accent-2); }
+[data-fx="rent-vs-buy"] line { stroke: currentColor; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
+[data-fx="rent-vs-buy"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="rent-vs-buy"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="rent-vs-buy"] output { font-size: 13px; }
+[data-fx="rent-vs-buy"] small { font-size: 10px; opacity: .7; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
