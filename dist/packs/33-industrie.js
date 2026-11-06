@@ -75,4 +75,25 @@
     },
     trigger: function (el) { el._fxFlip(); }
   });
+
+  // Les quatre temps d'un moteur, avec une vraie bielle
+  FX.register('piston-cycle', {
+    setup: function (el) {
+      var S = ['Admission', 'Compression', 'Combustion', 'Échappement'];
+      el.innerHTML = '<svg viewBox="0 0 80 120" aria-hidden="true"><rect class="fx-pi2-c" x="20" y="4" width="40" height="72"/><rect class="fx-pi2-g" x="22" y="6" width="36" height="0"/><rect class="fx-pi2-p" x="22" y="0" width="36" height="16"/><line class="fx-pi2-r" x1="40" y1="0" x2="40" y2="0"/><circle class="fx-pi2-w" cx="40" cy="96" r="20"/><circle class="fx-pi2-h" cx="40" cy="96" r="4"/></svg><output aria-live="off"></output>';
+      el._fxP = el.querySelector('.fx-pi2-p'); el._fxR = el.querySelector('.fx-pi2-r'); el._fxG = el.querySelector('.fx-pi2-g'); el._fxH = el.querySelector('.fx-pi2-h'); el._fxO = el.querySelector('output'); el._fxS = S;
+      el._fxA = 0;
+      el._fxDraw = function (a) {
+        var r = 18, L = 52, x = 40 + r * Math.sin(a), y = 96 - r * Math.cos(a), py = y - Math.sqrt(L * L - Math.pow(x - 40, 2)), k = Math.floor((a / (Math.PI * 4)) % 1 * 4);
+        el._fxP.setAttribute('y', py - 12);
+        el._fxR.setAttribute('x1', 40); el._fxR.setAttribute('y1', py); el._fxR.setAttribute('x2', x); el._fxR.setAttribute('y2', y);
+        el._fxH.setAttribute('cx', x); el._fxH.setAttribute('cy', y);
+        el._fxG.setAttribute('height', Math.max(0, py - 18));
+        el._fxG.setAttribute('class', 'fx-pi2-g k' + k);
+        el._fxO.textContent = S[k];
+      };
+      el._fxDraw(0);
+    },
+    tick: function (el, dt) { if (U.reduced) return; el._fxA = (el._fxA + dt * U.num(el, 'fxSpeed', 3)) % (Math.PI * 4); el._fxDraw(el._fxA); }
+  });
 })(window.FX);

@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="machine-wall" data-fx-items="P1:run|P3:stop"></div>',
     '<div data-fx="machine-wall" style="color:var(--ink)"></div>',
     { trigger: 'Changer un état', a11y: 'L\'état et la durée sont écrits en mots. Le résumé est annoncé.' }),
+  E('piston-cycle', 'Présentation',
+    'Un piston monte et descend avec sa bielle, et chaque temps du moteur est nommé.',
+    'Le plaisir de voir comment ça marche, vraiment.',
+    '- `data-fx-speed` (3)\n- `--fx-w`, `--fx-accent`',
+    'Pédagogie, mécanique, automobile.',
+    'Une précision technique réelle : le rapport des longueurs reste indicatif.',
+    '<div data-fx="piston-cycle"></div>',
+    '<div data-fx="piston-cycle" style="color:var(--ink)"></div>',
+    { a11y: 'Le nom du temps est écrit. Immobile en mouvement réduit.' }),
 ];

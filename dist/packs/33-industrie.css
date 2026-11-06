@@ -31,3 +31,16 @@
 [data-fx="machine-wall"] [data-s="stop"] { background: repeating-linear-gradient(45deg, #b4120e 0 6px, #8d0c09 6px 12px); animation: fx-machine-stop 1.2s infinite; }
 [data-fx="machine-wall"] output { font-size: 12px; font-weight: 700; }
 @keyframes fx-machine-stop { 50% { filter: brightness(1.25); } }
+
+/* piston-cycle : les quatre temps d'un moteur */
+[data-fx="piston-cycle"] { display: grid; justify-items: center; gap: 4px; width: var(--fx-w, 120px); font-size: 13px; font-weight: 700; }
+[data-fx="piston-cycle"] svg { width: 100%; overflow: visible; }
+[data-fx="piston-cycle"] .fx-pi2-c { fill: none; stroke: currentColor; stroke-width: 3; }
+[data-fx="piston-cycle"] .fx-pi2-p { fill: #8d939d; }
+[data-fx="piston-cycle"] .fx-pi2-r { stroke: currentColor; stroke-width: 4; stroke-linecap: round; }
+[data-fx="piston-cycle"] .fx-pi2-w { fill: none; stroke: color-mix(in srgb, currentColor 35%, transparent); stroke-width: 2; }
+[data-fx="piston-cycle"] .fx-pi2-h { fill: var(--fx-accent); }
+[data-fx="piston-cycle"] .fx-pi2-g { fill: #bcdcff; }
+[data-fx="piston-cycle"] .fx-pi2-g.k1 { fill: #ffd98a; }
+[data-fx="piston-cycle"] .fx-pi2-g.k2 { fill: #ff5a1f; }
+[data-fx="piston-cycle"] .fx-pi2-g.k3 { fill: #9a9ea5; }
