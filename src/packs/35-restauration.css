@@ -160,3 +160,17 @@
 [data-fx="latte-layers"] .fx-ll-c i:first-child { color: #fff; }
 [data-fx="latte-layers"] output { text-align: center; }
 @keyframes fx-latte-pour { from { flex-grow: .001; opacity: 0; } }
+
+/* allergen-matrix : un tableau d'allergènes */
+[data-fx="allergen-matrix"] { width: min(100%, var(--fx-w, 240px)); font-size: 10px; }
+[data-fx="allergen-matrix"] table { width: 100%; border-collapse: collapse; }
+[data-fx="allergen-matrix"] th, [data-fx="allergen-matrix"] td { padding: 3px 2px; font-weight: 400; text-align: center; transition: background .2s; }
+[data-fx="allergen-matrix"] tbody th { text-align: left; font-weight: 700; }
+[data-fx="allergen-matrix"] tbody tr + tr > * { border-top: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
+[data-fx="allergen-matrix"] button { padding: 1px 3px; border: 0; background: none; color: inherit; font: inherit; font-size: 9px; font-weight: 700; cursor: pointer; }
+[data-fx="allergen-matrix"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; border-radius: 3px; }
+[data-fx="allergen-matrix"] .fx-col { background: color-mix(in srgb, var(--fx-accent) 24%, transparent); }
+[data-fx="allergen-matrix"] .fx-has th { color: var(--fx-down, #e10600); }
+[data-fx="allergen-matrix"] i { font-style: normal; }
+[data-fx="allergen-matrix"] small { display: block; margin-top: 5px; opacity: .7; }
+[data-fx="allergen-matrix"] .fx-sr { position: absolute; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; }
