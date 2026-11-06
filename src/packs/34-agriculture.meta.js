@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="moisture-grid" data-fx-min="35"></div>',
     '<div data-fx="moisture-grid" style="color:var(--ink)"></div>',
     { a11y: 'Chaque case a une valeur écrite et un contour pour les zones sèches.' }),
+  E('rain-gauge', 'Présentation',
+    'Un pluviomètre se remplit du cumul de la semaine, à côté de la normale.',
+    'Le geste du matin, devant la grange.',
+    '- `data-fx-data` : 7 relevés en mm\n- `data-fx-normal` (22)',
+    'Agriculture, météo locale, jardinage.',
+    'Une normale inventée : elle dépend du lieu et de la saison.',
+    '<div data-fx="rain-gauge" data-fx-data="2,0,6,14,3,0,8"></div>',
+    '<div data-fx="rain-gauge" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le cumul est écrit, le dessin est décoratif.' }),
 ];

@@ -32,3 +32,17 @@
 [data-fx="moisture-grid"] button:disabled { opacity: .4; }
 [data-fx="moisture-grid"] output { font-weight: 700; }
 @keyframes fx-moisture-rain { from { transform: translateY(-20%); opacity: 1; } to { transform: translateY(20%); opacity: 0; } }
+
+/* rain-gauge : un pluviomètre */
+[data-fx="rain-gauge"] { display: grid; grid-template-columns: 34px 1fr; gap: 3px 10px; align-items: end; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="rain-gauge"] .fx-rg2 { position: relative; height: 96px; border: 2px solid currentColor; border-top: 0; border-radius: 0 0 8px 8px; background: repeating-linear-gradient(transparent 0 9px, color-mix(in srgb, currentColor 30%, transparent) 9px 10px); overflow: hidden; }
+[data-fx="rain-gauge"] .fx-rg2 i { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: color-mix(in srgb, #2d82d6 80%, transparent); transition: height 1.2s var(--fx-ease-out); }
+.fx-in[data-fx="rain-gauge"] .fx-rg2 i { height: calc(var(--fx-t) * 100%); }
+[data-fx="rain-gauge"] em { position: absolute; left: 0; right: 0; bottom: calc(var(--fx-n) * 100%); border-top: 2px dashed var(--fx-accent); }
+[data-fx="rain-gauge"] .fx-rg2-w { display: flex; gap: 2px; height: 96px; }
+[data-fx="rain-gauge"] .fx-rg2-w span { position: relative; flex: 1; display: flex; align-items: flex-end; padding-bottom: 14px; }
+[data-fx="rain-gauge"] .fx-rg2-w i { display: block; width: 100%; height: 0; background: #2d82d6; transition: height .5s var(--fx-ease-out) calc(var(--fx-i) * 90ms); }
+.fx-in[data-fx="rain-gauge"] .fx-rg2-w i { height: calc(var(--fx-q) * 100%); }
+[data-fx="rain-gauge"] small { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font-size: 9px; }
+[data-fx="rain-gauge"] p { grid-column: 1 / -1; margin: 3px 0 0; }
+[data-fx="rain-gauge"] b { font-size: 18px; }
