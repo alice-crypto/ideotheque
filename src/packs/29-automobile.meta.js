@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="seat-fold" data-fx-boot="480"></div>',
     '<div data-fx="seat-fold" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés avec `aria-pressed`, volume annoncé.' }),
+  E('key-fob', 'Micro-interaction',
+    'Deux boutons verrouillent la voiture, qui répond en faisant clignoter ses feux.',
+    'Le petit bip rassurant, en image.',
+    'Aucun réglage. L\'état est écrit.',
+    'Véhicules connectés, serrures, mises en scène d\'application.',
+    'Une vraie commande sans authentification : cet effet n\'est qu\'une interface.',
+    '<div data-fx="key-fob"></div>',
+    '<div data-fx="key-fob" style="color:var(--ink)"></div>',
+    { a11y: 'Vrais boutons, état annoncé.' }),
 ];
