@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="crane-lift">120 logements</div>',
     '<div data-fx="crane-lift" style="color:var(--ink)">120 logements</div>',
     { trigger: 'Rejouer', a11y: 'Le contenu reste lu tel quel ; le dessin est décoratif.' }),
+  E('scale-figure', 'Présentation',
+    'Une silhouette de 1,75 m rend concrète la hauteur d\'un volume.',
+    'Le chiffre se ressent : on imagine y entrer.',
+    '- `data-fx-height` (5.2)',
+    'Architecture, salles, volumes industriels.',
+    'Une silhouette seule pour figurer tous les corps : variez les repères si vous le pouvez.',
+    '<div data-fx="scale-figure" data-fx-height="5.2"></div>',
+    '<div data-fx="scale-figure" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat écrit et annoncé.' }),
 ];
