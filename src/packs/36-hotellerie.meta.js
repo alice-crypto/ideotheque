@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="wakeup-call" data-fx-time="07:30"></div>',
     '<div data-fx="wakeup-call" style="color:var(--ink)"></div>',
     { a11y: 'Vrai champ horaire étiqueté, état annoncé.' }),
+  E('door-reveal', 'Image',
+    'Une porte numérotée s\'ouvre sur une image, au survol, au focus ou au toucher.',
+    'Entrer dans la chambre avant de réserver.',
+    '- `data-fx-number` (207), `--fx-w`, `--fx-h`',
+    'Hôtels, galeries, calendriers à portes.',
+    'De cacher une information essentielle derrière cette porte.',
+    '<a href="#" data-fx="door-reveal"><img src="chambre.jpg" alt="Chambre 207"></a>',
+    '<div data-fx="door-reveal"><img src="assets/bloom.svg" alt="Une illustration de fleur"></div>',
+    { a11y: 'Image et son texte conservés. Porte masquée, ouverture au focus et au clic.' }),
 ];
