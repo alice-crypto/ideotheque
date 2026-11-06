@@ -11,3 +11,11 @@
 [data-fx="appointment-week"] .fx-aw-s button { padding: 4px 8px; border-radius: 99px; animation: fx-aw .3s var(--fx-ease-out) calc(var(--fx-i) * 60ms) backwards; }
 [data-fx="appointment-week"] output { font-weight: 700; }
 @keyframes fx-aw { from { opacity: 0; transform: translateY(6px); } }
+
+/* body-map : une silhouette par zones */
+[data-fx="body-map"] { display: grid; grid-template-columns: var(--fx-s, 84px) 1fr; gap: 12px; align-items: center; width: min(100%, 225px); font-size: 12px; }
+[data-fx="body-map"] svg { display: block; width: 100%; }
+[data-fx="body-map"] path { fill: color-mix(in srgb, currentColor 18%, transparent); stroke: currentColor; stroke-width: .8; cursor: pointer; outline: none; transition: fill .2s; }
+[data-fx="body-map"] path:hover, [data-fx="body-map"] path:focus-visible { fill: color-mix(in srgb, var(--fx-accent) 45%, transparent); }
+[data-fx="body-map"] path.fx-on { fill: var(--fx-accent); }
+[data-fx="body-map"] b { font-size: 16px; }
