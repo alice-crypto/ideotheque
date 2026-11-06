@@ -56,3 +56,10 @@
 [data-fx="hatch-reveal"] .fx-hr-a { background: repeating-linear-gradient(135deg, currentColor 0 2px, transparent 2px 6px); -webkit-background-clip: text; background-clip: text; color: transparent; }
 [data-fx="hatch-reveal"] .fx-hr-b { position: absolute; inset: 0; clip-path: inset(0 100% 0 0); transition: clip-path 1.3s var(--fx-ease-out) .25s; }
 .fx-in[data-fx="hatch-reveal"] .fx-hr-b { clip-path: inset(0 0 0 0); }
+
+/* north-arrow : une flèche de nord */
+[data-fx="north-arrow"] { display: inline-block; width: var(--fx-s, 70px); }
+[data-fx="north-arrow"] svg { display: block; transform: rotate(var(--fx-a, 0deg)); }
+[data-fx="north-arrow"] circle { fill: none; stroke: currentColor; stroke-width: 1; }
+[data-fx="north-arrow"] path { fill: var(--fx-accent); }
+[data-fx="north-arrow"] text { fill: currentColor; font-size: 9px; font-weight: 700; text-anchor: middle; }
