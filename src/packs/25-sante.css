@@ -1,1 +1,13 @@
 /* Pack 25 — Santé */
+
+/* appointment-week : choisir un rendez-vous */
+[data-fx="appointment-week"] { display: grid; gap: 8px; width: min(100%, var(--fx-w, 235px)); font-size: 12px; }
+[data-fx="appointment-week"] button { border: 1px solid currentColor; background: none; color: inherit; font: inherit; cursor: pointer; transition: background .2s, color .2s; }
+[data-fx="appointment-week"] .fx-aw-d { display: flex; gap: 4px; }
+[data-fx="appointment-week"] .fx-aw-d button { flex: 1; display: grid; padding: 4px 0; border-radius: 8px; font-size: 15px; font-weight: 700; }
+[data-fx="appointment-week"] small { font-size: 10px; font-weight: 400; }
+[data-fx="appointment-week"] .fx-aw-d [aria-pressed="true"], [data-fx="appointment-week"] .fx-aw-s .fx-on { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="appointment-week"] .fx-aw-s { display: flex; flex-wrap: wrap; gap: 4px; min-height: 28px; }
+[data-fx="appointment-week"] .fx-aw-s button { padding: 4px 8px; border-radius: 99px; animation: fx-aw .3s var(--fx-ease-out) calc(var(--fx-i) * 60ms) backwards; }
+[data-fx="appointment-week"] output { font-weight: 700; }
+@keyframes fx-aw { from { opacity: 0; transform: translateY(6px); } }
