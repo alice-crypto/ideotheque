@@ -8,3 +8,13 @@
 [data-fx="stay-range"] .fx-r { background: color-mix(in srgb, var(--fx-accent) 28%, transparent); }
 [data-fx="stay-range"] .fx-e { background: var(--fx-accent) !important; color: #fff; font-weight: 800; border-radius: 50%; }
 [data-fx="stay-range"] output b { font-size: 15px; }
+
+/* room-type : comparer les chambres */
+[data-fx="room-type"] { display: grid; grid-template-columns: 72px 1fr; gap: 6px 10px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="room-type"] .fx-rt2 { grid-column: 1 / -1; display: flex; gap: 2px; }
+[data-fx="room-type"] button { flex: 1; padding: 4px 0; border: 1px solid currentColor; background: none; color: inherit; font: inherit; font-size: 10px; cursor: pointer; }
+[data-fx="room-type"] [aria-checked="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="room-type"] .fx-rt2-s { display: flex; align-items: flex-end; aspect-ratio: 1; border-left: 1px solid currentColor; border-bottom: 1px solid currentColor; }
+[data-fx="room-type"] .fx-rt2-s i { display: block; width: calc(var(--fx-q) * 100%); height: calc(var(--fx-q) * 100%); background: var(--fx-accent); transition: width .4s var(--fx-ease-spring), height .4s var(--fx-ease-spring); }
+[data-fx="room-type"] ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+[data-fx="room-type"] li { display: flex; justify-content: space-between; gap: 6px; }
