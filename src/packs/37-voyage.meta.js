@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="sailboat-progress"></div>',
     '<div data-fx="sailboat-progress" style="width:215px"></div>',
     { a11y: 'Décoratif, masqué.' }),
+  E('poster-parallax', 'Image',
+    'Une affiche de voyage en aplats a des plans qui se déplacent avec le pointeur.',
+    'L\'âge d\'or des affiches, avec un peu de profondeur.',
+    '- `data-fx-title`, `--fx-w`',
+    'Destinations, compagnies, souvenirs.',
+    'De reprendre le style exact d\'une affiche existante : ce dessin est original.',
+    '<div data-fx="poster-parallax" data-fx-title="Côte Bleue"></div>',
+    '<div data-fx="poster-parallax" data-fx-title="Côte Bleue"></div>',
+    { a11y: 'Rôle `img`, titre nommé. Fixe en mouvement réduit.' }),
 ];

@@ -15598,6 +15598,19 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-q', info.pass.toFixed(3)); el.style.setProperty('--fx-a', (Math.sin(info.pass * 40) * 5).toFixed(1) + 'deg'); }
   });
+
+  // Une affiche de voyage dont les plans bougent avec le regard
+  FX.register('poster-parallax', {
+    setup: function (el) {
+      var T = el.dataset.fxTitle || 'Côte Bleue';
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', 'Affiche : ' + T);
+      el.innerHTML = '<div class="fx-pp"><i class="s"></i><i class="u"></i><i class="m m3"></i><i class="m m2"></i><i class="m m1"></i><b>' + T + '</b></div>';
+      var p = el.firstChild;
+      el.addEventListener('pointermove', function (e) { if (U.reduced) return; var r = el.getBoundingClientRect(); p.style.setProperty('--fx-x', ((e.clientX - r.left) / r.width - .5).toFixed(3)); p.style.setProperty('--fx-y', ((e.clientY - r.top) / r.height - .5).toFixed(3)); });
+      el.addEventListener('pointerleave', function () { p.style.setProperty('--fx-x', 0); p.style.setProperty('--fx-y', 0); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
