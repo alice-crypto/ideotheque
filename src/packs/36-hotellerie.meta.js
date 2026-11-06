@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="breakfast-tray"></div>',
     '<div data-fx="breakfast-tray" style="color:var(--ink)"></div>',
     { a11y: 'Boutons `aria-pressed`, liste nommée, total annoncé.' }),
+  E('concierge-bell', 'Micro-interaction',
+    'Une sonnette de réception oscille, et un conseil de concierge apparaît.',
+    'Un service attentif, même depuis son canapé.',
+    '- `data-fx-items` : conseils séparés par `|`, `--fx-brass`',
+    'Hôtels, conciergeries, office de tourisme.',
+    'De faire croire à une personne réelle si les conseils sont préécrits.',
+    '<div data-fx="concierge-bell" data-fx-items="Essayez le marché."></div>',
+    '<div data-fx="concierge-bell" style="color:var(--ink)"></div>',
+    { trigger: 'Sonner', a11y: 'Bouton nommé, conseil annoncé.' }),
 ];

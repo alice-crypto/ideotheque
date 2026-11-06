@@ -82,3 +82,15 @@
 [data-fx="breakfast-tray"] select { padding: 2px; font: inherit; }
 [data-fx="breakfast-tray"] output b { font-size: 17px; }
 @keyframes fx-tray-drop { from { transform: translateY(-14px); opacity: 0; } }
+
+/* concierge-bell : une sonnette de réception */
+[data-fx="concierge-bell"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 215px)); font-size: 12px; text-align: center; }
+[data-fx="concierge-bell"] button { position: relative; width: 90px; padding: 0; border: 0; background: none; cursor: pointer; }
+[data-fx="concierge-bell"] svg { width: 100%; fill: var(--fx-brass, #d4a941); overflow: visible; }
+[data-fx="concierge-bell"] rect { fill: #5c4518; }
+[data-fx="concierge-bell"] .b { transform-origin: 40px 46px; }
+[data-fx="concierge-bell"] .fx-go .b { animation: fx-bell-wobble .55s; }
+[data-fx="concierge-bell"] .fx-go::after { content: ''; position: absolute; left: 50%; top: 10%; width: 60px; height: 60px; margin-left: -30px; border: 2px solid var(--fx-brass, #d4a941); border-radius: 50%; animation: fx-bell-wave .7s ease-out forwards; }
+[data-fx="concierge-bell"] output { min-height: 3em; animation: none; }
+@keyframes fx-bell-wobble { 20% { transform: rotate(10deg); } 45% { transform: rotate(-8deg); } 70% { transform: rotate(4deg); } }
+@keyframes fx-bell-wave { from { transform: scale(.5); opacity: 1; } to { transform: scale(1.8); opacity: 0; } }
