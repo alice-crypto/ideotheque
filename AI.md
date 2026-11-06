@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->708<!-- /total --> effets.
+La bibliothèque contient <!-- total -->709<!-- /total --> effets.
 
 ## Règles
 
@@ -728,6 +728,7 @@ La bibliothèque contient <!-- total -->708<!-- /total --> effets.
 | `live-bus` | État | Un point suit le bus d'arrêt en arrêt, et le temps avant votre arrêt se met à jour |
 | `disruption-banner` | État | Une alerte de perturbation prend la couleur et le rôle de sa gravité, et peut être fermée |
 | `delivery-window` | État | Un créneau de livraison se pose sur la journée, avec un repère à l'heure actuelle |
+| `fleet-dots` | État | Des véhicules circulent sur un plan, et leur état se distingue par la forme et la couleur |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)

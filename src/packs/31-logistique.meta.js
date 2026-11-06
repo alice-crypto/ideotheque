@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="route-optimize" data-fx-data="10,70|80,20|25,20"></div>',
     '<div data-fx="route-optimize" style="color:var(--ink)"></div>',
     { trigger: 'Optimiser', a11y: 'Vrai bouton, distances annoncées.' }),
+  E('fleet-dots', 'État',
+    'Des véhicules circulent sur un plan, et leur état se distingue par la forme et la couleur.',
+    'Un poste de contrôle, tout est sous les yeux.',
+    '- `data-fx-count` (14)',
+    'Flottes, drones, équipes sur le terrain.',
+    'De confondre avec un vrai suivi : les points sont simulés.',
+    '<div data-fx="fleet-dots" data-fx-count="14"></div>',
+    '<div data-fx="fleet-dots" style="color:var(--ink)"></div>',
+    { a11y: 'Le décompte est écrit ; le plan est décoratif. Fixe en mouvement réduit.' }),
 ];
