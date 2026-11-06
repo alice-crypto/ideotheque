@@ -160,4 +160,19 @@
       show();
     }
   });
+
+  // La distance parcourue par un aliment : à côté ou depuis l'autre bout du monde
+  FX.register('food-miles', {
+    entrance: true,
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Ferme voisine:35:0.1|Région:220:0.25|Espagne:1500:0.9|Autre continent:9800:3.2').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1], +p[2]]; }), max = Math.max.apply(null, R.map(function (r) { return r[1]; })), ul = U.make('ul', '', el);
+      R.forEach(function (r, i) {
+        var li = U.make('li', '', ul);
+        li.style.setProperty('--fx-q', Math.max(.015, Math.log(r[1] + 1) / Math.log(max + 1)));
+        li.style.setProperty('--fx-i', i);
+        li.innerHTML = '<span>' + r[0] + '</span><i></i><b>' + r[1].toLocaleString('fr-FR') + ' km</b><small>' + String(r[2]).replace('.', ',') + ' kg CO₂</small>';
+      });
+      U.make('p', '', el).textContent = 'Valeurs fictives. Échelle logarithmique : les grandes distances sont compressées.';
+    }
+  });
 })(window.FX);
