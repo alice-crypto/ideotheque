@@ -8486,6 +8486,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="pizza-builder"] [aria-pressed="true"], [data-fx="pizza-builder"] .fx-on { background: var(--fx-accent); color: #fff; border-color: transparent; }
 [data-fx="pizza-builder"] output b { font-size: 18px; }
 
+/* tip-split : partager l'addition */
+[data-fx="tip-split"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 220px)); font-size: 12px; }
+[data-fx="tip-split"] label { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+[data-fx="tip-split"] input { width: 70px; padding: 4px; font: inherit; text-align: right; }
+[data-fx="tip-split"] .fx-ts2 { display: flex; gap: 3px; }
+[data-fx="tip-split"] button { flex: 1; padding: 4px 0; border: 1px solid currentColor; border-radius: 6px; background: none; color: inherit; font: inherit; cursor: pointer; transition: background .2s, color .2s; }
+[data-fx="tip-split"] [aria-checked="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="tip-split"] output b { font-size: 21px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="pizza-builder" data-fx-base="9"></div>',
     '<div data-fx="pizza-builder" style="color:var(--ink)"></div>',
     { a11y: 'Vrais boutons, prix annoncé. Le détail de la pizza dépend de l\'état des boutons.' }),
+  E('tip-split', 'Micro-interaction',
+    'Addition, pourboire et nombre de personnes donnent la part de chacun.',
+    'Plus de calcul mental à la fin d\'un bon repas.',
+    '- `data-fx-total` (86), `data-fx-people` (3)',
+    'Restaurants, voyages, sorties.',
+    'D\'imposer une norme de pourboire : l\'usage dépend du pays.',
+    '<div data-fx="tip-split" data-fx-total="86"></div>',
+    '<div data-fx="tip-split" style="color:var(--ink)"></div>',
+    { a11y: 'Champs étiquetés, groupe radio nommé, part annoncée.' }),
 ];
