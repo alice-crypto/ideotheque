@@ -244,4 +244,13 @@
       el.classList.toggle('fx-bad', bad.length > 0);
     }
   });
+
+  // Un bouton dont la route défile au survol, et la petite voiture arrive au bout
+  FX.register('road-cta', {
+    setup: function (el) {
+      var d = U.make('span', 'fx-rd', el), c = U.make('span', 'fx-rd-c', el);
+      d.setAttribute('aria-hidden', 'true'); c.setAttribute('aria-hidden', 'true');
+      U.ensurePositioned(el);
+    }
+  });
 })(window.FX);
