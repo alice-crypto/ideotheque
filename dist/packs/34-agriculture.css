@@ -1,0 +1,16 @@
+/* Pack 34 — Agriculture */
+
+/* crop-calendar : semer et récolter */
+[data-fx="crop-calendar"] { width: min(100%, var(--fx-w, 240px)); font-size: 10px; }
+[data-fx="crop-calendar"] .fx-cc2 { display: grid; grid-template-columns: 48px repeat(12, 1fr); gap: 2px; align-items: center; }
+[data-fx="crop-calendar"] b { text-align: center; font-weight: 400; }
+[data-fx="crop-calendar"] b.fx-now { font-weight: 800; color: var(--fx-accent); }
+[data-fx="crop-calendar"] .fx-cc2 i { height: 14px; background: color-mix(in srgb, currentColor 9%, transparent); transition: background .35s calc(var(--fx-i) * 35ms); }
+.fx-in[data-fx="crop-calendar"] .fx-cc2 i.s { background: #3f9b57; }
+.fx-in[data-fx="crop-calendar"] .fx-cc2 i.c { background: #e8930c; }
+[data-fx="crop-calendar"] .fx-cc2 i.fx-now { outline: 1px solid currentColor; }
+[data-fx="crop-calendar"] p { margin: 5px 0 0; font-size: 12px; font-weight: 700; }
+[data-fx="crop-calendar"] .fx-cc2-l { font-size: 10px; font-weight: 400; }
+[data-fx="crop-calendar"] .fx-cc2-l i { display: inline-block; width: 9px; height: 9px; margin-left: 4px; }
+[data-fx="crop-calendar"] .fx-cc2-l .s { background: #3f9b57; }
+[data-fx="crop-calendar"] .fx-cc2-l .c { background: #e8930c; }
