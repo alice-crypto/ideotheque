@@ -69,3 +69,13 @@
 [data-fx="tip-split"] button { flex: 1; padding: 4px 0; border: 1px solid currentColor; border-radius: 6px; background: none; color: inherit; font: inherit; cursor: pointer; transition: background .2s, color .2s; }
 [data-fx="tip-split"] [aria-checked="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; }
 [data-fx="tip-split"] output b { font-size: 21px; }
+
+/* pickup-board : un écran de retrait */
+[data-fx="pickup-board"] { width: min(100%, var(--fx-w, 230px)); background: #111317; color: #f2f2f2; font-weight: 800; }
+[data-fx="pickup-board"] .fx-pb { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #333; }
+[data-fx="pickup-board"] .fx-pb > div { background: #111317; padding: 7px; min-height: 104px; }
+[data-fx="pickup-board"] h4 { margin: 0 0 5px; font-size: 10px; font-weight: 700; opacity: .75; }
+[data-fx="pickup-board"] ul { margin: 0; padding: 0; list-style: none; font-size: 16px; }
+[data-fx="pickup-board"] .b li { color: #46e288; }
+[data-fx="pickup-board"] .fx-new { font-size: 26px; animation: fx-pickup-new .5s var(--fx-ease-spring); }
+@keyframes fx-pickup-new { from { transform: translateX(-40px); opacity: 0; } }

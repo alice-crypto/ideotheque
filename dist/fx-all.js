@@ -14485,6 +14485,28 @@
       go();
     }
   });
+
+  // Un écran de retrait : préparation d'un côté, prêt de l'autre
+  FX.register('pickup-board', {
+    setup: function (el) {
+      var n = U.num(el, 'fxStart', 204), A = [n, n + 1, n + 2, n + 3], B = [n - 1, n - 2];
+      el.innerHTML = '<div class="fx-pb"><div><h4>En préparation</h4><ul class="a"></ul></div><div><h4>Prêt</h4><ul class="b" aria-live="polite"></ul></div></div>';
+      var ua = el.querySelector('.a'), ub = el.querySelector('.b');
+      el._fxDraw = function () {
+        ua.innerHTML = A.map(function (x) { return '<li>' + x + '</li>'; }).join('');
+        ub.innerHTML = B.map(function (x, i) { return '<li class="' + (i === 0 ? 'fx-new' : '') + '">' + x + '</li>'; }).join('');
+      };
+      el._fxStep = function () {
+        if (A.length) B.unshift(A.shift());
+        A.push((A.length ? A[A.length - 1] : B[0]) + 1);
+        if (B.length > 3) B.pop();
+        el._fxDraw();
+      };
+      el._fxDraw();
+      if (!U.reduced) setInterval(el._fxStep, U.num(el, 'fxEvery', 4000));
+    },
+    trigger: function (el) { el._fxStep(); }
+  });
 })(window.FX);
 
 window.FX._boot();

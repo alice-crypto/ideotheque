@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="tip-split" data-fx-total="86"></div>',
     '<div data-fx="tip-split" style="color:var(--ink)"></div>',
     { a11y: 'Champs étiquetés, groupe radio nommé, part annoncée.' }),
+  E('pickup-board', 'État',
+    'Un écran montre les numéros en préparation et ceux qui sont prêts, qui arrivent en grand.',
+    'Plus besoin de rester debout devant le comptoir.',
+    '- `data-fx-start` (204), `data-fx-every` (4000)',
+    'Restauration rapide, comptoirs, guichets.',
+    'De laisser la simulation en service : reliez ces numéros à votre caisse.',
+    '<div data-fx="pickup-board" data-fx-start="204"></div>',
+    '<div data-fx="pickup-board"></div>',
+    { trigger: 'Commande prête', a11y: 'La colonne « Prêt » est annoncée. Vérifiez qu\'elle reste lisible de loin.' }),
 ];

@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->806<!-- /total --> effets.
+La bibliothèque contient <!-- total -->807<!-- /total --> effets.
 
 ## Règles
 
@@ -826,6 +826,7 @@ La bibliothèque contient <!-- total -->806<!-- /total --> effets.
 | `moisture-grid` | État | Une grille montre l'humidité du sol par zone, et un bouton arrose les zones sèches |
 | `frost-alert` | État | Une semaine de nuits repère celles sous le seuil de gel, et alerte clairement |
 | `kitchen-ticket` | État | Un bon de cuisine compte le temps écoulé, et ses plats se barrent à l'envoi |
+| `pickup-board` | État | Un écran montre les numéros en préparation et ceux qui sont prêts, qui arrivent en grand |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)
