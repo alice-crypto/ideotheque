@@ -14507,6 +14507,28 @@
     },
     trigger: function (el) { el._fxStep(); }
   });
+
+  // Un minuteur de cuisine avec ses préréglages
+  FX.register('egg-timer', {
+    setup: function (el) {
+      var P = (el.dataset.fxItems || 'Coque:3|Mollet:6|Dur:9').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1]]; }), end = 0, tot = 0, iv;
+      el.innerHTML = '<div class="fx-et"><div class="fx-et-y"></div></div><b role="timer">0:00</b><div class="fx-et-b"></div><output aria-live="assertive"></output>';
+      var t = el.querySelector('b'), box = el.querySelector('.fx-et-b'), o = el.querySelector('output');
+      var tick = function () {
+        var left = Math.max(0, end - Date.now()), s = Math.ceil(left / 1000);
+        t.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+        el.style.setProperty('--fx-q', tot ? left / tot : 0);
+        if (!left) { clearInterval(iv); el.classList.add('fx-ring'); o.textContent = 'C\'est prêt !'; }
+      };
+      el._fxStart = function (m) { tot = m * 60000; end = Date.now() + tot; el.classList.remove('fx-ring'); o.textContent = ''; clearInterval(iv); iv = setInterval(tick, 250); tick(); };
+      P.forEach(function (p) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.textContent = p[0] + ' ' + p[1] + ' min';
+        b.addEventListener('click', function () { el._fxStart(p[1]); });
+      });
+    },
+    trigger: function (el) { el._fxStart(.05); }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -79,3 +79,14 @@
 [data-fx="pickup-board"] .b li { color: #46e288; }
 [data-fx="pickup-board"] .fx-new { font-size: 26px; animation: fx-pickup-new .5s var(--fx-ease-spring); }
 @keyframes fx-pickup-new { from { transform: translateX(-40px); opacity: 0; } }
+
+/* egg-timer : un minuteur de cuisine */
+[data-fx="egg-timer"] { display: grid; justify-items: center; gap: 5px; width: min(100%, var(--fx-w, 215px)); font-size: 11px; }
+[data-fx="egg-timer"] .fx-et { position: relative; width: 64px; height: 80px; border-radius: 50% 50% 48% 48% / 60% 60% 40% 40%; background: #fbf5e8; box-shadow: inset -4px -6px 8px #0002; display: grid; place-items: center; }
+[data-fx="egg-timer"] .fx-et-y { width: 34px; height: 34px; border-radius: 50%; background: color-mix(in srgb, #ffa61a calc(var(--fx-q, 0) * 100%), #f4d97c); }
+[data-fx="egg-timer"].fx-ring .fx-et { animation: fx-egg-ring .3s 3; }
+[data-fx="egg-timer"] > b { font-size: 26px; font-variant-numeric: tabular-nums; }
+[data-fx="egg-timer"] .fx-et-b { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; }
+[data-fx="egg-timer"] button { padding: 3px 8px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="egg-timer"] output { font-size: 14px; font-weight: 800; color: var(--fx-up, #2eaf63); }
+@keyframes fx-egg-ring { 25% { transform: rotate(-10deg); } 75% { transform: rotate(10deg); } }

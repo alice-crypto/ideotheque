@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="pickup-board" data-fx-start="204"></div>',
     '<div data-fx="pickup-board"></div>',
     { trigger: 'Commande prête', a11y: 'La colonne « Prêt » est annoncée. Vérifiez qu\'elle reste lisible de loin.' }),
+  E('egg-timer', 'Micro-interaction',
+    'Des préréglages lancent un minuteur, avec un œuf qui change et qui saute à la fin.',
+    'Le petit compagnon de cuisine, sur son téléphone.',
+    '- `data-fx-items` : « nom:minutes » séparés par `|`',
+    'Recettes, cuisine, sport, thé.',
+    'De se fier uniquement à ce minuteur si l\'onglet reste en arrière-plan : le navigateur peut le ralentir.',
+    '<div data-fx="egg-timer" data-fx-items="Coque:3|Dur:9"></div>',
+    '<div data-fx="egg-timer" style="color:var(--ink)"></div>',
+    { trigger: 'Essayer', a11y: 'Rôle `timer`, fin annoncée immédiatement.' }),
 ];
