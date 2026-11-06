@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->788<!-- /total --> effets.
+La bibliothèque contient <!-- total -->789<!-- /total --> effets.
 
 ## Règles
 
@@ -808,6 +808,7 @@ La bibliothèque contient <!-- total -->788<!-- /total --> effets.
 | `shift-wheel` | État | Une roue de 24 heures montre l'équipe en poste et le temps avant la relève |
 | `vibration-monitor` | État | Un signal vibratoire défile, et une alerte apparaît quand il franchit le seuil |
 | `moisture-grid` | État | Une grille montre l'humidité du sol par zone, et un bouton arrose les zones sèches |
+| `frost-alert` | État | Une semaine de nuits repère celles sous le seuil de gel, et alerte clairement |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)

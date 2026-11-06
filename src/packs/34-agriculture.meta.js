@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="orchard-grow" data-fx-text="32 arbres plantés"></div>',
     '<div data-fx="orchard-grow" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le texte porte l\'information.' }),
+  E('frost-alert', 'État',
+    'Une semaine de nuits repère celles sous le seuil de gel, et alerte clairement.',
+    'Sauver les fleurs du verger, à temps.',
+    '- `data-fx-data` : 7 températures\n- `data-fx-min` (0)',
+    'Agriculture, jardinage, assurance récolte.',
+    'De laisser des prévisions d\'exemple : branchez un vrai service météo.',
+    '<div data-fx="frost-alert" data-fx-data="4,2,-1,-3,0,3,5"></div>',
+    '<div data-fx="frost-alert" style="color:var(--ink)"></div>',
+    { a11y: 'Rôle `alert` s\'il y a un risque. Message écrit.' }),
 ];

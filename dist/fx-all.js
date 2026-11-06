@@ -14107,6 +14107,23 @@
       U.make('p', '', el).textContent = el.dataset.fxText || v + ' arbres plantés';
     }
   });
+
+  // Les prochaines nuits : y a-t-il un risque de gel ?
+  FX.register('frost-alert', {
+    setup: function (el) {
+      var D = (el.dataset.fxData || '4,2,-1,-3,0,3,5').split(',').map(Number), th = U.num(el, 'fxMin', 0), box = U.make('div', 'fx-fa', el), cold = [], now = Date.now();
+      D.forEach(function (v, i) {
+        var d = new Date(now + i * 86400000), c = U.make('div', v < th ? 'fx-f' : '', box);
+        c.innerHTML = '<small>' + d.toLocaleDateString('fr-FR', { weekday: 'short' }) + '</small><b>' + v + '°</b><i aria-hidden="true"></i>';
+        c.style.setProperty('--fx-i', i);
+        if (v < th) cold.push(v);
+      });
+      var o = U.make('p', '', el);
+      o.setAttribute('role', cold.length ? 'alert' : 'status');
+      o.textContent = cold.length ? cold.length + ' nuits sous ' + th + ' °C, jusqu\'à ' + Math.min.apply(null, cold) + ' °C : protégez les jeunes plants.' : 'Pas de gel annoncé.';
+      U.make('small', '', el).textContent = 'Prévisions fictives';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
