@@ -11827,6 +11827,27 @@
     },
     trigger: function (el) { el._fxNext(); }
   });
+
+  // Les bornes d'une station : libres, occupées ou en panne
+  FX.register('charger-status', {
+    setup: function (el) {
+      var S = (el.dataset.fxData || 'f,o,f,o,x,o').split(','), box = U.make('div', 'fx-cs2', el), o = U.make('output', '', el), W = { f: 'Libre', o: 'Occupée', x: 'En panne' };
+      o.setAttribute('aria-live', 'polite');
+      S.forEach(function (s, i) { var c = U.make('i', '', box); c.textContent = i + 1; c.title = ''; });
+      el._fxShow = function () {
+        var free = 0;
+        Array.prototype.forEach.call(box.children, function (c, i) { c.dataset.s = S[i]; c.setAttribute('aria-label', 'Borne ' + (i + 1) + ', ' + W[S[i]]); c.setAttribute('role', 'img'); if (S[i] === 'f') free++; });
+        o.textContent = free + ' borne' + (free > 1 ? 's' : '') + ' libre' + (free > 1 ? 's' : '') + ' sur ' + S.length;
+      };
+      el._fxFlip = function () {
+        var k = Math.floor(Math.random() * S.length);
+        if (S[k] !== 'x') { S[k] = S[k] === 'f' ? 'o' : 'f'; el._fxShow(); }
+      };
+      el._fxShow();
+      if (el.dataset.fxLive !== 'false' && !U.reduced) setInterval(el._fxFlip, U.num(el, 'fxEvery', 3500));
+    },
+    trigger: function (el) { el._fxFlip(); }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->669<!-- /total --> effets.
+La bibliothèque contient <!-- total -->670<!-- /total --> effets.
 
 ## Règles
 
@@ -689,6 +689,7 @@ La bibliothèque contient <!-- total -->669<!-- /total --> effets.
 | `mortar-grind` | État | Un pilon tourne dans son mortier et fait sauter quelques grains pendant l'attente |
 | `pickup-code` | État | Un code de retrait s'affiche en grand, avec sa date limite et un bouton pour le copier |
 | `tire-pressure` | État | Les quatre pneus montrent leur pression, et celui qui manque d'air clignote |
+| `charger-status` | État | Des bornes changent d'état en direct, et le nombre de bornes libres s'écrit |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)

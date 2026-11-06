@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="trip-computer" data-fx-km="312"></div>',
     '<div data-fx="trip-computer" style="color:var(--ink)"></div>',
     { trigger: 'Écran suivant', a11y: 'Écran annoncé, vrai bouton.' }),
+  E('charger-status', 'État',
+    'Des bornes changent d\'état en direct, et le nombre de bornes libres s\'écrit.',
+    'On sait s\'il faut faire le détour.',
+    '- `data-fx-data` : états `f`, `o`, `x` séparés par des virgules\n- `data-fx-live` : simuler des changements, `data-fx-every`',
+    'Bornes, parkings, salles, machines.',
+    'De laisser la simulation en production : `data-fx-live="false"` et de vraies données.',
+    '<div data-fx="charger-status" data-fx-live="false" data-fx-data="f,o,x"></div>',
+    '<div data-fx="charger-status" style="color:var(--ink)"></div>',
+    { trigger: 'Changer un état', a11y: 'Chaque borne porte son état écrit, et le résumé est annoncé.' }),
 ];

@@ -205,3 +205,12 @@
 [data-fx="trip-computer"] b { font-size: 24px; }
 [data-fx="trip-computer"] button { padding: 4px 12px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font-size: 11px; cursor: pointer; }
 @keyframes fx-tc { from { transform: translateY(5px); opacity: .3; } }
+
+/* charger-status : les bornes d'une station */
+[data-fx="charger-status"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; font-weight: 700; }
+[data-fx="charger-status"] .fx-cs2 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+[data-fx="charger-status"] i { display: grid; place-items: center; height: 42px; border-radius: 6px 6px 2px 2px; font-style: normal; color: #fff; transition: background .4s; }
+[data-fx="charger-status"] [data-s="f"] { background: var(--fx-up, #2eaf63); }
+[data-fx="charger-status"] [data-s="o"] { background: #2d6fd2; animation: fx-cs2 1.6s infinite; }
+[data-fx="charger-status"] [data-s="x"] { background: repeating-linear-gradient(45deg, #666 0 4px, #444 4px 8px); }
+@keyframes fx-cs2 { 50% { opacity: .65; } }
