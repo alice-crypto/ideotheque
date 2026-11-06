@@ -14529,6 +14529,25 @@
     },
     trigger: function (el) { el._fxStart(.05); }
   });
+
+  // Une recette qui s'adapte au nombre de convives
+  FX.register('recipe-scale', {
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Farine:200:g|Lait:40:cl|Œufs:2:|Beurre:50:g|Sel:0.5:c. à café').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], q: +p[1], u: p[2] }; }), base = U.num(el, 'fxServes', 4), n = base;
+      el.innerHTML = '<div class="fx-rs2"><button type="button" aria-label="Moins de parts">−</button><span aria-live="polite"></span><button type="button" aria-label="Plus de parts">+</button></div><ul></ul>';
+      var ul = el.querySelector('ul'), lab = el.querySelector('.fx-rs2 span');
+      var nice = function (v, u) { if (u === 'g' || u === 'cl') return String(Math.round(v / (v > 20 ? 5 : 1)) * (v > 20 ? 5 : 1)); var w = Math.round(v * 4) / 4; return String(w).replace('.', ','); };
+      R.forEach(function (r) { r.li = U.make('li', '', ul); r.li.innerHTML = '<span>' + r.n + '</span><b></b>'; });
+      var go = function () {
+        lab.textContent = n + ' part' + (n > 1 ? 's' : '');
+        R.forEach(function (r) { var b = r.li.querySelector('b'); b.textContent = nice(r.q * n / base, r.u) + (r.u ? ' ' + r.u : ''); b.classList.remove('fx-go'); void b.offsetWidth; b.classList.add('fx-go'); });
+      };
+      var B = el.querySelectorAll('button');
+      B[0].addEventListener('click', function () { n = Math.max(1, n - 1); go(); });
+      B[1].addEventListener('click', function () { n = Math.min(24, n + 1); go(); });
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

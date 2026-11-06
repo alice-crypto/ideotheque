@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="egg-timer" data-fx-items="Coque:3|Dur:9"></div>',
     '<div data-fx="egg-timer" style="color:var(--ink)"></div>',
     { trigger: 'Essayer', a11y: 'Rôle `timer`, fin annoncée immédiatement.' }),
+  E('recipe-scale', 'Micro-interaction',
+    'Un nombre de parts adapte toutes les quantités d\'une recette, avec des valeurs arrondies pratiques.',
+    'Plus besoin de refaire le calcul en cuisinant.',
+    '- `data-fx-items` : « ingrédient:quantité:unité » séparés par `|`\n- `data-fx-serves` (4)',
+    'Recettes, traiteurs, cuisine collective.',
+    'De croire que tout se multiplie : les temps de cuisson et le sel demandent du discernement.',
+    '<div data-fx="recipe-scale" data-fx-serves="4"></div>',
+    '<div data-fx="recipe-scale" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés, nombre de parts annoncé.' }),
 ];

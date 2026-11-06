@@ -90,3 +90,13 @@
 [data-fx="egg-timer"] button { padding: 3px 8px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
 [data-fx="egg-timer"] output { font-size: 14px; font-weight: 800; color: var(--fx-up, #2eaf63); }
 @keyframes fx-egg-ring { 25% { transform: rotate(-10deg); } 75% { transform: rotate(10deg); } }
+
+/* recipe-scale : une recette à adapter */
+[data-fx="recipe-scale"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 215px)); font-size: 12px; }
+[data-fx="recipe-scale"] .fx-rs2 { display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 14px; }
+[data-fx="recipe-scale"] button { width: 28px; height: 28px; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font-size: 15px; cursor: pointer; }
+[data-fx="recipe-scale"] ul { margin: 0; padding: 0; list-style: none; }
+[data-fx="recipe-scale"] li { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px dotted color-mix(in srgb, currentColor 35%, transparent); }
+[data-fx="recipe-scale"] b { font-variant-numeric: tabular-nums; }
+[data-fx="recipe-scale"] b.fx-go { animation: fx-recipe-pop .3s var(--fx-ease-spring); }
+@keyframes fx-recipe-pop { 40% { transform: scale(1.2); color: var(--fx-accent); } }
