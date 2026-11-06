@@ -152,4 +152,20 @@
       draw();
     }
   });
+
+  // Partager l'addition et le pourboire
+  FX.register('tip-split', {
+    setup: function (el) {
+      var P = U.num(el, 'fxTotal', 86);
+      el.innerHTML = '<label>Addition <input type="number" min="0" value="' + P + '"></label><div class="fx-ts2" role="radiogroup" aria-label="Pourboire">' + [0, 5, 10, 15].map(function (v) { return '<button type="button" role="radio" data-v="' + v + '" aria-checked="' + (v === 10) + '">' + v + ' %</button>'; }).join('') + '</div><label>Personnes <input type="number" min="1" max="20" value="' + U.num(el, 'fxPeople', 3) + '"></label><output aria-live="polite"></output>';
+      var I = el.querySelectorAll('input'), o = el.querySelector('output'), t = 10;
+      var go = function () {
+        var a = +I[0].value || 0, n = Math.max(1, +I[1].value || 1), tot = a * (1 + t / 100), each = Math.ceil(tot / n * 100) / 100;
+        o.innerHTML = '<b>' + each.toFixed(2).replace('.', ',') + ' €</b> par personne<br>Total avec pourboire : ' + tot.toFixed(2).replace('.', ',') + ' €';
+      };
+      el.querySelectorAll('button').forEach(function (b) { b.addEventListener('click', function () { t = +b.dataset.v; el.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-checked', x === b); }); go(); }); });
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
