@@ -80,3 +80,14 @@
 [data-fx="on-duty-list"] small { opacity: .6; font-size: 10px; }
 @keyframes fx-od { from { transform: translateY(6px); } }
 @keyframes fx-od2 { 50% { box-shadow: 0 0 0 4px rgba(62, 224, 122, .3); } }
+
+/* rx-ready : une ordonnance prête à retirer */
+[data-fx="rx-ready"] { display: grid; gap: 8px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="rx-ready"] ol { position: relative; display: flex; justify-content: space-between; gap: 6px; margin: 0; padding: 18px 0 0; list-style: none; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 5px / calc(var(--fx-q, 0) * 100%) 3px, linear-gradient(color-mix(in srgb, currentColor 22%, transparent), color-mix(in srgb, currentColor 22%, transparent)) no-repeat 0 5px / 100% 3px; transition: background-size .5s var(--fx-ease-out); }
+[data-fx="rx-ready"] li { position: relative; flex: 1; text-align: center; opacity: .55; }
+[data-fx="rx-ready"] li:first-child { text-align: left; }
+[data-fx="rx-ready"] li:last-child { text-align: right; }
+[data-fx="rx-ready"] .fx-done { opacity: 1; font-weight: 700; }
+[data-fx="rx-ready"] output { padding: 7px; border-radius: 7px; background: color-mix(in srgb, currentColor 12%, transparent); text-align: center; font-size: 13px; font-weight: 700; }
+[data-fx="rx-ready"].fx-ready output { background: var(--fx-ok, #2eaf63); color: #fff; animation: fx-rx .5s var(--fx-ease-spring); }
+@keyframes fx-rx { from { transform: scale(.85); } }

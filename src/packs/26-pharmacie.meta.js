@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="on-duty-list" data-fx-items="Pharmacie du Port:8:20"></div>',
     '<div data-fx="on-duty-list" style="color:var(--ink)"></div>',
     { a11y: 'L\'état est écrit en mots, pas seulement par la couleur.' }),
+  E('rx-ready', 'État',
+    'Une ordonnance avance de reçue à prête, et l\'état final se détache en vert.',
+    'On passe une fois, au bon moment.',
+    '- `data-fx-items` : états séparés par `|`\n- `data-fx-step` : état courant, à changer depuis le serveur',
+    'Pharmacie, retrait en magasin, atelier de réparation.',
+    'D\'annoncer « prête » sans confirmation de l\'équipe.',
+    '<div data-fx="rx-ready" data-fx-step="1"></div>',
+    '<div data-fx="rx-ready" data-fx-step="1" style="color:var(--ink)"></div>',
+    { trigger: 'Avancer', a11y: 'Liste ordonnée, et chaque état est annoncé.' }),
 ];
