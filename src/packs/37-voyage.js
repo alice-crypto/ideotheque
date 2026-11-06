@@ -251,4 +251,30 @@
     },
     trigger: function (el) { el._fxSet(4.5); }
   });
+
+  // Un voyage en étapes : on règle les nuits, et les dates suivent
+  FX.register('trip-stops', {
+    setup: function (el) {
+      var S = (el.dataset.fxItems || 'Bordeaux:2|San Sebastián:3|Bilbao:2|Santander:1').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], q: +p[1] }; }), ol = U.make('ol', '', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      S.forEach(function (s) {
+        s.li = U.make('li', '', ol);
+        s.li.innerHTML = '<i aria-hidden="true"></i><div><b>' + s.n + '</b><small></small></div><button type="button" aria-label="Moins de nuits à ' + s.n + '">−</button><span></span><button type="button" aria-label="Plus de nuits à ' + s.n + '">+</button>';
+        var B = s.li.querySelectorAll('button');
+        B[0].addEventListener('click', function () { s.q = Math.max(1, s.q - 1); go(); });
+        B[1].addEventListener('click', function () { s.q = Math.min(14, s.q + 1); go(); });
+      });
+      var go = function () {
+        var t = 0, d = new Date(Date.now() + 86400000 * 30), f = function (x) { return x.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }); };
+        S.forEach(function (s) {
+          s.li.querySelector('span').textContent = s.q;
+          s.li.querySelector('small').textContent = f(d) + ' → ' + f(new Date(+d + s.q * 86400000));
+          d = new Date(+d + s.q * 86400000);
+          t += s.q;
+        });
+        o.textContent = t + ' nuits au total';
+      };
+      go();
+    }
+  });
 })(window.FX);
