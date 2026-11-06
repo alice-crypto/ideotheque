@@ -247,4 +247,30 @@
       go();
     }
   });
+
+  // Quelques questions, une formule conseillée
+  FX.register('plan-quiz', {
+    setup: function (el) {
+      var Q = (el.dataset.fxQuestions || 'Votre voiture a :Moins de 3 ans=2,Entre 3 et 8 ans=1,Plus de 8 ans=0|Vous roulez :Tous les jours=2,Souvent=1,Rarement=0').split('|').map(function (s) { var c = s.split(':'); return { t: c[0], a: c[1].split(',').map(function (x) { return x.split('='); }) }; });
+      var plans = (el.dataset.fxPlans || 'Tiers,Confort,Tous risques').split(','), i = 0, s = 0, box = U.make('div', 'fx-pq', el), live = U.make('div', 'fx-pq-p', el);
+      live.setAttribute('aria-hidden', 'true');
+      var show = function () {
+        el.style.setProperty('--fx-q', i / Q.length);
+        box.innerHTML = '';
+        if (i === Q.length) {
+          var plan = plans[Math.round(s / (Q.length * 2) * (plans.length - 1))];
+          box.innerHTML = '<p role="status">Pour vous : <b>' + plan + '</b></p><button type="button" class="fx-pq-a">Recommencer</button>';
+          box.firstChild.nextSibling.addEventListener('click', function () { i = 0; s = 0; show(); });
+          return;
+        }
+        U.make('p', '', box).textContent = Q[i].t;
+        Q[i].a.forEach(function (o) {
+          var b = U.make('button', '', box);
+          b.type = 'button'; b.textContent = o[0];
+          b.addEventListener('click', function () { s += +o[1]; i++; show(); });
+        });
+      };
+      show();
+    }
+  });
 })(window.FX);
