@@ -206,4 +206,23 @@
       go();
     }
   });
+
+  // Avant le séjour : le temps qui reste et ce qu'il reste à faire
+  FX.register('checkin-ready', {
+    setup: function (el) {
+      var at = el.dataset.fxDate ? new Date(el.dataset.fxDate) : new Date(Date.now() + 86400000 * U.num(el, 'fxDays', 2)), T = (el.dataset.fxItems || 'Pièce d\'identité|Heure d\'arrivée|Carte de garantie').split('|');
+      el.innerHTML = '<b class="fx-cr2-c"></b><ul></ul><output aria-live="polite"></output>';
+      var c = el.querySelector('.fx-cr2-c'), ul = el.querySelector('ul'), o = el.querySelector('output');
+      T.forEach(function (t) { var l = U.make('label', '', U.make('li', '', ul)), k = U.make('input', '', l); k.type = 'checkbox'; l.appendChild(document.createTextNode(t)); });
+      var go = function () {
+        var left = at - Date.now(), d = Math.floor(left / 86400000), h = Math.floor(left / 3600000) % 24, n = ul.querySelectorAll(':checked').length;
+        c.textContent = left <= 0 ? 'Bienvenue !' : (d ? d + ' j ' : '') + h + ' h avant votre arrivée';
+        el.classList.toggle('fx-done', n === T.length);
+        o.textContent = n === T.length ? 'Tout est prêt : passez directement en chambre' : (T.length - n) + ' étape' + (T.length - n > 1 ? 's' : '') + ' avant de gagner du temps';
+      };
+      el.addEventListener('change', go);
+      go();
+      setInterval(go, 60000);
+    }
+  });
 })(window.FX);

@@ -105,3 +105,14 @@
 [data-fx="day-night-room"] label { display: grid; grid-template-columns: auto 1fr auto; gap: 6px; }
 [data-fx="day-night-room"] label b { order: 3; }
 [data-fx="day-night-room"] input { min-width: 0; accent-color: var(--fx-accent); }
+
+/* checkin-ready : avant le séjour */
+[data-fx="checkin-ready"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="checkin-ready"] .fx-cr2-c { font-size: 18px; }
+[data-fx="checkin-ready"] ul { display: grid; gap: 3px; margin: 0; padding: 0; list-style: none; }
+[data-fx="checkin-ready"] label { display: flex; gap: 6px; cursor: pointer; }
+[data-fx="checkin-ready"] input { margin: 0; accent-color: var(--fx-accent); }
+[data-fx="checkin-ready"] input:checked + * , [data-fx="checkin-ready"] label:has(:checked) { text-decoration: line-through; opacity: .6; }
+[data-fx="checkin-ready"] output { opacity: .85; }
+[data-fx="checkin-ready"].fx-done output { color: var(--fx-up, #2eaf63); font-weight: 800; opacity: 1; animation: fx-checkin-yes .4s var(--fx-ease-spring); }
+@keyframes fx-checkin-yes { from { transform: scale(.9); } }

@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="day-night-room" data-fx-hour="20"></div>',
     '<div data-fx="day-night-room" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, décor masqué.' }),
+  E('checkin-ready', 'État',
+    'Un compte à rebours et une liste préparent l\'arrivée, jusqu\'au message final.',
+    'On arrive l\'esprit léger, sans file d\'attente.',
+    '- `data-fx-date`, `data-fx-days` (2), `data-fx-items`',
+    'Hôtels, locations, événements, trains.',
+    'De stocker des pièces d\'identité : cet effet ne gère que l\'interface.',
+    '<div data-fx="checkin-ready" data-fx-date="2027-05-01"></div>',
+    '<div data-fx="checkin-ready" style="color:var(--ink)"></div>',
+    { a11y: 'Vraies cases, compte en texte, reste annoncé.' }),
 ];
