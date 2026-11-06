@@ -9161,6 +9161,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="poster-parallax"] .m1 { bottom: -6%; height: 34%; background: #123c58; clip-path: polygon(0 30%, 40% 5%, 75% 30%, 100% 12%, 100% 100%, 0 100%); transform: translate(calc(var(--fx-x, 0) * 26px), calc(var(--fx-y, 0) * 11px)); }
 [data-fx="poster-parallax"] b { position: absolute; left: 0; right: 0; bottom: 8px; text-align: center; color: #f7efdb; font: 800 16px/1 Georgia, serif; letter-spacing: .04em; text-transform: uppercase; }
 
+/* baggage-allowance : mon sac passe-t-il */
+[data-fx="baggage-allowance"] { display: grid; grid-template-columns: 76px 1fr; gap: 5px 10px; align-items: center; width: min(100%, var(--fx-w, 225px)); font-size: 10px; }
+[data-fx="baggage-allowance"] .fx-ba { position: relative; aspect-ratio: .75; }
+[data-fx="baggage-allowance"] .fx-ba i { position: absolute; inset: 8%; border: 2px dashed currentColor; }
+[data-fx="baggage-allowance"] .fx-ba u { position: absolute; left: 8%; bottom: 8%; max-height: 95%; max-width: 95%; background: var(--fx-up, #2eaf63); border-radius: 6px; opacity: .8; transition: width .2s, height .2s, background .2s; }
+[data-fx="baggage-allowance"].fx-bad .fx-ba u { background: var(--fx-down, #e10600); }
+[data-fx="baggage-allowance"] .fx-ba-i { display: grid; gap: 3px; }
+[data-fx="baggage-allowance"] label { display: flex; justify-content: space-between; align-items: center; gap: 4px; }
+[data-fx="baggage-allowance"] input { width: 46px; padding: 2px; font: inherit; }
+[data-fx="baggage-allowance"] output { grid-column: 1 / -1; font-size: 12px; font-weight: 700; color: var(--fx-up, #2eaf63); }
+[data-fx="baggage-allowance"].fx-bad output { color: var(--fx-down, #e10600); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

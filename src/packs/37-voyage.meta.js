@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="poster-parallax" data-fx-title="Côte Bleue"></div>',
     '<div data-fx="poster-parallax" data-fx-title="Côte Bleue"></div>',
     { a11y: 'Rôle `img`, titre nommé. Fixe en mouvement réduit.' }),
+  E('baggage-allowance', 'Micro-interaction',
+    'On entre les dimensions d\'un sac, et l\'on voit s\'il passe dans le gabarit de cabine.',
+    'On évite le supplément à la porte d\'embarquement.',
+    '- `data-fx-limit` (55,40,20) : hauteur, largeur, profondeur',
+    'Compagnies, comparateurs, sacs de voyage.',
+    'Des limites d\'exemple : elles dépendent de chaque compagnie et du tarif.',
+    '<div data-fx="baggage-allowance" data-fx-limit="55,40,20"></div>',
+    '<div data-fx="baggage-allowance" style="color:var(--ink)"></div>',
+    { a11y: 'Champs étiquetés, verdict écrit et annoncé.' }),
 ];

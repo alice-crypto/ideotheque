@@ -15611,6 +15611,25 @@
       el.addEventListener('pointerleave', function () { p.style.setProperty('--fx-x', 0); p.style.setProperty('--fx-y', 0); });
     }
   });
+
+  // Mon sac passe-t-il en cabine ?
+  FX.register('baggage-allowance', {
+    setup: function (el) {
+      var L = (el.dataset.fxLimit || '55,40,20').split(',').map(Number), N = ['Haut', 'Large', 'Profond'], V = [50, 36, 22];
+      el.innerHTML = '<div class="fx-ba" aria-hidden="true"><i></i><u></u></div><div class="fx-ba-i"></div><output aria-live="polite"></output>';
+      var box = el.querySelector('.fx-ba-i'), o = el.querySelector('output'), v = el.querySelector('.fx-ba u');
+      N.forEach(function (t, i) { var l = U.make('label', '', box); l.innerHTML = t + ' (cm)<input type="number" min="5" max="120" value="' + V[i] + '">'; });
+      var I = box.querySelectorAll('input');
+      var go = function () {
+        var c = Array.prototype.map.call(I, function (x) { return +x.value || 0; }), bad = N.filter(function (_, i) { return c[i] > L[i]; });
+        v.style.width = Math.min(120, c[1] / L[1] * 100) + '%'; v.style.height = Math.min(120, c[0] / L[0] * 100) + '%';
+        el.classList.toggle('fx-bad', bad.length > 0);
+        o.textContent = bad.length ? 'Trop grand : ' + bad.join(', ').toLowerCase() : 'Ça passe, dans la limite de ' + L.join(' × ') + ' cm';
+      };
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
