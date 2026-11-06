@@ -1,0 +1,12 @@
+/* Pack 33 — Industrie */
+
+/* oee-gauge : le rendement d'une ligne */
+[data-fx="oee-gauge"] { display: grid; grid-template-columns: 82px 1fr; gap: 4px 10px; align-items: center; width: min(100%, var(--fx-w, 240px)); font-size: 10px; }
+[data-fx="oee-gauge"] .fx-oe { position: relative; aspect-ratio: 1; border-radius: 50%; background: conic-gradient(var(--fx-accent) calc(var(--fx-q) * 360deg), color-mix(in srgb, currentColor 16%, transparent) 0); display: grid; place-items: center; transition: background .2s; }
+[data-fx="oee-gauge"] .fx-oe i { position: absolute; inset: 9px; border-radius: 50%; background: var(--fx-bg, #16151a); }
+[data-fx="oee-gauge"] .fx-oe b { position: relative; font-size: 19px; }
+[data-fx="oee-gauge"] .fx-oe-s { display: grid; gap: 2px; }
+[data-fx="oee-gauge"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="oee-gauge"] em { font-style: normal; font-weight: 700; }
+[data-fx="oee-gauge"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="oee-gauge"] output { grid-column: 1 / -1; font-size: 12px; font-weight: 700; }
