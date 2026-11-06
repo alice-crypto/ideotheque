@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="field-rotation" data-fx-items="Blé:#d6b34a|Trèfle:#5aa35c"></div>',
     '<div data-fx="field-rotation" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, rotation écrite et annoncée.' }),
+  E('moisture-grid', 'État',
+    'Une grille montre l\'humidité du sol par zone, et un bouton arrose les zones sèches.',
+    'Arroser ce qu\'il faut, là où il faut.',
+    '- `data-fx-data`, `data-fx-min` (35)',
+    'Agriculture, jardin, serres.',
+    'De piloter une vraie irrigation : ce composant n\'en a ni la fiabilité ni la sécurité.',
+    '<div data-fx="moisture-grid" data-fx-min="35"></div>',
+    '<div data-fx="moisture-grid" style="color:var(--ink)"></div>',
+    { a11y: 'Chaque case a une valeur écrite et un contour pour les zones sèches.' }),
 ];

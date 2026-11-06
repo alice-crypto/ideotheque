@@ -8186,6 +8186,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="field-rotation"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
 [data-fx="field-rotation"] input { min-width: 0; accent-color: var(--fx-accent); }
 
+/* moisture-grid : l'humidité du sol */
+[data-fx="moisture-grid"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 220px)); font-size: 11px; }
+[data-fx="moisture-grid"] .fx-mg2 { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; overflow: hidden; }
+[data-fx="moisture-grid"] i { display: grid; place-items: center; height: 30px; color: #fff; font-style: normal; background: color-mix(in srgb, #1f6fbf calc(var(--fx-q) * 140%), #8f6a3c); transition: background .6s; }
+[data-fx="moisture-grid"] .fx-dry { box-shadow: inset 0 0 0 2px #ffd66e; }
+[data-fx="moisture-grid"] .fx-rain::after { content: ''; position: absolute; inset: -50% 0 0; background: repeating-linear-gradient(100deg, transparent 0 7px, #bfe2ff 7px 8px); animation: fx-moisture-rain .9s linear; pointer-events: none; }
+[data-fx="moisture-grid"] button { padding: 5px; border: 0; border-radius: 6px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+[data-fx="moisture-grid"] button:disabled { opacity: .4; }
+[data-fx="moisture-grid"] output { font-weight: 700; }
+@keyframes fx-moisture-rain { from { transform: translateY(-20%); opacity: 1; } to { transform: translateY(20%); opacity: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

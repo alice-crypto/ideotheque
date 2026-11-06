@@ -13881,6 +13881,36 @@
       go();
     }
   });
+
+  // Une grille de capteurs : quelles zones ont besoin d'eau ?
+  FX.register('moisture-grid', {
+    setup: function (el) {
+      var D = (el.dataset.fxData || '62,48,22,35,70,28,18,55,41,66,30,25').split(',').map(Number), th = U.num(el, 'fxMin', 35), box = U.make('div', 'fx-mg2', el), b = U.make('button', '', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      b.type = 'button'; b.textContent = 'Arroser les zones sèches';
+      D.forEach(function (v, i) { var c = U.make('i', '', box); c.setAttribute('role', 'img'); });
+      var show = function () {
+        var dry = 0;
+        Array.prototype.forEach.call(box.children, function (c, i) {
+          var v = D[i];
+          c.style.setProperty('--fx-q', v / 100);
+          c.textContent = v;
+          c.setAttribute('aria-label', 'Zone ' + (i + 1) + ', ' + v + ' %');
+          c.classList.toggle('fx-dry', v < th);
+          if (v < th) dry++;
+        });
+        o.textContent = dry ? dry + ' zones sous ' + th + ' %' : 'Sol bien hydraté partout';
+        b.disabled = !dry;
+      };
+      b.addEventListener('click', function () {
+        box.classList.add('fx-rain');
+        D.forEach(function (v, i) { if (v < th) D[i] = th + U.rand(10, 24) | 0; });
+        show();
+        setTimeout(function () { box.classList.remove('fx-rain'); }, U.reduced ? 0 : 900);
+      });
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
