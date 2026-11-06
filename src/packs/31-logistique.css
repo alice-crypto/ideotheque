@@ -61,3 +61,12 @@
 .fx-in[data-fx="container-fill"] i { opacity: 1; transform: none; }
 [data-fx="container-fill"] p { margin: 6px 0 0; }
 [data-fx="container-fill"] b { font-size: 18px; }
+
+/* warehouse-slot : trouver un emplacement */
+[data-fx="warehouse-slot"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 220px)); font-size: 12px; }
+[data-fx="warehouse-slot"] input { padding: 5px; font: 800 14px ui-monospace, monospace; text-transform: uppercase; }
+[data-fx="warehouse-slot"] .fx-wh { display: grid; grid-template-columns: repeat(var(--fx-c), 1fr); gap: 5px 2px; }
+[data-fx="warehouse-slot"] .fx-wh i { aspect-ratio: 1; background: color-mix(in srgb, currentColor 16%, transparent); }
+[data-fx="warehouse-slot"] .fx-on { background: var(--fx-accent) !important; animation: fx-warehouse-pulse 1s infinite; }
+[data-fx="warehouse-slot"] output { font-weight: 700; }
+@keyframes fx-warehouse-pulse { 50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--fx-accent) 40%, transparent); } }
