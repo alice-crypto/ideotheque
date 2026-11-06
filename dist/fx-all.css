@@ -8840,6 +8840,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="rooms-left"] b { font-size: 16px; }
 [data-fx="rooms-left"] small { font-size: 10px; opacity: .7; }
 
+/* review-bars : des avis par critère */
+[data-fx="review-bars"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 230px)); font-size: 10px; }
+[data-fx="review-bars"] .fx-rb { display: flex; gap: 7px; align-items: center; }
+[data-fx="review-bars"] .fx-rb b { padding: 3px 7px; border-radius: 6px 6px 6px 0; background: var(--fx-accent); color: #fff; font-size: 18px; }
+[data-fx="review-bars"] ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+[data-fx="review-bars"] li { display: grid; grid-template-columns: 90px 1fr 22px; gap: 4px; align-items: center; }
+[data-fx="review-bars"] li i { display: block; height: 6px; background: linear-gradient(90deg, var(--fx-accent), var(--fx-accent)) no-repeat 0 0 / 0 100%, color-mix(in srgb, currentColor 15%, transparent); transition: background-size .7s var(--fx-ease-out) calc(var(--fx-i) * 80ms); }
+.fx-in[data-fx="review-bars"] li i { background-size: calc(var(--fx-q) * 100%) 100%, auto; }
+[data-fx="review-bars"] em { font-style: normal; font-weight: 700; text-align: right; }
+[data-fx="review-bars"] p { margin: 0; font-size: 11px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

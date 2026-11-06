@@ -15095,6 +15095,15 @@
       p.innerHTML = '<b>' + n + ' chambre' + (n > 1 ? 's' : '') + '</b> sur ' + t + ' à ces dates<br><small>Mis à jour à ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + '</small>';
     }
   });
+
+  // Des avis résumés par critère, avec le point fort et le point faible
+  FX.register('review-bars', {
+    entrance: true,
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Propreté:9.2|Accueil:9.5|Emplacement:8.8|Calme:7.4|Rapport qualité-prix:8.1').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1]]; }), avg = R.reduce(function (a, b) { return a + b[1]; }, 0) / R.length, s = R.slice().sort(function (a, b) { return b[1] - a[1]; }), f = function (v) { return v.toFixed(1).replace('.', ','); };
+      el.innerHTML = '<div class="fx-rb"><b>' + f(avg) + '</b><small>sur 10, ' + U.num(el, 'fxCount', 248) + ' avis fictifs</small></div><ul>' + R.map(function (r, i) { return '<li style="--fx-q:' + r[1] / 10 + ';--fx-i:' + i + '"><span>' + r[0] + '</span><i></i><em>' + f(r[1]) + '</em></li>'; }).join('') + '</ul><p>Point fort : ' + s[0][0].toLowerCase() + '. À noter : ' + s[s.length - 1][0].toLowerCase() + '.</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

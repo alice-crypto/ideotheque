@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="rooms-left" data-fx-left="4" data-fx-total="32"></div>',
     '<div data-fx="rooms-left" style="color:var(--ink)"></div>',
     { a11y: 'Chiffre et date écrits. Pas d\'animation qui presse.' }),
+  E('review-bars', 'Présentation',
+    'Des barres résument les avis par critère, avec un point fort et un point à noter.',
+    'Un résumé honnête, qui ne cache pas le point faible.',
+    '- `data-fx-items` : « critère:note » séparés par `|`\n- `data-fx-count` (248)',
+    'Hôtels, restaurants, produits, services.',
+    'Des avis inventés : n\'affichez que de vrais avis, vérifiables.',
+    '<div data-fx="review-bars" data-fx-items="Propreté:9.2|Calme:7.4"></div>',
+    '<div data-fx="review-bars" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Notes et synthèse écrites.' }),
 ];
