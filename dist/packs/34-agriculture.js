@@ -105,4 +105,14 @@
       go();
     }
   });
+
+  // Un tracteur traverse le titre et le fait apparaître dans ses sillons
+  FX.register('tractor-plow', {
+    entrance: true,
+    setup: function (el) {
+      var t = el.innerHTML;
+      el.innerHTML = '<span class="fx-tw" aria-hidden="true">' + t + '</span><span class="fx-tw-s">' + t + '</span><i class="fx-tw-t" aria-hidden="true"><b></b><u></u></i>';
+      U.ensurePositioned(el);
+    }
+  });
 })(window.FX);

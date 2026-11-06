@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="harvest-yield" data-fx-price="230"></div>',
     '<div data-fx="harvest-yield" style="color:var(--ink)"></div>',
     { a11y: 'Curseurs étiquetés, résultat annoncé.' }),
+  E('tractor-plow', 'Texte',
+    'Un tracteur traverse le titre, et le texte apparaît dans son sillage.',
+    'La terre, le travail, l\'humour d\'un clin d\'œil.',
+    '- `--fx-tractor`',
+    'Agriculture, circuits courts, foires.',
+    'Un texte long qui tiendrait sur plusieurs lignes : le geste n\'en prévoit qu\'une.',
+    '<h2 data-fx="tractor-plow">De la ferme</h2>',
+    '<h2 data-fx="tractor-plow" style="margin:0;color:var(--ink);font-size:32px">De la ferme</h2>',
+    { trigger: 'Rejouer', a11y: 'Le texte reste lu une fois. En mouvement réduit, il apparaît sans animation.' }),
 ];
