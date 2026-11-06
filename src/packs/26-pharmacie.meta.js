@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="next-dose" data-fx-hours="6"></div>',
     '<div data-fx="next-dose" data-fx-hours="6" style="color:var(--ink)"></div>',
     { a11y: 'Le temps restant est écrit ; l\'anneau n\'est qu\'une illustration.' }),
+  E('refill-date', 'Présentation',
+    'Une jauge indique les jours restants et la date où la boîte sera vide.',
+    'On anticipe au lieu de découvrir la boîte vide un dimanche.',
+    '- `data-fx-left` (18), `data-fx-per-day` (2), `data-fx-box` (60), `data-fx-warn` (10)',
+    'Traitements, consommables, abonnements à recharger.',
+    'Une prise irrégulière : la date ne serait qu\'une approximation.',
+    '<div data-fx="refill-date" data-fx-left="18" data-fx-per-day="2"></div>',
+    '<div data-fx="refill-date" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Tout est écrit en clair, la jauge illustre.' }),
 ];

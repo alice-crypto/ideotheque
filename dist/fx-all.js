@@ -10255,6 +10255,17 @@
       go();
     }
   });
+
+  // Combien de jours tient la boîte, et quand la renouveler
+  FX.register('refill-date', {
+    entrance: true,
+    setup: function (el) {
+      var left = U.num(el, 'fxLeft', 18), per = U.num(el, 'fxPerDay', 2), box = U.num(el, 'fxBox', 60), days = Math.floor(left / per), end = new Date(Date.now() + days * 86400000);
+      el.style.setProperty('--fx-q', Math.min(1, left / box));
+      el.classList.toggle('fx-low', days <= U.num(el, 'fxWarn', 10));
+      el.innerHTML = '<div class="fx-rd" aria-hidden="true"><i></i></div><strong>' + days + ' jours</strong><span>' + left + ' comprimés, ' + per + ' par jour</span><span>Boîte vide le ' + end.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }) + '</span>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
