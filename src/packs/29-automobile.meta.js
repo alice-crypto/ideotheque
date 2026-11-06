@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="charger-status" data-fx-live="false" data-fx-data="f,o,x"></div>',
     '<div data-fx="charger-status" style="color:var(--ink)"></div>',
     { trigger: 'Changer un état', a11y: 'Chaque borne porte son état écrit, et le résumé est annoncé.' }),
+  E('seat-fold', 'Micro-interaction',
+    'Rabattre les sièges agrandit la zone de chargement et le volume écrit.',
+    'On imagine déjà le déménagement ou les vélos.',
+    '- `data-fx-boot` (480), `data-fx-items` : « siège:litres » séparés par `|`',
+    'SUV, monospaces, utilitaires.',
+    'Des volumes d\'exemple sur une vraie fiche : reprenez les valeurs du constructeur.',
+    '<div data-fx="seat-fold" data-fx-boot="480"></div>',
+    '<div data-fx="seat-fold" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés avec `aria-pressed`, volume annoncé.' }),
 ];

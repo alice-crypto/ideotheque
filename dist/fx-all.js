@@ -11848,6 +11848,29 @@
     },
     trigger: function (el) { el._fxFlip(); }
   });
+
+  // Rabattre les sièges pour voir le coffre s'agrandir
+  FX.register('seat-fold', {
+    setup: function (el) {
+      var B = U.num(el, 'fxBoot', 480), S = (el.dataset.fxItems || 'Gauche:240|Centre:120|Droit:240').split('|').map(function (r) { return r.split(':'); });
+      var box = U.make('div', 'fx-sf2', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      U.make('i', 'fx-sf2-c', box).setAttribute('aria-hidden', 'true');
+      S.forEach(function (s) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', 'Rabattre le siège ' + s[0]);
+        U.make('span', '', b);
+        b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); go(); });
+      });
+      var go = function () {
+        var extra = 0;
+        box.querySelectorAll('button').forEach(function (b, i) { if (b.getAttribute('aria-pressed') === 'true') extra += +S[i][1]; });
+        el.style.setProperty('--fx-q', extra / 600);
+        o.innerHTML = '<b>' + (B + extra).toLocaleString('fr-FR') + ' L</b> de coffre';
+      };
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
