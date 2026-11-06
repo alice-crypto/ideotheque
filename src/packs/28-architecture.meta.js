@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="tracing-overlay" data-fx-image="plan.jpg"></div>',
     '<div data-fx="tracing-overlay" data-fx-image="assets/orbit.svg"></div>',
     { a11y: 'Le calque se déplace aux flèches du clavier.' }),
+  E('sketch-render', 'Image',
+    'Une image passe d\'une esquisse contrastée à sa vue finale au fil du défilement.',
+    'Du premier crayonné au bâtiment achevé.',
+    'Aucun réglage. L\'élément contient une image.',
+    'Récits de projets, avant et après créatif.',
+    'De faire passer ce filtre pour un vrai dessin d\'architecte, à côté d\'un vrai dessin.',
+    '<figure data-fx="sketch-render"><img src="vue.jpg" alt="Façade sud"></figure>',
+    '<figure data-fx="sketch-render" style="margin:0;width:215px"><img src="assets/city.svg" alt="Une ville la nuit"></figure>',
+    { trigger: 'Basculer', a11y: 'Le texte alternatif de l\'image d\'origine est conservé ; la copie est masquée.' }),
 ];
