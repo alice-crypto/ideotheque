@@ -476,4 +476,21 @@
     },
     trigger: function (el) { el._fxSet(!el.classList.contains('fx-on')); }
   });
+
+  // Le rythme d'une ligne : temps disponible divisé par la demande
+  FX.register('takt-time', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-tk3" aria-hidden="true"><i></i></div><label>Demande par jour <b></b><input type="range" min="100" max="2000" step="50"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output'), M = U.num(el, 'fxMinutes', 450) * 60;
+      r.value = U.num(el, 'fxDemand', 600);
+      var go = function () {
+        var d = +r.value, t = M / d;
+        el.style.setProperty('--fx-sp', Math.max(.25, t / 12) + 's');
+        el.querySelector('label b').textContent = d;
+        o.innerHTML = 'Une pièce toutes les <b>' + t.toFixed(1).replace('.', ',') + ' s</b>';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
