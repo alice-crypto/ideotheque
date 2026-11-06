@@ -11889,6 +11889,16 @@
       });
     }
   });
+
+  // Une note de sécurité en étoiles, avec le détail par catégorie
+  FX.register('safety-stars', {
+    entrance: true,
+    setup: function (el) {
+      var n = U.num(el, 'fxStars', 4), R = (el.dataset.fxItems || 'Adultes:91|Enfants:85|Piétons:68|Assistance:77').split('|').map(function (r) { return r.split(':'); }), h = '';
+      for (var i = 0; i < 5; i++) h += '<i class="' + (i < n ? 'fx-on' : '') + '" style="--fx-i:' + i + '">★</i>';
+      el.innerHTML = '<div class="fx-ss2" role="img" aria-label="' + n + ' étoiles sur 5">' + h + '</div><ul>' + R.map(function (r, i) { return '<li style="--fx-q:' + r[1] / 100 + ';--fx-i:' + i + '"><span>' + r[0] + '</span><em></em><b>' + r[1] + ' %</b></li>'; }).join('') + '</ul><small>Résultats fictifs</small>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

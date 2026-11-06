@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="key-fob"></div>',
     '<div data-fx="key-fob" style="color:var(--ink)"></div>',
     { a11y: 'Vrais boutons, état annoncé.' }),
+  E('safety-stars', 'Présentation',
+    'Une note en étoiles se tamponne, et les sous-scores s\'étirent dessous.',
+    'Sérieux et lisible, la preuve sous la note.',
+    '- `data-fx-stars` (4)\n- `data-fx-items` : « catégorie:% » séparés par `|`',
+    'Sécurité, notes d\'expert, certifications.',
+    'Des notes d\'organismes inventées : citez vos sources réelles.',
+    '<div data-fx="safety-stars" data-fx-stars="4"></div>',
+    '<div data-fx="safety-stars" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Note dans `aria-label`, et les scores sont écrits.' }),
 ];
