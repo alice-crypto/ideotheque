@@ -238,4 +238,23 @@
       });
     }
   });
+
+  // Une addition partagée au centime près
+  FX.register('bill-splitter', {
+    setup: function (el) {
+      el.innerHTML = '<label>Total <input type="number" min="0" step="0.01" value="' + U.num(el, 'fxTotal', 86.5) + '"></label><div class="fx-bs-c" role="group" aria-label="Nombre de personnes"><button type="button" aria-label="Une personne de moins">−</button><span></span><button type="button" aria-label="Une personne de plus">+</button></div><div class="fx-bs-p" aria-live="polite"></div>';
+      var input = el.querySelector('input'), n = U.num(el, 'fxPeople', 3), lab = el.querySelector('.fx-bs-c span'), out = el.querySelector('.fx-bs-p');
+      var draw = function () {
+        var cents = Math.round((parseFloat(input.value) || 0) * 100), base = Math.floor(cents / n), extra = cents - base * n, h = '';
+        for (var i = 0; i < n; i++) h += '<i style="--fx-i:' + i + '">' + ((base + (i < extra ? 1 : 0)) / 100).toFixed(2).replace('.', ',') + ' €</i>';
+        out.innerHTML = h;
+        lab.textContent = n + (n > 1 ? ' personnes' : ' personne');
+      };
+      var bs = el.querySelectorAll('.fx-bs-c button');
+      bs[0].addEventListener('click', function () { n = Math.max(1, n - 1); draw(); });
+      bs[1].addEventListener('click', function () { n = Math.min(12, n + 1); draw(); });
+      input.addEventListener('input', draw);
+      draw();
+    }
+  });
 })(window.FX);
