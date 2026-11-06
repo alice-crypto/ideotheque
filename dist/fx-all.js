@@ -15346,6 +15346,30 @@
       el.setAttribute('role', 'group');
     }
   });
+
+  // Le budget d'un voyage : durée, niveau et postes
+  FX.register('trip-budget', {
+    setup: function (el) {
+      var L = { Malin: [25, 15, 10], Confort: [70, 35, 25], Plaisir: [160, 70, 55] }, N = ['Logement', 'Repas', 'Sorties'], k = 'Confort';
+      el.innerHTML = '<div class="fx-tb2" role="radiogroup" aria-label="Niveau de confort"></div><label>Durée <b></b><input type="range" min="2" max="30"></label><div class="fx-tb2-b" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div><ul></ul><output aria-live="polite"></output>';
+      var f = el.querySelector('.fx-tb2'), r = el.querySelector('input'), ul = el.querySelector('ul'), o = el.querySelector('output');
+      N.forEach(function () { U.make('li', '', ul); });
+      r.value = U.num(el, 'fxDays', 10);
+      var go = function () {
+        var d = +r.value, v = L[k], tot = (v[0] + v[1] + v[2]) * d;
+        el.querySelector('label b').textContent = d + ' jours';
+        N.forEach(function (n, i) { ul.children[i].textContent = n + ' : ' + (v[i] * d).toLocaleString('fr-FR') + ' €'; el.style.setProperty('--fx-' + 'abc'[i], v[i]); });
+        o.innerHTML = '<b>' + tot.toLocaleString('fr-FR') + ' €</b> sans le transport';
+      };
+      Object.keys(L).forEach(function (n) {
+        var b = U.make('button', '', f);
+        b.type = 'button'; b.setAttribute('role', 'radio'); b.textContent = n; b.setAttribute('aria-checked', n === k);
+        b.addEventListener('click', function () { k = n; f.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-checked', x === b); }); go(); });
+      });
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

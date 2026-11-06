@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="passport-stamps" data-fx-items="Lisbonne:2024|Kyoto:2025"></div>',
     '<div data-fx="passport-stamps"></div>',
     { trigger: 'Rejouer', a11y: 'Liste des lieux dans `aria-label`, et chaque nom reste un vrai texte.' }),
+  E('trip-budget', 'Micro-interaction',
+    'Durée et niveau de confort donnent un budget de voyage, réparti par poste.',
+    'Rêver, mais avec une idée du prix.',
+    '- `data-fx-days` (10)',
+    'Voyages, blogs, offices de tourisme.',
+    'Des prix d\'exemple pour un vrai pays : les écarts sont énormes selon la destination.',
+    '<div data-fx="trip-budget" data-fx-days="10"></div>',
+    '<div data-fx="trip-budget" style="color:var(--ink)"></div>',
+    { a11y: 'Groupe radio et curseur nommés, totaux écrits.' }),
 ];

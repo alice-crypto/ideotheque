@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->854<!-- /total --> effets.
+La bibliothèque contient <!-- total -->855<!-- /total --> effets.
 
 ## Règles
 
@@ -528,6 +528,7 @@ La bibliothèque contient <!-- total -->854<!-- /total --> effets.
 | `luggage-tag` | Micro-interaction | Une étiquette de bagage se remplit à la saisie, et se balance à chaque lettre |
 | `timezone-slider` | Micro-interaction | Un curseur déplace l'heure, et donne celle des autres villes avec leur vrai fuseau |
 | `packing-weight` | Micro-interaction | Des objets cochés remplissent une valise, et le poids se compare à la limite |
+| `trip-budget` | Micro-interaction | Durée et niveau de confort donnent un budget de voyage, réparti par poste |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
