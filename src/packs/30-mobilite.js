@@ -248,4 +248,24 @@
       go();
     }
   });
+
+  // À partir de combien de trajets l'abonnement est-il rentable ?
+  FX.register('pass-or-ticket', {
+    setup: function (el) {
+      var T = U.num(el, 'fxTicket', 2.1), P = U.num(el, 'fxPass', 42);
+      el.innerHTML = '<label>Trajets par mois <b></b><input type="range" min="0" max="60"></label><div class="fx-pt" aria-hidden="true"><em></em><i></i></div><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output'), seuil = Math.ceil(P / T);
+      r.value = U.num(el, 'fxTrips', 16);
+      el.style.setProperty('--fx-s', seuil / 60);
+      var go = function () {
+        var n = +r.value, tick = n * T, best = tick > P;
+        el.querySelector('label b').textContent = n;
+        el.style.setProperty('--fx-q', n / 60);
+        el.classList.toggle('fx-pass', best);
+        o.innerHTML = '<b>' + (best ? 'L\'abonnement' : 'Les tickets') + '</b> : ' + Math.round(Math.min(tick, P)) + ' € ce mois-ci. Bascule à ' + seuil + ' trajets.';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
