@@ -49,3 +49,14 @@
 [data-fx="bowl-builder"] button { padding: 2px 7px; border: 2px solid var(--fx-c); border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
 [data-fx="bowl-builder"] [aria-pressed="true"] { background: var(--fx-c); color: #111; font-weight: 700; }
 [data-fx="bowl-builder"] output b { font-size: 16px; }
+
+/* pizza-builder : une pizza moitié-moitié */
+[data-fx="pizza-builder"] { display: grid; grid-template-columns: 100px 1fr; gap: 4px 8px; align-items: center; width: min(100%, var(--fx-w, 235px)); font-size: 10px; }
+[data-fx="pizza-builder"] .fx-pz { position: relative; grid-row: span 3; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(#e9a13a 0 80%, #c88b3e 81% 90%, #a56e2a 91%); box-shadow: 0 2px 5px #0006; }
+[data-fx="pizza-builder"] .fx-pz::after { content: ''; position: absolute; left: 50%; top: 4%; bottom: 4%; border-left: 1px dashed #0005; }
+[data-fx="pizza-builder"] .fx-pz i { position: absolute; width: 8px; height: 8px; margin: -4px; border-radius: 50%; opacity: 0; transform: scale(2); transition: opacity .15s, transform .3s var(--fx-ease-spring); }
+[data-fx="pizza-builder"] .fx-pz i.fx-on { opacity: 1; transform: none; }
+[data-fx="pizza-builder"] .fx-pz-s, [data-fx="pizza-builder"] .fx-pz-t { display: flex; flex-wrap: wrap; gap: 2px; }
+[data-fx="pizza-builder"] button { padding: 2px 6px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="pizza-builder"] [aria-pressed="true"], [data-fx="pizza-builder"] .fx-on { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="pizza-builder"] output b { font-size: 18px; }
