@@ -13922,6 +13922,27 @@
       el.innerHTML = '<div class="fx-rg2" aria-hidden="true"><i></i><em></em></div><div class="fx-rg2-w" aria-hidden="true">' + h + '</div><p><b>' + tot + ' mm</b> cette semaine, ' + (tot >= norm ? '+' : '') + (tot - norm) + ' mm par rapport à la normale</p>';
     }
   });
+
+  // Surface, rendement, prix : ce que donnera la récolte
+  FX.register('harvest-yield', {
+    setup: function (el) {
+      var P = U.num(el, 'fxPrice', 230), R = [['Surface', 'a', 5, 200, 5, 40, 'ha'], ['Rendement', 'y', 20, 110, 5, 70, 'q/ha']], h = '';
+      R.forEach(function (r) { h += '<label>' + r[0] + ' <b data-o="' + r[1] + '"></b><input data-k="' + r[1] + '" type="range" min="' + r[2] + '" max="' + r[3] + '" step="' + r[4] + '" value="' + r[5] + '"></label>'; });
+      el.innerHTML = h + '<div class="fx-hy" aria-hidden="true"></div><output aria-live="polite"></output><small>Prix d\'exemple : ' + P + ' €/t.</small>';
+      var box = el.querySelector('.fx-hy'), o = el.querySelector('output');
+      for (var i = 0; i < 30; i++) U.make('i', '', box).style.setProperty('--fx-i', i);
+      var g = function (k) { return +el.querySelector('[data-k=' + k + ']').value; };
+      var go = function () {
+        var a = g('a'), y = g('y'), t = a * y / 10;
+        el.querySelector('[data-o=a]').textContent = a + ' ha'; el.querySelector('[data-o=y]').textContent = y + ' q/ha';
+        var n = Math.round(Math.min(1, t / 800) * 30);
+        Array.prototype.forEach.call(box.children, function (e, i) { e.classList.toggle('fx-on', i < n); });
+        o.innerHTML = '<b>' + Math.round(t).toLocaleString('fr-FR') + ' t</b> · environ ' + Math.round(t * P).toLocaleString('fr-FR') + ' €';
+      };
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

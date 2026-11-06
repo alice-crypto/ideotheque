@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="rain-gauge" data-fx-data="2,0,6,14,3,0,8"></div>',
     '<div data-fx="rain-gauge" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le cumul est écrit, le dessin est décoratif.' }),
+  E('harvest-yield', 'Micro-interaction',
+    'Surface et rendement font lever les épis, et donnent la production et le revenu estimés.',
+    'La récolte se voit déjà, dans les chiffres.',
+    '- `data-fx-price` (230)',
+    'Coopératives, conseil agricole, simulateurs.',
+    'De présenter ce résultat comme un vrai budget d\'exploitation : charges non comprises.',
+    '<div data-fx="harvest-yield" data-fx-price="230"></div>',
+    '<div data-fx="harvest-yield" style="color:var(--ink)"></div>',
+    { a11y: 'Curseurs étiquetés, résultat annoncé.' }),
 ];

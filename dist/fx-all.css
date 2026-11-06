@@ -8211,6 +8211,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="rain-gauge"] p { grid-column: 1 / -1; margin: 3px 0 0; }
 [data-fx="rain-gauge"] b { font-size: 18px; }
 
+/* harvest-yield : ce que donne la récolte */
+[data-fx="harvest-yield"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="harvest-yield"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="harvest-yield"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="harvest-yield"] .fx-hy { display: grid; grid-template-columns: repeat(15, 1fr); gap: 2px; }
+[data-fx="harvest-yield"] .fx-hy i { height: 20px; border-radius: 40% 40% 0 0; background: #d6b34a; opacity: .15; transform: scaleY(.3); transform-origin: bottom; transition: transform .35s var(--fx-ease-spring), opacity .2s; }
+[data-fx="harvest-yield"] .fx-hy .fx-on { opacity: 1; transform: none; }
+[data-fx="harvest-yield"] output b { font-size: 18px; }
+[data-fx="harvest-yield"] small { font-size: 10px; opacity: .7; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
