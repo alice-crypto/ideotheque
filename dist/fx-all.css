@@ -5845,6 +5845,19 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="renewal-window"] p { margin: 6px 0 0; font-weight: 700; }
 @keyframes fx-rw { 50% { opacity: .65; } }
 
+/* attestation-card : une attestation sur écran */
+[data-fx="attestation-card"] { position: relative; display: flex; gap: 10px; align-items: center; width: min(100%, var(--fx-w, 240px)); padding: 12px; border: 1px solid currentColor; border-radius: 12px; font-size: 11px; overflow: hidden; opacity: 0; transform: translateY(10px); transition: opacity .5s, transform .5s var(--fx-ease-out); }
+.fx-in[data-fx="attestation-card"] { opacity: 1; transform: none; }
+[data-fx="attestation-card"]::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 40%, color-mix(in srgb, var(--fx-accent) 40%, transparent) 50%, transparent 60%); background-size: 240% 100%; animation: fx-ac 3s linear infinite; pointer-events: none; }
+[data-fx="attestation-card"] .fx-ac-g { flex: 0 0 62px; display: grid; grid-template-columns: repeat(7, 1fr); aspect-ratio: 1; }
+[data-fx="attestation-card"] .fx-k { background: currentColor; }
+[data-fx="attestation-card"] strong, [data-fx="attestation-card"] span, [data-fx="attestation-card"] b { display: block; }
+[data-fx="attestation-card"] strong { font-size: 14px; }
+[data-fx="attestation-card"] b { margin-top: 4px; color: var(--fx-up, #2eaf63); }
+[data-fx="attestation-card"].fx-exp b { color: var(--fx-down, #e10600); }
+[data-fx="attestation-card"].fx-exp::after { animation: none; background: none; }
+@keyframes fx-ac { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

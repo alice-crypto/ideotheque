@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="renewal-window" data-fx-end="2027-03-01" data-fx-notice="60"></div>',
     '<div data-fx="renewal-window" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'L\'information est écrite dans une phrase : la barre n\'est qu\'une illustration.' }),
+  E('attestation-card', 'Présentation',
+    'Une carte présente une attestation avec un motif propre au numéro et sa validité réelle.',
+    'Comme un titre de transport : vivant, donc difficile à confondre avec une capture.',
+    '- `data-fx-number`, `data-fx-title`, `data-fx-until` : date de fin',
+    'Attestations, cartes de membre, billets.',
+    'De croire que le motif est un code lisible ou une preuve : c\'est un repère visuel, pas une sécurité.',
+    '<div data-fx="attestation-card" data-fx-number="FICTIF-0042" data-fx-until="2027-12-31"></div>',
+    '<div data-fx="attestation-card" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le motif est décoratif : numéro et validité sont écrits.' }),
 ];

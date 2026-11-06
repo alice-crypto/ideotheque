@@ -9558,6 +9558,19 @@
       el.querySelector('p').textContent = days < 0 ? 'Contrat renouvelé il y a ' + -days + ' jours' : open ? 'Vous pouvez résilier encore ' + days + ' jours' : 'Résiliation possible dans ' + (days - notice) + ' jours';
     }
   });
+
+  // Une attestation sur écran : valide ou expirée selon la vraie date
+  FX.register('attestation-card', {
+    entrance: true,
+    setup: function (el) {
+      var no = el.dataset.fxNumber || 'FICTIF-2027-0042', until = new Date(el.dataset.fxUntil || Date.now() + 86400000 * 120), ok = until >= new Date(), h = 7, cells = '';
+      for (var i = 0; i < no.length; i++) h = (h * 31 + no.charCodeAt(i)) >>> 0;
+      for (i = 0; i < 49; i++) { h = (h * 1664525 + 1013904223) >>> 0; cells += '<i class="' + (h >> 16 & 1 ? 'fx-k' : '') + '"></i>'; }
+      el.innerHTML = '<div class="fx-ac-g" aria-hidden="true">' + cells + '</div><div><strong>' + (el.dataset.fxTitle || 'Attestation') + '</strong><span>' + no + '</span><b>' + (ok ? 'Valide' : 'Expirée') + ' jusqu\'au ' + until.toLocaleDateString('fr-FR') + '</b></div>';
+      el.classList.toggle('fx-exp', !ok);
+      el.style.setProperty('--fx-rot', U.rand(-1, 1) + 'deg');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
