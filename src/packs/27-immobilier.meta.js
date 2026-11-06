@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="panorama-drag" data-fx-image="salon.jpg"></div>',
     '<div data-fx="panorama-drag" data-fx-image="assets/city.svg" style="width:220px"></div>',
     { a11y: 'Rôle `slider`, flèches gauche et droite.' }),
+  E('map-price-pins', 'Navigation',
+    'Des bulles de prix sur une carte ouvrent le détail de l\'annonce choisie.',
+    'La recherche devient géographique, comme on pense vraiment.',
+    '- `data-fx-items` : « x:y:prix:description » séparés par `|`',
+    'Annonces, restaurants, locations.',
+    'D\'en rester à ce faux plan : branchez une vraie carte sur un site réel.',
+    '<div data-fx="map-price-pins" data-fx-items="24:30:285 k€:T3"></div>',
+    '<div data-fx="map-price-pins" style="color:var(--ink)"></div>',
+    { a11y: 'Bulles en vrais boutons, et le détail est annoncé.' }),
 ];

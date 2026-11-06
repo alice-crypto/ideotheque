@@ -10752,6 +10752,25 @@
     },
     tick: function (el) { if (el._fxStep) el._fxStep(); }
   });
+
+  // Une carte à bulles de prix qui s'ouvre sur l'annonce
+  FX.register('map-price-pins', {
+    setup: function (el) {
+      var P = (el.dataset.fxItems || '24:30:285 k€:T3 lumineux, 62 m²|62:22:410 k€:Maison, 98 m²|42:62:198 k€:Studio, 28 m²|76:68:340 k€:T4, 81 m²').split('|').map(function (r) { return r.split(':'); });
+      var map = U.make('div', 'fx-mp', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      o.textContent = P.length + ' annonces fictives sur la carte';
+      P.forEach(function (p, i) {
+        var b = U.make('button', '', map);
+        b.type = 'button'; b.textContent = p[2]; b.style.left = p[0] + '%'; b.style.top = p[1] + '%'; b.style.setProperty('--fx-i', i);
+        b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', function () {
+          map.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+          o.innerHTML = '<b>' + p[2] + '</b> · ' + p[3];
+        });
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
