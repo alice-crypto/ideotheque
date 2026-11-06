@@ -111,4 +111,13 @@
       go();
     }
   });
+
+  // Le même principe actif, deux prix, et l'écart sur l'année
+  FX.register('generic-compare', {
+    entrance: true,
+    setup: function (el) {
+      var a = U.num(el, 'fxBrand', 12.4), b = U.num(el, 'fxGeneric', 7.9), n = U.num(el, 'fxPerYear', 12), f = function (v) { return v.toFixed(2).replace('.', ',') + ' €'; };
+      el.innerHTML = '<div><span>' + (el.dataset.fxNameA || 'Marque') + '</span><i style="--fx-q:1"></i><b>' + f(a) + '</b></div><div class="fx-g"><span>' + (el.dataset.fxNameB || 'Générique') + '</span><i style="--fx-q:' + b / a + '"></i><b>' + f(b) + '</b></div><p>Soit <strong>' + f((a - b) * n) + '</strong> d\'écart pour ' + n + ' boîtes par an</p>';
+    }
+  });
 })(window.FX);
