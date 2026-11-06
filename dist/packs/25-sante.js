@@ -298,4 +298,27 @@
       go();
     }
   });
+
+  // Une arcade dentaire dont on désigne les dents concernées
+  FX.register('dental-chart', {
+    setup: function (el) {
+      var box = U.make('div', 'fx-dt', el), out = U.make('output', '', el), picked = [], Q = [18, 17, 16, 15, 14, 13, 12, 11, 21, 22, 23, 24, 25, 26, 27, 28];
+      out.setAttribute('aria-live', 'polite');
+      var say = function () { out.textContent = picked.length ? 'Dents : ' + picked.sort(function (a, b) { return a - b; }).join(', ') : 'Touchez la dent concernée'; };
+      box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Arcade du haut');
+      Q.forEach(function (n, i) {
+        var a = Math.PI * (i + .5) / Q.length, b = U.make('button', '', box);
+        b.type = 'button'; b.textContent = n; b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', 'Dent ' + n);
+        b.style.left = 50 - 46 * Math.cos(a) + '%'; b.style.top = 92 - 84 * Math.sin(a) + '%';
+        b.style.setProperty('--fx-r', (a * 180 / Math.PI - 90) + 'deg');
+        b.addEventListener('click', function () {
+          var k = picked.indexOf(n), on = k < 0;
+          if (on) picked.push(n); else picked.splice(k, 1);
+          b.setAttribute('aria-pressed', on);
+          say();
+        });
+      });
+      say();
+    }
+  });
 })(window.FX);

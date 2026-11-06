@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="pregnancy-week" data-fx-week="20"></div>',
     '<div data-fx="pregnancy-week" style="color:var(--ink)"></div>',
     { a11y: 'Curseur nommé, résultat annoncé.' }),
+  E('dental-chart', 'Micro-interaction',
+    'Une arcade dentaire numérotée permet de désigner les dents concernées.',
+    'On montre sans chercher le vocabulaire.',
+    '- `--fx-w` (235px)\n- `--fx-accent`',
+    'Cabinets dentaires, devis, prise de rendez-vous.',
+    'Un dossier médical complet : ce schéma ne montre que l\'arcade du haut.',
+    '<div data-fx="dental-chart"></div>',
+    '<div data-fx="dental-chart" style="color:var(--ink)"></div>',
+    { a11y: 'Chaque dent est un bouton nommé par son numéro, et la sélection est annoncée.' }),
 ];

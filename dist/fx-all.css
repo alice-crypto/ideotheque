@@ -6064,6 +6064,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="pregnancy-week"] input { width: 100%; accent-color: var(--fx-accent); }
 [data-fx="pregnancy-week"] b { font-size: 15px; }
 
+/* dental-chart : une arcade dentaire */
+[data-fx="dental-chart"] { display: grid; gap: 4px; justify-items: center; width: min(100%, var(--fx-w, 235px)); font-size: 12px; }
+[data-fx="dental-chart"] .fx-dt { position: relative; width: 100%; aspect-ratio: 1.55; }
+[data-fx="dental-chart"] button { position: absolute; width: 21px; height: 25px; margin: -12px 0 0 -10px; padding: 0; border: 1px solid currentColor; border-radius: 40% 40% 50% 50%; background: none; color: inherit; font-size: 8px; cursor: pointer; transform: rotate(var(--fx-r)); transition: background .2s, transform .25s var(--fx-ease-spring); }
+[data-fx="dental-chart"] button:hover { background: color-mix(in srgb, var(--fx-accent) 30%, transparent); }
+[data-fx="dental-chart"] button[aria-pressed="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; transform: rotate(var(--fx-r)) scale(1.18); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

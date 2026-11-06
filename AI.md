@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->564<!-- /total --> effets.
+La bibliothèque contient <!-- total -->565<!-- /total --> effets.
 
 ## Règles
 
@@ -314,6 +314,7 @@ La bibliothèque contient <!-- total -->564<!-- /total --> effets.
 | `hydration-glasses` | Micro-interaction | Des verres se remplissent d'un geste jusqu'à l'objectif du jour |
 | `triage-flow` | Micro-interaction | Des questions oui ou non orientent vers le bon interlocuteur, avec un retour possible |
 | `pregnancy-week` | Micro-interaction | Un curseur parcourt les semaines de grossesse, avec le trimestre et les semaines restantes |
+| `dental-chart` | Micro-interaction | Une arcade dentaire numérotée permet de désigner les dents concernées |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
