@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="gear-selector"></div>',
     '<div data-fx="gear-selector" style="color:var(--ink)"></div>',
     { a11y: 'Groupe radio complet : flèches, focus géré, et état annoncé.' }),
+  E('headlight-sweep', 'Micro-interaction',
+    'Un bouton allume des phares, et le faisceau suit la souris pour révéler le texte.',
+    'Un parking la nuit, la voiture qui s\'éveille.',
+    '- `--fx-w`, `--fx-h`\n- le contenu de l\'élément est révélé',
+    'Lancement de véhicule, section nocturne.',
+    'Un contenu essentiel : au doigt, le faisceau reste au centre, sans suivre.',
+    '<div data-fx="headlight-sweep">Voir la nuit autrement</div>',
+    '<div data-fx="headlight-sweep">Voir la nuit autrement</div>',
+    { a11y: 'Le texte reste dans la page ; bouton `aria-pressed`.' }),
 ];

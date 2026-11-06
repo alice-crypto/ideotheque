@@ -71,3 +71,10 @@
 [data-fx="gear-selector"] button { position: relative; height: 32px; padding: 0; border: 0; background: none; color: inherit; font: inherit; font-size: 15px; cursor: pointer; }
 [data-fx="gear-selector"] button[aria-checked="true"] { color: #fff; }
 [data-fx="gear-selector"] button:focus-visible { outline: 2px solid #fff; outline-offset: -2px; border-radius: 8px; }
+
+/* headlight-sweep : des phares dans le noir */
+[data-fx="headlight-sweep"] { display: grid; place-items: center; width: min(100%, var(--fx-w, 230px)); height: var(--fx-h, 150px); overflow: hidden; background: #efe9d9; color: #161616; font-weight: 800; text-align: center; }
+[data-fx="headlight-sweep"] .fx-hl-m { position: absolute; inset: 0; background: #060709; transition: opacity .3s; }
+[data-fx="headlight-sweep"].fx-on .fx-hl-m { background: radial-gradient(ellipse 110px 54px at var(--fx-x, 50%) var(--fx-y, 45%), transparent 55%, #060709 100%); animation: fx-hl .35s steps(4); }
+[data-fx="headlight-sweep"] button { position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%); padding: 3px 10px; border: 1px solid #fff8; border-radius: 99px; background: #0009; color: #fff; font-size: 11px; white-space: nowrap; cursor: pointer; }
+@keyframes fx-hl { 0%, 50% { opacity: .2; } 25%, 75% { opacity: 1; } }
