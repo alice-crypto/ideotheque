@@ -119,3 +119,12 @@
 [data-fx="ph-meter"] label { display: grid; grid-template-columns: auto 1fr; gap: 6px; }
 [data-fx="ph-meter"] input { min-width: 0; accent-color: var(--fx-accent); }
 [data-fx="ph-meter"] b { font-size: 15px; }
+
+/* honeycomb-fill : un rayon de ruche */
+[data-fx="honeycomb-fill"] { display: grid; gap: 7px; justify-items: center; width: min(100%, var(--fx-w, 220px)); font-size: 13px; font-weight: 700; }
+[data-fx="honeycomb-fill"] .fx-hc2 { display: grid; gap: 0; }
+[data-fx="honeycomb-fill"] .fx-hc2 > div { display: flex; gap: 2px; margin-bottom: -7px; }
+[data-fx="honeycomb-fill"] .fx-odd { margin-left: 15px; }
+[data-fx="honeycomb-fill"] i { width: 28px; height: 32px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: color-mix(in srgb, currentColor 18%, transparent); transition: background .4s calc(var(--fx-i) * 45ms), transform .4s var(--fx-ease-spring) calc(var(--fx-i) * 45ms); transform: scale(.82); }
+.fx-in[data-fx="honeycomb-fill"] i.fx-on { background: radial-gradient(circle at 40% 35%, #ffd76a, #e39a11); transform: none; }
+[data-fx="honeycomb-fill"] p { margin: 6px 0 0; }
