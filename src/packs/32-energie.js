@@ -375,4 +375,15 @@
       go();
     }
   });
+
+  // Un barrage : le niveau d'eau et l'énergie qui y dort
+  FX.register('reservoir-level', {
+    entrance: true,
+    setup: function (el) {
+      var v = U.num(el, 'fxValue', 62), lo = U.num(el, 'fxLow', 35), cap = U.num(el, 'fxCapacity', 480), q = v / 100;
+      el.style.setProperty('--fx-q', q); el.style.setProperty('--fx-low', lo / 100);
+      el.classList.toggle('fx-low', v < lo);
+      el.innerHTML = '<div class="fx-rl" aria-hidden="true"><i></i><em></em></div><p><b>' + v + ' %</b> · ' + Math.round(cap * q) + ' MWh stockés<br>' + (v < lo ? 'Sous le seuil de vigilance' : 'Niveau normal') + '</p>';
+    }
+  });
 })(window.FX);
