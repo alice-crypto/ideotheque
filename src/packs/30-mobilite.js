@@ -107,4 +107,23 @@
       show();
     }
   });
+
+  // Un billet numérique avec sa durée de validité qui s'écoule
+  FX.register('transit-ticket', {
+    setup: function (el) {
+      var min = U.num(el, 'fxMinutes', 90), end = 0;
+      el.innerHTML = '<div class="fx-tk2"><strong>' + (el.dataset.fxTitle || 'Ticket 1 zone') + '</strong><span class="fx-tk2-t">Non activé</span><i aria-hidden="true"></i></div><button type="button">Activer</button>';
+      var b = el.querySelector('button'), t = el.querySelector('.fx-tk2-t'), bar = el.querySelector('.fx-tk2 i');
+      var show = function () {
+        if (!end) return;
+        var left = end - Date.now();
+        if (left <= 0) { el.classList.remove('fx-live'); el.classList.add('fx-off'); t.textContent = 'Billet expiré'; bar.style.width = 0; end = 0; return; }
+        t.textContent = 'Valable encore ' + Math.ceil(left / 60000) + ' min';
+        bar.style.width = left / (min * 60000) * 100 + '%';
+      };
+      b.addEventListener('click', function () { end = Date.now() + min * 60000; el.classList.add('fx-live'); el.classList.remove('fx-off'); b.disabled = true; b.textContent = 'Activé'; show(); });
+      setInterval(show, 20000);
+    },
+    trigger: function (el) { el.querySelector('button').click(); }
+  });
 })(window.FX);
