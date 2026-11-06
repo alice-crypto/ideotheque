@@ -6619,6 +6619,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="rooms-range"] .fx-s.fx-e { border-radius: 8px; }
 [data-fx="rooms-range"] output { font-weight: 700; }
 
+/* area-square : une surface concrète */
+[data-fx="area-square"] { display: grid; grid-template-columns: var(--fx-s, 90px) 1fr; gap: 10px; align-items: end; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="area-square"] .fx-as { position: relative; aspect-ratio: 1; border-left: 1px solid currentColor; border-bottom: 1px solid currentColor; }
+[data-fx="area-square"] i { position: absolute; left: 0; bottom: 0; width: 0; height: 0; background: var(--fx-accent); transition: width 1s var(--fx-ease-out), height 1s var(--fx-ease-out); }
+.fx-in[data-fx="area-square"] i { width: calc(var(--fx-q) * 100%); height: calc(var(--fx-q) * 100%); }
+[data-fx="area-square"] u { position: absolute; left: 0; bottom: 0; width: calc(var(--fx-u) * 100%); height: calc(var(--fx-u) * 100%); border: 1px solid #fff; background: #0005; box-sizing: border-box; }
+[data-fx="area-square"] p { margin: 0; }
+[data-fx="area-square"] b { font-size: 20px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

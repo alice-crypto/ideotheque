@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="rooms-range" data-fx-items="Studio,2,3,4,5+"></div>',
     '<div data-fx="rooms-range" style="color:var(--ink)"></div>',
     { a11y: 'Groupe nommé, boutons `aria-pressed`, résumé annoncé.' }),
+  E('area-square', 'Présentation',
+    'Une surface devient un carré à l\'échelle, à côté d\'un repère connu.',
+    'Enfin une idée de ce que représentent 62 m².',
+    '- `data-fx-area` (62), `data-fx-max` (150)\n- `--fx-s`, `--fx-accent`',
+    'Annonces, bureaux, parcelles, salles.',
+    'De confondre avec la surface habitable réelle : la forme du logement compte.',
+    '<div data-fx="area-square" data-fx-area="62"></div>',
+    '<div data-fx="area-square" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Tout est écrit en texte, le carré illustre.' }),
 ];
