@@ -380,4 +380,22 @@
       }
     }
   });
+
+  // Chercher un ingrédient dans une composition trop longue
+  FX.register('ingredient-lookup', {
+    setup: function (el) {
+      var words = el.textContent.split(',').map(function (s) { return s.trim(); });
+      el.textContent = '';
+      var q = U.make('input', '', el), p = U.make('p', '', el), out = U.make('output', '', el);
+      q.type = 'search'; q.placeholder = 'Chercher un ingrédient'; q.setAttribute('aria-label', 'Chercher un ingrédient');
+      out.setAttribute('aria-live', 'polite');
+      var sp = words.map(function (w, i) { var s = U.make('span', '', p); s.textContent = w + (i < words.length - 1 ? ', ' : ''); return s; });
+      q.addEventListener('input', function () {
+        var v = q.value.trim().toLowerCase(), n = 0;
+        sp.forEach(function (s) { var hit = v && s.textContent.toLowerCase().indexOf(v) >= 0; s.classList.toggle('fx-hit', !!hit); if (hit) n++; });
+        p.classList.toggle('fx-q', !!v);
+        out.textContent = !v ? '' : n ? 'Présent : ' + n + ' mention' + (n > 1 ? 's' : '') : 'Absent de cette liste';
+      });
+    }
+  });
 })(window.FX);
