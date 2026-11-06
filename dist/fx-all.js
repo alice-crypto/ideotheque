@@ -10526,6 +10526,23 @@
       U.make('small', 'fx-af-n', el).textContent = 'Lisez toujours l\'étiquette.';
     }
   });
+
+  // Saisir une date et voir si le produit est encore bon
+  FX.register('expiry-check', {
+    setup: function (el) {
+      el.innerHTML = '<label>Date de péremption <input type="date"></label><output role="status">Saisissez la date</output>';
+      var i = el.querySelector('input'), o = el.querySelector('output'), soon = U.num(el, 'fxSoon', 30);
+      var go = function () {
+        if (!i.value) return;
+        var d = Math.ceil((new Date(i.value) - Date.now()) / 86400000);
+        el.dataset.fxLevel = d < 0 ? 'out' : d <= soon ? 'soon' : 'ok';
+        o.textContent = d < 0 ? 'Périmé depuis ' + -d + ' jours' : d <= soon ? 'À finir sous ' + d + ' jours' : 'Bon encore ' + d + ' jours';
+      };
+      i.addEventListener('change', go);
+      if (el.dataset.fxDate) { i.value = el.dataset.fxDate; go(); }
+      else { var t = new Date(Date.now() + 86400000 * U.num(el, 'fxDays', 20)); i.value = t.toISOString().slice(0, 10); go(); }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

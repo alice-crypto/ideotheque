@@ -6338,6 +6338,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="allergen-filter"] output { font-weight: 700; }
 [data-fx="allergen-filter"] .fx-af-n { font-size: 10px; opacity: .7; }
 
+/* expiry-check : est-ce encore bon ? */
+[data-fx="expiry-check"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 220px)); font-size: 12px; perspective: 400px; }
+[data-fx="expiry-check"] label { display: grid; gap: 3px; }
+[data-fx="expiry-check"] input { padding: 5px; font: inherit; }
+[data-fx="expiry-check"] output { padding: 8px; border-radius: 7px; background: color-mix(in srgb, currentColor 14%, transparent); font-weight: 700; text-align: center; animation: fx-ex .3s var(--fx-ease-out); }
+[data-fx="expiry-check"][data-fx-level="ok"] output { background: var(--fx-ok, #2eaf63); color: #fff; }
+[data-fx="expiry-check"][data-fx-level="soon"] output { background: var(--fx-warn, #e8930c); color: #111; }
+[data-fx="expiry-check"][data-fx-level="out"] output { background: var(--fx-down, #e10600); color: #fff; }
+@keyframes fx-ex { from { transform: rotateX(-40deg); opacity: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

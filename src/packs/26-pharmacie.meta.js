@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="allergen-filter" data-fx-allergens="Noix" data-fx-items="Baume:Noix|Lait:"></div>',
     '<div data-fx="allergen-filter" style="color:var(--ink)"></div>',
     { a11y: 'Vraies cases étiquetées, compte annoncé, et lignes masquées retirées pour les lecteurs d\'écran.' }),
+  E('expiry-check', 'Micro-interaction',
+    'Une date saisie donne le temps restant avant péremption, en trois états.',
+    'Réponse immédiate au moment de faire le tri.',
+    '- `data-fx-date` ou `data-fx-days` (20) : valeur de départ\n- `data-fx-soon` (30)',
+    'Pharmacie familiale, alimentation, garanties.',
+    'D\'assurer qu\'un produit ouvert reste bon : la date vaut pour un produit fermé.',
+    '<div data-fx="expiry-check" data-fx-date="2027-06-30"></div>',
+    '<div data-fx="expiry-check" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai champ date, résultat écrit dans une région `status`.' }),
 ];
