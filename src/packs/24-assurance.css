@@ -219,3 +219,15 @@
 .fx-in[data-fx="umbrella-open"] i { animation-name: fx-u-s; }
 @keyframes fx-u-f { to { transform: translateY(1250%); } }
 @keyframes fx-u-s { 24% { transform: none; } 34% { transform: translate(var(--fx-out), 280%); } 100% { transform: translate(var(--fx-out), 1250%); } }
+
+/* life-events-rail : les moments de la vie */
+[data-fx="life-events-rail"] { width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="life-events-rail"] .fx-le { position: relative; height: 16px; margin: 0 8px; }
+[data-fx="life-events-rail"] .fx-le::before { content: ''; position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: color-mix(in srgb, currentColor 25%, transparent); }
+[data-fx="life-events-rail"] i { position: absolute; top: 3px; width: 10px; height: 10px; margin-left: -5px; border: 2px solid currentColor; border-radius: 50%; box-sizing: border-box; background: var(--fx-bg, #0000); transition: transform .25s var(--fx-ease-spring), background .2s; }
+[data-fx="life-events-rail"] .fx-past { background: var(--fx-accent); border-color: var(--fx-accent); }
+[data-fx="life-events-rail"] .fx-on { transform: scale(1.5); }
+[data-fx="life-events-rail"] input { width: 100%; accent-color: var(--fx-accent); }
+[data-fx="life-events-rail"] p { margin: 6px 0 0; min-height: 3em; }
+[data-fx="life-events-rail"] b { font-size: 16px; }
+[data-fx="life-events-rail"] em { font-style: normal; color: var(--fx-accent); font-weight: 700; }
