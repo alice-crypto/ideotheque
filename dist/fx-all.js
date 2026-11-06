@@ -8956,6 +8956,20 @@
       draw();
     }
   });
+
+  // Une tirelire transparente qui se remplit vers un objectif
+  FX.register('goal-jar', {
+    entrance: true,
+    setup: function (el) {
+      var v = U.num(el, 'fxValue', 640), g = U.num(el, 'fxGoal', 1000);
+      el.setAttribute('role', 'meter');
+      el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', g); el.setAttribute('aria-valuenow', v);
+      el.setAttribute('aria-label', el.dataset.fxLabel || 'Objectif');
+      el.innerHTML = '<span class="fx-j"><i></i></span><b>' + v.toLocaleString('fr-FR') + ' € sur ' + g.toLocaleString('fr-FR') + ' €</b>';
+      el.style.setProperty('--fx-q', Math.min(1, v / g));
+      for (var i = 0; i < 4; i++) { var c = U.make('em', '', el.firstChild); c.setAttribute('aria-hidden', 'true'); c.style.setProperty('--fx-i', i); c.style.left = U.rand(25, 65) + '%'; }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

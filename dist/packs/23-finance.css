@@ -110,3 +110,12 @@
 [data-fx="bill-splitter"] .fx-bs-p { display: flex; flex-wrap: wrap; gap: 4px; }
 [data-fx="bill-splitter"] .fx-bs-p i { padding: .2em .55em; font-style: normal; background: var(--fx-accent); color: #111; font-variant-numeric: tabular-nums; animation: fx-bs .3s var(--fx-ease-spring) calc(var(--fx-i) * 30ms) both; }
 @keyframes fx-bs { from { transform: scale(.5); opacity: 0; } }
+
+/* goal-jar : une tirelire transparente */
+[data-fx="goal-jar"] { display: inline-grid; justify-items: center; gap: 8px; font-size: 13px; }
+[data-fx="goal-jar"] .fx-j { position: relative; display: block; width: var(--fx-w, 90px); height: var(--fx-h, 120px); border: 3px solid currentColor; border-top-width: 6px; border-radius: 8px 8px 18px 18px; overflow: hidden; }
+[data-fx="goal-jar"] .fx-j > i { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: var(--fx-accent); transition: height 1.4s var(--fx-ease-out) .3s; }
+.fx-in[data-fx="goal-jar"] .fx-j > i { height: calc(var(--fx-q) * 100%); }
+[data-fx="goal-jar"] em { position: absolute; top: -14px; width: 12px; height: 12px; border-radius: 50%; background: var(--fx-coin, #ffd400); box-shadow: inset 0 0 0 1px #000; opacity: 0; }
+.fx-in[data-fx="goal-jar"] em { animation: fx-jc .7s ease-in calc(var(--fx-i) * 220ms) both; }
+@keyframes fx-jc { 0% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(110px); } }

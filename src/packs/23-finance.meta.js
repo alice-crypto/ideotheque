@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="bill-splitter" data-fx-total="86.50"></div>',
     '<div data-fx="bill-splitter" style="width:215px;color:var(--ink)"></div>',
     { a11y: 'Boutons nommés et résultat annoncé par `aria-live`.' }),
+  E('goal-jar', 'Présentation',
+    'Une tirelire transparente se remplit vers un objectif, et quelques pièces y tombent.',
+    'Encourageant, on voit l\'objectif se rapprocher.',
+    '- `data-fx-value` (640), `data-fx-goal` (1000), `data-fx-label`\n- `--fx-w`, `--fx-h`, `--fx-coin`',
+    'Épargne, cagnottes, collectes.',
+    'Un objectif financier très sérieux : le ton reste léger.',
+    '<div data-fx="goal-jar" data-fx-value="640" data-fx-goal="1000"></div>',
+    '<div data-fx="goal-jar" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Rôle `meter`, et la valeur est écrite.' }),
 ];
