@@ -92,3 +92,9 @@
 [data-fx="route-optimize"] button { padding: 4px 12px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
 [data-fx="route-optimize"] b { font-size: 16px; }
 @keyframes fx-route-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+/* fleet-dots : une flotte sur un plan */
+[data-fx="fleet-dots"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; font-weight: 700; }
+[data-fx="fleet-dots"] .fx-fd { position: relative; height: 120px; background: repeating-linear-gradient(0deg, #fff1 0 1px, transparent 1px 24px), repeating-linear-gradient(90deg, #fff1 0 1px, transparent 1px 34px), #161b22; overflow: hidden; }
+[data-fx="fleet-dots"] i { position: absolute; width: 8px; height: 8px; margin: -4px; border-radius: 50%; background: #45e08b; box-shadow: 0 0 6px #45e08b; }
+[data-fx="fleet-dots"] i.fx-stop { border-radius: 1px; background: #ffa32e; box-shadow: none; }
