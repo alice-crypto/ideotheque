@@ -145,3 +145,16 @@
 [data-fx="orchard-grow"] i::before { content: ''; position: absolute; left: 50%; bottom: 0; width: 2px; height: 10px; margin-left: -1px; background: #6b4f2f; }
 [data-fx="orchard-grow"] i::after { content: ''; position: absolute; left: 50%; bottom: 8px; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: var(--fx-leaf, #3f9b57); }
 [data-fx="orchard-grow"] p { margin: 0; }
+
+/* frost-alert : un risque de gel */
+[data-fx="frost-alert"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="frost-alert"] .fx-fa { display: flex; gap: 2px; }
+[data-fx="frost-alert"] .fx-fa > div { position: relative; flex: 1; display: grid; justify-items: center; padding: 5px 0; overflow: hidden; background: color-mix(in srgb, currentColor 8%, transparent); }
+[data-fx="frost-alert"] small { font-size: 9px; }
+[data-fx="frost-alert"] b { font-size: 14px; }
+[data-fx="frost-alert"] .fx-fa i { position: absolute; inset: 0; opacity: 0; }
+[data-fx="frost-alert"] .fx-f { color: #a3dcff; }
+[data-fx="frost-alert"] .fx-f i { box-shadow: inset 0 0 12px #bfe9ff; animation: fx-frost-in 1s var(--fx-ease-out) calc(var(--fx-i) * 100ms) forwards; }
+[data-fx="frost-alert"] p { margin: 0; font-weight: 700; }
+[data-fx="frost-alert"] > small { font-size: 9px; opacity: .6; }
+@keyframes fx-frost-in { to { opacity: 1; } }
