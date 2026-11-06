@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="review-bars" data-fx-items="Propreté:9.2|Calme:7.4"></div>',
     '<div data-fx="review-bars" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Notes et synthèse écrites.' }),
+  E('bed-merge', 'Micro-interaction',
+    'Deux lits simples se rapprochent pour former un grand lit, et le choix s\'écrit.',
+    'Un petit détail qui évite une demande à la réception.',
+    '- `data-fx-on` : réunis au départ ; événement `fx:beds`',
+    'Hôtels, chambres d\'hôtes, hébergement familial.',
+    'De promettre une configuration indisponible : reliez-la à l\'inventaire.',
+    '<div data-fx="bed-merge"></div>',
+    '<div data-fx="bed-merge" style="color:var(--ink)"></div>',
+    { trigger: 'Basculer', a11y: 'Bouton `aria-pressed`, état annoncé.' }),
 ];

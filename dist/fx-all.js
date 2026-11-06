@@ -15104,6 +15104,24 @@
       el.innerHTML = '<div class="fx-rb"><b>' + f(avg) + '</b><small>sur 10, ' + U.num(el, 'fxCount', 248) + ' avis fictifs</small></div><ul>' + R.map(function (r, i) { return '<li style="--fx-q:' + r[1] / 10 + ';--fx-i:' + i + '"><span>' + r[0] + '</span><i></i><em>' + f(r[1]) + '</em></li>'; }).join('') + '</ul><p>Point fort : ' + s[0][0].toLowerCase() + '. À noter : ' + s[s.length - 1][0].toLowerCase() + '.</p>';
     }
   });
+
+  // Deux lits simples qui se rapprochent pour n'en faire qu'un
+  FX.register('bed-merge', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-bm2" aria-hidden="true"><i></i><i></i></div><button type="button" aria-pressed="false"></button><output aria-live="polite"></output>';
+      var b = el.querySelector('button'), o = el.querySelector('output');
+      var set = function (m) {
+        b.setAttribute('aria-pressed', m);
+        el.classList.toggle('fx-on', m);
+        b.textContent = m ? 'Séparer les lits' : 'Rapprocher les lits';
+        o.textContent = m ? 'Un grand lit, 180 × 200' : 'Deux lits simples, 90 × 200';
+        el.dispatchEvent(new CustomEvent('fx:beds', { bubbles: true, detail: { merged: m } }));
+      };
+      b.addEventListener('click', function () { set(!el.classList.contains('fx-on')); });
+      set(el.dataset.fxOn === 'true');
+    },
+    trigger: function (el) { el.querySelector('button').click(); }
+  });
 })(window.FX);
 
 window.FX._boot();
