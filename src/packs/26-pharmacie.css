@@ -96,3 +96,13 @@
 [data-fx="led-cross"] { display: inline-block; width: var(--fx-s, 150px); }
 [data-fx="led-cross"] .fx-lc { display: grid; grid-template-columns: repeat(15, 1fr); gap: 2px; }
 [data-fx="led-cross"] i { aspect-ratio: 1; border-radius: 50%; background: var(--fx-led, #2bff74); box-shadow: 0 0 5px var(--fx-led, #2bff74); opacity: .4; }
+
+/* capsule-switch : un interrupteur en gélule */
+[data-fx="capsule-switch"] { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+[data-fx="capsule-switch"] input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+[data-fx="capsule-switch"] .fx-cp { position: relative; display: block; width: 58px; height: 28px; border-radius: 14px; background: color-mix(in srgb, currentColor 16%, #fff); overflow: hidden; box-shadow: inset 0 0 0 1px #0002, inset 0 3px 3px #fff5; }
+[data-fx="capsule-switch"] .fx-cp i { position: absolute; top: 0; left: 0; width: 50%; height: 100%; background: var(--fx-off, #8a8f98); transition: transform .4s var(--fx-ease-spring), background .3s; }
+[data-fx="capsule-switch"] input:checked + .fx-cp i { transform: translateX(100%); background: var(--fx-accent); }
+[data-fx="capsule-switch"] .fx-go { animation: fx-cp .4s var(--fx-ease-spring); }
+[data-fx="capsule-switch"] input:focus-visible + .fx-cp { outline: 2px solid var(--fx-accent); outline-offset: 2px; }
+@keyframes fx-cp { 40% { transform: scale(1.1, .9); } }
