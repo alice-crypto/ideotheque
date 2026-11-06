@@ -253,4 +253,20 @@
     tick: function (el, dt) { if (!U.reduced) el._fxDraw(dt); else el._fxDraw(0); },
     trigger: function (el) { el.querySelector('button').click(); }
   });
+
+  // Un verger qui pousse rang après rang
+  FX.register('orchard-grow', {
+    entrance: true,
+    setup: function (el) {
+      var C = U.num(el, 'fxCols', 8), R = U.num(el, 'fxRows', 4), v = U.num(el, 'fxValue', 0) || C * R, box = U.make('div', 'fx-og', el);
+      box.style.setProperty('--fx-c', C);
+      box.setAttribute('aria-hidden', 'true');
+      for (var y = 0; y < R; y++) for (var x = 0; x < C; x++) {
+        var t = U.make('i', '', box);
+        t.style.setProperty('--fx-i', x + y * 1.5);
+        t.style.setProperty('--fx-s', U.rand(.78, 1.05).toFixed(2));
+      }
+      U.make('p', '', el).textContent = el.dataset.fxText || v + ' arbres plantés';
+    }
+  });
 })(window.FX);
