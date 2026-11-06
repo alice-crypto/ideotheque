@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="rent-vs-buy" data-fx-price="250000" data-fx-rent="950"></div>',
     '<div data-fx="rent-vs-buy" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, conclusion écrite et annoncée.' }),
+  E('closing-costs', 'Présentation',
+    'Une barre empilée montre le prix et les frais, et se recalcule selon le neuf ou l\'ancien.',
+    'Pas de mauvaise surprise chez le notaire.',
+    '- `data-fx-price` (250000)',
+    'Achat immobilier, véhicules, factures à postes.',
+    'De présenter ces taux comme exacts : ils varient selon le bien, le lieu et l\'agence.',
+    '<div data-fx="closing-costs" data-fx-price="250000"></div>',
+    '<div data-fx="closing-costs" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons `aria-pressed`, tous les montants écrits et annoncés.' }),
 ];

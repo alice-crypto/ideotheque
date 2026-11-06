@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->610<!-- /total --> effets.
+La bibliothèque contient <!-- total -->611<!-- /total --> effets.
 
 ## Règles
 
@@ -234,6 +234,7 @@ La bibliothèque contient <!-- total -->610<!-- /total --> effets.
 | `energy-label` | Présentation | Une étiquette énergie déroule ses classes, et la valeur du logement vient se placer sur la sienne |
 | `walk-score` | Présentation | Un score de quartier s'accompagne des temps de marche vers l'essentiel |
 | `rent-vs-buy` | Présentation | Deux courbes de coût montrent à partir de quelle année acheter devient avantageux |
+| `closing-costs` | Présentation | Une barre empilée montre le prix et les frais, et se recalcule selon le neuf ou l'ancien |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |
