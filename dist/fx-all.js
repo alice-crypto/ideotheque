@@ -14582,6 +14582,19 @@
       }
     }
   });
+
+  // Une carte à l'ancienne, avec les points qui courent jusqu'au prix
+  FX.register('menu-leaders', {
+    entrance: true,
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Velouté de saison:12|Daurade au fenouil:24|Pot-au-feu de la maison:21|Tarte au citron:9').split('|').map(function (r) { var k = r.lastIndexOf(':'); return [r.slice(0, k), r.slice(k + 1)]; }), ul = U.make('ul', '', el);
+      R.forEach(function (r, i) {
+        var li = U.make('li', '', ul);
+        li.style.setProperty('--fx-i', i);
+        li.innerHTML = '<span>' + r[0] + '</span><i aria-hidden="true"></i><b>' + r[1] + ' €</b>';
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

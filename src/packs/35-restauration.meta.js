@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="steam-rise"><img src="soupe.jpg" alt="Une soupe chaude"></div>',
     '<div data-fx="steam-rise" style="margin-top:90px"><div style="width:90px;height:44px;border-radius:0 0 40px 40px;background:#efe4d2"></div></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran. Coupé en mouvement réduit.' }),
+  E('menu-leaders', 'Présentation',
+    'Une carte de restaurant se révèle plat par plat, avec des points qui courent jusqu\'au prix.',
+    'La carte imprimée d\'une maison qui a du métier.',
+    '- `data-fx-items` : « plat:prix » séparés par `|`',
+    'Restaurants, bistrots, tarifs de services.',
+    'Une très longue carte : l\'animation deviendrait lente, gardez-la pour une sélection.',
+    '<div data-fx="menu-leaders" data-fx-items="Velouté:12|Tarte:9"></div>',
+    '<div data-fx="menu-leaders" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Liste réelle, points masqués, prix lisibles.' }),
 ];
