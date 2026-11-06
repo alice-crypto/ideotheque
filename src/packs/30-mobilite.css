@@ -201,3 +201,15 @@
 [data-fx="ferry-crossing"] p { margin: 6px 0 0; font-weight: 700; }
 @keyframes fx-fc { to { transform: translateX(36px); } }
 @keyframes fx-fc2 { 50% { transform: rotate(-3deg) translateY(-2px); } }
+
+/* gear-cogs : deux pignons liés */
+[data-fx="gear-cogs"] { display: grid; gap: 4px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="gear-cogs"] svg { width: 100%; overflow: visible; }
+[data-fx="gear-cogs"] g.x, [data-fx="gear-cogs"] g.y { fill: var(--fx-accent); }
+[data-fx="gear-cogs"] g.y { fill: var(--fx-accent-2); }
+[data-fx="gear-cogs"] .fx-gc-h { fill: #111; }
+[data-fx="gear-cogs"] .fx-gc-a { transform: rotate(var(--fx-a, 0deg)); }
+[data-fx="gear-cogs"] .fx-gc-b { transform: rotate(var(--fx-b, 0deg)); }
+[data-fx="gear-cogs"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="gear-cogs"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="gear-cogs"] output b { font-size: 15px; }
