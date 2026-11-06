@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="cycle-ring" data-fx-start="2027-01-03" data-fx-length="28"></div>',
     '<div data-fx="cycle-ring" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le jour et la phase sont écrits ; l\'anneau est décoratif.' }),
+  E('pregnancy-week', 'Micro-interaction',
+    'Un curseur parcourt les semaines de grossesse, avec le trimestre et les semaines restantes.',
+    'Tendre et concret.',
+    '- `data-fx-week` (20)',
+    'Maternité, parentalité.',
+    'Un calcul médical : la date réelle dépend du suivi.',
+    '<div data-fx="pregnancy-week" data-fx-week="20"></div>',
+    '<div data-fx="pregnancy-week" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur nommé, résultat annoncé.' }),
 ];

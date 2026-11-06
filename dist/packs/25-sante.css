@@ -134,3 +134,11 @@
 [data-fx="cycle-ring"] > div { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 1; display: grid; place-content: center; }
 [data-fx="cycle-ring"] b { display: block; font-size: 17px; }
 [data-fx="cycle-ring"] small { margin-top: 4px; font-size: 10px; opacity: .7; }
+
+/* pregnancy-week : semaine après semaine */
+[data-fx="pregnancy-week"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 220px)); font-size: 12px; }
+[data-fx="pregnancy-week"] .fx-pw { display: flex; align-items: center; justify-content: center; height: 72px; border-bottom: 1px solid currentColor; }
+[data-fx="pregnancy-week"] .fx-pw i { display: block; width: 66px; height: 66px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff8, transparent 40%), var(--fx-accent); transform: scale(calc(.08 + var(--fx-q) * .92)); transition: transform .3s var(--fx-ease-spring); }
+[data-fx="pregnancy-week"] label { display: grid; gap: 3px; }
+[data-fx="pregnancy-week"] input { width: 100%; accent-color: var(--fx-accent); }
+[data-fx="pregnancy-week"] b { font-size: 15px; }
