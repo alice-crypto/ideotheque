@@ -7670,6 +7670,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="bill-slices"] [aria-pressed="true"] { transform: translateY(-4px); }
 [data-fx="bill-slices"] output b { font-size: 15px; }
 
+/* peak-clock : heures creuses et pleines */
+[data-fx="peak-clock"] { display: grid; gap: 6px; justify-items: center; font-size: 12px; font-weight: 700; }
+[data-fx="peak-clock"] .fx-pk { position: relative; width: var(--fx-s, 130px); aspect-ratio: 1; border-radius: 50%; mask: radial-gradient(circle, transparent 48%, #000 49%); }
+[data-fx="peak-clock"] .fx-pk i { position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; margin-left: -1.5px; background: linear-gradient(var(--fx-accent) 26%, transparent 26%); transition: transform .5s; }
+[data-fx="peak-clock"] span { position: absolute; font-size: 9px; color: #fff; }
+[data-fx="peak-clock"] span:nth-of-type(1) { left: 50%; top: 2px; transform: translateX(-50%); }
+[data-fx="peak-clock"] span:nth-of-type(2) { right: 3px; top: 50%; transform: translateY(-50%); }
+[data-fx="peak-clock"] span:nth-of-type(3) { left: 50%; bottom: 2px; transform: translateX(-50%); }
+[data-fx="peak-clock"] span:nth-of-type(4) { left: 3px; top: 50%; transform: translateY(-50%); }
+[data-fx="peak-clock"].fx-now-off output { color: var(--fx-off, #2d9c7f); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

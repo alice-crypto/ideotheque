@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="bill-slices" data-fx-items="Énergie:42:Consommation|Taxes:24:Taxes"></div>',
     '<div data-fx="bill-slices" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Chaque part est un bouton nommé avec son pourcentage, détail annoncé.' }),
+  E('peak-clock', 'État',
+    'Une horloge de 24 heures montre les heures creuses, avec l\'heure réelle et le temps avant la prochaine.',
+    'On lance la machine au bon moment.',
+    '- `data-fx-off` : plages « début-fin » séparées par des virgules\n- `--fx-off`, `--fx-s`',
+    'Offres d\'électricité, péages, happy hours.',
+    'Des plages d\'exemple : elles varient selon le contrat et la région.',
+    '<div data-fx="peak-clock" data-fx-off="0-6,14-16"></div>',
+    '<div data-fx="peak-clock" style="color:var(--ink)"></div>',
+    { a11y: 'L\'état est écrit en phrase, le cadran est décoratif.' }),
 ];

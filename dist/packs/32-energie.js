@@ -38,4 +38,27 @@
       });
     }
   });
+
+  // Une horloge de 24 h : heures creuses, heures pleines et maintenant
+  FX.register('peak-clock', {
+    setup: function (el) {
+      var Z = (el.dataset.fxOff || '0-6,14-16').split(',').map(function (s) { return s.split('-').map(Number); });
+      var deg = function (h) { return h / 24 * 360; }, grad = Z.map(function (z) { return 'var(--fx-off, #2d9c7f) ' + deg(z[0]) + 'deg ' + deg(z[1]) + 'deg'; });
+      var st = [], pos = 0;
+      Z.forEach(function (z, i) { if (z[0] > pos) st.push('color-mix(in srgb, currentColor 20%, transparent) ' + deg(pos) + 'deg ' + deg(z[0]) + 'deg'); st.push(grad[i]); pos = z[1]; });
+      st.push('color-mix(in srgb, currentColor 20%, transparent) ' + deg(pos) + 'deg 360deg');
+      el.innerHTML = '<div class="fx-pk" aria-hidden="true" style="background:conic-gradient(' + st.join(',') + ')"><i></i><span>0</span><span>6</span><span>12</span><span>18</span></div><output></output>';
+      var o = el.querySelector('output'), hand = el.querySelector('i');
+      var go = function () {
+        var d = new Date(), h = d.getHours() + d.getMinutes() / 60, off = Z.some(function (z) { return h >= z[0] && h < z[1]; });
+        hand.style.transform = 'rotate(' + deg(h) + 'deg)';
+        el.classList.toggle('fx-now-off', off);
+        if (off) { o.textContent = 'Heure creuse en ce moment'; return; }
+        var nx = Z.map(function (z) { return z[0] > h ? z[0] - h : z[0] + 24 - h; }).sort(function (a, b) { return a - b; })[0];
+        o.textContent = 'Heure pleine, creuse dans ' + Math.ceil(nx) + ' h';
+      };
+      go();
+      setInterval(go, 60000);
+    }
+  });
 })(window.FX);
