@@ -158,3 +158,11 @@
 [data-fx="frost-alert"] p { margin: 0; font-weight: 700; }
 [data-fx="frost-alert"] > small { font-size: 9px; opacity: .6; }
 @keyframes fx-frost-in { to { opacity: 1; } }
+
+/* degree-days : vers la récolte */
+[data-fx="degree-days"] { width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="degree-days"] .fx-dd2 { display: flex; align-items: flex-end; gap: 2px; height: 76px; border-top: 2px dashed var(--fx-accent); }
+[data-fx="degree-days"] i { flex: 1; height: 0; background: linear-gradient(#f28c28, #e8c232); transition: height .6s var(--fx-ease-out) calc(var(--fx-i) * 80ms); }
+.fx-in[data-fx="degree-days"] i { height: calc(var(--fx-q) * 100%); }
+[data-fx="degree-days"] p { margin: 6px 0 0; }
+[data-fx="degree-days"] b { font-size: 18px; }
