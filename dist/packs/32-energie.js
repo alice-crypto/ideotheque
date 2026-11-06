@@ -386,4 +386,26 @@
       el.innerHTML = '<div class="fx-rl" aria-hidden="true"><i></i><em></em></div><p><b>' + v + ' %</b> · ' + Math.round(cap * q) + ' MWh stockés<br>' + (v < lo ? 'Sous le seuil de vigilance' : 'Niveau normal') + '</p>';
     }
   });
+
+  // Une aide aux travaux, selon le revenu et le chantier choisi
+  FX.register('aid-estimate', {
+    setup: function (el) {
+      var W = JSON.parse(el.dataset.fxWorks || '{"Isolation du toit":[3000,2200,1200,0],"Pompe à chaleur":[5000,4000,3000,0],"Fenêtres":[800,600,400,0]}'), T = ['Très modeste', 'Modeste', 'Intermédiaire', 'Élevé'];
+      el.innerHTML = '<label>Revenus<select class="r">' + T.map(function (t, i) { return '<option value="' + i + '">' + t + '</option>'; }).join('') + '</select></label><div class="fx-ae"></div><output aria-live="polite"></output><small>Barème fictif, renseignez-vous auprès du service officiel.</small>';
+      var s = el.querySelector('.r'), box = el.querySelector('.fx-ae'), o = el.querySelector('output');
+      Object.keys(W).forEach(function (k) {
+        var l = U.make('label', '', box), c = U.make('input', '', l);
+        c.type = 'checkbox'; c.value = k;
+        l.appendChild(document.createTextNode(k));
+      });
+      var go = function () {
+        var r = +s.value, t = 0;
+        box.querySelectorAll(':checked').forEach(function (c) { t += W[c.value][r]; });
+        o.innerHTML = 'Aide estimée : <b>' + t.toLocaleString('fr-FR') + ' €</b>';
+      };
+      el.addEventListener('change', go);
+      box.querySelector('input').checked = true;
+      go();
+    }
+  });
 })(window.FX);

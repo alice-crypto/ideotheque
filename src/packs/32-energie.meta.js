@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="reservoir-level" data-fx-value="62"></div>',
     '<div data-fx="reservoir-level" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Valeurs et état écrits, dessin décoratif.' }),
+  E('aid-estimate', 'Micro-interaction',
+    'Le revenu et les travaux cochés donnent une estimation d\'aide, écrite et animée.',
+    'On découvre qu\'on a droit à quelque chose.',
+    '- `data-fx-works` : JSON travaux vers montants par tranche',
+    'Rénovation, aides publiques, subventions.',
+    'Tout barème réel non vérifié : ces montants sont fictifs et un vrai barème change souvent.',
+    '<div data-fx="aid-estimate"></div>',
+    '<div data-fx="aid-estimate" style="color:var(--ink)"></div>',
+    { a11y: 'Vraie liste et vraies cases, résultat annoncé.' }),
 ];

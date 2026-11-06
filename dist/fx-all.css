@@ -7882,6 +7882,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="reservoir-level"].fx-low b { color: var(--fx-down, #e10600); }
 @keyframes fx-reservoir-wave { to { background-position-x: 16px; } }
 
+/* aid-estimate : une aide aux travaux */
+[data-fx="aid-estimate"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="aid-estimate"] > label { display: grid; gap: 2px; }
+[data-fx="aid-estimate"] select { padding: 4px; font: inherit; }
+[data-fx="aid-estimate"] .fx-ae { display: grid; gap: 2px; }
+[data-fx="aid-estimate"] .fx-ae label { display: flex; gap: 5px; align-items: center; cursor: pointer; }
+[data-fx="aid-estimate"] input { margin: 0; accent-color: var(--fx-accent); }
+[data-fx="aid-estimate"] output { font-size: 13px; }
+[data-fx="aid-estimate"] output b { display: inline-block; font-size: 22px; color: var(--fx-accent); animation: fx-aid-pop .3s var(--fx-ease-spring); }
+[data-fx="aid-estimate"] small { font-size: 10px; opacity: .7; }
+@keyframes fx-aid-pop { from { transform: scale(.85); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
