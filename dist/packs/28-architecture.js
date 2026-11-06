@@ -245,4 +245,16 @@
       l.forEach(function (x, i) { x.classList.toggle('fx-on', i <= s); });
     }
   });
+
+  // Des lames de façade qui s'ouvrent quand on descend vers elles
+  FX.register('louver-facade', {
+    setup: function (el) {
+      var n = U.num(el, 'fxBlades', 11), b = U.make('div', 'fx-lf', el);
+      b.setAttribute('aria-hidden', 'true');
+      U.ensurePositioned(el);
+      for (var i = 0; i < n; i++) U.make('i', '', b);
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-q', U.clamp(info.enter * 1.5, 0, 1).toFixed(3)); },
+    trigger: function (el) { var on = el.classList.toggle('fx-open'); el.style.setProperty('--fx-q', on ? 1 : 0); }
+  });
 })(window.FX);

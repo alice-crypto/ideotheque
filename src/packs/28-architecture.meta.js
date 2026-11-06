@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="stair-climb"></div>',
     '<div data-fx="stair-climb" style="color:var(--ink)"></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
+  E('louver-facade', 'Défilement',
+    'Des lames de bois tournent et laissent voir ce qu\'elles cachaient, au fil du défilement.',
+    'Une lumière filtrée, un intérieur qui se dévoile.',
+    '- `data-fx-blades` (11)',
+    'Images de projet, hôtels, hero d\'agence.',
+    'De cacher une information essentielle : les lames ferment le contenu au départ.',
+    '<figure data-fx="louver-facade"><img src="vue.jpg" alt=""></figure>',
+    '<figure data-fx="louver-facade" style="margin:0;width:215px;height:130px"><img src="assets/bloom.svg" alt="" style="width:100%;height:100%;object-fit:cover"></figure>',
+    { trigger: 'Ouvrir ou fermer', a11y: 'Le contenu reste dans la page, seules les lames sont décoratives.' }),
 ];
