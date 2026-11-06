@@ -19,3 +19,12 @@
 [data-fx="wheel-roll"] i { position: absolute; bottom: -8px; width: 26px; height: 26px; border-radius: 50%; background: repeating-conic-gradient(#ddd 0 30deg, #111 30deg 90deg); box-shadow: inset 0 0 0 5px #111; transform: rotate(var(--fx-a, 0deg)); }
 [data-fx="wheel-roll"] i:first-child { left: 14px; }
 [data-fx="wheel-roll"] i:last-child { right: 14px; }
+
+/* range-conditions : l'autonomie réelle */
+[data-fx="range-conditions"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="range-conditions"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="range-conditions"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="range-conditions"] .fx-rc { height: 14px; padding: 2px; border: 2px solid currentColor; border-radius: 4px; }
+[data-fx="range-conditions"] .fx-rc i { display: block; height: 100%; width: calc(var(--fx-q) * 100%); background: var(--fx-up, #2eaf63); transition: width .2s; }
+[data-fx="range-conditions"] output b { font-size: 20px; }
+[data-fx="range-conditions"] small { font-size: 10px; opacity: .7; }

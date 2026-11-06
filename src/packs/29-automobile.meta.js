@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="wheel-roll"></div>',
     '<div data-fx="wheel-roll" style="color:var(--ink);width:220px"></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
+  E('range-conditions', 'Micro-interaction',
+    'Température et vitesse font varier l\'autonomie réelle d\'un véhicule électrique.',
+    'Sans discours, l\'honnêteté sur l\'autonomie rassure.',
+    '- `data-fx-range` (420) : autonomie annoncée',
+    'Constructeurs, comparateurs, sites de bornes.',
+    'De présenter ce modèle comme un vrai calcul : remplacez les coefficients par vos essais.',
+    '<div data-fx="range-conditions" data-fx-range="420"></div>',
+    '<div data-fx="range-conditions" style="color:var(--ink)"></div>',
+    { a11y: 'Curseurs étiquetés, résultat annoncé.' }),
 ];

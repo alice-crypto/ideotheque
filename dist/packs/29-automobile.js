@@ -34,4 +34,21 @@
       el.style.setProperty('--fx-a', (x / r * 57.3).toFixed(1) + 'deg');
     }
   });
+
+  // L'autonomie selon la température et la vitesse
+  FX.register('range-conditions', {
+    setup: function (el) {
+      var base = U.num(el, 'fxRange', 420);
+      el.innerHTML = '<label>Température <b data-o="t"></b><input data-k="t" type="range" min="-10" max="30" value="10"></label><label>Vitesse <b data-o="v"></b><input data-k="v" type="range" min="50" max="130" step="10" value="110"></label><div class="fx-rc" aria-hidden="true"><i></i></div><output aria-live="polite"></output><small>Modèle fictif pour illustrer l\'écart.</small>';
+      var T = el.querySelector('[data-k=t]'), V = el.querySelector('[data-k=v]'), o = el.querySelector('output');
+      var go = function () {
+        var t = +T.value, v = +V.value, ct = t < 20 ? 1 - (20 - t) * .012 : 1, cv = 1 - Math.max(0, v - 70) * .0045, r = Math.round(base * ct * cv);
+        el.querySelector('[data-o=t]').textContent = t + ' °C'; el.querySelector('[data-o=v]').textContent = v + ' km/h';
+        el.style.setProperty('--fx-q', r / base);
+        o.innerHTML = '<b>' + r + ' km</b> sur ' + base + ' km annoncés';
+      };
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
