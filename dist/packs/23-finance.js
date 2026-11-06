@@ -57,4 +57,24 @@
       });
     }
   });
+
+  // Un numéro de carte masqué, révélé quelques secondes
+  FX.register('card-number-reveal', {
+    setup: function (el) {
+      var n = (el.dataset.fxNumber || '4000 0000 0000 0002').split(' '), to;
+      el.textContent = '';
+      var box = U.make('span', 'fx-cn', el), b = U.make('button', '', el);
+      b.type = 'button';
+      var groups = n.map(function (g, i) { var s = U.make('span', '', box); s.dataset.real = g; s.textContent = i === n.length - 1 ? g : '••••'; return s; });
+      var set = function (on) {
+        groups.forEach(function (s, i) { if (i < n.length - 1) { s.textContent = on ? s.dataset.real : '••••'; s.classList.remove('fx-go'); void s.offsetWidth; s.style.setProperty('--fx-i', i); s.classList.add('fx-go'); } });
+        b.textContent = on ? 'Masquer' : 'Afficher';
+        b.setAttribute('aria-pressed', on);
+        clearTimeout(to);
+        if (on) to = setTimeout(function () { set(false); }, U.num(el, 'fxHold', 6000));
+      };
+      b.addEventListener('click', function () { set(b.getAttribute('aria-pressed') !== 'true'); });
+      set(false);
+    }
+  });
 })(window.FX);

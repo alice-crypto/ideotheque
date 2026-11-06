@@ -26,3 +26,10 @@
 [data-fx="balance-mask"] .fx-bm-b { width: 1.6em; height: 1.6em; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font-size: .5em; cursor: pointer; }
 [data-fx="balance-mask"].fx-hid .fx-bm-v { letter-spacing: .08em; }
 @keyframes fx-bm { from { filter: blur(6px); } }
+
+/* card-number-reveal : un numéro protégé */
+[data-fx="card-number-reveal"] { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .7em; font-variant-numeric: tabular-nums; }
+[data-fx="card-number-reveal"] .fx-cn { display: inline-flex; gap: .6em; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+[data-fx="card-number-reveal"] .fx-go { animation: fx-cn .35s var(--fx-ease-out) calc(var(--fx-i) * 70ms) both; }
+[data-fx="card-number-reveal"] button { padding: .2em .6em; border: 1px solid currentColor; border-radius: 6px; background: none; color: inherit; font: inherit; font-size: .75em; cursor: pointer; }
+@keyframes fx-cn { from { transform: rotateX(90deg); opacity: 0; } }

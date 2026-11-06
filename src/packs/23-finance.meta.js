@@ -30,4 +30,13 @@ module.exports = [
     '<span data-fx="balance-mask">2 480,50 €</span>',
     '<span class="demo-number" data-fx="balance-mask" style="color:var(--ink);font-size:38px">2 480,50 €</span>',
     { a11y: 'Le bouton est nommé et expose `aria-pressed`.' }),
+  E('card-number-reveal', 'Micro-interaction',
+    'Un numéro de carte reste masqué, sauf ses derniers chiffres, et se révèle quelques secondes à la demande.',
+    'Sécurité visible, on garde la main.',
+    '- `data-fx-number` : numéro avec des espaces\n- `data-fx-hold` (6000) : durée d\'affichage',
+    'Cartes virtuelles, maquettes de banques.',
+    'De vrais numéros en clair dans le HTML : chargez-les seulement à la demande depuis votre serveur.',
+    '<span data-fx="card-number-reveal" data-fx-number="4000 0000 0000 0002"></span>',
+    '<span data-fx="card-number-reveal" style="color:var(--ink);font-size:15px"></span>',
+    { a11y: 'Le bouton expose `aria-pressed`.' }),
 ];
