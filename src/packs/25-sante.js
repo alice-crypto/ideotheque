@@ -245,4 +245,22 @@
     },
     trigger: function (el) { el._fxRun(); }
   });
+
+  // Des rendez-vous de santé par âge, situés depuis une date de naissance
+  FX.register('vaccine-calendar', {
+    entrance: true,
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || '2 mois:2|4 mois:4|11 mois:11|6 ans:72|11 ans:132').split('|'), born = el.dataset.fxBorn ? new Date(el.dataset.fxBorn) : new Date(Date.now() - 86400000 * 30.4 * 10);
+      var age = (Date.now() - born) / (86400000 * 30.4), ol = U.make('ol', '', el), done = false;
+      rows.forEach(function (r, i) {
+        var p = r.split(':'), m = +p[1], li = U.make('li', '', ol), past = age >= m, next = !past && !done;
+        if (next) done = true;
+        li.className = past ? 'fx-past' : next ? 'fx-next' : '';
+        li.style.setProperty('--fx-i', i);
+        li.innerHTML = '<b>' + p[0] + '</b><span>' + (past ? 'Date passée' : next ? 'Prochain, dans ' + Math.ceil(m - age) + ' mois' : 'Plus tard') + '</span>';
+        if (next) li.setAttribute('aria-current', 'date');
+      });
+      U.make('small', '', el).textContent = 'Exemple fictif : suivez le calendrier officiel.';
+    }
+  });
 })(window.FX);
