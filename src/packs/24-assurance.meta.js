@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="reimbursement-split" data-fx-cost="60" data-fx-base="21" data-fx-top="24"></div>',
     '<div data-fx="reimbursement-split" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Tous les montants sont écrits dans une liste : la barre les illustre.' }),
+  E('family-builder', 'Micro-interaction',
+    'On ajoute adultes et enfants, les silhouettes arrivent et la cotisation se recalcule.',
+    'Chaleureux, on se reconnaît dans le foyer.',
+    '- `data-fx-adult` (42), `data-fx-child` (18) : prix par personne',
+    'Mutuelles familiales, billets groupés, assurances voyage.',
+    'De promettre une règle tarifaire que le contrat n\'applique pas : ici, le 3ᵉ enfant est gratuit.',
+    '<div data-fx="family-builder" data-fx-adult="42" data-fx-child="18"></div>',
+    '<div data-fx="family-builder" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés, valeurs écrites et total annoncé.' }),
 ];

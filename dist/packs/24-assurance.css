@@ -88,3 +88,15 @@
 [data-fx="reimbursement-split"] ul { margin: 8px 0 0; padding: 0; list-style: none; }
 [data-fx="reimbursement-split"] li { display: flex; justify-content: space-between; gap: 8px; padding: 1px 0 1px 12px; position: relative; }
 [data-fx="reimbursement-split"] li::before { content: ''; position: absolute; left: 0; top: 6px; width: 7px; height: 7px; background: var(--c); }
+
+/* family-builder : composer le foyer */
+[data-fx="family-builder"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 220px)); font-size: 13px; }
+[data-fx="family-builder"] .fx-fb { display: flex; align-items: flex-end; gap: 4px; height: 44px; }
+[data-fx="family-builder"] .fx-fb i { position: relative; width: 14px; height: 22px; border-radius: 7px 7px 2px 2px; background: var(--fx-accent-2); animation: fx-fb .35s var(--fx-ease-spring); }
+[data-fx="family-builder"] .fx-fb .fx-big { width: 18px; height: 32px; background: var(--fx-accent); }
+[data-fx="family-builder"] .fx-fb i::before { content: ''; position: absolute; left: 50%; top: -11px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: inherit; }
+[data-fx="family-builder"] .fx-fb-r { display: flex; align-items: center; gap: 8px; }
+[data-fx="family-builder"] .fx-fb-r span { flex: 1; }
+[data-fx="family-builder"] button { width: 24px; height: 24px; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; cursor: pointer; }
+[data-fx="family-builder"] output b { font-size: 20px; }
+@keyframes fx-fb { from { transform: translateY(-18px) scale(.7); opacity: 0; } }

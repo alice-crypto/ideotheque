@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->532<!-- /total --> effets.
+La bibliothèque contient <!-- total -->533<!-- /total --> effets.
 
 ## Règles
 
@@ -285,6 +285,7 @@ La bibliothèque contient <!-- total -->532<!-- /total --> effets.
 | `deductible-slider` | Micro-interaction | Un curseur règle la franchise, et la cotisation mensuelle baisse quand la franchise monte |
 | `damage-spots` | Micro-interaction | On touche les zones abîmées d'une voiture vue de dessus, et le résumé s'écrit dessous |
 | `document-checklist` | Micro-interaction | Une liste de pièces se coche, une barre avance et le message dit ce qui manque |
+| `family-builder` | Micro-interaction | On ajoute adultes et enfants, les silhouettes arrivent et la cotisation se recalcule |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
