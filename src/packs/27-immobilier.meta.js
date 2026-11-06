@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="tape-measure" data-fx-value="4.2"></div>',
     '<div data-fx="tape-measure" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Rôle `img`, longueur écrite dans `aria-label`.' }),
+  E('blueprint-draw', 'Entrée',
+    'Un plan se trace mur par mur sur un papier bleu quadrillé.',
+    'Le projet prend forme, dessiné à la main.',
+    '- `data-fx-walls` : murs « x1,y1,x2,y2 » séparés par `|`\n- `--fx-paper`, `data-fx-label`',
+    'Architectes, promoteurs, rénovation.',
+    'Une longue attente : huit à douze murs suffisent.',
+    '<div data-fx="blueprint-draw"></div>',
+    '<div data-fx="blueprint-draw"></div>',
+    { trigger: 'Rejouer', a11y: 'Décoratif par défaut, ou décrit avec `data-fx-label`.' }),
 ];
