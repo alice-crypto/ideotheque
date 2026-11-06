@@ -57,4 +57,13 @@ module.exports = [
     '<h2 data-fx="hatch-reveal">Projets</h2>',
     '<h2 class="demo-title" data-fx="hatch-reveal">Projets</h2>',
     { trigger: 'Rejouer', a11y: 'Le texte est dans `aria-label`, et les deux copies sont masquées.' }),
+  E('north-arrow', 'Défilement',
+    'Une flèche de nord tourne au fil du défilement de la page.',
+    'Signature discrète, un clin d\'œil pour qui sait lire un plan.',
+    '- `data-fx-turn` (360) : rotation totale\n- `--fx-s` (70px)',
+    'Sites d\'architecture, en marge d\'un plan.',
+    'D\'indiquer le vrai nord d\'un plan : ici, la flèche tourne, elle ne l\'indique plus.',
+    '<div data-fx="north-arrow"></div>',
+    '<div data-fx="north-arrow" style="color:var(--ink)"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
 ];

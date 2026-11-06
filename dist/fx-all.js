@@ -11188,6 +11188,15 @@
       el.innerHTML = '<span class="fx-hr-a" aria-hidden="true">' + t + '</span><span class="fx-hr-b" aria-hidden="true">' + t + '</span>';
     }
   });
+
+  // Une flèche de nord qui tourne en descendant la page
+  FX.register('north-arrow', {
+    setup: function (el) {
+      el.setAttribute('aria-hidden', 'true');
+      el.innerHTML = '<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26"/><path d="M30 6 38 34 30 28 22 34Z"/><text x="30" y="52">N</text></svg>';
+    },
+    scroll: function (el, info) { el.style.setProperty('--fx-a', (info.pass * U.num(el, 'fxTurn', 360)).toFixed(1) + 'deg'); }
+  });
 })(window.FX);
 
 window.FX._boot();
