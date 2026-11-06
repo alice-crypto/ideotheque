@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->707<!-- /total --> effets.
+La bibliothèque contient <!-- total -->708<!-- /total --> effets.
 
 ## Règles
 
@@ -266,6 +266,7 @@ La bibliothèque contient <!-- total -->707<!-- /total --> effets.
 | `parcel-journey` | Présentation | Un camion avance sur le trajet d'un colis jusqu'à l'étape en cours |
 | `pallet-stack` | Présentation | Une palette se remplit de couches de cartons, selon la hauteur de chaque carton |
 | `container-fill` | Présentation | Un calcul place les caisses dans un conteneur, et donne le taux de remplissage |
+| `route-optimize` | Présentation | Une tournée en désordre se réorganise d'un clic, avec les kilomètres gagnés |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

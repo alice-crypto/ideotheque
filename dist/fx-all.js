@@ -12529,6 +12529,31 @@
       setTimeout(function () { el.classList.add('fx-ok'); o.textContent = 'Lu : ' + (el.dataset.fxCode || 'FICTIF-48210'); }, U.reduced ? 0 : 950);
     }
   });
+
+  // Une tournée en désordre qui se réorganise, avec les kilomètres gagnés
+  FX.register('route-optimize', {
+    setup: function (el) {
+      var P = (el.dataset.fxData || '10,70|80,20|25,20|70,80|45,50|15,35|88,55|55,15').split('|').map(function (s) { var p = s.split(','); return [+p[0], +p[1]]; }), d = function (a, b) { return Math.hypot(a[0] - b[0], a[1] - b[1]); };
+      var len = function (o) { var t = 0; for (var i = 1; i < o.length; i++) t += d(P[o[i - 1]], P[o[i]]); return t; };
+      var a = P.map(function (_, i) { return i; }), b = [0], left = a.slice(1);
+      while (left.length) { var last = P[b[b.length - 1]], best = 0; left.forEach(function (k, i) { if (d(P[k], last) < d(P[left[best]], last)) best = i; }); b.push(left.splice(best, 1)[0]); }
+      var path = function (o) { return o.map(function (k, i) { return (i ? 'L' : 'M') + P[k][0] + ' ' + P[k][1]; }).join(''); };
+      el.innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true"><path class="fx-ro-l"/>' + P.map(function (p, i) { return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + (i ? 2.6 : 4) + '"/>'; }).join('') + '</svg><button type="button">Optimiser</button><output aria-live="polite"></output>';
+      var L = el.querySelector('path'), o = el.querySelector('output'), btn = el.querySelector('button'), on = false, u = U.num(el, 'fxScale', .6);
+      el._fxSet = function (v) {
+        on = v;
+        L.setAttribute('d', path(on ? b : a));
+        L.style.stroke = on ? 'var(--fx-up, #2eaf63)' : '';
+        L.setAttribute('pathLength', 1);
+        L.classList.remove('fx-go'); void L.getBoundingClientRect(); L.classList.add('fx-go');
+        btn.textContent = on ? 'Revenir à l\'ordre initial' : 'Optimiser';
+        o.innerHTML = '<b>' + Math.round((on ? len(b) : len(a)) * u) + ' km</b>' + (on ? ', soit ' + Math.round((len(a) - len(b)) * u) + ' km de moins' : ' dans l\'ordre de saisie');
+      };
+      btn.addEventListener('click', function () { el._fxSet(!on); });
+      el._fxSet(false);
+    },
+    trigger: function (el) { el.querySelector('button').click(); }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="barcode-scan" data-fx-code="FICTIF-48210"></div>',
     '<div data-fx="barcode-scan" style="color:var(--ink)"></div>',
     { trigger: 'Scanner', a11y: 'Bouton réel, code écrit, résultat annoncé.' }),
+  E('route-optimize', 'Présentation',
+    'Une tournée en désordre se réorganise d\'un clic, avec les kilomètres gagnés.',
+    'Le calcul fait le travail, et le trajet devient évident.',
+    '- `data-fx-data` : points « x,y » séparés par `|`\n- `data-fx-scale` (0.6) : kilomètres par unité',
+    'Tournées, livraison, commerciaux, techniciens.',
+    'De présenter le résultat comme optimal : le plus proche voisin donne une bonne solution, pas la meilleure.',
+    '<div data-fx="route-optimize" data-fx-data="10,70|80,20|25,20"></div>',
+    '<div data-fx="route-optimize" style="color:var(--ink)"></div>',
+    { trigger: 'Optimiser', a11y: 'Vrai bouton, distances annoncées.' }),
 ];
