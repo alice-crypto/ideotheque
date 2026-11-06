@@ -22,4 +22,21 @@
       go();
     }
   });
+
+  // Un plan dont les pièces donnent leur nom et leur surface
+  FX.register('floorplan-rooms', {
+    setup: function (el) {
+      var P = (el.dataset.fxItems || 'Séjour:0,0,60,55:28|Cuisine:60,0,40,35:11|Bain:60,35,40,20:6|Chambre:0,55,55,45:14|Bureau:55,55,45,45:9').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], r: p[1].split(',').map(Number), s: +p[2] }; });
+      var tot = P.reduce(function (t, p) { return t + p.s; }, 0), box = U.make('div', 'fx-fp', el), out = U.make('output', '', el);
+      out.setAttribute('aria-live', 'polite');
+      out.textContent = tot + ' m² au total';
+      P.forEach(function (p) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.textContent = p.n;
+        b.style.cssText = 'left:' + p.r[0] + '%;top:' + p.r[1] + '%;width:' + p.r[2] + '%;height:' + p.r[3] + '%';
+        var say = function () { out.innerHTML = '<b>' + p.n + '</b>, ' + p.s + ' m² sur ' + tot + ' m²'; };
+        b.addEventListener('mouseenter', say); b.addEventListener('focus', say); b.addEventListener('click', say);
+      });
+    }
+  });
 })(window.FX);
