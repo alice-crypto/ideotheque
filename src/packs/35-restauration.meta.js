@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="wine-pairing"></div>',
     '<div data-fx="wine-pairing" style="color:var(--ink)"></div>',
     { a11y: 'Vraie liste, vin annoncé.' }),
+  E('steam-rise', 'Ambiance',
+    'De la vapeur monte en volutes au-dessus d\'un plat, d\'une tasse ou d\'un titre.',
+    'Le plat sort du four, on sent presque l\'odeur.',
+    '- `data-fx-count` (5), `--fx-steam`',
+    'Restaurants, cafés, boulangeries.',
+    'Sur un fond clair sans régler `--fx-steam` : la vapeur ne se verrait pas.',
+    '<div data-fx="steam-rise"><img src="soupe.jpg" alt="Une soupe chaude"></div>',
+    '<div data-fx="steam-rise" style="margin-top:90px"><div style="width:90px;height:44px;border-radius:0 0 40px 40px;background:#efe4d2"></div></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran. Coupé en mouvement réduit.' }),
 ];

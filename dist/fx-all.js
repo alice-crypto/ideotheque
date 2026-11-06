@@ -14566,6 +14566,22 @@
       go();
     }
   });
+
+  // De la vapeur qui monte au-dessus d'un contenu
+  FX.register('steam-rise', {
+    setup: function (el) {
+      var n = U.num(el, 'fxCount', 5), box = U.make('div', 'fx-st2', el);
+      box.setAttribute('aria-hidden', 'true');
+      U.ensurePositioned(el);
+      for (var i = 0; i < n; i++) {
+        var v = U.make('i', '', box);
+        v.style.left = 20 + i * (60 / Math.max(1, n - 1)) + '%';
+        v.style.setProperty('--fx-t', U.rand(2.6, 4.6).toFixed(2) + 's');
+        v.style.setProperty('--fx-d', -U.rand(0, 4).toFixed(2) + 's');
+        v.style.setProperty('--fx-x', U.rand(-16, 16).toFixed(0) + 'px');
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

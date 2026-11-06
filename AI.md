@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->810<!-- /total --> effets.
+La bibliothèque contient <!-- total -->811<!-- /total --> effets.
 
 ## Règles
 
@@ -755,6 +755,7 @@ La bibliothèque contient <!-- total -->810<!-- /total --> effets.
 | `sort-gate` | Ambiance | Des pièces arrivent, bifurquent vers le bon bac et les comptes montent |
 | `flock-gather` | Ambiance | Un troupeau broute dans le pré, et rejoint l'enclos en se serrant d'un clic |
 | `wheat-field` | Ambiance | Un champ de blé ondule au vent et s'écarte sous le pointeur |
+| `steam-rise` | Ambiance | De la vapeur monte en volutes au-dessus d'un plat, d'une tasse ou d'un titre |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |
