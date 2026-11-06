@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="torque-click" data-fx-target="60"></div>',
     '<div data-fx="torque-click" style="color:var(--ink)"></div>',
     { trigger: 'Serrer', a11y: 'Vrai bouton à maintenir, au clavier aussi, résultat annoncé.' }),
+  E('part-explode', 'Présentation',
+    'Une pièce s\'éclate le long d\'un axe, et chaque composant donne son nom.',
+    'La notice de montage, en mieux.',
+    '- `data-fx-items` : composants séparés par `|`\n- `data-fx-on` : éclatée au départ',
+    'Fiches techniques, pièces détachées, produits.',
+    'Plus de six pièces : elles dépassent de la zone.',
+    '<div data-fx="part-explode" data-fx-items="Vis|Corps|Joint"></div>',
+    '<div data-fx="part-explode" style="color:var(--ink)"></div>',
+    { trigger: 'Basculer', a11y: 'Chaque composant est un bouton nommé, et le nom est annoncé.' }),
 ];
