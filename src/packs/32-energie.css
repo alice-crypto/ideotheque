@@ -69,3 +69,20 @@
 [data-fx="heat-pump-flow"] label { display: grid; grid-template-columns: 1fr auto; }
 [data-fx="heat-pump-flow"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
 @keyframes fx-heat-flow { to { background-position-x: 26px; } }
+
+/* insulation-loss : isoler poste après poste */
+[data-fx="insulation-loss"] { display: grid; grid-template-columns: 96px 1fr; gap: 5px 10px; width: min(100%, var(--fx-w, 240px)); font-size: 11px; }
+[data-fx="insulation-loss"] .fx-il { position: relative; height: 96px; background: #33373f; }
+[data-fx="insulation-loss"] .fx-il i { position: absolute; background: #e8452c; transition: background .4s; animation: fx-insul-heat 2s infinite; }
+[data-fx="insulation-loss"] .fx-il .fx-ok { background: #2d82d6; animation: none; }
+[data-fx="insulation-loss"] .r { left: 0; right: 0; top: 0; height: 20px; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+[data-fx="insulation-loss"] .fx-il .w { left: 6px; right: 6px; top: 20px; bottom: 6px; background: linear-gradient(90deg, #e8452c 8px, transparent 8px calc(100% - 8px), #e8452c 0); }
+[data-fx="insulation-loss"] .fx-il .w.fx-ok { background: linear-gradient(90deg, #2d82d6 8px, transparent 8px calc(100% - 8px), #2d82d6 0); }
+[data-fx="insulation-loss"] .f { left: 38px; top: 40px; width: 20px; height: 20px; }
+[data-fx="insulation-loss"] .s { left: 0; right: 0; bottom: 0; height: 6px; }
+[data-fx="insulation-loss"] .fx-il-c { display: grid; gap: 2px; align-self: center; }
+[data-fx="insulation-loss"] label { display: flex; gap: 4px; align-items: center; cursor: pointer; }
+[data-fx="insulation-loss"] input { margin: 0; accent-color: var(--fx-accent); }
+[data-fx="insulation-loss"] output { grid-column: 1 / -1; }
+[data-fx="insulation-loss"] output b { font-size: 18px; }
+@keyframes fx-insul-heat { 50% { opacity: .65; } }
