@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="bed-merge"></div>',
     '<div data-fx="bed-merge" style="color:var(--ink)"></div>',
     { trigger: 'Basculer', a11y: 'Bouton `aria-pressed`, état annoncé.' }),
+  E('wakeup-call', 'Micro-interaction',
+    'On choisit une heure de réveil, et on voit le temps de sommeil restant, en passant minuit.',
+    'La nuit se compte déjà, on dort plus tranquille.',
+    '- `data-fx-time` (07:30)',
+    'Hôtels, trains de nuit, applications de sommeil.',
+    'De croire qu\'il sonnera tout seul : le rappel réel reste à brancher.',
+    '<div data-fx="wakeup-call" data-fx-time="07:30"></div>',
+    '<div data-fx="wakeup-call" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai champ horaire étiqueté, état annoncé.' }),
 ];

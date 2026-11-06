@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->842<!-- /total --> effets.
+La bibliothèque contient <!-- total -->843<!-- /total --> effets.
 
 ## Règles
 
@@ -519,6 +519,7 @@ La bibliothèque contient <!-- total -->842<!-- /total --> effets.
 | `breakfast-tray` | Micro-interaction | Des articles se posent sur un plateau, avec le total et l'heure de service |
 | `concierge-bell` | Micro-interaction | Une sonnette de réception oscille, et un conseil de concierge apparaît |
 | `bed-merge` | Micro-interaction | Deux lits simples se rapprochent pour former un grand lit, et le choix s'écrit |
+| `wakeup-call` | Micro-interaction | On choisit une heure de réveil, et on voit le temps de sommeil restant, en passant minuit |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
