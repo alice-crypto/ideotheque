@@ -11748,6 +11748,23 @@
     },
     tick: function (el, dt, t) { if (el._fxDraw && !U.reduced) el._fxDraw(t); }
   });
+
+  // Un champ d'immatriculation qui ressemble à la plaque
+  FX.register('plate-input', {
+    setup: function (el) {
+      el.innerHTML = '<div class="fx-pl2"><span class="fx-pl2-e" aria-hidden="true">F</span><input type="text" inputmode="text" autocomplete="off" maxlength="9" placeholder="AB-123-CD" aria-label="Plaque d\'immatriculation" aria-describedby=""><span class="fx-pl2-e" aria-hidden="true"></span></div><output aria-live="polite"></output>';
+      var i = el.querySelector('input'), o = el.querySelector('output');
+      i.addEventListener('input', function () {
+        var c = i.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 7), s = c.slice(0, 2) + (c.length > 2 ? '-' + c.slice(2, 5) : '') + (c.length > 5 ? '-' + c.slice(5) : '');
+        i.value = s;
+        var ok = /^[A-HJ-NP-TV-Z]{2}-(?!000)[0-9]{3}-[A-HJ-NP-TV-Z]{2}$/.test(s);
+        el.classList.toggle('fx-ok', ok);
+        el.classList.toggle('fx-ko', s.length === 9 && !ok);
+        o.textContent = s.length < 9 ? '' : ok ? 'Format valide' : 'Format incorrect';
+        if (ok) el.dispatchEvent(new CustomEvent('fx:plate', { bubbles: true, detail: { plate: s } }));
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

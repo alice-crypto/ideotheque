@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="road-dashes"></div>',
     '<div data-fx="road-dashes" style="width:215px"></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran ; fixe en mouvement réduit.' }),
+  E('plate-input', 'Micro-interaction',
+    'Un champ prend l\'apparence d\'une plaque, met en forme la saisie et valide le format français.',
+    'Pas de doute possible sur ce qu\'il faut taper.',
+    'Aucun réglage. Événement `fx:plate` quand le format est valide.',
+    'Assurance, pièces détachées, reprise, stationnement.',
+    'De confondre format valide et plaque existante : la vérification reste à faire côté serveur.',
+    '<div data-fx="plate-input"></div>',
+    '<div data-fx="plate-input" style="color:var(--ink)"></div>',
+    { a11y: 'Champ nommé, résultat annoncé en mots.' }),
 ];
