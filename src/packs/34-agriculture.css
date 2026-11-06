@@ -212,3 +212,15 @@
 [data-fx="greenhouse-vent"] label { display: grid; grid-template-columns: 1fr auto; }
 [data-fx="greenhouse-vent"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
 [data-fx="greenhouse-vent"] output b { font-size: 14px; }
+
+/* seed-packet : un sachet de graines */
+[data-fx="seed-packet"] button { display: block; width: var(--fx-w, 130px); padding: 0; border: 0; background: none; color: inherit; cursor: pointer; perspective: 600px; font: inherit; }
+[data-fx="seed-packet"] .fx-sp-c { position: relative; display: block; height: 170px; transform-style: preserve-3d; transition: transform .6s var(--fx-ease-out); }
+[data-fx="seed-packet"] [aria-pressed="true"] .fx-sp-c { transform: rotateY(180deg); }
+[data-fx="seed-packet"] .fx-sp-f, [data-fx="seed-packet"] .fx-sp-b { position: absolute; inset: 0; display: grid; backface-visibility: hidden; padding: 10px; box-sizing: border-box; background: #f6edda; color: #30301f; clip-path: polygon(0 3%, 6% 0, 12% 3%, 18% 0, 24% 3%, 30% 0, 36% 3%, 42% 0, 48% 3%, 54% 0, 60% 3%, 66% 0, 72% 3%, 78% 0, 84% 3%, 90% 0, 96% 3%, 100% 0, 100% 100%, 0 100%); }
+[data-fx="seed-packet"] .fx-sp-f { align-content: center; justify-items: center; gap: 8px; text-align: center; }
+[data-fx="seed-packet"] .fx-sp-f i { width: 44px; height: 62px; border-radius: 50% 50% 45% 45%; background: linear-gradient(#d83868 72%, #f5dde3 72%); position: relative; }
+[data-fx="seed-packet"] .fx-sp-f i::before { content: ''; position: absolute; left: 50%; top: -14px; width: 14px; height: 16px; margin-left: -7px; background: #4a964e; border-radius: 50% 50% 0 0; }
+[data-fx="seed-packet"] .fx-sp-b { transform: rotateY(180deg); align-content: center; gap: 7px; font-size: 11px; }
+[data-fx="seed-packet"] em { display: grid; font-style: normal; font-weight: 700; }
+[data-fx="seed-packet"] u { font-size: 9px; text-decoration: none; font-weight: 400; opacity: .7; }
