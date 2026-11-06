@@ -307,4 +307,27 @@
       U.make('p', '', el).textContent = cur.length ? 'Ce mois-ci, surtout : ' + cur.join(', ') : 'Ce mois-ci : peu de pollens dans cet exemple';
     }
   });
+
+  // Cocher ses allergies : les produits concernés sortent de la liste
+  FX.register('allergen-filter', {
+    setup: function (el) {
+      var A = (el.dataset.fxAllergens || 'Parfum,Lanoline,Noix').split(','), P = (el.dataset.fxItems || 'Crème douce:Parfum|Baume intense:Lanoline,Noix|Lait neutre:|Huile légère:Noix').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], a: p[1] ? p[1].split(',') : [] }; });
+      var f = U.make('div', 'fx-af', el), ul = U.make('ul', '', el), out = U.make('output', '', el);
+      out.setAttribute('aria-live', 'polite');
+      P.forEach(function (p) { p.li = U.make('li', '', ul); p.li.innerHTML = '<span>' + p.n + '</span><small>' + (p.a.length ? 'Contient : ' + p.a.join(', ') : 'Aucun des trois') + '</small>'; });
+      var go = function () {
+        var no = Array.prototype.map.call(f.querySelectorAll(':checked'), function (c) { return c.value; }), n = 0;
+        P.forEach(function (p) { var off = p.a.some(function (a) { return no.indexOf(a) >= 0; }); p.li.classList.toggle('fx-off', off); p.li.setAttribute('aria-hidden', off); if (!off) n++; });
+        out.textContent = n + ' produit' + (n > 1 ? 's' : '') + ' sur ' + P.length;
+      };
+      A.forEach(function (a) {
+        var l = U.make('label', '', f), c = U.make('input', '', l);
+        c.type = 'checkbox'; c.value = a;
+        l.appendChild(document.createTextNode(a));
+      });
+      f.addEventListener('change', go);
+      go();
+      U.make('small', 'fx-af-n', el).textContent = 'Lisez toujours l\'étiquette.';
+    }
+  });
 })(window.FX);

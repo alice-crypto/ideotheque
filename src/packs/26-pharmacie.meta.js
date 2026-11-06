@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="pollen-months" data-fx-items="Bouleau:0,1,3,3,1,0,0,0,0,0,0,0"></div>',
     '<div data-fx="pollen-months" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le message écrit reprend ce qui compte ce mois-ci ; la grille détaillée est décorative. Fournissez un tableau équivalent si elle est indispensable.' }),
+  E('allergen-filter', 'Micro-interaction',
+    'On coche ses allergies, et les produits concernés sortent de la liste.',
+    'Rassurant, le rayon se réduit à ce qu\'on peut acheter.',
+    '- `data-fx-allergens` : liste séparée par des virgules\n- `data-fx-items` : « produit:allergène,… » séparés par `|`',
+    'Parapharmacie, alimentation, restaurants.',
+    'D\'affirmer qu\'un produit est sans risque : la liste dépend de vos données.',
+    '<div data-fx="allergen-filter" data-fx-allergens="Noix" data-fx-items="Baume:Noix|Lait:"></div>',
+    '<div data-fx="allergen-filter" style="color:var(--ink)"></div>',
+    { a11y: 'Vraies cases étiquetées, compte annoncé, et lignes masquées retirées pour les lecteurs d\'écran.' }),
 ];

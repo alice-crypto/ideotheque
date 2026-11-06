@@ -170,3 +170,17 @@
 .fx-in[data-fx="pollen-months"] .l3 { opacity: 1; }
 [data-fx="pollen-months"] i.fx-now { outline: 1px solid currentColor; }
 [data-fx="pollen-months"] p { margin: 6px 0 0; font-size: 12px; font-weight: 700; }
+
+/* allergen-filter : écarter ce qu'on ne supporte pas */
+[data-fx="allergen-filter"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="allergen-filter"] .fx-af { display: flex; flex-wrap: wrap; gap: 3px; }
+[data-fx="allergen-filter"] label { display: inline-flex; gap: 3px; align-items: center; padding: 2px 7px; border: 1px solid currentColor; border-radius: 99px; font-size: 11px; cursor: pointer; }
+[data-fx="allergen-filter"] label:has(:checked) { background: var(--fx-down, #e10600); color: #fff; border-color: transparent; }
+[data-fx="allergen-filter"] label input { position: absolute; opacity: 0; }
+[data-fx="allergen-filter"] label:focus-within { outline: 2px solid var(--fx-accent); }
+[data-fx="allergen-filter"] ul { margin: 0; padding: 0; list-style: none; }
+[data-fx="allergen-filter"] li { display: flex; justify-content: space-between; gap: 6px; align-items: baseline; max-height: 40px; overflow: hidden; padding: 2px 0; transition: max-height .3s var(--fx-ease-out), opacity .25s, padding .3s; }
+[data-fx="allergen-filter"] li small { font-size: 10px; opacity: .7; }
+[data-fx="allergen-filter"] .fx-off { max-height: 0; opacity: 0; padding: 0; }
+[data-fx="allergen-filter"] output { font-weight: 700; }
+[data-fx="allergen-filter"] .fx-af-n { font-size: 10px; opacity: .7; }

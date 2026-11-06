@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->592<!-- /total --> effets.
+La bibliothèque contient <!-- total -->593<!-- /total --> effets.
 
 ## Règles
 
@@ -336,6 +336,7 @@ La bibliothèque contient <!-- total -->592<!-- /total --> effets.
 | `blister-pop` | Micro-interaction | Une plaquette laisse sortir ses comprimés un par un, et le compte descend |
 | `dropper-count` | Micro-interaction | Chaque geste fait tomber une goutte, et le verre se remplit |
 | `measure-cup` | Micro-interaction | Un curseur règle le niveau d'un gobelet gradué et convertit le volume |
+| `allergen-filter` | Micro-interaction | On coche ses allergies, et les produits concernés sortent de la liste |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
