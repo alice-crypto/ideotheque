@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="fleet-dots" data-fx-count="14"></div>',
     '<div data-fx="fleet-dots" style="color:var(--ink)"></div>',
     { a11y: 'Le décompte est écrit ; le plan est décoratif. Fixe en mouvement réduit.' }),
+  E('customs-fee', 'Micro-interaction',
+    'Selon la valeur du colis, droits et TVA s\'additionnent jusqu\'au total à payer.',
+    'Pas de mauvaise surprise à la livraison.',
+    '- `data-fx-duty` (6), `data-fx-vat` (20), `data-fx-free` (150), `data-fx-value` (220)',
+    'Boutiques internationales, transitaires.',
+    'De traiter ces taux comme des chiffres légaux : ils dépendent du produit, de l\'origine et du pays.',
+    '<div data-fx="customs-fee" data-fx-duty="6" data-fx-vat="20"></div>',
+    '<div data-fx="customs-fee" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, montants écrits.' }),
 ];

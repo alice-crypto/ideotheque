@@ -12583,6 +12583,25 @@
       }
     }
   });
+
+  // Ce qu'un colis peut coûter en plus à l'arrivée
+  FX.register('customs-fee', {
+    setup: function (el) {
+      var R = U.num(el, 'fxDuty', 6) / 100, V = U.num(el, 'fxVat', 20) / 100, Fr = U.num(el, 'fxFree', 150);
+      el.innerHTML = '<label>Valeur du colis <b></b><input type="range" min="20" max="1000" step="10"></label><ul><li><span>Droits</span><b data-d></b></li><li><span>TVA</span><b data-v></b></li><li class="fx-t"><span>Total à payer</span><b data-t></b></li></ul><small>Taux d\'exemple, à vérifier selon le produit et le pays.</small>';
+      var r = el.querySelector('input');
+      r.value = U.num(el, 'fxValue', 220);
+      var m = function (x) { return x.toFixed(2).replace('.', ',') + ' €'; };
+      var go = function () {
+        var a = +r.value, d = a > Fr ? a * R : 0, v = (a + d) * V;
+        el.querySelector('label b').textContent = a + ' €';
+        el.querySelector('[data-d]').textContent = m(d); el.querySelector('[data-v]').textContent = m(v); el.querySelector('[data-t]').textContent = m(a + d + v);
+        el.classList.toggle('fx-free', a <= Fr);
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

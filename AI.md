@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->709<!-- /total --> effets.
+La bibliothèque contient <!-- total -->710<!-- /total --> effets.
 
 ## Règles
 
@@ -415,6 +415,7 @@ La bibliothèque contient <!-- total -->709<!-- /total --> effets.
 | `box-finder` | Micro-interaction | Trois dimensions trouvent le plus petit carton qui contient l'objet, dans n'importe quel sens |
 | `volumetric-weight` | Micro-interaction | Dimensions et poids donnent le poids facturé, le plus élevé entre le réel et le volume |
 | `barcode-scan` | Micro-interaction | Un laser balaie un code-barres, et la lecture se confirme en vert |
+| `customs-fee` | Micro-interaction | Selon la valeur du colis, droits et TVA s'additionnent jusqu'au total à payer |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
