@@ -421,4 +421,15 @@
       go();
     }
   });
+
+  // Un couteau qui découpe en attendant
+  FX.register('chop-loader', {
+    setup: function (el) {
+      el.setAttribute('role', 'status');
+      el.setAttribute('aria-label', el.dataset.fxLabel || 'En préparation');
+      el.innerHTML = '<div class="fx-cl2" aria-hidden="true"><i class="fx-cl2-k"></i><i class="fx-cl2-v"></i></div>';
+      var b = el.querySelector('.fx-cl2');
+      for (var i = 0; i < 6; i++) U.make('u', '', b).style.setProperty('--fx-i', i);
+    }
+  });
 })(window.FX);

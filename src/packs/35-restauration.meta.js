@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="dough-rise" data-fx-temp="22"></div>',
     '<div data-fx="dough-rise" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, durée annoncée. La bibliothèque coupe le gonflement en mouvement réduit.' }),
+  E('chop-loader', 'État',
+    'Un couteau découpe un légume en rondelles qui glissent, pendant l\'attente.',
+    'Un peu de vie en cuisine, pendant que ça charge.',
+    '- `--fx-veg`, `--fx-w`, `data-fx-label`',
+    'Sites de recettes, commande en ligne.',
+    'Une attente très courte : le geste n\'aurait pas le temps de se lire.',
+    '<div data-fx="chop-loader"></div>',
+    '<div data-fx="chop-loader"></div>',
+    { a11y: 'Rôle `status` nommé. La bibliothèque coupe l\'animation en mouvement réduit.' }),
 ];
