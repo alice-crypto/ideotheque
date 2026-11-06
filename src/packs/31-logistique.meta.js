@@ -111,4 +111,13 @@ module.exports = [
     '<div data-fx="weight-tier" data-fx-items="1:4.95|2:6.5"></div>',
     '<div data-fx="weight-tier" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, paliers écrits dans une liste.' }),
+  E('incoterm-bar', 'Micro-interaction',
+    'Un Incoterm choisi colore chaque étape du transport selon qui paie.',
+    'Un sigle obscur devient une image claire.',
+    '- `data-fx-term` (FOB)',
+    'Commerce international, formation, transitaires.',
+    'De l\'utiliser comme référence juridique : les règles Incoterms font foi.',
+    '<div data-fx="incoterm-bar" data-fx-term="FOB"></div>',
+    '<div data-fx="incoterm-bar" style="color:var(--ink)"></div>',
+    { a11y: 'Groupe radio nommé, chaque étape dit qui paie.' }),
 ];

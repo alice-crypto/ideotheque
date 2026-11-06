@@ -240,4 +240,29 @@
       go();
     }
   });
+
+  // Qui paie quoi selon l'Incoterm choisi, étape par étape
+  FX.register('incoterm-bar', {
+    setup: function (el) {
+      var S = ['Usine', 'Transport local', 'Douane départ', 'Bateau', 'Douane arrivée', 'Livraison'], T = { EXW: 0, FCA: 1, FOB: 3, CIF: 4, DDP: 6 };
+      el.innerHTML = '<div class="fx-ib" role="radiogroup" aria-label="Incoterm"></div><ol></ol><div class="fx-ib-l" aria-hidden="true"><span class="s">Vendeur</span><span class="a">Acheteur</span></div>';
+      var box = el.querySelector('.fx-ib'), ol = el.querySelector('ol');
+      S.forEach(function (t, i) { var li = U.make('li', '', ol); li.style.setProperty('--fx-i', i); li.textContent = t; });
+      var set = function (k) {
+        var n = T[k];
+        box.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-checked', b.textContent === k); });
+        Array.prototype.forEach.call(ol.children, function (li, i) {
+          li.className = i < n ? 'fx-s' : 'fx-a2';
+          li.setAttribute('aria-label', S[i] + ' : ' + (i < n ? 'vendeur' : 'acheteur'));
+        });
+      };
+      Object.keys(T).forEach(function (k) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('role', 'radio'); b.textContent = k;
+        b.addEventListener('click', function () { set(k); });
+      });
+      set(el.dataset.fxTerm || 'FOB');
+      U.make('small', '', el).textContent = 'Simplifié : le partage du risque suit des règles plus fines.';
+    }
+  });
 })(window.FX);

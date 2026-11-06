@@ -7502,6 +7502,19 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="weight-tier"] .fx-on { background: var(--fx-accent); color: #fff; transform: scale(1.03); font-weight: 800; }
 [data-fx="weight-tier"] output { opacity: .85; }
 
+/* incoterm-bar : qui paie quoi */
+[data-fx="incoterm-bar"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 235px)); font-size: 10px; }
+[data-fx="incoterm-bar"] .fx-ib { display: flex; gap: 2px; }
+[data-fx="incoterm-bar"] button { flex: 1; padding: 3px 0; border: 1px solid currentColor; border-radius: 4px; background: none; color: inherit; font: inherit; font-weight: 700; cursor: pointer; }
+[data-fx="incoterm-bar"] [aria-checked="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="incoterm-bar"] ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 0; padding: 0; list-style: none; }
+[data-fx="incoterm-bar"] li { padding: 5px 3px; text-align: center; color: #fff; transition: background .3s calc(var(--fx-i) * 40ms); }
+[data-fx="incoterm-bar"] .fx-s, [data-fx="incoterm-bar"] .fx-ib-l .s::before { background: var(--fx-accent); }
+[data-fx="incoterm-bar"] .fx-a2, [data-fx="incoterm-bar"] .fx-ib-l .a::before { background: #2d6fd2; }
+[data-fx="incoterm-bar"] .fx-ib-l { display: flex; gap: 10px; }
+[data-fx="incoterm-bar"] .fx-ib-l span::before { content: ''; display: inline-block; width: 9px; height: 9px; margin-right: 3px; }
+[data-fx="incoterm-bar"] small { opacity: .7; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
