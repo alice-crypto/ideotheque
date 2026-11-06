@@ -8389,6 +8389,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="seed-packet"] em { display: grid; font-style: normal; font-weight: 700; }
 [data-fx="seed-packet"] u { font-size: 9px; text-decoration: none; font-weight: 400; opacity: .7; }
 
+/* sow-window : les jours pour semer */
+[data-fx="sow-window"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 240px)); font-size: 11px; }
+[data-fx="sow-window"] .fx-so2 { display: flex; gap: 2px; }
+[data-fx="sow-window"] .fx-so2 > div { flex: 1; display: grid; justify-items: center; gap: 1px; padding: 5px 0; border-radius: 5px; background: color-mix(in srgb, currentColor 8%, transparent); transition: transform .3s; animation: fx-sow-in .4s var(--fx-ease-out) calc(var(--fx-i) * 60ms) backwards; }
+[data-fx="sow-window"] small { font-size: 9px; }
+[data-fx="sow-window"] i { font-style: normal; font-size: 9px; opacity: .8; }
+[data-fx="sow-window"] .fx-good { background: var(--fx-up, #2eaf63); color: #fff; transform: translateY(-3px); }
+[data-fx="sow-window"] p { margin: 0; }
+[data-fx="sow-window"] p b { font-size: 14px; }
+[data-fx="sow-window"] .fx-so2-n { font-size: 9px; opacity: .65; }
+@keyframes fx-sow-in { from { opacity: 0; transform: translateY(8px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

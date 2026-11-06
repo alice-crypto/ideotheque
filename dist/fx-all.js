@@ -14253,6 +14253,21 @@
     },
     trigger: function (el) { el.firstChild.click(); }
   });
+
+  // Les jours favorables pour semer, selon les prévisions
+  FX.register('sow-window', {
+    setup: function (el) {
+      var D = (el.dataset.fxData || '12:8|15:0|16:1|9:6|14:0|17:0|13:12').split('|').map(function (r) { return r.split(':').map(Number); }), box = U.make('div', 'fx-so2', el), best = [];
+      D.forEach(function (d, i) {
+        var day = new Date(Date.now() + i * 86400000), good = d[0] >= 12 && d[1] <= 2, c = U.make('div', good ? 'fx-good' : '', box), label = day.toLocaleDateString('fr-FR', { weekday: 'short' });
+        c.style.setProperty('--fx-i', i);
+        c.innerHTML = '<small>' + label + '</small><b>' + d[0] + '°</b><i>' + d[1] + ' mm</i>';
+        if (good) best.push(label);
+      });
+      U.make('p', '', el).innerHTML = best.length ? 'À semer : <b>' + best.join(', ') + '</b>' : 'Pas de bonne fenêtre cette semaine';
+      U.make('small', 'fx-so2-n', el).textContent = 'Prévisions fictives. Règle : 12 °C ou plus, 2 mm de pluie au plus.';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

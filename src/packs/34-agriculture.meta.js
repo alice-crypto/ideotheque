@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="seed-packet" data-fx-name="Radis rose"></div>',
     '<div data-fx="seed-packet" data-fx-name="Radis rose"></div>',
     { trigger: 'Retourner', a11y: 'Vrai bouton `aria-pressed`, texte lu sur les deux faces.' }),
+  E('sow-window', 'Présentation',
+    'Une semaine de prévisions fait ressortir les jours favorables pour semer.',
+    'Choisir son jour, comme les anciens, avec un peu plus de données.',
+    '- `data-fx-data` : « température:pluie » séparés par `|`',
+    'Agriculture, jardin, chantiers en extérieur.',
+    'De reprendre cette règle comme un conseil agronomique réel.',
+    '<div data-fx="sow-window" data-fx-data="15:0|9:6"></div>',
+    '<div data-fx="sow-window" style="color:var(--ink)"></div>',
+    { a11y: 'Jours favorables écrits en phrase, règle indiquée.' }),
 ];
