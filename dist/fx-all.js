@@ -11320,6 +11320,23 @@
     },
     scroll: function (el, info) { el.style.setProperty('--fx-z', (info.pass * .9).toFixed(3)); }
   });
+
+  // Une silhouette qui monte l'escalier au fil de la lecture
+  FX.register('stair-climb', {
+    setup: function (el) {
+      var n = U.num(el, 'fxSteps', 10), s = '';
+      for (var i = 0; i < n; i++) s += '<i style="height:' + (i + 1) / n * 88 + '%"></i>';
+      el.innerHTML = '<div class="fx-sc2" aria-hidden="true">' + s + '<b></b></div>';
+      el.style.setProperty('--fx-n', n);
+      el._fxN = n;
+    },
+    scroll: function (el, info) {
+      var s = Math.min(el._fxN - 1, Math.floor(info.pass * el._fxN));
+      el.style.setProperty('--fx-s', s);
+      var l = el.querySelectorAll('i');
+      l.forEach(function (x, i) { x.classList.toggle('fx-on', i <= s); });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

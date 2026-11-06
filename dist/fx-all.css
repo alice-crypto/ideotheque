@@ -6792,6 +6792,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="arch-tunnel"] i { position: absolute; left: 50%; bottom: 0; width: calc((1 - var(--fx-i) * .8) * 100%); height: calc((1 - var(--fx-i) * .78) * 100%); background: color-mix(in srgb, var(--fx-arch, #b5532e) calc(100% - var(--fx-i) * 60%), #2a1208); transform: translateX(-50%); border-radius: 999px 999px 0 0; }
 [data-fx="arch-tunnel"] i:last-child { background: var(--fx-end, #ffe9b8); }
 
+/* stair-climb : monter en lisant */
+[data-fx="stair-climb"] { display: block; width: min(100%, var(--fx-w, 220px)); height: var(--fx-h, 120px); }
+[data-fx="stair-climb"] .fx-sc2 { position: relative; display: flex; align-items: flex-end; height: 100%; }
+[data-fx="stair-climb"] i { flex: 1; background: color-mix(in srgb, currentColor 20%, transparent); transition: background .2s; }
+[data-fx="stair-climb"] .fx-on { background: var(--fx-accent); }
+[data-fx="stair-climb"] b { position: absolute; left: calc((var(--fx-s, 0) + .5) / var(--fx-n) * 100%); bottom: calc((var(--fx-s, 0) + 1) / var(--fx-n) * 88%); width: 12px; height: 12%; margin-left: -6px; border-radius: 6px 6px 0 0; background: currentColor; transition: left .25s var(--fx-ease-spring), bottom .25s var(--fx-ease-spring); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

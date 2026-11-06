@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="arch-tunnel"></div>',
     '<div data-fx="arch-tunnel" style="width:215px"></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
+  E('stair-climb', 'Défilement',
+    'Une silhouette monte un escalier, marche par marche, au fil de la lecture.',
+    'La lecture est une ascension.',
+    '- `data-fx-steps` (10), `--fx-h`, `--fx-w`',
+    'Longs récits, étapes d\'un programme.',
+    'D\'en faire la seule indication de lecture : son sens reste symbolique.',
+    '<div data-fx="stair-climb"></div>',
+    '<div data-fx="stair-climb" style="color:var(--ink)"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
 ];
