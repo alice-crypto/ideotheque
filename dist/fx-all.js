@@ -12278,6 +12278,34 @@
       setInterval(el._fxShow, 30000);
     }
   });
+
+  // Deux pignons liés : leur vitesse dépend du nombre de dents
+  FX.register('gear-cogs', {
+    setup: function (el) {
+      var A = U.num(el, 'fxFront', 40);
+      var cog = function (t, r, c) { var s = ''; for (var i = 0; i < t; i++) { var a = i / t * 360; s += '<rect x="-2" y="' + (-r - 3) + '" width="4" height="6" transform="rotate(' + a + ')"/>'; } return '<g class="' + c + '"><circle r="' + r + '"/>' + s + '<circle r="3" class="fx-gc-h"/></g>'; };
+      el.innerHTML = '<svg viewBox="0 0 170 90" aria-hidden="true"><g transform="translate(58 45)"><g class="fx-gc-a"></g></g><g transform="translate(130 45)"><g class="fx-gc-b"></g></g></svg><label>Pignon arrière <b></b><input type="range" min="11" max="34"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), oa = el.querySelector('.fx-gc-a'), ob = el.querySelector('.fx-gc-b'), o = el.querySelector('output');
+      oa.innerHTML = cog(A, 34, 'x');
+      r.value = U.num(el, 'fxRear', 18);
+      var B = +r.value;
+      var go = function () {
+        B = +r.value;
+        ob.innerHTML = cog(B, 34 * B / A, 'y');
+        el.querySelector('label b').textContent = B + ' dents';
+        o.innerHTML = 'Rapport <b>' + (A / B).toFixed(2).replace('.', ',') + '</b> : un tour de pédale, ' + (A / B * 2.1).toFixed(1).replace('.', ',') + ' m';
+      };
+      r.addEventListener('input', go);
+      go();
+      el._fxA = 0; el._fxGear = function () { return A / B; };
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxA += dt * 60;
+      el.style.setProperty('--fx-a', el._fxA + 'deg');
+      el.style.setProperty('--fx-b', (-el._fxA * el._fxGear()) + 'deg');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

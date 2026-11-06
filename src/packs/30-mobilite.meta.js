@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="ferry-crossing" data-fx-minutes="40"></div>',
     '<div data-fx="ferry-crossing" style="color:var(--ink)"></div>',
     { a11y: 'Temps écrit, dessin masqué. Mouvement réduit : pas de vagues.' }),
+  E('gear-cogs', 'Micro-interaction',
+    'Deux pignons tournent au rapport exact, et le développement par coup de pédale s\'écrit.',
+    'Le plaisir de la mécanique qui s\'explique.',
+    '- `data-fx-front` (40), `data-fx-rear` (18)',
+    'Vélos, mécanique, pédagogie.',
+    'Un calcul précis : le développement dépend aussi du diamètre de la roue.',
+    '<div data-fx="gear-cogs" data-fx-front="40" data-fx-rear="18"></div>',
+    '<div data-fx="gear-cogs" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat annoncé. Mouvement réduit : pignons fixes.' }),
 ];
