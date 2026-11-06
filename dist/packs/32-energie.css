@@ -211,3 +211,13 @@
 [data-fx="bulb-compare"] label { display: grid; grid-template-columns: 1fr auto; }
 [data-fx="bulb-compare"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
 [data-fx="bulb-compare"] output b { font-size: 17px; }
+
+/* standby-drain : la veille à l'année */
+[data-fx="standby-drain"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 220px)); font-size: 12px; }
+[data-fx="standby-drain"] ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+[data-fx="standby-drain"] button { display: grid; grid-template-columns: 10px 1fr auto; gap: 7px; align-items: center; width: 100%; padding: 2px 4px; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+[data-fx="standby-drain"] i { width: 9px; height: 9px; border-radius: 50%; background: #333; transition: background .2s, box-shadow .2s; }
+[data-fx="standby-drain"] [aria-pressed="true"] i { background: #ff3d33; box-shadow: 0 0 6px #ff3d33; }
+[data-fx="standby-drain"] [aria-pressed="false"] span { opacity: .45; text-decoration: line-through; }
+[data-fx="standby-drain"] em { font-style: normal; opacity: .75; }
+[data-fx="standby-drain"] output b { font-size: 17px; color: var(--fx-accent); }

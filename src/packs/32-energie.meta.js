@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="bulb-compare" data-fx-old="60" data-fx-led="8"></div>',
     '<div data-fx="bulb-compare" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, résultat annoncé.' }),
+  E('standby-drain', 'Micro-interaction',
+    'Une liste d\'appareils en veille chiffre le coût annuel ; les débrancher fait baisser la note.',
+    'Le voyant rouge de la télé prend un autre sens.',
+    '- `data-fx-items` : « appareil:watts » séparés par `|`\n- `data-fx-kwh`',
+    'Économies d\'énergie, écoles, conseils au quotidien.',
+    'Des valeurs d\'exemple sur une vraie étude : mesurez les appareils.',
+    '<div data-fx="standby-drain" data-fx-items="Box internet:12"></div>',
+    '<div data-fx="standby-drain" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons `aria-pressed`, total annoncé.' }),
 ];
