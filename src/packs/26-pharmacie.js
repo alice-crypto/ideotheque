@@ -179,4 +179,18 @@
       });
     }
   });
+
+  // Un interrupteur en forme de gélule bicolore
+  FX.register('capsule-switch', {
+    setup: function (el) {
+      var i = el.querySelector('input');
+      if (!i) { i = document.createElement('input'); i.type = 'checkbox'; el.insertBefore(i, el.firstChild); }
+      i.setAttribute('role', 'switch');
+      var c = document.createElement('span');
+      c.className = 'fx-cp'; c.setAttribute('aria-hidden', 'true');
+      c.innerHTML = '<i></i>';
+      i.parentNode.insertBefore(c, i.nextSibling);
+      i.addEventListener('change', function () { c.classList.remove('fx-go'); void c.offsetWidth; c.classList.add('fx-go'); });
+    }
+  });
 })(window.FX);
