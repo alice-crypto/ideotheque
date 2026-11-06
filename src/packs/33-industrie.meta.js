@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="assembly-line" data-fx-items="Châssis|Moteur|Capot|Contrôle"></div>',
     '<div data-fx="assembly-line" style="color:var(--ink)"></div>',
     { trigger: 'Avancer', a11y: 'Le compte est écrit. En mouvement réduit, l\'avancée se fait au déclenchement.' }),
+  E('machine-wall', 'État',
+    'Un mur de tuiles montre l\'état de chaque machine et le temps passé dans cet état.',
+    'La salle de contrôle, tout d\'un coup d\'œil.',
+    '- `data-fx-items` : « nom:état » (`run`, `warn`, `stop`) séparés par `|`',
+    'Ateliers, serveurs, parcs de machines.',
+    'D\'en faire une alarme de sécurité : ce composant n\'a aucune fiabilité industrielle.',
+    '<div data-fx="machine-wall" data-fx-items="P1:run|P3:stop"></div>',
+    '<div data-fx="machine-wall" style="color:var(--ink)"></div>',
+    { trigger: 'Changer un état', a11y: 'L\'état et la durée sont écrits en mots. Le résumé est annoncé.' }),
 ];

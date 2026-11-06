@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->751<!-- /total --> effets.
+La bibliothèque contient <!-- total -->752<!-- /total --> effets.
 
 ## Règles
 
@@ -771,6 +771,7 @@ La bibliothèque contient <!-- total -->751<!-- /total --> effets.
 | `peak-clock` | État | Une horloge de 24 heures montre les heures creuses, avec l'heure réelle et le temps avant la prochaine |
 | `energy-flow` | État | Selon l'heure, des tirets circulent entre le soleil, la maison, la batterie et le réseau |
 | `smart-meter` | État | Un compteur communicant affiche son index qui monte et sa puissance qui varie |
+| `machine-wall` | État | Un mur de tuiles montre l'état de chaque machine et le temps passé dans cet état |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)
