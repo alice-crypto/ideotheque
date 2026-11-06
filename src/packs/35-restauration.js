@@ -278,4 +278,27 @@
       });
     }
   });
+
+  // Choisir son niveau de piment, de doux à brûlant
+  FX.register('spice-level', {
+    setup: function (el) {
+      var W = (el.dataset.fxItems || 'Doux|Relevé|Épicé|Fort|Brûlant').split('|'), box = U.make('div', 'fx-sv', el), o = U.make('output', '', el), v = U.num(el, 'fxValue', 2);
+      box.setAttribute('role', 'radiogroup'); box.setAttribute('aria-label', 'Niveau de piment');
+      o.setAttribute('aria-live', 'polite');
+      var set = function (k, f) {
+        v = U.clamp(k, 0, W.length - 1);
+        box.querySelectorAll('button').forEach(function (b, i) { b.classList.toggle('fx-on', i <= v); b.setAttribute('aria-checked', i === v); b.tabIndex = i === v ? 0 : -1; if (i === v && f) b.focus(); });
+        o.textContent = W[v];
+        el.style.setProperty('--fx-q', v / (W.length - 1));
+      };
+      W.forEach(function (t, i) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('role', 'radio'); b.setAttribute('aria-label', t);
+        b.innerHTML = '<svg viewBox="0 0 24 32" aria-hidden="true"><path d="M13 7C20 9 21 18 16 24C13 28 8 30 6 28C11 26 9 18 10 12C10 9 11 8 13 7Z"/><path class="t" d="M13 7C13 4 15 3 17 2"/></svg>';
+        b.addEventListener('click', function () { set(i); });
+      });
+      box.addEventListener('keydown', function (e) { var d = { ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1 }[e.key]; if (d) { e.preventDefault(); set(v + d, true); } });
+      set(v);
+    }
+  });
 })(window.FX);
