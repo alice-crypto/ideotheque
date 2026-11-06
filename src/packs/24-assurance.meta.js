@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="signature-pad"></div>',
     '<div data-fx="signature-pad" style="color:var(--ink)"></div>',
     { a11y: 'Le tracé demande un pointeur : proposez toujours une autre façon de signer, au clavier.' }),
+  E('callback-slots', 'Micro-interaction',
+    'On choisit parmi les prochains créneaux celui où l\'on veut être rappelé.',
+    'Le service se plie à votre emploi du temps.',
+    '- `data-fx-from` (9), `data-fx-to` (19), `data-fx-step` (2), `data-fx-count` (4)\n- événement `fx:slot`',
+    'Assurance, banque, cabinets, service commercial.',
+    'De proposer des créneaux qu\'aucune équipe n\'assure : reliez-les aux vraies disponibilités.',
+    '<div data-fx="callback-slots" data-fx-from="9" data-fx-to="19"></div>',
+    '<div data-fx="callback-slots" style="color:var(--ink)"></div>',
+    { a11y: 'Vrais boutons avec `aria-pressed`, et le choix est annoncé.' }),
 ];

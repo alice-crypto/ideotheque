@@ -306,4 +306,27 @@
       size();
     }
   });
+
+  // Choisir l'heure à laquelle on veut être rappelé
+  FX.register('callback-slots', {
+    setup: function (el) {
+      var from = U.num(el, 'fxFrom', 9), to = U.num(el, 'fxTo', 19), step = U.num(el, 'fxStep', 2), box = U.make('div', 'fx-cb', el), out = U.make('output', '', el), now = new Date().getHours();
+      out.setAttribute('aria-live', 'polite');
+      out.textContent = 'Quand vous rappeler ?';
+      var today = [];
+      for (var h = from; h < to; h += step) today.push([h, h > now]);
+      var slots = today.filter(function (s) { return s[1]; }).map(function (s) { return ['Aujourd\'hui', s[0]]; });
+      for (h = from; slots.length < U.num(el, 'fxCount', 4) && h < to; h += step) slots.push(['Demain', h]);
+      slots.slice(0, U.num(el, 'fxCount', 4)).forEach(function (s) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+        b.innerHTML = '<small>' + s[0] + '</small>' + s[1] + ' h – ' + (s[1] + step) + ' h';
+        b.addEventListener('click', function () {
+          box.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+          out.textContent = 'Rappel prévu : ' + s[0].toLowerCase() + ', vers ' + s[1] + ' h';
+          el.dispatchEvent(new CustomEvent('fx:slot', { bubbles: true, detail: { day: s[0], hour: s[1] } }));
+        });
+      });
+    }
+  });
 })(window.FX);

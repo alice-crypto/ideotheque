@@ -150,3 +150,10 @@
 [data-fx="signature-pad"] .fx-sg-ok { background: var(--fx-accent); color: #fff; border-color: transparent; }
 [data-fx="signature-pad"] button:disabled { opacity: .4; cursor: not-allowed; }
 [data-fx="signature-pad"].fx-signed canvas { border-color: var(--fx-ok, #2eaf63); box-shadow: 0 0 0 3px color-mix(in srgb, var(--fx-ok, #2eaf63) 30%, transparent); transition: box-shadow .3s; }
+
+/* callback-slots : choisir l'heure du rappel */
+[data-fx="callback-slots"] { display: grid; gap: 8px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="callback-slots"] .fx-cb { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+[data-fx="callback-slots"] button { display: grid; padding: 6px; border: 1px solid currentColor; border-radius: 8px; background: none; color: inherit; font: inherit; font-weight: 700; cursor: pointer; transition: background .2s, color .2s, transform .2s var(--fx-ease-spring); }
+[data-fx="callback-slots"] small { font-weight: 400; opacity: .7; }
+[data-fx="callback-slots"] button[aria-pressed="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; transform: scale(1.03); }
