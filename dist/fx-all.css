@@ -5835,6 +5835,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="payment-frequency"] output b { font-size: 20px; }
 [data-fx="payment-frequency"] .fx-pf-b { height: 6px; order: 3; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 0 / calc(var(--fx-q, 1) * 100%) 100%, color-mix(in srgb, currentColor 16%, transparent); transition: background-size .4s var(--fx-ease-out); }
 
+/* renewal-window : la fenêtre de résiliation */
+[data-fx="renewal-window"] { width: min(100%, var(--fx-width, 225px)); font-size: 12px; }
+[data-fx="renewal-window"] .fx-rw { position: relative; height: 14px; border-radius: 7px; background: color-mix(in srgb, currentColor 16%, transparent); overflow: hidden; }
+[data-fx="renewal-window"] em { position: absolute; right: 0; top: 0; bottom: 0; width: calc(var(--fx-w) * 100%); background: color-mix(in srgb, var(--fx-accent) 40%, transparent); }
+[data-fx="renewal-window"].fx-open em { background: var(--fx-accent); animation: fx-rw 1.8s infinite; }
+[data-fx="renewal-window"] i { position: absolute; top: 0; bottom: 0; left: 0; width: 3px; background: currentColor; transition: left 1.2s var(--fx-ease-out); }
+.fx-in[data-fx="renewal-window"] i { left: calc(var(--fx-q) * 100%); }
+[data-fx="renewal-window"] p { margin: 6px 0 0; font-weight: 700; }
+@keyframes fx-rw { 50% { opacity: .65; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

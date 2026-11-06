@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="payment-frequency" data-fx-year="480"></div>',
     '<div data-fx="payment-frequency" style="color:var(--ink)"></div>',
     { a11y: 'Groupe de boutons radio nommé, et le montant est annoncé.' }),
+  E('renewal-window', 'Présentation',
+    'Un repère place aujourd\'hui sur l\'année du contrat, face à la fenêtre de résiliation.',
+    'Transparent, on ne découvre pas la date après coup.',
+    '- `data-fx-end` : date d\'échéance\n- `data-fx-notice` (60) : jours de préavis',
+    'Assurances, abonnements, baux, garanties.',
+    'Une règle de résiliation simplifiée : vérifiez le droit applicable au contrat.',
+    '<div data-fx="renewal-window" data-fx-end="2027-03-01" data-fx-notice="60"></div>',
+    '<div data-fx="renewal-window" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'L\'information est écrite dans une phrase : la barre n\'est qu\'une illustration.' }),
 ];

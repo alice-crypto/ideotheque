@@ -373,4 +373,17 @@
       U.make('div', 'fx-pf-b', el);
     }
   });
+
+  // L'année du contrat, avec la fenêtre pendant laquelle on peut résilier
+  FX.register('renewal-window', {
+    entrance: true,
+    setup: function (el) {
+      var end = new Date(el.dataset.fxEnd || Date.now() + 86400000 * 45), now = new Date(), days = Math.ceil((end - now) / 86400000), notice = U.num(el, 'fxNotice', 60), year = 365;
+      var q = U.clamp(1 - days / year, 0, 1), w = notice / year, open = days >= 0 && days <= notice;
+      el.style.setProperty('--fx-q', q); el.style.setProperty('--fx-w', w);
+      el.innerHTML = '<div class="fx-rw" aria-hidden="true"><em></em><i></i></div><p></p>';
+      el.classList.toggle('fx-open', open);
+      el.querySelector('p').textContent = days < 0 ? 'Contrat renouvelé il y a ' + -days + ' jours' : open ? 'Vous pouvez résilier encore ' + days + ' jours' : 'Résiliation possible dans ' + (days - notice) + ' jours';
+    }
+  });
 })(window.FX);
