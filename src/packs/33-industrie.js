@@ -48,4 +48,31 @@
     },
     trigger: function (el) { el._fxStep(); }
   });
+
+  // Le mur de supervision : chaque machine, son état et depuis quand
+  FX.register('machine-wall', {
+    setup: function (el) {
+      var M = (el.dataset.fxItems || 'P1:run|P2:run|P3:stop|P4:run|S1:warn|S2:run|S3:run|R1:run').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], s: p[1], at: Date.now() - U.rand(4, 80) * 60000 }; }), W = { run: 'En marche', warn: 'À surveiller', stop: 'À l\'arrêt' }, box = U.make('div', 'fx-mw', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      M.forEach(function (m) { m.d = U.make('div', '', box); });
+      el._fxShow = function () {
+        var bad = 0;
+        M.forEach(function (m) {
+          var min = Math.round((Date.now() - m.at) / 60000);
+          m.d.dataset.s = m.s;
+          m.d.innerHTML = '<b>' + m.n + '</b><small>' + W[m.s] + '</small><small>' + min + ' min</small>';
+          if (m.s === 'stop') bad++;
+        });
+        o.textContent = bad ? bad + ' machine' + (bad > 1 ? 's' : '') + ' à l\'arrêt' : 'Tout tourne';
+      };
+      el._fxFlip = function () {
+        var m = M[Math.floor(Math.random() * M.length)];
+        m.s = { run: 'warn', warn: 'stop', stop: 'run' }[m.s]; m.at = Date.now();
+        el._fxShow();
+      };
+      el._fxShow();
+      setInterval(el._fxShow, 30000);
+    },
+    trigger: function (el) { el._fxFlip(); }
+  });
 })(window.FX);
