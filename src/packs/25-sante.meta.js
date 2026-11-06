@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="appointment-week" data-fx-hours="9:00,14:00"></div>',
     '<div data-fx="appointment-week" style="color:var(--ink)"></div>',
     { a11y: 'Vrais boutons, choix du jour exposé par `aria-pressed`, et rendez-vous annoncé.' }),
+  E('body-map', 'Micro-interaction',
+    'Une silhouette se découpe en zones, et toucher une zone oriente vers le bon contenu.',
+    'Immédiat, pas besoin de connaître le mot juste.',
+    '- `data-fx-items` : JSON « zone : texte »\n- `--fx-s` (84px) ; événement `fx:zone`',
+    'Kinésithérapie, sport, orientation dans un site de santé.',
+    'De donner un diagnostic : l\'effet oriente vers un contenu, il ne soigne pas.',
+    '<div data-fx="body-map" data-fx-items=\'{"Dos":"Exercices pour le dos"}\'></div>',
+    '<div data-fx="body-map" style="color:var(--ink)"></div>',
+    { a11y: 'Chaque zone est focalisable, nommée et activable au clavier.' }),
 ];

@@ -31,4 +31,23 @@
       })(i);
     }
   });
+
+  // Une silhouette dont on choisit une zone pour orienter la suite
+  FX.register('body-map', {
+    setup: function (el) {
+      var Z = { Tête: 'M50 4a12 13 0 1 1-.1 0Z', Épaule: 'M28 32h44l6 14H22Z', Dos: 'M34 46h32l-2 34H36Z', Bras: 'M22 46h12l-4 42H14ZM66 46h12l8 42H70Z', Jambes: 'M36 80h13l-2 66H34ZM51 80h13l2 66H53Z' };
+      var txt = JSON.parse(el.dataset.fxItems || '{}');
+      var s = '<svg viewBox="0 0 100 150" role="group" aria-label="Zones du corps">';
+      Object.keys(Z).forEach(function (k) { s += '<path d="' + Z[k] + '" tabindex="0" role="button" aria-label="' + k + '" data-k="' + k + '"/>'; });
+      el.innerHTML = s + '</svg><output aria-live="polite">Touchez une zone</output>';
+      var out = el.querySelector('output');
+      var pick = function (p) {
+        el.querySelectorAll('path').forEach(function (x) { x.classList.toggle('fx-on', x === p); });
+        out.innerHTML = '<b>' + p.dataset.k + '</b><br>' + (txt[p.dataset.k] || 'Voir les conseils pour cette zone');
+        el.dispatchEvent(new CustomEvent('fx:zone', { bubbles: true, detail: { zone: p.dataset.k } }));
+      };
+      el.addEventListener('click', function (e) { if (e.target.dataset.k) pick(e.target); });
+      el.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.dataset.k) { e.preventDefault(); pick(e.target); } });
+    }
+  });
 })(window.FX);
