@@ -84,4 +84,13 @@ module.exports = [
     '<div data-fx="itinerary-days" data-fx-items="Porto:Ribeira|Lisbonne:Tram"></div>',
     '<div data-fx="itinerary-days" style="color:var(--ink)"></div>',
     { a11y: 'Boutons `aria-expanded`, rail décoratif.' }),
+  E('jetlag-plan', 'Présentation',
+    'Un décalage horaire donne l\'heure de coucher, jour après jour, pour s\'y préparer.',
+    'On arrive frais, et pas au milieu de la nuit.',
+    '- `data-fx-hours` (6), `data-fx-bed` (23)',
+    'Voyages long-courriers, sportifs, équipes.',
+    'De traiter cela comme un avis médical : c\'est une méthode simple, à adapter.',
+    '<div data-fx="jetlag-plan" data-fx-hours="6"></div>',
+    '<div data-fx="jetlag-plan" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, liste ordonnée, message annoncé.' }),
 ];
