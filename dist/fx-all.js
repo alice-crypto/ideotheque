@@ -15209,6 +15209,25 @@
       go(U.num(el, 'fxFloor', 2));
     }
   });
+
+  // Un lustre qui se balance quand on fait défiler la page
+  FX.register('chandelier-sway', {
+    setup: function (el) {
+      el.setAttribute('aria-hidden', 'true');
+      var n = U.num(el, 'fxLights', 7), s = '<svg viewBox="0 0 140 130"><g class="fx-cs3"><line x1="70" y1="0" x2="70" y2="46"/><path d="M28 62C40 86 100 86 112 62" />';
+      for (var i = 0; i < n; i++) { var a = i / (n - 1), x = 26 + a * 88, y = 62 + Math.sin(a * Math.PI) * 18; s += '<line x1="' + x + '" y1="' + y + '" x2="' + x + '" y2="' + (y + 20) + '"/><circle cx="' + x + '" cy="' + (y + 24) + '" r="4" style="--fx-i:' + i + '"/>'; }
+      el.innerHTML = s + '</g></svg>';
+      el._fxA = 0; el._fxV = 0;
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      var v = U.velocity ? U.velocity() : 0;
+      el._fxV += (-el._fxA * 14 - el._fxV * 1.6 + v * .35) * dt;
+      el._fxA += el._fxV * dt * 60 * .03;
+      el._fxA = U.clamp(el._fxA, -18, 18);
+      el.style.setProperty('--fx-a', el._fxA.toFixed(2) + 'deg');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

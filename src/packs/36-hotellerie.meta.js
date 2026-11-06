@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="elevator-dial" data-fx-items="Rdc|1|2"></div>',
     '<div data-fx="elevator-dial" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés, étage annoncé.' }),
+  E('chandelier-sway', 'Défilement',
+    'Un lustre se balance selon la vitesse de défilement, et s\'immobilise peu à peu.',
+    'Un grand hall, la lumière qui danse à peine.',
+    '- `data-fx-lights` (7), `--fx-brass`, `--fx-w`',
+    'Hôtels, opéras, théâtres.',
+    'Sur un site sobre, ou près de contenus à lire : le balancement distrait.',
+    '<div data-fx="chandelier-sway"></div>',
+    '<div data-fx="chandelier-sway"></div>',
+    { a11y: 'Décoratif, masqué. Immobile en mouvement réduit.' }),
 ];

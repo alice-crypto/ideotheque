@@ -8896,6 +8896,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="elevator-dial"] button { min-width: 26px; height: 26px; padding: 0 4px; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font: inherit; cursor: pointer; }
 [data-fx="elevator-dial"] .fx-on { background: #ffd46b; color: #30210b; border-color: transparent; box-shadow: 0 0 8px #ffd46b; }
 
+/* chandelier-sway : un lustre qui balance */
+[data-fx="chandelier-sway"] { display: block; width: var(--fx-w, 190px); }
+[data-fx="chandelier-sway"] svg { display: block; width: 100%; overflow: visible; }
+[data-fx="chandelier-sway"] .fx-cs3 { transform-origin: 70px 0; transform: rotate(var(--fx-a, 0deg)); }
+[data-fx="chandelier-sway"] line, [data-fx="chandelier-sway"] path { fill: none; stroke: var(--fx-brass, #c99c3a); stroke-width: 2; }
+[data-fx="chandelier-sway"] circle { fill: #fff0bc; filter: drop-shadow(0 0 5px #ffd777); animation: fx-chandelier-glow 2.4s ease-in-out calc(var(--fx-i) * -.6s) infinite alternate; }
+@keyframes fx-chandelier-glow { to { opacity: .7; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
