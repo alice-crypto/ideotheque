@@ -8814,6 +8814,28 @@
       calc();
     }
   });
+
+  // Une courbe d'épargne qui montre l'effet du temps
+  FX.register('savings-curve', {
+    setup: function (el) {
+      var rate = U.num(el, 'fxRate', 4) / 100;
+      el.innerHTML = '<svg viewBox="0 0 200 90" preserveAspectRatio="none" role="img"><path class="a"/><path class="b"/></svg><label>Par mois <b></b><input type="range" min="10" max="1000" step="10" value="' + U.num(el, 'fxMonthly', 150) + '"></label><p aria-live="polite"></p>';
+      var input = el.querySelector('input'), a = el.querySelector('.a'), b = el.querySelector('.b'), Y = U.num(el, 'fxYears', 25), svg = el.querySelector('svg');
+      var draw = function () {
+        var m = +input.value, cap = 0, pts = [], dep = [];
+        for (var y = 0; y <= Y; y++) { pts.push(cap); dep.push(m * 12 * y); cap = (cap + m * 12) * (1 + rate); }
+        var max = pts[Y], line = function (l) { return 'M' + l.map(function (v, i) { return (i / Y * 200).toFixed(1) + ' ' + (88 - v / max * 84).toFixed(1); }).join(' L'); };
+        a.setAttribute('d', line(pts) + ' L200 90 L0 90 Z');
+        b.setAttribute('d', line(dep));
+        el.querySelector('label b').textContent = m + ' €';
+        var txt = Math.round(pts[Y]).toLocaleString('fr-FR') + ' € au bout de ' + Y + ' ans, dont ' + Math.round(pts[Y] - dep[Y]).toLocaleString('fr-FR') + ' € d\'intérêts (hypothèse : ' + (rate * 100) + ' % par an)';
+        el.querySelector('p').textContent = txt;
+        svg.setAttribute('aria-label', txt);
+      };
+      input.addEventListener('input', draw);
+      draw();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="loan-calculator" data-fx-rate="3.4"></div>',
     '<div data-fx="loan-calculator" style="width:220px;color:var(--ink);font-size:13px"></div>',
     { a11y: 'Curseurs natifs et résultat annoncé par `aria-live`.' }),
+  E('savings-curve', 'Présentation',
+    'Un curseur règle l\'épargne mensuelle, et la courbe montre l\'écart croissant entre les versements et le capital.',
+    'L\'effet du temps devient visible.',
+    '- `data-fx-rate` (4), `data-fx-monthly` (150), `data-fx-years` (25)',
+    'Épargne, retraite, éducation financière.',
+    'De promettre un rendement : l\'hypothèse doit rester écrite.',
+    '<div data-fx="savings-curve" data-fx-rate="3"></div>',
+    '<div data-fx="savings-curve" style="width:220px;color:var(--ink);font-size:13px"></div>',
+    { a11y: 'Le résultat est écrit en texte et annoncé par `aria-live`.' }),
 ];

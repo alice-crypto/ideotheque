@@ -5515,6 +5515,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="loan-calculator"] strong { font-size: 1.7em; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
 [data-fx="loan-calculator"] small::before { content: ""; display: block; height: 5px; margin-bottom: 5px; background: linear-gradient(90deg, var(--fx-accent) calc(var(--fx-q, 0) * 100%), rgba(128, 128, 128, .35) 0); transition: background .2s; }
 
+/* savings-curve : l'effet du temps */
+[data-fx="savings-curve"] { display: grid; gap: 7px; font-size: .85em; }
+[data-fx="savings-curve"] svg { display: block; width: 100%; height: var(--fx-h, 90px); }
+[data-fx="savings-curve"] .a { fill: var(--fx-accent); }
+[data-fx="savings-curve"] .b { fill: none; stroke: currentColor; stroke-width: 1.5px; vector-effect: non-scaling-stroke; }
+[data-fx="savings-curve"] label { display: grid; grid-template-columns: 1fr auto; gap: 2px; }
+[data-fx="savings-curve"] input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--fx-accent); }
+[data-fx="savings-curve"] p { margin: 0; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
