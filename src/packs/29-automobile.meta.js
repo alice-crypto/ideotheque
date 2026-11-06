@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="spec-duel" data-fx-items="Coffre (L):470:380:+"></div>',
     '<div data-fx="spec-duel" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Vrai tableau, en-têtes de lignes et de colonnes.' }),
+  E('parking-sensor', 'Micro-interaction',
+    'Plus la distance baisse, plus les arcs s\'allument, rougissent et battent vite.',
+    'On entend le bip sans qu\'il y ait de son.',
+    '- `data-fx-cm` (60)',
+    'Équipements de véhicule, seuils, proximité.',
+    'Le clignotement rapide trop grand : gardez la zone petite.',
+    '<div data-fx="parking-sensor" data-fx-cm="60"></div>',
+    '<div data-fx="parking-sensor" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, distance et niveau écrits et annoncés.' }),
 ];

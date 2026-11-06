@@ -310,4 +310,21 @@
       el.innerHTML = '<table>' + h + '</tbody></table><p>' + N[0] + ' ' + score[0] + ' · ' + N[1] + ' ' + score[1] + '</p>';
     }
   });
+
+  // Un radar de recul : plus l'obstacle approche, plus les arcs rougissent
+  FX.register('parking-sensor', {
+    setup: function (el) {
+      el.innerHTML = '<svg viewBox="0 0 120 64" aria-hidden="true"><path d="M20 62A40 40 0 0 1 100 62"/><path d="M34 62A26 26 0 0 1 86 62"/><path d="M46 62A14 14 0 0 1 74 62"/><rect x="50" y="58" width="20" height="6" rx="2"/></svg><label>Distance <input type="range" min="10" max="150" step="5"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output'), A = el.querySelectorAll('svg path');
+      r.value = U.num(el, 'fxCm', 60);
+      var go = function () {
+        var d = +r.value, n = d > 100 ? 0 : d > 60 ? 1 : d > 30 ? 2 : 3;
+        A.forEach(function (a, i) { a.classList.toggle('fx-on', 2 - i < n); });
+        el.dataset.fxLevel = n;
+        o.textContent = d + ' cm · ' + ['Voie libre', 'Attention', 'Approche', 'Stop'][n];
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
