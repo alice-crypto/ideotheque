@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="plane-window"></div>',
     '<div data-fx="plane-window"></div>',
     { a11y: 'Décoratif, masqué. La bibliothèque coupe l\'animation en mouvement réduit.' }),
+  E('suitcase-open', 'Micro-interaction',
+    'Une valise s\'ouvre d\'un clic, et son contenu se déplie en dessous.',
+    'Découvrir ce qu\'il y a dedans, comme au retour de voyage.',
+    'Aucun réglage. Le contenu de l\'élément est révélé.',
+    'Listes de voyage, offres, guides.',
+    'De cacher une information obligatoire derrière cette valise.',
+    '<div data-fx="suitcase-open"><p>Crème solaire, passeport…</p></div>',
+    '<div data-fx="suitcase-open" style="color:var(--ink)"><p style="margin:0">Crème solaire, passeport, bonne humeur.</p></div>',
+    { trigger: 'Ouvrir', a11y: 'Bouton `aria-expanded`, contenu `hidden` tant que la valise est fermée.' }),
 ];

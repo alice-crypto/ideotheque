@@ -181,3 +181,16 @@
 [data-fx="plane-window"][data-fx-time="night"] i { opacity: .25; }
 [data-fx="plane-window"] .fx-pw2::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(130deg, #fff3 0 22%, transparent 22%); }
 @keyframes fx-plane-cloud { to { left: -60%; } }
+
+/* suitcase-open : une valise qui s'ouvre */
+[data-fx="suitcase-open"] { display: grid; gap: 7px; justify-items: center; width: min(100%, var(--fx-w, 220px)); font-size: 12px; }
+[data-fx="suitcase-open"] button { display: grid; justify-items: center; gap: 3px; padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; perspective: 500px; }
+[data-fx="suitcase-open"] .fx-sc2 { position: relative; display: block; width: 130px; height: 84px; }
+[data-fx="suitcase-open"] .fx-sc2-h { position: absolute; left: 50%; top: 0; width: 42px; height: 14px; margin-left: -21px; border: 3px solid #4a311b; border-bottom: 0; border-radius: 8px 8px 0 0; box-sizing: border-box; }
+[data-fx="suitcase-open"] .fx-sc2-b { position: absolute; left: 0; right: 0; top: 40px; bottom: 0; background: #a86b37; border-radius: 0 0 8px 8px; box-shadow: inset 0 4px 0 #0003; }
+[data-fx="suitcase-open"] .fx-sc2-l { position: absolute; left: 0; right: 0; top: 13px; height: 28px; background: #bb7b42; border-radius: 8px 8px 0 0; transform-origin: 50% 0; transition: transform .6s var(--fx-ease-spring); z-index: 1; }
+[data-fx="suitcase-open"] u { position: absolute; left: 50%; bottom: -3px; width: 14px; height: 7px; margin-left: -7px; background: #e4c56c; border-radius: 2px; }
+[data-fx="suitcase-open"] [aria-expanded="true"] .fx-sc2-l { transform: rotateX(120deg) translateY(-3px); }
+[data-fx="suitcase-open"] .fx-sc2-c { animation: fx-suitcase-out .4s var(--fx-ease-out); }
+[data-fx="suitcase-open"] .fx-sc2-c[hidden] { display: none; }
+@keyframes fx-suitcase-out { from { opacity: 0; transform: translateY(-10px); } }

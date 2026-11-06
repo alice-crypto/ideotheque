@@ -293,4 +293,20 @@
       }
     }
   });
+
+  // Une valise qui s'ouvre sur son contenu
+  FX.register('suitcase-open', {
+    setup: function (el) {
+      var C = el.innerHTML;
+      el.innerHTML = '<button type="button" aria-expanded="false"><span class="fx-sc2"><i class="fx-sc2-h" aria-hidden="true"></i><i class="fx-sc2-l" aria-hidden="true"><u></u></i><span class="fx-sc2-b"></span></span><small>Ouvrir la valise</small></button><div class="fx-sc2-c" hidden>' + C + '</div>';
+      var b = el.firstChild, panel = el.lastChild, s = el.querySelector('small');
+      b.addEventListener('click', function () {
+        var o = b.getAttribute('aria-expanded') !== 'true';
+        b.setAttribute('aria-expanded', o);
+        panel.hidden = !o;
+        s.textContent = o ? 'Refermer la valise' : 'Ouvrir la valise';
+      });
+    },
+    trigger: function (el) { el.firstChild.click(); }
+  });
 })(window.FX);
