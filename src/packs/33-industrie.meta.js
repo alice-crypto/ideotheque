@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="piston-cycle"></div>',
     '<div data-fx="piston-cycle" style="color:var(--ink)"></div>',
     { a11y: 'Le nom du temps est écrit. Immobile en mouvement réduit.' }),
+  E('defect-pareto', 'Présentation',
+    'Un diagramme de Pareto trie les causes et désigne celles qui font 80 % des défauts.',
+    'Où agir en premier, sans débat.',
+    '- `data-fx-items` : « cause:nombre » séparés par `|`',
+    'Qualité, support, tout classement de causes.',
+    'Des données trop anciennes, ou un tri qui cache un défaut rare mais grave.',
+    '<div data-fx="defect-pareto" data-fx-items="Rayures:48|Soudure:31"></div>',
+    '<div data-fx="defect-pareto" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'La conclusion est écrite, et le graphique est décoratif.' }),
 ];

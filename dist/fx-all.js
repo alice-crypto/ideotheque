@@ -13410,6 +13410,22 @@
     },
     tick: function (el, dt) { if (U.reduced) return; el._fxA = (el._fxA + dt * U.num(el, 'fxSpeed', 3)) % (Math.PI * 4); el._fxDraw(el._fxA); }
   });
+
+  // Un diagramme de Pareto : les quelques causes qui comptent le plus
+  FX.register('defect-pareto', {
+    entrance: true,
+    setup: function (el) {
+      var R = (el.dataset.fxItems || 'Rayures:48|Soudure:31|Cote:12|Couleur:6|Emballage:3').split('|').map(function (r) { var p = r.split(':'); return [p[0], +p[1]]; }).sort(function (a, b) { return b[1] - a[1]; }), tot = R.reduce(function (t, r) { return t + r[1]; }, 0), max = R[0][1], c = 0, line = '', hits = [], h = '';
+      R.forEach(function (r, i) {
+        c += r[1];
+        var q = c / tot, x = (i + .5) / R.length * 100;
+        line += (i ? 'L' : 'M') + x + ' ' + (100 - q * 100);
+        if (c - r[1] < tot * .8) hits.push(r[0]);
+        h += '<div class="' + (c - r[1] < tot * .8 ? 'fx-hit' : '') + '" style="--fx-q:' + r[1] / max + ';--fx-i:' + i + '"><i></i><small>' + r[0] + '</small></div>';
+      });
+      el.innerHTML = '<div class="fx-dp" aria-hidden="true">' + h + '<svg viewBox="0 0 100 100" preserveAspectRatio="none"><path pathLength="1" d="' + line + '"/></svg></div><p><b>' + hits.join(', ') + '</b> : 80 % des défauts</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

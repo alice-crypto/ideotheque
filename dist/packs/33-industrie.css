@@ -44,3 +44,16 @@
 [data-fx="piston-cycle"] .fx-pi2-g.k1 { fill: #ffd98a; }
 [data-fx="piston-cycle"] .fx-pi2-g.k2 { fill: #ff5a1f; }
 [data-fx="piston-cycle"] .fx-pi2-g.k3 { fill: #9a9ea5; }
+
+/* defect-pareto : les causes qui comptent */
+[data-fx="defect-pareto"] { width: min(100%, var(--fx-w, 235px)); font-size: 9px; }
+[data-fx="defect-pareto"] .fx-dp { position: relative; display: flex; gap: 3px; align-items: flex-end; height: 104px; padding-bottom: 16px; }
+[data-fx="defect-pareto"] .fx-dp > div { position: relative; flex: 1; height: 100%; display: flex; align-items: flex-end; }
+[data-fx="defect-pareto"] i { display: block; width: 100%; height: 0; background: color-mix(in srgb, currentColor 30%, transparent); transition: height .55s var(--fx-ease-out) calc(var(--fx-i) * 90ms); }
+.fx-in[data-fx="defect-pareto"] i { height: calc(var(--fx-q) * 100%); }
+[data-fx="defect-pareto"] .fx-hit i { background: var(--fx-accent); }
+[data-fx="defect-pareto"] small { position: absolute; left: 0; right: 0; bottom: -14px; text-align: center; white-space: nowrap; overflow: hidden; }
+[data-fx="defect-pareto"] svg { position: absolute; left: 0; right: 0; top: 0; bottom: 16px; width: 100%; height: calc(100% - 16px); overflow: visible; }
+[data-fx="defect-pareto"] path { fill: none; stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1s ease-out .55s; }
+.fx-in[data-fx="defect-pareto"] path { stroke-dashoffset: 0; }
+[data-fx="defect-pareto"] p { margin: 7px 0 0; font-size: 12px; }
