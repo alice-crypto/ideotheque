@@ -82,3 +82,13 @@
 [data-fx="barcode-scan"] button { padding: 4px 14px; border: 0; border-radius: 99px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
 [data-fx="barcode-scan"].fx-ok output { color: var(--fx-ok, #2eaf63); font-weight: 700; }
 @keyframes fx-barcode-laser { 0% { opacity: 1; top: 0; } 50% { top: calc(100% - 2px); opacity: 1; } 100% { top: 0; opacity: 0; } }
+
+/* route-optimize : une tournée mieux rangée */
+[data-fx="route-optimize"] { display: grid; gap: 5px; justify-items: center; width: min(100%, var(--fx-w, 190px)); font-size: 12px; }
+[data-fx="route-optimize"] svg { width: 100%; max-height: 124px; }
+[data-fx="route-optimize"] path { fill: none; stroke: var(--fx-down, #e10600); stroke-width: 1.3; stroke-linejoin: round; stroke-dasharray: 1; }
+[data-fx="route-optimize"] path.fx-go { animation: fx-route-draw .9s ease-out; }
+[data-fx="route-optimize"] circle { fill: currentColor; }
+[data-fx="route-optimize"] button { padding: 4px 12px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="route-optimize"] b { font-size: 16px; }
+@keyframes fx-route-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
