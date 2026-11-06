@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="incoterm-bar" data-fx-term="FOB"></div>',
     '<div data-fx="incoterm-bar" style="color:var(--ink)"></div>',
     { a11y: 'Groupe radio nommé, chaque étape dit qui paie.' }),
+  E('conveyor-belt', 'Ambiance',
+    'Des colis de tailles différentes passent en boucle sur un tapis roulant.',
+    'L\'entrepôt tourne, tout est sous contrôle.',
+    '- `data-fx-count` (6), `data-fx-speed` (9)',
+    'Logistique, hero d\'entreprise, attente.',
+    'De l\'utiliser derrière du texte : l\'œil suit les colis.',
+    '<div data-fx="conveyor-belt"></div>',
+    '<div data-fx="conveyor-belt" style="width:215px"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
 ];
