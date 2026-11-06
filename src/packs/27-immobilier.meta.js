@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="key-unlock">Bienvenue chez vous</div>',
     '<div data-fx="key-unlock" style="color:var(--ink)">Bienvenue chez vous</div>',
     { trigger: 'Rejouer', a11y: 'Le message reste dans le texte. Avec le mouvement réduit, la porte s\'affiche ouverte.' }),
+  E('facade-windows', 'Ambiance',
+    'Une façade montre des fenêtres qui s\'allument et s\'éteignent selon l\'heure locale.',
+    'Une ville habitée, des vies derrière chaque vitre.',
+    '- `data-fx-cols` (8), `data-fx-rows` (6), `data-fx-density`\n- `--fx-wall`, `--fx-light`',
+    'Promoteurs, locations, sites de ville.',
+    'De la décorer sur une page dense : l\'œil y est attiré sans arrêt.',
+    '<div data-fx="facade-windows"></div>',
+    '<div data-fx="facade-windows"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran. Mouvement réduit : la façade reste fixe.' }),
 ];

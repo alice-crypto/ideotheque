@@ -150,3 +150,9 @@
 [data-fx="key-unlock"] .fx-ku-h { position: absolute; right: 18px; top: 50%; width: 12px; height: 18px; margin-top: -9px; border-radius: 6px; background: #111; }
 [data-fx="key-unlock"] .fx-ku-k { position: absolute; right: 22px; top: 50%; width: 60px; height: 20px; margin-top: -10px; fill: var(--fx-key, #ffd400); fill-rule: evenodd; transform: translateX(-50px); opacity: 0; transition: transform .5s var(--fx-ease-out) .1s, opacity .2s; }
 .fx-in[data-fx="key-unlock"] .fx-ku-k { transform: rotateX(180deg); opacity: 1; transition: transform .5s ease-in-out .7s, opacity .2s; }
+
+/* facade-windows : une façade qui vit */
+[data-fx="facade-windows"] { display: block; padding: 10px; width: min(100%, var(--fx-w, 190px)); background: var(--fx-wall, #1b2333); box-sizing: border-box; }
+[data-fx="facade-windows"] .fx-fw { display: grid; grid-template-columns: repeat(var(--fx-c), 1fr); gap: 6px; }
+[data-fx="facade-windows"] i { aspect-ratio: .8; background: #0c1220; box-shadow: inset 0 0 0 1px #fff2; transition: background .8s, box-shadow .8s; }
+[data-fx="facade-windows"] i.fx-on { background: var(--fx-light, #ffcb6b); box-shadow: 0 0 8px color-mix(in srgb, var(--fx-light, #ffcb6b) 55%, transparent); }
