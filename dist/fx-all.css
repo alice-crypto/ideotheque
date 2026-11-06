@@ -6607,6 +6607,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="rent-ratio"].fx-ok .fx-rr i { background: linear-gradient(90deg, var(--fx-ok, #2eaf63) calc(var(--fx-f, 0) * 100%), color-mix(in srgb, currentColor 15%, transparent) 0); }
 [data-fx="rent-ratio"] output { grid-column: 1 / -1; font-size: 12px; font-weight: 700; }
 
+/* rooms-range : une plage de pièces */
+[data-fx="rooms-range"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="rooms-range"] .fx-rg { display: flex; }
+[data-fx="rooms-range"] button { flex: 1; padding: 6px 2px; border: 1px solid currentColor; margin-left: -1px; background: none; color: inherit; font: inherit; font-size: 11px; cursor: pointer; transition: background .15s, color .15s; }
+[data-fx="rooms-range"] button:first-child { border-radius: 8px 0 0 8px; }
+[data-fx="rooms-range"] button:last-child { border-radius: 0 8px 8px 0; }
+[data-fx="rooms-range"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; border-color: var(--fx-accent); }
+[data-fx="rooms-range"] .fx-s { border-radius: 8px 0 0 8px; }
+[data-fx="rooms-range"] .fx-e { border-radius: 0 8px 8px 0; }
+[data-fx="rooms-range"] .fx-s.fx-e { border-radius: 8px; }
+[data-fx="rooms-range"] output { font-weight: 700; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

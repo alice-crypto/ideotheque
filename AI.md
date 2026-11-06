@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->620<!-- /total --> effets.
+La bibliothèque contient <!-- total -->621<!-- /total --> effets.
 
 ## Règles
 
@@ -357,6 +357,7 @@ La bibliothèque contient <!-- total -->620<!-- /total --> effets.
 | `rent-split` | Micro-interaction | Le loyer se répartit selon la taille des chambres, avec une part commune à égalité |
 | `floor-view` | Micro-interaction | Choisir un étage déplace la vue par la fenêtre, et le prix suit |
 | `rent-ratio` | Micro-interaction | Revenu et loyer remplissent des blocs, et le seuil des trois fois est vérifié |
+| `rooms-range` | Micro-interaction | Deux clics sur des pastilles définissent une plage continue, soudée en une barre |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

@@ -387,4 +387,32 @@
       go();
     }
   });
+
+  // Des pastilles de pièces : deux clics font une plage
+  FX.register('rooms-range', {
+    setup: function (el) {
+      var L = (el.dataset.fxItems || 'Studio,2,3,4,5+').split(','), a = null, b = null, g = U.make('div', 'fx-rg', el), o = U.make('output', '', el);
+      g.setAttribute('role', 'group'); g.setAttribute('aria-label', 'Nombre de pièces');
+      o.setAttribute('aria-live', 'polite');
+      var show = function () {
+        var lo = a === null ? -1 : (b === null ? a : Math.min(a, b)), hi = a === null ? -1 : (b === null ? a : Math.max(a, b));
+        Array.prototype.forEach.call(g.children, function (x, i) {
+          var on = i >= lo && i <= hi;
+          x.setAttribute('aria-pressed', on);
+          x.classList.toggle('fx-s', i === lo); x.classList.toggle('fx-e', i === hi);
+        });
+        o.textContent = a === null ? 'Toutes les tailles' : lo === hi ? L[lo] : L[lo] + ' à ' + L[hi] + ' pièces';
+      };
+      L.forEach(function (t, i) {
+        var x = U.make('button', '', g);
+        x.type = 'button'; x.textContent = t;
+        x.addEventListener('click', function () {
+          if (a === null || b !== null) { a = i; b = null; } else if (a === i) { a = null; } else b = i;
+          show();
+          el.dispatchEvent(new CustomEvent('fx:range', { bubbles: true, detail: { from: a, to: b } }));
+        });
+      });
+      show();
+    }
+  });
 })(window.FX);

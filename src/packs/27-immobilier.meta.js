@@ -192,4 +192,13 @@ module.exports = [
     '<div data-fx="rent-ratio" data-fx-income="2400" data-fx-rent="900"></div>',
     '<div data-fx="rent-ratio" style="color:var(--ink)"></div>',
     { a11y: 'Champs étiquetés, résultat annoncé.' }),
+  E('rooms-range', 'Micro-interaction',
+    'Deux clics sur des pastilles définissent une plage continue, soudée en une barre.',
+    'Plus rapide que deux menus déroulants.',
+    '- `data-fx-items` : valeurs séparées par des virgules\n- événement `fx:range`',
+    'Filtres d\'annonces, tailles de vêtements, plages de prix.',
+    'Plus de sept valeurs : le geste devient imprécis.',
+    '<div data-fx="rooms-range" data-fx-items="Studio,2,3,4,5+"></div>',
+    '<div data-fx="rooms-range" style="color:var(--ink)"></div>',
+    { a11y: 'Groupe nommé, boutons `aria-pressed`, résumé annoncé.' }),
 ];
