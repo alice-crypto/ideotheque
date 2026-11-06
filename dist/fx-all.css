@@ -7382,6 +7382,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="transfer-check"][data-fx-level="bad"] i { background: var(--fx-down, #e10600); }
 [data-fx="transfer-check"] output { font-weight: 700; }
 
+/* Pack 31 — Logistique */
+
+/* parcel-journey : un colis sur son trajet */
+[data-fx="parcel-journey"] { width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="parcel-journey"] .fx-pj { position: relative; height: 34px; margin: 0 8px; background: linear-gradient(var(--fx-accent), var(--fx-accent)) no-repeat 0 24px / 0 3px, linear-gradient(color-mix(in srgb, currentColor 20%, transparent), color-mix(in srgb, currentColor 20%, transparent)) no-repeat 0 24px / 100% 3px; transition: background-size 1.2s var(--fx-ease-out); }
+.fx-in[data-fx="parcel-journey"] .fx-pj { background-size: calc(var(--fx-q) * 100%) 3px, 100% 3px; }
+[data-fx="parcel-journey"] i { position: absolute; top: 20px; width: 11px; height: 11px; margin-left: -5px; border-radius: 50%; border: 2px solid currentColor; background: var(--fx-bg, #0000); box-sizing: border-box; }
+[data-fx="parcel-journey"] i.fx-done { background: var(--fx-accent); border-color: var(--fx-accent); }
+[data-fx="parcel-journey"] u { position: absolute; top: 2px; left: 0; width: 28px; height: 14px; margin-left: -14px; background: linear-gradient(90deg, currentColor 66%, var(--fx-accent) 66%); border-radius: 2px 5px 2px 2px; transition: left 1.2s var(--fx-ease-out); }
+.fx-in[data-fx="parcel-journey"] u { left: calc(var(--fx-q) * 100%); }
+[data-fx="parcel-journey"] p { margin: 6px 0 0; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
