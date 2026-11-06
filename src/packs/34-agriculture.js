@@ -73,4 +73,15 @@
       show();
     }
   });
+
+  // Un pluviomètre : la semaine de pluie face à la normale
+  FX.register('rain-gauge', {
+    entrance: true,
+    setup: function (el) {
+      var D = (el.dataset.fxData || '2,0,6,14,3,0,8').split(',').map(Number), norm = U.num(el, 'fxNormal', 22), tot = D.reduce(function (a, b) { return a + b; }, 0), max = Math.max(tot, norm) * 1.2, L = 'LMMJVSD', h = '';
+      D.forEach(function (v, i) { h += '<span><i style="--fx-q:' + v / Math.max.apply(null, D) + ';--fx-i:' + i + '"></i><small>' + L[i] + '</small></span>'; });
+      el.style.setProperty('--fx-t', tot / max); el.style.setProperty('--fx-n', norm / max);
+      el.innerHTML = '<div class="fx-rg2" aria-hidden="true"><i></i><em></em></div><div class="fx-rg2-w" aria-hidden="true">' + h + '</div><p><b>' + tot + ' mm</b> cette semaine, ' + (tot >= norm ? '+' : '') + (tot - norm) + ' mm par rapport à la normale</p>';
+    }
+  });
 })(window.FX);
