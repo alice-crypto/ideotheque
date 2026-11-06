@@ -11240,6 +11240,23 @@
     scroll: function (el, info) { el.style.setProperty('--fx-q', U.clamp(info.pass * 1.8 - .25, 0, 1).toFixed(3)); },
     trigger: function (el) { var on = el.style.getPropertyValue('--fx-q') === '1'; U.tween(el, 900, function (p) { el.style.setProperty('--fx-q', on ? 1 - p : p); }); }
   });
+
+  // Un bâtiment qui se construit phase après phase
+  FX.register('construction-phases', {
+    setup: function (el) {
+      var P = (el.dataset.fxItems || 'Terrassement:2026|Structure:2026|Enveloppe:2027|Livraison:2028').split('|').map(function (r) { return r.split(':'); });
+      el.innerHTML = '<div class="fx-cp2" aria-hidden="true"><b class="p0"></b><b class="p1"></b><b class="p1 u"></b><b class="p2"></b><b class="p3"></b></div><input type="range" min="0" max="' + (P.length - 1) + '" aria-label="Phase du chantier"><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxPhase', 1);
+      var go = function () {
+        var n = +r.value;
+        el.dataset.fxPhase = n;
+        o.innerHTML = '<b>' + P[n][0] + '</b> · ' + P[n][1];
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

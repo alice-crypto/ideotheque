@@ -93,4 +93,13 @@ module.exports = [
     '<figure data-fx="sketch-render"><img src="vue.jpg" alt="Façade sud"></figure>',
     '<figure data-fx="sketch-render" style="margin:0;width:215px"><img src="assets/city.svg" alt="Une ville la nuit"></figure>',
     { trigger: 'Basculer', a11y: 'Le texte alternatif de l\'image d\'origine est conservé ; la copie est masquée.' }),
+  E('construction-phases', 'Présentation',
+    'Un curseur fait avancer un chantier en quatre temps, du terrassement aux fenêtres allumées.',
+    'On raconte un chantier au lieu d\'énumérer des dates.',
+    '- `data-fx-items` : quatre « phase:année » séparées par `|`\n- `data-fx-phase` (1)',
+    'Promoteurs, chantiers en cours, feuilles de route.',
+    'Plus de quatre phases : le dessin en prévoit quatre.',
+    '<div data-fx="construction-phases" data-fx-phase="1"></div>',
+    '<div data-fx="construction-phases" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur nommé, phase et date annoncées.' }),
 ];
