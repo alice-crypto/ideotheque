@@ -10,3 +10,14 @@
 [data-fx="solar-roof"] output b { font-size: 17px; }
 [data-fx="solar-roof"] small { font-size: 10px; opacity: .7; }
 @keyframes fx-solar-pose { from { transform: translateY(-10px); } }
+
+/* bill-slices : une facture découpée */
+[data-fx="bill-slices"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="bill-slices"] .fx-bl3 { display: flex; gap: 2px; clip-path: inset(0 100% 0 0); transition: clip-path 1s var(--fx-ease-out); }
+.fx-in[data-fx="bill-slices"] .fx-bl3 { clip-path: inset(-10px 0); }
+[data-fx="bill-slices"] button { min-width: 0; height: 40px; padding: 0; border: 0; color: #fff; font: inherit; font-weight: 800; cursor: pointer; transition: transform .2s var(--fx-ease-spring); background: var(--fx-accent); }
+[data-fx="bill-slices"] button:nth-child(2) { background: #2d6fd2; }
+[data-fx="bill-slices"] button:nth-child(3) { background: #7a55c7; }
+[data-fx="bill-slices"] button:nth-child(4) { background: #5b6470; }
+[data-fx="bill-slices"] [aria-pressed="true"] { transform: translateY(-4px); }
+[data-fx="bill-slices"] output b { font-size: 15px; }
