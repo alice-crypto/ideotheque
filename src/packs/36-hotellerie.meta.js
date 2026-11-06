@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="loyalty-nights" data-fx-nights="17"></div>',
     '<div data-fx="loyalty-nights" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le texte dit tout : nuits et reste. La barre est décorative.' }),
+  E('pool-card', 'Ambiance',
+    'Une carte de piscine donne température et horaires, et fait des ondes au toucher.',
+    'L\'envie de plonger, tout de suite.',
+    '- `data-fx-temp` (27), `data-fx-from` (8), `data-fx-to` (20)',
+    'Hôtels, campings, centres aquatiques.',
+    'Une température inventée : les visiteurs s\'y fieront.',
+    '<div data-fx="pool-card" data-fx-temp="27"></div>',
+    '<div data-fx="pool-card" data-fx-from="0" data-fx-to="24"></div>',
+    { a11y: 'Température et horaire en texte. Les ondes sont un simple décor.' }),
 ];

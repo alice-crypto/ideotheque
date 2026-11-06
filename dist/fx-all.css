@@ -8815,6 +8815,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="loyalty-nights"] p { margin: 0; }
 [data-fx="loyalty-nights"] p b { font-size: 15px; }
 
+/* pool-card : une carte de piscine */
+[data-fx="pool-card"] .fx-pl5 { position: relative; display: grid; align-content: end; width: min(100%, var(--fx-w, 225px)); height: 120px; padding: 10px; box-sizing: border-box; overflow: hidden; border-radius: 12px; color: #fff; background: repeating-radial-gradient(ellipse at 30% 60%, #fff3 0 3px, transparent 3px 18px), repeating-radial-gradient(ellipse at 70% 30%, #fff2 0 2px, transparent 2px 22px), linear-gradient(#27b4d9, #0c7fb0); background-size: 150% 150%, 180% 180%, auto; animation: fx-pool-caustic 9s linear infinite alternate; touch-action: manipulation; cursor: pointer; }
+[data-fx="pool-card"] strong { font-size: 30px; }
+[data-fx="pool-card"] span { font-size: 12px; }
+[data-fx="pool-card"] i { position: absolute; width: 20px; height: 20px; margin: -10px; border: 2px solid #fff; border-radius: 50%; animation: fx-pool-ring 1.2s ease-out forwards; }
+@keyframes fx-pool-caustic { to { background-position: 40px 30px, -30px 40px, 0 0; } }
+@keyframes fx-pool-ring { to { transform: scale(7); opacity: 0; } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

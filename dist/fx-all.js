@@ -15061,6 +15061,21 @@
       el.innerHTML = h + '<p><b>' + n + ' nuits</b> cette année. ' + (next ? 'Plus que ' + (next[1] - n) + ' nuits pour le niveau ' + next[0] : 'Niveau maximal atteint') + '</p>';
     }
   });
+
+  // Une carte de piscine : on la touche, et l'eau répond
+  FX.register('pool-card', {
+    setup: function (el) {
+      var T = U.num(el, 'fxTemp', 27), a = U.num(el, 'fxFrom', 8), b = U.num(el, 'fxTo', 20), h = new Date().getHours(), open = h >= a && h < b;
+      el.innerHTML = '<div class="fx-pl5"><strong>' + T + ' °C</strong><span>' + (open ? 'Ouverte jusqu\'à ' + b + ' h' : 'Ouvre à ' + a + ' h') + '</span></div>';
+      var p = el.firstChild;
+      p.addEventListener('pointerdown', function (e) {
+        if (U.reduced) return;
+        var r = p.getBoundingClientRect(), w = U.make('i', '', p);
+        w.style.left = (e.clientX - r.left) + 'px'; w.style.top = (e.clientY - r.top) + 'px';
+        setTimeout(function () { w.remove(); }, 1200);
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
