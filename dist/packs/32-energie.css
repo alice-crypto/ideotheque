@@ -1,0 +1,12 @@
+/* Pack 32 — Énergie */
+
+/* solar-roof : des panneaux sur le toit */
+[data-fx="solar-roof"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="solar-roof"] .fx-sr2 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; padding: 10px 14px; background: #7a4a3a; clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%); }
+[data-fx="solar-roof"] i { height: 20px; background: #0002; transition: opacity .2s; opacity: .25; }
+[data-fx="solar-roof"] i.fx-on { opacity: 1; background: linear-gradient(135deg, #2a4fa8 40%, #5f8fe8 50%, #2a4fa8 60%), #1d3b86; animation: fx-solar-pose .35s var(--fx-ease-spring); }
+[data-fx="solar-roof"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="solar-roof"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="solar-roof"] output b { font-size: 17px; }
+[data-fx="solar-roof"] small { font-size: 10px; opacity: .7; }
+@keyframes fx-solar-pose { from { transform: translateY(-10px); } }
