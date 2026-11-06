@@ -205,4 +205,25 @@
       go();
     }
   });
+
+  // Ce que coûte vraiment un achat : le prix plus les frais, en bloc empilé
+  FX.register('closing-costs', {
+    setup: function (el) {
+      var P = U.num(el, 'fxPrice', 250000);
+      el.innerHTML = '<div class="fx-cc-t"><button type="button" data-t=".075" aria-pressed="true">Ancien</button><button type="button" data-t=".025" aria-pressed="false">Neuf</button></div><div class="fx-cc" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div><output aria-live="polite"></output><small>Taux approximatifs, à faire confirmer par le notaire.</small>';
+      var o = el.querySelector('output');
+      var set = function (t) {
+        var n = P * t, ag = P * .045, tot = P + n + ag, m = function (v) { return Math.round(v).toLocaleString('fr-FR') + ' €'; };
+        el.style.setProperty('--fx-a', P / tot); el.style.setProperty('--fx-b', n / tot); el.style.setProperty('--fx-c', ag / tot);
+        o.innerHTML = 'Prix ' + m(P) + '<br>Frais de notaire ' + m(n) + '<br>Agence ' + m(ag) + '<br><b>Total ' + m(tot) + '</b>';
+      };
+      el.querySelectorAll('button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          el.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+          set(+b.dataset.t);
+        });
+      });
+      set(.075);
+    }
+  });
 })(window.FX);
