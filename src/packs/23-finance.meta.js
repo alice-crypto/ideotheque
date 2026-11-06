@@ -39,4 +39,13 @@ module.exports = [
     '<span data-fx="card-number-reveal" data-fx-number="4000 0000 0000 0002"></span>',
     '<span data-fx="card-number-reveal" style="color:var(--ink);font-size:15px"></span>',
     { a11y: 'Le bouton expose `aria-pressed`.' }),
+  E('currency-converter', 'Micro-interaction',
+    'Deux montants reliés par un taux, qu\'on peut inverser d\'un clic.',
+    'Direct, le résultat suit les doigts.',
+    '- `data-fx-rate` (1.08), `data-fx-from` (EUR), `data-fx-to` (USD)',
+    'Change, voyages, boutiques internationales.',
+    'Un taux figé présenté comme réel : affichez sa date, ou branchez-le sur une vraie source.',
+    '<div data-fx="currency-converter" data-fx-rate="1.08"></div>',
+    '<div data-fx="currency-converter" style="width:225px;color:var(--ink);font-size:13px"></div>',
+    { a11y: 'Champs nommés et bouton d\'échange nommé.' }),
 ];
