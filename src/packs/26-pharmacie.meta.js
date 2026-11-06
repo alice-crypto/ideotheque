@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="interaction-check" data-fx-names="A,B" data-fx-table=\'{"A+B":"caution"}\'></div>',
     '<div data-fx="interaction-check" style="color:var(--ink)"></div>',
     { a11y: 'Vraies listes étiquetées, résultat dans une région `status`, niveau écrit en mots.' }),
+  E('generic-compare', 'Présentation',
+    'Deux barres comparent deux prix, et l\'écart annuel est calculé.',
+    'Une économie concrète plutôt qu\'un pourcentage flou.',
+    '- `data-fx-brand` (12.4), `data-fx-generic` (7.9), `data-fx-per-year` (12)\n- `data-fx-name-a`, `data-fx-name-b`',
+    'Génériques, marques de distributeur, offres concurrentes.',
+    'Deux produits qui ne sont pas réellement équivalents.',
+    '<div data-fx="generic-compare" data-fx-brand="12.4" data-fx-generic="7.9"></div>',
+    '<div data-fx="generic-compare" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Tous les montants sont écrits.' }),
 ];

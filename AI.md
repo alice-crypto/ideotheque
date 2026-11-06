@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->580<!-- /total --> effets.
+La bibliothèque contient <!-- total -->581<!-- /total --> effets.
 
 ## Règles
 
@@ -226,6 +226,7 @@ La bibliothèque contient <!-- total -->580<!-- /total --> effets.
 | `fever-curve` | Présentation | Une courbe se trace, et la partie au-dessus du seuil se remplit d'une couleur chaude |
 | `refill-date` | Présentation | Une jauge indique les jours restants et la date où la boîte sera vide |
 | `side-effect-scale` | Présentation | Cent points montrent combien de personnes sont concernées par chaque effet |
+| `generic-compare` | Présentation | Deux barres comparent deux prix, et l'écart annuel est calculé |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |

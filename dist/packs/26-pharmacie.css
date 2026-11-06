@@ -58,3 +58,13 @@
 [data-fx="interaction-check"][data-fx-level="ok"] output { background: color-mix(in srgb, var(--fx-up, #2eaf63) 28%, transparent); }
 [data-fx="interaction-check"][data-fx-level="caution"] output { background: var(--fx-warn, #e8930c); color: #111; }
 [data-fx="interaction-check"][data-fx-level="avoid"] output { background: var(--fx-down, #e10600); color: #fff; }
+
+/* generic-compare : deux prix pour un même usage */
+[data-fx="generic-compare"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; }
+[data-fx="generic-compare"] > div { display: grid; grid-template-columns: 66px 1fr 58px; gap: 6px; align-items: center; }
+[data-fx="generic-compare"] i { display: block; height: 14px; width: 0; background: color-mix(in srgb, currentColor 40%, transparent); transition: width 1s var(--fx-ease-out); }
+.fx-in[data-fx="generic-compare"] i { width: calc(var(--fx-q) * 100%); }
+[data-fx="generic-compare"] .fx-g i { background: var(--fx-accent); }
+[data-fx="generic-compare"] b { text-align: right; font-variant-numeric: tabular-nums; }
+[data-fx="generic-compare"] p { margin: 4px 0 0; }
+[data-fx="generic-compare"] strong { color: var(--fx-accent); font-size: 16px; }
