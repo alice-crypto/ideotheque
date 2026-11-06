@@ -9913,6 +9913,34 @@
       });
     }
   });
+
+  // Avant une consultation à distance : le navigateur est-il prêt ?
+  FX.register('device-check', {
+    entrance: true,
+    setup: function (el) {
+      var C = [['Connexion', function () { return navigator.onLine !== false; }], ['Caméra et micro pris en charge', function () { return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia); }], ['Connexion sécurisée', function () { return window.isSecureContext; }]];
+      var ul = U.make('ul', '', el), out = U.make('output', '', el);
+      out.setAttribute('aria-live', 'polite');
+      var run = function () {
+        ul.innerHTML = ''; out.textContent = 'Vérification…'; el.classList.remove('fx-ok', 'fx-ko');
+        var ok = 0;
+        C.forEach(function (c, i) {
+          var li = U.make('li', 'fx-wait', ul);
+          li.innerHTML = '<i aria-hidden="true"></i>' + c[0];
+          setTimeout(function () {
+            var good = c[1]();
+            ok += good ? 1 : 0;
+            li.className = good ? 'fx-yes' : 'fx-no';
+            li.appendChild(document.createTextNode(good ? ' : oui' : ' : non'));
+            if (i === C.length - 1) { el.classList.add(ok === C.length ? 'fx-ok' : 'fx-ko'); out.textContent = ok === C.length ? 'Tout est prêt' : 'Un point à régler'; }
+          }, U.reduced ? 0 : 500 * (i + 1));
+        });
+      };
+      el._fxRun = run;
+      run();
+    },
+    trigger: function (el) { el._fxRun(); }
+  });
 })(window.FX);
 
 window.FX._boot();

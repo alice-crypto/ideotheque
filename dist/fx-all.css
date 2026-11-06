@@ -6022,6 +6022,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="care-team"] button { width: var(--fx-s, 42px); height: var(--fx-s, 42px); padding: 0; border: 2px solid var(--fx-ring, #fff); border-radius: 50%; background: hsl(var(--fx-h) 55% 42%); color: #fff; font-weight: 700; cursor: pointer; transition: transform .25s var(--fx-ease-spring); }
 [data-fx="care-team"] button:hover, [data-fx="care-team"] button:focus-visible { transform: translateY(-5px); }
 
+/* device-check : le navigateur est-il prêt ? */
+[data-fx="device-check"] { display: grid; gap: 8px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="device-check"] ul { display: grid; gap: 5px; margin: 0; padding: 0; list-style: none; }
+[data-fx="device-check"] li { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+[data-fx="device-check"] i { width: 11px; height: 11px; border: 2px solid currentColor; border-radius: 50%; box-sizing: border-box; }
+[data-fx="device-check"] .fx-wait i { border-right-color: transparent; animation: fx-dc .8s linear infinite; }
+[data-fx="device-check"] .fx-yes i { background: var(--fx-ok, #2eaf63); border-color: var(--fx-ok, #2eaf63); }
+[data-fx="device-check"] .fx-no i { background: var(--fx-down, #e10600); border-color: var(--fx-down, #e10600); }
+[data-fx="device-check"] output { font-weight: 700; }
+@keyframes fx-dc { to { transform: rotate(360deg); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

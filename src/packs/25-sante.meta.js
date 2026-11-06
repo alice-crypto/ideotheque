@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="care-team" data-fx-items="Camille Roy:Médecin"></div>',
     '<div data-fx="care-team" style="color:var(--ink);--fx-ring:var(--ink)"></div>',
     { a11y: 'Chaque pastille est un bouton nommé avec le rôle ; aucune information ne passe par le seul survol.' }),
+  E('device-check', 'État',
+    'Une liste vérifie pas à pas que le navigateur peut tenir une consultation à distance.',
+    'Rassurant, on n\'est pas seul face à la technique.',
+    'Aucun réglage : les vérifications lisent les capacités du navigateur.',
+    'Téléconsultation, visioconférence, examens en ligne.',
+    'De croire à un vrai test matériel : aucune autorisation n\'est demandée, seule la prise en charge est vérifiée.',
+    '<div data-fx="device-check"></div>',
+    '<div data-fx="device-check" style="color:var(--ink)"></div>',
+    { trigger: 'Relancer', a11y: 'Résultats écrits en mots, conclusion annoncée.' }),
 ];
