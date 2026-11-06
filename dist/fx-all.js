@@ -11349,6 +11349,31 @@
     scroll: function (el, info) { el.style.setProperty('--fx-q', U.clamp(info.enter * 1.5, 0, 1).toFixed(3)); },
     trigger: function (el) { var on = el.classList.toggle('fx-open'); el.style.setProperty('--fx-q', on ? 1 : 0); }
   });
+
+  // Des étiquettes reliées à des points de l'image par des lignes de renvoi
+  FX.register('leader-labels', {
+    entrance: true,
+    setup: function (el) {
+      var P = (el.dataset.fxItems || '30:25:Toiture végétalisée|62:52:Brise-soleil en bois|38:82:Socle en pierre').split('|').map(function (r) { return r.split(':'); });
+      el.innerHTML = '<div class="fx-ll-i"></div><svg aria-hidden="true"></svg><ul></ul>';
+      var i = el.firstChild, ul = el.querySelector('ul'), svg = el.querySelector('svg');
+      var img = el.dataset.fxImage || 'assets/prism.svg';
+      i.style.backgroundImage = 'url(' + img + ')';
+      P.forEach(function (p, k) { var li = U.make('li', '', ul); li.textContent = p[2]; li.style.setProperty('--fx-i', k); });
+      var draw = function () {
+        var R = el.getBoundingClientRect(), I = i.getBoundingClientRect(), s = '';
+        svg.setAttribute('viewBox', '0 0 ' + R.width + ' ' + R.height);
+        ul.querySelectorAll('li').forEach(function (l, k) {
+          var r = l.getBoundingClientRect(), x = I.left - R.left + I.width * P[k][0] / 100, y = I.top - R.top + I.height * P[k][1] / 100, tx = r.left - R.left - 3, ty = r.top - R.top + r.height / 2;
+          s += '<circle cx="' + x + '" cy="' + y + '" r="3" style="--fx-i:' + k + '"/><path pathLength="1" d="M' + x + ' ' + y + 'L' + (tx - 8) + ' ' + ty + 'H' + tx + '" style="--fx-i:' + k + '"/>';
+        });
+        svg.innerHTML = s;
+      };
+      draw();
+      U.onResize(draw);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

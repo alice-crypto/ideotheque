@@ -165,4 +165,13 @@ module.exports = [
     '<figure data-fx="louver-facade"><img src="vue.jpg" alt=""></figure>',
     '<figure data-fx="louver-facade" style="margin:0;width:215px;height:130px"><img src="assets/bloom.svg" alt="" style="width:100%;height:100%;object-fit:cover"></figure>',
     { trigger: 'Ouvrir ou fermer', a11y: 'Le contenu reste dans la page, seules les lames sont décoratives.' }),
+  E('leader-labels', 'Présentation',
+    'Des lignes de renvoi relient des points d\'une image à leurs étiquettes.',
+    'Technique et précis, comme une planche d\'ingénieur.',
+    '- `data-fx-items` : « x:y:texte » séparés par `|`\n- `data-fx-image`',
+    'Détails de construction, produits, schémas.',
+    'Trop d\'étiquettes : au-delà de six, les lignes se croisent.',
+    '<div data-fx="leader-labels" data-fx-image="facade.jpg" data-fx-items="30:25:Toiture"></div>',
+    '<div data-fx="leader-labels" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le texte des étiquettes reste une vraie liste.' }),
 ];
