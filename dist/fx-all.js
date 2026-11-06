@@ -12085,6 +12085,17 @@
       show();
     }
   });
+
+  // Un itinéraire en bande : le rouge explique le retard
+  FX.register('traffic-strip', {
+    entrance: true,
+    setup: function (el) {
+      var S = (el.dataset.fxItems || '8:60:0|3:15:2|6:50:0|2:10:2|5:30:1').split('|').map(function (r) { return r.split(':').map(Number); }), km = 0, time = 0, free = 0, h = '';
+      S.forEach(function (s) { km += s[0]; time += s[0] / s[1] * 60; free += s[0] / 60 * 60; });
+      S.forEach(function (s, i) { h += '<i class="l' + s[2] + '" style="flex:' + s[0] + ' 1 0;--fx-i:' + i + '"></i>'; });
+      el.innerHTML = '<div class="fx-ts" aria-hidden="true">' + h + '<u></u></div><p><b>' + Math.round(time) + ' min</b> pour ' + km + ' km, soit ' + Math.max(0, Math.round(time - free)) + ' min de retard</p>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

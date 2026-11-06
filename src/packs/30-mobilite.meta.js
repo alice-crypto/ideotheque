@@ -75,4 +75,13 @@ module.exports = [
     '<div data-fx="carpool-split" data-fx-cost="48"></div>',
     '<div data-fx="carpool-split" style="color:var(--ink)"></div>',
     { a11y: 'Boutons nommés et `aria-pressed`, résultat annoncé.' }),
+  E('traffic-strip', 'Présentation',
+    'Une bande d\'itinéraire montre le trafic par tronçon, avec le retard calculé.',
+    'On comprend le retard d\'un coup d\'œil.',
+    '- `data-fx-items` : « km:vitesse:niveau (0, 1 ou 2) » séparés par `|`',
+    'Navigation, livraison, itinéraires.',
+    'De se fier à la seule couleur : le retard reste aussi écrit.',
+    '<div data-fx="traffic-strip" data-fx-items="8:60:0|3:15:2"></div>',
+    '<div data-fx="traffic-strip" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le résumé est écrit. La bande est décorative.' }),
 ];
