@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->624<!-- /total --> effets.
+La bibliothèque contient <!-- total -->625<!-- /total --> effets.
 
 ## Règles
 
@@ -493,6 +493,7 @@ La bibliothèque contient <!-- total -->624<!-- /total --> effets.
 | `panorama-drag` | Image | Une image se fait glisser en boucle avec une inertie, et une boussole suit le regard |
 | `listing-photos` | Image | Passer la souris sur la carte fait défiler les photos, des flèches font de même au doigt |
 | `staging-toggle` | Image | Une pièce vide se meuble d'un geste, chaque meuble tombant à sa place |
+| `section-cut` | Image | Un curseur coupe le bâtiment et montre ses pièces derrière la façade |
 | `burger-morph` | Navigation | Les trois barres du bouton de menu se transforment en croix quand le menu est ouvert |
 | `menu-reveal` | Navigation | Un menu plein écran s'ouvre en cercle depuis le bouton, puis ses liens arrivent en cascade |
 | `smart-header` | Navigation | L'en-tête se cache quand on descend dans la page et réapparaît dès qu'on remonte |

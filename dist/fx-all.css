@@ -6652,6 +6652,23 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="moving-boxes"] input { margin: 0; accent-color: var(--fx-accent); }
 [data-fx="moving-boxes"] output { grid-column: 1 / -1; font-weight: 700; font-size: 12px; }
 
+/* Pack 28 — Architecture */
+
+/* section-cut : couper le bâtiment */
+[data-fx="section-cut"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 220px)); }
+[data-fx="section-cut"] .fx-sc { position: relative; height: 140px; }
+[data-fx="section-cut"] .fx-sc-i, [data-fx="section-cut"] .fx-sc-o { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 3px; }
+[data-fx="section-cut"] .fx-sc > div > div { flex: 1; display: flex; gap: 3px; }
+[data-fx="section-cut"] .fx-sc-i { background: #111; padding: 3px; }
+[data-fx="section-cut"] .fx-sc-i i { flex: 1; background: var(--fx-room, #f4eadc); }
+[data-fx="section-cut"] .fx-sc-i div:nth-child(2) i:nth-child(2) { background: var(--fx-accent); }
+[data-fx="section-cut"] .fx-sc-i div:nth-child(3) i:first-child { background: var(--fx-accent-2); }
+[data-fx="section-cut"] .fx-sc-o { padding: 3px; background: var(--fx-facade, #8c939c); clip-path: inset(0 0 0 var(--fx-q)); }
+[data-fx="section-cut"] .fx-sc-o > div { justify-content: space-around; align-items: center; }
+[data-fx="section-cut"] em { width: 26%; height: 62%; background: #16324f; }
+[data-fx="section-cut"] .fx-sc-l { position: absolute; top: -4px; bottom: -4px; left: var(--fx-q); border-left: 2px dashed var(--fx-accent); }
+[data-fx="section-cut"] input { width: 100%; accent-color: var(--fx-accent); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
