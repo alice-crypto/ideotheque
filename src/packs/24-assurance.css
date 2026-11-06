@@ -250,3 +250,13 @@
 [data-fx="gap-coverage"] .fx-gc-h .fx-g { background: repeating-linear-gradient(45deg, var(--fx-down, #e10600) 0 3px, transparent 3px 6px); }
 [data-fx="gap-coverage"] > div:not(.fx-gc) { display: grid; }
 [data-fx="gap-coverage"] > div:last-child b { color: var(--fx-down, #e10600); }
+
+/* incident-timer : le délai pour déclarer */
+[data-fx="incident-timer"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 220px)); font-size: 12px; }
+[data-fx="incident-timer"] .fx-it b { font-size: 26px; font-variant-numeric: tabular-nums; margin-right: 6px; }
+[data-fx="incident-timer"] .fx-it-b { height: 8px; border-radius: 4px; background: color-mix(in srgb, currentColor 16%, transparent); overflow: hidden; }
+[data-fx="incident-timer"] .fx-it-b i { display: block; height: 100%; background: var(--fx-accent); transition: width .5s, background .3s; }
+[data-fx="incident-timer"].fx-urgent .fx-it-b i { background: var(--fx-down, #e10600); animation: fx-it 1.4s infinite; }
+[data-fx="incident-timer"].fx-urgent b { color: var(--fx-down, #e10600); }
+[data-fx="incident-timer"] small { opacity: .75; }
+@keyframes fx-it { 50% { opacity: .55; } }
