@@ -8738,6 +8738,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="key-card"] button { padding: 5px 13px; border: 0; border-radius: 99px; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
 @keyframes fx-keycard-tap { 45%, 55% { transform: translateX(62px); } 100% { transform: none; } }
 
+/* door-hanger : une accroche-porte */
+[data-fx="door-hanger"] { display: inline-grid; gap: 4px; justify-items: center; font-size: 11px; }
+[data-fx="door-hanger"] button { padding: 0; border: 0; background: none; cursor: pointer; perspective: 500px; }
+[data-fx="door-hanger"] .fx-dh { position: relative; display: block; width: 92px; height: 150px; transform-style: preserve-3d; transform-origin: 50% 12px; transition: transform .55s var(--fx-ease-spring); transform: rotateY(180deg); }
+[data-fx="door-hanger"] [aria-checked="true"] .fx-dh { transform: none; }
+[data-fx="door-hanger"] .a, [data-fx="door-hanger"] .b { position: absolute; inset: 0; display: grid; place-items: end center; padding: 0 8px 26px; box-sizing: border-box; border-radius: 10px; color: #fff; font: 800 15px/1.15 system-ui, sans-serif; text-align: center; backface-visibility: hidden; -webkit-mask: radial-gradient(circle 17px at 50% 24px, transparent 98%, #000); mask: radial-gradient(circle 17px at 50% 24px, transparent 98%, #000); }
+[data-fx="door-hanger"] .a { background: #bb1f2a; }
+[data-fx="door-hanger"] .b { background: #15805f; transform: rotateY(180deg); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

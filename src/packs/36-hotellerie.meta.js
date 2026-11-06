@@ -57,4 +57,13 @@ module.exports = [
     '<div data-fx="key-card" data-fx-room="412"></div>',
     '<div data-fx="key-card" style="color:var(--ink)"></div>',
     { trigger: 'Passer la carte', a11y: 'Vrai bouton, résultat annoncé en mots.' }),
+  E('door-hanger', 'Micro-interaction',
+    'Une accroche-porte se retourne entre deux messages, comme dans une vraie chambre.',
+    'L\'objet de l\'hôtel, qui devient une commande dans l\'application.',
+    '- `data-fx-items` : deux messages séparés par `|`\n- `data-fx-on` ; événement `fx:hanger`',
+    'Hôtels, statut de disponibilité, télétravail.',
+    'D\'en faire un vrai service sans lier l\'événement au personnel.',
+    '<div data-fx="door-hanger"></div>',
+    '<div data-fx="door-hanger" data-fx-on="true" style="color:var(--ink)"></div>',
+    { trigger: 'Retourner', a11y: 'Rôle `switch`, état annoncé.' }),
 ];
