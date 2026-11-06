@@ -156,4 +156,13 @@ module.exports = [
     '<div data-fx="receipt-print"><p>Café 2,50 €</p></div>',
     '<div data-fx="receipt-print" style="width:190px;color:var(--ink)">Café…… 2,50 €<br>Tarte… 4,20 €<br><b>Total 6,70 €</b></div>',
     { trigger: 'Imprimer', a11y: 'Avec `prefers-reduced-motion: reduce`, le reçu apparaît complet.' }),
+  E('coin-stacks', 'Présentation',
+    'Des piles de pièces grandissent, une pièce à la fois, pour comparer des valeurs.',
+    'Tangible, un chiffre qui a du poids.',
+    '- `data-fx-items` : « nom:pièces » séparés par `|` (40 au plus)\n- `--fx-coin`',
+    'Rapports annuels, économies, éducation financière.',
+    'Des comparaisons précises : ajoutez les chiffres à côté.',
+    '<div data-fx="coin-stacks" data-fx-items="2025:18|2026:27"></div>',
+    '<div data-fx="coin-stacks" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Les valeurs sont dans `aria-label`.' }),
 ];

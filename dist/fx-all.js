@@ -9038,6 +9038,21 @@
       }, function () { el.style.setProperty('--fx-y', '0%'); });
     }
   });
+
+  // Des piles de pièces qui grandissent une pièce à la fois
+  FX.register('coin-stacks', {
+    entrance: true,
+    setup: function (el) {
+      var items = (el.dataset.fxItems || '2024:12|2025:18|2026:27').split('|');
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', items.join(', ').replace(/:/g, ' : '));
+      items.forEach(function (s) {
+        var p = s.split(':'), col = U.make('span', 'fx-cs-col', el), n = Math.min(40, +p[1]);
+        for (var i = 0; i < n; i++) U.make('i', '', col).style.setProperty('--fx-i', i);
+        U.make('b', '', col).textContent = p[0];
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

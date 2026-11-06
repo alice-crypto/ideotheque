@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->517<!-- /total --> effets.
+La bibliothèque contient <!-- total -->518<!-- /total --> effets.
 
 ## Règles
 
@@ -198,6 +198,7 @@ La bibliothèque contient <!-- total -->517<!-- /total --> effets.
 | `rate-best-row` | Présentation | Dans un tableau de taux, la meilleure valeur de chaque colonne se remplit de couleur |
 | `budget-envelopes` | Présentation | Des enveloppes de budget se remplissent, et un dépassement est hachuré et écrit en toutes lettres |
 | `goal-jar` | Présentation | Une tirelire transparente se remplit vers un objectif, et quelques pièces y tombent |
+| `coin-stacks` | Présentation | Des piles de pièces grandissent, une pièce à la fois, pour comparer des valeurs |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |
