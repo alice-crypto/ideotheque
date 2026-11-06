@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="part-explode" data-fx-items="Vis|Corps|Joint"></div>',
     '<div data-fx="part-explode" style="color:var(--ink)"></div>',
     { trigger: 'Basculer', a11y: 'Chaque composant est un bouton nommé, et le nom est annoncé.' }),
+  E('takt-time', 'Micro-interaction',
+    'Le rythme de la ligne se calcule et se voit : un bloc bat la cadence.',
+    'On sent la pression de la demande à l\'œil nu.',
+    '- `data-fx-minutes` (450), `data-fx-demand` (600)',
+    'Lean, formation, planification.',
+    'De présenter ce rythme comme humainement tenable : le lien avec le travail réel reste à faire.',
+    '<div data-fx="takt-time" data-fx-demand="600"></div>',
+    '<div data-fx="takt-time" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, rythme écrit et annoncé. La bibliothèque coupe l\'animation en mouvement réduit.' }),
 ];

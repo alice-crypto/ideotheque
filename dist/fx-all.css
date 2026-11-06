@@ -8144,6 +8144,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="part-explode"] .fx-pe-t { padding: 3px 12px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; font-size: 11px; cursor: pointer; }
 [data-fx="part-explode"] output { font-weight: 700; }
 
+/* takt-time : le rythme d'une ligne */
+[data-fx="takt-time"] { display: grid; gap: 7px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="takt-time"] .fx-tk3 { position: relative; height: 24px; border-bottom: 2px solid currentColor; }
+[data-fx="takt-time"] i { position: absolute; bottom: 0; left: 0; width: 22px; height: 22px; border-radius: 3px; background: var(--fx-accent); animation: fx-takt-run var(--fx-sp, 1s) linear infinite alternate; }
+[data-fx="takt-time"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="takt-time"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="takt-time"] output b { font-size: 18px; }
+@keyframes fx-takt-run { to { left: calc(100% - 22px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
