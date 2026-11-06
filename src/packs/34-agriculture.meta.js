@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="compost-ratio"></div>',
     '<div data-fx="compost-ratio" style="color:var(--ink)"></div>',
     { a11y: 'Vrais boutons, équilibre annoncé.' }),
+  E('greenhouse-vent', 'Micro-interaction',
+    'Plus la température monte dans la serre, plus les vantaux du toit s\'ouvrent.',
+    'Une serre qui respire seule.',
+    '- `data-fx-temp` (30), `data-fx-aim` (24)',
+    'Maraîchage, jardins botaniques, explications.',
+    'De confondre avec un vrai pilotage : aucune commande ne passe ici.',
+    '<div data-fx="greenhouse-vent" data-fx-temp="30"></div>',
+    '<div data-fx="greenhouse-vent" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, ouverture annoncée.' }),
 ];

@@ -201,3 +201,14 @@
 [data-fx="compost-ratio"].fx-ok output { color: var(--fx-up, #2eaf63); }
 [data-fx="compost-ratio"] output b { font-size: 14px; color: currentColor; }
 @keyframes fx-compost-drop { from { transform: translateY(-30px); opacity: 0; } }
+
+/* greenhouse-vent : les vantaux d'une serre */
+[data-fx="greenhouse-vent"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 210px)); font-size: 11px; }
+[data-fx="greenhouse-vent"] svg { width: 100%; max-height: 120px; overflow: visible; }
+[data-fx="greenhouse-vent"] .w { fill: hsl(var(--fx-h, 100) 75% 55% / .3); stroke: currentColor; stroke-width: 2; transition: fill .3s; }
+[data-fx="greenhouse-vent"] .fx-gv-a, [data-fx="greenhouse-vent"] .fx-gv-b { fill: none; stroke: var(--fx-accent); stroke-width: 3.5; stroke-linecap: round; transform-origin: 60px 10px; transition: transform .35s var(--fx-ease-out); }
+[data-fx="greenhouse-vent"] .fx-gv-a { transform: rotate(var(--fx-a, 0deg)); }
+[data-fx="greenhouse-vent"] .fx-gv-b { transform: rotate(var(--fx-b, 0deg)); }
+[data-fx="greenhouse-vent"] label { display: grid; grid-template-columns: 1fr auto; }
+[data-fx="greenhouse-vent"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="greenhouse-vent"] output b { font-size: 14px; }

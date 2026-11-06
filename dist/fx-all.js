@@ -14223,6 +14223,25 @@
       show();
     }
   });
+
+  // Une serre : plus il fait chaud, plus les vantaux s'ouvrent
+  FX.register('greenhouse-vent', {
+    setup: function (el) {
+      var aim = U.num(el, 'fxAim', 24);
+      el.innerHTML = '<svg viewBox="0 0 120 80" aria-hidden="true"><path class="w" d="M10 76V40L60 10L110 40V76Z"/><path class="fx-gv-a" d="M60 10L34 25.6"/><path class="fx-gv-b" d="M60 10L86 25.6"/></svg><label>Dedans <b></b><input type="range" min="10" max="42"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxTemp', 30);
+      var go = function () {
+        var t = +r.value, q = U.clamp((t - aim) / 12, 0, 1);
+        el.style.setProperty('--fx-a', q * 42 + 'deg'); el.style.setProperty('--fx-b', -q * 42 + 'deg');
+        el.style.setProperty('--fx-h', 210 - U.clamp((t - 10) / 32, 0, 1) * 210);
+        el.querySelector('label b').textContent = t + ' °C';
+        o.innerHTML = '<b>Vantaux à ' + Math.round(q * 100) + ' %</b>, consigne ' + aim + ' °C';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
