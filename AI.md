@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->781<!-- /total --> effets.
+La bibliothèque contient <!-- total -->782<!-- /total --> effets.
 
 ## Règles
 
@@ -473,6 +473,7 @@ La bibliothèque contient <!-- total -->781<!-- /total --> effets.
 | `field-rotation` | Micro-interaction | Un curseur d'années fait tourner les cultures de parcelle en parcelle |
 | `harvest-yield` | Micro-interaction | Surface et rendement font lever les épis, et donnent la production et le revenu estimés |
 | `sprout-stages` | Micro-interaction | Un curseur de jours fait pousser une plante, de la graine à la récolte |
+| `veg-basket` | Micro-interaction | Des produits s'ajoutent au panier, avec le prix et le poids par rapport au maximum |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |

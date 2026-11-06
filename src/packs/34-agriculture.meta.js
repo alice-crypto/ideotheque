@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="sprout-stages" data-fx-day="18"></div>',
     '<div data-fx="sprout-stages" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, étape annoncée.' }),
+  E('veg-basket', 'Micro-interaction',
+    'Des produits s\'ajoutent au panier, avec le prix et le poids par rapport au maximum.',
+    'Le plaisir du marché, depuis la cuisine.',
+    '- `data-fx-items` : « produit:kg:prix » séparés par `|`\n- `data-fx-max` (5)',
+    'Paniers paysans, épiceries, abonnements.',
+    'Des prix d\'exemple sur une vraie commande.',
+    '<div data-fx="veg-basket" data-fx-max="5"></div>',
+    '<div data-fx="veg-basket" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés par produit, total annoncé.' }),
 ];

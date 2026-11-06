@@ -13973,6 +13973,31 @@
       go();
     }
   });
+
+  // Composer son panier de saison, avec le poids de ce qu'on y met
+  FX.register('veg-basket', {
+    setup: function (el) {
+      var P = (el.dataset.fxItems || 'Carottes:1:2.5|Poireaux:1:3|Courge:1.5:3.2|Pommes:1:2.8|Œufs:0.4:2.6').split('|').map(function (r) { var p = r.split(':'); return { n: p[0], w: +p[1], e: +p[2], q: 0 }; }), max = U.num(el, 'fxMax', 5), ul = U.make('ul', '', el), v = U.make('div', 'fx-vb', el), o = U.make('output', '', el);
+      v.setAttribute('aria-hidden', 'true');
+      o.setAttribute('aria-live', 'polite');
+      var show = function () {
+        var w = 0, e = 0;
+        P.forEach(function (p) { w += p.w * p.q; e += p.e * p.q; p.t.textContent = p.q; p.b.disabled = !p.q; });
+        el.style.setProperty('--fx-q', Math.min(1, w / max));
+        el.classList.toggle('fx-full', w > max);
+        o.innerHTML = '<b>' + e.toFixed(2).replace('.', ',') + ' €</b> · ' + String(w.toFixed(1)).replace('.', ',') + ' kg sur ' + max + ' kg' + (w > max ? ' : panier trop lourd' : '');
+      };
+      P.forEach(function (p) {
+        var li = U.make('li', '', ul);
+        li.innerHTML = '<span>' + p.n + '</span><button type="button" aria-label="Retirer ' + p.n + '">−</button><b></b><button type="button" aria-label="Ajouter ' + p.n + '">+</button>';
+        var B = li.querySelectorAll('button');
+        p.t = li.querySelector('b'); p.b = B[0];
+        B[0].addEventListener('click', function () { p.q--; show(); });
+        B[1].addEventListener('click', function () { p.q++; show(); });
+      });
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

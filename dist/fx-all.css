@@ -8246,6 +8246,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="sprout-stages"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
 [data-fx="sprout-stages"] output { align-self: start; font-size: 16px; font-weight: 800; }
 
+/* veg-basket : un panier de saison */
+[data-fx="veg-basket"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="veg-basket"] ul { display: grid; gap: 1px; margin: 0; padding: 0; list-style: none; }
+[data-fx="veg-basket"] li { display: grid; grid-template-columns: 1fr 20px 18px 20px; gap: 3px; align-items: center; text-align: center; }
+[data-fx="veg-basket"] li span { text-align: left; }
+[data-fx="veg-basket"] button { height: 20px; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; cursor: pointer; }
+[data-fx="veg-basket"] button:disabled { opacity: .3; }
+[data-fx="veg-basket"] .fx-vb { height: 10px; background: linear-gradient(90deg, var(--fx-up, #2eaf63) calc(var(--fx-q, 0) * 100%), color-mix(in srgb, currentColor 15%, transparent) 0); transition: background .2s; }
+[data-fx="veg-basket"].fx-full .fx-vb { background: var(--fx-down, #e10600); }
+[data-fx="veg-basket"] output b { font-size: 15px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
