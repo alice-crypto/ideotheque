@@ -114,4 +114,27 @@
       go();
     }
   });
+
+  // Un plan de cabine : choisir ses sièges, jusqu'au nombre de voyageurs
+  FX.register('seat-map', {
+    setup: function (el) {
+      var R = U.num(el, 'fxRows', 8), max = U.num(el, 'fxMax', 2), seed = 9, rand = function () { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }, L = 'ABC DEF'.split(''), box = U.make('div', 'fx-sm', el), o = U.make('output', '', el), pick = [];
+      o.setAttribute('aria-live', 'polite');
+      for (var y = 1; y <= R; y++) L.forEach(function (c) {
+        if (c === ' ') { U.make('small', '', box).textContent = y; return; }
+        var b = U.make('button', y <= 2 ? 'fx-plus' : '', box), id = y + c;
+        b.type = 'button'; b.setAttribute('aria-label', 'Siège ' + id + (y <= 2 ? ', avec supplément' : '')); b.textContent = c;
+        b.disabled = rand() < .3;
+        b.addEventListener('click', function () {
+          var k = pick.indexOf(id);
+          if (k >= 0) pick.splice(k, 1); else { if (pick.length >= max) { var old = pick.shift(); box.querySelector('[data-id="' + old + '"]').setAttribute('aria-pressed', 'false'); } pick.push(id); }
+          b.setAttribute('aria-pressed', k < 0);
+          var ex = pick.filter(function (p) { return parseInt(p, 10) <= 2; }).length * 25;
+          o.textContent = pick.length ? 'Sièges ' + pick.join(', ') + (ex ? ' (+' + ex + ' €)' : '') : 'Choisissez ' + max + ' sièges';
+        });
+        b.dataset.id = id;
+      });
+      o.textContent = 'Choisissez ' + max + ' sièges';
+    }
+  });
 })(window.FX);
