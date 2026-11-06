@@ -213,4 +213,13 @@
       U.make('b', '', el).textContent = v + ' %';
     }
   });
+
+  // Trois gélules qui roulent en attendant
+  FX.register('pill-tumble', {
+    setup: function (el) {
+      el.setAttribute('role', 'status');
+      el.setAttribute('aria-label', el.dataset.fxLabel || 'Chargement');
+      for (var i = 0; i < 3; i++) U.make('i', '', el).style.setProperty('--fx-i', i);
+    }
+  });
 })(window.FX);
