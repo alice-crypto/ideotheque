@@ -210,3 +210,12 @@
 [data-fx="pillow-menu"] [aria-checked="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; }
 [data-fx="pillow-menu"] output { font-size: 13px; font-weight: 700; }
 @keyframes fx-pillow-press { 35% { transform: scale(calc(1 + var(--fx-q) * .3), calc(1 - var(--fx-q) * .7)); } }
+
+/* elevator-dial : un cadran d'ascenseur */
+[data-fx="elevator-dial"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 220px)); font-size: 11px; }
+[data-fx="elevator-dial"] .fx-ed2 { position: relative; width: 170px; height: 94px; border-radius: 85px 85px 6px 6px; background: linear-gradient(#e4c56c, #b6892f); box-shadow: inset 0 0 0 3px #7d5b1c; color: #3a2a0a; font-weight: 800; }
+[data-fx="elevator-dial"] .fx-ed2 span { position: absolute; transform: translate(-50%, -50%); font-size: 10px; }
+[data-fx="elevator-dial"] .fx-ed2 > i { position: absolute; left: 50%; bottom: 8px; width: 3px; height: 62px; margin-left: -1.5px; background: #3a2a0a; border-radius: 2px; transform-origin: bottom; transform: rotate(var(--fx-a, 0deg)); transition: transform var(--fx-t, .6s) cubic-bezier(.4, 0, .4, 1); }
+[data-fx="elevator-dial"] .fx-ed2-b { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; }
+[data-fx="elevator-dial"] button { min-width: 26px; height: 26px; padding: 0 4px; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="elevator-dial"] .fx-on { background: #ffd46b; color: #30210b; border-color: transparent; box-shadow: 0 0 8px #ffd46b; }
