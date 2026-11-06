@@ -454,4 +454,26 @@
     tick: function (el, dt) { if (el._fxStep) el._fxStep(dt); },
     trigger: function (el) { el._fxOn(); setTimeout(el._fxOff, 2300); }
   });
+
+  // Une pièce qui s'éclate en composants nommés
+  FX.register('part-explode', {
+    setup: function (el) {
+      var P = (el.dataset.fxItems || 'Vis|Rondelle|Ressort|Corps|Joint|Écrou').split('|'), box = U.make('div', 'fx-pe', el), b = U.make('button', 'fx-pe-t', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      o.textContent = P.length + ' composants';
+      P.forEach(function (t, i) {
+        var p = U.make('button', 'p' + (i % 3), box);
+        p.type = 'button'; p.setAttribute('aria-label', t); p.title = t;
+        p.style.setProperty('--fx-i', i - (P.length - 1) / 2);
+        var say = function () { o.textContent = t; };
+        p.addEventListener('mouseenter', say); p.addEventListener('focus', say); p.addEventListener('click', say);
+      });
+      b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.textContent = 'Vue éclatée';
+      var set = function (v) { el.classList.toggle('fx-on', v); b.setAttribute('aria-pressed', v); b.textContent = v ? 'Vue assemblée' : 'Vue éclatée'; };
+      b.addEventListener('click', function () { set(!el.classList.contains('fx-on')); });
+      el._fxSet = set;
+      set(el.dataset.fxOn !== 'false');
+    },
+    trigger: function (el) { el._fxSet(!el.classList.contains('fx-on')); }
+  });
 })(window.FX);
