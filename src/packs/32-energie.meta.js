@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="standby-drain" data-fx-items="Box internet:12"></div>',
     '<div data-fx="standby-drain" style="color:var(--ink)"></div>',
     { a11y: 'Boutons `aria-pressed`, total annoncé.' }),
+  E('reservoir-level', 'Présentation',
+    'L\'eau monte derrière un barrage, avec l\'énergie stockée et le seuil de vigilance.',
+    'Une batterie géante, faite d\'eau.',
+    '- `data-fx-value` (62), `data-fx-low` (35), `data-fx-capacity` (480)',
+    'Énergie hydraulique, ressources en eau, jauges.',
+    'Des données réelles non vérifiées sur un sujet de sécurité publique.',
+    '<div data-fx="reservoir-level" data-fx-value="62"></div>',
+    '<div data-fx="reservoir-level" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Valeurs et état écrits, dessin décoratif.' }),
 ];
