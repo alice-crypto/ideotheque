@@ -5599,6 +5599,10 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="secure-lock"].fx-shut .s { transform: none; }
 [data-fx="secure-lock"].fx-shut rect { fill: var(--fx-lock, var(--fx-accent)); transition: fill .3s; }
 
+/* receipt-print : un ticket de caisse */
+[data-fx="receipt-print"] { position: relative; overflow: hidden; border-top: 5px solid currentColor; }
+[data-fx="receipt-print"] .fx-rp { padding: .8em 1em 1.4em; background: var(--fx-paper, #fff); color: #111; font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; transform: translateY(var(--fx-y, -100%)); clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), 95% 100%, 90% calc(100% - 6px), 85% 100%, 80% calc(100% - 6px), 75% 100%, 70% calc(100% - 6px), 65% 100%, 60% calc(100% - 6px), 55% 100%, 50% calc(100% - 6px), 45% 100%, 40% calc(100% - 6px), 35% 100%, 30% calc(100% - 6px), 25% 100%, 20% calc(100% - 6px), 15% 100%, 10% calc(100% - 6px), 5% 100%, 0 calc(100% - 6px)); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

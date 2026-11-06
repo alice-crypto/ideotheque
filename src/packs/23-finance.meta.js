@@ -147,4 +147,13 @@ module.exports = [
     '<span data-fx="secure-lock"></span>',
     '<span data-fx="secure-lock" style="color:var(--ink);font-size:17px"></span>',
     { trigger: 'Rejouer', a11y: 'Rôle `status`, le message est écrit.' }),
+  E('receipt-print', 'Entrée',
+    'Un reçu sort de la fente par petits à-coups, avec son bord dentelé.',
+    'Concret, la transaction devient un objet.',
+    '- `data-fx-duration` (1500)\n- `--fx-paper` : couleur du papier',
+    'Confirmations de commande et de paiement.',
+    'Les longues factures : préférez un document à télécharger.',
+    '<div data-fx="receipt-print"><p>Café 2,50 €</p></div>',
+    '<div data-fx="receipt-print" style="width:190px;color:var(--ink)">Café…… 2,50 €<br>Tarte… 4,20 €<br><b>Total 6,70 €</b></div>',
+    { trigger: 'Imprimer', a11y: 'Avec `prefers-reduced-motion: reduce`, le reçu apparaît complet.' }),
 ];
