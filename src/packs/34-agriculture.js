@@ -365,4 +365,24 @@
       el.style.setProperty('--fx-pace', U.num(el, 'fxPace', 34) + 'ms');
     }
   });
+
+  // Un composteur : le bon mélange de brun et de vert
+  FX.register('compost-ratio', {
+    setup: function (el) {
+      var G = 3, B = 3;
+      el.innerHTML = '<div class="fx-cm" aria-hidden="true"></div><div class="fx-cm-c"><button type="button" class="g">+ Vert (épluchures)</button><button type="button" class="b">+ Brun (carton)</button><button type="button" class="r">Vider</button></div><output aria-live="polite"></output>';
+      var box = el.querySelector('.fx-cm'), o = el.querySelector('output');
+      var add = function (cls) { var l = U.make('i', cls, box); l.style.width = U.rand(82, 100) + '%'; };
+      var show = function () {
+        var q = B / Math.max(1, G), W = q < 1 ? 'Trop humide : ajoutez du brun' : q > 2.5 ? 'Trop sec : ajoutez du vert' : 'Bon équilibre';
+        el.classList.toggle('fx-ok', q >= 1 && q <= 2.5);
+        o.innerHTML = '<b>' + G + ' vert · ' + B + ' brun</b><br>' + W;
+      };
+      el.querySelector('.g').addEventListener('click', function () { G++; add('v'); show(); });
+      el.querySelector('.b').addEventListener('click', function () { B++; add('w'); show(); });
+      el.querySelector('.r').addEventListener('click', function () { G = 0; B = 0; box.innerHTML = ''; show(); });
+      for (var i = 0; i < 6; i++) add(i % 2 ? 'w' : 'v');
+      show();
+    }
+  });
 })(window.FX);
