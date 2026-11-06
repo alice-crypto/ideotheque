@@ -9373,6 +9373,24 @@
       setInterval(go, 60000);
     }
   });
+
+  // Une échelle qui montre le coefficient selon les années sans accident
+  FX.register('bonus-ladder', {
+    setup: function (el) {
+      var max = U.num(el, 'fxYears', 13);
+      el.innerHTML = '<label>Années sans accident <input type="range" min="0" max="' + max + '"></label><div class="fx-bl" aria-hidden="true"></div><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), box = el.querySelector('.fx-bl'), out = el.querySelector('output');
+      for (var i = 0; i <= max; i++) U.make('i', '', box).style.height = (Math.max(.5, Math.pow(.95, i)) * 100) + '%';
+      r.value = U.num(el, 'fxValue', 5);
+      var go = function () {
+        var n = +r.value, c = Math.max(.5, Math.pow(.95, n));
+        Array.prototype.forEach.call(box.children, function (b, i) { b.classList.toggle('fx-on', i === n); b.classList.toggle('fx-past', i < n); });
+        out.innerHTML = 'Coefficient <b>' + c.toFixed(2).replace('.', ',') + '</b>, soit −' + Math.round((1 - c) * 100) + ' %';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -93,4 +93,13 @@ module.exports = [
     '<div data-fx="open-hours-call" data-fx-tel="0100000000" data-fx-from="8" data-fx-to="20"></div>',
     '<div data-fx="open-hours-call" data-fx-always="true"></div>',
     { a11y: 'Vrai lien `tel:`, et l\'état est écrit en toutes lettres.' }),
+  E('bonus-ladder', 'Présentation',
+    'Un curseur parcourt les années sans accident, et l\'échelle montre le coefficient qui baisse.',
+    'Récompense visible, chaque année compte.',
+    '- `data-fx-years` (13), `data-fx-value` (5)',
+    'Assurance auto, programmes de fidélité à paliers.',
+    'D\'oublier les majorations : ce calcul ne couvre que les années sans accident.',
+    '<div data-fx="bonus-ladder" data-fx-value="5"></div>',
+    '<div data-fx="bonus-ladder" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai curseur, résultat écrit et annoncé.' }),
 ];
