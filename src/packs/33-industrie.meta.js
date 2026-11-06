@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="sort-gate" data-fx-items="Rouge:#e4432c|Bleu:#2d82d6"></div>',
     '<div data-fx="sort-gate" style="color:var(--ink)"></div>',
     { trigger: 'Une pièce', a11y: 'Les comptes sont écrits. La pastille colorée est doublée par le nom.' }),
+  E('shift-wheel', 'État',
+    'Une roue de 24 heures montre l\'équipe en poste et le temps avant la relève.',
+    'Le rythme de l\'atelier, à l\'heure près.',
+    '- `data-fx-teams` : équipes séparées par des virgules\n- `--fx-s`',
+    'Usines, hôpitaux, gardes, services continus.',
+    'Des rotations plus complexes : la règle d\'exemple décale une équipe chaque jour.',
+    '<div data-fx="shift-wheel" data-fx-teams="A,B,C"></div>',
+    '<div data-fx="shift-wheel" style="color:var(--ink)"></div>',
+    { a11y: 'L\'équipe et la relève sont écrites.' }),
 ];

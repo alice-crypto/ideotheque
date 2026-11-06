@@ -13617,6 +13617,22 @@
     },
     trigger: function (el) { el._fxGo(); }
   });
+
+  // Une roue de trois-huit : quelle équipe est en poste maintenant
+  FX.register('shift-wheel', {
+    setup: function (el) {
+      var T = (el.dataset.fxTeams || 'A,B,C').split(','), S = [[6, 14, 'Matin'], [14, 22, 'Après-midi'], [22, 30, 'Nuit']];
+      el.innerHTML = '<div class="fx-sw2" aria-hidden="true"><i></i><span>6</span><span>14</span><span>22</span></div><output></output>';
+      var o = el.querySelector('output'), hand = el.querySelector('i');
+      var go = function () {
+        var d = new Date(), h = d.getHours() + d.getMinutes() / 60, h2 = h < 6 ? h + 24 : h, k = S.findIndex(function (s) { return h2 >= s[0] && h2 < s[1]; }), day = Math.floor(d / 86400000), team = T[(k + day) % T.length], left = S[k][1] - h2;
+        hand.style.transform = 'rotate(' + h / 24 * 360 + 'deg)';
+        o.innerHTML = 'Équipe <b>' + team + '</b>, poste du ' + S[k][2].toLowerCase() + '<br>Relève dans ' + Math.floor(left) + ' h ' + String(Math.round(left % 1 * 60)).padStart(2, '0');
+      };
+      go();
+      setInterval(go, 60000);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

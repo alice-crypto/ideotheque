@@ -8067,6 +8067,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="sort-gate"] em { font-style: normal; font-weight: 800; }
 @keyframes fx-sort-drop { 40% { top: 26px; left: 50%; } 100% { top: 88px; left: var(--fx-x); } }
 
+/* shift-wheel : une roue de trois-huit */
+[data-fx="shift-wheel"] { display: grid; gap: 5px; justify-items: center; font-size: 12px; text-align: center; }
+[data-fx="shift-wheel"] .fx-sw2 { position: relative; width: var(--fx-s, 116px); aspect-ratio: 1; border-radius: 50%; background: conic-gradient(#19243f 0 90deg, #ffd166 90deg 210deg, #ee8a46 210deg 330deg, #19243f 330deg); }
+[data-fx="shift-wheel"] i { position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; margin-left: -1.5px; background: linear-gradient(#fff 50%, transparent 50%); filter: drop-shadow(0 0 2px #000); }
+[data-fx="shift-wheel"] span { position: absolute; font-size: 9px; color: #fff; font-weight: 700; text-shadow: 0 0 3px #000; }
+[data-fx="shift-wheel"] span:nth-of-type(1) { right: 3px; top: 50%; transform: translateY(-50%); }
+[data-fx="shift-wheel"] span:nth-of-type(2) { left: 18%; bottom: 8%; }
+[data-fx="shift-wheel"] span:nth-of-type(3) { left: 12%; top: 18%; }
+[data-fx="shift-wheel"] b { font-size: 17px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

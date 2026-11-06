@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->764<!-- /total --> effets.
+La bibliothèque contient <!-- total -->765<!-- /total --> effets.
 
 ## Règles
 
@@ -784,6 +784,7 @@ La bibliothèque contient <!-- total -->764<!-- /total --> effets.
 | `machine-wall` | État | Un mur de tuiles montre l'état de chaque machine et le temps passé dans cet état |
 | `safety-days` | État | Un panneau affiche le nombre de jours sans accident et le record d'équipe |
 | `print-layers` | État | Une pièce se construit couche après couche, avec le temps restant |
+| `shift-wheel` | État | Une roue de 24 heures montre l'équipe en poste et le temps avant la relève |
 <!-- catalogue:end -->
 
 ## Réglages communs (variables CSS)
