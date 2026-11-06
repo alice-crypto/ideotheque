@@ -6669,6 +6669,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="section-cut"] .fx-sc-l { position: absolute; top: -4px; bottom: -4px; left: var(--fx-q); border-left: 2px dashed var(--fx-accent); }
 [data-fx="section-cut"] input { width: 100%; accent-color: var(--fx-accent); }
 
+/* axo-explode : des étages en axonométrie */
+[data-fx="axo-explode"] { display: grid; justify-items: center; gap: 4px; font-size: 13px; font-weight: 700; }
+[data-fx="axo-explode"] .fx-ax { position: relative; width: 130px; height: 150px; }
+[data-fx="axo-explode"] button { position: absolute; left: 25px; bottom: 28px; width: 80px; height: 80px; padding: 0; border: 2px solid currentColor; background: color-mix(in srgb, var(--fx-accent) calc(20% + var(--fx-i) * 18%), #fff); cursor: pointer; transform: translateY(calc(var(--fx-i) * -8px)) rotateX(58deg) rotateZ(45deg); transition: transform .5s var(--fx-ease-out), background .2s; }
+[data-fx="axo-explode"]:hover button, [data-fx="axo-explode"]:focus-within button { transform: translateY(calc(var(--fx-i) * -32px)) rotateX(58deg) rotateZ(45deg); }
+[data-fx="axo-explode"] .fx-on { background: var(--fx-accent); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

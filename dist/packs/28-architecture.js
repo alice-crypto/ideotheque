@@ -14,4 +14,19 @@
       go();
     }
   });
+
+  // Des étages en axonométrie qui s'écartent pour se présenter
+  FX.register('axo-explode', {
+    setup: function (el) {
+      var L = (el.dataset.fxItems || 'Toiture|Logements|Bureaux|Socle').split('|'), box = U.make('div', 'fx-ax', el), o = U.make('output', '', el);
+      o.setAttribute('aria-live', 'polite');
+      o.textContent = L.length + ' niveaux';
+      L.slice().reverse().forEach(function (t, i) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.setAttribute('aria-label', t); b.style.setProperty('--fx-i', i);
+        var say = function () { o.textContent = t; box.querySelectorAll('button').forEach(function (x) { x.classList.toggle('fx-on', x === b); }); };
+        b.addEventListener('mouseenter', say); b.addEventListener('focus', say); b.addEventListener('click', say);
+      });
+    }
+  });
 })(window.FX);

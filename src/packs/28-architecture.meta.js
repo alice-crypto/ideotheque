@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="section-cut" data-fx-floors="4"></div>',
     '<div data-fx="section-cut"></div>',
     { a11y: 'Vrai curseur nommé, dessin décoratif.' }),
+  E('axo-explode', 'Présentation',
+    'Des étages empilés en axonométrie s\'écartent au survol, et chacun donne son nom.',
+    'Le bâtiment s\'ouvre comme une maquette.',
+    '- `data-fx-items` : niveaux, du haut vers le bas, séparés par `|`',
+    'Architecture, plateformes techniques, couches logicielles.',
+    'Plus de six niveaux : la pile dépasse la zone.',
+    '<div data-fx="axo-explode" data-fx-items="Toiture|Socle"></div>',
+    '<div data-fx="axo-explode" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés, écartement aussi au focus, et le nom est annoncé.' }),
 ];
