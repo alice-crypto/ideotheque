@@ -179,3 +179,12 @@
 [data-fx="crow-scatter"] i::before { content: ''; position: absolute; left: -5px; top: 1px; width: 7px; height: 5px; background: currentColor; clip-path: polygon(100% 0, 0 50%, 100% 100%); }
 .fx-fly[data-fx="crow-scatter"] i { transform: translate(var(--fx-x), var(--fx-y)) scale(.8); animation: fx-crow-flap .18s linear infinite alternate; }
 @keyframes fx-crow-flap { to { clip-path: inset(30% 0 0 0); } }
+
+/* chalk-board : une ardoise de marché */
+[data-fx="chalk-board"] { display: block; width: min(100%, var(--fx-w, 225px)); padding: 12px 14px; background: radial-gradient(#32383a, #1f2426); border: 6px solid #7a5a3a; color: #f4f3ea; font-family: 'Comic Sans MS', 'Segoe Print', cursive; font-size: 14px; box-sizing: border-box; }
+[data-fx="chalk-board"] h4 { margin: 0 0 6px; font-size: 16px; text-decoration: underline wavy; }
+[data-fx="chalk-board"] .fx-cb3-r { display: flex; justify-content: space-between; gap: 8px; }
+[data-fx="chalk-board"] .fx-cb3-r > span { display: inline-flex; }
+[data-fx="chalk-board"] span span { opacity: 0; filter: blur(2px); transition: opacity .12s, filter .3s; transition-delay: calc(var(--fx-i) * var(--fx-pace)); text-shadow: 0 0 1px #fff8; }
+.fx-in[data-fx="chalk-board"] span span, .fx-in[data-fx="chalk-board"] h4 span { opacity: 1; filter: none; }
+[data-fx="chalk-board"] h4 span { opacity: 0; transition: opacity .12s; transition-delay: calc(var(--fx-i) * var(--fx-pace)); }

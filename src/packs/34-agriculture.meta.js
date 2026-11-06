@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="crow-scatter"></div>',
     '<div data-fx="crow-scatter" style="color:var(--ink)"></div>',
     { trigger: 'Faire envoler', a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
+  E('chalk-board', 'Texte',
+    'Une ardoise s\'écrit à la craie, ligne après ligne, avec ses prix.',
+    'Le marché du samedi matin.',
+    '- `data-fx-items` : « produit:prix » séparés par `|`\n- `data-fx-title`, `data-fx-pace` (34)',
+    'Marchés, boutiques, cafés, restaurants.',
+    'Une longue carte : l\'écriture lettre à lettre deviendrait interminable.',
+    '<div data-fx="chalk-board" data-fx-title="Du jour" data-fx-items="Pommes:2,80 €"></div>',
+    '<div data-fx="chalk-board" data-fx-title="Du jour"></div>',
+    { trigger: 'Rejouer', a11y: 'Chaque ligne porte un `aria-label` complet.' }),
 ];
