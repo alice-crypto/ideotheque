@@ -265,4 +265,20 @@
       U.make('small', '', el).textContent = 'Simplifié : le partage du risque suit des règles plus fines.';
     }
   });
+
+  // Un tapis roulant qui déplace ses colis en boucle
+  FX.register('conveyor-belt', {
+    setup: function (el) {
+      var n = U.num(el, 'fxCount', 6), box = U.make('div', 'fx-cb2', el);
+      box.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) {
+        var c = U.make('i', '', box);
+        c.style.setProperty('--fx-w2', U.rand(22, 42) + 'px');
+        c.style.setProperty('--fx-h2', U.rand(18, 36) + 'px');
+        c.style.setProperty('--fx-d', -i * (U.num(el, 'fxSpeed', 9) / n) + 's');
+      }
+      box.style.setProperty('--fx-sp', U.num(el, 'fxSpeed', 9) + 's');
+      U.make('u', '', box);
+    }
+  });
 })(window.FX);
