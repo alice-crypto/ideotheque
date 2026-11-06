@@ -175,4 +175,23 @@
       U.make('p', '', el).textContent = 'Valeurs fictives. Échelle logarithmique : les grandes distances sont compressées.';
     }
   });
+
+  // Descendre dans le sol pour lire chacune de ses couches
+  FX.register('soil-layers', {
+    setup: function (el) {
+      var L = (el.dataset.fxItems || 'Litière:5:#3a2a18:Feuilles et débris|Humus:25:#2c1c0f:Riche en vers de terre|Terre arable:45:#6b4a2d:Racines des cultures|Sous-sol:80:#a77c4e:Argile et minéraux|Roche:120:#7b7b78:Roche mère').split('|').map(function (r) { return r.split(':'); }), max = 120;
+      el.innerHTML = '<div class="fx-sl2" aria-hidden="true"><u></u></div><label>Profondeur <b></b><input type="range" min="0" max="' + max + '" step="5"></label><output aria-live="polite"></output>';
+      var box = el.firstChild, r = el.querySelector('input'), o = el.querySelector('output'), prev = 0;
+      L.forEach(function (l) { var i = U.make('i', '', box); i.style.flex = (l[1] - prev) + ' 1 0'; i.style.background = l[2]; prev = +l[1]; });
+      r.value = U.num(el, 'fxDepth', 30);
+      var go = function () {
+        var d = +r.value, cur = L.filter(function (l) { return d <= +l[1]; })[0] || L[L.length - 1];
+        box.style.setProperty('--fx-q', d / max);
+        el.querySelector('label b').textContent = d + ' cm';
+        o.innerHTML = '<b>' + cur[0] + '</b><br>' + cur[3];
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
