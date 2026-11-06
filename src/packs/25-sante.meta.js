@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="vaccine-calendar" data-fx-born="2026-01-15"></div>',
     '<div data-fx="vaccine-calendar" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Liste ordonnée, statuts écrits, repère suivant marqué par `aria-current`.' }),
+  E('cycle-ring', 'Présentation',
+    'Un anneau découpé en phases situe le jour du cycle.',
+    'Discret et clair, on se repère sans alarme.',
+    '- `data-fx-start` : premier jour, `data-fx-length` (28)\n- `--fx-s` (150px)',
+    'Suivi du cycle, tout cycle récurrent en phases.',
+    'Toute promesse contraceptive ou de fertilité, et de stocker ces données sensibles sans précaution.',
+    '<div data-fx="cycle-ring" data-fx-start="2027-01-03" data-fx-length="28"></div>',
+    '<div data-fx="cycle-ring" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le jour et la phase sont écrits ; l\'anneau est décoratif.' }),
 ];

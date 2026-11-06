@@ -263,4 +263,23 @@
       U.make('small', '', el).textContent = 'Exemple fictif : suivez le calendrier officiel.';
     }
   });
+
+  // Un anneau du cycle, avec le jour en cours et sa phase
+  FX.register('cycle-ring', {
+    entrance: true,
+    setup: function (el) {
+      var len = U.num(el, 'fxLength', 28), start = el.dataset.fxStart ? new Date(el.dataset.fxStart) : new Date(Date.now() - 86400000 * 11), day = ((Math.floor((Date.now() - start) / 86400000)) % len + len) % len + 1;
+      var ph = [['Règles', 5], ['Folliculaire', 8], ['Ovulation', 3], ['Lutéale', len - 16]], s = '<svg viewBox="0 0 100 100" aria-hidden="true">', t = 0, cur = '';
+      ph.forEach(function (p, i) {
+        var c = 2 * Math.PI * 40;
+        s += '<circle class="p' + i + '" cx="50" cy="50" r="40" stroke-dasharray="' + (p[1] / len * c - 1) + ' ' + c + '" stroke-dashoffset="' + -t / len * c + '"/>';
+        if (day > t && day <= t + p[1]) cur = p[0];
+        t += p[1];
+      });
+      var a = (day - .5) / len * 360;
+      s += '<circle class="fx-dot" cx="90" cy="50" r="5" style="--fx-a:' + a + 'deg"/></svg><div><b>Jour ' + day + '</b><span>' + cur + '</span></div>';
+      el.innerHTML = s;
+      U.make('small', '', el).textContent = 'Repères moyens, pas une contraception';
+    }
+  });
 })(window.FX);

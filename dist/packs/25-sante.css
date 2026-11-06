@@ -120,3 +120,17 @@
 .fx-in[data-fx="vaccine-calendar"] .fx-past { opacity: .55; }
 [data-fx="vaccine-calendar"] .fx-next { background: var(--fx-accent); color: #fff; }
 [data-fx="vaccine-calendar"] small { opacity: .7; font-size: 10px; }
+
+/* cycle-ring : l'anneau du cycle */
+[data-fx="cycle-ring"] { position: relative; display: grid; justify-items: center; width: var(--fx-s, 150px); font-size: 12px; text-align: center; }
+[data-fx="cycle-ring"] svg { width: 100%; transform: rotate(-90deg); }
+[data-fx="cycle-ring"] circle { fill: none; stroke-width: 9; }
+[data-fx="cycle-ring"] .p0 { stroke: #d6336c; }
+[data-fx="cycle-ring"] .p1 { stroke: #748ffc; }
+[data-fx="cycle-ring"] .p2 { stroke: #fcc419; }
+[data-fx="cycle-ring"] .p3 { stroke: #51cf66; }
+[data-fx="cycle-ring"] .fx-dot { fill: var(--fx-dot, #fff); stroke: #111; stroke-width: 1.5; transform-origin: 50px 50px; transition: transform 1.2s var(--fx-ease-out); }
+.fx-in[data-fx="cycle-ring"] .fx-dot { transform: rotate(var(--fx-a)); }
+[data-fx="cycle-ring"] > div { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 1; display: grid; place-content: center; }
+[data-fx="cycle-ring"] b { display: block; font-size: 17px; }
+[data-fx="cycle-ring"] small { margin-top: 4px; font-size: 10px; opacity: .7; }
