@@ -12473,6 +12473,25 @@
       go();
     }
   });
+
+  // Un conteneur vu de dessus, rempli par un calcul de rangées
+  FX.register('container-fill', {
+    entrance: true,
+    setup: function (el) {
+      var CW = U.num(el, 'fxLength', 590), CH = U.num(el, 'fxWidth', 235), I = (el.dataset.fxItems || '180x120|180x120|120x100|120x100|120x80|120x80|100x80|80x60|80x60|60x40').split('|').map(function (s) { var p = s.split('x'); return { w: +p[0], h: +p[1] }; }).sort(function (a, b) { return b.h - a.h || b.w - a.w; });
+      var x = 0, y = 0, rowH = 0, used = 0, box = U.make('div', 'fx-cf', el), out = 0;
+      box.setAttribute('aria-hidden', 'true');
+      I.forEach(function (b, i) {
+        if (x + b.w > CW) { x = 0; y += rowH; rowH = 0; }
+        if (y + b.h > CH) { out++; return; }
+        var d = U.make('i', '', box);
+        d.style.cssText = 'left:' + x / CW * 100 + '%;top:' + y / CH * 100 + '%;width:' + b.w / CW * 100 + '%;height:' + b.h / CH * 100 + '%;--fx-i:' + i;
+        x += b.w; rowH = Math.max(rowH, b.h); used += b.w * b.h;
+      });
+      var q = used / (CW * CH) * 100;
+      U.make('p', '', el).innerHTML = '<b>' + Math.round(q) + ' %</b> de la surface' + (out ? ', ' + out + ' caisse' + (out > 1 ? 's' : '') + ' en attente' : ', tout tient');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

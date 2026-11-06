@@ -51,3 +51,13 @@
 [data-fx="pallet-stack"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
 [data-fx="pallet-stack"] output b { font-size: 15px; }
 @keyframes fx-pallet-drop { from { opacity: 0; transform: translateY(-20px); } }
+
+/* container-fill : un conteneur vu de dessus */
+[data-fx="container-fill"] { width: min(100%, var(--fx-w, 235px)); font-size: 12px; }
+[data-fx="container-fill"] .fx-cf { position: relative; aspect-ratio: 2.51; border: 2px solid currentColor; background: color-mix(in srgb, currentColor 6%, transparent); }
+[data-fx="container-fill"] i { position: absolute; box-sizing: border-box; border: 1px solid #0006; background: var(--fx-accent); opacity: 0; transform: scale(.7); transition: opacity .3s calc(var(--fx-i) * 80ms), transform .35s var(--fx-ease-spring) calc(var(--fx-i) * 80ms); }
+[data-fx="container-fill"] i:nth-child(3n) { background: var(--fx-accent-2); }
+[data-fx="container-fill"] i:nth-child(3n + 1) { background: #caa36a; }
+.fx-in[data-fx="container-fill"] i { opacity: 1; transform: none; }
+[data-fx="container-fill"] p { margin: 6px 0 0; }
+[data-fx="container-fill"] b { font-size: 18px; }

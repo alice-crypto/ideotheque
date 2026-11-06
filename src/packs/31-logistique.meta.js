@@ -48,4 +48,13 @@ module.exports = [
     '<div data-fx="pallet-stack" data-fx-height="30"></div>',
     '<div data-fx="pallet-stack" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, résultat annoncé.' }),
+  E('container-fill', 'Présentation',
+    'Un calcul place les caisses dans un conteneur, et donne le taux de remplissage.',
+    'Rien ne se perd, l\'optimisation devient visible.',
+    '- `data-fx-length` (590), `data-fx-width` (235)\n- `data-fx-items` : « LxH » séparés par `|`',
+    'Fret, déménagement, tout rangement en surface.',
+    'Un plan de chargement réel : poids, fragilité et hauteur ne sont pas pris en compte.',
+    '<div data-fx="container-fill" data-fx-items="180x120|120x80"></div>',
+    '<div data-fx="container-fill" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Le résultat est écrit, le plan est décoratif.' }),
 ];
