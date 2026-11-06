@@ -6371,6 +6371,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 @keyframes fx-mg { 0%, 100% { transform: translate(38px, 46px); } 25% { transform: translate(50px, 50px); } 50% { transform: translate(62px, 46px); } 75% { transform: translate(50px, 42px); } }
 @keyframes fx-mg2 { 0%, 60%, 100% { transform: none; } 30% { transform: translate(var(--fx-x), -14px); } }
 
+/* ingredient-lookup : chercher dans une composition */
+[data-fx="ingredient-lookup"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; line-height: 1.4; }
+[data-fx="ingredient-lookup"] input { padding: 5px 7px; font: inherit; }
+[data-fx="ingredient-lookup"] p { margin: 0; }
+[data-fx="ingredient-lookup"] span { transition: opacity .2s, background .2s; }
+[data-fx="ingredient-lookup"] .fx-q span { opacity: .4; }
+[data-fx="ingredient-lookup"] .fx-q .fx-hit { opacity: 1; background: var(--fx-mark, #ffd400); color: #111; }
+[data-fx="ingredient-lookup"] output { font-weight: 700; font-size: 12px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

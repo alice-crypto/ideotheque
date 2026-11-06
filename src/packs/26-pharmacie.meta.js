@@ -201,4 +201,13 @@ module.exports = [
     '<div data-fx="mortar-grind"></div>',
     '<div data-fx="mortar-grind" style="color:var(--ink)"></div>',
     { a11y: 'Rôle `status` nommé. La bibliothèque coupe l\'animation en mouvement réduit.' }),
+  E('ingredient-lookup', 'Micro-interaction',
+    'On cherche un ingrédient dans une longue composition, et la réponse s\'écrit par oui ou non.',
+    'Enfin une réponse sans plisser les yeux.',
+    '- le texte de l\'élément : ingrédients séparés par des virgules\n- `--fx-mark`',
+    'Cosmétiques, alimentation, compositions techniques.',
+    'D\'en faire une garantie pour une allergie : un ingrédient peut porter plusieurs noms.',
+    '<div data-fx="ingredient-lookup">Aqua, Glycerin, Parfum</div>',
+    '<div data-fx="ingredient-lookup" style="color:var(--ink)">Aqua, Glycerin, Cetearyl Alcohol, Shea Butter, Tocopherol, Parfum, Citric Acid, Sodium Benzoate</div>',
+    { a11y: 'Champ nommé, résultat annoncé en mots.' }),
 ];
