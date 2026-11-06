@@ -50,4 +50,22 @@
       el.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.dataset.k) { e.preventDefault(); pick(e.target); } });
     }
   });
+
+  // Une échelle de douleur de 0 à 10, avec un visage qui change
+  FX.register('pain-scale', {
+    setup: function (el) {
+      var W = ['Aucune', 'Très légère', 'Légère', 'Gênante', 'Modérée', 'Forte', 'Très forte'];
+      el.innerHTML = '<svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="27"/><circle class="e" cx="21" cy="24" r="3"/><circle class="e" cx="39" cy="24" r="3"/><path d="M18 40Q30 40 42 40"/></svg><label>Votre douleur <input type="range" min="0" max="10"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), m = el.querySelector('svg path'), o = el.querySelector('output'), c = el.querySelector('svg circle');
+      r.value = U.num(el, 'fxValue', 3);
+      var go = function () {
+        var v = +r.value, q = v / 10, y = 34 + q * 12;
+        m.setAttribute('d', 'M18 ' + y + 'Q30 ' + (46 - q * 22) + ' 42 ' + y);
+        c.style.fill = 'hsl(' + (130 - q * 130) + ' 70% 50%)';
+        o.innerHTML = '<b>' + v + '</b> / 10 · ' + W[Math.round(q * 6)];
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
