@@ -221,3 +221,15 @@
 [data-fx="standby-drain"] [aria-pressed="false"] span { opacity: .45; text-decoration: line-through; }
 [data-fx="standby-drain"] em { font-style: normal; opacity: .75; }
 [data-fx="standby-drain"] output b { font-size: 17px; color: var(--fx-accent); }
+
+/* reservoir-level : un barrage */
+[data-fx="reservoir-level"] { display: grid; grid-template-columns: 100px 1fr; gap: 10px; align-items: center; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="reservoir-level"] .fx-rl { position: relative; height: 96px; overflow: hidden; background: color-mix(in srgb, currentColor 10%, transparent); clip-path: polygon(0 0, 100% 0, 100% 100%, 22% 100%); border-right: 12px solid #7a7f88; }
+[data-fx="reservoir-level"] .fx-rl i { position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: var(--fx-water, #2d82d6); transition: height 1.3s var(--fx-ease-out); }
+.fx-in[data-fx="reservoir-level"] .fx-rl i { height: calc(var(--fx-q) * 100%); }
+[data-fx="reservoir-level"] .fx-rl i::before { content: ''; position: absolute; left: 0; right: 0; top: -4px; height: 8px; background: radial-gradient(circle 6px at 8px 10px, var(--fx-water, #2d82d6) 98%, transparent) 0 0 / 16px 8px; animation: fx-reservoir-wave 2s linear infinite; }
+[data-fx="reservoir-level"] em { position: absolute; left: 0; right: 0; bottom: calc(var(--fx-low) * 100%); border-top: 1px dashed var(--fx-down, #e10600); }
+[data-fx="reservoir-level"] p { margin: 0; }
+[data-fx="reservoir-level"] b { font-size: 24px; }
+[data-fx="reservoir-level"].fx-low b { color: var(--fx-down, #e10600); }
+@keyframes fx-reservoir-wave { to { background-position-x: 16px; } }
