@@ -102,4 +102,13 @@ module.exports = [
     '<div data-fx="ph-meter" data-fx-value="6.4"></div>',
     '<div data-fx="ph-meter" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, résultat annoncé en mots.' }),
+  E('honeycomb-fill', 'Présentation',
+    'Un rayon de ruche se remplit de miel, du centre vers les bords, selon une valeur.',
+    'Doux, chaleureux, un travail patient.',
+    '- `data-fx-value` (64), `data-fx-rows` (5), `data-fx-cols` (6), `data-fx-text`',
+    'Miel, biodiversité, progression d\'une collecte.',
+    'De donner une valeur précise au lecteur uniquement par le dessin : le texte reste nécessaire.',
+    '<div data-fx="honeycomb-fill" data-fx-value="64"></div>',
+    '<div data-fx="honeycomb-fill" style="color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'La valeur est écrite, le rayon est décoratif.' }),
 ];

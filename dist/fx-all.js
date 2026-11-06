@@ -14049,6 +14049,24 @@
       go();
     }
   });
+
+  // Un rayon de ruche qui se remplit de miel, alvéole par alvéole
+  FX.register('honeycomb-fill', {
+    entrance: true,
+    setup: function (el) {
+      var R = U.num(el, 'fxRows', 5), C = U.num(el, 'fxCols', 6), v = U.num(el, 'fxValue', 64), box = U.make('div', 'fx-hc2', el), A = [];
+      box.setAttribute('aria-hidden', 'true');
+      for (var y = 0; y < R; y++) {
+        var row = U.make('div', y % 2 ? 'fx-odd' : '', box);
+        for (var x = 0; x < C; x++) { var c = U.make('i', '', row); A.push({ e: c, d: Math.hypot(x - C / 2, y - R / 2) }); }
+      }
+      A.sort(function (a, b) { return a.d - b.d; });
+      var n = Math.round(A.length * v / 100);
+      A.forEach(function (a, i) { a.e.style.setProperty('--fx-i', i); if (i < n) a.e.classList.add('fx-on'); });
+      var o = U.make('p', '', el);
+      o.textContent = el.dataset.fxText || v + ' % de la récolte';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
