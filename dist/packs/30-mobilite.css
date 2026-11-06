@@ -11,3 +11,12 @@
 [data-fx="metro-line"] i { width: 12px; height: 12px; border: 3px solid var(--fx-line, #e4322b); border-radius: 50%; background: #fff; transition: transform .2s var(--fx-ease-spring); box-sizing: content-box; }
 [data-fx="metro-line"] .fx-to i { background: var(--fx-line, #e4322b); transform: scale(1.25); }
 [data-fx="metro-line"] output { font-size: 12px; }
+
+/* next-departures : les prochains passages */
+[data-fx="next-departures"] { width: min(100%, var(--fx-w, 235px)); padding: 7px; background: #0d0e10; color: var(--fx-led, #ffc53a); border-radius: 6px; font: 12px/1.3 ui-monospace, monospace; }
+[data-fx="next-departures"] ul { display: grid; gap: 5px; margin: 0; padding: 0; list-style: none; }
+[data-fx="next-departures"] li { display: grid; grid-template-columns: 26px 1fr auto; gap: 6px; align-items: center; }
+[data-fx="next-departures"] b { padding: 1px 3px; border-radius: 3px; background: var(--fx-led, #ffc53a); color: #0d0e10; text-align: center; }
+[data-fx="next-departures"] .fx-now em { animation: fx-nd2 1s steps(2) infinite; }
+[data-fx="next-departures"] em { font-style: normal; }
+@keyframes fx-nd2 { 50% { opacity: .25; } }

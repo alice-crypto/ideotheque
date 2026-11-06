@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="metro-line" data-fx-items="Gare:0|Parc:4"></div>',
     '<div data-fx="metro-line" style="color:var(--ink)"></div>',
     { a11y: 'Liste ordonnée de boutons, résultat annoncé.' }),
+  E('next-departures', 'État',
+    'Un écran liste les prochains passages, et leurs minutes descendent en temps réel.',
+    'Le geste de lever les yeux à l\'arrêt.',
+    '- `data-fx-items` : « ligne:direction:minutes » séparés par `|`\n- `--fx-led`',
+    'Transports, navettes, files d\'attente.',
+    'Des horaires inventés sur un vrai réseau : branchez les vraies données.',
+    '<div data-fx="next-departures" data-fx-items="12:Gare:2"></div>',
+    '<div data-fx="next-departures"></div>',
+    { a11y: 'Vraie liste, les temps sont écrits. Pas de lecture automatique des changements.' }),
 ];

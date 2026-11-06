@@ -11942,6 +11942,24 @@
       pick(from);
     }
   });
+
+  // Les prochains passages, avec leurs minutes qui descendent
+  FX.register('next-departures', {
+    setup: function (el) {
+      var T = (el.dataset.fxItems || '12:Gare centrale:2|4:Stade:5|12:Gare centrale:9|7:Hôpital:14').split('|').map(function (r) { var p = r.split(':'); return { l: p[0], d: p[1], at: Date.now() + p[2] * 60000 }; }), ul = U.make('ul', '', el);
+      var draw = function () {
+        ul.innerHTML = '';
+        T = T.filter(function (x) { return x.at > Date.now(); });
+        T.slice(0, 4).forEach(function (x) {
+          var m = Math.max(0, Math.round((x.at - Date.now()) / 60000)), li = U.make('li', m < 2 ? 'fx-now' : '', ul);
+          li.innerHTML = '<b>' + x.l + '</b><span>' + x.d + '</span><em>' + (m < 1 ? 'À l\'approche' : m + ' min') + '</em>';
+        });
+        if (!T.length) ul.innerHTML = '<li>Plus de passage annoncé</li>';
+      };
+      draw();
+      setInterval(draw, 15000);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
