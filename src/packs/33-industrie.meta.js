@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="shift-wheel" data-fx-teams="A,B,C"></div>',
     '<div data-fx="shift-wheel" style="color:var(--ink)"></div>',
     { a11y: 'L\'équipe et la relève sont écrites.' }),
+  E('vibration-monitor', 'État',
+    'Un signal vibratoire défile, et une alerte apparaît quand il franchit le seuil.',
+    'Écouter la machine avant la panne.',
+    '- `data-fx-threshold` (0.7), `--fx-h`',
+    'Maintenance, serveurs, capteurs.',
+    'De montrer ce signal comme réel : il est simulé.',
+    '<div data-fx="vibration-monitor" data-fx-threshold="0.7"></div>',
+    '<div data-fx="vibration-monitor" style="color:var(--ink)"></div>',
+    { trigger: 'Faire vibrer', a11y: 'L\'état est annoncé en mots. Le canvas est figé en mouvement réduit.' }),
 ];

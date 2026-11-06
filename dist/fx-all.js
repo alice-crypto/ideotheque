@@ -13633,6 +13633,36 @@
       setInterval(go, 60000);
     }
   });
+
+  // Un capteur de vibration : le signal dépasse-t-il le seuil ?
+  FX.register('vibration-monitor', {
+    setup: function (el) {
+      var th = U.num(el, 'fxThreshold', .7), c = U.make('canvas', '', el), o = U.make('output', '', el), lv = .32, buf = [], W, H, x;
+      o.setAttribute('aria-live', 'polite');
+      var size = function () { var r = c.getBoundingClientRect(), d = window.devicePixelRatio || 1; W = r.width; H = r.height; c.width = W * d; c.height = H * d; x = c.getContext('2d'); x.scale(d, d); };
+      size(); U.onResize(size);
+      var state = '';
+      el._fxBoost = function () { lv = .85; };
+      el._fxDraw = function (t, dt) {
+        lv = U.clamp(lv + U.rand(-.02, .025) * dt * 30, .15, 1);
+        var v = Math.sin(t * 34) * lv * U.rand(.5, 1);
+        buf.push(v);
+        if (buf.length > W) buf.shift();
+        x.clearRect(0, 0, W, H);
+        x.strokeStyle = '#ffffff33'; x.setLineDash([3, 3]);
+        [-1, 1].forEach(function (s) { x.beginPath(); x.moveTo(0, H / 2 - s * th * H / 2); x.lineTo(W, H / 2 - s * th * H / 2); x.stroke(); });
+        x.setLineDash([]);
+        x.strokeStyle = lv > th ? '#ff5147' : '#45e08b';
+        x.beginPath();
+        buf.forEach(function (b, i) { var y = H / 2 - b * H / 2; if (i) x.lineTo(i, y); else x.moveTo(i, y); });
+        x.stroke();
+        var s = lv > th ? 'Alerte : au-dessus du seuil' : 'Niveau normal';
+        if (s !== state) { state = s; o.textContent = s; el.classList.toggle('fx-al', lv > th); }
+      };
+    },
+    tick: function (el, dt, t) { if (el._fxDraw && !U.reduced) el._fxDraw(t, dt); },
+    trigger: function (el) { el._fxBoost(); }
+  });
 })(window.FX);
 
 window.FX._boot();

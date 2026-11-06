@@ -8077,6 +8077,11 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="shift-wheel"] span:nth-of-type(3) { left: 12%; top: 18%; }
 [data-fx="shift-wheel"] b { font-size: 17px; }
 
+/* vibration-monitor : un capteur de vibration */
+[data-fx="vibration-monitor"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 230px)); font-size: 12px; font-weight: 700; }
+[data-fx="vibration-monitor"] canvas { display: block; width: 100%; height: var(--fx-h, 90px); background: #0d0f12; }
+[data-fx="vibration-monitor"].fx-al output { color: var(--fx-down, #e10600); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
