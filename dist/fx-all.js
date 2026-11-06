@@ -14917,6 +14917,24 @@
       o.textContent = 'Le moins cher : ' + lo + ' €. Prix fictifs.';
     }
   });
+
+  // Une grille d'équipements : les essentiels, puis tout le reste
+  FX.register('amenity-grid', {
+    setup: function (el) {
+      var A = (el.dataset.fxItems || 'Wi-Fi gratuit|Petit-déjeuner|Parking|Piscine|Climatisation|Spa|Salle de sport|Bar|Animaux admis|Navette').split('|'), first = U.num(el, 'fxFirst', 6), ul = U.make('ul', '', el), b = U.make('button', '', el);
+      A.forEach(function (t, i) { var li = U.make('li', i >= first ? 'fx-more' : '', ul); li.style.setProperty('--fx-i', i - first); li.innerHTML = '<i aria-hidden="true">✓</i>' + t; });
+      b.type = 'button'; b.setAttribute('aria-expanded', 'false');
+      var more = A.length - first;
+      b.textContent = 'Voir ' + more + ' équipements de plus';
+      if (more <= 0) b.hidden = true;
+      b.addEventListener('click', function () {
+        var o = b.getAttribute('aria-expanded') !== 'true';
+        b.setAttribute('aria-expanded', o);
+        el.classList.toggle('fx-all', o);
+        b.textContent = o ? 'Voir moins' : 'Voir ' + more + ' équipements de plus';
+      });
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

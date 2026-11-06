@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="price-calendar" data-fx-seed="11"></div>',
     '<div data-fx="price-calendar" style="color:var(--ink)"></div>',
     { a11y: 'Chaque jour est un bouton nommé avec son prix, sans dépendre de la couleur.' }),
+  E('amenity-grid', 'Présentation',
+    'Les équipements essentiels s\'affichent, et le reste se déplie à la demande.',
+    'Tout y est, sans noyer le lecteur.',
+    '- `data-fx-items`, `data-fx-first` (6)',
+    'Hôtels, locations, fiches de services.',
+    'De cacher un équipement ou un frais décisif derrière le bouton.',
+    '<div data-fx="amenity-grid" data-fx-first="6"></div>',
+    '<div data-fx="amenity-grid" style="color:var(--ink)"></div>',
+    { a11y: 'Vraie liste, bouton `aria-expanded`.' }),
 ];

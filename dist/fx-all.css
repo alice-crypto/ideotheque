@@ -8716,6 +8716,16 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="price-calendar"] .fx-best { outline: 2px solid #fff; outline-offset: -2px; }
 [data-fx="price-calendar"] output { font-size: 12px; font-weight: 700; }
 
+/* amenity-grid : les équipements */
+[data-fx="amenity-grid"] { display: grid; gap: 6px; justify-items: start; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="amenity-grid"] ul { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 10px; width: 100%; margin: 0; padding: 0; list-style: none; }
+[data-fx="amenity-grid"] li { display: flex; gap: 5px; align-items: baseline; }
+[data-fx="amenity-grid"] i { color: var(--fx-up, #2eaf63); font-style: normal; font-weight: 800; }
+[data-fx="amenity-grid"] .fx-more { display: none; animation: fx-amenity-in .3s var(--fx-ease-out) calc(var(--fx-i) * 60ms) backwards; }
+[data-fx="amenity-grid"].fx-all .fx-more { display: flex; }
+[data-fx="amenity-grid"] button { padding: 0; border: 0; border-bottom: 1px solid currentColor; background: none; color: inherit; font: inherit; font-weight: 700; cursor: pointer; }
+@keyframes fx-amenity-in { from { opacity: 0; transform: translateY(5px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->828<!-- /total --> effets.
+La bibliothèque contient <!-- total -->829<!-- /total --> effets.
 
 ## Règles
 
@@ -307,6 +307,7 @@ La bibliothèque contient <!-- total -->828<!-- /total --> effets.
 | `daily-special` | Présentation | Le plat du jour s'écrit selon la vraie date, avec la semaine repliée en dessous |
 | `nutri-panel` | Présentation | Un curseur de portion recalcule les valeurs nutritionnelles et leur part des repères quotidiens |
 | `price-calendar` | Présentation | Un mois de prix se colore du moins cher au plus cher, avec le meilleur jour entouré |
+| `amenity-grid` | Présentation | Les équipements essentiels s'affichent, et le reste se déplie à la demande |
 | `underline-draw` | Micro-interaction | Un lien qui se souligne au survol depuis la gauche, puis repart vers la droite |
 | `roll-text` | Micro-interaction | Au survol, chaque lettre roule vers le haut et laisse la place à son double, avec un léger décalage entre les lettres |
 | `magnetic` | Micro-interaction | Un bouton attiré par le curseur, qui invite au clic |
