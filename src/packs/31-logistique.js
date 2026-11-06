@@ -51,4 +51,22 @@
       go();
     }
   });
+
+  // Le poids facturé : le plus grand du réel et du volumétrique
+  FX.register('volumetric-weight', {
+    setup: function (el) {
+      var div = U.num(el, 'fxDivisor', 5000);
+      el.innerHTML = '<label>Longueur, largeur, hauteur (cm)<span><input type="number" value="60"><input type="number" value="40"><input type="number" value="30"></span></label><label>Poids réel (kg)<input class="w" type="number" value="6" step=".5"></label><div class="fx-vw" aria-hidden="true"><div><i class="a"></i><small>Réel</small></div><div><i class="b"></i><small>Volume</small></div></div><output aria-live="polite"></output>';
+      var D = el.querySelectorAll('span input'), W = el.querySelector('.w'), o = el.querySelector('output');
+      var go = function () {
+        var v = 1;
+        D.forEach(function (i) { v *= +i.value || 0; });
+        var vw = v / div, w = +W.value || 0, top = Math.max(w, vw, .1);
+        el.style.setProperty('--fx-a', w / top); el.style.setProperty('--fx-b', vw / top);
+        o.innerHTML = 'Facturé <b>' + Math.max(w, vw).toFixed(1).replace('.', ',') + ' kg</b>' + (vw > w ? ', à cause du volume' : ', au poids réel');
+      };
+      el.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
