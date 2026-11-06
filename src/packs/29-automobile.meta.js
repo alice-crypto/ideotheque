@@ -219,4 +219,13 @@ module.exports = [
     '<div data-fx="safety-stars" data-fx-stars="4"></div>',
     '<div data-fx="safety-stars" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Note dans `aria-label`, et les scores sont écrits.' }),
+  E('blind-spot', 'Ambiance',
+    'Une voiture passe dans l\'angle mort : la zone se teinte et le témoin s\'allume.',
+    'Un schéma clair qui remplace un long texte.',
+    '- `data-fx-pace` (5)',
+    'Aides à la conduite, sécurité, pédagogie.',
+    'D\'y voir une garantie de sécurité : c\'est une explication.',
+    '<div data-fx="blind-spot"></div>',
+    '<div data-fx="blind-spot" style="color:var(--ink)"></div>',
+    { a11y: 'L\'état est écrit en texte. Mouvement réduit : une image fixe de l\'alerte.' }),
 ];

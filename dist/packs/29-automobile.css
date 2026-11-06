@@ -249,3 +249,14 @@
 .fx-in[data-fx="safety-stars"] em { background-size: calc(var(--fx-q) * 100%) 100%, auto; }
 [data-fx="safety-stars"] b { text-align: right; }
 [data-fx="safety-stars"] small { font-size: 10px; opacity: .6; }
+
+/* blind-spot : l'angle mort */
+[data-fx="blind-spot"] { display: grid; gap: 5px; justify-items: center; font-size: 11px; font-weight: 700; }
+[data-fx="blind-spot"] .fx-bs { position: relative; width: 150px; height: 130px; overflow: hidden; background: #34363d; box-shadow: inset 0 0 0 2px #0005; }
+[data-fx="blind-spot"] .fx-bs::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; border-left: 2px dashed #fff8; }
+[data-fx="blind-spot"] u { position: absolute; left: 20px; top: 34px; width: 34px; height: 58px; border-radius: 10px; background: var(--fx-accent); }
+[data-fx="blind-spot"] .fx-bs-o { position: absolute; right: 20px; top: 0; width: 34px; height: 58px; border-radius: 10px; background: #c9ced6; }
+[data-fx="blind-spot"] .fx-bs-z { position: absolute; left: 50%; right: 0; top: 56px; bottom: 0; background: color-mix(in srgb, var(--fx-warn, #e8930c) 20%, transparent); transition: background .25s; }
+[data-fx="blind-spot"].fx-alert .fx-bs-z { background: color-mix(in srgb, var(--fx-warn, #e8930c) 55%, transparent); }
+[data-fx="blind-spot"] .fx-bs-m { position: absolute; left: 56px; top: 42px; width: 8px; height: 8px; border-radius: 50%; background: #666; z-index: 1; }
+[data-fx="blind-spot"].fx-alert .fx-bs-m { background: #ffb400; box-shadow: 0 0 10px #ffb400; }
