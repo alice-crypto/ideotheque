@@ -21,4 +21,13 @@ module.exports = [
     '<div data-fx="room-type" data-fx-items="Classique:18:1 grand lit:Cour:119"></div>',
     '<div data-fx="room-type" style="color:var(--ink)"></div>',
     { a11y: 'Groupe radio nommé, détails annoncés.' }),
+  E('guest-steppers', 'Micro-interaction',
+    'Trois compteurs composent un voyage, avec des limites et un résumé clair.',
+    'Une formalité réglée en trois petits gestes.',
+    '- `data-fx-open` : ouvert au départ ; événement `fx:guests`',
+    'Hôtels, trains, avions, locations.',
+    'Des limites d\'âge d\'exemple sur un vrai site : adaptez-les aux vôtres.',
+    '<div data-fx="guest-steppers"></div>',
+    '<div data-fx="guest-steppers" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés, désactivés aux limites, valeurs annoncées.' }),
 ];

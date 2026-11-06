@@ -14870,6 +14870,31 @@
       });
     }
   });
+
+  // Combien de voyageurs : adultes, enfants et chambres
+  FX.register('guest-steppers', {
+    setup: function (el) {
+      var R = [['Adultes', 'à partir de 13 ans', 2, 1, 8], ['Enfants', 'de 2 à 12 ans', 0, 0, 6], ['Chambres', '', 1, 1, 4]];
+      var b = U.make('button', 'fx-gs2-b', el), box = U.make('div', 'fx-gs2', el);
+      b.type = 'button'; b.setAttribute('aria-expanded', el.dataset.fxOpen === 'false' ? 'false' : 'true');
+      R.forEach(function (r) {
+        var d = U.make('div', '', box);
+        d.innerHTML = '<span>' + r[0] + (r[1] ? '<small>' + r[1] + '</small>' : '') + '</span><button type="button" aria-label="Retirer : ' + r[0] + '">−</button><b aria-live="polite"></b><button type="button" aria-label="Ajouter : ' + r[0] + '">+</button>';
+        var B = d.querySelectorAll('button');
+        r.t = d.querySelector('b'); r.m = B[0]; r.p = B[1];
+        B[0].addEventListener('click', function () { r[2]--; show(); });
+        B[1].addEventListener('click', function () { r[2]++; show(); });
+      });
+      var show = function () {
+        R.forEach(function (r) { r.t.textContent = r[2]; r.m.disabled = r[2] <= r[3]; r.p.disabled = r[2] >= r[4]; });
+        var a = R[0][2], c = R[1][2], rm = R[2][2];
+        b.textContent = (a + c) + ' voyageur' + (a + c > 1 ? 's' : '') + ', ' + rm + ' chambre' + (rm > 1 ? 's' : '');
+        el.dispatchEvent(new CustomEvent('fx:guests', { bubbles: true, detail: { adults: a, children: c, rooms: rm } }));
+      };
+      b.addEventListener('click', function () { b.setAttribute('aria-expanded', b.getAttribute('aria-expanded') !== 'true'); });
+      show();
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

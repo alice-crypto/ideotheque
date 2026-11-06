@@ -8695,6 +8695,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="room-type"] ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
 [data-fx="room-type"] li { display: flex; justify-content: space-between; gap: 6px; }
 
+/* guest-steppers : combien de voyageurs */
+[data-fx="guest-steppers"] { display: grid; gap: 4px; width: min(100%, var(--fx-w, 225px)); font-size: 12px; }
+[data-fx="guest-steppers"] .fx-gs2-b { padding: 7px 9px; border: 1px solid currentColor; border-radius: 8px; background: none; color: inherit; font: inherit; font-weight: 700; text-align: left; cursor: pointer; }
+[data-fx="guest-steppers"] .fx-gs2 { display: none; gap: 5px; padding: 8px; border: 1px solid color-mix(in srgb, currentColor 30%, transparent); border-radius: 8px; animation: fx-guest-open .25s var(--fx-ease-out); }
+[data-fx="guest-steppers"] [aria-expanded="true"] + .fx-gs2 { display: grid; }
+[data-fx="guest-steppers"] .fx-gs2 > div { display: grid; grid-template-columns: 1fr 24px 20px 24px; gap: 3px; align-items: center; text-align: center; }
+[data-fx="guest-steppers"] .fx-gs2 > div > span { display: grid; text-align: left; }
+[data-fx="guest-steppers"] small { font-size: 10px; opacity: .65; }
+[data-fx="guest-steppers"] .fx-gs2 button { height: 24px; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; cursor: pointer; }
+[data-fx="guest-steppers"] .fx-gs2 button:disabled { opacity: .25; cursor: not-allowed; }
+@keyframes fx-guest-open { from { opacity: 0; transform: translateY(-5px); } }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
