@@ -147,4 +147,13 @@ module.exports = [
     '<div data-fx="facade-windows"></div>',
     '<div data-fx="facade-windows"></div>',
     { a11y: 'Décoratif, masqué aux lecteurs d\'écran. Mouvement réduit : la façade reste fixe.' }),
+  E('sold-sign', 'Micro-interaction',
+    'Une pancarte se balance à chaque changement d\'état, jusqu\'à « vendu » en rouge.',
+    'Un petit plaisir de conclusion.',
+    '- `data-fx-items` : états séparés par `|`\n- `data-fx-step` (0), `--fx-sold`',
+    'Annonces, biens conclus, stocks épuisés.',
+    'De laisser un clic public changer l\'état : en production, reliez `data-fx-step` à vos données.',
+    '<div data-fx="sold-sign" data-fx-step="2"></div>',
+    '<div data-fx="sold-sign" style="color:var(--ink)"></div>',
+    { trigger: 'Changer d\'état', a11y: 'L\'état est écrit dans une région annoncée.' }),
 ];

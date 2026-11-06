@@ -156,3 +156,13 @@
 [data-fx="facade-windows"] .fx-fw { display: grid; grid-template-columns: repeat(var(--fx-c), 1fr); gap: 6px; }
 [data-fx="facade-windows"] i { aspect-ratio: .8; background: #0c1220; box-shadow: inset 0 0 0 1px #fff2; transition: background .8s, box-shadow .8s; }
 [data-fx="facade-windows"] i.fx-on { background: var(--fx-light, #ffcb6b); box-shadow: 0 0 8px color-mix(in srgb, var(--fx-light, #ffcb6b) 55%, transparent); }
+
+/* sold-sign : une pancarte d'agence */
+[data-fx="sold-sign"] { display: inline-grid; gap: 6px; justify-items: center; font-size: 12px; }
+[data-fx="sold-sign"] .fx-ss { position: relative; width: 140px; height: 110px; cursor: pointer; }
+[data-fx="sold-sign"] .fx-ss em { position: absolute; left: 14px; top: 0; bottom: 0; width: 5px; background: currentColor; }
+[data-fx="sold-sign"] .fx-ss em::after { content: ''; position: absolute; left: 0; top: 10px; width: 116px; height: 4px; background: currentColor; }
+[data-fx="sold-sign"] .fx-ss-p { position: absolute; left: 32px; top: 18px; width: 96px; height: 60px; display: grid; place-items: center; background: #fff; color: #111; border: 2px solid #111; transform-origin: 50% -6px; font-size: 14px; }
+[data-fx="sold-sign"] .fx-go { animation: fx-ss 1s ease-out; }
+[data-fx="sold-sign"].fx-sold .fx-ss-p { background: var(--fx-sold, #e10600); color: #fff; }
+@keyframes fx-ss { 15% { transform: rotate(10deg); } 35% { transform: rotate(-7deg); } 55% { transform: rotate(4deg); } 75% { transform: rotate(-2deg); } }

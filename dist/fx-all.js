@@ -10908,6 +10908,26 @@
       w.classList.toggle('fx-on', Math.random() < el._fxP);
     }
   });
+
+  // Une pancarte d'agence qui passe de « à vendre » à « vendu »
+  FX.register('sold-sign', {
+    setup: function (el) {
+      var S = (el.dataset.fxItems || 'À vendre|Sous offre|Vendu').split('|'), n = U.num(el, 'fxStep', 0);
+      el.innerHTML = '<div class="fx-ss" aria-hidden="true"><em></em><div class="fx-ss-p"><b></b></div></div><span class="fx-ss-l" aria-live="polite"></span>';
+      var b = el.querySelector('b'), l = el.querySelector('.fx-ss-l');
+      el._fxSet = function (k) {
+        n = k;
+        b.textContent = S[n]; l.textContent = 'État : ' + S[n];
+        el.classList.toggle('fx-sold', n === S.length - 1);
+        var p = el.querySelector('.fx-ss-p');
+        p.classList.remove('fx-go'); void p.offsetWidth; p.classList.add('fx-go');
+      };
+      el._fxLen = S.length; el._fxN = function () { return n; };
+      el._fxSet(n);
+      el.querySelector('.fx-ss').addEventListener('click', function () { FX.trigger(el); });
+    },
+    trigger: function (el) { el._fxSet((el._fxN() + 1) % el._fxLen); }
+  });
 })(window.FX);
 
 window.FX._boot();
