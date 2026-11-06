@@ -120,4 +120,13 @@ module.exports = [
     '<div data-fx="tariff-choice" data-fx-share="35"></div>',
     '<div data-fx="tariff-choice" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, conclusion annoncée.' }),
+  E('outage-check', 'Micro-interaction',
+    'Un code postal saisi indique s\'il y a une coupure, et l\'heure de retour prévue.',
+    'On sait que ce n\'est pas chez soi, et que c\'est pris en charge.',
+    '- `data-fx-data` : JSON code postal vers heure de retour',
+    'Distributeurs d\'énergie, eau, télécoms.',
+    'De laisser ces données dans la page : interrogez un service à jour.',
+    '<div data-fx="outage-check" data-fx-data=\'{"69003":"vers 18 h 30"}\'></div>',
+    '<div data-fx="outage-check" style="color:var(--ink)"></div>',
+    { a11y: 'Vrai formulaire, résultat annoncé.' }),
 ];

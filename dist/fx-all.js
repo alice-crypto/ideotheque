@@ -13111,6 +13111,24 @@
       go();
     }
   });
+
+  // Taper son code postal pour savoir s'il y a une coupure
+  FX.register('outage-check', {
+    setup: function (el) {
+      var D = JSON.parse(el.dataset.fxData || '{"69003":"vers 18 h 30","31000":"vers 21 h"}');
+      el.innerHTML = '<form><input inputmode="numeric" maxlength="5" placeholder="Code postal" aria-label="Code postal"><button>Vérifier</button></form><output aria-live="polite"></output>';
+      var i = el.querySelector('input'), o = el.querySelector('output');
+      el.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = i.value.trim();
+        el.classList.remove('fx-ok', 'fx-cut');
+        if (!/^\d{5}$/.test(v)) { o.textContent = 'Saisissez 5 chiffres'; return; }
+        if (D[v]) { el.classList.add('fx-cut'); o.innerHTML = '<b>Coupure signalée</b> · retour ' + D[v]; }
+        else { el.classList.add('fx-ok'); o.innerHTML = '<b>Aucune coupure signalée</b>'; }
+      });
+      U.make('small', '', el).textContent = 'Exemple fictif : essayez 69003.';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

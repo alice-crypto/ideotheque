@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->737<!-- /total --> effets.
+La bibliothèque contient <!-- total -->738<!-- /total --> effets.
 
 ## Règles
 
@@ -439,6 +439,7 @@ La bibliothèque contient <!-- total -->737<!-- /total --> effets.
 | `thermostat-dial` | Micro-interaction | Un cadran règle la température et traduit chaque degré en écart de dépense |
 | `appliance-meter` | Micro-interaction | Allumer des appareils accélère le disque du compteur et chiffre le coût à l'heure |
 | `tariff-choice` | Micro-interaction | Selon la part de consommation en heures creuses, l'option la plus avantageuse s'affiche |
+| `outage-check` | Micro-interaction | Un code postal saisi indique s'il y a une coupure, et l'heure de retour prévue |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
