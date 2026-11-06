@@ -421,4 +421,25 @@
       })(i);
     }
   });
+
+  // Où poser la charge pour ne pas surcharger un essieu
+  FX.register('axle-load', {
+    setup: function (el) {
+      var M = U.num(el, 'fxLoad', 8), F = U.num(el, 'fxFrontMax', 7), R = U.num(el, 'fxRearMax', 8), E = 3;
+      el.innerHTML = '<div class="fx-al" aria-hidden="true"><u></u><i class="a"></i><i class="b"></i></div><label>Position de la charge <input type="range" min="5" max="95"></label><div class="fx-al-v"><span><b data-f></b> à l\'avant</span><span><b data-r></b> à l\'arrière</span></div><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      r.value = U.num(el, 'fxPos', 55);
+      var go = function () {
+        var q = r.value / 100, rear = E + M * q, front = E + M * (1 - q);
+        el.style.setProperty('--fx-q', q);
+        el.querySelector('[data-f]').textContent = front.toFixed(1).replace('.', ',') + ' t';
+        el.querySelector('[data-r]').textContent = rear.toFixed(1).replace('.', ',') + ' t';
+        var bad = front > F ? 'avant' : rear > R ? 'arrière' : '';
+        el.classList.toggle('fx-bad', !!bad);
+        o.textContent = bad ? 'Essieu ' + bad + ' surchargé' : 'Répartition correcte';
+      };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);

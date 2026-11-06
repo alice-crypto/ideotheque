@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="eco-delivery-day" data-fx-eco="3"></div>',
     '<div data-fx="eco-delivery-day" style="color:var(--ink)"></div>',
     { a11y: 'Vrais boutons, jour regroupé annoncé par le message.' }),
+  E('axle-load', 'Micro-interaction',
+    'Une charge qu\'on déplace répartit le poids sur les essieux, avec une alerte en cas d\'excès.',
+    'Le chauffeur comprend sa remorque sans calcul.',
+    '- `data-fx-load` (8), `data-fx-front-max` (7), `data-fx-rear-max` (8), `data-fx-pos` (55)',
+    'Transport routier, remorques, formation.',
+    'De l\'utiliser pour vérifier un vrai chargement : les valeurs sont simplifiées.',
+    '<div data-fx="axle-load" data-fx-load="8"></div>',
+    '<div data-fx="axle-load" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, poids et verdict écrits et annoncés.' }),
 ];

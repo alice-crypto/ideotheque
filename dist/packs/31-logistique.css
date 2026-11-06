@@ -235,3 +235,19 @@
 [data-fx="eco-delivery-day"] .fx-eco { border-color: var(--fx-up, #2eaf63); border-width: 2px; }
 [data-fx="eco-delivery-day"] [aria-pressed="true"] { background: var(--fx-accent); color: #fff; }
 @keyframes fx-eco-day { 50% { transform: translateY(-2px); } }
+
+/* axle-load : répartir la charge */
+[data-fx="axle-load"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 230px)); font-size: 11px; }
+[data-fx="axle-load"] .fx-al { position: relative; height: 58px; border-bottom: 2px solid currentColor; }
+[data-fx="axle-load"] u { position: absolute; bottom: 20px; left: calc(var(--fx-q) * 74%); width: 26%; height: 26px; background: #b98b4f; transition: left .2s; }
+[data-fx="axle-load"] .fx-al::before { content: ''; position: absolute; left: 0; right: 0; bottom: 16px; height: 4px; background: currentColor; }
+[data-fx="axle-load"] i { position: absolute; bottom: 0; width: 16px; height: 16px; border-radius: 50%; background: currentColor; transition: background .2s; }
+[data-fx="axle-load"] .a { left: 10%; }
+[data-fx="axle-load"] .b { right: 10%; }
+[data-fx="axle-load"] label { display: grid; gap: 2px; }
+[data-fx="axle-load"] input { width: 100%; accent-color: var(--fx-accent); }
+[data-fx="axle-load"] .fx-al-v { display: flex; justify-content: space-between; }
+[data-fx="axle-load"] .fx-al-v b { font-size: 15px; }
+[data-fx="axle-load"] output { font-weight: 700; color: var(--fx-up, #2eaf63); }
+[data-fx="axle-load"].fx-bad output { color: var(--fx-down, #e10600); }
+[data-fx="axle-load"].fx-bad i { background: var(--fx-down, #e10600); }
