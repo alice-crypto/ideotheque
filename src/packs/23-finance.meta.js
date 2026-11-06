@@ -66,4 +66,13 @@ module.exports = [
     '<div data-fx="savings-curve" data-fx-rate="3"></div>',
     '<div data-fx="savings-curve" style="width:220px;color:var(--ink);font-size:13px"></div>',
     { a11y: 'Le résultat est écrit en texte et annoncé par `aria-live`.' }),
+  E('rate-best-row', 'Présentation',
+    'Dans un tableau de taux, la meilleure valeur de chaque colonne se remplit de couleur.',
+    'Honnête et lisible, la comparaison se fait toute seule.',
+    '- `data-fx-best` (min) : `min` ou `max`, par colonne, séparés par des virgules',
+    'Taux, frais, abonnements.',
+    'Une colonne où la « meilleure » valeur dépend de la situation.',
+    '<table data-fx="rate-best-row" data-fx-best="min,max">…</table>',
+    '<table data-fx="rate-best-row" data-fx-best="min,max" style="color:var(--ink);font-size:13px"><thead><tr><th>Offre</th><th>Taux</th><th>Bonus</th></tr></thead><tbody><tr><td>A</td><td>3,4</td><td>20</td></tr><tr><td>B</td><td>3,1</td><td>10</td></tr><tr><td>C</td><td>3,6</td><td>40</td></tr></tbody></table>',
+    { trigger: 'Rejouer', a11y: 'La cellule retenue est annoncée comme la meilleure valeur.' }),
 ];

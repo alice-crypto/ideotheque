@@ -8836,6 +8836,24 @@
       draw();
     }
   });
+
+  // Dans un tableau de taux, la meilleure valeur de chaque colonne est marquée
+  FX.register('rate-best-row', {
+    entrance: true,
+    setup: function (el) {
+      var rows = el.tBodies[0] ? el.tBodies[0].rows : [];
+      if (!rows.length) return;
+      var mode = (el.dataset.fxBest || 'min').split(',');
+      for (var c = 1; c < rows[0].cells.length; c++) {
+        var best = null, bv = null, m = mode[Math.min(c - 1, mode.length - 1)];
+        for (var r = 0; r < rows.length; r++) {
+          var v = parseFloat(rows[r].cells[c].textContent.replace(',', '.'));
+          if (!isNaN(v) && (bv === null || (m === 'max' ? v > bv : v < bv))) { bv = v; best = rows[r].cells[c]; }
+        }
+        if (best) { best.classList.add('fx-best'); best.setAttribute('aria-label', best.textContent.trim() + ', meilleure valeur'); best.style.setProperty('--fx-i', c); }
+      }
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
