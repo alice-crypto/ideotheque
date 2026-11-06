@@ -5648,6 +5648,14 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="cashflow-waterfall"] .fx-end i { background: var(--fx-accent); }
 [data-fx="cashflow-waterfall"] b { position: absolute; left: 0; right: 0; top: -13px; text-align: center; font-weight: 600; }
 
+/* due-date-bar : avant l'échéance */
+[data-fx="due-date-bar"] { display: grid; gap: 4px; font-size: .9em; }
+[data-fx="due-date-bar"] i { display: block; height: 6px; background: rgba(128, 128, 128, .28); }
+[data-fx="due-date-bar"] b { display: block; height: 100%; width: 0; background: var(--fx-accent); transition: width 1s var(--fx-ease-out); }
+.fx-in[data-fx="due-date-bar"] b { width: calc(var(--fx-q) * 100%); }
+[data-fx="due-date-bar"].fx-late b { background: var(--fx-down, #e10600); }
+[data-fx="due-date-bar"].fx-late span { font-weight: 700; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

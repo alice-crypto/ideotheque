@@ -210,4 +210,13 @@ module.exports = [
     '<div data-fx="cashflow-waterfall" data-fx-items="Ouverture:40|Ventes:65|Loyer:-12"></div>',
     '<div data-fx="cashflow-waterfall" style="width:225px;color:var(--ink);margin-top:14px"></div>',
     { trigger: 'Rejouer', a11y: 'Toutes les valeurs sont dans `aria-label`. Le signe est écrit au-dessus de chaque marche.' }),
+  E('due-date-bar', 'État',
+    'Une barre montre le temps écoulé vers une échéance, et le message devient plus ferme à l\'approche.',
+    'Prévenant, on ne se fait pas surprendre.',
+    '- `data-fx-from`, `data-fx-to` : dates\n- `data-fx-warn` (3) : jours d\'alerte',
+    'Factures, abonnements, paiements.',
+    'Un ton culpabilisant dans les messages.',
+    '<div data-fx="due-date-bar" data-fx-from="2026-11-01" data-fx-to="2026-12-01"></div>',
+    '<div data-fx="due-date-bar" style="width:210px;color:var(--ink)"></div>',
+    { trigger: 'Rejouer', a11y: 'Rôle `progressbar`, et le message est écrit.' }),
 ];

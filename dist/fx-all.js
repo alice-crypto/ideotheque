@@ -9152,6 +9152,22 @@
       });
     }
   });
+
+  // Une barre qui montre le temps restant avant une échéance
+  FX.register('due-date-bar', {
+    entrance: true,
+    setup: function (el) {
+      var now = Date.now(), from = new Date(el.dataset.fxFrom || now - 20 * 864e5).getTime(), to = new Date(el.dataset.fxTo || now + 10 * 864e5).getTime();
+      var q = U.clamp((now - from) / (to - from), 0, 1), days = Math.ceil((to - now) / 864e5);
+      el.setAttribute('role', 'progressbar');
+      el.setAttribute('aria-valuenow', Math.round(q * 100)); el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', 100);
+      var txt = days < 0 ? 'En retard de ' + (-days) + ' jour' + (days < -1 ? 's' : '') : days === 0 ? 'À payer aujourd\'hui' : 'Échéance dans ' + days + ' jour' + (days > 1 ? 's' : '');
+      el.setAttribute('aria-label', txt);
+      el.innerHTML = '<span>' + txt + '</span><i><b></b></i>';
+      el.style.setProperty('--fx-q', q);
+      el.classList.toggle('fx-late', days <= U.num(el, 'fxWarn', 3));
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
