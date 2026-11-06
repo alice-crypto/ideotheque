@@ -183,4 +183,13 @@ module.exports = [
     '<div data-fx="locker-grid" data-fx-code="4821" data-fx-locker="7"></div>',
     '<div data-fx="locker-grid" style="color:var(--ink)"></div>',
     { a11y: 'Champ nommé, résultat annoncé en mots.' }),
+  E('drone-drop', 'Entrée',
+    'Un drone dépose le contenu dans la page, puis repart.',
+    'Futur proche, avec une pointe d\'humour.',
+    '- `--fx-w`\n- le contenu de l\'élément est livré',
+    'Innovation, livraison, annonce ludique.',
+    'De suggérer un service de drones qui n\'existe pas pour le visiteur.',
+    '<div data-fx="drone-drop">Livré !</div>',
+    '<div data-fx="drone-drop" style="color:var(--ink)">Livré !</div>',
+    { trigger: 'Rejouer', a11y: 'Le contenu reste en place. En mouvement réduit, il apparaît sans vol.' }),
 ];

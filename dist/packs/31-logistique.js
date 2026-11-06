@@ -380,4 +380,13 @@
       });
     }
   });
+
+  // Un drone apporte le contenu et repart
+  FX.register('drone-drop', {
+    entrance: true,
+    setup: function (el) {
+      var t = el.innerHTML;
+      el.innerHTML = '<div class="fx-dd" aria-hidden="true"><i class="fx-dd-l"></i><i class="fx-dd-r"></i><i class="fx-dd-b"></i></div><div class="fx-dd-c">' + t + '</div>';
+    }
+  });
 })(window.FX);
