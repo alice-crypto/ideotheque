@@ -7052,6 +7052,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="parking-sensor"] input { min-width: 0; accent-color: var(--fx-accent); }
 @keyframes fx-ps { 50% { opacity: .35; } }
 
+/* tire-track : une trace de pneu */
+[data-fx="tire-track"] { display: inline-block; font-weight: 900; overflow: hidden; padding: 6px 4px; }
+[data-fx="tire-track"] .fx-tk-x { opacity: 0; transition: opacity .2s .45s; }
+.fx-in[data-fx="tire-track"] .fx-tk-x { opacity: 1; }
+[data-fx="tire-track"] .fx-tk { position: absolute; left: -10%; right: -10%; top: 16%; height: 68%; transform: translateX(-120%) rotate(-5deg); background: repeating-linear-gradient(115deg, currentColor 0 4px, transparent 4px 9px) 0 0 / 100% 40% no-repeat, repeating-linear-gradient(115deg, currentColor 0 4px, transparent 4px 9px) 0 100% / 100% 40% no-repeat; color: var(--fx-tire, #5b534a); transition: transform .8s var(--fx-ease-out); }
+.fx-in[data-fx="tire-track"] .fx-tk { transform: translateX(120%) rotate(-5deg); }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

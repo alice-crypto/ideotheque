@@ -327,4 +327,15 @@
       go();
     }
   });
+
+  // Une trace de pneu qui traverse le titre et le révèle
+  FX.register('tire-track', {
+    entrance: true,
+    setup: function (el) {
+      el.innerHTML = '<span class="fx-tk-x">' + el.innerHTML + '</span>';
+      var t = U.make('span', 'fx-tk', el);
+      t.setAttribute('aria-hidden', 'true');
+      U.ensurePositioned(el);
+    }
+  });
 })(window.FX);

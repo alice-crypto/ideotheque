@@ -165,4 +165,13 @@ module.exports = [
     '<div data-fx="parking-sensor" data-fx-cm="60"></div>',
     '<div data-fx="parking-sensor" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, distance et niveau écrits et annoncés.' }),
+  E('tire-track', 'Entrée',
+    'Une trace de pneu traverse le titre en biais, et le texte apparaît dans son sillage.',
+    'Terre, rallye, tout-terrain.',
+    '- `--fx-tire`',
+    'Rallye, tout-terrain, vélos, pneumatiques.',
+    'Un site urbain et feutré : le ton détonne.',
+    '<h2 data-fx="tire-track">Hors piste</h2>',
+    '<h2 class="demo-title" data-fx="tire-track">Hors piste</h2>',
+    { trigger: 'Rejouer', a11y: 'Le texte reste un vrai texte. Mouvement réduit : apparition directe.' }),
 ];
