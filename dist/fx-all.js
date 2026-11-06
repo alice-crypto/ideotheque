@@ -11491,6 +11491,19 @@
       });
     }
   });
+
+  // Une voiture qui avance en descendant la page, ses roues tournent juste
+  FX.register('wheel-roll', {
+    setup: function (el) {
+      el.setAttribute('aria-hidden', 'true');
+      el.innerHTML = '<div class="fx-wr"><i></i><i></i></div>';
+    },
+    scroll: function (el, info) {
+      var w = el.clientWidth - 110, x = info.pass * w, r = 13;
+      el.style.setProperty('--fx-x', x.toFixed(1) + 'px');
+      el.style.setProperty('--fx-a', (x / r * 57.3).toFixed(1) + 'deg');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -12,4 +12,13 @@ module.exports = [
     '<div data-fx="car-colorizer" data-fx-price="24900"></div>',
     '<div data-fx="car-colorizer" style="color:var(--ink)"></div>',
     { a11y: 'Pastilles nommées, `aria-pressed`, prix et couleur annoncés.' }),
+  E('wheel-roll', 'Défilement',
+    'Une voiture avance au fil du défilement, et ses roues tournent en proportion exacte.',
+    'Un petit fil rouge, juste assez joueur.',
+    '- `--fx-h` (66px), `--fx-accent`',
+    'Lancement de véhicule, indicateur de lecture.',
+    'Comme seule indication de progression : le dessin reste décoratif.',
+    '<div data-fx="wheel-roll"></div>',
+    '<div data-fx="wheel-roll" style="color:var(--ink);width:220px"></div>',
+    { a11y: 'Décoratif, masqué aux lecteurs d\'écran.' }),
 ];
