@@ -15085,6 +15085,16 @@
       el.innerHTML = '<div class="fx-sb2" aria-hidden="true"><i></i><u></u></div><p>Coucher du soleil vers <b>' + h + ' h ' + String(m).padStart(2, '0') + '</b><br>' + (left > 0 ? 'Dans ' + Math.floor(left) + ' h ' + String(Math.round(left % 1 * 60)).padStart(2, '0') : 'C\'est passé pour aujourd\'hui') + '</p>';
     }
   });
+
+  // Combien de chambres restent, avec la date de la donnée
+  FX.register('rooms-left', {
+    setup: function (el) {
+      var n = U.num(el, 'fxLeft', 4), t = U.num(el, 'fxTotal', 32), d = el.dataset.fxUpdated ? new Date(el.dataset.fxUpdated) : new Date(), box = U.make('div', 'fx-rl2', el), p = U.make('p', '', el);
+      box.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < t; i++) U.make('i', i < t - n ? 'fx-x' : '', box);
+      p.innerHTML = '<b>' + n + ' chambre' + (n > 1 ? 's' : '') + '</b> sur ' + t + ' à ces dates<br><small>Mis à jour à ' + d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + '</small>';
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

@@ -154,3 +154,12 @@
 [data-fx="sunset-bar"] u { position: absolute; left: calc(var(--fx-s) * 100%); top: 2px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #ffcb4f; box-shadow: 0 0 10px #ff9b2f; }
 [data-fx="sunset-bar"] p { margin: 7px 0 0; }
 [data-fx="sunset-bar"] b { font-size: 18px; }
+
+/* rooms-left : combien de chambres restent */
+[data-fx="rooms-left"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 210px)); font-size: 12px; }
+[data-fx="rooms-left"] .fx-rl2 { display: grid; grid-template-columns: repeat(8, 1fr); gap: 3px; }
+[data-fx="rooms-left"] i { aspect-ratio: 1; background: var(--fx-accent); }
+[data-fx="rooms-left"] .fx-x { background: color-mix(in srgb, currentColor 15%, transparent); }
+[data-fx="rooms-left"] p { margin: 0; }
+[data-fx="rooms-left"] b { font-size: 16px; }
+[data-fx="rooms-left"] small { font-size: 10px; opacity: .7; }

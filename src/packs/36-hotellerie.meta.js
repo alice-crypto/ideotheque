@@ -138,4 +138,13 @@ module.exports = [
     '<div data-fx="sunset-bar" data-fx-lat="43.3" data-fx-lon="5.4"></div>',
     '<div data-fx="sunset-bar" style="color:var(--ink)"></div>',
     { a11y: 'Heure et temps restant écrits en texte.' }),
+  E('rooms-left', 'État',
+    'Une façade montre les chambres encore libres, avec la date de la donnée et sans fausse urgence.',
+    'Honnête : on décide sans être poussé.',
+    '- `data-fx-left` (4), `data-fx-total` (32), `data-fx-updated`',
+    'Hôtels, événements, places limitées.',
+    'D\'y afficher des chiffres inventés : la pression fictive est trompeuse, et peut être interdite.',
+    '<div data-fx="rooms-left" data-fx-left="4" data-fx-total="32"></div>',
+    '<div data-fx="rooms-left" style="color:var(--ink)"></div>',
+    { a11y: 'Chiffre et date écrits. Pas d\'animation qui presse.' }),
 ];
