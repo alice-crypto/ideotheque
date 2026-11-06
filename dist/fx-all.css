@@ -8674,6 +8674,17 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="nutri-panel"] li b { text-align: right; }
 [data-fx="nutri-panel"] small { font-size: 9px; opacity: .7; }
 
+/* Pack 36 — Hôtellerie */
+
+/* stay-range : choisir ses dates */
+[data-fx="stay-range"] { display: grid; gap: 6px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="stay-range"] .fx-sr3 { display: grid; grid-template-columns: repeat(7, 1fr); row-gap: 2px; }
+[data-fx="stay-range"] button { height: 26px; padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; transition: background .15s; }
+[data-fx="stay-range"] button:hover { background: color-mix(in srgb, currentColor 15%, transparent); border-radius: 50%; }
+[data-fx="stay-range"] .fx-r { background: color-mix(in srgb, var(--fx-accent) 28%, transparent); }
+[data-fx="stay-range"] .fx-e { background: var(--fx-accent) !important; color: #fff; font-weight: 800; border-radius: 50%; }
+[data-fx="stay-range"] output b { font-size: 15px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
