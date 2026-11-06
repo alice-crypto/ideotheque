@@ -245,3 +245,11 @@
 [data-fx="baggage-allowance"] input { width: 46px; padding: 2px; font: inherit; }
 [data-fx="baggage-allowance"] output { grid-column: 1 / -1; font-size: 12px; font-weight: 700; color: var(--fx-up, #2eaf63); }
 [data-fx="baggage-allowance"].fx-bad output { color: var(--fx-down, #e10600); }
+
+/* ticket-tear : détacher la souche */
+[data-fx="ticket-tear"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 225px)); font-size: 11px; overflow: hidden; padding: 4px 0 6px; }
+[data-fx="ticket-tear"] .fx-tt2 { display: grid; grid-template-columns: 1fr 64px; height: 76px; }
+[data-fx="ticket-tear"] .m { display: grid; align-content: center; padding: 0 10px; border-radius: 8px 0 0 8px; background: var(--fx-tick, #efe2c4); color: #2c2517; }
+[data-fx="ticket-tear"] .m b { font-size: 17px; }
+[data-fx="ticket-tear"] .s { position: relative; padding: 0; border: 0; border-left: 2px dashed #6c5d3d; border-radius: 0 8px 8px 0; background: var(--fx-accent); color: #fff; font: inherit; font-weight: 700; cursor: grab; touch-action: none; transform-origin: left center; transition: transform .25s var(--fx-ease-spring), opacity .4s; }
+[data-fx="ticket-tear"].fx-torn .s { transform: translate(140px, 30px) rotate(38deg) !important; opacity: 0; }
