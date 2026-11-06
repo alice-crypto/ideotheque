@@ -63,3 +63,14 @@
 [data-fx="damage-spots"] button:hover { background: color-mix(in srgb, var(--fx-accent) 20%, transparent); }
 [data-fx="damage-spots"] button[aria-pressed="true"] { background: repeating-linear-gradient(45deg, var(--fx-accent) 0 3px, transparent 3px 6px); animation: fx-dsp .3s var(--fx-ease-spring); }
 @keyframes fx-dsp { from { transform: scale(.8); } }
+
+/* document-checklist : les pièces d'un dossier */
+[data-fx="document-checklist"] { display: grid; gap: 4px; width: min(100%, var(--fx-w, 220px)); font-size: 12px; }
+[data-fx="document-checklist"] .fx-dc-b { height: 5px; border-radius: 3px; background: color-mix(in srgb, currentColor 18%, transparent); overflow: hidden; }
+[data-fx="document-checklist"] .fx-dc-b i { display: block; height: 100%; width: calc(var(--fx-q, 0) * 100%); background: var(--fx-accent); transition: width .4s var(--fx-ease-out), background .3s; }
+[data-fx="document-checklist"] output { font-weight: 700; margin-bottom: 4px; }
+[data-fx="document-checklist"] label { display: flex; gap: 6px; cursor: pointer; }
+[data-fx="document-checklist"] input { margin: 0; accent-color: var(--fx-accent); }
+[data-fx="document-checklist"] input:checked + span { opacity: .55; text-decoration: line-through; }
+[data-fx="document-checklist"].fx-full .fx-dc-b i { background: var(--fx-ok, #2eaf63); }
+[data-fx="document-checklist"].fx-full output { color: var(--fx-ok, #2eaf63); }
