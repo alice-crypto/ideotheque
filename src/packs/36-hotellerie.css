@@ -198,3 +198,15 @@
 [data-fx="door-reveal"]:hover .fx-dr3, [data-fx="door-reveal"]:focus-visible .fx-dr3, [data-fx="door-reveal"].fx-open .fx-dr3 { transform: rotateY(-82deg); }
 [data-fx="door-reveal"] b { position: absolute; left: 50%; top: 18%; transform: translateX(-50%); padding: 2px 8px; background: #d4a941; color: #30210b; font-weight: 800; }
 [data-fx="door-reveal"] .fx-dr3 i { position: absolute; right: 12px; top: 50%; width: 10px; height: 10px; border-radius: 50%; background: #d4a941; }
+
+/* pillow-menu : choisir son oreiller */
+[data-fx="pillow-menu"] { display: grid; gap: 6px; justify-items: center; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="pillow-menu"] .fx-pm2 { display: grid; place-items: end center; height: 62px; width: 100%; pointer-events: auto; cursor: grab; }
+[data-fx="pillow-menu"] .fx-pm2 i { display: block; width: 120px; height: 52px; border-radius: 26px; background: radial-gradient(#ffffff, #d9d4c9); box-shadow: 0 3px 6px #0005; transform-origin: bottom; }
+[data-fx="pillow-menu"] .fx-go i, [data-fx="pillow-menu"] .fx-press i { animation: fx-pillow-press .75s var(--fx-ease-spring); }
+[data-fx="pillow-menu"] .fx-press i { animation: none; transform: scale(calc(1 + var(--fx-q) * .3), calc(1 - var(--fx-q) * .7)); }
+[data-fx="pillow-menu"] .fx-pm2-l { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; }
+[data-fx="pillow-menu"] button { padding: 2px 7px; border: 1px solid currentColor; border-radius: 99px; background: none; color: inherit; font: inherit; cursor: pointer; }
+[data-fx="pillow-menu"] [aria-checked="true"] { background: var(--fx-accent); color: #fff; border-color: transparent; }
+[data-fx="pillow-menu"] output { font-size: 13px; font-weight: 700; }
+@keyframes fx-pillow-press { 35% { transform: scale(calc(1 + var(--fx-q) * .3), calc(1 - var(--fx-q) * .7)); } }
