@@ -211,4 +211,24 @@
       go();
     }
   });
+
+  // Un compteur communicant : l'index monte, la puissance varie
+  FX.register('smart-meter', {
+    setup: function (el) {
+      var kwh = U.num(el, 'fxIndex', 18492.3), p = U.num(el, 'fxPower', 1.4);
+      el.innerHTML = '<div class="fx-smm"><small>Index kWh</small><b class="i"></b><small>Puissance</small><b class="p"></b></div>';
+      el._fxOut = function () {
+        el.querySelector('.i').textContent = kwh.toFixed(3).replace('.', ',');
+        el.querySelector('.p').textContent = p.toFixed(2).replace('.', ',') + ' kW';
+      };
+      el._fxStep = function (dt) {
+        p = U.clamp(p + U.rand(-.04, .04), .2, 6);
+        kwh += p * dt / 3600 * U.num(el, 'fxSpeed', 40);
+        el._fxOut();
+      };
+      el._fxOut();
+      if (el.dataset.fxLabel) el.setAttribute('aria-label', el.dataset.fxLabel);
+    },
+    tick: function (el, dt) { if (!U.reduced) el._fxStep(dt); }
+  });
 })(window.FX);
