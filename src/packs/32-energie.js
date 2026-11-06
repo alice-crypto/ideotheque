@@ -280,4 +280,20 @@
       U.make('small', '', el).textContent = 'Exemple fictif : essayez 69003.';
     }
   });
+
+  // Une flamme de brûleur dont on règle la puissance
+  FX.register('burner-flame', {
+    setup: function (el) {
+      var n = 7, box = U.make('div', 'fx-bf2', el), lab = U.make('label', '', el), o = U.make('output', '', el);
+      box.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) { var f = U.make('i', '', box); f.style.setProperty('--fx-d', -U.rand(0, 1).toFixed(2) + 's'); f.style.setProperty('--fx-t', U.rand(.75, 1).toFixed(2)); }
+      lab.innerHTML = 'Puissance <input type="range" min="0" max="100">';
+      o.setAttribute('aria-live', 'polite');
+      var r = lab.querySelector('input'), P = U.num(el, 'fxPower', 24);
+      r.value = U.num(el, 'fxValue', 55);
+      var go = function () { el.style.setProperty('--fx-q', r.value / 100); o.textContent = r.value == 0 ? 'Veilleuse' : Math.round(r.value / 100 * P) + ' kW'; };
+      r.addEventListener('input', go);
+      go();
+    }
+  });
 })(window.FX);
