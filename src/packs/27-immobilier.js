@@ -242,4 +242,16 @@
       el.setAttribute('role', 'img');
     }
   });
+
+  // Un plan bleu qui se trace mur par mur
+  FX.register('blueprint-draw', {
+    entrance: true,
+    setup: function (el) {
+      var W = (el.dataset.fxWalls || '10,10,190,10|190,10,190,110|190,110,10,110|10,110,10,10|110,10,110,60|110,60,80,60|110,85,110,110|10,62,60,62').split('|'), s = '<svg viewBox="0 0 200 120" aria-hidden="true">';
+      W.forEach(function (w, i) { var p = w.split(','); s += '<line pathLength="1" x1="' + p[0] + '" y1="' + p[1] + '" x2="' + p[2] + '" y2="' + p[3] + '" style="--fx-i:' + i + '"/>'; });
+      s += '<path class="fx-bpd" d="M80 60A20 20 0 0 1 60 40"/><text x="40" y="40">Séjour</text><text x="150" y="60">Chambre</text><text x="55" y="90">Cuisine</text></svg>';
+      el.innerHTML = s;
+      if (el.dataset.fxLabel) { el.setAttribute('role', 'img'); el.setAttribute('aria-label', el.dataset.fxLabel); }
+    }
+  });
 })(window.FX);
