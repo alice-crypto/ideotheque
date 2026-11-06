@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="grid-mix" data-fx-items="Nucléaire:62:1|Gaz:11:0"></div>',
     '<div data-fx="grid-mix" style="color:var(--ink)"></div>',
     { a11y: 'Parts écrites dans une liste. La barre est décorative.' }),
+  E('wind-turbine', 'Micro-interaction',
+    'Le vent fait tourner une éolienne, et la puissance grimpe avec son cube, jusqu\'à l\'arrêt de sécurité.',
+    'Comprendre une loi physique en un geste.',
+    '- `data-fx-wind` (10)',
+    'Énergie, éducation, rapports de production.',
+    'De prendre ces kW pour une vraie machine : le modèle reste simplifié.',
+    '<div data-fx="wind-turbine" data-fx-wind="10"></div>',
+    '<div data-fx="wind-turbine" style="color:var(--ink)"></div>',
+    { a11y: 'Curseur étiqueté, résultat annoncé. Mouvement réduit : pales fixes.' }),
 ];

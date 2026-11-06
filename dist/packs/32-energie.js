@@ -78,4 +78,27 @@
       if (!U.reduced) setInterval(function () { M.forEach(function (m) { m.v = Math.max(1, m.v + U.rand(-1.2, 1.2)); }); el._fxShow(); }, 1800);
     }
   });
+
+  // Une éolienne : quand le vent double, la puissance est multipliée par huit
+  FX.register('wind-turbine', {
+    setup: function (el) {
+      el.innerHTML = '<svg viewBox="0 0 100 120" aria-hidden="true"><path d="M48 118 49 50H51L52 118Z"/><g class="fx-wt"><path d="M50 48 47 8Q50 4 53 8Z"/><path d="M50 48 47 8Q50 4 53 8Z" transform="rotate(120 50 48)"/><path d="M50 48 47 8Q50 4 53 8Z" transform="rotate(240 50 48)"/><circle cx="50" cy="48" r="4"/></g></svg><label>Vent <b></b><input type="range" min="0" max="30"></label><output aria-live="polite"></output>';
+      var r = el.querySelector('input'), o = el.querySelector('output');
+      el._fxA = 0;
+      r.value = U.num(el, 'fxWind', 10);
+      var go = function () {
+        var v = +r.value, stop = v < 3 || v > 25, p = stop ? 0 : Math.min(3000, .22 * Math.pow(v, 3) * 8);
+        el._fxS = stop ? 0 : Math.min(200, v * 14);
+        el.querySelector('label b').textContent = v + ' m/s';
+        o.innerHTML = v > 25 ? 'Tempête : <b>arrêt de sécurité</b>' : v < 3 ? 'Trop peu de vent' : '<b>' + Math.round(p).toLocaleString('fr-FR') + ' kW</b> (modèle fictif)';
+      };
+      r.addEventListener('input', go);
+      go();
+    },
+    tick: function (el, dt) {
+      if (U.reduced) return;
+      el._fxA = (el._fxA + el._fxS * dt) % 360;
+      el.style.setProperty('--fx-a', el._fxA + 'deg');
+    }
+  });
 })(window.FX);

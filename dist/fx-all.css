@@ -7695,6 +7695,15 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="grid-mix"] p { margin: 0; }
 [data-fx="grid-mix"] b { font-size: 18px; }
 
+/* wind-turbine : une éolienne */
+[data-fx="wind-turbine"] { display: grid; grid-template-columns: 88px 1fr; gap: 8px; align-items: center; width: min(100%, var(--fx-w, 225px)); font-size: 11px; }
+[data-fx="wind-turbine"] svg { grid-row: span 2; width: 100%; fill: currentColor; }
+[data-fx="wind-turbine"] .fx-wt { transform-origin: 50px 48px; transform: rotate(var(--fx-a, 0deg)); }
+[data-fx="wind-turbine"] label { display: grid; grid-template-columns: 1fr auto; align-self: end; }
+[data-fx="wind-turbine"] input { grid-column: 1 / -1; width: 100%; accent-color: var(--fx-accent); }
+[data-fx="wind-turbine"] output { align-self: start; }
+[data-fx="wind-turbine"] output b { font-size: 15px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
