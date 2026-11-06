@@ -9087,6 +9087,18 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="gate-countdown"][data-fx-state="closed"] b { color: #ff4d44; }
 @keyframes fx-gate-call { 50% { opacity: .55; } }
 
+/* trip-stops : un voyage en étapes */
+[data-fx="trip-stops"] { display: grid; gap: 5px; width: min(100%, var(--fx-w, 235px)); font-size: 11px; }
+[data-fx="trip-stops"] ol { margin: 0; padding: 0; list-style: none; }
+[data-fx="trip-stops"] li { position: relative; display: grid; grid-template-columns: 12px 1fr 21px 14px 21px; gap: 4px; align-items: center; padding: 2px 0; }
+[data-fx="trip-stops"] li i { width: 10px; height: 10px; border-radius: 50%; background: var(--fx-accent); position: relative; }
+[data-fx="trip-stops"] li:not(:last-child) i::after { content: ''; position: absolute; left: 4px; top: 10px; width: 2px; height: 26px; background: color-mix(in srgb, currentColor 40%, transparent); }
+[data-fx="trip-stops"] li > div { display: grid; }
+[data-fx="trip-stops"] small { font-size: 9px; opacity: .7; }
+[data-fx="trip-stops"] button { height: 21px; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: none; color: inherit; cursor: pointer; }
+[data-fx="trip-stops"] span { text-align: center; font-weight: 800; }
+[data-fx="trip-stops"] output { font-weight: 700; font-size: 12px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */

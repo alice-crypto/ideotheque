@@ -129,4 +129,13 @@ module.exports = [
     '<div data-fx="gate-countdown" data-fx-in="12" data-fx-gate="B12"></div>',
     '<div data-fx="gate-countdown"></div>',
     { trigger: 'Dernier appel', a11y: 'Rôle `timer`, état annoncé seulement quand il change.' }),
+  E('trip-stops', 'Micro-interaction',
+    'Les nuits par étape se règlent, et les dates de tout le voyage s\'ajustent.',
+    'Un petit carnet de route, qui fait les calculs.',
+    '- `data-fx-items` : « étape:nuits » séparés par `|`',
+    'Road trips, croisières, séjours sur mesure.',
+    'De gérer les transports : seules les nuits sont calculées.',
+    '<div data-fx="trip-stops" data-fx-items="Bordeaux:2|Bilbao:2"></div>',
+    '<div data-fx="trip-stops" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés par étape, total annoncé.' }),
 ];
