@@ -12262,6 +12262,22 @@
       if (el.dataset.fxText) U.make('strong', '', el).textContent = el.dataset.fxText;
     }
   });
+
+  // Un bateau qui traverse selon l'heure réelle du trajet
+  FX.register('ferry-crossing', {
+    setup: function (el) {
+      var dur = U.num(el, 'fxMinutes', 40), start = Date.now() - U.num(el, 'fxPast', 12) * 60000;
+      el.innerHTML = '<div class="fx-fc" aria-hidden="true"><i class="fx-fc-w"></i><i class="fx-fc-b"></i></div><p></p>';
+      var p = el.querySelector('p');
+      el._fxShow = function () {
+        var q = U.clamp((Date.now() - start) / (dur * 60000), 0, 1);
+        el.style.setProperty('--fx-q', q);
+        p.textContent = q >= 1 ? 'Arrivé au port' : 'Arrivée dans ' + Math.ceil((1 - q) * dur) + ' min';
+      };
+      el._fxShow();
+      setInterval(el._fxShow, 30000);
+    }
+  });
 })(window.FX);
 
 window.FX._boot();

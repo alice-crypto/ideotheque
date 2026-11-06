@@ -174,4 +174,13 @@ module.exports = [
     '<div data-fx="footsteps" data-fx-text="À 8 minutes à pied"></div>',
     '<div data-fx="footsteps" data-fx-text="À 8 minutes à pied" style="color:var(--ink)"></div>',
     { trigger: 'Rejouer', a11y: 'Le texte est réel, les pas sont décoratifs.' }),
+  E('ferry-crossing', 'Ambiance',
+    'Un petit bateau traverse à la position réelle du trajet, et le temps restant s\'écrit.',
+    'On se voit déjà sur le pont.',
+    '- `data-fx-minutes` (40), `data-fx-past` (12)\n- `--fx-sea`',
+    'Ferries, croisières, tout trajet en cours.',
+    'De ne pas relier cet horaire à la réalité : l\'exemple part d\'une heure inventée.',
+    '<div data-fx="ferry-crossing" data-fx-minutes="40"></div>',
+    '<div data-fx="ferry-crossing" style="color:var(--ink)"></div>',
+    { a11y: 'Temps écrit, dessin masqué. Mouvement réduit : pas de vagues.' }),
 ];
