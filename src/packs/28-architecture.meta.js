@@ -30,4 +30,13 @@ module.exports = [
     '<div data-fx="material-swatch"></div>',
     '<div data-fx="material-swatch" style="color:var(--ink)"></div>',
     { a11y: 'Échantillons nommés, choix exposé et annoncé.' }),
+  E('project-index', 'Navigation',
+    'Une liste de projets par année ouvre une ligne à la fois sur son image.',
+    'Sobre et éditorial, comme le catalogue d\'une exposition.',
+    '- `data-fx-items` : « nom:année:lieu:image » séparés par `|`',
+    'Agences, galeries, portfolios.',
+    'De se contenter d\'une image décorative : donnez un vrai `alt` à vos photos de projet.',
+    '<div data-fx="project-index" data-fx-items="Halle:2026:Lille:halle.jpg"></div>',
+    '<div data-fx="project-index" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons `aria-expanded`, parcourables au clavier.' }),
 ];

@@ -11142,6 +11142,25 @@
       });
     }
   });
+
+  // Un index de projets dont une seule ligne s'ouvre sur son image
+  FX.register('project-index', {
+    setup: function (el) {
+      var rows = (el.dataset.fxItems || 'Halle des Sources:2026:Lille:assets/city.svg|École des Pins:2025:Nantes:assets/bloom.svg|Maison Blanche:2024:Sète:assets/dune.svg').split('|').map(function (r) { return r.split(':'); });
+      rows.sort(function (a, b) { return b[1] - a[1]; }).forEach(function (r) {
+        var b = U.make('button', '', el), p = U.make('div', 'fx-pi', el);
+        b.type = 'button'; b.setAttribute('aria-expanded', 'false');
+        b.innerHTML = '<span>' + r[0] + '</span><small>' + r[2] + '</small><small>' + r[1] + '</small>';
+        p.innerHTML = '<img alt="" loading="lazy" src="' + r[3] + '">';
+        b.addEventListener('click', function () {
+          var was = b.getAttribute('aria-expanded') === 'true';
+          el.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-expanded', 'false'); });
+          b.setAttribute('aria-expanded', !was);
+        });
+      });
+      el.querySelector('button').setAttribute('aria-expanded', 'true');
+    }
+  });
 })(window.FX);
 
 window.FX._boot();
