@@ -56,3 +56,13 @@
 [data-fx="harvest-yield"] .fx-hy .fx-on { opacity: 1; transform: none; }
 [data-fx="harvest-yield"] output b { font-size: 18px; }
 [data-fx="harvest-yield"] small { font-size: 10px; opacity: .7; }
+
+/* tractor-plow : le titre dans les sillons */
+[data-fx="tractor-plow"] { display: inline-block; padding: 18px 6px .18em; overflow: hidden; font-weight: 900; line-height: 1.15; white-space: nowrap; }
+[data-fx="tractor-plow"] .fx-tw { display: block; visibility: hidden; }
+[data-fx="tractor-plow"] .fx-tw-s { position: absolute; left: 6px; top: 18px; clip-path: inset(0 100% 0 0); transition: clip-path 1.5s linear; white-space: nowrap; }
+.fx-in[data-fx="tractor-plow"] .fx-tw-s { clip-path: inset(0); }
+[data-fx="tractor-plow"] .fx-tw-t { position: absolute; left: -46px; top: 2px; width: 40px; height: 26px; transition: left 1.5s linear; }
+.fx-in[data-fx="tractor-plow"] .fx-tw-t { left: calc(100% + 6px); }
+[data-fx="tractor-plow"] b { position: absolute; left: 0; top: 2px; width: 26px; height: 14px; border-radius: 3px; background: var(--fx-tractor, #3f8f3d); }
+[data-fx="tractor-plow"] u { position: absolute; left: 2px; bottom: 0; width: 16px; height: 16px; border-radius: 50%; background: #111; box-shadow: 18px 4px 0 -4px #111; }
