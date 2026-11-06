@@ -39,4 +39,13 @@ module.exports = [
     '<div data-fx="co2-per-mode" data-fx-km="500"></div>',
     '<div data-fx="co2-per-mode" style="color:var(--ink)"></div>',
     { a11y: 'Curseur étiqueté, kilogrammes écrits ligne par ligne.' }),
+  E('zone-fare', 'Micro-interaction',
+    'Des zones en anneaux s\'allument et donnent le tarif du trajet.',
+    'La grille de tarifs devient enfin évidente.',
+    '- `data-fx-prices` : prix par nombre de zones traversées',
+    'Réseaux de transport, livraison par zones.',
+    'Un réseau qui n\'est pas en anneaux : le dessin serait trompeur.',
+    '<div data-fx="zone-fare" data-fx-prices="1.9,2.8,3.9"></div>',
+    '<div data-fx="zone-fare" style="color:var(--ink)"></div>',
+    { a11y: 'Boutons nommés, zones et prix annoncés.' }),
 ];

@@ -86,4 +86,25 @@
       go();
     }
   });
+
+  // Des zones en anneaux : le tarif change selon celles qu'on traverse
+  FX.register('zone-fare', {
+    setup: function (el) {
+      var P = (el.dataset.fxPrices || '1.9,2.8,3.9,5.1,6.4').split(',').map(Number), n = P.length, box = U.make('div', 'fx-zf', el), o = U.make('output', '', el), sel = [];
+      o.setAttribute('aria-live', 'polite');
+      for (var i = n; i >= 1; i--) (function (i) {
+        var b = U.make('button', '', box);
+        b.type = 'button'; b.textContent = i; b.setAttribute('aria-label', 'Zone ' + i); b.dataset.z = i; b.style.setProperty('--fx-z', i / n);
+        b.addEventListener('click', function () { sel.push(i); if (sel.length > 2) sel = [i]; show(); });
+      })(i);
+      var show = function () {
+        if (!sel.length) { o.textContent = 'Touchez deux zones'; return; }
+        var a = Math.min.apply(null, sel), c = Math.max.apply(null, sel), k = c - a;
+        box.querySelectorAll('button').forEach(function (x) { var z = +x.dataset.z; x.setAttribute('aria-pressed', z >= a && z <= c); });
+        o.innerHTML = sel.length === 1 ? 'Zone ' + a : 'Zones ' + a + ' à ' + c;
+        o.innerHTML += ' : <b>' + P[k].toFixed(2).replace('.', ',') + ' €</b>';
+      };
+      show();
+    }
+  });
 })(window.FX);

@@ -7167,6 +7167,13 @@ details[data-fx="accordion"][open] > summary::after { transform: rotate(135deg);
 [data-fx="co2-per-mode"] li b { text-align: right; }
 [data-fx="co2-per-mode"] small { font-size: 10px; opacity: .7; }
 
+/* zone-fare : un tarif par zones */
+[data-fx="zone-fare"] { display: grid; gap: 7px; justify-items: center; font-size: 12px; }
+[data-fx="zone-fare"] .fx-zf { position: relative; width: 150px; height: 150px; }
+[data-fx="zone-fare"] button { position: absolute; left: 50%; top: 50%; width: calc(var(--fx-z) * 100%); height: calc(var(--fx-z) * 100%); padding: 0 0 calc(var(--fx-z) * 100% - 15px) 0; transform: translate(-50%, -50%); border: 1px solid currentColor; border-radius: 50%; background: color-mix(in srgb, currentColor 6%, #0000); color: inherit; font-size: 10px; cursor: pointer; transition: background .2s, color .2s; display: grid; place-items: start center; box-sizing: border-box; padding: 2px 0 0; }
+[data-fx="zone-fare"] button[aria-pressed="true"] { background: color-mix(in srgb, var(--fx-accent) calc(var(--fx-z) * 40% + 25%), transparent); font-weight: 800; }
+[data-fx="zone-fare"] output b { font-size: 18px; }
+
 
 /* ------------------------------------------------------------------ */
 /* ACCESSIBILITÉ — mouvement réduit                                    */
