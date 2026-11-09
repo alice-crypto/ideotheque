@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nacre — parfums de lumière</title>
+  <meta name="description" content="Exemple Idéothèque : la landing page d'une maison de parfum fictive. Une perle calculée en temps réel remonte des abysses jusqu'à la surface.">
+  <meta name="theme-color" content="#03060f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,96,400;0,96,500;1,96,400;1,96,500&family=Manrope:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/fx.css">
+  <link rel="stylesheet" href="../dist/packs/90-lumiere.css">
+  <link rel="stylesheet" href="nacre.css">
+</head>
+<body>
+  <canvas id="world" aria-hidden="true"></canvas>
+  <div id="journey" data-fx="depth-journey" hidden></div>
+
+  <div id="intro" data-fx="dive-intro" data-fx-duration="3800" data-fx-once="true" data-fx-skip="Passer l'ouverture">
+    <p class="intro-brand">Nacre</p>
+    <p class="intro-line">Il faut descendre pour trouver la lumière.</p>
+  </div>
+
+  <a class="skip" href="#genese">Aller au contenu</a>
+
+  <header class="top">
+    <a class="logo" href="#hero" aria-label="Nacre, retour en haut"><i></i>Nacre</a>
+    <nav aria-label="Sections">
+      <a href="#genese">La genèse</a>
+      <a href="#collection">La collection</a>
+      <a href="#geste">Le geste</a>
+      <a href="#questions">Questions</a>
+    </nav>
+    <div class="top-r">
+      <a class="cta-s" href="#surface" data-fx="magnetic" data-fx-strength="0.25">Recevoir le coffret</a>
+    </div>
+  </header>
+
+  <aside class="gauge" aria-label="Profondeur">
+    <div id="meter" data-fx="depth-meter" data-fx-from="4200" data-fx-to="0"></div>
+  </aside>
+
+  <button class="sound" id="sound" data-fx="tide-score" type="button"><span>Écouter la remontée</span></button>
+
+  <main>
+    <section id="hero" class="hero" data-fx-stop="#03060f,#eef5f6">
+      <div class="hero-in">
+        <p class="eyebrow"><i></i>Maison de parfum<span class="eb-more">&nbsp;— Fondée sous l'eau</span></p>
+        <h1 class="display" data-gl-title>La lumière<br>naît <em>dans le noir.</em></h1>
+        <div class="hero-foot">
+          <p class="lead">Nacre compose ses parfums comme l'huître compose sa perle&nbsp;: couche après couche, pendant des années, loin de toute clarté.</p>
+          <a class="dive" href="#genese" data-fx="magnetic" data-fx-strength="0.3"><span class="dive-r" aria-hidden="true">↓</span><span>Commencer<br>la remontée</span></a>
+        </div>
+      </div>
+      <button class="release" id="release" type="button" aria-pressed="false"><b aria-hidden="true"></b><span>Libérer la lumière</span></button>
+    </section>
+
+    <section id="genese" class="genese" data-fx="chapter-pin" data-fx-stop="#061a30,#eef5f6">
+      <article>
+        <p class="kicker">La genèse — 01</p>
+        <h2>Un <em>grain</em><br>de sable.</h2>
+        <p>Rien de précieux au commencement. Une poussière entre dans la coquille et, pour s'en protéger, la coquille l'enveloppe.</p>
+      </article>
+      <article>
+        <p class="kicker">La genèse — 02</p>
+        <h2>Mille <em>voiles.</em></h2>
+        <p>Chaque couche mesure environ un demi-micron&nbsp;: de l'ordre d'une longueur d'onde de lumière. La nacre n'a presque pas de pigment. Ses couleurs naissent de la lumière qui se croise entre ses couches.</p>
+      </article>
+      <article>
+        <p class="kicker">La genèse — 03</p>
+        <h2>Une <em>clarté.</em></h2>
+        <p>Nos parfums sont construits de la même façon, de la note la plus profonde à la plus claire. Sur la peau, ils changent selon l'heure et selon qui les porte.</p>
+      </article>
+    </section>
+
+    <section id="manifeste" class="manifeste" data-fx-stop="#0c4a63,#f1f8f8">
+      <p class="kicker">Ce que nous croyons</p>
+      <p class="big" data-fx="scroll-ink">Un parfum ne devrait pas avoir une seule couleur. Il devrait en changer quand vous bougez, comme une perle qu'on fait tourner dans la main.</p>
+      <div class="ribbon-spot" data-ribbon aria-hidden="true"></div>
+    </section>
+
+    <section id="collection" class="collection" data-fx-stop="#14708a,#f4fafa">
+      <div class="rail" id="rail">
+        <header class="rail-head">
+          <p class="kicker">La collection — <span id="railN">01</span> / 04</p>
+          <div class="rail-bar" aria-hidden="true"><i id="railBar"></i></div>
+        </header>
+        <div class="rail-track" id="railTrack">
+          <article class="fragrance">
+            <p class="ghost" aria-hidden="true">Abysse</p>
+            <div class="f-card" data-fx="film-sheen" data-fx-on="border">
+              <p class="kicker">N° 1 — Boisé salin</p>
+              <h3>Abysse</h3>
+              <p>La première couche. Sombre et minérale, elle tient toute la nuit.</p>
+              <ul class="notes">
+                <li style="--v:.42"><span>Tête</span>Sel noir</li>
+                <li style="--v:.68"><span>Cœur</span>Encens, algue brune</li>
+                <li style="--v:.94"><span>Fond</span>Ambre gris de synthèse</li>
+              </ul>
+              <p class="price">148 € <small>50 ml</small></p>
+            </div>
+          </article>
+          <article class="fragrance">
+            <p class="ghost" aria-hidden="true">Minuit</p>
+            <div class="f-card" data-fx="film-sheen" data-fx-on="border">
+              <p class="kicker">N° 2 — Floral froid</p>
+              <h3>Minuit</h3>
+              <p>Une goutte sur le poignet, et l'iris remonte lentement à la surface de la peau.</p>
+              <ul class="notes">
+                <li style="--v:.58"><span>Tête</span>Figue froide</li>
+                <li style="--v:.86"><span>Cœur</span>Iris pallida</li>
+                <li style="--v:.6"><span>Fond</span>Musc salé</li>
+              </ul>
+              <p class="price">136 € <small>50 ml</small></p>
+            </div>
+          </article>
+          <article class="fragrance">
+            <p class="ghost" aria-hidden="true">Opaline</p>
+            <div class="f-card" data-fx="film-sheen" data-fx-on="border">
+              <p class="kicker">N° 3 — Lacté</p>
+              <h3>Opaline</h3>
+              <p>Un voile laiteux qui tourne autour de vous, sans jamais se poser tout à fait.</p>
+              <ul class="notes">
+                <li style="--v:.72"><span>Tête</span>Lait de riz</li>
+                <li style="--v:.8"><span>Cœur</span>Magnolia</li>
+                <li style="--v:.5"><span>Fond</span>Santal crémeux</li>
+              </ul>
+              <p class="price">136 € <small>50 ml</small></p>
+            </div>
+          </article>
+          <article class="fragrance">
+            <p class="ghost" aria-hidden="true">Aube</p>
+            <div class="f-card" data-fx="film-sheen" data-fx-on="border">
+              <p class="kicker">N° 4 — Solaire</p>
+              <h3>Aube</h3>
+              <p>La dernière couche. Le moment précis où l'eau devient claire au-dessus de vous.</p>
+              <ul class="notes">
+                <li style="--v:.92"><span>Tête</span>Néroli, poivre rose</li>
+                <li style="--v:.62"><span>Cœur</span>Fleur de thé</li>
+                <li style="--v:.44"><span>Fond</span>Peau chaude</li>
+              </ul>
+              <p class="price">142 € <small>50 ml</small></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="geste" class="geste" data-fx-stop="#9fd2d2,#0c2734">
+      <div class="ribbon-spot low" data-ribbon aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="geste-head">
+          <p class="kicker">Le geste</p>
+          <h2>Trois gestes,<br>et beaucoup <em>d'attente.</em></h2>
+        </div>
+        <div class="gestes">
+          <article class="g-card" data-fx="film-sheen" data-fx-on="border">
+            <span data-fx="node-bloom" data-fx-nodes="3" data-fx-seed="0.4"></span>
+            <h3>Choisir</h3>
+            <p>Peu de matières, tracées jusqu'à leur producteur. Et aucune récolte en mer&nbsp;: nos notes marines sont recréées.</p>
+          </article>
+          <article class="g-card" data-fx="film-sheen" data-fx-on="border">
+            <span data-fx="node-bloom" data-fx-nodes="5" data-fx-seed="1.2"></span>
+            <h3>Superposer</h3>
+            <p>Chaque couche repose plusieurs semaines avant de recevoir la suivante, pour que les notes se croisent au lieu de se couvrir.</p>
+          </article>
+          <article class="g-card" data-fx="film-sheen" data-fx-on="border">
+            <span data-fx="node-bloom" data-fx-nodes="4" data-fx-seed="2.1"></span>
+            <h3>Laisser mûrir</h3>
+            <p>Dans le noir, à température constante. Un parfum Nacre passe plus de temps à attendre qu'à être composé.</p>
+          </article>
+        </div>
+        <dl class="stats">
+          <div><dt>de maturation</dt><dd><span data-fx="count-up" data-fx-to="36">36</span> <small>mois</small></dd></div>
+          <div><dt>couches par parfum</dt><dd><span data-fx="count-up" data-fx-to="12">12</span></dd></div>
+          <div><dt>flacons chaque année</dt><dd><span data-fx="count-up" data-fx-to="1200">1200</span></dd></div>
+        </dl>
+      </div>
+      <div class="sparks" data-fx="spark-path" data-fx-count="58" aria-hidden="true"></div>
+    </section>
+
+    <section id="questions" class="questions" data-fx-stop="#d8ece6,#10242c">
+      <div class="wrap faq-grid">
+        <div>
+          <p class="kicker">Avant de remonter</p>
+          <h2>Quelques <em>clartés.</em></h2>
+        </div>
+        <div class="faq" data-fx="accordion-plus-morph">
+          <div><button type="button">Comment choisir sans sentir&nbsp;?</button><div><p>Le coffret de découverte contient les quatre parfums en 2 ml. Son prix, 18 €, est déduit de votre premier flacon.</p></div></div>
+          <div><button type="button">Combien de temps tient un parfum&nbsp;?</button><div><p>Abysse et Minuit restent de huit à dix heures sur la peau. Opaline et Aube, plus légers, autour de six heures.</p></div></div>
+          <div><button type="button">Utilisez-vous des matières animales&nbsp;?</button><div><p>Non. L'ambre gris est de synthèse, et aucune perle ni coquille n'entre dans nos compositions. Nos flacons doivent leur reflet au verre.</p></div></div>
+          <div><button type="button">Peut-on faire remplir son flacon&nbsp;?</button><div><p>Oui, tous nos flacons se rechargent. La recharge coûte un tiers de moins que le flacon neuf.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="surface" class="surface" data-fx-stop="#f7ecdc,#17222a">
+      <div class="surface-in">
+        <p class="kicker">Zéro mètre</p>
+        <h2 class="display" data-gl-title>Remontez<br>à la <em>surface.</em></h2>
+        <form id="box" class="box" novalidate>
+          <label for="mail">Recevez le coffret de découverte, quatre parfums en 2 ml, pour 18 €.</label>
+          <div class="field">
+            <input id="mail" type="email" required placeholder="votre@adresse.fr" autocomplete="email">
+            <button type="submit">Réserver</button>
+          </div>
+          <p class="status" id="boxStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <footer class="foot">
+        <p>Nacre est une marque fictive, créée comme exemple pour Idéothèque. Le formulaire n'envoie rien.</p>
+        <div class="foot-r">
+          <button type="button" data-replay>Rejouer la plongée ✦</button>
+          <a href="index.html">Tous les exemples</a>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script src="../dist/fx.js"></script>
+  <script src="../dist/packs/90-lumiere.js"></script>
+  <script src="nacre-page.js"></script>
+  <script src="nacre.js"></script>
+</body>
+</html>

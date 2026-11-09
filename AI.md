@@ -4,7 +4,7 @@ Ce fichier explique à une IA (Claude, Copilot, Cursor…) comment utiliser Idé
 
 > « Utilise `curtain-soft` pour l'entrée des sections et `magnetic` sur le bouton principal. »
 
-La bibliothèque contient <!-- total -->874<!-- /total --> effets.
+La bibliothèque contient <!-- total -->886<!-- /total --> effets.
 
 ## Règles
 
@@ -92,6 +92,8 @@ La bibliothèque contient <!-- total -->874<!-- /total --> effets.
 | `rivet-frame` | Entrée | Les rivets se posent un à un autour d'une plaque d'acier brossé |
 | `orchard-grow` | Entrée | Des rangées d'arbres sortent de terre en vague, avec leur total écrit |
 | `passport-stamps` | Entrée | Une page de passeport reçoit ses tampons un à un, légèrement de travers |
+| `dive-intro` | Entrée | Une ouverture plein écran : on descend en comptant, des anneaux s'ouvrent, puis la page apparaît dans un éclat |
+| `node-bloom` | Entrée | Une petite constellation se forme : un noyau, des liens qui se tracent, des points qui éclosent, puis une orbite très lente |
 | `text-split` | Texte | Donner du poids à un titre en le faisant apparaître lettre par lettre |
 | `text-scramble` | Texte | Un texte brouillé en signes aléatoires qui se décode lettre par lettre, de gauche à droite |
 | `typewriter` | Texte | Le texte s'écrit lettre par lettre, suivi d'un curseur qui clignote |
@@ -169,6 +171,8 @@ La bibliothèque contient <!-- total -->874<!-- /total --> effets.
 | `weld-sparks` | Texte | Un point de soudure court sous le titre, en projetant des étincelles |
 | `tractor-plow` | Texte | Un tracteur traverse le titre, et le texte apparaît dans son sillage |
 | `chalk-board` | Texte | Une ardoise s'écrit à la craie, ligne après ligne, avec ses prix |
+| `water-title` | Texte | Un grand titre rendu sous l'eau : il apparaît par grains, ondule en continu et se trouble autour du curseur |
+| `film-sheen` | Texte | Un reflet de nacre qui tourne vers le curseur, sur un texte ou sur la bordure d'une carte |
 | `count-up` | Présentation | Mettre en scène un chiffre clé en le faisant défiler de 0 jusqu'à sa valeur |
 | `pill-grow` | Présentation | Une gélule s'ouvre au milieu d'un titre, puis une pastille glisse à l'intérieur, comme un interrupteur qu'on active |
 | `preloader` | Présentation | Un écran de chargement chiffré de 0 à 100 %, avec une barre de progression, qui se lève vers le haut pour révéler la page |
@@ -540,6 +544,8 @@ La bibliothèque contient <!-- total -->874<!-- /total --> effets.
 | `phrase-card` | Micro-interaction | Une carte retourne une expression sur sa traduction, sa prononciation, et peut la lire à voix haute |
 | `baggage-allowance` | Micro-interaction | On entre les dimensions d'un sac, et l'on voit s'il passe dans le gabarit de cabine |
 | `ticket-tear` | Micro-interaction | On tire la souche d'un billet, qui se détache au-delà d'un seuil, ou d'un appui au clavier |
+| `glow-wake` | Micro-interaction | Le curseur laisse derrière lui un sillage de grains lumineux qui remontent et s'éteignent |
+| `tide-score` | Micro-interaction | Un bouton lance une musique générée sur place, sans fichier : un fond grave, une houle et des notes rares |
 | `scroll-expand` | Défilement | Un visuel encadré, aux coins arrondis, s'agrandit jusqu'au plein cadre au fil du défilement, pendant que l'image se recadre doucement |
 | `parallax` | Défilement | L'élément défile plus lentement (ou plus vite) que la page, ce qui crée une profondeur |
 | `progress-bar` | Défilement | Une fine barre en haut de l'écran indique jusqu'où on a lu la page |
@@ -606,6 +612,10 @@ La bibliothèque contient <!-- total -->874<!-- /total --> effets.
 | `wheel-roll` | Défilement | Une voiture avance au fil du défilement, et ses roues tournent en proportion exacte |
 | `chandelier-sway` | Défilement | Un lustre se balance selon la vitesse de défilement, et s'immobilise peu à peu |
 | `sailboat-progress` | Défilement | Un voilier traverse la largeur de la page à mesure qu'on avance dans la lecture |
+| `silk-ribbon` | Défilement | Un ruban de soie irisée en 3D se dessine sur toute la largeur au rythme du défilement, en se vrillant et en faisant une boucle |
+| `depth-meter` | Défilement | Une règle graduée glisse sur le côté et compte les mètres : la page devient une distance à parcourir |
+| `chapter-pin` | Défilement | Un récit en chapitres tenu à l'écran : le défilement fait passer de l'un à l'autre, et une frise segmentée montre l'avancement |
+| `spark-path` | Défilement | Des grains s'allument un à un le long d'un tracé, comme des bulles qui montent au fil du défilement |
 | `page-wipe` | Transition | Deux panneaux (couleur d'accent, puis couleur de fond) montent pour recouvrir l'écran, puis repartent par le haut sur la page suivante |
 | `bands` | Transition | Cinq bandes verticales de couleurs vives tombent l'une après l'autre pour couvrir l'écran, puis continuent leur chute |
 | `circle-expand` | Transition | Un cercle grandit depuis le point exact du clic jusqu'à couvrir l'écran, puis se referme au centre |
@@ -810,6 +820,8 @@ La bibliothèque contient <!-- total -->874<!-- /total --> effets.
 | `plane-window` | Ambiance | Un hublot montre des nuages qui passent, avec un ciel réglé sur l'heure réelle |
 | `lighthouse-beam` | Ambiance | Un faisceau balaie la nuit, et le texte s'éclaire à son passage |
 | `train-window` | Ambiance | Une fenêtre de train montre le paysage qui file sur trois vitesses |
+| `pearl-orb` | Ambiance | Une perle irisée calculée en temps réel : ses reflets suivent le curseur et, au clic, elle se dissout en poussière de lumière, puis se reforme |
+| `depth-journey` | Ambiance | Toute la page change de lumière en continu pendant le défilement : chaque repère donne une couleur de fond et une couleur de texte, le reste est interpolé |
 | `shimmer` | État | Indiquer un chargement par un reflet qui balaie la forme du futur contenu |
 | `orbit-loader` | État | Deux points tournent à des vitesses différentes autour d'un cœur qui respire |
 | `loading-bar` | État | Une barre de chargement indéterminée : un segment accélère et s'étire en traversant la piste |
